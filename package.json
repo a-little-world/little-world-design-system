@@ -2,7 +2,7 @@
   "name": "little-world-design-system",
   "version": "1.0.0",
   "description": "Design system for Little World applications",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
@@ -10,7 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/a-little-world/little-world-design-system.git"
+    "url": "https://github.com/a-little-world/little-world-design-system"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "author": "",
   "license": "UNLICENSED",
