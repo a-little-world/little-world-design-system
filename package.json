@@ -1,0 +1,54 @@
+{
+  "name": "little-world-design-system",
+  "version": "1.0.0",
+  "description": "Design system for Little World applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build": "rm -rf dist && webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-little-world/little-world-design-system.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/a-little-world/little-world-design-system/issues"
+  },
+  "homepage": "https://github.com/a-little-world/little-world-design-system#readme",
+  "prettier": "@a-little-world/little-world-prettier-config",
+  "devDependencies": {
+    "@a-little-world/little-world-prettier-config": "^1.0.1",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@storybook/addon-a11y": "^6.5.13",
+    "@storybook/addon-docs": "^6.5.13",
+    "@storybook/addon-essentials": "^6.5.13",
+    "@storybook/addon-options": "^5.3.21",
+    "@storybook/react": "^6.5.13",
+    "@types/mdx": "^2.0.3",
+    "@types/styled-components": "^5.1.26",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.8.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.3",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "styled-components": "^5.3.6"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
+}
