@@ -1,2 +1,3 @@
-# litte-world-design-system
+# little-world-design-system
+
 Design system for Little World applications
