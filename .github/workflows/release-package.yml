@@ -10,13 +10,15 @@ jobs:
     permissions:
       packages: write
       contents: read
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - run: npm ci
+      - run: 'npm ci --ignore-scripts'
+        shell: bash
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: npm run test
