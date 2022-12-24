@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { createPortal } from 'react-dom';
+// import Svg, { CLOSE } from '../Svg/Svg';
 // import FocusTrap from 'focus-trap-react';
 
 export const BACKDROP_LABEL = 'dialog backdrop';
@@ -11,7 +13,11 @@ const BackdropContainer = styled.dialog<{ $active: boolean }>`
   right: 0;
   bottom: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   padding: 32px;
+  border: none;
   background-color: rgba(51, 51, 51, 0.3);
   backdrop-filter: blur(8px);
   opacity: 0;
@@ -119,12 +125,17 @@ const Modal = ({
       ref={backdrop}
       $active={active && open}
     >
+      {!locked && <button onClick={onClose} />}
       {children}
     </BackdropContainer>
   );
 
-  if (open || active) return Backdrop;
+  if (open || active) return createPortal(Backdrop, el);
   return null;
 };
+
+// <button onClick={onClose}>
+//   <Svg aria-hidden={true} name={CLOSE} />
+// </button>;
 
 export default Modal;
