@@ -52,7 +52,6 @@ enum Icons {
 type IconsList = keyof typeof Icons;
 
 const getPath = (name: IconsList, props: Omit<SvgProps, 'name'>) => {
-  console.log({ name, Arrow });
   switch (name) {
     case ARROW:
       return <Arrow {...props} />;
