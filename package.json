@@ -1,5 +1,5 @@
 {
-  "name": "little-world-design-system",
+  "name": "@a-little-world/little-world-design-system",
   "version": "1.0.0",
   "description": "Design system for Little World applications",
   "main": "dist/index.js",
