@@ -4,7 +4,7 @@ import ModalDocs from './ModalDocs.mdx';
 
 export default {
   component: Modal,
-  title: 'Modal',
+  title: 'Components/Modal',
   parameters: {
     docs: {
       page: ModalDocs,
