@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 import { getDefaultProps } from '../getDefaultProps';
 import Icon, { IconSvgProps } from '../Icon';
 

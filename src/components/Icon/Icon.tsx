@@ -31,7 +31,7 @@ const Label = styled.span<{ $top: string; $visible?: boolean }>`
 
 type IconProps = {
   label: string;
-  labelTop: string;
+  labelTop?: string;
   labelVisible?: boolean;
   children: any;
 };
