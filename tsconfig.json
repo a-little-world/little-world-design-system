@@ -13,7 +13,6 @@
   },
   "include": ["src/*"],
   "exclude": ["node_modules", "dist"],
-  "files": ["src/custom.d.ts"],
   "types": ["@testing-library/jest-dom"],
-  "typeRoots": ["./src/@types", "./node_modules/@types"]
+  "typeRoots": ["./node_modules/@types"]
 }
