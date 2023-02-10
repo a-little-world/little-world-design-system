@@ -14,7 +14,7 @@ test('Icon should render correct icon with label', () => {
   );
 
   const svg = screen.getByTestId('svg');
-  const label = screen.getByLabelText(MOCK_LABEL);
+  const label = screen.getByText(MOCK_LABEL);
   expect(svg).toBeInTheDocument();
   expect(label).toBeInTheDocument();
 });
