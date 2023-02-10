@@ -2,12 +2,15 @@ import React from 'react';
 import { getDefaultProps } from '../getDefaultProps';
 import Icon, { IconSvgProps } from '../Icon';
 
+const LABEL_ID = 'Logo';
+
 export const Logo = (props: IconSvgProps) => {
   const { color, height, width, label, labelVisible } = getDefaultProps(props);
 
   return (
-    <Icon label={label} labelVisible={labelVisible}>
+    <Icon labelId={LABEL_ID} label={label} labelVisible={labelVisible}>
       <svg
+        aria-labelledby={LABEL_ID}
         focusable={false}
         height={height}
         width={width}
