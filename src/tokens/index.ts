@@ -10,6 +10,11 @@ export default {
   color: {
     theme: {
       light: {
+        surface: {
+          primary: coreColors.white,
+          secondary: coreColors.gray30,
+          indicator: coreColors.green,
+        },
         text: {
           primary: coreColors.black,
           secondary: coreColors.gray20,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Icon from './Icon';
 import IconDocs from './IconDocs.mdx';
 import * as allIcons from './index';
