@@ -2,12 +2,15 @@ import React from 'react';
 import { getDefaultProps } from '../getDefaultProps';
 import Icon, { IconSvgProps } from '../Icon';
 
+const LABEL_ID = 'InstagramIcon';
+
 export const InstagramIcon = (props: IconSvgProps) => {
   const { color, height, width, label, labelVisible } = getDefaultProps(props);
 
   return (
-    <Icon label={label} labelVisible={labelVisible}>
+    <Icon labelId={LABEL_ID} label={label} labelVisible={labelVisible}>
       <svg
+        aria-labelledby={LABEL_ID}
         focusable={false}
         height={height}
         viewBox="0 0 511 511.9"

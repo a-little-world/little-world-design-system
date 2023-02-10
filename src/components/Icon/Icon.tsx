@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 // hide element but keep visible to screen readers
 // parent requires position: relative;
-const Label = styled.span<{ $top: string; $visible?: boolean }>`
+const IconLabel = styled.span<{ $top: string; $visible?: boolean }>`
   ${({ $top, $visible }) =>
     $visible
       ? css`
@@ -34,6 +34,7 @@ type IconProps = {
   labelTop?: string;
   labelVisible?: boolean;
   children: any;
+  labelId: string;
 };
 
 export type IconSvgProps = IconProps & SVGSVGElement;
@@ -43,12 +44,13 @@ const Icon = ({
   label,
   labelVisible,
   labelTop = '56px',
+  labelId,
 }: IconProps) => (
   <>
     {children}
-    <Label $visible={labelVisible} $top={labelTop}>
+    <IconLabel id={labelId} $visible={labelVisible} $top={labelTop}>
       {label}
-    </Label>
+    </IconLabel>
   </>
 );
 

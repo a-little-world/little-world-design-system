@@ -1,11 +1,20 @@
 import React from 'react';
 import { render, screen } from '../../testUtils';
-import Svg, { FACEBOOK } from './Icon';
+import Icon from './Icon';
 
-test('Svg should render correct icon with label', () => {
-  const { container } = render(<Svg name={FACEBOOK} />);
+test('Icon should render correct icon with label', () => {
+  const MOCK_LABEL = 'mock label';
+  const LABEL_ID = 'svg label';
+  const SVG_ID = 'svg';
+
+  render(
+    <Icon labelId={LABEL_ID} label={MOCK_LABEL}>
+      <svg aria-labelledby={LABEL_ID} data-testid={SVG_ID} />
+    </Icon>,
+  );
 
   const svg = screen.getByTestId('svg');
+  const label = screen.getByLabelText(MOCK_LABEL);
   expect(svg).toBeInTheDocument();
-  expect(container).toHaveTextContent(FACEBOOK);
+  expect(label).toBeInTheDocument();
 });
