@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 import styled, { css } from 'styled-components';
 
 // hide element but keep visible to screen readers
@@ -37,7 +37,8 @@ type IconProps = {
   labelId: string;
 };
 
-export type IconSvgProps = IconProps & SVGSVGElement;
+export type IconSvgProps = IconProps &
+  SVGProps<SVGElement> & { color?: string };
 
 const Icon = ({
   children,

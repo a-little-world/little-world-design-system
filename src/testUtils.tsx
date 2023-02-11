@@ -1,5 +1,7 @@
+// @ts-nocheck
 import '@testing-library/jest-dom/extend-expect';
-import { render as defaultRender } from '@testing-library/react';
+import '@testing-library/dom/node_modules/pretty-format';
+import { render as defaultRender, RenderOptions } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 function render(ui, { wrapper, router, mocks = [], ...options } = {}) {
@@ -14,7 +16,7 @@ function render(ui, { wrapper, router, mocks = [], ...options } = {}) {
   });
 }
 
-function renderWithUser(jsx, options) {
+function renderWithUser(jsx, options?): any {
   return {
     user: userEvent.setup(),
     ...render(jsx, options),

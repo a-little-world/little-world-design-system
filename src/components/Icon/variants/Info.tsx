@@ -1,11 +1,12 @@
 import React from 'react';
-import { getDefaultProps } from '../getDefaultProps';
+import { getDefaultIconProps } from '../getDefaultIconProps';
 import Icon, { IconSvgProps } from '../Icon';
 
 const LABEL_ID = 'InfoIcon';
 
 export const InfoIcon = (props: IconSvgProps) => {
-  const { color, height, width, label, labelVisible } = getDefaultProps(props);
+  const { color, height, width, label, labelVisible } =
+    getDefaultIconProps(props);
 
   return (
     <Icon labelId={LABEL_ID} label={label} labelVisible={labelVisible}>
