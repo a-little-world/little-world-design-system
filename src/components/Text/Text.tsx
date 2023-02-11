@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { HtmlHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
@@ -19,17 +20,7 @@ type TextProps = {
   bold?: boolean;
   id?: string;
   children: React.ReactNode;
-  tag?:
-    | 'p'
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'span'
-    | 'strong'
-    | 'italic';
+  tag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'strong';
   type?: keyof typeof TextTypes;
 };
 

@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 
 import { TextTypes } from './Text';
-import tokens from '../../tokens';
+import tokens from '../../tokens/index';
 
 const BODY_SHARED_STYLES = css`
   font-family: 'Signika Negative', sans-serif;
