@@ -8,8 +8,8 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
-    "outDir": "./dist/esm",
-    "rootDir": "./src",
+    "outDir": "dist",
+    "rootDir": "src",
     "strict": true,
     "target": "ES5"
   },
