@@ -1,0 +1,6 @@
+.storybook
+.github
+src
+__mocks__
+public
+tsconfig.json

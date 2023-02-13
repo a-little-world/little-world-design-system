@@ -1,6 +1,6 @@
 {
   "name": "@a-little-world/little-world-design-system",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Design system for Little World applications",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -10,7 +10,7 @@
     "storybook": "start-storybook -p 6006",
     "prepare": "npm run build",
     "build": "rm -rf dist && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc",
+    "build:esm": "tsc --outDir dist/esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs"
   },
   "repository": {
