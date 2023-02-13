@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '../../testUtils';
-import Icon from './Icon';
+import { Icon } from './Icon';
 
 test('Icon should render correct icon with label', () => {
   const MOCK_LABEL = 'mock label';
