@@ -1,11 +1,9 @@
-export * from './components/Button/Button';
-export * from './components/Card/Card';
-export * from './components/Icon/Icon';
-export * from './components/Label/Label';
-export * from './components/Modal/Modal';
-export * from './components/ProgressBar/ProgressBar';
-export * from './components/RadioGroup/RadioGroup';
-export * from './components/Text/Text';
-export * from './components/TextInput/TextInput';
-
-export const App = () => 'boo';
+export { default as Button } from './components/Button/Button';
+export { default as Card } from './components/Card/Card';
+export * from './components/Icon';
+export { default as Label } from './components/Label/Label';
+export { default as Modal } from './components/Modal/Modal';
+export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
+export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
+export { default as Text, TextTypes } from './components/Text/Text';
+export { default as TextInput } from './components/TextInput/TextInput';

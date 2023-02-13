@@ -40,7 +40,7 @@ type IconProps = {
 export type IconSvgProps = IconProps &
   SVGProps<SVGElement> & { color?: string };
 
-const Icon = ({
+export const Icon = ({
   children,
   label,
   labelVisible,
@@ -54,5 +54,3 @@ const Icon = ({
     </IconLabel>
   </>
 );
-
-export default Icon;

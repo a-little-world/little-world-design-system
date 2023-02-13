@@ -1,6 +1,6 @@
 import React from 'react';
 import { getDefaultIconProps } from '../getDefaultIconProps';
-import Icon, { IconSvgProps } from '../Icon';
+import { Icon, IconSvgProps } from '../Icon';
 
 const LABEL_ID = 'GithubIcon';
 
