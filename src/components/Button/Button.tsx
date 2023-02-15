@@ -2,14 +2,14 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { coreColors } from '../../tokens/core';
 
-enum ButtonTypes {
+export enum ButtonTypes {
   Primary = 'Primary',
   Secondary = 'Secondary',
 }
 
 const StyledButton = styled.button<{
   $backgroundColor: string;
-  $type: keyof typeof ButtonTypes;
+  $variation: keyof typeof ButtonTypes;
 }>`
   border-radius: 90px;
   font-family: 'Signika Negative';
@@ -23,8 +23,8 @@ const StyledButton = styled.button<{
   width: 110px;
   box-sizing: border-box;
 
-  ${({ $backgroundColor, $type }) => {
-    if ($type === ButtonTypes.Primary)
+  ${({ $backgroundColor, $variation }) => {
+    if ($variation === ButtonTypes.Primary)
       return css`
         color: ${coreColors.white};
         border: none;
@@ -35,7 +35,7 @@ const StyledButton = styled.button<{
         ); ;
       `;
 
-    if ($type === ButtonTypes.Secondary)
+    if ($variation === ButtonTypes.Secondary)
       return css`
         border: 2px solid currentColor;
         background: ${coreColors.white};
@@ -43,19 +43,23 @@ const StyledButton = styled.button<{
   }}
 `;
 
-type ButtonProps = {
+interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   backgroundColor?: string;
-  children: React.ReactNode;
-  type?: keyof typeof ButtonTypes;
-};
+  variation?: keyof typeof ButtonTypes;
+}
 
 const Button: React.FC<ButtonProps> = ({
   backgroundColor = coreColors.orange,
   children,
-  type = ButtonTypes.Primary,
+  variation = ButtonTypes.Primary,
+  ...rest
 }) => {
   return (
-    <StyledButton $backgroundColor={backgroundColor} $type={type}>
+    <StyledButton
+      $backgroundColor={backgroundColor}
+      $variation={variation}
+      {...rest}
+    >
       {children}
     </StyledButton>
   );

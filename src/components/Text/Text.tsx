@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { HtmlHTMLAttributes } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { TYPOGRAPHY_CSS } from './styles';
@@ -24,6 +24,10 @@ type TextProps = {
   type?: keyof typeof TextTypes;
 };
 
+const StyledElement = styled.div`
+  ${TYPOGRAPHY_CSS}
+`;
+
 const Text = ({
   bold = false,
   children,
@@ -31,12 +35,8 @@ const Text = ({
   tag = 'p',
   type = TextTypes.Body1,
 }: TextProps) => {
-  const StyledElement = styled[tag]`
-    ${TYPOGRAPHY_CSS}
-  `;
-
   return (
-    <StyledElement id={id} $bold={bold} $type={type}>
+    <StyledElement id={id} $bold={bold} $type={type} as={tag}>
       {children}
     </StyledElement>
   );

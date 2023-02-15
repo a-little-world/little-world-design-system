@@ -1,4 +1,4 @@
-export { default as Button } from './components/Button/Button';
+export { default as Button, ButtonTypes } from './components/Button/Button';
 export { default as Card } from './components/Card/Card';
 export * from './components/Icon';
 export { default as Label } from './components/Label/Label';
