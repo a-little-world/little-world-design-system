@@ -1,8 +1,5 @@
-// @ts-nocheck
 import React from 'react';
-import styled from 'styled-components';
-
-import { TYPOGRAPHY_CSS } from './styles';
+import { StyledElement } from './styles';
 
 export enum TextTypes {
   Heading1 = 'Heading1',
@@ -18,28 +15,30 @@ export enum TextTypes {
 
 type TextProps = {
   bold?: boolean;
-  id?: string;
   children: React.ReactNode;
+  className?: string;
+  id?: string;
   tag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'strong';
   type?: keyof typeof TextTypes;
 };
 
-const StyledElement = styled.div`
-  ${TYPOGRAPHY_CSS}
-`;
-
 const Text = ({
   bold = false,
   children,
+  className,
   id,
   tag = 'p',
   type = TextTypes.Body1,
-}: TextProps) => {
-  return (
-    <StyledElement id={id} $bold={bold} $type={type} as={tag}>
-      {children}
-    </StyledElement>
-  );
-};
+}: TextProps) => (
+  <StyledElement
+    className={className}
+    id={id}
+    $bold={bold}
+    $type={type}
+    as={tag}
+  >
+    {children}
+  </StyledElement>
+);
 
 export default Text;

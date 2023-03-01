@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const StyledCard = styled.div<{ $height: string }>`
+const StyledCard = styled.div<{ $height?: string }>`
   border-radius: 40px;
   background: white;
   padding: 32px;
@@ -18,11 +18,14 @@ const StyledCard = styled.div<{ $height: string }>`
 
 type CardProps = {
   children: React.ReactNode;
-  height: string;
+  className?: string;
+  height?: string;
 };
 
-const Card: React.FC<CardProps> = ({ children, height }) => (
-  <StyledCard $height={height}>{children}</StyledCard>
+const Card: React.FC<CardProps> = ({ children, className, height }) => (
+  <StyledCard className={className} $height={height}>
+    {children}
+  </StyledCard>
 );
 
 export default Card;

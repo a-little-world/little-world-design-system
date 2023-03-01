@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { TextTypes } from './Text';
 import tokens from '../../tokens/index';
@@ -7,6 +7,8 @@ const BODY_SHARED_STYLES = css`
   font-family: 'Signika Negative', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  margin: 0;
 `;
 
 const HEADING_SHARED_STYLES = css`
@@ -21,7 +23,7 @@ export const BODY_3_CSS = css`
   font-size: 1rem;
 `;
 
-export const TYPOGRAPHY_CSS = css<{
+export const StyledElement = styled.div<{
   $bold: boolean;
   $type: keyof typeof TextTypes;
 }>`

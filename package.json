@@ -1,6 +1,6 @@
 {
   "name": "@a-little-world/little-world-design-system",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Design system for Little World applications",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -62,6 +62,7 @@
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-progress": "^1.0.1",
     "@radix-ui/react-radio-group": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.0.4",
     "styled-components": "^5.3.6"
   },
   "peerDependencies": {

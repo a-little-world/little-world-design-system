@@ -10,6 +10,14 @@ export default {
   color: {
     theme: {
       light: {
+        border: {
+          minimal: coreColors.gray10,
+          subtle: coreColors.gray20,
+          moderate: coreColors.gray30,
+          selected: coreColors.orange,
+          contrast: coreColors.black,
+          reversed: coreColors.white,
+        },
         surface: {
           primary: coreColors.white,
           secondary: coreColors.gray30,

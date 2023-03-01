@@ -37,7 +37,7 @@ type IconProps = {
   labelId: string;
 };
 
-export type IconSvgProps = IconProps &
+export type IconSvgProps = Omit<IconProps, 'children'> &
   SVGProps<SVGElement> & { color?: string };
 
 export const Icon = ({

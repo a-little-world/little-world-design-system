@@ -4,20 +4,32 @@ import { RadioGroupIndicator, RadioGroupItem, RadioGroupRoot } from './styles';
 import Label from '../Label/Label';
 
 type Props = {
+  label?: string;
   items: Array<{ id: string; label?: string; value: string }>;
 } & RadixRadioGroup.RadioGroupProps;
 
-const RadioGroup: React.FC<Props> = ({ items, ...rest }: Props) => (
-  <RadioGroupRoot value={undefined} {...rest}>
-    {items?.map(item => (
-      <div>
-        <RadioGroupItem value={item.value} id={item.id}>
-          <RadioGroupIndicator />
-        </RadioGroupItem>
-        {item.label && <Label htmlFor={item.id}>{item.label}</Label>}
-      </div>
-    ))}
-  </RadioGroupRoot>
+const RadioGroup: React.FC<Props> = ({ items, label, ...rest }: Props) => (
+  <div>
+    {label && (
+      <Label bold htmlFor={label} marginBottom="8px">
+        {label}
+      </Label>
+    )}
+    <RadioGroupRoot value={undefined} name={label} {...rest}>
+      {items?.map(item => (
+        <div key={item.id}>
+          <RadioGroupItem value={item.value} id={item.id}>
+            <RadioGroupIndicator />
+          </RadioGroupItem>
+          {item.label && (
+            <Label htmlFor={item.id} inline>
+              {item.label}
+            </Label>
+          )}
+        </div>
+      ))}
+    </RadioGroupRoot>
+  </div>
 );
 
 export default RadioGroup;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Button from './Button';
+import { InfoIcon } from '../Icon';
+import Button, { ButtonTypes } from './Button';
 
 export default {
   component: Button,
@@ -7,3 +8,9 @@ export default {
 };
 
 export const Default = args => <Button {...args}>Blah Blah</Button>;
+
+export const ButtonIcon = args => (
+  <Button variation={ButtonTypes.Icon}>
+    <InfoIcon label="info" labelId="info" />
+  </Button>
+);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RadioGroup from './RadioGroup';
 
 export default {
@@ -12,5 +12,10 @@ export const Default = args => {
     { value: 'dreams', id: 'dreams', label: 'Dreams' },
     { value: 'hope', id: 'hope', label: 'Hope' },
   ];
-  return <RadioGroup items={items}>Blah Blah</RadioGroup>;
+
+  return (
+    <RadioGroup items={items} {...args}>
+      Blah Blah
+    </RadioGroup>
+  );
 };

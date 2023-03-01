@@ -1,12 +1,12 @@
 import React from 'react';
-import TextInput from './TextInput';
+import TextArea from './TextArea';
 
 export default {
-  component: TextInput,
-  title: 'Components/TextInput',
+  component: TextArea,
+  title: 'Components/TextArea',
 };
 
-export const Default = args => <TextInput {...args} />;
+export const Default = args => <TextArea {...args} />;
 
 Default.args = {
   placeholder: 'Insert your text',
