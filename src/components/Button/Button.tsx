@@ -5,7 +5,9 @@ import { StyledButton } from './styles';
 export enum ButtonTypes {
   Primary = 'Primary',
   Secondary = 'Secondary',
+  Control = 'Control',
   Icon = 'Icon',
+  Inline = 'Inline',
 }
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   backgroundColor?: string;

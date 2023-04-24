@@ -1,0 +1,27 @@
+import React from 'react';
+import { getDefaultIconProps } from '../getDefaultIconProps';
+import { Icon, IconSvgProps } from '../Icon';
+
+const LABEL_ID = 'PencilIcon';
+
+export const PencilIcon = (props: IconSvgProps) => {
+  const { color, height, width, label, labelVisible } =
+    getDefaultIconProps(props);
+
+  return (
+    <Icon labelId={LABEL_ID} label={label} labelVisible={labelVisible}>
+      <svg
+        width={width}
+        height={height}
+        viewBox="0 0 13 12"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7.11073 2.55667L9.94333 5.38994L3.3326 12H0.5V9.16673L7.11073 2.55601V2.55667ZM8.05493 1.61247L9.47123 0.195508C9.59645 0.0703245 9.76626 0 9.94333 0C10.1204 0 10.2902 0.0703245 10.4154 0.195508L12.3045 2.08457C12.4297 2.2098 12.5 2.37961 12.5 2.55667C12.5 2.73374 12.4297 2.90355 12.3045 3.02877L10.8875 4.44507L8.05493 1.61247Z"
+          fill={color}
+        />
+      </svg>
+    </Icon>
+  );
+};

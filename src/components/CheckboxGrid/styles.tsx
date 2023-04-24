@@ -1,0 +1,75 @@
+import styled, { css } from 'styled-components';
+import tokens from '../../tokens';
+import Checkbox from '../Checkbox/Checkbox';
+import Text from '../Text/Text';
+
+export const CheckboxGridWrapper = styled.div`
+ width: 100%:
+`;
+
+export const Grid = styled.div<{
+  $columns: number;
+  $rows: number;
+}>`
+  display: grid;
+  width: 100%;
+  row-gap: 12px;
+
+  grid-template-columns: ${({ $columns }) => `repeat(${$columns}, 1fr)`};
+  grid-auto-rows: ${({ $rows }) => `repeat(${$rows}, 1fr)`};
+`;
+
+export const ColumnHeading = styled(Text)<{ index: number }>`
+  grid-column-start: ${({ index }) => index + 1};
+  grid-column-end: ${({ index }) => index + 1};
+  grid-row-start: 1;
+  grid-row-end: 1;
+  text-align: center;
+`;
+
+export const RowHeading = styled(Text)<{ index: number }>`
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: ${({ index }) => index + 2};
+  grid-row-end: ${({ index }) => index + 2};
+  text-align: right;
+`;
+
+const calculateRow = ({
+  index,
+  columns,
+}: {
+  index: number;
+  columns: number;
+}) => {
+  return Math.ceil((index + 1) / (columns - 1)) + 1;
+};
+
+const calculateColumns = ({
+  index,
+  columns,
+  row,
+}: {
+  index: number;
+  columns: number;
+  row: number;
+}) => {
+  if (index + 1 < columns) return index + 2;
+  return index + 2 - (columns - 1) * (row - 2);
+};
+
+export const StyledCheckbox = styled(Checkbox)<{
+  checked: boolean;
+  $row: number;
+  $column: number;
+}>`
+  justify-content: center;
+  grid-row-start: ${({ $row }) => $row};
+  grid-column-start: ${({ $column }) => $column};
+
+  ${({ checked }) =>
+    checked &&
+    css`
+      border-color: ${tokens.color.theme.light.border.selected};
+    `};
+`;

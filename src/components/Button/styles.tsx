@@ -2,26 +2,30 @@ import styled, { css } from 'styled-components';
 import { coreColors } from '../../tokens/core';
 import { ButtonTypes } from './Button';
 
+const StandardButtonCss = css`
+  border-radius: 90px;
+  padding: 12px 16px;
+  height: 40px;
+  width: 110px;
+`;
+
 export const StyledButton = styled.button<{
   $backgroundColor: string;
   $variation: keyof typeof ButtonTypes;
 }>`
-  border-radius: 90px;
-  cursor: pointer;y
+  cursor: pointer;
   font-family: 'Signika Negative';
-  font-size: 0.8725 rem;
+  font-size: 0.8725rem;
   font-weight: 700;
-  padding: 12px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  width: 110px;
   box-sizing: border-box;
 
   ${({ $backgroundColor, $variation }) => {
     if ($variation === ButtonTypes.Primary)
       return css`
+        ${StandardButtonCss}
         color: ${coreColors.white};
         border: none;
         background: linear-gradient(
@@ -33,8 +37,18 @@ export const StyledButton = styled.button<{
 
     if ($variation === ButtonTypes.Secondary)
       return css`
+        ${StandardButtonCss}
         border: 2px solid currentColor;
         background: ${coreColors.white};
+      `;
+
+    if ($variation === ButtonTypes.Control)
+      return css`
+        border: 1px solid ${coreColors.gray10};
+        border-radius: 50%;
+        background: ${coreColors.white};
+        width: 36px;
+        height: 36px;
       `;
 
     if ($variation === ButtonTypes.Icon)
@@ -45,6 +59,18 @@ export const StyledButton = styled.button<{
         height: auto;
         width: auto;
         padding: 0px;
+      `;
+
+    if ($variation === ButtonTypes.Inline)
+      return css`
+        display: inline-flex;
+        border: none;
+        background: transparent;
+        border-radius: 0px;
+        height: auto;
+        width: auto;
+        padding: 0px;
+        gap: 4px;
       `;
   }}
 `;
