@@ -15,6 +15,7 @@ export enum TextTypes {
 
 type TextProps = {
   bold?: boolean;
+  color?: string;
   children: React.ReactNode;
   className?: string;
   id?: string;
@@ -25,15 +26,17 @@ type TextProps = {
 const Text = ({
   bold = false,
   children,
+  color,
   className,
   id,
   tag = 'p',
-  type = TextTypes.Body1,
+  type = TextTypes.Body3,
 }: TextProps) => (
   <StyledElement
     className={className}
     id={id}
     $bold={bold}
+    $color={color}
     $type={type}
     as={tag}
   >

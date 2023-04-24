@@ -20,13 +20,13 @@ export default {
         },
         surface: {
           primary: coreColors.white,
-          secondary: coreColors.gray30,
+          secondary: coreColors.gray20,
           indicator: coreColors.green,
         },
         text: {
           primary: coreColors.black,
-          secondary: coreColors.gray20,
-          tertiary: coreColors.gray10,
+          secondary: coreColors.gray40,
+          tertiary: coreColors.gray30,
           title: coreColors.orange,
           link: coreColors.blue20,
           button: coreColors.white,

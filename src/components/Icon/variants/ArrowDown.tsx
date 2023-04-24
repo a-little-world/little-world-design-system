@@ -16,15 +16,14 @@ export const ArrowDownIcon = (props: IconSvgProps) => {
         width={width}
         height={height}
         fill="none"
-        viewBox="0 0 40 40"
+        viewBox="0 0 16 11"
       >
         <path
-          vectorEffect="non-scaling-stroke"
+          d="M1.5 1.97656L8 9.97656L14.5 1.97656"
           stroke={color}
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeMiterlimit="10"
-          d="M3 13l17 18 17-18"
         />
       </svg>
     </Icon>

@@ -20,13 +20,13 @@ export const Options = styled.div`
 export const Option = styled.button<{ $selected: boolean }>`
   font-family: 'Signika Negative';
   background: ${tokens.color.theme.light.surface.primary};
-  gap: 8px;
-  width: 80px;
+  min-width: 80px;
   height: 45px;
   border-radius: 10px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.03);
   border-radius: 1000px;
   border: 2px solid ${tokens.color.theme.light.border.reversed};
+  padding: 8px 16px;
 
   &:hover {
     cursor: pointer;

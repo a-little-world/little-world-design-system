@@ -6,26 +6,15 @@ import Label from '../Label/Label';
 type Props = {
   id: string;
   label: string;
-  options: string[];
+  options: { tag: string; value: string }[];
   preSelected?: string[];
   onSelection: (selected: string[]) => void;
 };
 
-const DUMMY = [
-  'sport',
-  'cooking',
-  'travelling',
-  'music',
-  'history',
-  'books',
-  'art',
-  'movies',
-];
-
 const MultiSelection: React.FC<Props> = ({
   label,
   id,
-  options = DUMMY,
+  options,
   preSelected = [],
   onSelection,
 }: Props) => {
@@ -47,21 +36,22 @@ const MultiSelection: React.FC<Props> = ({
       </Label>
       <Options>
         {options.map(option => {
-          const isSelected = selected?.some(el => el === option);
+          const isSelected = selected?.some(el => el === option.value);
 
           return (
             <Option
-              key={option}
+              key={option.value}
               $selected={isSelected}
               onClick={() =>
                 handleOnClick(
                   isSelected
-                    ? selected.filter(el => el !== option)
-                    : [...selected, option],
+                    ? selected.filter(el => el !== option.value)
+                    : [...selected, option.value],
                 )
               }
+              type="button"
             >
-              {option}
+              {option.tag}
             </Option>
           );
         })}

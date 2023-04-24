@@ -11,8 +11,8 @@ const BODY_SHARED_STYLES = css`
   margin: 0;
 `;
 
-const HEADING_SHARED_STYLES = css`
-  color: ${tokens.color.theme.light.text.title};
+const HEADING_SHARED_STYLES = css<{ $color?: string }>`
+  color: ${({ $color }) => $color || tokens.color.theme.light.text.title};
   font-family: 'Work Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,16 +25,18 @@ export const BODY_3_CSS = css`
 
 export const StyledElement = styled.div<{
   $bold: boolean;
+  $color?: string;
   $type: keyof typeof TextTypes;
 }>`
-  ${({ $bold }) => $bold && `font-weight: bold;`}
+  ${({ $bold }) => $bold && 'font-weight: bold;'}
+  ${({ $color }) => $color && `color: ${$color};`}
 
   ${({ $type }) => {
     if ($type === TextTypes.Body1)
       return css`
         ${BODY_SHARED_STYLES}
-        color: ${tokens.color.theme.light.text.primary}
-          font-size: 3rem;
+        color: ${tokens.color.theme.light.text.primary};
+        font-size: 3rem;
       `;
 
     if ($type === TextTypes.Body2)

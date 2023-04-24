@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from './Icon';
-import IconDocs from './IconDocs.mdx';
+// import IconDocs from './IconDocs.mdx';
 import * as allIcons from './index';
 
 export default {
@@ -11,11 +11,11 @@ export default {
     height: { control: 'text' },
     width: { control: 'text' },
   },
-  parameters: {
-    docs: {
-      page: IconDocs,
-    },
-  },
+  // parameters: {
+  //   docs: {
+  //     page: IconDocs,
+  //   },
+  // },
 };
 
 export const AllVariants = args => (
