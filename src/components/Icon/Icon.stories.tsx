@@ -1,7 +1,6 @@
 import React from 'react';
 import tokens from '../../tokens';
 import { Icon } from './Icon';
-// import IconDocs from './IconDocs.mdx';
 import * as allIcons from './index';
 
 export default {
