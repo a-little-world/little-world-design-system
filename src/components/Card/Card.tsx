@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import tokens from '../../tokens';
 
 const StyledCard = styled.div<{ $height?: string }>`
   border-radius: 40px;
   background: white;
-  padding: 32px;
+  padding: ${tokens.spacing.large};
   border: 1px solid white;
   display: flex;
   flex-direction: column;

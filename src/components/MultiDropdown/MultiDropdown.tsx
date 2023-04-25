@@ -6,6 +6,7 @@ import Text from '../Text/Text';
 import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
 import Button, { ButtonTypes } from '../Button/Button';
 import Label from '../Label/Label';
+import tokens from '../../tokens';
 
 type Props = {
   addMoreLabel: string;
@@ -78,7 +79,11 @@ const MultiDropdown: React.FC<Props> = ({
 
   return (
     <MultiDropdownWrapper>
-      <Label bold htmlFor={firstDropdown.label} marginBottom={'16px'}>
+      <Label
+        bold
+        htmlFor={firstDropdown.label}
+        marginBottom={tokens.spacing.small}
+      >
         {label}
       </Label>
       {Array(segments)

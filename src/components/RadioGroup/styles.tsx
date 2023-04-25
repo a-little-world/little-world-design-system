@@ -1,13 +1,13 @@
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import styled from 'styled-components';
-import Label from '../Label/Label';
+import tokens from '../../tokens';
 
 const ITEM_WIDTH = '13px';
 
 export const RadioGroupRoot = styled(RadioGroup.Root)`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: ${tokens.spacing.xsmall};
 `;
 
 export const RadioGroupItem = styled(RadioGroup.Item)`
@@ -18,7 +18,7 @@ export const RadioGroupItem = styled(RadioGroup.Item)`
   width: ${ITEM_WIDTH};
   height: ${ITEM_WIDTH};
   border-radius: 100%;
-  margin-right: 8px;
+  margin-right: ${tokens.spacing.xxsmall};
 
   &:focus {
     box-shadow: 0 0 0 2px #eeb612;

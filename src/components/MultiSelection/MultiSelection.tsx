@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MultiSelectionWrapper, Options, Option } from './styles';
 
 import Label from '../Label/Label';
+import tokens from '../../tokens';
 
 type Props = {
   id: string;
@@ -31,7 +32,7 @@ const MultiSelection: React.FC<Props> = ({
 
   return (
     <MultiSelectionWrapper>
-      <Label bold htmlFor={id} marginBottom={'8px'}>
+      <Label bold htmlFor={id} marginBottom={tokens.spacing.xxsmall}>
         {label}
       </Label>
       <Options>

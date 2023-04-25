@@ -12,8 +12,8 @@ export const Options = styled.div`
   align-items: center;
   text-align: center;
   flex-wrap: wrap;
-  gap: 8px;
-  padding: 16px;
+  gap: ${tokens.spacing.xxsmall};
+  padding: ${tokens.spacing.small};
   white-space: pre-line;
 `;
 
@@ -26,7 +26,7 @@ export const Option = styled.button<{ $selected: boolean }>`
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.03);
   border-radius: 1000px;
   border: 2px solid ${tokens.color.theme.light.border.reversed};
-  padding: 8px 16px;
+  padding: ${tokens.spacing.xxsmall} ${tokens.spacing.small};
 
   &:hover {
     cursor: pointer;

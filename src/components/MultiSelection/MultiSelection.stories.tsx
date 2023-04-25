@@ -12,4 +12,8 @@ Default.args = {
   id: 'multi selector id',
   label: 'Select your interests',
   onSelection: () => null,
+  options: [
+    { tag: 'Love', value: 'love' },
+    { tag: 'Cherish', value: 'cherish' },
+  ],
 };

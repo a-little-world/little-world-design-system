@@ -3,6 +3,7 @@ import { ArrowLeftIcon, InfoIcon } from '../Icon';
 import Button, { ButtonTypes } from './Button';
 import Text from '../Text/Text';
 import styled from 'styled-components';
+import tokens from '../../tokens';
 
 export default {
   component: Button,
@@ -29,7 +30,7 @@ export const ButtonIcon = args => (
 );
 
 const StyledSpan = styled(Text)`
-  margin-right: 8px;
+  margin-right: ${tokens.spacing.xxsmall};
 `;
 
 export const ButtonInline = args => (
