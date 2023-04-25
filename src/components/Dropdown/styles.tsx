@@ -11,10 +11,10 @@ export const SelectTrigger = styled(Select.Trigger)`
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px;
+  padding: ${tokens.spacing.xxsmall} ${tokens.spacing.small};
   line-height: 1;
   height: 33px;
-  gap: 8px;
+  gap: ${tokens.spacing.xsmall};
   background-color: ${tokens.color.theme.light.surface.secondary};
   border-radius: 5px;
   border: 2px solid ${tokens.color.theme.light.border.subtle};
@@ -61,18 +61,17 @@ export const SelectContent = styled(Select.Content)`
 `;
 
 export const SelectViewport = styled(Select.Viewport)`
-  padding: 5px;
+  padding: ${tokens.spacing.xxxsmall};
 `;
 
 export const SelectItem = styled(Select.Item)`
   font-size: 13px;
   line-height: 1;
-  color: var(--violet11);
   border-radius: 3px;
   display: flex;
   align-items: center;
   height: 25px;
-  padding: 0 35px 0 25px;
+  padding: 0 ${tokens.spacing.large} 0 ${tokens.spacing.medium};
   position: relative;
   user-select: none;
 

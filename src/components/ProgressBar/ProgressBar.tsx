@@ -29,7 +29,7 @@ const ProgressBarWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: ${tokens.spacing.small};
   font-family: 'Work Sans';
 `;
 

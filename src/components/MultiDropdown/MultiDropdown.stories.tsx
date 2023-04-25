@@ -18,6 +18,7 @@ Default.args = {
     ],
     placeholder: 'Select a language...',
     label: 'Language Selector',
+    values: [],
   },
   secondDropdown: {
     options: [
@@ -27,5 +28,6 @@ Default.args = {
     ],
     placeholder: 'Select a level...',
     label: 'Level Selector',
+    values: [],
   },
 };

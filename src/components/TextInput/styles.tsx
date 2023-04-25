@@ -12,5 +12,5 @@ export const Input = styled.input`
   width: 100%;
   border: 1px solid ${tokens.color.theme.light.border.moderate};
   border-radius: 10px;
-  padding: 5px;
+  padding: ${tokens.spacing.xxxsmall}; ;
 `;

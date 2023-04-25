@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
+import tokens from '../../tokens';
 import { coreColors } from '../../tokens/core';
 import { ButtonTypes } from './Button';
 
 const StandardButtonCss = css`
   border-radius: 90px;
-  padding: 12px 16px;
+  padding: ${tokens.spacing.xsmall} ${tokens.spacing.small};
   height: 40px;
   width: 110px;
 `;
@@ -70,7 +71,7 @@ export const StyledButton = styled.button<{
         height: auto;
         width: auto;
         padding: 0px;
-        gap: 4px;
+        gap: ${tokens.spacing.xxxsmall};
       `;
   }}
 `;

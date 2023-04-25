@@ -13,7 +13,7 @@ export const Grid = styled.div<{
 }>`
   display: grid;
   width: 100%;
-  row-gap: 12px;
+  row-gap: ${tokens.spacing.xsmall};
 
   grid-template-columns: ${({ $columns }) => `repeat(${$columns}, 1fr)`};
   grid-auto-rows: ${({ $rows }) => `repeat(${$rows}, 1fr)`};

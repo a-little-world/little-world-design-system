@@ -2,6 +2,7 @@ import React from 'react';
 import { Input, InputWrapper } from './styles';
 
 import Label from '../Label/Label';
+import tokens from '../../tokens';
 
 interface Props extends React.ComponentPropsWithoutRef<'input'> {
   id: string;
@@ -16,7 +17,7 @@ const TextInput: React.FC<Props> = ({
   ...inputProps
 }: Props) => (
   <InputWrapper>
-    <Label bold htmlFor={id} marginBottom={'8px'}>
+    <Label bold htmlFor={id} marginBottom={tokens.spacing.xxsmall}>
       {label}
     </Label>
     <Input type={type} id={id} {...inputProps} />

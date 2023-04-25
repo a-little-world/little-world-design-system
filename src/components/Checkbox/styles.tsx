@@ -1,5 +1,6 @@
 import * as Checkbox from '@radix-ui/react-checkbox';
 import styled from 'styled-components';
+import tokens from '../../tokens';
 import Label from '../Label/Label';
 
 const ITEM_WIDTH = '13px';
@@ -29,5 +30,5 @@ export const CheckboxIndicator = styled(Checkbox.Indicator)`
 `;
 
 export const StyledLabel = styled(Label)`
-  margin-left: 8px;
+  margin-left: ${tokens.spacing.xxsmall};
 `;

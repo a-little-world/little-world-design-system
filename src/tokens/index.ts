@@ -1,4 +1,4 @@
-import { coreColors } from './core';
+import { coreColors, coreSpacing } from './core';
 
 export default {
   breakpoints: {
@@ -6,6 +6,17 @@ export default {
     large: 700,
     xlarge: 880,
     xxlarge: 900,
+  },
+  spacing: {
+    xxxsmall: coreSpacing.space05,
+    xxsmall: coreSpacing.space10,
+    xsmall: coreSpacing.space15,
+    small: coreSpacing.space20,
+    medium: coreSpacing.space30,
+    large: coreSpacing.space40,
+    xlarge: coreSpacing.space50,
+    xxlarge: coreSpacing.space80,
+    massive: coreSpacing.space150,
   },
   color: {
     theme: {

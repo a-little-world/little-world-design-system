@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { createPortal } from 'react-dom';
+import tokens from '../../tokens';
 // import Svg, { CLOSE } from '../Svg/Svg';
 // import FocusTrap from 'focus-trap-react';
 
@@ -16,7 +17,7 @@ const BackdropContainer = styled.dialog<{ $active: boolean }>`
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 32px;
+  padding: ${tokens.spacing.large};
   border: none;
   background-color: rgba(51, 51, 51, 0.3);
   backdrop-filter: blur(8px);
