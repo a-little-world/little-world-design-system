@@ -4,8 +4,21 @@ import styled, { css } from 'styled-components';
 import tokens from '../../tokens';
 import { coreColors } from '../../tokens/core';
 import { BODY_3_CSS } from '../Text/styles';
+import { INPUT_ERROR_CSS } from '../InputError/InputError';
 
-export const SelectTrigger = styled(Select.Trigger)`
+export const DropdownWrapper = styled.div<{ $hasPadding: boolean }>`
+  position: relative;
+  max-width: 300px;
+  width: 100%;
+
+  ${({ $hasPadding }) =>
+    $hasPadding &&
+    `
+   padding-top: ${tokens.spacing.small};
+  `};
+`;
+
+export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
   all: unset;
   box-sizing: border-box;
   display: inline-flex;
@@ -19,7 +32,6 @@ export const SelectTrigger = styled(Select.Trigger)`
   border-radius: 5px;
   border: 2px solid ${tokens.color.theme.light.border.subtle};
   width: 100%;
-  max-width: 300px;
   color: ${tokens.color.theme.light.text.secondary};
 
   > span {
@@ -42,6 +54,8 @@ export const SelectTrigger = styled(Select.Trigger)`
       color: ${coreColors.orange};
     }
   }
+
+  ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
 `;
 
 export const SelectValue = styled(Select.Value)`
@@ -58,6 +72,7 @@ export const SelectContent = styled(Select.Content)`
   border-radius: 6px;
   box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
     0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+  z-index: 1;
 `;
 
 export const SelectViewport = styled(Select.Viewport)`

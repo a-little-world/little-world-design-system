@@ -8,12 +8,21 @@ import ToolTip from '../ToolTip/ToolTip';
 import { coreColors } from '../../tokens/core';
 import tokens from '../../tokens';
 
+export const LabelContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: ${tokens.spacing.xxsmall};
+`;
+
 const StyledLabel = styled(RadixLabel.Root)<{
   $bold?: boolean;
   $inline?: boolean;
   $marginBottom?: string;
 }>`
   ${BODY_3_CSS}
+  width: fit-content;
 
   ${({ $bold, $inline, $marginBottom }) =>
     css`

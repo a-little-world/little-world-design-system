@@ -4,6 +4,8 @@ import tokens from '../../tokens';
 
 const ITEM_WIDTH = '13px';
 
+export const RadioGroupWrapper = styled.div``;
+
 export const RadioGroupRoot = styled(RadioGroup.Root)`
   display: flex;
   flex-direction: column;

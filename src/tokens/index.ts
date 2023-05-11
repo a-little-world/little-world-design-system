@@ -28,6 +28,7 @@ export default {
           selected: coreColors.orange,
           contrast: coreColors.black,
           reversed: coreColors.white,
+          error: coreColors.red,
         },
         surface: {
           primary: coreColors.white,
@@ -41,8 +42,10 @@ export default {
           title: coreColors.orange,
           link: coreColors.blue20,
           button: coreColors.white,
+          error: coreColors.red,
         },
       },
+      dark: {},
     },
   },
 };
