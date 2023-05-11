@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 import tokens from '../../tokens';
+import { INPUT_ERROR_CSS } from '../InputError/InputError';
 
 export const MultiSelectionWrapper = styled.div`
   width: 100%:
 `;
 
-export const Options = styled.div`
+export const Options = styled.div<{ $hasError: boolean }>`
   display: flex;
   border-radius: 15px;
   background: ${tokens.color.theme.light.surface.secondary};
@@ -15,6 +16,8 @@ export const Options = styled.div`
   gap: ${tokens.spacing.xxsmall};
   padding: ${tokens.spacing.small};
   white-space: pre-line;
+
+  ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
 `;
 
 export const Option = styled.button<{ $selected: boolean }>`

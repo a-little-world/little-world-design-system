@@ -18,11 +18,13 @@ type Props = {
     dataField: string;
     values: string[];
     ariaLabel: string;
+    errors: string[];
   };
   secondDropdown: DropdownProps & {
     dataField: string;
     values: string[];
     ariaLabel: string;
+    errors: string[];
   };
 };
 
@@ -52,7 +54,7 @@ const MultiDropdown: React.FC<Props> = ({
   maxSegments = 4,
 }) => {
   const [segments, setSegments] = useState(defaultSegments);
-  const [values, setValues] = useState([
+  const [, setValues] = useState([
     firstDropdown.values || [],
     secondDropdown.values || [],
   ]);
@@ -82,7 +84,7 @@ const MultiDropdown: React.FC<Props> = ({
       <Label
         bold
         htmlFor={firstDropdown.label}
-        marginBottom={tokens.spacing.small}
+        marginBottom={tokens.spacing.xxsmall}
       >
         {label}
       </Label>
@@ -97,6 +99,7 @@ const MultiDropdown: React.FC<Props> = ({
               options={firstDropdown.options}
               value={firstDropdown.values[index]}
               required={Boolean(secondDropdown.values[index])}
+              error={firstDropdown.errors?.[index]}
             />
             <Dropdown
               ariaLabel={secondDropdown.ariaLabel + index}
@@ -104,7 +107,8 @@ const MultiDropdown: React.FC<Props> = ({
               onValueChange={val => handleValueChange(val, 1, index)}
               options={secondDropdown.options}
               value={secondDropdown.values[index]}
-              required={Boolean(firstDropdown.values[index])}
+              required={Boolean(secondDropdown.values[index])}
+              error={secondDropdown.errors?.[index]}
             />
           </Segment>
         ))}

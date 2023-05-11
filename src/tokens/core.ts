@@ -8,6 +8,7 @@ export const coreColors = {
   black: '#000000',
   blue10: '#36A9E0',
   blue20: '#0063AF',
+  red: '#f91010',
   white: '#FFFFFF',
 };
 

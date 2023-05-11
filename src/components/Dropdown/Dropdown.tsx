@@ -8,15 +8,19 @@ import {
   SelectViewport,
   SelectContent,
   SelectValue,
+  DropdownWrapper,
 } from './styles';
 import { ArrowDownIcon, CheckIcon } from '../Icon';
 import Text from '../Text/Text';
 import Label from '../Label/Label';
+import InputError from '../InputError/InputError';
+import tokens from '../../tokens';
 
 type Options = { value: string; label: string }[];
 
 export type DropdownProps = {
   ariaLabel?: string;
+  error?: string;
   label?: string;
   options: Options;
   onValueChange: (value: string) => void;
@@ -24,6 +28,7 @@ export type DropdownProps = {
   value?: string;
   disabled?: boolean;
   required?: boolean;
+  inputRef?: React.RefObject<HTMLButtonElement>;
 };
 
 const ARROW_DOWN_WIDTH = 13;
@@ -50,10 +55,12 @@ const Option: React.FC<{ children: string; value: string }> = ({
 
 const Dropdown: React.FC<DropdownProps> = ({
   ariaLabel,
-  label,
+  error,
   disabled,
-  options,
+  inputRef,
+  label,
   onValueChange,
+  options,
   placeholder,
   required,
   value,
@@ -62,19 +69,26 @@ const Dropdown: React.FC<DropdownProps> = ({
     value && isValidValue(value, options) ? value : undefined;
 
   return (
-    <div>
+    <DropdownWrapper $hasPadding={!Boolean(label)}>
       {label && (
-        <Label bold htmlFor={label} marginBottom="8px">
+        <Label bold htmlFor={label} marginBottom={tokens.spacing.xxsmall}>
           {label}
         </Label>
       )}
+      <InputError top="0" right="0" visible={Boolean(error)}>
+        {error}
+      </InputError>
       <Select.Root
         disabled={disabled}
         onValueChange={onValueChange}
         required={required}
         defaultValue={defaultValue}
       >
-        <SelectTrigger aria-label={ariaLabel || label}>
+        <SelectTrigger
+          aria-label={ariaLabel || label}
+          ref={inputRef}
+          $hasError={Boolean(error)}
+        >
           <SelectValue placeholder={placeholder} />
           <Select.Icon>
             <ArrowDownIcon
@@ -95,7 +109,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           </SelectViewport>
         </SelectContent>
       </Select.Root>
-    </div>
+    </DropdownWrapper>
   );
 };
 

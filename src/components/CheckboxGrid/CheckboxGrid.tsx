@@ -1,5 +1,6 @@
 import { CheckedState } from '@radix-ui/react-checkbox';
 import React, { useState } from 'react';
+import InputError from '../InputError/InputError';
 import {
   CheckboxGridWrapper,
   StyledCheckbox,
@@ -16,27 +17,30 @@ type Props = {
   checkboxesByColumn: { name: string; value: string; key: string }[][];
   onSelection: (selected: SelectedType) => void;
   preSelected?: SelectedType;
+  error?: string;
+  name: string;
 };
 
 const CheckboxGrid: React.FC<Props> = ({
   columnHeadings,
+  error,
   rowHeadings,
   checkboxesByColumn,
   preSelected,
   onSelection,
+  name,
 }: Props) => {
   const [selected, setSelected] = useState<SelectedType>(preSelected || {});
 
   const onSelect = ({
-    value,
     key,
     state,
+    value,
   }: {
     value: string;
     key: string;
     state: CheckedState;
   }) => {
-    console.log({ value, key });
     const oldValues = selected[key] || [];
     const newValues = state
       ? [...oldValues, value]
@@ -60,20 +64,21 @@ const CheckboxGrid: React.FC<Props> = ({
             <RowHeading index={index}>{row}</RowHeading>
           ))}
           {checkboxesByColumn.map((column, columnIndex) =>
-            column.map(({ value, name, key }, rowIndex) => (
+            column.map(({ value, key }, rowIndex) => (
               <StyledCheckbox
                 key={key + value}
+                checked={selected[key]?.includes(value)}
+                name={name}
+                onCheckedChange={state => onSelect({ value, key, state })}
+                value={value}
                 $row={rowIndex + 2}
                 $column={columnIndex + 2}
-                value={value}
-                name={name}
-                checked={selected[key]?.includes(value)}
-                onCheckedChange={state => onSelect({ value, key, state })}
               />
             )),
           )}
         </>
       </Grid>
+      <InputError visible={Boolean(error)}>{error}</InputError>
     </CheckboxGridWrapper>
   );
 };

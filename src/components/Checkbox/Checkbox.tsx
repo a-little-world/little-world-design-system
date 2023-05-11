@@ -26,6 +26,7 @@ const Checkbox: React.FC<Props> = ({
 }: Props) => (
   <CheckboxWrapper className={className}>
     <CheckboxRoot
+      {...rest}
       className="CheckboxRoot"
       checked={checked}
       onCheckedChange={onCheckedChange}

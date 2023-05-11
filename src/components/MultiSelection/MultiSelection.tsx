@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { MultiSelectionWrapper, Options, Option } from './styles';
 
-import Label from '../Label/Label';
+import Label, { LabelContainer } from '../Label/Label';
 import tokens from '../../tokens';
+import InputError from '../InputError/InputError';
 
 type Props = {
+  error?: string;
   id: string;
   label: string;
   options: { tag: string; value: string }[];
@@ -13,6 +15,7 @@ type Props = {
 };
 
 const MultiSelection: React.FC<Props> = ({
+  error,
   label,
   id,
   options,
@@ -32,10 +35,13 @@ const MultiSelection: React.FC<Props> = ({
 
   return (
     <MultiSelectionWrapper>
-      <Label bold htmlFor={id} marginBottom={tokens.spacing.xxsmall}>
-        {label}
-      </Label>
-      <Options>
+      <LabelContainer>
+        <Label bold htmlFor={id}>
+          {label}
+        </Label>
+        <InputError visible={Boolean(error)}>{error}</InputError>
+      </LabelContainer>
+      <Options $hasError={Boolean(error)}>
         {options.map(option => {
           const isSelected = selected?.some(el => el === option.value);
 
