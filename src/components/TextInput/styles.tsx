@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import tokens from '../../tokens';
+import { INPUT_ERROR_CSS } from '../InputError/InputError';
 
 export const InputWrapper = styled.div`
   display: flex;
@@ -8,9 +9,12 @@ export const InputWrapper = styled.div`
   max-width: 500px;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<{ $hasError: boolean }>`
   width: 100%;
   border: 1px solid ${tokens.color.theme.light.border.moderate};
   border-radius: 10px;
-  padding: ${tokens.spacing.xxxsmall}; ;
+  box-sizing: border-box;
+  padding: ${tokens.spacing.xxsmall};
+
+  ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
 `;

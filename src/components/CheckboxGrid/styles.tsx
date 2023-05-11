@@ -4,7 +4,7 @@ import Checkbox from '../Checkbox/Checkbox';
 import Text from '../Text/Text';
 
 export const CheckboxGridWrapper = styled.div`
- width: 100%:
+  width: 100%;
 `;
 
 export const Grid = styled.div<{
@@ -17,6 +17,7 @@ export const Grid = styled.div<{
 
   grid-template-columns: ${({ $columns }) => `repeat(${$columns}, 1fr)`};
   grid-auto-rows: ${({ $rows }) => `repeat(${$rows}, 1fr)`};
+  margin-bottom: ${tokens.spacing.small};
 `;
 
 export const ColumnHeading = styled(Text)<{ index: number }>`
@@ -32,7 +33,7 @@ export const RowHeading = styled(Text)<{ index: number }>`
   grid-column-end: 1;
   grid-row-start: ${({ index }) => index + 2};
   grid-row-end: ${({ index }) => index + 2};
-  text-align: right;
+  text-align: center;
 `;
 
 const calculateRow = ({

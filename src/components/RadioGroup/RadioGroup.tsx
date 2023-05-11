@@ -1,22 +1,36 @@
 import React from 'react';
 import * as RadixRadioGroup from '@radix-ui/react-radio-group';
-import { RadioGroupIndicator, RadioGroupItem, RadioGroupRoot } from './styles';
+import {
+  RadioGroupIndicator,
+  RadioGroupItem,
+  RadioGroupRoot,
+  RadioGroupWrapper,
+} from './styles';
 import Label from '../Label/Label';
 import tokens from '../../tokens';
+import InputError from '../InputError/InputError';
 
 type Props = {
+  error?: string;
   label?: string;
   items: Array<{ id: string; label?: string; value: string }>;
+  inputRef: React.RefObject<HTMLInputElement>;
 } & RadixRadioGroup.RadioGroupProps;
 
-const RadioGroup: React.FC<Props> = ({ items, label, ...rest }: Props) => (
-  <div>
+const RadioGroup: React.FC<Props> = ({
+  error,
+  items,
+  label,
+  inputRef,
+  ...rest
+}: Props) => (
+  <RadioGroupWrapper>
     {label && (
       <Label bold htmlFor={label} marginBottom={tokens.spacing.small}>
         {label}
       </Label>
     )}
-    <RadioGroupRoot value={undefined} name={label} {...rest}>
+    <RadioGroupRoot ref={inputRef} value={undefined} name={label} {...rest}>
       {items?.map(item => (
         <div key={item.id}>
           <RadioGroupItem value={item.value} id={item.id}>
@@ -29,8 +43,9 @@ const RadioGroup: React.FC<Props> = ({ items, label, ...rest }: Props) => (
           )}
         </div>
       ))}
+      <InputError visible={Boolean(error)}>{error}</InputError>
     </RadioGroupRoot>
-  </div>
+  </RadioGroupWrapper>
 );
 
 export default RadioGroup;

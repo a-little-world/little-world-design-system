@@ -35,7 +35,6 @@ const checkboxesByColumn = JSON.parse(
 
 Default.args = {
   id: 'multi selector id',
-  label: 'Select your interests',
   onCheckedChange: () => null,
   columnHeadings: columnHeadingsDummy,
   rowHeadings: rowHeadingsDummy,
