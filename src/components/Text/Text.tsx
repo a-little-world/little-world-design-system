@@ -1,4 +1,5 @@
 import React from 'react';
+import textParser from '../../utils/parser';
 import { StyledElement } from './styles';
 
 export enum TextTypes {
@@ -19,7 +20,17 @@ type TextProps = {
   children: React.ReactNode;
   className?: string;
   id?: string;
-  tag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'strong';
+  tag?:
+    | 'p'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'li'
+    | 'span'
+    | 'strong';
   type?: keyof typeof TextTypes;
 };
 
@@ -40,7 +51,7 @@ const Text = ({
     $type={type}
     as={tag}
   >
-    {children}
+    {typeof children === 'string' ? textParser(children) : children}
   </StyledElement>
 );
 

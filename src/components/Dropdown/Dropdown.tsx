@@ -22,6 +22,7 @@ export type DropdownProps = {
   ariaLabel?: string;
   error?: string;
   label?: string;
+  labelTooltip?: string;
   options: Options;
   onValueChange: (value: string) => void;
   placeholder: string;
@@ -59,6 +60,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   disabled,
   inputRef,
   label,
+  labelTooltip,
   onValueChange,
   options,
   placeholder,
@@ -71,7 +73,12 @@ const Dropdown: React.FC<DropdownProps> = ({
   return (
     <DropdownWrapper $hasPadding={!Boolean(label)}>
       {label && (
-        <Label bold htmlFor={label} marginBottom={tokens.spacing.xxsmall}>
+        <Label
+          bold
+          htmlFor={label}
+          marginBottom={tokens.spacing.xxsmall}
+          toolTipText={labelTooltip}
+        >
           {label}
         </Label>
       )}

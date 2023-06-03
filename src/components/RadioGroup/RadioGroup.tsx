@@ -13,6 +13,7 @@ import InputError from '../InputError/InputError';
 type Props = {
   error?: string;
   label?: string;
+  labelTooltip?: string;
   items: Array<{ id: string; label?: string; value: string }>;
   inputRef: React.RefObject<HTMLInputElement>;
 } & RadixRadioGroup.RadioGroupProps;
@@ -21,12 +22,18 @@ const RadioGroup: React.FC<Props> = ({
   error,
   items,
   label,
+  labelTooltip,
   inputRef,
   ...rest
 }: Props) => (
   <RadioGroupWrapper>
     {label && (
-      <Label bold htmlFor={label} marginBottom={tokens.spacing.small}>
+      <Label
+        bold
+        htmlFor={label}
+        marginBottom={tokens.spacing.small}
+        toolTipText={labelTooltip}
+      >
         {label}
       </Label>
     )}

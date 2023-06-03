@@ -8,19 +8,21 @@ interface Props extends React.ComponentPropsWithoutRef<'textarea'> {
   error?: string;
   id: string;
   label: string;
+  labelTooltip?: string;
   inputRef?: React.RefObject<HTMLTextAreaElement>;
 }
 
 const TextArea: React.FC<Props> = ({
   error,
   label,
+  labelTooltip,
   id,
   inputRef,
   ...areaProps
 }: Props) => (
   <AreaWrapper>
     <LabelContainer>
-      <Label bold htmlFor={id}>
+      <Label bold htmlFor={id} toolTipText={labelTooltip}>
         {label}
       </Label>
       <InputError visible={Boolean(error)}>{error}</InputError>

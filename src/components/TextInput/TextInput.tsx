@@ -8,6 +8,7 @@ interface Props extends React.ComponentPropsWithoutRef<'input'> {
   error?: string;
   id: string;
   label: string;
+  labelTooltip?: string;
   type: string;
   inputRef?: React.RefObject<HTMLInputElement>;
 }
@@ -15,6 +16,7 @@ interface Props extends React.ComponentPropsWithoutRef<'input'> {
 const TextInput: React.FC<Props> = ({
   error,
   label,
+  labelTooltip,
   id,
   type = 'text',
   inputRef,
@@ -22,7 +24,7 @@ const TextInput: React.FC<Props> = ({
 }: Props) => (
   <InputWrapper>
     <LabelContainer>
-      <Label bold htmlFor={id}>
+      <Label bold htmlFor={id} toolTipText={labelTooltip}>
         {label}
       </Label>
       <InputError visible={Boolean(error)}>{error}</InputError>
