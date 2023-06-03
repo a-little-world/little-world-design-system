@@ -2,10 +2,12 @@ import { coreColors, coreSpacing } from './core';
 
 export default {
   breakpoints: {
-    small: 500,
-    large: 700,
-    xlarge: 880,
-    xxlarge: 900,
+    xsmall: '360px',
+    small: '500px',
+    medium: '700px',
+    large: '900px',
+    xlarge: '1200px',
+    xxlarge: '1600px',
   },
   spacing: {
     xxxsmall: coreSpacing.space05,
@@ -43,6 +45,7 @@ export default {
           link: coreColors.blue20,
           button: coreColors.white,
           error: coreColors.red,
+          highlight: coreColors.orange,
         },
       },
       dark: {},

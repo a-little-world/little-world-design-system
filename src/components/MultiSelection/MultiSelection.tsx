@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { MultiSelectionWrapper, Options, Option } from './styles';
 
 import Label, { LabelContainer } from '../Label/Label';
-import tokens from '../../tokens';
 import InputError from '../InputError/InputError';
 
 type Props = {
   error?: string;
   id: string;
   label: string;
+  labelTooltip?: string;
   options: { tag: string; value: string }[];
   preSelected?: string[];
   onSelection: (selected: string[]) => void;
@@ -17,6 +17,7 @@ type Props = {
 const MultiSelection: React.FC<Props> = ({
   error,
   label,
+  labelTooltip,
   id,
   options,
   preSelected = [],
@@ -36,7 +37,7 @@ const MultiSelection: React.FC<Props> = ({
   return (
     <MultiSelectionWrapper>
       <LabelContainer>
-        <Label bold htmlFor={id}>
+        <Label bold htmlFor={id} toolTipText={labelTooltip}>
           {label}
         </Label>
         <InputError visible={Boolean(error)}>{error}</InputError>

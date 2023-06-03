@@ -50,7 +50,9 @@ const TextPage = ({ content }: Props) => {
           return (
             <List>
               {listItems.map(item => (
-                <ListItem key={item}>{item}</ListItem>
+                <ListItem key={item} tag="li">
+                  {item}
+                </ListItem>
               ))}
             </List>
           );

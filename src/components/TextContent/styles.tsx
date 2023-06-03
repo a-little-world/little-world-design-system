@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import tokens from '../../tokens';
+import Text from '../Text/Text';
 
 export const ContentWrapper = styled.div`
   width: 100%;
@@ -7,13 +8,14 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${tokens.spacing.xxsmall};
-  line-height: 2;
 `;
 
 export const List = styled.ul`
-  padding-inline-start: ${tokens.spacing.small}; ;
+  padding-inline-start: ${tokens.spacing.small};
+  margin-block-start: 0;
+  margin-block-end: 0;
 `;
 
-export const ListItem = styled.li`
+export const ListItem = styled(Text)`
   display: list-item;
 `;

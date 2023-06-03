@@ -7,6 +7,7 @@ import {
   Grid,
   RowHeading,
   ColumnHeading,
+  ScrollableWrapper,
 } from './styles';
 
 type SelectedType = { [x: string]: string[] };
@@ -55,27 +56,33 @@ const CheckboxGrid: React.FC<Props> = ({
     <CheckboxGridWrapper>
       <Grid $columns={columnHeadings.length} $rows={rowHeadings.length}>
         <>
-          {columnHeadings.map((column, index) => (
-            <ColumnHeading bold index={index}>
-              {column}
-            </ColumnHeading>
-          ))}
+          {/* on mobile, first column is fixed */}
+          <ColumnHeading bold index={0}>
+            {columnHeadings[0]}
+          </ColumnHeading>
           {rowHeadings.map((row, index) => (
             <RowHeading index={index}>{row}</RowHeading>
           ))}
-          {checkboxesByColumn.map((column, columnIndex) =>
-            column.map(({ value, key }, rowIndex) => (
-              <StyledCheckbox
-                key={key + value}
-                checked={selected[key]?.includes(value)}
-                name={name}
-                onCheckedChange={state => onSelect({ value, key, state })}
-                value={value}
-                $row={rowIndex + 2}
-                $column={columnIndex + 2}
-              />
-            )),
-          )}
+          <ScrollableWrapper>
+            {columnHeadings.slice(1).map((column, index) => (
+              <ColumnHeading bold index={index + 1}>
+                {column}
+              </ColumnHeading>
+            ))}
+            {checkboxesByColumn.map((column, columnIndex) =>
+              column.map(({ value, key }, rowIndex) => (
+                <StyledCheckbox
+                  key={key + value}
+                  checked={selected[key]?.includes(value)}
+                  name={name}
+                  onCheckedChange={state => onSelect({ value, key, state })}
+                  value={value}
+                  $row={rowIndex + 2}
+                  $column={columnIndex + 2}
+                />
+              )),
+            )}
+          </ScrollableWrapper>
         </>
       </Grid>
       <InputError visible={Boolean(error)}>{error}</InputError>

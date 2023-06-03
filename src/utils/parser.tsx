@@ -1,0 +1,78 @@
+import React from 'react';
+import styled from 'styled-components';
+
+const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
+  color: ${({ theme, color }) => theme.color.text[color]};
+`;
+
+const ANCHOR_TAG = 'a';
+const regex = RegExp(/<(\w+)([^>]+)*(?:>(.+?)<\/\1>)/, 'gim');
+
+const parseAttributes = (string: string) => {
+  try {
+    const attrs = JSON.parse(string);
+    return attrs;
+  } catch (e) {
+    return {};
+  }
+};
+
+enum SupportedColorTags {
+  highlight = 'highlight',
+}
+
+const textParser = (text: string) => {
+  const components = [];
+  let match;
+  let currentIndex = 0;
+  // utilises the exec function - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#return_value
+  while ((match = regex.exec(text)) !== null) {
+    const textBetweenMatches = text.substring(currentIndex, match.index);
+    components.push(textBetweenMatches);
+
+    // update index to be last character of match
+    currentIndex = match.index + match[0].length;
+
+    const tag = match[1];
+    if (tag === ANCHOR_TAG) {
+      const attrs = parseAttributes(match[2]?.trim());
+
+      components.push(
+        attrs.href ? (
+          <a key={tag + match[3]} {...attrs}>
+            {match[3]}
+          </a>
+        ) : (
+          match[3]
+        ),
+      );
+      continue;
+    }
+
+    if (Object.values(SupportedColorTags).includes(tag as SupportedColorTags)) {
+      components.push(
+        <ColorText
+          key={tag + match[3]}
+          color={SupportedColorTags[tag as SupportedColorTags]}
+        >
+          {match[3]}
+        </ColorText>,
+      );
+      break;
+    }
+
+    // unrecognised tags are returned unprocessed
+    components.push(text.substring(match.index, currentIndex));
+  }
+  // reset regex index
+  regex.lastIndex = 0;
+
+  if (!components.length) return text;
+
+  // ensure remaining string after last tag is included
+  if (currentIndex !== text.length)
+    components.push(text.substring(currentIndex));
+  return <>{components.map(section => section)}</>;
+};
+
+export default textParser;

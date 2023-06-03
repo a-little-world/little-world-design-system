@@ -10,7 +10,7 @@ export const coreColors = {
   blue20: '#0063AF',
   red: '#f91010',
   white: '#FFFFFF',
-};
+} as const;
 
 const SPACING_BASE = 8; // px
 const getPixelValue = (multiple: number) => `${multiple * SPACING_BASE}px`;
@@ -30,4 +30,4 @@ export const coreSpacing = {
   space90: getPixelValue(9),
   space100: getPixelValue(10),
   space150: getPixelValue(15),
-};
+} as const;

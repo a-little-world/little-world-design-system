@@ -15,7 +15,8 @@ export const Grid = styled.div<{
   width: 100%;
   row-gap: ${tokens.spacing.xsmall};
 
-  grid-template-columns: ${({ $columns }) => `repeat(${$columns}, 1fr)`};
+  grid-template-columns: ${({ $columns }) =>
+    `repeat(${$columns}, minmax(max-content, 1fr))`};
   grid-auto-rows: ${({ $rows }) => `repeat(${$rows}, 1fr)`};
   margin-bottom: ${tokens.spacing.small};
 `;
@@ -26,6 +27,16 @@ export const ColumnHeading = styled(Text)<{ index: number }>`
   grid-row-start: 1;
   grid-row-end: 1;
   text-align: center;
+  max-width: 100%;
+  padding: ${tokens.spacing.xxxsmall};
+
+  ${({ index }) =>
+    !index &&
+    `
+    position: sticky;
+    left: 0;
+    background: white;
+  `}
 `;
 
 export const RowHeading = styled(Text)<{ index: number }>`
@@ -34,6 +45,15 @@ export const RowHeading = styled(Text)<{ index: number }>`
   grid-row-start: ${({ index }) => index + 2};
   grid-row-end: ${({ index }) => index + 2};
   text-align: center;
+  position: sticky;
+  left: 0;
+  background: white;
+`;
+
+export const ScrollableWrapper = styled.div`
+  overflow: scroll-x;
+  width: 100%;
+  display: contents;
 `;
 
 const calculateRow = ({

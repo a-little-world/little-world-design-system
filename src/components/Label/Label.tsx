@@ -7,6 +7,7 @@ import Button, { ButtonTypes } from '../Button/Button';
 import ToolTip from '../ToolTip/ToolTip';
 import { coreColors } from '../../tokens/core';
 import tokens from '../../tokens';
+import textParser from '../../utils/parser';
 
 export const LabelContainer = styled.div`
   display: flex;
@@ -59,7 +60,7 @@ const Label: React.FC<LabelProps> = ({
       asChild={asChild}
       htmlFor={htmlFor}
     >
-      {children}
+      {typeof children === 'string' ? textParser(children) : children}
       {toolTipText && (
         <ToolTip
           trigger={

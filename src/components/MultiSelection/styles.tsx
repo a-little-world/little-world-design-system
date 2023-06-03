@@ -14,25 +14,35 @@ export const Options = styled.div<{ $hasError: boolean }>`
   text-align: center;
   flex-wrap: wrap;
   gap: ${tokens.spacing.xxsmall};
-  padding: ${tokens.spacing.small};
+  padding: ${tokens.spacing.xxsmall};
   white-space: pre-line;
 
   ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
+
+  @media (min-width: ${tokens.breakpoints.small}) {
+    padding: ${tokens.spacing.small};
+  }
 `;
 
 export const Option = styled.button<{ $selected: boolean }>`
   font-family: 'Signika Negative';
   background: ${tokens.color.theme.light.surface.primary};
-  min-width: 80px;
-  height: 45px;
   border-radius: 10px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.03);
   border-radius: 1000px;
   border: 2px solid ${tokens.color.theme.light.border.reversed};
-  padding: ${tokens.spacing.xxsmall} ${tokens.spacing.small};
+  padding: ${tokens.spacing.xxxsmall} ${tokens.spacing.xsmall};
+  min-width: 60px;
+  height: 33px;
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media (min-width: ${tokens.breakpoints.small}) {
+    padding: ${tokens.spacing.xxsmall} ${tokens.spacing.small};
+    min-width: 80px;
+    height: 45px;
   }
 
   ${({ $selected }) =>

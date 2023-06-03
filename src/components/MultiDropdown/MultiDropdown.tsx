@@ -11,6 +11,7 @@ import tokens from '../../tokens';
 type Props = {
   addMoreLabel: string;
   label?: string;
+  labelTooltip?: string;
   defaultSegments?: number;
   maxSegments?: number;
   onValueChange: (value: { [x: string]: string }[]) => void;
@@ -47,6 +48,7 @@ const formatValues = (
 const MultiDropdown: React.FC<Props> = ({
   addMoreLabel = 'Add more rows',
   label,
+  labelTooltip,
   firstDropdown,
   secondDropdown,
   onValueChange,
@@ -85,6 +87,7 @@ const MultiDropdown: React.FC<Props> = ({
         bold
         htmlFor={firstDropdown.label}
         marginBottom={tokens.spacing.xxsmall}
+        toolTipText={labelTooltip}
       >
         {label}
       </Label>
