@@ -1,7 +1,5 @@
-import { ContentTypes } from './components/TextContent/TextContent';
-import { ThemeVariants } from './theme/index';
 export { default as Button, ButtonTypes } from './components/Button/Button';
-export { default as Card } from './components/Card/Card';
+export { default as Card, CardSizes } from './components/Card/Card';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
@@ -21,5 +19,7 @@ export {
 } from './components/TextContent/TextContent';
 export { default as TextInput } from './components/TextInput/TextInput';
 export { default as ToolTip } from './components/ToolTip/ToolTip';
+
 export { default as designTokens } from './tokens';
 export { ThemeVariants } from './theme';
+export { default as GlobalStyles } from './globalStyles';

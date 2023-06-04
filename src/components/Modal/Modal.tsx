@@ -14,8 +14,8 @@ const BackdropContainer = styled.dialog<{ $active: boolean }>`
   right: 0;
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: unset;
+  height: unset;
   margin: 0;
   padding: ${tokens.spacing.large};
   border: none;
@@ -103,6 +103,7 @@ const Modal = ({
       openTimeout = window.setTimeout(() => {
         (document?.activeElement as HTMLElement).blur();
         setActive(open);
+        document.body.style.overflow = 'hidden';
         document.querySelector(ROOT_LABEL)?.setAttribute('inert', 'true');
       }, 10);
     }
@@ -115,6 +116,8 @@ const Modal = ({
 
       clearTimeout(openTimeout);
       document.querySelector(ROOT_LABEL)?.removeAttribute('inert');
+      document.body.style.overflow = 'unset';
+
       window.removeEventListener('keyup', keyHandler);
     };
   }, [open, locked, onClose]);
