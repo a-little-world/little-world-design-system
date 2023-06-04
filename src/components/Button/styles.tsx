@@ -7,7 +7,11 @@ const StandardButtonCss = css`
   border-radius: 90px;
   padding: ${tokens.spacing.xsmall} ${tokens.spacing.small};
   height: 40px;
-  width: 110px;
+  width: 100%;
+
+  @media (min-width: ${tokens.breakpoints.small}) {
+    min-width: 110px;
+  }
 `;
 
 export const StyledButton = styled.button<{
