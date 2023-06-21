@@ -17,7 +17,7 @@ const Template = args => {
   return (
     <>
       <button onClick={() => setIsOpen(true)}>Open Modal</button>
-      <Modal open={open} onClose={() => setIsOpen(false)} {...args}>
+      <Modal open={open} {...args} onClose={() => setIsOpen(false)}>
         <div>I AM A MODAL</div>
       </Modal>
     </>
