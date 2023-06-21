@@ -1,56 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
 import { createPortal } from 'react-dom';
-import tokens from '../../tokens';
-// import Svg, { CLOSE } from '../Svg/Svg';
-// import FocusTrap from 'focus-trap-react';
+import { ButtonTypes } from '../Button/Button';
+import { CloseIcon } from '../Icon';
+import { BackdropContainer, CloseButton } from './styles';
 
 export const BACKDROP_LABEL = 'dialog backdrop';
 const ROOT_LABEL = '#root';
-
-const BackdropContainer = styled.dialog<{ $active: boolean }>`
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: unset;
-  height: unset;
-  margin: 0;
-  padding: ${tokens.spacing.large};
-  border: none;
-  background-color: rgba(51, 51, 51, 0.3);
-  backdrop-filter: blur(8px);
-  opacity: 0;
-  transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 200ms;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-
-  > div {
-    transform: translateY(100px);
-    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-  }
-
-  ${({ $active }) =>
-    $active &&
-    css`
-      transition-duration: 250ms;
-      transition-delay: 0ms;
-      opacity: 1;
-
-      > div {
-        transform: translateY(0);
-        opacity: 1;
-        transition-delay: 150ms;
-        transition-duration: 350ms;
-      }
-    `}
-}
-`;
+const CLOSE_BUTTON_LABEL = 'dialog close button';
 
 type ModalProps = {
   children: any;
@@ -129,7 +85,11 @@ const Modal = ({
       ref={backdrop}
       $active={active && open}
     >
-      {!locked && <button onClick={onClose} />}
+      {!locked && (
+        <CloseButton variation={ButtonTypes.Icon} onClick={onClose}>
+          <CloseIcon label={CLOSE_BUTTON_LABEL} labelId={CLOSE_BUTTON_LABEL} />
+        </CloseButton>
+      )}
       {children}
     </BackdropContainer>
   );
@@ -137,9 +97,5 @@ const Modal = ({
   if (open || active) return createPortal(Backdrop, el);
   return null;
 };
-
-// <button onClick={onClose}>
-//   <Svg aria-hidden={true} name={CLOSE} />
-// </button>;
 
 export default Modal;

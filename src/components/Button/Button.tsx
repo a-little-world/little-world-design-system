@@ -9,7 +9,7 @@ export enum ButtonTypes {
   Icon = 'Icon',
   Inline = 'Inline',
 }
-interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
+export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   backgroundColor?: string;
   variation?: keyof typeof ButtonTypes;
 }
