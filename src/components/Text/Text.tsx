@@ -16,6 +16,7 @@ export enum TextTypes {
 
 type TextProps = {
   bold?: boolean;
+  center?: boolean;
   color?: string;
   children: React.ReactNode;
   className?: string;
@@ -36,6 +37,7 @@ type TextProps = {
 
 const Text = ({
   bold = false,
+  center = false,
   children,
   color,
   className,
@@ -47,6 +49,7 @@ const Text = ({
     className={className}
     id={id}
     $bold={bold}
+    $center={center}
     $color={color}
     $type={type}
     as={tag}

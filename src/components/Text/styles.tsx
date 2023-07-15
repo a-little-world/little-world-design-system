@@ -29,10 +29,12 @@ export const BODY_3_CSS = css`
 
 export const StyledElement = styled.div<{
   $bold: boolean;
+  $center: boolean;
   $color?: string;
   $type: keyof typeof TextTypes;
 }>`
   ${({ $bold }) => $bold && 'font-weight: bold;'}
+  ${({ $center }) => $center && 'text-align: center;'}
   ${({ $color }) => $color && `color: ${$color};`}
 
   ${({ $type }) => {
@@ -40,13 +42,22 @@ export const StyledElement = styled.div<{
       return css`
         ${BODY_SHARED_STYLES}
         color: ${tokens.color.theme.light.text.primary};
-        font-size: 3rem;
+        font-size: 1.5rem;
+
+        @media (min-width: ${tokens.breakpoints.small}) {
+          font-size: 1.75rem;
+        }
       `;
 
     if ($type === TextTypes.Body2)
       return css`
         ${BODY_SHARED_STYLES}
-        font-size: 2rem;
+
+        font-size: 1rem;
+
+        @media (min-width: ${tokens.breakpoints.small}) {
+          font-size: 1.25rem;
+        }
       `;
 
     if ($type === TextTypes.Body3) return BODY_3_CSS;
