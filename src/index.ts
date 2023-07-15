@@ -10,6 +10,7 @@ export { default as Label } from './components/Label/Label';
 export { default as Modal } from './components/Modal/Modal';
 export { default as MultiSelection } from './components/MultiSelection/MultiSelection';
 export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
+export { default as Popover } from './components/Popover/Popover';
 export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
 export { default as Text, TextTypes } from './components/Text/Text';
 export { default as TextArea } from './components/TextArea/TextArea';

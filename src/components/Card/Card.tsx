@@ -11,6 +11,7 @@ const StyledCard = styled.div<{ $height?: string; $width?: string }>`
   border-radius: 40px;
   background: white;
   border: 1px solid white;
+  box-shadow: 1px 2px 5px rgb(0 0 0 / 7%);
   display: flex;
   flex-direction: column;
   padding: ${tokens.spacing.small};

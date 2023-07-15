@@ -4,6 +4,7 @@ export * from './variants/ArrowLeft';
 export * from './variants/ArrowRight';
 export * from './variants/Check';
 export * from './variants/Close';
+export * from './variants/Dots';
 export * from './variants/Facebook';
 export * from './variants/Github';
 export * from './variants/Image';
