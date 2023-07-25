@@ -24,9 +24,14 @@ export const ButtonControl = args => (
 );
 
 export const ButtonIcon = args => (
-  <Button variation={ButtonTypes.Icon}>
-    <InfoIcon label="info" labelId="info" />
-  </Button>
+  <div style={{ display: 'flex', gap: tokens.spacing.large }}>
+    <Button variation={ButtonTypes.Icon} color={args.color}>
+      <InfoIcon label="info" labelId="info" />
+    </Button>
+    <Button variation={ButtonTypes.Icon} color={args.color}>
+      <InfoIcon circular label="info" labelId="info" />
+    </Button>
+  </div>
 );
 
 const StyledSpan = styled(Text)`
@@ -34,14 +39,26 @@ const StyledSpan = styled(Text)`
 `;
 
 export const ButtonInline = args => (
-  <span>
-    <StyledSpan tag="span" type="Body2">
-      This is some text
-    </StyledSpan>
-    <Button variation={ButtonTypes.Inline}>
-      <Text type="Body2" color={'blue'} tag="span">
-        Click to activate.
-      </Text>
-    </Button>
-  </span>
+  <div>
+    <span>
+      <StyledSpan tag="span" type="Body2">
+        This is the default styling:
+      </StyledSpan>
+      <Button variation={ButtonTypes.Inline}>
+        <Text type="Body2" tag="span">
+          Click to activate.
+        </Text>
+      </Button>
+    </span>
+    <span>
+      <StyledSpan tag="span" type="Body2">
+        This is with the backgroundColor prop set:
+      </StyledSpan>
+      <Button variation={ButtonTypes.Inline} backgroundColor="red">
+        <Text type="Body2" color={'red'} tag="span">
+          Click to activate.
+        </Text>
+      </Button>
+    </span>
+  </div>
 );

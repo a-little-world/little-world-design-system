@@ -11,6 +11,7 @@ export enum ButtonTypes {
 }
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   backgroundColor?: string;
+  color?: string;
   variation?: keyof typeof ButtonTypes;
 }
 
@@ -19,7 +20,8 @@ export type Ref = HTMLButtonElement;
 const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
   (
     {
-      backgroundColor = coreColors.orange,
+      backgroundColor,
+      color,
       children,
       variation = ButtonTypes.Primary,
       ...rest
@@ -29,6 +31,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
     return (
       <StyledButton
         $backgroundColor={backgroundColor}
+        $color={color}
         $variation={variation}
         ref={ref}
         {...rest}

@@ -30,12 +30,13 @@ export default {
           selected: coreColors.orange,
           contrast: coreColors.black,
           reversed: coreColors.white,
-          error: coreColors.red,
+          error: coreColors.red10,
         },
         surface: {
           primary: coreColors.white,
           secondary: coreColors.gray20,
           indicator: coreColors.green,
+          error: coreColors.red20,
         },
         text: {
           primary: coreColors.black,
@@ -44,7 +45,7 @@ export default {
           title: coreColors.orange,
           link: coreColors.blue20,
           button: coreColors.white,
-          error: coreColors.red,
+          error: coreColors.red10,
           highlight: coreColors.orange,
         },
       },

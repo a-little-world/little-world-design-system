@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Text, { TextTypes } from '../Text/Text';
+import tokens from '../../tokens';
 
 export const INPUT_ERROR_CSS = css`
   border: 1px solid ${({ theme }) => theme.color.border.error};
@@ -20,7 +21,7 @@ const ErrorText = styled(Text)<{
   visibility: hidden;
   opacity: 0;
   transition: visibility 1s, opacity 1s;
-  text-align: left;
+  text-align: right;
 
   ${({ $top, $right }) =>
     ($top || $right) &&
@@ -36,6 +37,10 @@ const ErrorText = styled(Text)<{
     visibility: visible;
     opacity: 1;
   `};
+
+  @media (min-width: ${tokens.breakpoints.small}) {
+    text-align: left;
+  }
 `;
 
 type Props = {
