@@ -5,6 +5,7 @@ export * from './variants/ArrowRight';
 export * from './variants/Check';
 export * from './variants/Close';
 export * from './variants/Dots';
+export * from './variants/Exclamation';
 export * from './variants/Facebook';
 export * from './variants/Github';
 export * from './variants/Image';

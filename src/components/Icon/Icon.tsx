@@ -1,9 +1,19 @@
 import React, { SVGProps } from 'react';
 import styled, { css } from 'styled-components';
+import { coreColors } from '../../tokens/core';
+
+const Circle = styled.div<{ color?: string }>`
+  background: ${coreColors.gray10};
+  border: 2px solid ${coreColors.gray20};
+  border-radius: 50%;
+  color: ${({ color }) => color || coreColors.gray30};
+  display: flex;
+  padding: 10px;
+`;
 
 // hide element but keep visible to screen readers
 // parent requires position: relative;
-const IconLabel = styled.span<{ $top: string; $visible?: boolean }>`
+export const ImageLabel = styled.span<{ $top: string; $visible?: boolean }>`
   ${({ $top, $visible }) =>
     $visible
       ? css`
@@ -30,6 +40,8 @@ const IconLabel = styled.span<{ $top: string; $visible?: boolean }>`
 `;
 
 type IconProps = {
+  circular?: boolean;
+  color?: string;
   label: string;
   labelTop?: string;
   labelVisible?: boolean;
@@ -37,20 +49,21 @@ type IconProps = {
   labelId: string;
 };
 
-export type IconSvgProps = Omit<IconProps, 'children'> &
-  SVGProps<SVGElement> & { color?: string };
+export type IconSvgProps = Omit<IconProps, 'children'> & SVGProps<SVGElement>;
 
 export const Icon = ({
   children,
+  circular,
+  color,
   label,
   labelVisible,
   labelTop = '56px',
   labelId,
 }: IconProps) => (
   <>
-    {children}
-    <IconLabel id={labelId} $visible={labelVisible} $top={labelTop}>
+    {circular ? <Circle color={color}>{children}</Circle> : children}
+    <ImageLabel id={labelId} $visible={labelVisible} $top={labelTop}>
       {label}
-    </IconLabel>
+    </ImageLabel>
   </>
 );

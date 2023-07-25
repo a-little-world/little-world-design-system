@@ -52,12 +52,14 @@ const slideLeftAndFade = keyframes`
 `;
 
 export const StyledPopoverContent = styled(PopoverContent)<{
+  $extraPaddingTop: boolean;
   $width: PopoverSizes;
 }>`
   display: flex;
   flex-direction: column;
   border-radius: 4px;
   padding: ${tokens.spacing.small};
+  padding-top:
   font-size: 15px;
   line-height: 1;
   background-color: white;
@@ -73,6 +75,12 @@ export const StyledPopoverContent = styled(PopoverContent)<{
     `
       width: ${$width};
     `}
+
+  ${({ $extraPaddingTop }) =>
+    $extraPaddingTop &&
+    `
+    padding-top: ${tokens.spacing.medium};
+  `}
 
   &[data-state='open'][data-side='top'] {
     animation-name: ${slideDownAndFade};

@@ -15,7 +15,8 @@ const StandardButtonCss = css`
 `;
 
 export const StyledButton = styled.button<{
-  $backgroundColor: string;
+  $backgroundColor?: string;
+  $color?: string;
   $variation: keyof typeof ButtonTypes;
 }>`
   cursor: pointer;
@@ -26,8 +27,15 @@ export const StyledButton = styled.button<{
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  transition: background-color 0.5s ease, filter 0.5s ease,
+    border-color 0.5s ease, color 0.5s ease, 0.4s;
 
-  ${({ $backgroundColor, $variation }) => {
+  &:hover {
+    transition: background-color 0.5s ease, filter 0.5s ease,
+      border-color 0.5s ease, color 0.5s ease, 0.4s;
+  }
+
+  ${({ $backgroundColor, $color, $variation }) => {
     if ($variation === ButtonTypes.Primary)
       return css`
         ${StandardButtonCss}
@@ -36,15 +44,26 @@ export const StyledButton = styled.button<{
         background: linear-gradient(
           43.07deg,
           #db590b -3.02%,
-          ${$backgroundColor} 93.96%
-        ); ;
+          ${$backgroundColor || coreColors.orange} 93.96%
+        );
+
+        &:hover {
+          filter: brightness(120%);
+        }
       `;
 
     if ($variation === ButtonTypes.Secondary)
       return css`
         ${StandardButtonCss}
-        border: 2px solid currentColor;
-        background: ${coreColors.white};
+        border: 2px solid ${$color || coreColors.blue20};
+        background-color: ${coreColors.white};
+        color: ${$color || coreColors.blue20};
+
+        &:hover {
+          background: ${$backgroundColor || coreColors.blue20};
+          color: white;
+          border-color: ${$backgroundColor || coreColors.blue20};
+        }
       `;
 
     if ($variation === ButtonTypes.Control)
@@ -54,6 +73,12 @@ export const StyledButton = styled.button<{
         background: ${coreColors.white};
         width: 36px;
         height: 36px;
+
+        &:hover {
+          background-color: ${coreColors.gray20};
+          color: white;
+          border-color: ${coreColors.gray30};
+        }
       `;
 
     if ($variation === ButtonTypes.Icon)
@@ -64,6 +89,10 @@ export const StyledButton = styled.button<{
         height: auto;
         width: auto;
         padding: 0px;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
       `;
 
     if ($variation === ButtonTypes.Inline)
@@ -76,6 +105,23 @@ export const StyledButton = styled.button<{
         width: auto;
         padding: 0px;
         gap: ${tokens.spacing.xxxsmall};
+
+        background-image: linear-gradient(
+          248deg,
+          ${$backgroundColor || '#36a9e0'} -40%,
+          ${$backgroundColor || '#0367b2'} 100%
+        );
+        background-size: 0 100%;
+        background-repeat: no-repeat;
+        transition: 0.4s;
+
+        &:hover {
+          background-size: 100% 100%;
+          color: white;
+          > * {
+            color: white;
+          }
+        }
       `;
   }}
 `;

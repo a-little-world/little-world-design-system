@@ -5,6 +5,7 @@ export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid'
 export { default as Dropdown } from './components/Dropdown/Dropdown';
 export { default as MultiDropdown } from './components/MultiDropdown/MultiDropdown';
 export * from './components/Icon';
+export * from './components/Illustrations';
 export { default as InputError } from './components/InputError/InputError';
 export { default as Label } from './components/Label/Label';
 export { default as Modal } from './components/Modal/Modal';

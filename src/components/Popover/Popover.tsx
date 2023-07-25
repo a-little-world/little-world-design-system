@@ -10,7 +10,7 @@ import Button, { ButtonTypes } from '../Button/Button';
 
 export enum PopoverSizes {
   Small = '160px',
-  Large = '240px',
+  Large = '260px',
 }
 
 type Props = {
@@ -36,7 +36,12 @@ const Popover: React.FC<Props> = ({
   <RadixPopover.Root defaultOpen={defaultOpen} open={open}>
     {trigger && <RadixPopover.Trigger asChild>{trigger}</RadixPopover.Trigger>}
 
-    <StyledPopoverContent side={side} sideOffset={sideOffset} $width={width}>
+    <StyledPopoverContent
+      side={side}
+      sideOffset={sideOffset}
+      $width={width}
+      $extraPaddingTop={showCloseButton}
+    >
       {children}
       {showCloseButton && (
         <StyledPopoverClose asChild>

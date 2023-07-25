@@ -5,11 +5,17 @@ import { Icon, IconSvgProps } from '../Icon';
 const LABEL_ID = 'InstagramIcon';
 
 export const InstagramIcon = (props: IconSvgProps) => {
-  const { color, height, width, label, labelVisible } =
+  const { circular, color, height, width, label, labelVisible } =
     getDefaultIconProps(props);
 
   return (
-    <Icon labelId={LABEL_ID} label={label} labelVisible={labelVisible}>
+    <Icon
+      circular={circular}
+      color={color}
+      labelId={LABEL_ID}
+      label={label}
+      labelVisible={labelVisible}
+    >
       <svg
         aria-labelledby={LABEL_ID}
         focusable={false}
