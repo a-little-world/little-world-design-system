@@ -58,6 +58,8 @@ export const StyledToolTipContent = styled(TooltipContent)`
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
+  width: max-content;
+  max-width: 90vw;
 
   &[data-state='delayed-open'][data-side='top'] {
     animation-name: ${slideDownAndFade};

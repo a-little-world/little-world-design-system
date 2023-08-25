@@ -1,23 +1,37 @@
 import styled, { css } from 'styled-components';
 import tokens from '../../tokens';
 import { coreColors } from '../../tokens/core';
-import { ButtonTypes } from './Button';
+import { ButtonSizes, ButtonTypes } from './Button';
 
-const StandardButtonCss = css`
+const StandardButtonCss = css<{ $size?: string }>`
   border-radius: 90px;
   padding: ${tokens.spacing.xsmall} ${tokens.spacing.small};
   height: 40px;
-  width: 100%;
 
-  @media (min-width: ${tokens.breakpoints.small}) {
-    min-width: 110px;
-  }
+  ${({ $size }) => {
+    if ($size === ButtonSizes.Small) {
+      return `min-width: 110px;`;
+    }
+
+    if ($size === ButtonSizes.Medium) {
+      return `min-width: 160px;`;
+    }
+
+    if ($size === ButtonSizes.Large) {
+      return `min-width: 240px;`;
+    }
+
+    if ($size === ButtonSizes.Stretch) {
+      return `width: 100%;`;
+    }
+  }}
 `;
 
 export const StyledButton = styled.button<{
   $backgroundColor?: string;
   $color?: string;
   $variation: keyof typeof ButtonTypes;
+  $size?: string;
 }>`
   cursor: pointer;
   font-family: 'Signika Negative';
@@ -35,7 +49,7 @@ export const StyledButton = styled.button<{
       border-color 0.5s ease, color 0.5s ease, 0.4s;
   }
 
-  ${({ $backgroundColor, $color, $variation }) => {
+  ${({ $backgroundColor, $color, $variation, $size }) => {
     if ($variation === ButtonTypes.Primary)
       return css`
         ${StandardButtonCss}

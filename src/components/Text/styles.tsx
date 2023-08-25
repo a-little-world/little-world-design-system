@@ -20,7 +20,7 @@ const HEADING_SHARED_STYLES = css<{ $color?: string }>`
 
 export const BODY_3_CSS = css`
   ${BODY_SHARED_STYLES}
-  font-size: 0.875rem;
+  font-size: 1rem;
 
   @media (min-width: ${tokens.breakpoints.small}) {
     font-size: 1rem;
@@ -87,7 +87,7 @@ export const StyledElement = styled.div<{
     if ($type === TextTypes.Heading2)
       return css`
         ${HEADING_SHARED_STYLES}
-        font-size: 1.5rem;
+        font-size: 2rem;
 
         @media (min-width: ${tokens.breakpoints.small}) {
           font-size: 2rem;

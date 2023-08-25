@@ -1,5 +1,4 @@
 import React from 'react';
-import { coreColors } from '../../tokens/core';
 import { StyledButton } from './styles';
 
 export enum ButtonTypes {
@@ -9,9 +8,18 @@ export enum ButtonTypes {
   Icon = 'Icon',
   Inline = 'Inline',
 }
+
+// Applies only to Primary and Secondary Types
+export enum ButtonSizes {
+  Small = 'Small',
+  Medium = 'Medium',
+  Large = 'Large',
+  Stretch = 'Stretch', // default
+}
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   backgroundColor?: string;
   color?: string;
+  size?: ButtonSizes;
   variation?: keyof typeof ButtonTypes;
 }
 
@@ -23,7 +31,9 @@ const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
       backgroundColor,
       color,
       children,
+      size = ButtonSizes.Small,
       variation = ButtonTypes.Primary,
+      type = 'button',
       ...rest
     },
     ref,
@@ -32,8 +42,10 @@ const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
       <StyledButton
         $backgroundColor={backgroundColor}
         $color={color}
+        $size={size}
         $variation={variation}
         ref={ref}
+        type={type}
         {...rest}
       >
         {children}
