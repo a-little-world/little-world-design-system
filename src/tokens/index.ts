@@ -36,7 +36,7 @@ export default {
           primary: coreColors.white,
           secondary: coreColors.gray20,
           indicator: coreColors.green,
-          error: coreColors.red20,
+          error: coreColors.red10,
         },
         text: {
           primary: coreColors.black,
@@ -45,7 +45,7 @@ export default {
           title: coreColors.orange,
           link: coreColors.blue20,
           button: coreColors.white,
-          error: coreColors.red10,
+          error: coreColors.red20,
           highlight: coreColors.orange,
         },
       },

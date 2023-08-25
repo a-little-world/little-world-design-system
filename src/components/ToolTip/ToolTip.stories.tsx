@@ -27,5 +27,5 @@ export const Default = args => {
 };
 
 Default.args = {
-  text: 'This is a very informative tooltip.',
+  text: 'Ein Avatar ist ein gezeichnetes Profilbild, das du an Stelle eines echten Fotos von dir verwenden kannst. Um den Avatar dir ähnlich aussehen zu lassen, kannst du Merkmale wie Geschlecht, Nase, Haare, Augen etc. anpassen. Probier es doch einfach mal aus! Deinen Avatar kannst du später jederzeit wieder ändern.',
 };

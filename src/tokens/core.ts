@@ -8,8 +8,8 @@ export const coreColors = {
   black: '#000000',
   blue10: '#36A9E0',
   blue20: '#0063AF',
-  red10: '#f91010',
-  red20: '#DB590B',
+  red10: '#ffdde1',
+  red20: '#f91010',
   white: '#FFFFFF',
 } as const;
 

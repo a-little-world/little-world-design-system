@@ -1,14 +1,15 @@
-import { ForwardedRef } from 'react';
 import * as Select from '@radix-ui/react-select';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import tokens from '../../tokens';
 import { coreColors } from '../../tokens/core';
 import { BODY_3_CSS } from '../Text/styles';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 
+export const DROPDOWN_MAX_WIDTH = '300px';
+
 export const DropdownWrapper = styled.div<{ $hasPadding: boolean }>`
   position: relative;
-  max-width: 300px;
+  max-width: ${DROPDOWN_MAX_WIDTH};
   width: 100%;
 
   ${({ $hasPadding }) =>
@@ -36,6 +37,10 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
 
   > span {
     ${BODY_3_CSS}
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &:hover {
@@ -77,6 +82,8 @@ export const SelectContent = styled(Select.Content)`
 
 export const SelectViewport = styled(Select.Viewport)`
   padding: ${tokens.spacing.xxxsmall};
+  max-height: 200px;
+  overflow: scroll;
 `;
 
 export const SelectItem = styled(Select.Item)`

@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { AddMore, MultiDropdownWrapper, Segment } from './styles';
-import { PlusIcon } from '../Icon';
+import { PlusIcon, TrashIcon } from '../Icon';
 import Text from '../Text/Text';
 import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
 import Button, { ButtonTypes } from '../Button/Button';
 import Label from '../Label/Label';
 import tokens from '../../tokens';
+
+const DELETE_SEGMENT = 'delete segment';
 
 type Props = {
   addMoreLabel: string;
@@ -56,7 +58,7 @@ const MultiDropdown: React.FC<Props> = ({
   maxSegments = 4,
 }) => {
   const [segments, setSegments] = useState(defaultSegments);
-  const [, setValues] = useState([
+  const [values, setValues] = useState([
     firstDropdown.values || [],
     secondDropdown.values || [],
   ]);
@@ -81,6 +83,23 @@ const MultiDropdown: React.FC<Props> = ({
     });
   };
 
+  const handleDelete = (index: number) => {
+    setValues(values => {
+      const newValues = [...values];
+      newValues[0].splice(index, 1),
+        newValues[1].splice(index, 1),
+        onValueChange(
+          formatValues(
+            newValues,
+            firstDropdown.dataField,
+            secondDropdown.dataField,
+          ),
+        );
+      return newValues;
+    });
+    setSegments(currentNumber => currentNumber - 1);
+  };
+
   return (
     <MultiDropdownWrapper>
       <Label
@@ -94,14 +113,16 @@ const MultiDropdown: React.FC<Props> = ({
       {Array(segments)
         .fill('')
         .map((_, index) => (
-          <Segment key={`MultiDropdown Segment ${index}`}>
+          <Segment
+            key={`MultiDropdown Segment ${index}${values[0][index]}${values[1][index]}`}
+          >
             <Dropdown
               ariaLabel={firstDropdown.ariaLabel + index}
               placeholder={firstDropdown.placeholder}
               onValueChange={val => handleValueChange(val, 0, index)}
               options={firstDropdown.options}
-              value={firstDropdown.values[index]}
-              required={Boolean(secondDropdown.values[index])}
+              value={values[0][index]}
+              required={Boolean(values[1][index])}
               error={firstDropdown.errors?.[index]}
             />
             <Dropdown
@@ -109,10 +130,23 @@ const MultiDropdown: React.FC<Props> = ({
               placeholder={secondDropdown.placeholder}
               onValueChange={val => handleValueChange(val, 1, index)}
               options={secondDropdown.options}
-              value={secondDropdown.values[index]}
-              required={Boolean(secondDropdown.values[index])}
+              value={values[1][index]}
+              required={Boolean(values[0][index])}
               error={secondDropdown.errors?.[index]}
             />
+            {!!index && (
+              <Button
+                variation={ButtonTypes.Icon}
+                onClick={() => handleDelete(index)}
+              >
+                <TrashIcon
+                  label={DELETE_SEGMENT}
+                  labelId={DELETE_SEGMENT}
+                  width={16}
+                  color="orange"
+                />
+              </Button>
+            )}
           </Segment>
         ))}
       <AddMore>

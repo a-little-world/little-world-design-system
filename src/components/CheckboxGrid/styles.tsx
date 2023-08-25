@@ -19,6 +19,7 @@ export const Grid = styled.div<{
     `repeat(${$columns}, minmax(max-content, 1fr))`};
   grid-auto-rows: ${({ $rows }) => `repeat(${$rows}, 1fr)`};
   margin-bottom: ${tokens.spacing.small};
+  overflow-x: scroll;
 `;
 
 export const ColumnHeading = styled(Text)<{ index: number }>`
