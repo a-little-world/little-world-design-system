@@ -29,7 +29,7 @@ const StyledLabel = styled(RadixLabel.Root)<{
   ${({ $bold, $inline, $marginBottom }) =>
     css`
       ${$bold && 'font-weight: bold;'}
-      display: ${$inline ? 'inline-flex' : 'block'};
+      display: ${$inline ? 'inline' : 'block'};
       margin-bottom: ${$marginBottom || '0'};
       gap: ${tokens.spacing.xxxsmall};
     `}
