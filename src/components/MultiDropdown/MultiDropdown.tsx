@@ -51,7 +51,6 @@ const formatValues = (
 
 const MultiDropdown: React.FC<Props> = ({
   addMoreLabel = 'Add more rows',
-  error,
   label,
   labelTooltip,
   firstDropdown,
@@ -167,7 +166,6 @@ const MultiDropdown: React.FC<Props> = ({
         </Button>
         <Text>{addMoreLabel}</Text>
       </AddMore>
-      <InputError visible={Boolean(error)}>{error}</InputError>
     </MultiDropdownWrapper>
   );
 };
