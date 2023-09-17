@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MultiSelectionWrapper, Options, Option } from './styles';
 
-import Label, { LabelContainer } from '../Label/Label';
-import InputError from '../InputError/InputError';
+import Label from '../Label/Label';
 
 type Props = {
   error?: string;
@@ -36,12 +35,15 @@ const MultiSelection: React.FC<Props> = ({
 
   return (
     <MultiSelectionWrapper>
-      <LabelContainer>
-        <Label bold htmlFor={id} toolTipText={labelTooltip}>
-          {label}
-        </Label>
-        <InputError visible={Boolean(error)}>{error}</InputError>
-      </LabelContainer>
+      <Label
+        bold
+        htmlFor={id}
+        toolTipText={labelTooltip}
+        error={error}
+        canHaveError
+      >
+        {label}
+      </Label>
       <Options $hasError={Boolean(error)}>
         {options.map(option => {
           const isSelected = selected?.some(el => el === option.value);

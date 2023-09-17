@@ -30,7 +30,7 @@ export default {
           selected: coreColors.orange,
           contrast: coreColors.black,
           reversed: coreColors.white,
-          error: coreColors.red10,
+          error: coreColors.red20,
         },
         surface: {
           primary: coreColors.white,

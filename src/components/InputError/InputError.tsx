@@ -14,7 +14,9 @@ export const INPUT_ERROR_CSS = css`
 
 const ErrorText = styled(Text)<{
   $top?: string;
+  $bottom?: string;
   $right?: string;
+  $left?: string;
   $visible: boolean;
 }>`
   color: ${({ theme }) => theme.color.text.error};
@@ -23,12 +25,14 @@ const ErrorText = styled(Text)<{
   transition: visibility 1s, opacity 1s;
   text-align: right;
 
-  ${({ $top, $right }) =>
+  ${({ $top, $bottom, $right, $left }) =>
     ($top || $right) &&
     `
     position: absolute;
     top: ${$top};
+    bottom: ${$bottom};
     right: ${$right};
+    left: ${$left};
   `};
 
   ${({ $visible }) =>
@@ -46,16 +50,27 @@ const ErrorText = styled(Text)<{
 type Props = {
   children: React.ReactNode;
   top?: string;
+  bottom?: string;
   right?: string;
+  left?: string;
   visible: boolean;
 };
 
-const InputError: React.FC<Props> = ({ children, top, right, visible }) => (
+const InputError: React.FC<Props> = ({
+  children,
+  top,
+  bottom,
+  right,
+  left,
+  visible,
+}) => (
   <ErrorText
     type={TextTypes.Body5}
     $visible={visible}
     $top={top}
+    $bottom={bottom}
     $right={right}
+    $left={left}
   >
     {children}
   </ErrorText>

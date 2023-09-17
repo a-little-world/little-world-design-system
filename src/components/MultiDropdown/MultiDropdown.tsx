@@ -7,11 +7,13 @@ import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
 import Button, { ButtonTypes } from '../Button/Button';
 import Label from '../Label/Label';
 import tokens from '../../tokens';
+import InputError from '../InputError/InputError';
 
 const DELETE_SEGMENT = 'delete segment';
 
 type Props = {
   addMoreLabel: string;
+  error?: string;
   label?: string;
   labelTooltip?: string;
   defaultSegments?: number;
@@ -49,6 +51,7 @@ const formatValues = (
 
 const MultiDropdown: React.FC<Props> = ({
   addMoreLabel = 'Add more rows',
+  error,
   label,
   labelTooltip,
   firstDropdown,
@@ -164,6 +167,7 @@ const MultiDropdown: React.FC<Props> = ({
         </Button>
         <Text>{addMoreLabel}</Text>
       </AddMore>
+      <InputError visible={Boolean(error)}>{error}</InputError>
     </MultiDropdownWrapper>
   );
 };

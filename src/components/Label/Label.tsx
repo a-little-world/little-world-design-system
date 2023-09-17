@@ -8,12 +8,13 @@ import ToolTip from '../ToolTip/ToolTip';
 import { coreColors } from '../../tokens/core';
 import tokens from '../../tokens';
 import textParser from '../../utils/parser';
+import InputError from '../InputError/InputError';
 
-export const LabelContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 8px;
+const LabelContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  align-items: end;
+  gap: ${tokens.spacing.xxxsmall};
   margin-bottom: ${tokens.spacing.xxsmall};
 `;
 
@@ -39,6 +40,8 @@ type LabelProps = RadixLabel.LabelProps & {
   inline?: boolean;
   marginBottom?: string;
   toolTipText?: string;
+  canHaveError?: boolean;
+  error?: string;
 };
 
 const Label: React.FC<LabelProps> = ({
@@ -50,8 +53,10 @@ const Label: React.FC<LabelProps> = ({
   asChild,
   htmlFor,
   toolTipText,
+  canHaveError,
+  error,
 }) => {
-  return (
+  const LabelEl = (
     <StyledLabel
       $bold={bold}
       $inline={Boolean(inline || toolTipText)}
@@ -78,6 +83,15 @@ const Label: React.FC<LabelProps> = ({
         />
       )}
     </StyledLabel>
+  );
+
+  return canHaveError ? (
+    <LabelContainer>
+      {LabelEl}
+      <InputError visible={Boolean(error)}>{error}</InputError>
+    </LabelContainer>
+  ) : (
+    LabelEl
   );
 };
 
