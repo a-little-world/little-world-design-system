@@ -7,7 +7,6 @@ import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
 import Button, { ButtonTypes } from '../Button/Button';
 import Label from '../Label/Label';
 import tokens from '../../tokens';
-import InputError from '../InputError/InputError';
 
 const DELETE_SEGMENT = 'delete segment';
 
