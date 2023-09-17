@@ -12,9 +12,7 @@ export default {
 };
 
 export const AllVariants = args => (
-  <div
-    style={{ display: 'flex', flexWrap: 'wrap', gap: tokens.spacing.medium }}
-  >
+  <div style={{ display: 'flex', flexWrap: 'wrap', gap: tokens.spacing.large }}>
     {Object.entries(allIllustrations).map(([name, Component]) => (
       <Component key={name} {...args} />
     ))}

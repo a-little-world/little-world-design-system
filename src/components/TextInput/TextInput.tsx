@@ -1,8 +1,7 @@
 import React from 'react';
 import { Input, InputWrapper } from './styles';
 
-import Label, { LabelContainer } from '../Label/Label';
-import InputError from '../InputError/InputError';
+import Label from '../Label/Label';
 
 interface Props extends React.ComponentPropsWithoutRef<'input'> {
   error?: string;
@@ -23,12 +22,16 @@ const TextInput: React.FC<Props> = ({
   ...inputProps
 }: Props) => (
   <InputWrapper>
-    <LabelContainer>
-      <Label bold htmlFor={id} toolTipText={labelTooltip}>
-        {label}
-      </Label>
-      <InputError visible={Boolean(error)}>{error}</InputError>
-    </LabelContainer>
+    <Label
+      bold
+      htmlFor={id}
+      toolTipText={labelTooltip}
+      error={error}
+      canHaveError
+    >
+      {label}
+    </Label>
+
     <Input
       ref={inputRef}
       $hasError={Boolean(error)}

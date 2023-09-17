@@ -1,7 +1,7 @@
 import React from 'react';
 import { Area, AreaWrapper } from './styles';
 
-import Label, { LabelContainer } from '../Label/Label';
+import Label from '../Label/Label';
 import InputError from '../InputError/InputError';
 
 interface Props extends React.ComponentPropsWithoutRef<'textarea'> {
@@ -21,12 +21,15 @@ const TextArea: React.FC<Props> = ({
   ...areaProps
 }: Props) => (
   <AreaWrapper>
-    <LabelContainer>
-      <Label bold htmlFor={id} toolTipText={labelTooltip}>
-        {label}
-      </Label>
-      <InputError visible={Boolean(error)}>{error}</InputError>
-    </LabelContainer>
+    <Label
+      bold
+      htmlFor={id}
+      toolTipText={labelTooltip}
+      error={error}
+      canHaveError
+    >
+      {label}
+    </Label>
     <Area ref={inputRef} id={id} $hasError={Boolean(error)} {...areaProps} />
   </AreaWrapper>
 );

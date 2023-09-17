@@ -26,7 +26,7 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
   align-items: center;
   justify-content: space-between;
   padding: ${tokens.spacing.xxsmall} ${tokens.spacing.small};
-  line-height: 1;
+  line-height: 1.25;
   height: 33px;
   gap: ${tokens.spacing.xsmall};
   background-color: ${tokens.color.theme.light.surface.secondary};
@@ -64,8 +64,6 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
 `;
 
 export const SelectValue = styled(Select.Value)`
-  font-weight: 600;
-
   &[data-placeholder] {
     background-color: ${tokens.color.theme.light.surface.primary};
   }
@@ -81,7 +79,7 @@ export const SelectContent = styled(Select.Content)`
 `;
 
 export const SelectViewport = styled(Select.Viewport)`
-  padding: ${tokens.spacing.xxxsmall};
+  padding: ${tokens.spacing.xxsmall} ${tokens.spacing.xxxsmall};
   max-height: 200px;
   overflow: scroll;
 `;
