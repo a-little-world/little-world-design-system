@@ -15,12 +15,12 @@ export const UnmatchedImage = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_4565_61126)">
+        <g clipPath="url(#clip0_4565_61126)">
           <path
             d="M52.0004 69.2271C67.5606 69.2271 80.1747 56.7959 80.1747 41.4612C80.1747 26.1265 67.5606 13.6953 52.0004 13.6953C36.4402 13.6953 23.8262 26.1265 23.8262 41.4612C23.8262 56.7959 36.4402 69.2271 52.0004 69.2271Z"
             stroke="url(#paint0_linear_4565_61126)"
-            stroke-width="2"
-            stroke-miterlimit="10"
+            strokeWidth="2"
+            strokeMiterlimit="10"
           />
           <path
             d="M74.2148 75.8846C72.6507 75.1604 70.8237 75.2667 69.3607 76.1703C64.3178 79.2599 58.3715 81.0405 52.0004 81.0405C45.6293 81.0405 39.683 79.2532 34.6401 76.1703C33.1704 75.2734 31.3501 75.1604 29.786 75.8846C13.619 83.3726 1.98251 98.7804 0.0273657 117.039C-0.28276 119.962 2.08363 122.5 5.06354 122.5H98.9373C101.917 122.5 104.284 119.962 103.973 117.039C102.018 98.7804 90.3818 83.3726 74.2148 75.878V75.8846Z"
@@ -47,7 +47,7 @@ export const UnmatchedImage = () => {
             fill="url(#paint6_linear_4565_61126)"
           />
         </g>
-        <g clip-path="url(#clip1_4565_61126)">
+        <g clipPath="url(#clip1_4565_61126)">
           <path
             d="M157.37 64.3427V63.2067L151.379 67.6079C149.144 69.25 145.951 68.8193 144.262 66.6469C142.572 64.4746 143.015 61.3708 145.25 59.7288L151.243 55.3248H150.46L150.972 53.7958H148.959L148.169 53.1982L143.079 56.9373C139.26 59.7422 138.504 65.0453 141.39 68.7574C142.832 70.6121 144.918 71.7238 147.12 72.0226C149.321 72.3187 151.639 71.8019 153.55 70.3994L159.593 65.9605L159.566 64.5096L157.372 64.34L157.37 64.3427Z"
             fill="url(#paint7_linear_4565_61126)"
@@ -97,7 +97,7 @@ export const UnmatchedImage = () => {
             fill="url(#paint18_linear_4565_61126)"
           />
         </g>
-        <g clip-path="url(#clip2_4565_61126)">
+        <g clipPath="url(#clip2_4565_61126)">
           <path
             d="M261.78 14.9657C267.304 14.9657 271.783 11.7274 271.783 7.73285C271.783 3.73826 267.304 0.5 261.78 0.5C256.256 0.5 251.777 3.73826 251.777 7.73285C251.777 11.7274 256.256 14.9657 261.78 14.9657Z"
             fill="url(#paint19_linear_4565_61126)"
@@ -105,8 +105,8 @@ export const UnmatchedImage = () => {
           <path
             d="M262.001 72.6283C276.963 72.6283 289.091 60.524 289.091 45.5925C289.091 30.661 276.963 18.5566 262.001 18.5566C247.039 18.5566 234.91 30.661 234.91 45.5925C234.91 60.524 247.039 72.6283 262.001 72.6283Z"
             stroke="url(#paint20_linear_4565_61126)"
-            stroke-width="2"
-            stroke-miterlimit="10"
+            strokeWidth="2"
+            strokeMiterlimit="10"
           />
           <path
             d="M283.36 79.1045C281.856 78.3994 280.1 78.5029 278.693 79.3827C273.844 82.391 268.126 84.1248 262 84.1248C255.874 84.1248 250.157 82.3845 245.308 79.3827C243.895 78.5093 242.144 78.3994 240.64 79.1045C225.095 86.4021 213.906 101.405 212.026 119.183C211.728 122.029 214.003 124.501 216.869 124.501H307.132C309.997 124.501 312.273 122.029 311.974 119.183C310.095 101.405 298.906 86.4021 283.36 79.1045Z"
@@ -138,11 +138,11 @@ export const UnmatchedImage = () => {
             y2="41.4612"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_4565_61126"
@@ -152,8 +152,8 @@ export const UnmatchedImage = () => {
             y2="98.9531"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_4565_61126"
@@ -163,11 +163,11 @@ export const UnmatchedImage = () => {
             y2="30.4186"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.11" stop-color="#F2920E" />
-            <stop offset="0.52" stop-color="#F6A741" />
-            <stop offset="0.83" stop-color="#F8B561" />
-            <stop offset="1" stop-color="#F9B96D" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.11" stopColor="#F2920E" />
+            <stop offset="0.52" stopColor="#F6A741" />
+            <stop offset="0.83" stopColor="#F8B561" />
+            <stop offset="1" stopColor="#F9B96D" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_4565_61126"
@@ -177,12 +177,12 @@ export const UnmatchedImage = () => {
             y2="24.2127"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0.03" stop-color="#F28D00" />
-            <stop offset="0.5" stop-color="#F9B86B" />
-            <stop offset="0.58" stop-color="#F8B461" />
-            <stop offset="0.72" stop-color="#F6A946" />
-            <stop offset="0.9" stop-color="#F3971B" />
-            <stop offset="1" stop-color="#F28D00" />
+            <stop offset="0.03" stopColor="#F28D00" />
+            <stop offset="0.5" stopColor="#F9B86B" />
+            <stop offset="0.58" stopColor="#F8B461" />
+            <stop offset="0.72" stopColor="#F6A946" />
+            <stop offset="0.9" stopColor="#F3971B" />
+            <stop offset="1" stopColor="#F28D00" />
           </linearGradient>
           <linearGradient
             id="paint4_linear_4565_61126"
@@ -192,11 +192,11 @@ export const UnmatchedImage = () => {
             y2="55.0151"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint5_linear_4565_61126"
@@ -206,11 +206,11 @@ export const UnmatchedImage = () => {
             y2="42.3646"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint6_linear_4565_61126"
@@ -220,11 +220,11 @@ export const UnmatchedImage = () => {
             y2="42.3646"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint7_linear_4565_61126"
@@ -234,11 +234,11 @@ export const UnmatchedImage = () => {
             y2="62.6522"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint8_linear_4565_61126"
@@ -248,11 +248,11 @@ export const UnmatchedImage = () => {
             y2="56.2208"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint9_linear_4565_61126"
@@ -262,11 +262,11 @@ export const UnmatchedImage = () => {
             y2="74.1849"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint10_linear_4565_61126"
@@ -276,11 +276,11 @@ export const UnmatchedImage = () => {
             y2="30.1869"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint11_linear_4565_61126"
@@ -290,11 +290,11 @@ export const UnmatchedImage = () => {
             y2="72.023"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint12_linear_4565_61126"
@@ -304,11 +304,11 @@ export const UnmatchedImage = () => {
             y2="48.0111"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint13_linear_4565_61126"
@@ -318,11 +318,11 @@ export const UnmatchedImage = () => {
             y2="70.0277"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint14_linear_4565_61126"
@@ -332,11 +332,11 @@ export const UnmatchedImage = () => {
             y2="70.6897"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint15_linear_4565_61126"
@@ -346,11 +346,11 @@ export const UnmatchedImage = () => {
             y2="72.3829"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint16_linear_4565_61126"
@@ -360,11 +360,11 @@ export const UnmatchedImage = () => {
             y2="50.6593"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint17_linear_4565_61126"
@@ -374,11 +374,11 @@ export const UnmatchedImage = () => {
             y2="46.8776"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint18_linear_4565_61126"
@@ -388,11 +388,11 @@ export const UnmatchedImage = () => {
             y2="46.9285"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint19_linear_4565_61126"
@@ -402,10 +402,10 @@ export const UnmatchedImage = () => {
             y2="0.460593"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.2" stop-color="#F3930F" />
-            <stop offset="0.58" stop-color="#F5A439" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.2" stopColor="#F3930F" />
+            <stop offset="0.58" stopColor="#F5A439" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint20_linear_4565_61126"
@@ -415,11 +415,11 @@ export const UnmatchedImage = () => {
             y2="45.5925"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint21_linear_4565_61126"
@@ -429,8 +429,8 @@ export const UnmatchedImage = () => {
             y2="101.573"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint22_linear_4565_61126"
@@ -440,11 +440,11 @@ export const UnmatchedImage = () => {
             y2="58.7899"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint23_linear_4565_61126"
@@ -454,11 +454,11 @@ export const UnmatchedImage = () => {
             y2="46.4721"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint24_linear_4565_61126"
@@ -468,11 +468,11 @@ export const UnmatchedImage = () => {
             y2="46.4721"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <linearGradient
             id="paint25_linear_4565_61126"
@@ -482,11 +482,11 @@ export const UnmatchedImage = () => {
             y2="40.3581"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F28D00" />
-            <stop offset="0.18" stop-color="#F39718" />
-            <stop offset="0.55" stop-color="#F6A946" />
-            <stop offset="0.83" stop-color="#F8B563" />
-            <stop offset="1" stop-color="#F9BA6E" />
+            <stop stopColor="#F28D00" />
+            <stop offset="0.18" stopColor="#F39718" />
+            <stop offset="0.55" stopColor="#F6A946" />
+            <stop offset="0.83" stopColor="#F8B563" />
+            <stop offset="1" stopColor="#F9BA6E" />
           </linearGradient>
           <clipPath id="clip0_4565_61126">
             <rect

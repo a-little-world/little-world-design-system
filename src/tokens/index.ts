@@ -10,6 +10,7 @@ export default {
     xxlarge: '1600px',
   },
   spacing: {
+    xxxxsmall: coreSpacing.space025,
     xxxsmall: coreSpacing.space05,
     xxsmall: coreSpacing.space10,
     xsmall: coreSpacing.space15,
@@ -31,11 +32,14 @@ export default {
           contrast: coreColors.black,
           reversed: coreColors.white,
           error: coreColors.red20,
+          disabled: coreColors.gray20,
         },
         surface: {
           primary: coreColors.white,
-          secondary: coreColors.gray20,
+          secondary: coreColors.gray50,
           indicator: coreColors.green,
+          highlight: coreColors.orange,
+          disabled: coreColors.gray10,
           error: coreColors.red10,
         },
         text: {
@@ -47,6 +51,11 @@ export default {
           button: coreColors.white,
           error: coreColors.red20,
           highlight: coreColors.orange,
+          disabled: coreColors.gray30,
+        },
+        gradient: {
+          blue10: 'linear-gradient(50.19deg, #36a9e0 2.84%, #0367b2 106.82%)',
+          orange: `linear-gradient(43.07deg, #db590b -3.02%, ${coreColors.orange} 93.96%)`,
         },
       },
       dark: {},

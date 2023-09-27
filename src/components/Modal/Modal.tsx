@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ButtonTypes } from '../Button/Button';
+import { ButtonVariations } from '../Button/Button';
 import { CloseIcon } from '../Icon';
 import { BackdropContainer, CloseButton } from './styles';
 
@@ -86,7 +86,7 @@ const Modal = ({
       $active={active && open}
     >
       {!locked && (
-        <CloseButton variation={ButtonTypes.Icon} onClick={onClose}>
+        <CloseButton variation={ButtonVariations.Icon} onClick={onClose}>
           <CloseIcon label={CLOSE_BUTTON_LABEL} labelId={CLOSE_BUTTON_LABEL} />
         </CloseButton>
       )}

@@ -1,10 +1,17 @@
-export { default as Button, ButtonTypes } from './components/Button/Button';
+import { Gradients } from './components/Icon/IconGradient';
+export {
+  default as Button,
+  ButtonAppearance,
+  ButtonVariations,
+} from './components/Button/Button';
+export { OPTION_BUTTON_CSS } from './components/Button/styles';
 export { default as Card, CardSizes } from './components/Card/Card';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
 export { default as MultiDropdown } from './components/MultiDropdown/MultiDropdown';
 export * from './components/Icon';
+export { Gradients } from './components/Icon/IconGradient';
 export * from './components/Illustrations';
 export { default as InputError } from './components/InputError/InputError';
 export { default as Label } from './components/Label/Label';

@@ -1,6 +1,6 @@
 import React from 'react';
 import ToolTip from './ToolTip';
-import Button, { ButtonTypes } from '../Button/Button';
+import Button, { ButtonVariations } from '../Button/Button';
 import { QuestionIcon } from '../Icon';
 
 export default {
@@ -17,7 +17,7 @@ export const Default = args => {
   return (
     <ToolTip
       trigger={
-        <Button variation={ButtonTypes.Icon}>
+        <Button variation={ButtonVariations.Icon}>
           <QuestionIcon label="questionIcon" labelId="questionIcon" />
         </Button>
       }
