@@ -1,6 +1,7 @@
 import React, { SVGProps } from 'react';
 import styled, { css } from 'styled-components';
 import { coreColors } from '../../tokens/core';
+import { Gradients } from './IconGradient';
 
 const Circle = styled.div<{ color?: string }>`
   background: ${coreColors.gray10};
@@ -43,13 +44,14 @@ type IconProps = {
   circular?: boolean;
   color?: string;
   label: string;
+  labelId: string;
   labelTop?: string;
   labelVisible?: boolean;
   children: any;
-  labelId: string;
 };
 
-export type IconSvgProps = Omit<IconProps, 'children'> & SVGProps<SVGElement>;
+export type IconSvgProps = Omit<IconProps, 'children'> &
+  SVGProps<SVGElement> & { gradient?: Gradients };
 
 export const Icon = ({
   children,

@@ -5,6 +5,7 @@ export const coreColors = {
   gray20: '#E6E8EC',
   gray30: '#A6A6A6',
   gray40: '#4B4C4F',
+  gray50: '#e6e8ec80',
   black: '#000000',
   blue10: '#36A9E0',
   blue20: '#0063AF',

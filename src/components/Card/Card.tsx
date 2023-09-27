@@ -11,13 +11,17 @@ const StyledCard = styled.div<{ $height?: string; $width?: string }>`
   border-radius: 40px;
   background: white;
   border: 1px solid white;
-  box-shadow: 1px 2px 5px rgb(0 0 0 / 7%);
+  box-shadow: 0px 1px 25px 1px rgba(0, 0, 0, 0.05);
+
   display: flex;
   flex-direction: column;
   padding: ${tokens.spacing.small};
 
   @media (min-width: ${tokens.breakpoints.small}) {
-    padding: ${tokens.spacing.large};
+    padding: ${({ $width }) =>
+      $width === CardSizes.Small
+        ? tokens.spacing.medium
+        : tokens.spacing.large};
   }
 
   ${({ $height }) =>

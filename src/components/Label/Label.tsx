@@ -3,7 +3,7 @@ import * as RadixLabel from '@radix-ui/react-label';
 import styled, { css } from 'styled-components';
 import { BODY_3_CSS } from '../Text/styles';
 import { QuestionIcon } from '../Icon';
-import Button, { ButtonTypes } from '../Button/Button';
+import Button, { ButtonVariations } from '../Button/Button';
 import ToolTip from '../ToolTip/ToolTip';
 import { coreColors } from '../../tokens/core';
 import tokens from '../../tokens';
@@ -69,7 +69,7 @@ const Label: React.FC<LabelProps> = ({
       {toolTipText && (
         <ToolTip
           trigger={
-            <Button variation={ButtonTypes.Icon}>
+            <Button variation={ButtonVariations.Icon}>
               <QuestionIcon
                 height={'16px'}
                 width={'16px'}

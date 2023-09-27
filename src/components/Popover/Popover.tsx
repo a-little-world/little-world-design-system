@@ -6,7 +6,7 @@ import {
   StyledPopoverContent,
 } from './styles';
 import { CloseIcon } from '../Icon';
-import Button, { ButtonTypes } from '../Button/Button';
+import Button, { ButtonVariations } from '../Button/Button';
 
 export enum PopoverSizes {
   Small = '160px',
@@ -45,7 +45,7 @@ const Popover: React.FC<Props> = ({
       {children}
       {showCloseButton && (
         <StyledPopoverClose asChild>
-          <Button variation={ButtonTypes.Icon}>
+          <Button variation={ButtonVariations.Icon}>
             <CloseIcon label="popover close" labelId="popover close" />
           </Button>
         </StyledPopoverClose>

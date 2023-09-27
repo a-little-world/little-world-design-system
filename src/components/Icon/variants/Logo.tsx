@@ -1,23 +1,33 @@
 import React from 'react';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 import { Icon, IconSvgProps } from '../Icon';
+import IconGradient from '../IconGradient';
 
 const LABEL_ID = 'Logo';
 
 export const Logo = (props: IconSvgProps) => {
-  const { circular, color, height, width, label, labelVisible } =
-    getDefaultIconProps(props);
+  const {
+    circular,
+    color,
+    gradient,
+    height,
+    width,
+    label,
+    labelId,
+    labelVisible,
+  } = getDefaultIconProps(props);
+  const id = LABEL_ID + labelId;
 
   return (
     <Icon
       circular={circular}
       color={color}
-      labelId={LABEL_ID}
+      labelId={labelId || LABEL_ID}
       label={label}
       labelVisible={labelVisible}
     >
       <svg
-        aria-labelledby={LABEL_ID}
+        aria-labelledby={labelId || LABEL_ID}
         focusable={false}
         height={height}
         width={width}

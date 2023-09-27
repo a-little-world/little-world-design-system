@@ -1,15 +1,20 @@
 import React from 'react';
 import { StyledButton } from './styles';
 
-export enum ButtonTypes {
-  Primary = 'Primary',
-  Secondary = 'Secondary',
+export enum ButtonVariations {
+  Basic = 'Basic',
+  Option = 'Option',
   Control = 'Control',
   Icon = 'Icon',
   Inline = 'Inline',
 }
 
-// Applies only to Primary and Secondary Types
+export enum ButtonAppearance {
+  Primary = 'Primary',
+  Secondary = 'Secondary',
+}
+
+// Applies only to Basic Button Variation
 export enum ButtonSizes {
   Small = 'Small',
   Medium = 'Medium',
@@ -17,10 +22,11 @@ export enum ButtonSizes {
   Stretch = 'Stretch', // default
 }
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
+  appearance?: keyof typeof ButtonAppearance;
   backgroundColor?: string;
   color?: string;
   size?: ButtonSizes;
-  variation?: keyof typeof ButtonTypes;
+  variation?: keyof typeof ButtonVariations;
 }
 
 export type Ref = HTMLButtonElement;
@@ -28,11 +34,12 @@ export type Ref = HTMLButtonElement;
 const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
   (
     {
+      appearance = ButtonAppearance.Primary,
       backgroundColor,
       color,
       children,
       size = ButtonSizes.Small,
-      variation = ButtonTypes.Primary,
+      variation = ButtonVariations.Basic,
       type = 'button',
       ...rest
     },
@@ -40,6 +47,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
   ) => {
     return (
       <StyledButton
+        $appearance={appearance}
         $backgroundColor={backgroundColor}
         $color={color}
         $size={size}

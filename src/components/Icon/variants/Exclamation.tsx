@@ -1,27 +1,36 @@
 import React from 'react';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 import { Icon, IconSvgProps } from '../Icon';
-import tokens from '../../../tokens';
+import IconGradient from '../IconGradient';
+import { coreColors } from '../../../tokens/core';
 
 const LABEL_ID = 'ExclamationIcon';
 
 export const ExclamationIcon = (props: IconSvgProps) => {
-  const { circular, color, height, width, label, labelVisible } =
-    getDefaultIconProps({
-      ...props,
-      color: props.color || tokens.color.theme.light.surface.error,
-    });
+  const {
+    circular,
+    color,
+    gradient,
+    height,
+    width,
+    label,
+    labelId,
+    labelVisible,
+  } = getDefaultIconProps({
+    ...props,
+    color: props.color || coreColors.red20,
+  });
 
   return (
     <Icon
       circular={circular}
       color={color}
-      labelId={LABEL_ID}
+      labelId={labelId || LABEL_ID}
       label={label}
       labelVisible={labelVisible}
     >
       <svg
-        aria-labelledby={LABEL_ID}
+        aria-labelledby={labelId || LABEL_ID}
         focusable={false}
         width={width}
         height={height}
@@ -42,8 +51,8 @@ export const ExclamationIcon = (props: IconSvgProps) => {
             y2="50.1873"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color={color} />
-            <stop offset="1" stop-color={color} />
+            <stop stopColor={color} />
+            <stop offset="1" stopColor={color} />
           </linearGradient>
         </defs>
       </svg>

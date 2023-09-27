@@ -4,7 +4,7 @@ import { AddMore, MultiDropdownWrapper, Segment } from './styles';
 import { PlusIcon, TrashIcon } from '../Icon';
 import Text from '../Text/Text';
 import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
-import Button, { ButtonTypes } from '../Button/Button';
+import Button, { ButtonVariations } from '../Button/Button';
 import Label from '../Label/Label';
 import tokens from '../../tokens';
 
@@ -137,7 +137,7 @@ const MultiDropdown: React.FC<Props> = ({
             />
             {!!index && (
               <Button
-                variation={ButtonTypes.Icon}
+                variation={ButtonVariations.Icon}
                 onClick={() => handleDelete(index)}
               >
                 <TrashIcon
@@ -152,7 +152,7 @@ const MultiDropdown: React.FC<Props> = ({
         ))}
       <AddMore>
         <Button
-          variation={ButtonTypes.Control}
+          variation={ButtonVariations.Control}
           disabled={segments === maxSegments}
           onClick={() => setSegments(currentNumber => currentNumber + 1)}
         >

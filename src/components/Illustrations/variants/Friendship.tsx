@@ -18,8 +18,8 @@ export const FriendshipImage = () => {
         <path
           d="M142.179 235.386C206.699 235.386 259.002 183.141 259.002 118.693C259.002 54.2453 206.699 2 142.179 2C77.6604 2 25.3574 54.2453 25.3574 118.693C25.3574 183.141 77.6604 235.386 142.179 235.386Z"
           stroke="#F7A53C"
-          stroke-width="2.5"
-          stroke-miterlimit="10"
+          strokeWidth="2.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M212.801 171.369C212.801 171.369 232.712 212.006 232.132 230.451H238.769C238.769 230.451 246.605 185.328 233.92 153.022C223.582 126.691 210.357 114.11 202.868 111.423C194.434 108.393 147.303 111.561 134.609 118.699C121.915 125.836 121.197 133.619 121.197 133.619C121.197 133.619 158.177 142.476 161.04 151.231C168.658 174.546 157.405 201.928 157.405 201.928C157.405 201.928 172.2 209.907 187.989 209.422C206.205 208.86 210.362 203.657 210.362 203.657C210.362 203.657 213.956 186.366 212.801 171.378V171.369Z"
@@ -28,14 +28,14 @@ export const FriendshipImage = () => {
         <path
           d="M209.516 214.055C211.162 209.818 210.355 203.647 210.355 203.647C210.355 203.647 202.737 212.014 181.662 209.185C165.387 206.998 158.541 202.627 158.541 202.627C158.541 202.627 151.578 224.427 145.744 230.45"
           stroke="#0089C5"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M232.132 230.451C232.132 230.451 226.869 238.239 226.298 242.084C225.299 248.82 229.045 247.332 230.673 244.298C230.673 244.298 231.414 251.868 236.11 251.039C242.511 249.907 238.768 230.451 238.768 230.451H232.132V230.451Z"
           stroke="#0089C5"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M50.4663 77.6729C50.4663 77.6729 46.4923 76.0601 41.3942 79.9318C34.9225 84.846 45.2211 97.4857 30.3775 110.094C15.5339 122.698 0.998047 102.752 0.998047 102.752C0.998047 102.752 10.6455 101.549 17.376 95.2313C24.1109 88.9137 16.5018 78.1006 24.4588 68.5217C32.4158 58.9429 50.9257 68.6019 50.9257 68.6019C50.9257 68.6019 53.3253 72.1617 50.4663 77.6774V77.6729Z"
@@ -52,8 +52,8 @@ export const FriendshipImage = () => {
         <path
           d="M209.772 171.369C209.772 171.369 229.682 212.006 229.103 230.451H235.739C235.739 230.451 243.576 185.328 230.891 153.022C220.552 126.691 207.328 114.11 199.839 111.423C191.405 108.393 144.274 111.561 131.58 118.699C118.886 125.836 118.168 133.619 118.168 133.619C118.168 133.619 155.148 142.476 158.011 151.231C165.629 174.546 154.376 201.928 154.376 201.928C154.376 201.928 169.171 209.907 184.96 209.422C203.175 208.86 207.332 203.657 207.332 203.657C207.332 203.657 210.927 186.366 209.772 171.378V171.369Z"
           stroke="#F59C24"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M99.7692 104.918C99.7692 104.918 124.184 96.7201 144.496 97.2815C187.867 98.48 207.653 112.835 207.653 112.835L202.867 118.694C202.867 118.694 195.579 116.185 184.357 114.274C173.604 112.438 143.711 112.158 131.058 134.996C118.408 157.829 135.942 207.711 135.942 207.711C115.081 220.346 76.8213 221.629 76.8213 221.629C76.8213 221.629 73.3691 215.948 71.0543 208.677C66.322 193.801 67.4727 167.934 67.4727 167.934C67.4727 167.934 58.3203 173.619 50.4659 190.985C42.1431 209.381 42.2323 235.391 42.2323 235.391L35.0648 239.062C35.0648 239.062 31.9604 228.321 29.8062 209.23C27.6563 190.134 32.8837 168.174 44.1413 148.607C61.3444 118.703 83.3154 111.066 83.3154 111.066L99.7647 104.927L99.7692 104.918Z"
@@ -78,44 +78,44 @@ export const FriendshipImage = () => {
         <path
           d="M95.7775 120.008C104.359 116.493 101.317 106.62 101.317 106.62C101.317 106.62 126.883 97.9903 147.199 98.5516C190.571 99.7501 210.356 114.105 210.356 114.105L205.57 119.964C205.57 119.964 198.282 117.455 187.06 115.544C176.307 113.709 146.414 113.428 133.761 136.266C121.112 159.099 138.645 208.981 138.645 208.981C117.784 221.616 79.5245 222.899 79.5245 222.899C79.5245 222.899 76.0722 217.219 73.7574 209.947C69.0251 195.071 70.1758 169.204 70.1758 169.204C70.1758 169.204 61.0235 174.889 53.169 192.255C44.8462 210.651 44.9354 236.661 44.9354 236.661L37.7679 240.333C37.7679 240.333 34.6636 229.591 32.5093 210.5C30.3595 191.405 35.5868 169.444 46.8444 149.877C59.5337 127.818 75.4166 117.429 82.5619 113.731C82.5619 113.731 86.9552 123.635 95.7775 120.017V120.008Z"
           stroke="#0089C5"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M88.0293 76.9258C88.0293 76.9258 92.5921 82.9137 93.6046 83.6622C94.617 84.4062 92.1951 85.9834 90.2817 85.7027"
           stroke="#0089C5"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M80.5918 83.0551C80.5918 83.0551 81.4928 79.6245 85.5471 80.7472"
           stroke="#0089C5"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M92.9551 76.9251C92.9551 76.9251 93.749 74.0291 97.3172 74.9781"
           stroke="#0089C5"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M95.6309 91.832C95.6309 91.832 90.176 95.6903 85.5508 91.832"
           stroke="#0089C5"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M83.9629 92.2611C83.9629 92.2611 85.6132 92.6532 86.4829 90.8711"
           stroke="#0089C5"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M135.332 210.82C135.332 210.82 138.048 221.553 149.194 234.821"
           stroke="#0089C5"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M186.23 106.374L199.38 108.744C199.591 108.782 199.731 108.984 199.693 109.194L197.625 120.638C196.932 124.474 193.253 127.025 189.413 126.333C185.572 125.641 183.018 121.966 183.711 118.13L185.779 106.686C185.817 106.476 186.019 106.336 186.23 106.374Z"
@@ -148,26 +148,26 @@ export const FriendshipImage = () => {
         <path
           d="M183.016 85.0377C183.016 85.0377 186.847 83.1264 187.77 86.7441"
           stroke="#04648E"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M194.352 88.5134C194.352 88.5134 198.103 86.4461 199.173 90.0282"
           stroke="#04648E"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M187.25 101.389L196.759 100.195C196.759 100.195 196.871 104.78 192.312 104.78C187.754 104.78 187.25 101.389 187.25 101.389V101.389Z"
           stroke="#04648E"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <path
           d="M190.528 86.2773C190.528 86.2773 188.227 92.292 187.219 92.6662C185.774 93.2009 185.925 95.032 187.553 95.2726C189.181 95.5132 189.859 94.9696 189.859 94.9696"
           stroke="#04648E"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
+          strokeWidth="1.5"
+          strokeMiterlimit="10"
         />
         <defs>
           <linearGradient
@@ -178,9 +178,9 @@ export const FriendshipImage = () => {
             y2="201.195"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#10ACDA" />
-            <stop offset="0.51" stop-color="#089CD0" />
-            <stop offset="1" stop-color="#0089C5" />
+            <stop stopColor="#10ACDA" />
+            <stop offset="0.51" stopColor="#089CD0" />
+            <stop offset="1" stopColor="#0089C5" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_6048_73045"
@@ -190,9 +190,9 @@ export const FriendshipImage = () => {
             y2="89.2745"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F9B038" />
-            <stop offset="0.35" stop-color="#F9B64F" />
-            <stop offset="1" stop-color="#FAC483" />
+            <stop stopColor="#F9B038" />
+            <stop offset="0.35" stopColor="#F9B64F" />
+            <stop offset="1" stopColor="#FAC483" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_6048_73045"
@@ -202,9 +202,9 @@ export const FriendshipImage = () => {
             y2="71.3366"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F9B038" />
-            <stop offset="0.35" stop-color="#F9B64F" />
-            <stop offset="1" stop-color="#FAC483" />
+            <stop stopColor="#F9B038" />
+            <stop offset="0.35" stopColor="#F9B64F" />
+            <stop offset="1" stopColor="#FAC483" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_6048_73045"
@@ -214,9 +214,9 @@ export const FriendshipImage = () => {
             y2="131.634"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F9B038" />
-            <stop offset="0.35" stop-color="#F9B64F" />
-            <stop offset="1" stop-color="#FAC483" />
+            <stop stopColor="#F9B038" />
+            <stop offset="0.35" stopColor="#F9B64F" />
+            <stop offset="1" stopColor="#FAC483" />
           </linearGradient>
           <linearGradient
             id="paint4_linear_6048_73045"
@@ -226,10 +226,10 @@ export const FriendshipImage = () => {
             y2="105.692"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#F9B038" />
-            <stop offset="0.22" stop-color="#F9B74F" />
-            <stop offset="0.68" stop-color="#FBCB8B" />
-            <stop offset="1" stop-color="#FDDAB7" />
+            <stop stopColor="#F9B038" />
+            <stop offset="0.22" stopColor="#F9B74F" />
+            <stop offset="0.68" stopColor="#FBCB8B" />
+            <stop offset="1" stopColor="#FDDAB7" />
           </linearGradient>
           <linearGradient
             id="paint5_linear_6048_73045"
@@ -239,8 +239,8 @@ export const FriendshipImage = () => {
             y2="116.951"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#625951" />
-            <stop offset="1" stop-color="#BE9B78" />
+            <stop stopColor="#625951" />
+            <stop offset="1" stopColor="#BE9B78" />
           </linearGradient>
         </defs>
       </svg>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Popover from './Popover';
-import Button, { ButtonTypes } from '../Button/Button';
+import Button, { ButtonVariations } from '../Button/Button';
 import Text, { TextTypes } from '../Text/Text';
 import { DotsIcon } from '../Icon';
 import styled from 'styled-components';
@@ -28,14 +28,14 @@ export const Default = args => {
   return (
     <Popover
       trigger={
-        <Button variation={ButtonTypes.Icon}>
+        <Button variation={ButtonVariations.Icon}>
           <DotsIcon label="dotsIcon" labelId="dotsIcon" />
         </Button>
       }
       {...args}
     >
-      <StyledOption variation={ButtonTypes.Inline}>Report</StyledOption>
-      <StyledOption variation={ButtonTypes.Inline}>Unmatch</StyledOption>
+      <StyledOption variation={ButtonVariations.Inline}>Report</StyledOption>
+      <StyledOption variation={ButtonVariations.Inline}>Unmatch</StyledOption>
     </Popover>
   );
 };

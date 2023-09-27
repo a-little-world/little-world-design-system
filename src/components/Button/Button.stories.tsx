@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { ArrowLeftIcon, InfoIcon } from '../Icon';
-import Button, { ButtonTypes } from './Button';
+import React from 'react';
+import { ArrowLeftIcon, InfoIcon, PhoneIcon } from '../Icon';
+import Button, { ButtonVariations } from './Button';
 import Text from '../Text/Text';
 import styled from 'styled-components';
 import tokens from '../../tokens';
@@ -12,8 +12,15 @@ export default {
 
 export const Default = args => <Button {...args}>Blah Blah</Button>;
 
+export const ButtonOption = args => (
+  <Button variation={ButtonVariations.Option} {...args}>
+    <PhoneIcon label="phone icon" labelId="phone icon" />
+    Call partner
+  </Button>
+);
+
 export const ButtonControl = args => (
-  <Button variation={ButtonTypes.Control}>
+  <Button variation={ButtonVariations.Control}>
     <ArrowLeftIcon
       label="arrowLeft"
       labelId="arrowLeft"
@@ -25,10 +32,10 @@ export const ButtonControl = args => (
 
 export const ButtonIcon = args => (
   <div style={{ display: 'flex', gap: tokens.spacing.large }}>
-    <Button variation={ButtonTypes.Icon} color={args.color}>
+    <Button variation={ButtonVariations.Icon} color={args.color}>
       <InfoIcon label="info" labelId="info" />
     </Button>
-    <Button variation={ButtonTypes.Icon} color={args.color}>
+    <Button variation={ButtonVariations.Icon} color={args.color}>
       <InfoIcon circular label="info" labelId="info" />
     </Button>
   </div>
@@ -44,7 +51,7 @@ export const ButtonInline = args => (
       <StyledSpan tag="span" type="Body2">
         This is the default styling:
       </StyledSpan>
-      <Button variation={ButtonTypes.Inline}>
+      <Button variation={ButtonVariations.Inline}>
         <Text type="Body2" tag="span">
           Click to activate.
         </Text>
@@ -54,7 +61,7 @@ export const ButtonInline = args => (
       <StyledSpan tag="span" type="Body2">
         This is with the backgroundColor prop set:
       </StyledSpan>
-      <Button variation={ButtonTypes.Inline} backgroundColor="red">
+      <Button variation={ButtonVariations.Inline} backgroundColor="red">
         <Text type="Body2" color={'red'} tag="span">
           Click to activate.
         </Text>
