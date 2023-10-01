@@ -161,27 +161,33 @@ export const StyledButton = styled.button<{
       return css`
         display: inline-flex;
         border: none;
-        background: transparent;
+        color: ${$color || 'currentColor'};
         border-radius: 0px;
         height: auto;
         width: auto;
-        padding: 0px;
         gap: ${tokens.spacing.xxxsmall};
+        padding: ${tokens.spacing.xxxsmall} 0;
+        transition: all 0.3s ease-in-out;
+        background: transparent;
 
-        background-image: linear-gradient(
-          248deg,
-          ${$backgroundColor || '#36a9e0'} -40%,
-          ${$backgroundColor || '#0367b2'} 100%
-        );
-        background-size: 0 100%;
-        background-repeat: no-repeat;
-        transition: 0.4s;
+        // underline hover effect
+        &::before {
+          content: '';
+          background: ${$color || 'currentColor'};
+          display: block;
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          transition: all 0.3s ease-in-out;
+        }
 
         &:hover:enabled {
-          background-size: 100% 100%;
-          color: white;
-          > * {
-            color: white;
+          background-position: 0;
+
+          &::before {
+            width: 100%;
           }
         }
       `;

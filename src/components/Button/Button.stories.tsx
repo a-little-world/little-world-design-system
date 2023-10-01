@@ -59,10 +59,10 @@ export const ButtonInline = args => (
     </span>
     <span>
       <StyledSpan tag="span" type="Body2">
-        This is with the backgroundColor prop set:
+        This is with the color prop set:
       </StyledSpan>
-      <Button variation={ButtonVariations.Inline} backgroundColor="red">
-        <Text type="Body2" color={'red'} tag="span">
+      <Button variation={ButtonVariations.Inline} color="red">
+        <Text type="Body2" tag="span">
           Click to activate.
         </Text>
       </Button>
