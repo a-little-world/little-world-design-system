@@ -18,6 +18,7 @@ export const Area = styled.textarea<{ $hasError: boolean }>`
   border-radius: 10px;
   padding: ${tokens.spacing.xxsmall};
   box-sizing: border-box;
+  margin-bottom: ${tokens.spacing.xxxxsmall};
 
-  ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
+  ${({ $hasError }) => $hasError && INPUT_ERROR_CSS};
 `;

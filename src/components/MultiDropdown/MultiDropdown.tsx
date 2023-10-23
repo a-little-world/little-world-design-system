@@ -103,14 +103,16 @@ const MultiDropdown: React.FC<Props> = ({
 
   return (
     <MultiDropdownWrapper>
-      <Label
-        bold
-        htmlFor={firstDropdown.label}
-        marginBottom={tokens.spacing.xxsmall}
-        toolTipText={labelTooltip}
-      >
-        {label}
-      </Label>
+      {label && (
+        <Label
+          bold
+          htmlFor={firstDropdown.label}
+          marginBottom={tokens.spacing.xsmall}
+          toolTipText={labelTooltip}
+        >
+          {label}
+        </Label>
+      )}
       {Array(segments)
         .fill('')
         .map((_, index) => (
@@ -163,7 +165,13 @@ const MultiDropdown: React.FC<Props> = ({
             color={'orange'}
           />
         </Button>
-        <Text>{addMoreLabel}</Text>
+        <Button
+          variation={ButtonVariations.Inline}
+          disabled={segments === maxSegments}
+          onClick={() => setSegments(currentNumber => currentNumber + 1)}
+        >
+          <Text>{addMoreLabel}</Text>
+        </Button>
       </AddMore>
     </MultiDropdownWrapper>
   );

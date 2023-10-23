@@ -2,27 +2,31 @@ import styled, { css } from 'styled-components';
 import tokens from '../../tokens';
 import { coreColors } from '../../tokens/core';
 import { ButtonAppearance, ButtonSizes, ButtonVariations } from './Button';
+import { LINK_HOVER_CSS } from '../Link/Link';
 
 export const OPTION_BUTTON_CSS = css<{
   $appearance?: keyof typeof ButtonAppearance;
   $backgroundColor?: string;
   $color?: string;
 }>`
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   background: ${({ $backgroundColor, theme }) =>
     $backgroundColor || theme.color.surface.secondary};
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
   color: ${({ $color, theme }) => $color || theme.color.text.primary};
   border-radius: 15px;
+  font-weight: 700;
   width: 100%;
   display: flex;
   flex-direction: column;
   flex: 1;
   padding: ${tokens.spacing.xsmall};
-  gap: ${tokens.spacing.xxxxsmall};
+  gap: ${tokens.spacing.xxxsmall};
   max-width: 144px;
   align-items: center;
   justify-content: center;
-  font-size: 0.8725rem;
   font-weight: normal;
   min-height: 69px;
 
@@ -42,9 +46,10 @@ export const OPTION_BUTTON_CSS = css<{
 `;
 
 const StandardButtonCss = css<{ $size?: string }>`
+  font-weight: 700;
   border-radius: 90px;
   padding: ${tokens.spacing.xsmall} ${tokens.spacing.small};
-  height: 40px;
+  height: 49px;
 
   ${({ $size }) => {
     if ($size === ButtonSizes.Small) {
@@ -75,8 +80,7 @@ export const StyledButton = styled.button<{
   cursor: pointer;
   position: relative;
   font-family: 'Signika Negative';
-  font-size: 0.8725rem;
-  font-weight: 700;
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,6 +91,10 @@ export const StyledButton = styled.button<{
   &:hover:enabled {
     transition: background-color 0.5s ease, filter 0.5s ease,
       border-color 0.5s ease, color 0.5s ease, 0.4s;
+  }
+
+  & > * {
+    cursor: pointer;
   }
 
   &:disabled {
@@ -170,18 +178,11 @@ export const StyledButton = styled.button<{
         transition: all 0.3s ease-in-out;
         background: transparent;
 
-        // underline hover effect
-        &::before {
-          content: '';
-          background: ${$color || 'currentColor'};
-          display: block;
-          position: absolute;
-          bottom: 0px;
-          left: 0;
-          width: 0;
-          height: 2px;
-          transition: all 0.3s ease-in-out;
+        &:disabled {
+          background: transparent;
         }
+
+        ${LINK_HOVER_CSS}
 
         &:hover:enabled {
           background-position: 0;

@@ -1,7 +1,7 @@
-import { Gradients } from './components/Icon/IconGradient';
 export {
   default as Button,
   ButtonAppearance,
+  ButtonSizes,
   ButtonVariations,
 } from './components/Button/Button';
 export { OPTION_BUTTON_CSS } from './components/Button/styles';
@@ -15,6 +15,7 @@ export { Gradients } from './components/Icon/IconGradient';
 export * from './components/Illustrations';
 export { default as InputError } from './components/InputError/InputError';
 export { default as Label } from './components/Label/Label';
+export { default as Link } from './components/Label/Label';
 export { default as Modal } from './components/Modal/Modal';
 export { default as MultiSelection } from './components/MultiSelection/MultiSelection';
 export { default as ProgressBar } from './components/ProgressBar/ProgressBar';

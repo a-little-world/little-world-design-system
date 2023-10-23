@@ -15,6 +15,7 @@ export const Input = styled.input<{ $hasError: boolean }>`
   border-radius: 10px;
   box-sizing: border-box;
   padding: ${tokens.spacing.xxsmall};
+  margin-bottom: ${tokens.spacing.xxxxsmall};
 
   ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
 `;

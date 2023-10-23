@@ -15,6 +15,7 @@ export const Options = styled.div<{ $hasError: boolean }>`
   flex-wrap: wrap;
   gap: ${tokens.spacing.xxsmall};
   padding: ${tokens.spacing.xxsmall};
+  margin-bottom: ${tokens.spacing.xxsmall};
   white-space: pre-line;
 
   ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}

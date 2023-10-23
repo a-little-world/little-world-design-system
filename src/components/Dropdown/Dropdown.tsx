@@ -13,6 +13,7 @@ import {
 import { ArrowDownIcon, CheckIcon } from '../Icon';
 import Text from '../Text/Text';
 import Label from '../Label/Label';
+import InputError from '../InputError/InputError';
 
 type Options = { value: string; label: string }[];
 
@@ -46,7 +47,7 @@ const Option: React.FC<{ children: string; value: string }> = ({
         <Text>{children}</Text>
       </Select.SelectItemText>
       <SelectItemIndicator>
-        <CheckIcon label="selected item" labelId="selected item" />
+        <CheckIcon label="selected item" labelId="selected item" width="10px" />
       </SelectItemIndicator>
     </SelectItem>
   );
@@ -69,16 +70,12 @@ const Dropdown: React.FC<DropdownProps> = ({
     value && isValidValue(value, options) ? value : undefined;
 
   return (
-    <DropdownWrapper $hasPadding={!Boolean(label)}>
-      <Label
-        bold
-        htmlFor={ariaLabel}
-        error={error}
-        toolTipText={labelTooltip}
-        canHaveError
-      >
-        {label}
-      </Label>
+    <DropdownWrapper>
+      {label && (
+        <Label bold htmlFor={ariaLabel} toolTipText={labelTooltip}>
+          {label}
+        </Label>
+      )}
       <Select.Root
         disabled={disabled}
         onValueChange={onValueChange}
@@ -110,6 +107,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           </SelectViewport>
         </SelectContent>
       </Select.Root>
+      <InputError visible={Boolean(error)}>{error}</InputError>
     </DropdownWrapper>
   );
 };

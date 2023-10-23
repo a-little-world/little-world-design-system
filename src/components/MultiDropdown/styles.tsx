@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import tokens from '../../tokens';
 import { DROPDOWN_MAX_WIDTH } from '../Dropdown/styles';
 
@@ -17,12 +17,8 @@ export const Segment = styled.section`
       ${tokens.spacing.small},
       auto
     );
-  align-items: end;
+  align-items: start;
 
   gap: ${tokens.spacing.small};
   margin-bottom: ${tokens.spacing.xxsmall};
-
-  &:last-of-type {
-    margin-bottom: ${tokens.spacing.small};
-  }
 `;

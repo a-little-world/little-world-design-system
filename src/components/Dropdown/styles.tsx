@@ -7,16 +7,10 @@ import { INPUT_ERROR_CSS } from '../InputError/InputError';
 
 export const DROPDOWN_MAX_WIDTH = '300px';
 
-export const DropdownWrapper = styled.div<{ $hasPadding: boolean }>`
+export const DropdownWrapper = styled.div`
   position: relative;
   max-width: ${DROPDOWN_MAX_WIDTH};
   width: 100%;
-
-  ${({ $hasPadding }) =>
-    $hasPadding &&
-    `
-   padding-top: ${tokens.spacing.small};
-  `};
 `;
 
 export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
@@ -34,6 +28,7 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
   border: 2px solid ${tokens.color.theme.light.border.subtle};
   width: 100%;
   color: ${tokens.color.theme.light.text.secondary};
+  margin-bottom: ${tokens.spacing.xxxxsmall};
 
   > span {
     ${BODY_3_CSS}

@@ -21,16 +21,13 @@ const TextArea: React.FC<Props> = ({
   ...areaProps
 }: Props) => (
   <AreaWrapper>
-    <Label
-      bold
-      htmlFor={id}
-      toolTipText={labelTooltip}
-      error={error}
-      canHaveError
-    >
-      {label}
-    </Label>
+    {label && (
+      <Label bold htmlFor={id} toolTipText={labelTooltip}>
+        {label}
+      </Label>
+    )}
     <Area ref={inputRef} id={id} $hasError={Boolean(error)} {...areaProps} />
+    <InputError visible={Boolean(error)}>{error}</InputError>
   </AreaWrapper>
 );
 
