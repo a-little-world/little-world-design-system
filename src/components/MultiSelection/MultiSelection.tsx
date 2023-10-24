@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MultiSelectionWrapper, Options, Option } from './styles';
 
 import Label from '../Label/Label';
+import InputError from '../InputError/InputError';
 
 type Props = {
   error?: string;
@@ -35,15 +36,11 @@ const MultiSelection: React.FC<Props> = ({
 
   return (
     <MultiSelectionWrapper>
-      <Label
-        bold
-        htmlFor={id}
-        toolTipText={labelTooltip}
-        error={error}
-        canHaveError
-      >
-        {label}
-      </Label>
+      {label && (
+        <Label bold htmlFor={id} toolTipText={labelTooltip}>
+          {label}
+        </Label>
+      )}
       <Options $hasError={Boolean(error)}>
         {options.map(option => {
           const isSelected = selected?.some(el => el === option.value);
@@ -66,6 +63,7 @@ const MultiSelection: React.FC<Props> = ({
           );
         })}
       </Options>
+      <InputError visible={Boolean(error)}>{error}</InputError>
     </MultiSelectionWrapper>
   );
 };

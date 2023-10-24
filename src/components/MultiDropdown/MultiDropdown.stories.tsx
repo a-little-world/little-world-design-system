@@ -25,6 +25,10 @@ Default.args = {
       { value: 'A1', label: 'A1' },
       { value: 'A2', label: 'A2' },
       { value: 'B1', label: 'B1' },
+      {
+        label: 'B2 = (fluent & spontaneous conversations, current events',
+        value: 'B2',
+      },
     ],
     placeholder: 'Select a level...',
     label: 'Level Selector',

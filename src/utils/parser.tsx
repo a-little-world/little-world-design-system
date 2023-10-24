@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from '../components/Link/Link';
 
 const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
   color: ${({ theme, color }) => theme.color.text[color]};
@@ -39,9 +40,9 @@ const textParser = (text: string) => {
 
       components.push(
         attrs.href ? (
-          <a key={tag + match[3]} {...attrs}>
+          <Link key={tag + match[3]} to={attrs.href} {...attrs}>
             {match[3]}
-          </a>
+          </Link>
         ) : (
           match[3]
         ),

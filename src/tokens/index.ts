@@ -37,10 +37,11 @@ export default {
         surface: {
           primary: coreColors.white,
           secondary: coreColors.gray50,
-          indicator: coreColors.green,
+          indicator: coreColors.green10,
           highlight: coreColors.orange,
           disabled: coreColors.gray10,
           error: coreColors.red10,
+          success: coreColors.green10,
         },
         text: {
           primary: coreColors.black,
@@ -50,6 +51,7 @@ export default {
           link: coreColors.blue20,
           button: coreColors.white,
           error: coreColors.red20,
+          success: coreColors.green30,
           highlight: coreColors.orange,
           disabled: coreColors.gray30,
         },

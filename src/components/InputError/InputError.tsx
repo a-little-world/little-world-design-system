@@ -23,8 +23,8 @@ const ErrorText = styled(Text)<{
   visibility: hidden;
   opacity: 0;
   transition: visibility 1s, opacity 1s;
-  text-align: right;
-
+  height: ${tokens.spacing.small};
+  padding-left: 1px;
   ${({ $top, $bottom, $right, $left }) =>
     ($top || $right) &&
     `

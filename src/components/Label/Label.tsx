@@ -10,14 +10,6 @@ import tokens from '../../tokens';
 import textParser from '../../utils/parser';
 import InputError from '../InputError/InputError';
 
-const LabelContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr max-content;
-  align-items: end;
-  gap: ${tokens.spacing.xxxsmall};
-  margin-bottom: ${tokens.spacing.xxsmall};
-`;
-
 const StyledLabel = styled(RadixLabel.Root)<{
   $bold?: boolean;
   $inline?: boolean;
@@ -29,8 +21,8 @@ const StyledLabel = styled(RadixLabel.Root)<{
   ${({ $bold, $inline, $marginBottom }) =>
     css`
       ${$bold && 'font-weight: bold;'}
-      display: ${$inline ? 'inline' : 'block'};
-      margin-bottom: ${$marginBottom || '0'};
+      display: ${$inline ? 'inline-flex' : 'block'};
+      margin-bottom: ${$inline ? '0' : $marginBottom || tokens.spacing.xxsmall};
       gap: ${tokens.spacing.xxxsmall};
     `}
 `;
@@ -40,8 +32,6 @@ type LabelProps = RadixLabel.LabelProps & {
   inline?: boolean;
   marginBottom?: string;
   toolTipText?: string;
-  canHaveError?: boolean;
-  error?: string;
 };
 
 const Label: React.FC<LabelProps> = ({
@@ -53,10 +43,8 @@ const Label: React.FC<LabelProps> = ({
   asChild,
   htmlFor,
   toolTipText,
-  canHaveError,
-  error,
 }) => {
-  const LabelEl = (
+  return (
     <StyledLabel
       $bold={bold}
       $inline={Boolean(inline || toolTipText)}
@@ -83,15 +71,6 @@ const Label: React.FC<LabelProps> = ({
         />
       )}
     </StyledLabel>
-  );
-
-  return canHaveError ? (
-    <LabelContainer>
-      {LabelEl}
-      <InputError visible={Boolean(error)}>{error}</InputError>
-    </LabelContainer>
-  ) : (
-    LabelEl
   );
 };
 

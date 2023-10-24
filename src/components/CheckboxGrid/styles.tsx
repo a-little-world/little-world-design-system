@@ -17,8 +17,9 @@ export const Grid = styled.div<{
 
   grid-template-columns: ${({ $columns }) =>
     `repeat(${$columns}, minmax(max-content, 1fr))`};
-  grid-auto-rows: ${({ $rows }) => `repeat(${$rows}, 1fr)`};
+  grid-template-rows: ${({ $rows }) => `repeat(${$rows}, 1fr)`};
   margin-bottom: ${tokens.spacing.small};
+  padding-bottom: ${tokens.spacing.xxsmall};
   overflow-x: scroll;
 `;
 
@@ -57,34 +58,13 @@ export const ScrollableWrapper = styled.div`
   display: contents;
 `;
 
-const calculateRow = ({
-  index,
-  columns,
-}: {
-  index: number;
-  columns: number;
-}) => {
-  return Math.ceil((index + 1) / (columns - 1)) + 1;
-};
-
-const calculateColumns = ({
-  index,
-  columns,
-  row,
-}: {
-  index: number;
-  columns: number;
-  row: number;
-}) => {
-  if (index + 1 < columns) return index + 2;
-  return index + 2 - (columns - 1) * (row - 2);
-};
-
 export const StyledCheckbox = styled(Checkbox)<{
   checked: boolean;
   $row: number;
   $column: number;
 }>`
+  display: flex;
+  align-items: center;
   justify-content: center;
   grid-row-start: ${({ $row }) => $row};
   grid-column-start: ${({ $column }) => $column};
