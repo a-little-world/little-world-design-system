@@ -12,6 +12,7 @@ const StyledCard = styled.div<{ $height?: string; $width?: string }>`
   background: white;
   border: 1px solid white;
   box-shadow: 0px 1px 25px 1px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
 
   display: flex;
   flex-direction: column;
