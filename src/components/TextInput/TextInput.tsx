@@ -4,6 +4,11 @@ import { Input, InputWrapper } from './styles';
 import Label from '../Label/Label';
 import InputError from '../InputError/InputError';
 
+export enum InputWidth {
+  Small = '136px',
+  Medium = '240px',
+  Large = '480px',
+}
 interface Props extends React.ComponentPropsWithoutRef<'input'> {
   error?: string;
   id: string;
@@ -11,6 +16,7 @@ interface Props extends React.ComponentPropsWithoutRef<'input'> {
   labelTooltip?: string;
   type: string;
   inputRef?: React.RefObject<HTMLInputElement>;
+  width?: InputWidth;
 }
 
 const TextInput: React.FC<Props> = ({
@@ -20,9 +26,10 @@ const TextInput: React.FC<Props> = ({
   id,
   type = 'text',
   inputRef,
+  width = InputWidth.Large,
   ...inputProps
 }: Props) => (
-  <InputWrapper>
+  <InputWrapper $width={width}>
     {label && (
       <Label bold htmlFor={id} toolTipText={labelTooltip}>
         {label}

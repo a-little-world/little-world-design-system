@@ -15,7 +15,7 @@ export { Gradients } from './components/Icon/IconGradient';
 export * from './components/Illustrations';
 export { default as InputError } from './components/InputError/InputError';
 export { default as Label } from './components/Label/Label';
-export { default as Link } from './components/Label/Label';
+export { default as Link } from './components/Link/Link';
 export { default as Modal } from './components/Modal/Modal';
 export { default as MultiSelection } from './components/MultiSelection/MultiSelection';
 export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
@@ -27,7 +27,10 @@ export {
   default as TextContent,
   ContentTypes,
 } from './components/TextContent/TextContent';
-export { default as TextInput } from './components/TextInput/TextInput';
+export {
+  default as TextInput,
+  InputWidth,
+} from './components/TextInput/TextInput';
 export { default as ToolTip } from './components/ToolTip/ToolTip';
 
 export { default as designTokens } from './tokens';

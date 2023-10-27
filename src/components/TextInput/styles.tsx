@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import tokens from '../../tokens';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.div<{ $width: string }>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 500px;
+  max-width: ${({ $width }) => $width};
 `;
 
 export const Input = styled.input<{ $hasError: boolean }>`
