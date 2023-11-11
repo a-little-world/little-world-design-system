@@ -23,32 +23,34 @@ const TextPage = ({ content }: Props) => {
       {content.map(({ text, type, listItems }) => {
         if (type === ContentTypes.Heading)
           return (
-            <Text tag="h2" type={TextTypes.Heading2}>
+            <Text key={text} tag="h2" type={TextTypes.Heading2}>
               {text}
             </Text>
           );
 
         if (type === ContentTypes.Title)
           return (
-            <Text tag="h3" type={TextTypes.Heading3} bold>
+            <Text key={text} tag="h3" type={TextTypes.Heading3} bold>
               {text}
             </Text>
           );
 
         if (type === ContentTypes.Subtitle)
           return (
-            <Text tag="h4" type={TextTypes.Body1} bold>
+            <Text key={text} tag="h4" type={TextTypes.Body1} bold>
               {text}
             </Text>
           );
 
-        if (type === ContentTypes.Paragraph) return <Text>{text}</Text>;
+        if (type === ContentTypes.Paragraph)
+          return <Text key={text}>{text}</Text>;
 
-        if (type === ContentTypes.Sentence) return <Text>{text}</Text>;
+        if (type === ContentTypes.Sentence)
+          return <Text key={text}>{text}</Text>;
 
         if (type === ContentTypes.List)
           return (
-            <List>
+            <List key={listItems[0]}>
               {listItems.map(item => (
                 <ListItem key={item} tag="li">
                   {item}
@@ -57,7 +59,12 @@ const TextPage = ({ content }: Props) => {
             </List>
           );
 
-        if (type === ContentTypes.Emphasize) return <Text bold>{text}</Text>;
+        if (type === ContentTypes.Emphasize)
+          return (
+            <Text key={text} bold>
+              {text}
+            </Text>
+          );
       })}
     </ContentWrapper>
   );
