@@ -37,6 +37,7 @@ export default {
         surface: {
           primary: coreColors.white,
           secondary: coreColors.gray50,
+          bold: coreColors.blue10,
           indicator: coreColors.green10,
           highlight: coreColors.orange,
           disabled: coreColors.gray10,

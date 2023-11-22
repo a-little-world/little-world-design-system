@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import tokens from '../../tokens';
 import { coreColors } from '../../tokens/core';
 import { ButtonAppearance, ButtonSizes, ButtonVariations } from './Button';
-import { LINK_HOVER_CSS } from '../Link/Link';
+import { LINK_HOVER_CSS } from '../Link/Link.styles';
 
 export const OPTION_BUTTON_CSS = css<{
   $appearance?: keyof typeof ButtonAppearance;

@@ -15,6 +15,7 @@ type Props = {
   className?: string;
   color?: string;
   error?: string;
+  inputRef?: React.RefObject<HTMLButtonElement>;
   label?: string;
 } & CheckboxProps;
 
@@ -23,6 +24,7 @@ const Checkbox: React.FC<Props> = ({
   className,
   color = coreColors.orange,
   error,
+  inputRef,
   label,
   onCheckedChange,
   value,
@@ -32,6 +34,7 @@ const Checkbox: React.FC<Props> = ({
     <CheckboxContainer>
       <CheckboxRoot
         {...rest}
+        ref={inputRef}
         checked={checked}
         onCheckedChange={onCheckedChange}
         value={value}
