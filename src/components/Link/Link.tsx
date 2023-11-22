@@ -1,6 +1,6 @@
 import React from 'react';
 import { Anchor, AnchorText } from './Link.styles';
-import { TextTypes } from '../Text/styles';
+import { TextTypes } from '../Text';
 
 type LinkProps = {
   active?: boolean;
