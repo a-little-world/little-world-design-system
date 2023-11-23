@@ -6,7 +6,6 @@ export default {
   title: 'Components/Slider',
   argTypes: {
     step: { control: 'number' },
-    // side: { control: 'select', options: ['top', 'left', 'right', 'bottom'] },
   },
 };
 
@@ -15,6 +14,8 @@ export const Default = args => {
 };
 
 Default.args = {
+  ariaLabel: 'German Level Slider',
+  label: 'How good is your German?',
   steps: [
     'No chance',
     'I introduce myself',

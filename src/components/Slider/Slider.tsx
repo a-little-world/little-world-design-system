@@ -24,6 +24,7 @@ type SliderProps = {
 const Slider = ({
   ariaLabel,
   defaultValue,
+  inputRef,
   label,
   labelTooltip,
   onValueChange,
@@ -42,6 +43,8 @@ const Slider = ({
       </Label>
     )}
     <SliderRoot
+      aria-label={ariaLabel}
+      ref={inputRef}
       defaultValue={defaultValue}
       max={steps.length - 1}
       onValueChange={onValueChange}

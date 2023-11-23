@@ -1,5 +1,6 @@
 import Text from '../Text/Text';
 import styled, { css } from 'styled-components';
+import { StyledElement } from '../Text/styles';
 
 export const LINK_HOVER_CSS = css`
   transition: all 0.3s ease-in-out;
@@ -38,6 +39,6 @@ export const Anchor = styled.a<{ $active?: boolean }>`
   }
 `;
 
-export const AnchorText = styled(Text)`
+export const AnchorText = styled(StyledElement)`
   color: ${({ theme }) => theme.color.text.link};
 `;
