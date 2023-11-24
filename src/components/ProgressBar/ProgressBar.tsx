@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as Progress from '@radix-ui/react-progress';
 import styled from 'styled-components';
 import tokens from '../../tokens';
-import Text, { TextTypes } from '../Text/Text';
+import Text from '../Text/Text';
+import TextTypes from '../Text/TextTypes';
 
 const ProgressRoot = styled(Progress.Root)`
   position: relative;

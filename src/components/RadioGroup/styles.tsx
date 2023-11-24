@@ -9,7 +9,7 @@ export const RadioGroupWrapper = styled.div``;
 export const RadioGroupRoot = styled(RadioGroup.Root)`
   display: flex;
   flex-direction: column;
-  gap: ${tokens.spacing.xsmall};
+  gap: ${tokens.spacing.xxsmall};
 `;
 
 export const RadioGroupItem = styled(RadioGroup.Item)`

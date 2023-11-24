@@ -21,7 +21,9 @@ export { default as MultiSelection } from './components/MultiSelection/MultiSele
 export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
 export { default as Popover } from './components/Popover/Popover';
 export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
-export { default as Text, TextTypes } from './components/Text/Text';
+export { default as Slider } from './components/Slider/Slider';
+export { default as Text } from './components/Text/Text';
+export { default as TextTypes } from './components/Text/TextTypes';
 export { default as TextArea } from './components/TextArea/TextArea';
 export {
   default as TextContent,

@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyledButton } from './styles';
+import { Loading, StyledButton } from './styles';
+
+export const LOADING_RING_ID = 'loadingRing';
 
 export enum ButtonVariations {
   Basic = 'Basic',
@@ -25,11 +27,21 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   appearance?: keyof typeof ButtonAppearance;
   backgroundColor?: string;
   color?: string;
+  loading?: boolean;
   size?: ButtonSizes;
   variation?: keyof typeof ButtonVariations;
 }
 
 export type Ref = HTMLButtonElement;
+
+export const LoadingRing = () => (
+  <Loading data-testid={LOADING_RING_ID}>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </Loading>
+);
 
 const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
   (
@@ -38,6 +50,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
       backgroundColor,
       color,
       children,
+      loading,
       size = ButtonSizes.Small,
       variation = ButtonVariations.Basic,
       type = 'button',
@@ -56,7 +69,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
         type={type}
         {...rest}
       >
-        {children}
+        {loading ? <LoadingRing /> : children}
       </StyledButton>
     );
   },
