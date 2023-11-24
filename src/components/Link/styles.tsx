@@ -1,4 +1,3 @@
-import Text from '../Text/Text';
 import styled, { css } from 'styled-components';
 import { StyledElement } from '../Text/styles';
 

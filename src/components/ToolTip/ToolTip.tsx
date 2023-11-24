@@ -1,6 +1,7 @@
 import React from 'react';
 import * as RadixToolTip from '@radix-ui/react-tooltip';
-import Text, { TextTypes } from '../Text/Text';
+import Text from '../Text/Text';
+import TextTypes from '../Text/TextTypes';
 import { StyledTooltipArrow, StyledToolTipContent } from './styles';
 
 type Props = {

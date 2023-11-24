@@ -15,6 +15,7 @@ type Props = {
   className?: string;
   color?: string;
   error?: string;
+  id?: string;
   inputRef?: React.RefObject<HTMLButtonElement>;
   label?: string;
 } & CheckboxProps;
@@ -24,34 +25,41 @@ const Checkbox: React.FC<Props> = ({
   className,
   color = coreColors.orange,
   error,
+  id,
   inputRef,
   label,
   onCheckedChange,
   value,
   ...rest
-}: Props) => (
-  <CheckboxWrapper className={className}>
-    <CheckboxContainer>
-      <CheckboxRoot
-        {...rest}
-        ref={inputRef}
-        checked={checked}
-        onCheckedChange={onCheckedChange}
-        value={value}
-        $hasError={Boolean(error)}
-      >
-        <CheckboxIndicator>
-          <CheckIcon label="check icon" labelId="check icon" width={10} />
-        </CheckboxIndicator>
-      </CheckboxRoot>
-      {label && (
-        <StyledLabel htmlFor={label} inline>
-          {label}
-        </StyledLabel>
-      )}
-    </CheckboxContainer>
-    <InputError visible={Boolean(error)}>{error}</InputError>
-  </CheckboxWrapper>
-);
+}: Props) => {
+  console.log({ checked, error, inputRef, onCheckedChange, value, ...rest });
+  return (
+    <CheckboxWrapper className={className}>
+      <CheckboxContainer>
+        <CheckboxRoot
+          ref={inputRef}
+          id={id}
+          checked={checked}
+          onCheckedChange={onCheckedChange}
+          value={value}
+          $hasError={Boolean(error)}
+          {...rest}
+        >
+          <CheckboxIndicator>
+            <CheckIcon label="check icon" labelId="check icon" width={10} />
+          </CheckboxIndicator>
+        </CheckboxRoot>
+        {label && (
+          <StyledLabel htmlFor={label} inline>
+            {label}
+          </StyledLabel>
+        )}
+      </CheckboxContainer>
+      <InputError visible={Boolean(error)} textAlign="left">
+        {error}
+      </InputError>
+    </CheckboxWrapper>
+  );
+};
 
 export default Checkbox;

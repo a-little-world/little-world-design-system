@@ -1,7 +1,6 @@
 import React from 'react';
 import Popover from './Popover';
 import Button, { ButtonVariations } from '../Button/Button';
-import Text, { TextTypes } from '../Text/Text';
 import { DotsIcon } from '../Icon';
 import styled from 'styled-components';
 

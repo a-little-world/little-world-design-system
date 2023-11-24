@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextTypes } from '../Text/Text';
+import TextTypes from '../Text/TextTypes';
 import { Anchor, AnchorText } from './styles';
 
 type LinkProps = {

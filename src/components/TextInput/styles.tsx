@@ -12,7 +12,7 @@ export const InputWrapper = styled.div<{ $width: string }>`
 export const Input = styled.input<{ $hasError: boolean }>`
   width: 100%;
   border: 1px solid ${tokens.color.theme.light.border.moderate};
-  border-radius: 10px;
+  border-radius: ${tokens.spacing.xxsmall};
   box-sizing: border-box;
   padding: ${tokens.spacing.xxsmall};
   margin-bottom: ${tokens.spacing.xxxxsmall};

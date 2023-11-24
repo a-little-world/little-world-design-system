@@ -42,7 +42,12 @@ const TextInput: React.FC<Props> = ({
       id={id}
       {...inputProps}
     />
-    <InputError visible={Boolean(error)}>{error}</InputError>
+    <InputError
+      visible={Boolean(error)}
+      textAlign={width === InputWidth.Large ? 'right' : 'left'}
+    >
+      {error}
+    </InputError>
   </InputWrapper>
 );
 

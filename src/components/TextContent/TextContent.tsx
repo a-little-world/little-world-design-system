@@ -1,5 +1,6 @@
 import React from 'react';
-import Text, { TextTypes } from '../Text/Text';
+import Text from '../Text/Text';
+import TextTypes from '../Text/TextTypes';
 
 import { ContentWrapper, List, ListItem } from './styles';
 
