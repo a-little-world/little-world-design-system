@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { TextTypes } from './Text';
+import TextTypes from './TextTypes';
 import tokens from '../../tokens/index';
 
 const BODY_SHARED_STYLES = css`

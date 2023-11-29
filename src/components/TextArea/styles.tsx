@@ -15,7 +15,7 @@ export const Area = styled.textarea<{ $hasError: boolean }>`
   font-family: 'Signika Negative', sans-serif;
   height: 80px;
   border: 1px solid ${tokens.color.theme.light.border.moderate};
-  border-radius: 10px;
+  border-radius: ${tokens.spacing.xxsmall};
   padding: ${tokens.spacing.xxsmall};
   box-sizing: border-box;
   margin-bottom: ${tokens.spacing.xxxxsmall};

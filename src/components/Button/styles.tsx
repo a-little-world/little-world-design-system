@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import tokens from '../../tokens';
 import { coreColors } from '../../tokens/core';
 import { ButtonAppearance, ButtonSizes, ButtonVariations } from './Button';
-import { LINK_HOVER_CSS } from '../Link/Link';
+import { LINK_HOVER_CSS } from '../Link/styles';
 
 export const OPTION_BUTTON_CSS = css<{
   $appearance?: keyof typeof ButtonAppearance;
@@ -193,4 +193,46 @@ export const StyledButton = styled.button<{
         }
       `;
   }}
+`;
+
+const loading = keyframes`
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+`;
+
+export const Loading = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  > div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    animation: ${loading} 1.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+
+  > div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+
+  > div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+
+  > div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Text, { TextTypes } from '../Text/Text';
+import Text from '../Text/Text';
+import TextTypes from '../Text/TextTypes';
 import tokens from '../../tokens';
 
 export const INPUT_ERROR_CSS = css`
@@ -17,6 +18,7 @@ const ErrorText = styled(Text)<{
   $bottom?: string;
   $right?: string;
   $left?: string;
+  $textAlign: 'left' | 'center' | 'right';
   $visible: boolean;
 }>`
   color: ${({ theme }) => theme.color.text.error};
@@ -25,6 +27,8 @@ const ErrorText = styled(Text)<{
   transition: visibility 1s, opacity 1s;
   height: ${tokens.spacing.small};
   padding-left: 1px;
+  text-align: ${({ $textAlign }) => $textAlign};
+
   ${({ $top, $bottom, $right, $left }) =>
     ($top || $right) &&
     `
@@ -41,10 +45,6 @@ const ErrorText = styled(Text)<{
     visibility: visible;
     opacity: 1;
   `};
-
-  @media (min-width: ${tokens.breakpoints.small}) {
-    text-align: left;
-  }
 `;
 
 type Props = {
@@ -54,6 +54,7 @@ type Props = {
   right?: string;
   left?: string;
   visible: boolean;
+  textAlign?: 'left' | 'center' | 'right';
 };
 
 const InputError: React.FC<Props> = ({
@@ -62,6 +63,7 @@ const InputError: React.FC<Props> = ({
   bottom,
   right,
   left,
+  textAlign = 'right',
   visible,
 }) => (
   <ErrorText
@@ -71,6 +73,7 @@ const InputError: React.FC<Props> = ({
     $bottom={bottom}
     $right={right}
     $left={left}
+    $textAlign={textAlign}
   >
     {children}
   </ErrorText>
