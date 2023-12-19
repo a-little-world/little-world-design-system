@@ -8,6 +8,7 @@ const LABEL_ID = 'MessageIcon';
 export const MessageIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     height,
     gradient,
@@ -32,6 +33,7 @@ export const MessageIcon = (props: IconSvgProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
+        className={className}
         fill="none"
         viewBox="1.85 3.6 32.95 26.79"
       >

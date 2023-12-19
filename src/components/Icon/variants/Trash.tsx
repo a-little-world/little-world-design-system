@@ -8,6 +8,7 @@ const LABEL_ID = 'TrashIcon';
 export const TrashIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -30,8 +31,9 @@ export const TrashIcon = (props: IconSvgProps) => {
         aria-labelledby={labelId || LABEL_ID}
         fill="none"
         focusable={false}
-        height={height}
         width={width}
+        height={height}
+        className={className}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="2.67 3.64 26.67 26.67"
       >

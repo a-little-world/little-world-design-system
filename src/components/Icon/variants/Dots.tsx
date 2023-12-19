@@ -8,6 +8,7 @@ const LABEL_ID = 'DotsIcon';
 export const DotsIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -29,6 +30,7 @@ export const DotsIcon = (props: IconSvgProps) => {
       <svg
         width={width}
         height={height}
+        className={className}
         viewBox="0 0 32.055 32.055"
         fill={color}
         xmlns="http://www.w3.org/2000/svg"

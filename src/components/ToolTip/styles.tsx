@@ -1,6 +1,7 @@
 import { TooltipArrow, TooltipContent } from '@radix-ui/react-tooltip';
 import styled, { keyframes } from 'styled-components';
 import tokens from '../../tokens';
+import { PopoverSizes } from '../Popover/Popover';
 
 const slideUpAndFade = keyframes`
   from {
@@ -48,10 +49,11 @@ const slideLeftAndFade = keyframes`
 
 export const StyledToolTipContent = styled(TooltipContent)`
   border-radius: 4px;
-  padding: ${tokens.spacing.xsmall} ${tokens.spacing.small};
+  padding: ${tokens.spacing.small};
   font-size: 15px;
-  line-height: 1;
-  background-color: white;
+  line-height: 1.5;
+  color: ${tokens.color.theme.light.text.reversed};
+  background-color: ${tokens.color.theme.light.surface.bold};
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
     hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   user-select: none;
@@ -59,7 +61,7 @@ export const StyledToolTipContent = styled(TooltipContent)`
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
   width: max-content;
-  max-width: 90vw;
+  max-width: ${PopoverSizes.Large};
 
   &[data-state='delayed-open'][data-side='top'] {
     animation-name: ${slideDownAndFade};
@@ -76,5 +78,5 @@ export const StyledToolTipContent = styled(TooltipContent)`
 `;
 
 export const StyledTooltipArrow = styled(TooltipArrow)`
-  fill: white;
+  fill: ${tokens.color.theme.light.surface.bold};
 `;

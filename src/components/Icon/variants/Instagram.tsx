@@ -8,6 +8,7 @@ const LABEL_ID = 'InstagramIcon';
 export const InstagramIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,

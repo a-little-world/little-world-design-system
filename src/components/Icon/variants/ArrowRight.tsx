@@ -8,6 +8,7 @@ const LABEL_ID = 'ArrowRightIcon';
 export const ArrowRightIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -31,6 +32,7 @@ export const ArrowRightIcon = (props: IconSvgProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
+        className={className}
         viewBox="0 0 6 11"
         fill="none"
       >

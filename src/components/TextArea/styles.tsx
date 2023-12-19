@@ -13,6 +13,7 @@ export const AreaWrapper = styled.div`
 export const Area = styled.textarea<{ $hasError: boolean }>`
   width: 100%;
   font-family: 'Signika Negative', sans-serif;
+  font-size: 1rem;
   height: 80px;
   border: 1px solid ${tokens.color.theme.light.border.moderate};
   border-radius: ${tokens.spacing.xxsmall};

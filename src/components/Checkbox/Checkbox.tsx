@@ -18,13 +18,15 @@ type Props = {
   id?: string;
   inputRef?: React.RefObject<HTMLButtonElement>;
   label?: string;
+  required?: boolean;
 } & CheckboxProps;
 
 const Checkbox: React.FC<Props> = ({
   checked,
   className,
-  color = coreColors.orange,
+  color,
   error,
+  required = true,
   id,
   inputRef,
   label,
@@ -32,7 +34,6 @@ const Checkbox: React.FC<Props> = ({
   value,
   ...rest
 }: Props) => {
-  console.log({ checked, error, inputRef, onCheckedChange, value, ...rest });
   return (
     <CheckboxWrapper className={className}>
       <CheckboxContainer>
@@ -43,10 +44,16 @@ const Checkbox: React.FC<Props> = ({
           onCheckedChange={onCheckedChange}
           value={value}
           $hasError={Boolean(error)}
+          $color={color}
           {...rest}
         >
           <CheckboxIndicator>
-            <CheckIcon label="check icon" labelId="check icon" width={10} />
+            <CheckIcon
+              label="check icon"
+              labelId="check icon"
+              width={10}
+              color={color ? coreColors.white : coreColors.black}
+            />
           </CheckboxIndicator>
         </CheckboxRoot>
         {label && (
@@ -55,9 +62,11 @@ const Checkbox: React.FC<Props> = ({
           </StyledLabel>
         )}
       </CheckboxContainer>
-      <InputError visible={Boolean(error)} textAlign="left">
-        {error}
-      </InputError>
+      {required && (
+        <InputError visible={Boolean(error)} textAlign="left">
+          {error}
+        </InputError>
+      )}
     </CheckboxWrapper>
   );
 };

@@ -14,6 +14,9 @@ export const List = styled.ul`
   padding-inline-start: ${tokens.spacing.small};
   margin-block-start: 0;
   margin-block-end: 0;
+  > li:not(:last-child) {
+    margin-bottom: ${tokens.spacing.xxsmall};
+  }
 `;
 
 export const ListItem = styled(Text)`

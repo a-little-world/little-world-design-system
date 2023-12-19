@@ -8,6 +8,7 @@ const LABEL_ID = 'FacebookIcon';
 export const FacebookIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,

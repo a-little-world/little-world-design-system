@@ -8,6 +8,7 @@ const LABEL_ID = 'LogoutIcon';
 export const LogoutIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -32,6 +33,7 @@ export const LogoutIcon = (props: IconSvgProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
+        className={className}
         fill="none"
         viewBox="0.5 0 30 30"
       >

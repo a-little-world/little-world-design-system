@@ -1,8 +1,17 @@
 import React from 'react';
-import { Input, InputWrapper } from './styles';
+import {
+  Input,
+  InputContainer,
+  InputWrapper,
+  ShowPasswordToggle,
+} from './styles';
 
 import Label from '../Label/Label';
 import InputError from '../InputError/InputError';
+import Button, { ButtonVariations } from '../Button/Button';
+import { EyeClosedIcon, EyeOpenIcon } from '../Icon';
+
+const PASSWORD_TOGGLE_ICON_SIZE = 20;
 
 export enum InputWidth {
   Small = '136px',
@@ -28,27 +37,68 @@ const TextInput: React.FC<Props> = ({
   inputRef,
   width = InputWidth.Large,
   ...inputProps
-}: Props) => (
-  <InputWrapper $width={width}>
-    {label && (
-      <Label bold htmlFor={id} toolTipText={labelTooltip}>
-        {label}
-      </Label>
-    )}
-    <Input
-      ref={inputRef}
-      $hasError={Boolean(error)}
-      type={type}
-      id={id}
-      {...inputProps}
-    />
-    <InputError
-      visible={Boolean(error)}
-      textAlign={width === InputWidth.Large ? 'right' : 'left'}
-    >
-      {error}
-    </InputError>
-  </InputWrapper>
-);
+}: Props) => {
+  const [inputType, setInputType] = React.useState(type); // ['text', 'password'
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handlePasswordVisibilityToggle = () => {
+    if (inputType === 'password') {
+      setInputType('text');
+      setShowPassword(true);
+    } else {
+      setInputType('password');
+      setShowPassword(false);
+    }
+  };
+
+  return (
+    <InputWrapper $width={width}>
+      {label && (
+        <Label bold htmlFor={id} toolTipText={labelTooltip}>
+          {label}
+        </Label>
+      )}
+      <InputContainer>
+        <Input
+          ref={inputRef}
+          $hasError={Boolean(error)}
+          type={inputType}
+          id={id}
+          {...inputProps}
+        />
+        {type === 'password' && (
+          <ShowPasswordToggle
+            type="button"
+            variation={ButtonVariations.Icon}
+            onClick={handlePasswordVisibilityToggle}
+          >
+            {showPassword ? (
+              <EyeClosedIcon
+                label="show password"
+                labelId="showPassword"
+                width={PASSWORD_TOGGLE_ICON_SIZE}
+                height={PASSWORD_TOGGLE_ICON_SIZE}
+              />
+            ) : (
+              <EyeOpenIcon
+                label="hide password"
+                labelId="hidePassword"
+                width={PASSWORD_TOGGLE_ICON_SIZE}
+                height={PASSWORD_TOGGLE_ICON_SIZE}
+              />
+            )}
+          </ShowPasswordToggle>
+        )}
+      </InputContainer>
+
+      <InputError
+        visible={Boolean(error)}
+        textAlign={width === InputWidth.Large ? 'right' : 'left'}
+      >
+        {error}
+      </InputError>
+    </InputWrapper>
+  );
+};
 
 export default TextInput;

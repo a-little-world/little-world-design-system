@@ -8,6 +8,7 @@ const LABEL_ID = 'ProfileIcon';
 export const ProfileIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -32,6 +33,7 @@ export const ProfileIcon = (props: IconSvgProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
+        className={className}
         fill="none"
         viewBox="4.5 3.51 29.11 28.98"
       >

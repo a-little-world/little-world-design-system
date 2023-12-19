@@ -8,6 +8,7 @@ const LABEL_ID = 'PlusIcon';
 export const PlusIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -29,6 +30,7 @@ export const PlusIcon = (props: IconSvgProps) => {
       <svg
         width={width}
         height={height}
+        className={className}
         viewBox="0 0 34 36"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
