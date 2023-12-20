@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import tokens from '../../tokens';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
+import Text from '../Text/Text';
 
 export const AreaWrapper = styled.div`
   display: flex;
@@ -8,6 +9,11 @@ export const AreaWrapper = styled.div`
   width: 100%;
   max-width: 500px;
   position: relative;
+`;
+
+export const AreaContainer = styled.div`
+  position: relative;
+  width: 100%;
 `;
 
 export const Area = styled.textarea<{ $hasError: boolean }>`
@@ -22,4 +28,10 @@ export const Area = styled.textarea<{ $hasError: boolean }>`
   margin-bottom: ${tokens.spacing.xxxxsmall};
 
   ${({ $hasError }) => $hasError && INPUT_ERROR_CSS};
+`;
+
+export const Counter = styled(Text)`
+  position: absolute;
+  top: -20px;
+  right: ${tokens.spacing.xxxsmall};
 `;
