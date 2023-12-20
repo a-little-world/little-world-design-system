@@ -31,10 +31,10 @@ export const OPTION_BUTTON_CSS = css<{
   min-height: 69px;
 
   &:hover:enabled {
-    filter: brightness(120%) contrast(120%);
+    filter: brightness(95%);
     cursor: pointer;
-    box-shadow: 0 0 10px 3px rgb(0 0 0 / 11%),
-      0 0 8px 6px rgb(255 255 255 / 15%);
+    box-shadow: 0 0 10px 1px rgb(0 0 0 / 11%),
+      0 0 8px 3px rgb(255 255 255 / 15%);
   }
 
   ${({ $appearance, $backgroundColor, $color, theme }) =>
@@ -68,6 +68,38 @@ const StandardButtonCss = css<{ $size?: string }>`
       return `width: 100%;`;
     }
   }}
+`;
+
+export const PrimaryButtonCss = css<{ $backgroundColor?: string }>`
+  ${StandardButtonCss}
+
+  color: ${coreColors.white};
+  border: none;
+  background: ${({ theme, $backgroundColor }) =>
+    $backgroundColor || theme.color.gradient.orange};
+
+  &:hover:enabled {
+    filter: brightness(90%);
+  }
+`;
+
+export const SecondaryButtonCss = css<{
+  $color?: string;
+  $backgroundColor?: string;
+}>`
+  ${StandardButtonCss}
+
+  ${({ $color, $backgroundColor }) => `
+    border: 2px solid ${$color || coreColors.blue20};
+    background-color: ${coreColors.white};
+    color: ${$color || coreColors.blue20};
+
+    &:hover:enabled {
+      background: ${$backgroundColor || coreColors.blue20};
+      color: white;
+      border-color: ${$backgroundColor || coreColors.blue20};
+    }
+  `}
 `;
 
 export const StyledButton = styled.button<{
@@ -104,34 +136,10 @@ export const StyledButton = styled.button<{
     cursor: not-allowed;
   }
 
-  ${({ $appearance, $backgroundColor, $color, $variation, theme }) => {
+  ${({ $appearance, $color, $variation }) => {
     if ($variation === ButtonVariations.Basic) {
-      if ($appearance === ButtonAppearance.Primary)
-        return css`
-          ${StandardButtonCss}
-
-          color: ${coreColors.white};
-          border: none;
-          background: ${$backgroundColor || theme.color.gradient.orange};
-
-          &:hover:enabled {
-            filter: brightness(120%);
-          }
-        `;
-
-      if ($appearance === ButtonAppearance.Secondary)
-        return css`
-          ${StandardButtonCss}
-          border: 2px solid ${$color || coreColors.blue20};
-          background-color: ${coreColors.white};
-          color: ${$color || coreColors.blue20};
-
-          &:hover:enabled {
-            background: ${$backgroundColor || coreColors.blue20};
-            color: white;
-            border-color: ${$backgroundColor || coreColors.blue20};
-          }
-        `;
+      if ($appearance === ButtonAppearance.Primary) return PrimaryButtonCss;
+      if ($appearance === ButtonAppearance.Secondary) return SecondaryButtonCss;
     }
 
     if ($variation === ButtonVariations.Option) return OPTION_BUTTON_CSS;
@@ -159,8 +167,10 @@ export const StyledButton = styled.button<{
         height: auto;
         width: auto;
         padding: 0px;
+        transition: filter 0.5s ease;
 
         &:hover:enabled {
+          transition: filter 0.5s ease;
           filter: brightness(0.9);
         }
       `;
@@ -174,7 +184,7 @@ export const StyledButton = styled.button<{
         height: auto;
         width: auto;
         gap: ${tokens.spacing.xxxsmall};
-        padding: ${tokens.spacing.xxxsmall} 0;
+        padding: ${tokens.spacing.xxxxsmall} 0;
         transition: all 0.3s ease-in-out;
         background: transparent;
 

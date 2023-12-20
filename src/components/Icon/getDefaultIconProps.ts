@@ -1,6 +1,7 @@
 import { IconSvgProps } from './Icon';
 export const getDefaultIconProps = ({
   circular,
+  className,
   color,
   height,
   gradient,
@@ -8,6 +9,7 @@ export const getDefaultIconProps = ({
   ...rest
 }: IconSvgProps): IconSvgProps => ({
   circular,
+  className,
   color: color || 'currentColor',
   height: height || '32',
   gradient,

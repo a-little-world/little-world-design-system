@@ -55,6 +55,7 @@ type Props = {
   left?: string;
   visible: boolean;
   textAlign?: 'left' | 'center' | 'right';
+  textType?: TextTypes;
 };
 
 const InputError: React.FC<Props> = ({
@@ -64,10 +65,11 @@ const InputError: React.FC<Props> = ({
   right,
   left,
   textAlign = 'right',
+  textType = TextTypes.Body5,
   visible,
 }) => (
   <ErrorText
-    type={TextTypes.Body5}
+    type={textType}
     $visible={visible}
     $top={top}
     $bottom={bottom}

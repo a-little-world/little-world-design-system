@@ -7,6 +7,8 @@ export * from './variants/Close';
 export * from './variants/Dashboard';
 export * from './variants/Dots';
 export * from './variants/Exclamation';
+export * from './variants/EyeClosed';
+export * from './variants/EyeOpen';
 export * from './variants/Facebook';
 export * from './variants/Github';
 export * from './variants/Image';

@@ -9,6 +9,7 @@ const LABEL_ID = 'ExclamationIcon';
 export const ExclamationIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -34,6 +35,7 @@ export const ExclamationIcon = (props: IconSvgProps) => {
         focusable={false}
         width={width}
         height={height}
+        className={className}
         viewBox="0 0 102 103"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

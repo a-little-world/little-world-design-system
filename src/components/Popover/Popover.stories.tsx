@@ -20,10 +20,11 @@ export default {
   argTypes: {
     open: { control: 'boolean' },
     side: { control: 'select', options: ['top', 'left', 'right', 'bottom'] },
+    children: { control: 'text' },
   },
 };
 
-export const Default = args => {
+export const Default = ({ children, ...args }) => {
   return (
     <Popover
       trigger={
@@ -33,8 +34,16 @@ export const Default = args => {
       }
       {...args}
     >
-      <StyledOption variation={ButtonVariations.Inline}>Report</StyledOption>
-      <StyledOption variation={ButtonVariations.Inline}>Unmatch</StyledOption>
+      {children || (
+        <>
+          <StyledOption variation={ButtonVariations.Inline}>
+            Report
+          </StyledOption>
+          <StyledOption variation={ButtonVariations.Inline}>
+            Unmatch
+          </StyledOption>
+        </>
+      )}
     </Popover>
   );
 };

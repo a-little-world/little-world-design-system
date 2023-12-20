@@ -8,6 +8,7 @@ const LABEL_ID = 'TwitterIcon';
 export const TwitterIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
