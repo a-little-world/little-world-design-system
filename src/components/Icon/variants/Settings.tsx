@@ -8,6 +8,7 @@ const LABEL_ID = 'SettingsIcon';
 export const SettingsIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -32,6 +33,7 @@ export const SettingsIcon = (props: IconSvgProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
+        className={className}
         fill="none"
         viewBox="3 3.12 25 23.76"
       >

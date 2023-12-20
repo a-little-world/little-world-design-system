@@ -20,7 +20,11 @@ module.exports = {
     name: '@storybook/react-webpack5',
     options: {},
   },
-  stories: ['../src/components/**/*.stories.tsx', '../src/utils/*.stories.mdx'],
+  stories: [
+    '../src/components/**/*.stories.tsx',
+    '../src/utils/*.stories.mdx',
+    '../src/tokens/*.stories.mdx',
+  ],
   staticDirs: ['../public'],
   features: {
     interactionsDebugger: true,

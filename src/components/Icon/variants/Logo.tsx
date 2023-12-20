@@ -6,7 +6,7 @@ import IconGradient from '../IconGradient';
 const LABEL_ID = 'Logo';
 
 export const Logo = (props: IconSvgProps) => {
-  const { circular, color, height, label, labelId, labelVisible } =
+  const { circular, className, color, height, label, labelId, labelVisible } =
     getDefaultIconProps(props);
   const id = LABEL_ID + labelId;
 

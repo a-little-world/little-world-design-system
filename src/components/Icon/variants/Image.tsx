@@ -8,6 +8,7 @@ const LABEL_ID = 'ImageIcon';
 export const ImageIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -30,8 +31,9 @@ export const ImageIcon = (props: IconSvgProps) => {
         aria-labelledby={labelId || LABEL_ID}
         fill="none"
         focusable={false}
-        height={height}
         width={width}
+        height={height}
+        className={className}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="4.83 5.31 23.33 23.33"
       >

@@ -10,7 +10,8 @@ import Button, { ButtonVariations } from '../Button/Button';
 
 export enum PopoverSizes {
   Small = '160px',
-  Large = '260px',
+  Medium = '240px',
+  Large = '360px',
 }
 
 type Props = {
@@ -41,6 +42,7 @@ const Popover: React.FC<Props> = ({
       sideOffset={sideOffset}
       $width={width}
       $extraPaddingTop={showCloseButton}
+      collisionPadding={DEFAULT_SIDE_OFFSET}
     >
       {children}
       {showCloseButton && (

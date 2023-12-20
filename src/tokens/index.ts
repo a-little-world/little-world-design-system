@@ -55,6 +55,13 @@ export default {
           success: coreColors.green30,
           highlight: coreColors.orange,
           disabled: coreColors.gray30,
+          reversed: coreColors.white,
+        },
+        status: {
+          info: coreColors.blue10,
+          warning: coreColors.orange,
+          error: coreColors.red20,
+          success: coreColors.green10,
         },
         gradient: {
           blue10: 'linear-gradient(50.19deg, #36a9e0 2.84%, #0367b2 106.82%)',

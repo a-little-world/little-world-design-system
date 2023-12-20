@@ -8,6 +8,7 @@ const LABEL_ID = 'QuestionIcon';
 export const QuestionIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -31,6 +32,7 @@ export const QuestionIcon = (props: IconSvgProps) => {
         focusable={false}
         width={width}
         height={height}
+        className={className}
         viewBox="7.5 7.5 25 25"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

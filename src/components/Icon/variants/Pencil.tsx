@@ -8,6 +8,7 @@ const LABEL_ID = 'PencilIcon';
 export const PencilIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -29,6 +30,7 @@ export const PencilIcon = (props: IconSvgProps) => {
       <svg
         width={width}
         height={height}
+        className={className}
         viewBox="0 0 13 12"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

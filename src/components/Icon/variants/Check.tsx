@@ -8,6 +8,7 @@ const LABEL_ID = 'Check';
 export const CheckIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -31,6 +32,7 @@ export const CheckIcon = (props: IconSvgProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
+        className={className}
         viewBox="3.5 3.62 8.25 7.75"
         fill="none"
       >

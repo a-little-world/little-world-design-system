@@ -9,6 +9,7 @@ import {
   ColumnHeading,
   ScrollableWrapper,
 } from './styles';
+import { coreColors } from '../../tokens/core';
 
 type SelectedType = { [x: string]: string[] };
 
@@ -77,6 +78,7 @@ const CheckboxGrid: React.FC<Props> = ({
                   name={name}
                   onCheckedChange={state => onSelect({ value, key, state })}
                   value={value}
+                  color={coreColors.orange}
                   $row={rowIndex + 2}
                   $column={columnIndex + 2}
                 />

@@ -8,6 +8,7 @@ const LABEL_ID = 'PhoneIcon';
 export const PhoneIcon = (props: IconSvgProps) => {
   const {
     circular,
+    className,
     color,
     gradient,
     height,
@@ -32,6 +33,7 @@ export const PhoneIcon = (props: IconSvgProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
+        className={className}
         fill="none"
         viewBox="0 0 32 32"
       >
