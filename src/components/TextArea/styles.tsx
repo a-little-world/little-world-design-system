@@ -11,11 +11,6 @@ export const AreaWrapper = styled.div`
   position: relative;
 `;
 
-export const AreaContainer = styled.div`
-  position: relative;
-  width: 100%;
-`;
-
 export const Area = styled.textarea<{ $hasError: boolean }>`
   width: 100%;
   font-family: 'Signika Negative', sans-serif;
@@ -32,6 +27,6 @@ export const Area = styled.textarea<{ $hasError: boolean }>`
 
 export const Counter = styled(Text)`
   position: absolute;
-  top: -20px;
-  right: ${tokens.spacing.xxxsmall};
+  bottom: 0px;
+  right: ${tokens.spacing.xxxxsmall};
 `;
