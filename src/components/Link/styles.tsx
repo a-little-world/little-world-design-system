@@ -3,10 +3,10 @@ import { StyledElement } from '../Text/styles';
 import { ButtonAppearance } from '../Button/Button';
 import { PrimaryButtonCss, SecondaryButtonCss } from '../Button/styles';
 
-const ButtonAppearances = {
-  Primary: PrimaryButtonCss,
-  Secondary: SecondaryButtonCss,
-};
+// const ButtonAppearances = {
+//   Primary: PrimaryButtonCss,
+//   Secondary: SecondaryButtonCss,
+// };
 
 export const LINK_HOVER_CSS = css`
   transition: all 0.3s ease-in-out;
@@ -43,7 +43,9 @@ export const Anchor = styled.a<{
   ${({ theme, $buttonAppearance, $color }) =>
     $buttonAppearance
       ? css`
-          ${ButtonAppearances[$buttonAppearance]}
+          ${$buttonAppearance === ButtonAppearance.Primary
+            ? PrimaryButtonCss
+            : SecondaryButtonCss}
           box-sizing: border-box;
           align-items: center;
           justify-content: center;

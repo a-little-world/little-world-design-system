@@ -8,7 +8,6 @@ import ToolTip from '../ToolTip/ToolTip';
 import { coreColors } from '../../tokens/core';
 import tokens from '../../tokens';
 import textParser from '../../utils/parser';
-import InputError from '../InputError/InputError';
 
 const StyledLabel = styled(RadixLabel.Root)<{
   $bold?: boolean;
@@ -22,7 +21,7 @@ const StyledLabel = styled(RadixLabel.Root)<{
     css`
       ${$bold && 'font-weight: bold;'}
       display: ${$inline ? 'inline-flex' : 'block'};
-      margin-bottom: ${$inline ? '0' : $marginBottom || tokens.spacing.xsmall};
+      margin-bottom: ${$marginBottom ?? tokens.spacing.xsmall};
       gap: ${tokens.spacing.xxxsmall};
     `}
 `;
@@ -48,7 +47,7 @@ const Label: React.FC<LabelProps> = ({
     <StyledLabel
       $bold={bold}
       $inline={Boolean(inline || toolTipText)}
-      $marginBottom={marginBottom}
+      $marginBottom={inline ? '0px' : marginBottom}
       className={className}
       asChild={asChild}
       htmlFor={htmlFor}
