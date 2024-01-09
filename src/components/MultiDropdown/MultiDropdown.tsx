@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-
-import { AddMore, MultiDropdownWrapper, Segment } from './styles';
-import { PlusIcon, TrashIcon } from '../Icon';
-import Text from '../Text/Text';
-import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
-import Button, { ButtonVariations } from '../Button/Button';
-import Label from '../Label/Label';
 import tokens from '../../tokens';
+import Button, { ButtonVariations } from '../Button/Button';
+import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
+import { PlusIcon, TrashIcon } from '../Icon';
+import Label from '../Label/Label';
+import Text from '../Text/Text';
+import { AddMore, MultiDropdownWrapper, Segment } from './styles';
+import React, { useState } from 'react';
 
 const DELETE_SEGMENT = 'delete segment';
 
@@ -118,12 +117,6 @@ const MultiDropdown: React.FC<Props> = ({
         .fill('')
         .map((_, index) => {
           const isFirstSegment = index === 0;
-          console.log({
-            isFirstSegment,
-            index,
-            value:
-              (index === 0 && firstDropdown.lockedValue) || values[0][index],
-          });
           return (
             <Segment
               key={`MultiDropdown Segment ${index}${values[0][index]}${values[1][index]}`}
