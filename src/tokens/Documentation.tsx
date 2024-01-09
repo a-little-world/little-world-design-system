@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import tokens from './index';
 
 const Section = ({ title }: { title: string }) => {
   const vals = Object.entries(tokens['spacing']);
-  console.log({ vals });
+  // console.log({ vals });
   return (
     <div>
       {vals.map(([key, value]) => (

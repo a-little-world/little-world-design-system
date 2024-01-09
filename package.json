@@ -29,7 +29,7 @@
   "homepage": "https://github.com/a-little-world/little-world-design-system#readme",
   "prettier": "@a-little-world/little-world-prettier-config",
   "devDependencies": {
-    "@a-little-world/little-world-prettier-config": "^1.1.0",
+    "@a-little-world/little-world-prettier-config": "^1.2.0",
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.20.2",
     "@babel/preset-env": "^7.20.2",

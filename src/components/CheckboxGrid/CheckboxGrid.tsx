@@ -1,15 +1,16 @@
+import { CheckedState } from '@radix-ui/react-checkbox';
+import React, { useState } from 'react';
+
 import { coreColors } from '../../tokens/core';
 import InputError from '../InputError/InputError';
 import {
   CheckboxGridWrapper,
-  StyledCheckbox,
+  ColumnHeading,
   Grid,
   RowHeading,
-  ColumnHeading,
   ScrollableWrapper,
+  StyledCheckbox,
 } from './styles';
-import { CheckedState } from '@radix-ui/react-checkbox';
-import React, { useState } from 'react';
 
 type SelectedType = { [x: string]: string[] };
 
