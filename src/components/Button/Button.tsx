@@ -16,6 +16,7 @@ export enum ButtonAppearance {
   Secondary = 'Secondary',
 }
 
+
 // Applies only to Basic Button Variation
 export enum ButtonSizes {
   Small = 'Small',

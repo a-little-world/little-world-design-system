@@ -94,7 +94,7 @@ const Modal = ({
     </BackdropContainer>
   );
 
-  if (open || active) return createPortal(Backdrop, el);
+  if (open) return createPortal(Backdrop, el);
   return null;
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import TextTypes from '../Text/TextTypes';
 import { Anchor, AnchorText } from './styles';
-import { ButtonAppearance } from '../Button/Button';
+import { ButtonAppearance, ButtonSizes } from '../Button/Button';
 
 type LinkProps = {
   active?: boolean;
@@ -11,12 +11,14 @@ type LinkProps = {
   to: string;
   textType?: keyof typeof TextTypes;
   buttonAppearance?: keyof typeof ButtonAppearance;
+  buttonSize?: keyof typeof ButtonSizes;
 };
 
 const Link = ({
   active,
   bold,
   buttonAppearance,
+  buttonSize,
   children,
   onClick,
   to,
@@ -27,6 +29,7 @@ const Link = ({
     $active={active}
     onClick={onClick}
     $buttonAppearance={buttonAppearance}
+    $size={buttonSize}
   >
     <AnchorText
       as="span"
