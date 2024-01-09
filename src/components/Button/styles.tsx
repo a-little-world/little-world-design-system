@@ -30,7 +30,7 @@ export const OPTION_BUTTON_CSS = css<{
   font-weight: normal;
   min-height: 69px;
 
-  &:hover:enabled {
+  &:not(:disabled):hover {
     filter: brightness(95%);
     cursor: pointer;
     box-shadow: 0 0 10px 1px rgb(0 0 0 / 11%),
@@ -77,9 +77,13 @@ export const PrimaryButtonCss = css<{ $backgroundColor?: string }>`
   border: none;
   background: ${({ theme, $backgroundColor }) =>
     $backgroundColor || theme.color.gradient.orange};
+  transition: background-color 0.5s ease, filter 0.5s ease,
+    border-color 0.5s ease, color 0.5s ease, 0.4s;
 
-  &:hover:enabled {
-    filter: brightness(90%);
+  &:not(:disabled):hover {
+    filter: brightness(80%);
+    transition: background-color 0.5s ease, filter 0.5s ease,
+      border-color 0.5s ease, color 0.5s ease, 0.4s;
   }
 `;
 
@@ -93,11 +97,15 @@ export const SecondaryButtonCss = css<{
     border: 2px solid ${$color || coreColors.blue20};
     background-color: ${coreColors.white};
     color: ${$color || coreColors.blue20};
+    transition: background-color 0.5s ease, filter 0.5s ease,
+    border-color 0.5s ease, color 0.5s ease, 0.4s;
 
-    &:hover:enabled {
+    &:not(:disabled):hover {
       background: ${$backgroundColor || coreColors.blue20};
       color: white;
       border-color: ${$backgroundColor || coreColors.blue20};
+      transition: background-color 0.5s ease, filter 0.5s ease,
+      border-color 0.5s ease, color 0.5s ease, 0.4s;
     }
   `}
 `;
@@ -120,7 +128,7 @@ export const StyledButton = styled.button<{
   transition: background-color 0.5s ease, filter 0.5s ease,
     border-color 0.5s ease, color 0.5s ease, 0.4s;
 
-  &:hover:enabled {
+  &:not(:disabled):hover {
     transition: background-color 0.5s ease, filter 0.5s ease,
       border-color 0.5s ease, color 0.5s ease, 0.4s;
   }
@@ -152,7 +160,7 @@ export const StyledButton = styled.button<{
         width: 36px;
         height: 36px;
 
-        &:hover:enabled {
+        &:not(:disabled):hover {
           background-color: ${coreColors.gray20};
           color: white;
           border-color: ${coreColors.gray30};
@@ -169,7 +177,7 @@ export const StyledButton = styled.button<{
         padding: 0px;
         transition: filter 0.5s ease;
 
-        &:hover:enabled {
+        &:not(:disabled):hover {
           transition: filter 0.5s ease;
           filter: brightness(0.9);
         }
@@ -194,7 +202,7 @@ export const StyledButton = styled.button<{
 
         ${LINK_HOVER_CSS}
 
-        &:hover:enabled {
+        &:not(:disabled):hover {
           background-position: 0;
 
           &::before {

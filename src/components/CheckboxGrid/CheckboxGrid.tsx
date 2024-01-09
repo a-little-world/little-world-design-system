@@ -1,15 +1,16 @@
 import { CheckedState } from '@radix-ui/react-checkbox';
 import React, { useState } from 'react';
+
+import { coreColors } from '../../tokens/core';
 import InputError from '../InputError/InputError';
 import {
   CheckboxGridWrapper,
-  StyledCheckbox,
+  ColumnHeading,
   Grid,
   RowHeading,
-  ColumnHeading,
   ScrollableWrapper,
+  StyledCheckbox,
 } from './styles';
-import { coreColors } from '../../tokens/core';
 
 type SelectedType = { [x: string]: string[] };
 
@@ -62,7 +63,9 @@ const CheckboxGrid: React.FC<Props> = ({
             {columnHeadings[0]}
           </ColumnHeading>
           {rowHeadings.map((row, index) => (
-            <RowHeading index={index}>{row}</RowHeading>
+            <RowHeading key={row} index={index}>
+              {row}
+            </RowHeading>
           ))}
           <ScrollableWrapper>
             {columnHeadings.slice(1).map((column, index) => (
@@ -73,7 +76,7 @@ const CheckboxGrid: React.FC<Props> = ({
             {checkboxesByColumn.map((column, columnIndex) =>
               column.map(({ value, key }, rowIndex) => (
                 <StyledCheckbox
-                  key={key + value}
+                  key={key + value + rowIndex}
                   checked={selected[key]?.includes(value)}
                   name={name}
                   onCheckedChange={state => onSelect({ value, key, state })}

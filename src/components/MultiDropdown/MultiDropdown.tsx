@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-
-import { AddMore, MultiDropdownWrapper, Segment } from './styles';
-import { PlusIcon, TrashIcon } from '../Icon';
-import Text from '../Text/Text';
-import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
-import Button, { ButtonVariations } from '../Button/Button';
-import Label from '../Label/Label';
 import tokens from '../../tokens';
+import Button, { ButtonVariations } from '../Button/Button';
+import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
+import { PlusIcon, TrashIcon } from '../Icon';
+import Label from '../Label/Label';
+import Text from '../Text/Text';
+import { AddMore, MultiDropdownWrapper, Segment } from './styles';
+import React, { useState } from 'react';
 
 const DELETE_SEGMENT = 'delete segment';
 
@@ -19,6 +18,7 @@ type Props = {
   maxSegments?: number;
   onValueChange: (value: { [x: string]: string }[]) => void;
   firstDropdown: DropdownProps & {
+    lockedValue: string;
     dataField: string;
     values: string[];
     ariaLabel: string;
@@ -115,43 +115,50 @@ const MultiDropdown: React.FC<Props> = ({
       )}
       {Array(segments)
         .fill('')
-        .map((_, index) => (
-          <Segment
-            key={`MultiDropdown Segment ${index}${values[0][index]}${values[1][index]}`}
-          >
-            <Dropdown
-              ariaLabel={firstDropdown.ariaLabel + index}
-              placeholder={firstDropdown.placeholder}
-              onValueChange={val => handleValueChange(val, 0, index)}
-              options={firstDropdown.options}
-              value={values[0][index]}
-              required={Boolean(values[1][index])}
-              error={firstDropdown.errors?.[index]}
-            />
-            <Dropdown
-              ariaLabel={secondDropdown.ariaLabel + index}
-              placeholder={secondDropdown.placeholder}
-              onValueChange={val => handleValueChange(val, 1, index)}
-              options={secondDropdown.options}
-              value={values[1][index]}
-              required={Boolean(values[0][index])}
-              error={secondDropdown.errors?.[index]}
-            />
-            {!!index && (
-              <Button
-                variation={ButtonVariations.Icon}
-                onClick={() => handleDelete(index)}
-              >
-                <TrashIcon
-                  label={DELETE_SEGMENT}
-                  labelId={DELETE_SEGMENT}
-                  width={16}
-                  color="orange"
-                />
-              </Button>
-            )}
-          </Segment>
-        ))}
+        .map((_, index) => {
+          const isFirstSegment = index === 0;
+          return (
+            <Segment
+              key={`MultiDropdown Segment ${index}${values[0][index]}${values[1][index]}`}
+            >
+              <Dropdown
+                ariaLabel={firstDropdown.ariaLabel + index}
+                placeholder={firstDropdown.placeholder}
+                onValueChange={val => handleValueChange(val, 0, index)}
+                options={firstDropdown.options}
+                disabled={isFirstSegment && Boolean(firstDropdown.lockedValue)}
+                value={
+                  (isFirstSegment && firstDropdown.lockedValue) ||
+                  values[0][index]
+                }
+                required={Boolean(values[1][index])}
+                error={firstDropdown.errors?.[index]}
+              />
+              <Dropdown
+                ariaLabel={secondDropdown.ariaLabel + index}
+                placeholder={secondDropdown.placeholder}
+                onValueChange={val => handleValueChange(val, 1, index)}
+                options={secondDropdown.options}
+                value={values[1][index]}
+                required={Boolean(values[0][index])}
+                error={secondDropdown.errors?.[index]}
+              />
+              {!!index && (
+                <Button
+                  variation={ButtonVariations.Icon}
+                  onClick={() => handleDelete(index)}
+                >
+                  <TrashIcon
+                    label={DELETE_SEGMENT}
+                    labelId={DELETE_SEGMENT}
+                    width={16}
+                    color="orange"
+                  />
+                </Button>
+              )}
+            </Segment>
+          );
+        })}
       <AddMore>
         <Button
           variation={ButtonVariations.Control}

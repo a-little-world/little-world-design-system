@@ -59,7 +59,7 @@ const textParser = (text: string) => {
           {match[3]}
         </ColorText>,
       );
-      break;
+      continue;
     }
 
     // unrecognised tags are returned unprocessed

@@ -43,6 +43,18 @@ it('should return just string if anchor does not contain href', () => {
   expect(screen.getByText('this is an anchor')).toBeInTheDocument();
 });
 
+it('should return correct elements if string contains multiple anchor tags', () => {
+  const normalString = 'Mock string and';
+  const text =
+    normalString +
+    ` <a {"href": "little-world"}>this is an anchor</a>and<a {"href": "sda"}>another anchor</a>`;
+  render(textParser(text));
+
+  const links = screen.getAllByRole('link');
+  expect(links[0]).toHaveTextContent('this is an anchor');
+  expect(links[1]).toHaveTextContent('another anchor');
+});
+
 it('should return correct elements if string contains multiple valid tags', () => {
   const normalString = 'Mock string and';
   const text =
