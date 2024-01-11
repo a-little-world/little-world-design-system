@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import tokens from '../../tokens';
 import Button, { ButtonVariations } from '../Button/Button';
 import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
@@ -5,7 +7,6 @@ import { PlusIcon, TrashIcon } from '../Icon';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
 import { AddMore, MultiDropdownWrapper, Segment } from './styles';
-import React, { useState } from 'react';
 
 const DELETE_SEGMENT = 'delete segment';
 
@@ -55,7 +56,7 @@ const MultiDropdown: React.FC<Props> = ({
   firstDropdown,
   secondDropdown,
   onValueChange,
-  defaultSegments = 2,
+  defaultSegments = 1,
   maxSegments = 4,
 }) => {
   const [segments, setSegments] = useState(defaultSegments);
@@ -126,10 +127,9 @@ const MultiDropdown: React.FC<Props> = ({
                 placeholder={firstDropdown.placeholder}
                 onValueChange={val => handleValueChange(val, 0, index)}
                 options={firstDropdown.options}
-                disabled={isFirstSegment && Boolean(firstDropdown.lockedValue)}
-                value={
-                  (isFirstSegment && firstDropdown.lockedValue) ||
-                  values[0][index]
+                value={values[0][index]}
+                lockedValue={
+                  isFirstSegment ? firstDropdown.lockedValue : undefined
                 }
                 required={Boolean(values[1][index])}
                 error={firstDropdown.errors?.[index]}

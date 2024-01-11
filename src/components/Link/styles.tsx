@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { StyledElement } from '../Text/styles';
+
 import { ButtonAppearance, ButtonSizes } from '../Button/Button';
 import { PrimaryButtonCss, SecondaryButtonCss } from '../Button/styles';
+import { StyledElement } from '../Text/styles';
 
 export const LINK_HOVER_CSS = css`
   transition: all 0.3s ease-in-out;
@@ -21,11 +23,9 @@ export const LINK_HOVER_CSS = css`
   }
 `;
 
-export const Anchor = styled.a<{
-  $active?: boolean;
+const LINK_CSS = css<{
   $color?: string;
   $buttonAppearance?: keyof typeof ButtonAppearance;
-  $size?: keyof typeof ButtonSizes;
 }>`
   position: relative;
   display: inline-flex;
@@ -61,6 +61,24 @@ export const Anchor = styled.a<{
             }
           }
         `}
+`;
+
+export const RouterLink = styled(Link)<{
+  $active?: boolean;
+  $color?: string;
+  $buttonAppearance?: keyof typeof ButtonAppearance;
+  $size?: keyof typeof ButtonSizes;
+}>`
+  ${LINK_CSS}
+`;
+
+export const Anchor = styled.a<{
+  $active?: boolean;
+  $color?: string;
+  $buttonAppearance?: keyof typeof ButtonAppearance;
+  $size?: keyof typeof ButtonSizes;
+}>`
+  ${LINK_CSS}
 `;
 
 export const AnchorText = styled(StyledElement)``;

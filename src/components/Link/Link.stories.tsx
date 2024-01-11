@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Link from './Link';
 
 export default {
@@ -7,3 +8,7 @@ export default {
 };
 
 export const Default = args => <Link {...args}>Blah Blah</Link>;
+
+Default.args = {
+  href: 'www.little-world.com',
+};

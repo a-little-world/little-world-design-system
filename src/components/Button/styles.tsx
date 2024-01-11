@@ -1,8 +1,9 @@
 import styled, { css, keyframes } from 'styled-components';
+
 import tokens from '../../tokens';
 import { coreColors } from '../../tokens/core';
-import { ButtonAppearance, ButtonSizes, ButtonVariations } from './Button';
 import { LINK_HOVER_CSS } from '../Link/styles';
+import { ButtonAppearance, ButtonSizes, ButtonVariations } from './Button';
 
 export const OPTION_BUTTON_CSS = css<{
   $appearance?: keyof typeof ButtonAppearance;
@@ -50,6 +51,7 @@ const StandardButtonCss = css<{ $size?: string }>`
   border-radius: 90px;
   padding: ${tokens.spacing.xsmall} ${tokens.spacing.small};
   height: 49px;
+  max-width: 480px;
 
   ${({ $size }) => {
     if ($size === ButtonSizes.Small) {
