@@ -32,7 +32,6 @@ const Link = ({
   to,
   textType,
 }: LinkProps) => {
-  console.log({ to, href });
   const Component = Variants[href ? 'href' : 'to'] as React.ElementType;
   return (
     <Component
