@@ -1,19 +1,19 @@
-import React from 'react';
 import * as Select from '@radix-ui/react-select';
+import React from 'react';
 
-import {
-  SelectItem,
-  SelectTrigger,
-  SelectItemIndicator,
-  SelectViewport,
-  SelectContent,
-  SelectValue,
-  DropdownWrapper,
-} from './styles';
 import { ArrowDownIcon, CheckIcon } from '../Icon';
-import Text from '../Text/Text';
-import Label from '../Label/Label';
 import InputError from '../InputError/InputError';
+import Label from '../Label/Label';
+import Text from '../Text/Text';
+import {
+  DropdownWrapper,
+  SelectContent,
+  SelectItem,
+  SelectItemIndicator,
+  SelectTrigger,
+  SelectValue,
+  SelectViewport,
+} from './styles';
 
 type Options = { value: string; label: string }[];
 
@@ -22,6 +22,7 @@ export type DropdownProps = {
   error?: string;
   label?: string;
   labelTooltip?: string;
+  lockedValue?: string;
   options: Options;
   onValueChange: (value: string) => void;
   placeholder: string;
@@ -60,6 +61,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   inputRef,
   label,
   labelTooltip,
+  lockedValue,
   onValueChange,
   options,
   placeholder,
@@ -67,7 +69,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   value,
 }) => {
   const defaultValue =
-    value && isValidValue(value, options) ? value : undefined;
+    lockedValue || (value && isValidValue(value, options) ? value : undefined);
 
   return (
     <DropdownWrapper>
@@ -77,7 +79,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         </Label>
       )}
       <Select.Root
-        disabled={disabled}
+        disabled={disabled || !!lockedValue}
         onValueChange={onValueChange}
         required={required}
         defaultValue={defaultValue}
@@ -88,14 +90,16 @@ const Dropdown: React.FC<DropdownProps> = ({
           $hasError={Boolean(error)}
         >
           <SelectValue placeholder={placeholder} />
-          <Select.Icon>
-            <ArrowDownIcon
-              width={ARROW_DOWN_WIDTH}
-              height={ARROW_DOWN_HEIGHT}
-              label="dropdown icon"
-              labelId="dropdown icon"
-            />
-          </Select.Icon>
+          {!lockedValue && (
+            <Select.Icon>
+              <ArrowDownIcon
+                width={ARROW_DOWN_WIDTH}
+                height={ARROW_DOWN_HEIGHT}
+                label="dropdown icon"
+                labelId="dropdown icon"
+              />
+            </Select.Icon>
+          )}
         </SelectTrigger>
         <SelectContent position="popper">
           <SelectViewport>

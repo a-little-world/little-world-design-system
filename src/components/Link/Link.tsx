@@ -1,17 +1,24 @@
 import React from 'react';
-import TextTypes from '../Text/TextTypes';
-import { Anchor, AnchorText } from './styles';
+
 import { ButtonAppearance, ButtonSizes } from '../Button/Button';
+import TextTypes from '../Text/TextTypes';
+import { Anchor, AnchorText, RouterLink } from './styles';
 
 type LinkProps = {
   active?: boolean;
   bold?: boolean;
   children: string;
+  href?: string;
   onClick?: () => void;
-  to: string;
+  to?: string;
   textType?: keyof typeof TextTypes;
   buttonAppearance?: keyof typeof ButtonAppearance;
   buttonSize?: keyof typeof ButtonSizes;
+};
+
+const Variants = {
+  href: Anchor,
+  to: RouterLink,
 };
 
 const Link = ({
@@ -19,27 +26,32 @@ const Link = ({
   bold,
   buttonAppearance,
   buttonSize,
+  href,
   children,
   onClick,
   to,
   textType,
-}: LinkProps) => (
-  <Anchor
-    href={to}
-    $active={active}
-    onClick={onClick}
-    $buttonAppearance={buttonAppearance}
-    $size={buttonSize}
-  >
-    <AnchorText
-      as="span"
-      $type={textType || TextTypes.Body3}
-      $bold={Boolean(bold)}
-      $center={false}
+}: LinkProps) => {
+  console.log({ to, href });
+  const Component = Variants[href ? 'href' : 'to'] as React.ElementType;
+  return (
+    <Component
+      {...(href ? { href } : { to })}
+      $active={active}
+      onClick={onClick}
+      $buttonAppearance={buttonAppearance}
+      $size={buttonSize}
     >
-      {children}
-    </AnchorText>
-  </Anchor>
-);
+      <AnchorText
+        as="span"
+        $type={textType || TextTypes.Body3}
+        $bold={Boolean(bold)}
+        $center={false}
+      >
+        {children}
+      </AnchorText>
+    </Component>
+  );
+};
 
 export default Link;
