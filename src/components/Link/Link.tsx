@@ -8,6 +8,7 @@ type LinkProps = {
   active?: boolean;
   bold?: boolean;
   children: string;
+  className?: string;
   href?: string;
   onClick?: () => void;
   to?: string;
@@ -26,8 +27,9 @@ const Link = ({
   bold,
   buttonAppearance,
   buttonSize,
-  href,
   children,
+  className,
+  href,
   onClick,
   to,
   textType,
@@ -36,6 +38,7 @@ const Link = ({
   return (
     <Component
       {...(href ? { href } : { to })}
+      className={className}
       $active={active}
       onClick={onClick}
       $buttonAppearance={buttonAppearance}
