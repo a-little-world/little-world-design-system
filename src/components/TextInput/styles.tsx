@@ -1,7 +1,10 @@
-import styled from 'styled-components';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+import styled, { css } from 'styled-components';
+
 import tokens from '../../tokens';
-import { INPUT_ERROR_CSS } from '../InputError/InputError';
 import Button from '../Button/Button';
+import { INPUT_ERROR_CSS } from '../InputError/InputError';
 
 export const InputWrapper = styled.div<{ $width: string }>`
   display: flex;
@@ -15,16 +18,81 @@ export const InputContainer = styled.div`
   width: 100%;
 `;
 
-export const Input = styled.input<{ $hasError: boolean }>`
+export const INPUT_CSS = css`
   width: 100%;
-  border: 1px solid ${tokens.color.theme.light.border.moderate};
-  border-radius: ${tokens.spacing.xxsmall};
+  border: 1px solid ${({ theme }) => theme.color.border.moderate};
+  border-radius: 6px;
   box-sizing: border-box;
   padding: ${tokens.spacing.xxsmall};
   margin-bottom: ${tokens.spacing.xxxxsmall};
   font-size: 1rem;
+  height: unset;
+  line-height: unset;
+`;
+
+export const Input = styled.input<{ $hasError: boolean }>`
+  ${INPUT_CSS}
 
   ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
+`;
+
+export const TelephoneInput = styled(PhoneInput)<{ $hasError: boolean }>`
+  > input.form-control {
+    ${INPUT_CSS}
+    padding-left: 52px;
+
+    ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
+  }
+
+  .flag-dropdown {
+    overflow: hidden;
+  }
+
+  .flag-dropdown.open {
+    overflow: visible;
+  }
+
+  .flag-dropdown,
+  .flag-dropdown.open {
+    background: none;
+    border: none;
+    border-radius: 6px 0 0 6px;
+  }
+
+  .flag-dropdown.open .selected-flag {
+    background: none;
+  }
+
+  .selected-flag {
+    padding: 0 0 0 14px;
+    scale: 1.3;
+    width: 51px;
+    transition: background ease 0.2s;
+
+    > .flag {
+      margin-top: -6px;
+    }
+
+    &:hover {
+      background: ${({ theme }) => theme.color.border.moderate};
+    }
+  }
+
+  .selected-flag:focus {
+    background: none;
+  }
+
+  flag-dropdown.open .selected-flag {
+    &:hover {
+      background: none;
+      filter: brightness(0.8);
+    }
+  }
+
+  .selected-flag,
+  .flag-dropdown.open .selected-flag {
+    border-radius: 8px 0 0 8px;
+  }
 `;
 
 export const ShowPasswordToggle = styled(Button)`

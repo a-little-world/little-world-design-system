@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
+
+import { ButtonVariations } from '../Button/Button';
+import { EyeClosedIcon, EyeOpenIcon } from '../Icon';
+import InputError from '../InputError/InputError';
+import Label from '../Label/Label';
 import {
   Input,
   InputContainer,
   InputWrapper,
   ShowPasswordToggle,
+  TelephoneInput,
 } from './styles';
-
-import Label from '../Label/Label';
-import InputError from '../InputError/InputError';
-import Button, { ButtonVariations } from '../Button/Button';
-import { EyeClosedIcon, EyeOpenIcon } from '../Icon';
 
 const PASSWORD_TOGGLE_ICON_SIZE = 20;
 
@@ -36,10 +37,15 @@ const TextInput: React.FC<Props> = ({
   type = 'text',
   inputRef,
   width = InputWidth.Large,
+  onChange,
   ...inputProps
 }: Props) => {
   const [inputType, setInputType] = React.useState(type); // ['text', 'password'
   const [showPassword, setShowPassword] = React.useState(false);
+  const { defaultValue, value, ...propsWithoutValues } = inputProps;
+  const defaultTelephoneVal = (value ?? defaultValue)?.toString() as
+    | string
+    | undefined;
 
   const handlePasswordVisibilityToggle = () => {
     if (inputType === 'password') {
@@ -51,6 +57,14 @@ const TextInput: React.FC<Props> = ({
     }
   };
 
+  const handleTelephoneChange = (
+    value: string,
+    country: string,
+    e: ChangeEvent<HTMLInputElement>,
+  ) => {
+    onChange?.(e);
+  };
+
   return (
     <InputWrapper $width={width}>
       {label && (
@@ -59,13 +73,24 @@ const TextInput: React.FC<Props> = ({
         </Label>
       )}
       <InputContainer>
-        <Input
-          ref={inputRef}
-          $hasError={Boolean(error)}
-          type={inputType}
-          id={id}
-          {...inputProps}
-        />
+        {type === 'tel' ? (
+          <TelephoneInput
+            country="de"
+            onChange={handleTelephoneChange}
+            inputProps={{ ...propsWithoutValues, ref: inputRef }}
+            $hasError={!!error}
+            value={defaultTelephoneVal}
+          />
+        ) : (
+          <Input
+            ref={inputRef}
+            $hasError={Boolean(error)}
+            type={inputType}
+            id={id}
+            onChange={onChange}
+            {...inputProps}
+          />
+        )}
         {type === 'password' && (
           <ShowPasswordToggle
             type="button"
