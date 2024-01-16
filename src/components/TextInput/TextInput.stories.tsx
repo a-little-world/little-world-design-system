@@ -1,4 +1,5 @@
 import React from 'react';
+
 import TextInput from './TextInput';
 
 export default {
@@ -8,6 +9,14 @@ export default {
 
 export const Default = args => <TextInput {...args} />;
 
+export const TelephoneInput = args => {
+  return (
+    <>
+      <TextInput {...args} />
+      <TextInput type="tel" {...args} />
+    </>
+  );
+};
 Default.args = {
   placeholder: 'Insert your text',
   id: 'text input id',

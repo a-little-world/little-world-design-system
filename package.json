@@ -1,6 +1,6 @@
 {
   "name": "@a-little-world/little-world-design-system",
-  "version": "1.12.1",
+  "version": "1.13.0",
   "description": "Design system for Little World applications",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -61,6 +61,7 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-checkbox": "^1.0.3",
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-popover": "^1.0.6",
@@ -71,6 +72,7 @@
     "@radix-ui/react-tooltip": "^1.0.4",
     "@types/react": "^18.2.47",
     "csstype": "^3.1.2",
+    "react-phone-input-2": "^2.15.1",
     "react-router-dom": "^6.21.1",
     "remark-gfm": "^3.0.1",
     "styled-components": "^5.3.6"

@@ -1,3 +1,4 @@
+export { default as Accordion } from './components/Accordion/Accordion';
 export {
   default as Button,
   ButtonAppearance,
