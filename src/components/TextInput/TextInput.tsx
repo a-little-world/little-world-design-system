@@ -38,12 +38,14 @@ const TextInput: React.FC<Props> = ({
   inputRef,
   width = InputWidth.Large,
   onChange,
-  value,
   ...inputProps
 }: Props) => {
   const [inputType, setInputType] = React.useState(type); // ['text', 'password'
   const [showPassword, setShowPassword] = React.useState(false);
-  const valueProp = value ? ({ value } as any) : {};
+  const { defaultValue, value, ...propsWithoutValues } = inputProps;
+  const defaultTelephoneVal = (value ?? defaultValue)?.toString() as
+    | string
+    | undefined;
 
   const handlePasswordVisibilityToggle = () => {
     if (inputType === 'password') {
@@ -75,9 +77,9 @@ const TextInput: React.FC<Props> = ({
           <TelephoneInput
             country="de"
             onChange={handleTelephoneChange}
-            inputProps={inputProps}
+            inputProps={{ ...propsWithoutValues, ref: inputRef }}
             $hasError={!!error}
-            {...valueProp}
+            value={defaultTelephoneVal}
           />
         ) : (
           <Input
@@ -86,7 +88,6 @@ const TextInput: React.FC<Props> = ({
             type={inputType}
             id={id}
             onChange={onChange}
-            {...valueProp}
             {...inputProps}
           />
         )}

@@ -5,6 +5,9 @@ import TextInput from './TextInput';
 export default {
   component: TextInput,
   title: 'Components/TextInput',
+  argTypes: {
+    defaultValue: { control: 'text' },
+  },
 };
 
 export const Default = args => <TextInput {...args} />;
@@ -17,6 +20,7 @@ export const TelephoneInput = args => {
     </>
   );
 };
+
 Default.args = {
   placeholder: 'Insert your text',
   id: 'text input id',
