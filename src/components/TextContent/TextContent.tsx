@@ -1,7 +1,7 @@
 import React from 'react';
+
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
-
 import { ContentWrapper, List, ListItem } from './styles';
 
 export enum ContentTypes {
@@ -15,7 +15,7 @@ export enum ContentTypes {
 }
 
 type Props = {
-  content: { type: ContentTypes; text: string; listItems: string[] }[];
+  content: { type: ContentTypes; text: string; listItems?: string[] }[];
 };
 
 const TextPage = ({ content }: Props) => {
@@ -24,21 +24,21 @@ const TextPage = ({ content }: Props) => {
       {content.map(({ text, type, listItems }) => {
         if (type === ContentTypes.Heading)
           return (
-            <Text key={text} tag="h2" type={TextTypes.Heading2}>
+            <Text key={text} tag="h2" type={TextTypes.Heading3}>
               {text}
             </Text>
           );
 
         if (type === ContentTypes.Title)
           return (
-            <Text key={text} tag="h3" type={TextTypes.Heading3} bold>
+            <Text key={text} tag="h3" type={TextTypes.Body2} bold>
               {text}
             </Text>
           );
 
         if (type === ContentTypes.Subtitle)
           return (
-            <Text key={text} tag="h4" type={TextTypes.Body1} bold>
+            <Text key={text} tag="h4" type={TextTypes.Body3} bold>
               {text}
             </Text>
           );
@@ -51,8 +51,8 @@ const TextPage = ({ content }: Props) => {
 
         if (type === ContentTypes.List)
           return (
-            <List key={listItems[0]}>
-              {listItems.map(item => (
+            <List key={listItems?.[0]}>
+              {listItems?.map(item => (
                 <ListItem key={item} tag="li">
                   {item}
                 </ListItem>

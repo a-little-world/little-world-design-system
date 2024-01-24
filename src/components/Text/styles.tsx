@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import TextTypes from './TextTypes';
 import tokens from '../../tokens/index';
+import TextTypes from './TextTypes';
 
 const BODY_SHARED_STYLES = css`
   font-family: 'Signika Negative', sans-serif;
@@ -12,13 +12,12 @@ const BODY_SHARED_STYLES = css`
 `;
 
 const HEADING_SHARED_STYLES = css<{ $color?: string }>`
-  color: ${({ $color }) => $color || tokens.color.theme.light.text.title};
   font-family: 'Work Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 `;
 
-export const BODY_3_CSS = css`
+export const BODY_5_CSS = css`
   ${BODY_SHARED_STYLES}
   font-size: 1rem;
 
@@ -42,33 +41,51 @@ export const StyledElement = styled.div<{
       return css`
         ${BODY_SHARED_STYLES}
         color: ${tokens.color.theme.light.text.primary};
-        font-size: 1.5rem;
+        font-size: 2rem;
 
         @media (min-width: ${tokens.breakpoints.small}) {
-          font-size: 1.75rem;
+          font-size: 2.5rem;
         }
       `;
 
     if ($type === TextTypes.Body2)
       return css`
         ${BODY_SHARED_STYLES}
-
-        font-size: 1rem;
+        color: ${tokens.color.theme.light.text.primary};
+        font-size: 1.75rem;
 
         @media (min-width: ${tokens.breakpoints.small}) {
-          font-size: 1.25rem;
+          font-size: 2rem;
         }
       `;
 
-    if ($type === TextTypes.Body3) return BODY_3_CSS;
+    if ($type === TextTypes.Body3)
+      return css`
+        ${BODY_SHARED_STYLES}
+
+        font-size: 1.5rem;
+
+        @media (min-width: ${tokens.breakpoints.small}) {
+          font-size: 1.5rem;
+        }
+      `;
 
     if ($type === TextTypes.Body4)
+      return css`
+        ${BODY_SHARED_STYLES}
+
+        font-size: 1.25rem;
+      `;
+
+    if ($type === TextTypes.Body5) return BODY_5_CSS;
+
+    if ($type === TextTypes.Body6)
       return css`
         ${BODY_SHARED_STYLES}
         font-size: 0.8725rem;
       `;
 
-    if ($type === TextTypes.Body5)
+    if ($type === TextTypes.Body7)
       return css`
         ${BODY_SHARED_STYLES}
         font-size: 0.75rem;
@@ -77,14 +94,34 @@ export const StyledElement = styled.div<{
     if ($type === TextTypes.Heading1)
       return css`
         ${HEADING_SHARED_STYLES}
-        font-size: 2rem;
+        font-size: 4rem;
+
+        @media (min-width: ${tokens.breakpoints.small}) {
+          font-size: 5rem;
+        }
+      `;
+
+    if ($type === TextTypes.Heading2)
+      return css`
+        ${HEADING_SHARED_STYLES}
+        font-size: 3.5rem;
+
+        @media (min-width: ${tokens.breakpoints.small}) {
+          font-size: 4rem;
+        }
+      `;
+
+    if ($type === TextTypes.Heading3)
+      return css`
+        ${HEADING_SHARED_STYLES}
+        font-size: 3rem;
 
         @media (min-width: ${tokens.breakpoints.small}) {
           font-size: 3rem;
         }
       `;
 
-    if ($type === TextTypes.Heading2)
+    if ($type === TextTypes.Heading4)
       return css`
         ${HEADING_SHARED_STYLES}
         font-size: 2rem;
@@ -94,16 +131,16 @@ export const StyledElement = styled.div<{
         }
       `;
 
-    if ($type === TextTypes.Heading3)
+    if ($type === TextTypes.Heading5)
+      return css`
+        ${HEADING_SHARED_STYLES}
+        font-size: 1.5rem;
+      `;
+
+    if ($type === TextTypes.Heading6)
       return css`
         ${HEADING_SHARED_STYLES}
         font-size: 1rem;
-      `;
-
-    if ($type === TextTypes.Heading4)
-      return css`
-        ${HEADING_SHARED_STYLES}
-        font-size: 0.5rem;
       `;
   }}
 `;

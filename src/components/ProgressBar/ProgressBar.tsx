@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
 import * as Progress from '@radix-ui/react-progress';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+
 import tokens from '../../tokens';
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
@@ -52,7 +53,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ max, value = 0 }) => {
 
   return (
     <ProgressBarWrapper>
-      <Text id="progressBarIndicator" tag="span" type={TextTypes.Body4}>
+      <Text id="progressBarIndicator" tag="span" type={TextTypes.Body6}>
         {value}/{max}
       </Text>
       <ProgressRoot

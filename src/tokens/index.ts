@@ -38,7 +38,7 @@ export default {
           primary: coreColors.white,
           secondary: coreColors.gray50,
           bold: coreColors.blue10,
-          indicator: coreColors.green10,
+          indicator: coreColors.green20,
           highlight: coreColors.orange,
           disabled: coreColors.gray10,
           error: coreColors.red10,

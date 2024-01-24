@@ -22,6 +22,7 @@ module.exports = {
   },
   stories: [
     '../src/components/**/*.stories.tsx',
+    '../src/components/**/*.stories.mdx',
     '../src/utils/*.stories.mdx',
     '../src/tokens/*.stories.mdx',
   ],

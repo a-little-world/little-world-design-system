@@ -2,6 +2,7 @@ import type { AccordionSingleProps } from '@radix-ui/react-accordion';
 import React from 'react';
 
 import Text from '../Text/Text';
+import TextTypes from '../Text/TextTypes';
 import {
   AccordionContent,
   AccordionHeader,
@@ -26,7 +27,7 @@ const Accordion: React.FC<Props> = ({ className, items }: Props) => {
         <AccordionItem value={header} key={header}>
           <AccordionHeader>
             <AccordionTrigger>
-              <Text type="Body2">{header}</Text>
+              <Text type={TextTypes.Body4}>{header}</Text>
               <TriggerIcon
                 label="accordion toggle icon"
                 labelId="accordion-toggle-icon"

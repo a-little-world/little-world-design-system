@@ -1,20 +1,21 @@
-import React from 'react';
 import * as RadixLabel from '@radix-ui/react-label';
+import React from 'react';
 import styled, { css } from 'styled-components';
-import { BODY_3_CSS } from '../Text/styles';
-import { QuestionIcon } from '../Icon';
-import Button, { ButtonVariations } from '../Button/Button';
-import ToolTip from '../ToolTip/ToolTip';
-import { coreColors } from '../../tokens/core';
+
 import tokens from '../../tokens';
+import { coreColors } from '../../tokens/core';
 import textParser from '../../utils/parser';
+import Button, { ButtonVariations } from '../Button/Button';
+import { QuestionIcon } from '../Icon';
+import { BODY_5_CSS } from '../Text/styles';
+import ToolTip from '../ToolTip/ToolTip';
 
 const StyledLabel = styled(RadixLabel.Root)<{
   $bold?: boolean;
   $inline?: boolean;
   $marginBottom?: string;
 }>`
-  ${BODY_3_CSS}
+  ${BODY_5_CSS}
   width: fit-content;
 
   ${({ $bold, $inline, $marginBottom }) =>
