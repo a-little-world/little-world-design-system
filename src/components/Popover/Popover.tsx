@@ -4,6 +4,7 @@ import React from 'react';
 import Button, { ButtonVariations } from '../Button/Button';
 import { CloseIcon } from '../Icon';
 import {
+  PopoverRoot,
   StyledPopoverArrow,
   StyledPopoverClose,
   StyledPopoverContent,
@@ -37,7 +38,7 @@ const Popover: React.FC<PopoverProps> = ({
   trigger,
   width = PopoverSizes.Small,
 }) => (
-  <RadixPopover.Root defaultOpen={defaultOpen} open={open}>
+  <PopoverRoot defaultOpen={defaultOpen} open={open}>
     {trigger && <RadixPopover.Trigger asChild>{trigger}</RadixPopover.Trigger>}
 
     <StyledPopoverContent
@@ -58,7 +59,7 @@ const Popover: React.FC<PopoverProps> = ({
       )}
       <StyledPopoverArrow $asToolTip={asToolTip} />
     </StyledPopoverContent>
-  </RadixPopover.Root>
+  </PopoverRoot>
 );
 
 export default Popover;
