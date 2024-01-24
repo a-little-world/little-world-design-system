@@ -16,7 +16,7 @@ const DEFAULT_SIDE_OFFSET = 4; //px
 const ToolTip: React.FC<Props> = ({
   defaultOpen,
   open,
-  side,
+  side = 'top',
   sideOffset = DEFAULT_SIDE_OFFSET,
   trigger,
   text,

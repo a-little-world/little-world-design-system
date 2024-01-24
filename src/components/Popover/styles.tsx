@@ -2,6 +2,7 @@ import {
   PopoverArrow,
   PopoverClose,
   PopoverContent,
+  Root,
 } from '@radix-ui/react-popover';
 import styled, { css, keyframes } from 'styled-components';
 
@@ -52,6 +53,10 @@ const slideLeftAndFade = keyframes`
   }
 `;
 
+export const PopoverRoot = styled(Root)`
+  z-index: 100;
+`;
+
 export const POPOVER_CONTENT_CSS = css`
   border-radius: 4px;
   padding: ${tokens.spacing.small};
@@ -65,6 +70,7 @@ export const POPOVER_CONTENT_CSS = css`
   will-change: transform, opacity;
   width: max-content;
   max-width: 360px;
+  z-index: 1000;
 
   &[data-state='delayed-open'][data-side='top'] {
     animation-name: ${slideDownAndFade};
