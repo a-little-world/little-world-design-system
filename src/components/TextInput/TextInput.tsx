@@ -80,6 +80,7 @@ const TextInput: React.FC<Props> = ({
             inputProps={{ ...propsWithoutValues, ref: inputRef }}
             $hasError={!!error}
             value={defaultTelephoneVal}
+            countryCodeEditable={false}
           />
         ) : (
           <Input

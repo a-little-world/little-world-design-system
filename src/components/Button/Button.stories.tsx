@@ -1,9 +1,11 @@
 import React from 'react';
-import { ArrowLeftIcon, InfoIcon, PhoneIcon } from '../Icon';
-import Button, { ButtonVariations } from './Button';
-import Text from '../Text/Text';
 import styled from 'styled-components';
+
 import tokens from '../../tokens';
+import { ArrowLeftIcon, InfoIcon, PhoneIcon } from '../Icon';
+import Text from '../Text/Text';
+import TextTypes from '../Text/TextTypes';
+import Button, { ButtonVariations } from './Button';
 
 export default {
   component: Button,
@@ -48,21 +50,21 @@ const StyledSpan = styled(Text)`
 export const ButtonInline = args => (
   <div>
     <span>
-      <StyledSpan tag="span" type="Body2">
+      <StyledSpan tag="span" type={TextTypes.Body4}>
         This is the default styling:
       </StyledSpan>
       <Button variation={ButtonVariations.Inline}>
-        <Text type="Body2" tag="span">
+        <Text type={TextTypes.Body4} tag="span">
           Click to activate.
         </Text>
       </Button>
     </span>
     <span>
-      <StyledSpan tag="span" type="Body2">
+      <StyledSpan tag="span" type={TextTypes.Body4}>
         This is with the color prop set:
       </StyledSpan>
       <Button variation={ButtonVariations.Inline} color="red">
-        <Text type="Body2" tag="span">
+        <Text type={TextTypes.Body4} tag="span">
           Click to activate.
         </Text>
       </Button>

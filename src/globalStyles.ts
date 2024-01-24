@@ -3,48 +3,47 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   body {
-  padding: 0;
-  margin: 0;
-  font-size: 16px;
-  overflow-x: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
 
-button {
-  cursor: pointer;
-  padding: 0;
-  background: none;
-  border: none;
-  font-size: 1rem;
-}
+  button {
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    border: none;
+    font-size: 1rem;
+  }
 
-p {
-  margin: 0;
-  padding: 0;
-}
+  p {
+    margin: 0;
+    padding: 0;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin: 0;
-  font-weight: normal;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 0;
+    font-weight: normal;
+  }
 
-* {
-  box-sizing: border-box;
-}
-
+  * {
+    box-sizing: border-box;
+  }
 `;
 
 export default GlobalStyle;

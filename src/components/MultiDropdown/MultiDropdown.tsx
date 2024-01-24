@@ -59,7 +59,9 @@ const MultiDropdown: React.FC<Props> = ({
   defaultSegments = 1,
   maxSegments = 4,
 }) => {
-  const [segments, setSegments] = useState(defaultSegments);
+  const [segments, setSegments] = useState(
+    firstDropdown?.values?.length || defaultSegments,
+  );
   const [values, setValues] = useState([
     firstDropdown.values || [],
     secondDropdown.values || [],

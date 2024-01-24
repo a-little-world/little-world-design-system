@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import tokens from '../../tokens';
 import Text from '../Text/Text';
 
@@ -7,7 +8,7 @@ export const ContentWrapper = styled.div`
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: ${tokens.spacing.xxsmall};
+  gap: ${tokens.spacing.xsmall};
 `;
 
 export const List = styled.ul`

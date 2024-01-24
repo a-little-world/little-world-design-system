@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Area, AreaWrapper, Counter } from './styles';
 
-import Label from '../Label/Label';
 import InputError from '../InputError/InputError';
+import Label from '../Label/Label';
 import TextTypes from '../Text/TextTypes';
+import { Area, AreaWrapper, Counter } from './styles';
 
 interface Props extends React.ComponentPropsWithoutRef<'textarea'> {
   error?: string;
@@ -46,7 +46,7 @@ const TextArea: React.FC<Props> = ({
         </Label>
       )}
       <Counter
-        type={TextTypes.Body5}
+        type={TextTypes.Body7}
       >{`${textAreaCount}/${maxLength}`}</Counter>
       <Area
         ref={inputRef}

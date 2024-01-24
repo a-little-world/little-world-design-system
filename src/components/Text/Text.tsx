@@ -1,7 +1,8 @@
 import React from 'react';
+
 import textParser from '../../utils/parser';
-import { StyledElement } from './styles';
 import TextTypes from './TextTypes';
+import { StyledElement } from './styles';
 
 type TextProps = {
   bold?: boolean;
@@ -32,7 +33,7 @@ const Text = ({
   className,
   id,
   tag = 'p',
-  type = TextTypes.Body3,
+  type = TextTypes.Body5,
 }: TextProps) => (
   <StyledElement
     className={className}

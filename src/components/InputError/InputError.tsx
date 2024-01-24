@@ -1,8 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+
+import tokens from '../../tokens';
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
-import tokens from '../../tokens';
 
 export const INPUT_ERROR_CSS = css`
   border: 1px solid ${({ theme }) => theme.color.border.error};
@@ -65,7 +66,7 @@ const InputError: React.FC<Props> = ({
   right,
   left,
   textAlign = 'right',
-  textType = TextTypes.Body5,
+  textType = TextTypes.Body7,
   visible,
 }) => (
   <ErrorText

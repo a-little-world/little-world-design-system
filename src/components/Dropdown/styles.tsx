@@ -1,9 +1,10 @@
 import * as Select from '@radix-ui/react-select';
 import styled from 'styled-components';
+
 import tokens from '../../tokens';
 import { coreColors } from '../../tokens/core';
-import { BODY_3_CSS } from '../Text/styles';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
+import { BODY_5_CSS } from '../Text/styles';
 
 export const DROPDOWN_MAX_WIDTH = '300px';
 
@@ -31,7 +32,7 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
   margin-bottom: ${tokens.spacing.xxxxsmall};
 
   > span {
-    ${BODY_3_CSS}
+    ${BODY_5_CSS}
 
     white-space: nowrap;
     overflow: hidden;

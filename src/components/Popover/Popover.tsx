@@ -1,12 +1,13 @@
-import React from 'react';
 import * as RadixPopover from '@radix-ui/react-popover';
+import React from 'react';
+
+import Button, { ButtonVariations } from '../Button/Button';
+import { CloseIcon } from '../Icon';
 import {
   StyledPopoverArrow,
   StyledPopoverClose,
   StyledPopoverContent,
 } from './styles';
-import { CloseIcon } from '../Icon';
-import Button, { ButtonVariations } from '../Button/Button';
 
 export enum PopoverSizes {
   Small = '160px',
@@ -14,7 +15,8 @@ export enum PopoverSizes {
   Large = '360px',
 }
 
-type Props = {
+type PopoverProps = {
+  asToolTip?: boolean;
   children: React.ReactNode;
   showCloseButton: boolean;
   trigger?: React.ReactNode;
@@ -24,7 +26,8 @@ type Props = {
 
 const DEFAULT_SIDE_OFFSET = 4; //px
 
-const Popover: React.FC<Props> = ({
+const Popover: React.FC<PopoverProps> = ({
+  asToolTip,
   defaultOpen,
   children,
   open,
@@ -33,26 +36,27 @@ const Popover: React.FC<Props> = ({
   showCloseButton,
   trigger,
   width = PopoverSizes.Small,
-}: Props) => (
+}) => (
   <RadixPopover.Root defaultOpen={defaultOpen} open={open}>
     {trigger && <RadixPopover.Trigger asChild>{trigger}</RadixPopover.Trigger>}
 
     <StyledPopoverContent
       side={side}
       sideOffset={sideOffset}
+      $asToolTip={asToolTip}
       $width={width}
       $extraPaddingTop={showCloseButton}
       collisionPadding={DEFAULT_SIDE_OFFSET}
     >
       {children}
       {showCloseButton && (
-        <StyledPopoverClose asChild>
+        <StyledPopoverClose asChild $asToolTip>
           <Button variation={ButtonVariations.Icon}>
             <CloseIcon label="popover close" labelId="popover close" />
           </Button>
         </StyledPopoverClose>
       )}
-      <StyledPopoverArrow />
+      <StyledPopoverArrow $asToolTip={asToolTip} />
     </StyledPopoverContent>
   </RadixPopover.Root>
 );

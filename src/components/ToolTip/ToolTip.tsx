@@ -1,19 +1,17 @@
+import { PopoverContentProps, PopoverProps } from '@radix-ui/react-popover';
 import React from 'react';
-import * as RadixToolTip from '@radix-ui/react-tooltip';
+
+import Popover, { PopoverSizes } from '../Popover/Popover';
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
-import { StyledTooltipArrow, StyledToolTipContent } from './styles';
 
 type Props = {
   text: string;
   trigger?: React.ReactNode;
-} & RadixToolTip.TooltipProps &
-  RadixToolTip.TooltipContentProps;
-
-export const ToolTipProvider = RadixToolTip.Provider;
+} & PopoverProps &
+  PopoverContentProps;
 
 const DEFAULT_SIDE_OFFSET = 4; //px
-const DEFAULT_DELAY_DURATION = 300;
 
 const ToolTip: React.FC<Props> = ({
   defaultOpen,
@@ -23,25 +21,20 @@ const ToolTip: React.FC<Props> = ({
   trigger,
   text,
   ...rest
-}: Props) => (
-  <RadixToolTip.Provider>
-    <RadixToolTip.Root
-      defaultOpen={defaultOpen}
-      delayDuration={DEFAULT_DELAY_DURATION}
-      open={open}
-      {...rest}
-    >
-      {trigger && (
-        <RadixToolTip.Trigger asChild>{trigger}</RadixToolTip.Trigger>
-      )}
-      <RadixToolTip.Portal>
-        <StyledToolTipContent side={side} sideOffset={sideOffset}>
-          <StyledTooltipArrow />
-          <Text type={TextTypes.Body3}>{text}</Text>
-        </StyledToolTipContent>
-      </RadixToolTip.Portal>
-    </RadixToolTip.Root>
-  </RadixToolTip.Provider>
+}) => (
+  <Popover
+    asToolTip
+    defaultOpen={defaultOpen}
+    open={open}
+    side={side}
+    sideOffset={sideOffset}
+    showCloseButton
+    trigger={trigger}
+    width={PopoverSizes.Large}
+    {...rest}
+  >
+    <Text type={TextTypes.Body5}>{text}</Text>
+  </Popover>
 );
 
 export default ToolTip;

@@ -46,7 +46,7 @@ const Link = ({
     >
       <AnchorText
         as="span"
-        $type={textType || TextTypes.Body3}
+        $type={textType || TextTypes.Body5}
         $bold={Boolean(bold)}
         $center={false}
       >
