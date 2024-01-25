@@ -53,9 +53,7 @@ const slideLeftAndFade = keyframes`
   }
 `;
 
-export const PopoverRoot = styled(Root)`
-  z-index: 100;
-`;
+export const PopoverRoot = styled(Root)``;
 
 export const POPOVER_CONTENT_CSS = css`
   border-radius: 4px;
@@ -70,7 +68,6 @@ export const POPOVER_CONTENT_CSS = css`
   will-change: transform, opacity;
   width: max-content;
   max-width: 360px;
-  z-index: 1000;
 
   &[data-state='delayed-open'][data-side='top'] {
     animation-name: ${slideDownAndFade};
@@ -95,6 +92,7 @@ export const StyledPopoverContent = styled(PopoverContent)<{
 
   display: flex;
   flex-direction: column;
+  z-index: 1000;
 
   ${({ $width }) =>
     $width &&
@@ -113,6 +111,7 @@ export const StyledPopoverContent = styled(PopoverContent)<{
       ? theme.color.surface.bold
       : theme.color.surface.primary};
     color: ${$asToolTip ? theme.color.text.reversed : theme.color.text.primary};
+    font-weight: ${$asToolTip ? 'bold' : 'normal'};
   `}
     
 

@@ -40,25 +40,26 @@ const Popover: React.FC<PopoverProps> = ({
 }) => (
   <PopoverRoot defaultOpen={defaultOpen} open={open}>
     {trigger && <RadixPopover.Trigger asChild>{trigger}</RadixPopover.Trigger>}
-
-    <StyledPopoverContent
-      side={side}
-      sideOffset={sideOffset}
-      $asToolTip={asToolTip}
-      $width={width}
-      $extraPaddingTop={showCloseButton}
-      collisionPadding={DEFAULT_SIDE_OFFSET}
-    >
-      {children}
-      {showCloseButton && (
-        <StyledPopoverClose asChild $asToolTip>
-          <Button variation={ButtonVariations.Icon}>
-            <CloseIcon label="popover close" labelId="popover close" />
-          </Button>
-        </StyledPopoverClose>
-      )}
-      <StyledPopoverArrow $asToolTip={asToolTip} />
-    </StyledPopoverContent>
+    <RadixPopover.Portal>
+      <StyledPopoverContent
+        side={side}
+        sideOffset={sideOffset}
+        $asToolTip={asToolTip}
+        $width={width}
+        $extraPaddingTop={showCloseButton}
+        collisionPadding={DEFAULT_SIDE_OFFSET}
+      >
+        {children}
+        {showCloseButton && (
+          <StyledPopoverClose asChild $asToolTip>
+            <Button variation={ButtonVariations.Icon}>
+              <CloseIcon label="popover close" labelId="popover close" />
+            </Button>
+          </StyledPopoverClose>
+        )}
+        <StyledPopoverArrow $asToolTip={asToolTip} />
+      </StyledPopoverContent>
+    </RadixPopover.Portal>
   </PopoverRoot>
 );
 
