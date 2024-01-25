@@ -33,10 +33,6 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
 
   > span {
     ${BODY_5_CSS}
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   &:hover {
@@ -60,6 +56,10 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
 `;
 
 export const SelectValue = styled(Select.Value)`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   &[data-placeholder] {
     background-color: ${tokens.color.theme.light.surface.primary};
   }

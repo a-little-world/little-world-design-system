@@ -1,7 +1,8 @@
 import React from 'react';
-import { getDefaultIconProps } from '../getDefaultIconProps';
+
 import { Icon, IconSvgProps } from '../Icon';
 import IconGradient from '../IconGradient';
+import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'ProfileIcon';
 
@@ -22,6 +23,7 @@ export const ProfileIcon = (props: IconSvgProps) => {
   return (
     <Icon
       circular={circular}
+      className={className}
       color={color}
       labelId={labelId || LABEL_ID}
       label={label}
@@ -33,7 +35,7 @@ export const ProfileIcon = (props: IconSvgProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
-        className={className}
+        className={circular ? undefined : className}
         fill="none"
         viewBox="4.5 3.51 29.11 28.98"
       >

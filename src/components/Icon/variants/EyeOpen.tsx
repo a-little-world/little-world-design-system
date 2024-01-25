@@ -1,6 +1,7 @@
 import React from 'react';
-import { getDefaultIconProps } from '../getDefaultIconProps';
+
 import { Icon, IconSvgProps } from '../Icon';
+import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'EyeOpenIcon';
 
@@ -20,6 +21,7 @@ export const EyeOpenIcon = (props: IconSvgProps) => {
   return (
     <Icon
       circular={circular}
+      className={className}
       color={color}
       labelId={id}
       label={label}
@@ -31,7 +33,7 @@ export const EyeOpenIcon = (props: IconSvgProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
-        className={className}
+        className={circular ? undefined : className}
         fill="none"
         viewBox="0 0 32 32"
       >
