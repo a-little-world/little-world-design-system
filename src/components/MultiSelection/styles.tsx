@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+
 import tokens from '../../tokens';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 
@@ -27,12 +28,13 @@ export const Options = styled.div<{ $hasError: boolean }>`
 
 export const Option = styled.button<{ $selected: boolean }>`
   font-family: 'Signika Negative';
-  background: ${tokens.color.theme.light.surface.primary};
+  background: ${({ theme }) => theme.color.surface.primary};
   border-radius: 10px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.03);
   border-radius: 1000px;
-  border: 2px solid ${tokens.color.theme.light.border.reversed};
-  padding: ${tokens.spacing.xxxsmall} ${tokens.spacing.xsmall};
+  border: 2px solid ${({ theme }) => theme.color.border.reversed};
+  padding: ${({ theme }) =>
+    `${theme.spacing.xxxsmall} ${theme.spacing.xsmall}`};
   min-width: 60px;
   height: 33px;
 
@@ -40,11 +42,13 @@ export const Option = styled.button<{ $selected: boolean }>`
     cursor: pointer;
   }
 
-  @media (min-width: ${tokens.breakpoints.small}) {
-    padding: ${tokens.spacing.xxsmall} ${tokens.spacing.small};
-    min-width: 80px;
-    height: 45px;
-  }
+  ${({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.small}) {
+      padding: ${theme.spacing.xxsmall} ${theme.spacing.small};
+      min-width: 80px;
+      height: 45px;
+    }
+  `}
 
   ${({ $selected }) =>
     $selected &&

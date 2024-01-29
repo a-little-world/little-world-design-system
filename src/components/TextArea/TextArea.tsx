@@ -5,25 +5,33 @@ import Label from '../Label/Label';
 import TextTypes from '../Text/TextTypes';
 import { Area, AreaWrapper, Counter } from './styles';
 
+export enum TextAreaSize {
+  Small = '80px',
+  Medium = '160px',
+  Large = '240px',
+}
+
 interface Props extends React.ComponentPropsWithoutRef<'textarea'> {
   error?: string;
   id: string;
+  inputRef?: React.RefObject<HTMLTextAreaElement>;
   label: string;
   labelTooltip?: string;
   maxLength?: number;
-  inputRef?: React.RefObject<HTMLTextAreaElement>;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  size?: TextAreaSize;
   value?: string;
 }
 
 const TextArea: React.FC<Props> = ({
   error,
-  label,
-  labelTooltip,
   id,
   inputRef,
+  label,
+  labelTooltip,
   maxLength = 999,
   onChange,
+  size = TextAreaSize.Small,
   value,
   ...areaProps
 }: Props) => {
@@ -52,6 +60,7 @@ const TextArea: React.FC<Props> = ({
         ref={inputRef}
         id={id}
         $hasError={Boolean(error)}
+        $height={size}
         maxLength={maxLength}
         onChange={handleOnChange}
         value={value}

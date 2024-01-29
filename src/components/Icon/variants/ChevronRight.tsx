@@ -4,9 +4,9 @@ import { Icon, IconSvgProps } from '../Icon';
 import IconGradient from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
-const LABEL_ID = 'DashboardIcon';
+const LABEL_ID = 'ChevronRightIcon';
 
-export const DashboardIcon = (props: IconSvgProps) => {
+export const ChevronRightIcon = (props: IconSvgProps) => {
   const {
     circular,
     className,
@@ -31,19 +31,19 @@ export const DashboardIcon = (props: IconSvgProps) => {
     >
       <svg
         aria-labelledby={labelId || LABEL_ID}
-        focusable={false}
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
         className={circular ? undefined : className}
+        viewBox="0 0 6 11"
         fill="none"
-        viewBox="4.25 3.75 22.5 22.5"
       >
         <path
-          d="M4.25 16.25H14.25V3.75H4.25V16.25ZM4.25 26.25H14.25V18.75H4.25V26.25ZM16.75 26.25H26.75V13.75H16.75V26.25ZM16.75 3.75V11.25H26.75V3.75H16.75Z"
-          fill={gradient ? `url(#gradient${id})` : color}
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M0.292787 10.2074C0.105316 10.0199 0 9.76557 0 9.50041C0 9.23524 0.105316 8.98094 0.292787 8.79341L3.58579 5.50041L0.292787 2.20741C0.110629 2.0188 0.00983372 1.7662 0.0121121 1.50401C0.0143906 1.24181 0.11956 0.990997 0.304968 0.805589C0.490376 0.620181 0.741189 0.515012 1.00339 0.512733C1.26558 0.510455 1.51818 0.611249 1.70679 0.793408L5.70679 4.79341C5.89426 4.98094 5.99957 5.23524 5.99957 5.50041C5.99957 5.76557 5.89426 6.01988 5.70679 6.20741L1.70679 10.2074C1.51926 10.3949 1.26495 10.5002 0.999786 10.5002C0.734622 10.5002 0.480314 10.3949 0.292787 10.2074Z"
+          fill={color}
         />
-        {gradient && <IconGradient variation={gradient} id={id} />}
       </svg>
     </Icon>
   );

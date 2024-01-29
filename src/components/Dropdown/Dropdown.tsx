@@ -1,7 +1,7 @@
 import * as Select from '@radix-ui/react-select';
 import React from 'react';
 
-import { ArrowDownIcon, CheckIcon } from '../Icon';
+import { CheckIcon, ChevronDownIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
@@ -92,7 +92,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           <SelectValue placeholder={placeholder} />
           {!lockedValue && (
             <Select.Icon>
-              <ArrowDownIcon
+              <ChevronDownIcon
                 width={ARROW_DOWN_WIDTH}
                 height={ARROW_DOWN_HEIGHT}
                 label="dropdown icon"
@@ -111,7 +111,9 @@ const Dropdown: React.FC<DropdownProps> = ({
           </SelectViewport>
         </SelectContent>
       </Select.Root>
-      <InputError visible={Boolean(error)}>{error}</InputError>
+      {!lockedValue && (
+        <InputError visible={Boolean(error)}>{error}</InputError>
+      )}
     </DropdownWrapper>
   );
 };

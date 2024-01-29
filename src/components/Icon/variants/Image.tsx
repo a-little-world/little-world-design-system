@@ -1,7 +1,8 @@
 import React from 'react';
-import { getDefaultIconProps } from '../getDefaultIconProps';
+
 import { Icon, IconSvgProps } from '../Icon';
 import IconGradient from '../IconGradient';
+import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'ImageIcon';
 
@@ -22,6 +23,7 @@ export const ImageIcon = (props: IconSvgProps) => {
   return (
     <Icon
       circular={circular}
+      className={className}
       color={color}
       labelId={labelId || LABEL_ID}
       label={label}
@@ -33,7 +35,7 @@ export const ImageIcon = (props: IconSvgProps) => {
         focusable={false}
         width={width}
         height={height}
-        className={className}
+        className={circular ? undefined : className}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="4.83 5.31 23.33 23.33"
       >

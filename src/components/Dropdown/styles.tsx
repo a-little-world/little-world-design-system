@@ -31,7 +31,8 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
   color: ${tokens.color.theme.light.text.secondary};
   margin-bottom: ${tokens.spacing.xxxxsmall};
 
-  > span {
+  > span:first-child,
+  > span:first-child p {
     ${BODY_5_CSS}
 
     white-space: nowrap;

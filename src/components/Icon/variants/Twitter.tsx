@@ -1,7 +1,8 @@
 import React from 'react';
-import { getDefaultIconProps } from '../getDefaultIconProps';
+
 import { Icon, IconSvgProps } from '../Icon';
 import IconGradient from '../IconGradient';
+import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'TwitterIcon';
 
@@ -22,6 +23,7 @@ export const TwitterIcon = (props: IconSvgProps) => {
   return (
     <Icon
       circular={circular}
+      className={className}
       color={color}
       labelId={labelId || LABEL_ID}
       label={label}
@@ -30,9 +32,10 @@ export const TwitterIcon = (props: IconSvgProps) => {
       <svg
         aria-labelledby={labelId || LABEL_ID}
         focusable={false}
-        height={height}
-        viewBox="-21 -81 681.33464 681"
         width={width}
+        height={height}
+        className={circular ? undefined : className}
+        viewBox="-21 -81 681.33464 681"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path

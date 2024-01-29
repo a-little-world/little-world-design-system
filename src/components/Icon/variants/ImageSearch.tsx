@@ -4,9 +4,9 @@ import { Icon, IconSvgProps } from '../Icon';
 import IconGradient from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
-const LABEL_ID = 'DashboardIcon';
+const LABEL_ID = 'ImageSearchIcon';
 
-export const DashboardIcon = (props: IconSvgProps) => {
+export const ImageSearchIcon = (props: IconSvgProps) => {
   const {
     circular,
     className,
@@ -31,16 +31,15 @@ export const DashboardIcon = (props: IconSvgProps) => {
     >
       <svg
         aria-labelledby={labelId || LABEL_ID}
-        focusable={false}
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
         className={circular ? undefined : className}
+        viewBox="0 0 61.26 60"
         fill="none"
-        viewBox="4.25 3.75 22.5 22.5"
       >
         <path
-          d="M4.25 16.25H14.25V3.75H4.25V16.25ZM4.25 26.25H14.25V18.75H4.25V26.25ZM16.75 26.25H26.75V13.75H16.75V26.25ZM16.75 3.75V11.25H26.75V3.75H16.75Z"
+          d="M48 33V54H6V12H21.06C21.21 9.87 21.72 7.86 22.5 6H6C2.7 6 0 8.7 0 12V54C0 57.3 2.7 60 6 60H48C51.3 60 54 57.3 54 54V39L48 33ZM43.5 48H10.5L18.75 37.41L24.63 44.49L32.88 33.87L43.5 48ZM51.9 20.67C53.22 18.57 54 16.14 54 13.5C54 6.03 47.97 0 40.5 0C33.03 0 27 6.03 27 13.5C27 20.97 33.03 27 40.47 27C43.11 27 45.57 26.22 47.64 24.9L57 34.26L61.26 30L51.9 20.67ZM40.5 21C36.36 21 33 17.64 33 13.5C33 9.36 36.36 6 40.5 6C44.64 6 48 9.36 48 13.5C48 17.64 44.64 21 40.5 21Z"
           fill={gradient ? `url(#gradient${id})` : color}
         />
         {gradient && <IconGradient variation={gradient} id={id} />}

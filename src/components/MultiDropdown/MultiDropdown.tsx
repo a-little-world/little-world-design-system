@@ -6,7 +6,12 @@ import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
 import { PlusIcon, TrashIcon } from '../Icon';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
-import { AddMore, MultiDropdownWrapper, Segment } from './styles';
+import {
+  AddMore,
+  AddMoreButton,
+  MultiDropdownWrapper,
+  Segment,
+} from './styles';
 
 const DELETE_SEGMENT = 'delete segment';
 
@@ -15,6 +20,7 @@ type Props = {
   error?: string;
   label?: string;
   labelTooltip?: string;
+  locked?: boolean;
   defaultSegments?: number;
   maxSegments?: number;
   onValueChange: (value: { [x: string]: string }[]) => void;
@@ -53,6 +59,7 @@ const MultiDropdown: React.FC<Props> = ({
   addMoreLabel = 'Add more rows',
   label,
   labelTooltip,
+  locked,
   firstDropdown,
   secondDropdown,
   onValueChange,
@@ -120,8 +127,10 @@ const MultiDropdown: React.FC<Props> = ({
         .fill('')
         .map((_, index) => {
           const isFirstSegment = index === 0;
+
           return (
             <Segment
+              $locked={locked}
               key={`MultiDropdown Segment ${index}${values[0][index]}${values[1][index]}`}
             >
               <Dropdown
@@ -131,7 +140,9 @@ const MultiDropdown: React.FC<Props> = ({
                 options={firstDropdown.options}
                 value={values[0][index]}
                 lockedValue={
-                  isFirstSegment ? firstDropdown.lockedValue : undefined
+                  isFirstSegment || locked
+                    ? firstDropdown.lockedValue || values[0][index]
+                    : undefined
                 }
                 required={Boolean(values[1][index])}
                 error={firstDropdown.errors?.[index]}
@@ -142,10 +153,11 @@ const MultiDropdown: React.FC<Props> = ({
                 onValueChange={val => handleValueChange(val, 1, index)}
                 options={secondDropdown.options}
                 value={values[1][index]}
+                lockedValue={locked ? values[1][index] : undefined}
                 required={Boolean(values[0][index])}
                 error={secondDropdown.errors?.[index]}
               />
-              {!!index && (
+              {!!index && !locked && (
                 <Button
                   variation={ButtonVariations.Icon}
                   onClick={() => handleDelete(index)}
@@ -161,27 +173,28 @@ const MultiDropdown: React.FC<Props> = ({
             </Segment>
           );
         })}
-      <AddMore>
-        <Button
-          variation={ButtonVariations.Control}
-          disabled={segments === maxSegments}
-          onClick={() => setSegments(currentNumber => currentNumber + 1)}
-        >
-          <PlusIcon
-            label="add more dropdowns"
-            labelId="add more dropdowns"
-            width={10}
-            color={'orange'}
-          />
-        </Button>
-        <Button
-          variation={ButtonVariations.Inline}
-          disabled={segments === maxSegments}
-          onClick={() => setSegments(currentNumber => currentNumber + 1)}
-        >
-          <Text>{addMoreLabel}</Text>
-        </Button>
-      </AddMore>
+      {!locked && (
+        <AddMore>
+          <AddMoreButton
+            variation={ButtonVariations.Control}
+            disabled={segments === maxSegments}
+            onClick={() => setSegments(currentNumber => currentNumber + 1)}
+          >
+            <PlusIcon
+              label="add more dropdowns"
+              labelId="add more dropdowns"
+              width={10}
+            />
+          </AddMoreButton>
+          <Button
+            variation={ButtonVariations.Inline}
+            disabled={segments === maxSegments}
+            onClick={() => setSegments(currentNumber => currentNumber + 1)}
+          >
+            <Text>{addMoreLabel}</Text>
+          </Button>
+        </AddMore>
+      )}
     </MultiDropdownWrapper>
   );
 };

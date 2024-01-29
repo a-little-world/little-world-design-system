@@ -1,7 +1,8 @@
 import React from 'react';
-import { getDefaultIconProps } from '../getDefaultIconProps';
+
 import { Icon, IconSvgProps } from '../Icon';
 import IconGradient from '../IconGradient';
+import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'MenuIcon';
 
@@ -22,6 +23,7 @@ export const MenuIcon = (props: IconSvgProps) => {
   return (
     <Icon
       circular={circular}
+      className={className}
       color={color}
       labelId={labelId || LABEL_ID}
       label={label}
@@ -33,16 +35,18 @@ export const MenuIcon = (props: IconSvgProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
-        className={className}
+        className={circular ? undefined : className}
         fill="none"
         viewBox="0 0 40 40"
       >
         <path
           vectorEffect="non-scaling-stroke"
-          stroke={color}
           strokeLinecap="round"
+          strokeWidth="2px"
           d="M2.5 5.5h35M2.5 19.5h35M2.5 34.5h35"
+          stroke={gradient ? `url(#gradient${id})` : color}
         />
+        {gradient && <IconGradient variation={gradient} id={id} />}
       </svg>
     </Icon>
   );
