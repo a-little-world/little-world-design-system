@@ -25,7 +25,10 @@ export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
 export { default as Slider } from './components/Slider/Slider';
 export { default as Text } from './components/Text/Text';
 export { default as TextTypes } from './components/Text/TextTypes';
-export { default as TextArea } from './components/TextArea/TextArea';
+export {
+  default as TextArea,
+  TextAreaSize,
+} from './components/TextArea/TextArea';
 export {
   default as TextContent,
   ContentTypes,

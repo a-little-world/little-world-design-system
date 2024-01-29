@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import tokens from '../../tokens';
-import { ArrowLeftIcon, InfoIcon, PhoneIcon } from '../Icon';
+import { ChevronLeftIcon, InfoIcon, PhoneIcon } from '../Icon';
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
 import Button, { ButtonVariations } from './Button';
@@ -23,7 +23,7 @@ export const ButtonOption = args => (
 
 export const ButtonControl = args => (
   <Button variation={ButtonVariations.Control}>
-    <ArrowLeftIcon
+    <ChevronLeftIcon
       label="arrowLeft"
       labelId="arrowLeft"
       width={6}

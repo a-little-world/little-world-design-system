@@ -4,9 +4,9 @@ import { Icon, IconSvgProps } from '../Icon';
 import IconGradient from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
-const LABEL_ID = 'MenuIcon';
+const LABEL_ID = 'ChevronDownIcon';
 
-export const MenuIcon = (props: IconSvgProps) => {
+export const ChevronDownIcon = (props: IconSvgProps) => {
   const {
     circular,
     className,
@@ -31,22 +31,20 @@ export const MenuIcon = (props: IconSvgProps) => {
     >
       <svg
         aria-labelledby={labelId || LABEL_ID}
-        focusable={false}
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
         className={circular ? undefined : className}
         fill="none"
-        viewBox="0 0 40 40"
+        viewBox="0 0 16 11"
       >
         <path
-          vectorEffect="non-scaling-stroke"
+          d="M1.5 1.97656L8 9.97656L14.5 1.97656"
+          stroke={color}
+          strokeWidth="2"
           strokeLinecap="round"
-          strokeWidth="2px"
-          d="M2.5 5.5h35M2.5 19.5h35M2.5 34.5h35"
-          stroke={gradient ? `url(#gradient${id})` : color}
+          strokeLinejoin="round"
         />
-        {gradient && <IconGradient variation={gradient} id={id} />}
       </svg>
     </Icon>
   );

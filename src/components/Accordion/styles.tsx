@@ -2,7 +2,7 @@ import * as Accordion from '@radix-ui/react-accordion';
 import styled from 'styled-components';
 
 import tokens from '../../tokens';
-import { ArrowDownIcon } from '../Icon';
+import { ChevronDownIcon } from '../Icon';
 
 export const AccordionRoot = styled(Accordion.Root)`
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
@@ -55,7 +55,7 @@ export const AccordionTrigger = styled(Accordion.Trigger)`
   text-align: left;
 `;
 
-export const TriggerIcon = styled(ArrowDownIcon)`
+export const TriggerIcon = styled(ChevronDownIcon)`
   flex-shrink: 0;
   margin-top: 6px;
 `;
