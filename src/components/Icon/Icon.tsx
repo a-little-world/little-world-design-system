@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
 import styled, { css } from 'styled-components';
+
 import { coreColors } from '../../tokens/core';
 import { Gradients } from './IconGradient';
 
@@ -8,7 +9,7 @@ const Circle = styled.div<{ color?: string }>`
   border: 2px solid ${coreColors.gray20};
   border-radius: 50%;
   color: ${({ color }) => color || coreColors.gray30};
-  display: flex;
+  display: inline-flex;
   padding: 10px;
 `;
 
@@ -42,6 +43,7 @@ export const ImageLabel = styled.span<{ $top: string; $visible?: boolean }>`
 
 type IconProps = {
   circular?: boolean;
+  className?: string;
   color?: string;
   label: string;
   labelId: string;
@@ -56,6 +58,7 @@ export type IconSvgProps = Omit<IconProps, 'children'> &
 export const Icon = ({
   children,
   circular,
+  className,
   color,
   label,
   labelVisible,
@@ -63,7 +66,13 @@ export const Icon = ({
   labelId,
 }: IconProps) => (
   <>
-    {circular ? <Circle color={color}>{children}</Circle> : children}
+    {circular ? (
+      <Circle className={className} color={color}>
+        {children}
+      </Circle>
+    ) : (
+      children
+    )}
     <ImageLabel id={labelId} $visible={labelVisible} $top={labelTop}>
       {label}
     </ImageLabel>

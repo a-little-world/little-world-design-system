@@ -144,6 +144,10 @@ export const StyledButton = styled.button<{
     border-color: ${({ theme }) => theme.color.border.disabled};
     color: ${({ theme }) => theme.color.text.disabled};
     cursor: not-allowed;
+
+    & > * {
+      cursor: not-allowed;
+    }
   }
 
   ${({ $appearance, $color, $variation }) => {

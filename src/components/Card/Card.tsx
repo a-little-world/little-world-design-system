@@ -1,10 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+
 import tokens from '../../tokens';
 
 export enum CardSizes {
   Small = '360px',
-  Large = '540px',
+  Medium = '540px',
+  Large = '720px',
 }
 
 const StyledCard = styled.div<{ $height?: string; $width?: string }>`
@@ -12,6 +14,7 @@ const StyledCard = styled.div<{ $height?: string; $width?: string }>`
   background: white;
   border: 1px solid white;
   box-shadow: 0px 1px 25px 1px rgba(0, 0, 0, 0.05);
+  width: 100%;
   max-width: 100%;
 
   display: flex;
@@ -23,18 +26,18 @@ const StyledCard = styled.div<{ $height?: string; $width?: string }>`
       $width === CardSizes.Small
         ? tokens.spacing.medium
         : tokens.spacing.large};
+
+    ${({ $width }) =>
+      $width &&
+      css`
+        width: ${$width};
+      `}
   }
 
   ${({ $height }) =>
     $height &&
     css`
       height: ${$height};
-    `}
-
-  ${({ $width }) =>
-    $width &&
-    css`
-      width: ${$width};
     `}
 `;
 

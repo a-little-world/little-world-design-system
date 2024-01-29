@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+
 import tokens from '../../tokens';
 import Button from '../Button/Button';
 
@@ -11,7 +12,7 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
   width: unset;
   height: unset;
   margin: 0;
-  padding: ${tokens.spacing.large};
+  padding: ${tokens.spacing.small}
   border: none;
   background-color: rgba(51, 51, 51, 0.3);
   backdrop-filter: blur(8px);
@@ -43,11 +44,20 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
         transition-duration: 350ms;
       }
     `}
-}
+
+  @media (min-width: ${tokens.breakpoints.medium}) {
+    padding: ${tokens.spacing.large};
+  }
 `;
 
 export const CloseButton = styled(Button)`
   position: absolute;
-  top: ${tokens.spacing.medium};
-  right: ${tokens.spacing.medium};
+  top: ${tokens.spacing.small};
+  right: ${tokens.spacing.small};
+  z-index: 2;
+
+  @media (min-width: ${tokens.breakpoints.medium}) {
+    top: ${tokens.spacing.medium};
+    right: ${tokens.spacing.medium};
+  }
 `;
