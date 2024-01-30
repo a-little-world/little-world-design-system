@@ -12,7 +12,7 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
   width: unset;
   height: unset;
   margin: 0;
-  padding: ${tokens.spacing.small}
+  padding: ${tokens.spacing.small};
   border: none;
   background-color: rgba(51, 51, 51, 0.3);
   backdrop-filter: blur(8px);

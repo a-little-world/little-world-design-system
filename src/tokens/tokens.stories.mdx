@@ -1,33 +1,36 @@
 import { Meta } from '@storybook/addon-docs';
+import { Unstyled } from '@storybook/blocks';
 
-import Section from './Documentation';
+import ColorSection from './Documentation';
+import tokens from './index';
 
 <Meta title="Foundations/ColorSystem" />
 
 # Color System
 
-The Little World Text Parser allows for copy to include pre-defined tags that allows the rendered text to contain certain styling or functional elements.
-Tags follow the html tag format and must be written as such:
+All the colors of our app to support theming and complex UI components.
+The color palette for the Little World Design System is defined by four overarching goals:
 
-<div>Hello</div>
+Comprehensive
+The color system supports theming, data visualization, accent colors, and complex user interfaces.
 
-<Section title="spacing" />
-```
-<highlight>This text will be highlighted</highlight>
-```
+Accessible
+The color system provides sufficient contrast ratio and adheres to Web Content Accessibility Guidelines where possible.
 
-When using tags that correspond to html elements, attributes for that element can be included in a JSON object within the opening tag:
+Consistent
+The color system enables a consistent appearance across varied products and platforms.
 
-```
-<a {"href": "little-world"}>this is an anchor</a>
-```
+Scalable
+The color system can be extended with minimal disruption to existing implementations.
 
-The [Text](?path=/story/components-text--default) component has the text parser baked into it.
-Therefore it always recommended to wrap all text in the Text Component to benefit from the parser (plus get the correctly styling and types).
+The LW Design System utilises color tokens, which allows a designer or developer to understand how or when to apply our palette and the options available. They are used to bridge the gap between naming and use.
+Color tokens are semantically named styled labels.
+Currently we have two themes, light and dark, so each color token is assigned two color values.
 
-## Valid Little World tags
+After the the theme value, comes the label that represents the UI element that the color is for. The next is the role of that color or it's emphasis.
 
-| Tag       | Output                                | Requires       |
-| --------- | ------------------------------------- | -------------- |
-| highlight | html strong tag and "highlight" color | -              |
-| a         | html anchor tag                       | href attribute |
+## Text
+
+<Unstyled>
+  <ColorSection section="text" />
+</Unstyled>
