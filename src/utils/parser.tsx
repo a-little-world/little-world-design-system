@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import Link from '../components/Link/Link';
 
 const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
@@ -73,7 +74,8 @@ const textParser = (text: string) => {
   // ensure remaining string after last tag is included
   if (currentIndex !== text.length)
     components.push(text.substring(currentIndex));
-  return <>{components.map(section => section)}</>;
+
+  return <span>{components.map(section => section)}</span>;
 };
 
 export default textParser;
