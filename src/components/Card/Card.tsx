@@ -5,7 +5,7 @@ import tokens from '../../tokens';
 
 export enum CardSizes {
   Small = '360px',
-  Medium = '540px',
+  Medium = '560px',
   Large = '720px',
 }
 

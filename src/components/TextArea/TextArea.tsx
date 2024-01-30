@@ -47,7 +47,7 @@ const TextArea: React.FC<Props> = ({
   };
 
   return (
-    <AreaWrapper>
+    <AreaWrapper $size={size}>
       {label && (
         <Label bold htmlFor={id} toolTipText={labelTooltip}>
           {label}
@@ -60,7 +60,7 @@ const TextArea: React.FC<Props> = ({
         ref={inputRef}
         id={id}
         $hasError={Boolean(error)}
-        $height={size}
+        $size={size}
         maxLength={maxLength}
         onChange={handleOnChange}
         value={value}
