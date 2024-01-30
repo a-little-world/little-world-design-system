@@ -127,7 +127,10 @@ const MultiDropdown: React.FC<Props> = ({
         .fill('')
         .map((_, index) => {
           const isFirstSegment = index === 0;
-
+          const firstSegmentLockedVal = isFirstSegment
+            ? firstDropdown.lockedValue || values[0][index]
+            : undefined;
+          console.log({ isFirstSegment, firstSegmentLockedVal });
           return (
             <Segment
               $locked={locked}
@@ -140,9 +143,8 @@ const MultiDropdown: React.FC<Props> = ({
                 options={firstDropdown.options}
                 value={values[0][index]}
                 lockedValue={
-                  isFirstSegment || locked
-                    ? firstDropdown.lockedValue || values[0][index]
-                    : undefined
+                  firstSegmentLockedVal ||
+                  (locked ? values[0][index] : undefined)
                 }
                 required={Boolean(values[1][index])}
                 error={firstDropdown.errors?.[index]}
