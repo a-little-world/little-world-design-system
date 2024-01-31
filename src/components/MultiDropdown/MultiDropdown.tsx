@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import tokens from '../../tokens';
 import Button, { ButtonVariations } from '../Button/Button';
@@ -67,12 +67,27 @@ const MultiDropdown: React.FC<Props> = ({
   maxSegments = 4,
 }) => {
   const [segments, setSegments] = useState(
-    firstDropdown?.values?.length || defaultSegments,
+    Math.max(
+      firstDropdown?.values?.length,
+      secondDropdown?.values?.length,
+      defaultSegments,
+    ),
   );
   const [values, setValues] = useState([
     firstDropdown.values || [],
     secondDropdown.values || [],
   ]);
+
+  useEffect(() => {
+    setValues([firstDropdown.values || [], secondDropdown.values || []]);
+    setSegments(
+      Math.max(
+        firstDropdown?.values?.length,
+        secondDropdown?.values?.length,
+        defaultSegments,
+      ),
+    );
+  }, [firstDropdown?.values, secondDropdown?.values]);
 
   const handleValueChange = (
     value: string,
@@ -130,7 +145,7 @@ const MultiDropdown: React.FC<Props> = ({
           const firstSegmentLockedVal = isFirstSegment
             ? firstDropdown.lockedValue || values[0][index]
             : undefined;
-          console.log({ isFirstSegment, firstSegmentLockedVal });
+
           return (
             <Segment
               $locked={locked}
