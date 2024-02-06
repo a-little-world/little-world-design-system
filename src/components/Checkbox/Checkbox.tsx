@@ -1,15 +1,16 @@
-import React from 'react';
 import { CheckboxProps } from '@radix-ui/react-checkbox';
+import React from 'react';
+
+import { coreColors } from '../../tokens/core';
+import { CheckIcon } from '../Icon';
+import InputError from '../InputError/InputError';
 import {
-  CheckboxRoot,
   CheckboxContainer,
   CheckboxIndicator,
+  CheckboxRoot,
   CheckboxWrapper,
   StyledLabel,
 } from './styles';
-import { CheckIcon } from '../Icon';
-import { coreColors } from '../../tokens/core';
-import InputError from '../InputError/InputError';
 
 type Props = {
   className?: string;
@@ -57,7 +58,7 @@ const Checkbox: React.FC<Props> = ({
           </CheckboxIndicator>
         </CheckboxRoot>
         {label && (
-          <StyledLabel htmlFor={label} inline>
+          <StyledLabel htmlFor={id} inline>
             {label}
           </StyledLabel>
         )}
