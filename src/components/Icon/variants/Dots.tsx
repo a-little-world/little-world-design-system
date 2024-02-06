@@ -34,7 +34,7 @@ export const DotsIcon = (props: IconSvgProps) => {
         height={height}
         className={circular ? undefined : className}
         viewBox="0 0 32.055 32.055"
-        fill={color}
+        fill={gradient ? `url(#gradient${id})` : color}
         xmlns="http://www.w3.org/2000/svg"
         xmlSpace="preserve"
       >
@@ -46,6 +46,7 @@ export const DotsIcon = (props: IconSvgProps) => {
 		c0,2.19,1.774,3.965,3.969,3.965c2.188,0,3.965-1.772,3.965-3.965S30.278,12.061,28.09,12.061z"
           />
         </g>
+        {gradient && <IconGradient variation={gradient} id={id} />}
       </svg>
     </Icon>
   );

@@ -7,8 +7,8 @@ import { Area, AreaWrapper, Counter } from './styles';
 
 export enum TextAreaSize {
   Small = '80px',
-  Medium = '160px',
-  Large = '240px',
+  Medium = '120px',
+  Large = '160px',
 }
 
 interface Props extends React.ComponentPropsWithoutRef<'textarea'> {

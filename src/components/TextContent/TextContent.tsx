@@ -16,11 +16,12 @@ export enum ContentTypes {
 
 type Props = {
   content: { type: ContentTypes; text: string; listItems?: string[] }[];
+  marginBottom?: string;
 };
 
-const TextPage = ({ content }: Props) => {
+const TextPage = ({ content, marginBottom }: Props) => {
   return (
-    <ContentWrapper>
+    <ContentWrapper $marginBottom={marginBottom}>
       {content.map(({ text, type, listItems }) => {
         if (type === ContentTypes.Heading)
           return (

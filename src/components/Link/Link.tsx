@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { AnchorHTMLAttributes } from 'react';
 
 import { ButtonAppearance, ButtonSizes } from '../Button/Button';
 import TextTypes from '../Text/TextTypes';
@@ -15,6 +15,8 @@ type LinkProps = {
   textType?: keyof typeof TextTypes;
   buttonAppearance?: keyof typeof ButtonAppearance;
   buttonSize?: keyof typeof ButtonSizes;
+  style?: AnchorHTMLAttributes<HTMLAnchorElement>['style'];
+  target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
 };
 
 const Variants = {
@@ -31,6 +33,8 @@ const Link = ({
   className,
   href,
   onClick,
+  style,
+  target,
   to,
   textType,
 }: LinkProps) => {
@@ -43,6 +47,8 @@ const Link = ({
       onClick={onClick}
       $buttonAppearance={buttonAppearance}
       $size={buttonSize}
+      style={style}
+      target={target}
     >
       <AnchorText
         as="span"

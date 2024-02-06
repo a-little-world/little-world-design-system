@@ -7,6 +7,7 @@ export const StyledToolTipContent = styled(TooltipContent)`
   ${POPOVER_CONTENT_CSS}
   background-color: ${({ theme }) => theme.color.surface.bold};
   color: ${({ theme }) => theme.color.text.reversed};
+  font-weight: normal;
 `;
 
 export const StyledTooltipArrow = styled(TooltipArrow)`

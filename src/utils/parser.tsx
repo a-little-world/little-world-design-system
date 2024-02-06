@@ -21,6 +21,7 @@ const parseAttributes = (string: string) => {
 
 enum SupportedColorTags {
   highlight = 'highlight',
+  bold = 'bold',
 }
 
 const textParser = (text: string) => {
@@ -38,7 +39,6 @@ const textParser = (text: string) => {
     const tag = match[1];
     if (tag === ANCHOR_TAG) {
       const attrs = parseAttributes(match[2]?.trim());
-
       components.push(
         attrs.href ? (
           <Link key={tag + match[3]} to={attrs.href} {...attrs}>
