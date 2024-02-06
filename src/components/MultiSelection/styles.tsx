@@ -10,7 +10,7 @@ export const MultiSelectionWrapper = styled.div`
 export const Options = styled.div<{ $hasError: boolean }>`
   display: flex;
   border-radius: 15px;
-  background: ${tokens.color.theme.light.surface.secondary};
+  background: ${({ theme }) => theme.color.surface.secondary};
   align-items: center;
   text-align: center;
   flex-wrap: wrap;
@@ -18,10 +18,10 @@ export const Options = styled.div<{ $hasError: boolean }>`
   padding: ${tokens.spacing.xxsmall};
   margin-bottom: ${tokens.spacing.xxsmall};
   white-space: pre-line;
+  border: 1px solid ${({ theme }) => theme.color.border.subtle};
 
-  ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
-
-  @media (min-width: ${tokens.breakpoints.small}) {
+  ${({ $hasError }) => $hasError && INPUT_ERROR_CSS} @media
+    (min-width: ${tokens.breakpoints.small}) {
     padding: ${tokens.spacing.small};
   }
 `;
@@ -50,9 +50,9 @@ export const Option = styled.button<{ $selected: boolean }>`
     }
   `}
 
-  ${({ $selected }) =>
+  ${({ $selected, theme }) =>
     $selected &&
     css`
-      border-color: ${tokens.color.theme.light.border.selected};
+      border-color: ${theme.color.border.selected};
     `}
 `;
