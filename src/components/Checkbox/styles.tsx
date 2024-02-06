@@ -1,9 +1,10 @@
 import * as Checkbox from '@radix-ui/react-checkbox';
 import styled, { css } from 'styled-components';
+
 import tokens from '../../tokens';
 import Label from '../Label/Label';
 
-const ITEM_WIDTH = '13px';
+const ITEM_WIDTH = '16px';
 
 export const CheckboxWrapper = styled.div``;
 

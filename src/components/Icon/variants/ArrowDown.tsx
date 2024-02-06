@@ -40,11 +40,12 @@ export const ArrowDownIcon = (props: IconSvgProps) => {
       >
         <path
           d="M1.5 1.97656L8 9.97656L14.5 1.97656"
-          stroke={color}
+          stroke={gradient ? `url(#gradient${id})` : color}
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
+        {gradient && <IconGradient variation={gradient} id={id} />}
       </svg>
     </Icon>
   );

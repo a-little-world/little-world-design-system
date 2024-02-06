@@ -54,6 +54,7 @@ export default {
           error: coreColors.red20,
           success: coreColors.green30,
           highlight: coreColors.orange,
+          bold: coreColors.black,
           disabled: coreColors.gray30,
           reversed: coreColors.white,
         },
@@ -99,6 +100,7 @@ export default {
           error: coreColors.red20,
           success: coreColors.green30,
           highlight: coreColors.orange,
+          bold: coreColors.white, //
           disabled: coreColors.gray30,
           reversed: coreColors.black, //
         },

@@ -10,24 +10,50 @@ export enum Gradients {
   Orange = 'orange',
 }
 
+export enum GradientTypes {
+  v1 = 'v1',
+  v2 = 'v2',
+}
+
 export type IconGradientProps = {
   id: string;
   variation: Gradients;
+  type?: GradientTypes;
 };
 
-const IconGradient = ({ id, variation }: IconGradientProps) => (
+const IconGradient = ({
+  id,
+  variation,
+  type = GradientTypes.v1,
+}: IconGradientProps) => (
   <defs>
-    <linearGradient
-      id={`gradient${id}`}
-      x1="1.84595"
-      y1="16.9964"
-      x2="34.8008"
-      y2="16.9964"
-      gradientUnits="userSpaceOnUse"
-    >
-      <stop stopColor={GradientVariations[variation][0]} />
-      <stop offset="1" stopColor={GradientVariations[variation][1]} />
-    </linearGradient>
+    {type === GradientTypes.v1 ? (
+      <linearGradient
+        id={`gradient${id}`}
+        x1="1.84595"
+        y1="16.9964"
+        x2="34.8008"
+        y2="16.9964"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor={GradientVariations[variation][0]} />
+        <stop offset="1" stopColor={GradientVariations[variation][1]} />
+      </linearGradient>
+    ) : (
+      <>
+        <linearGradient
+          id={`gradient${id}`}
+          x1="27.9721"
+          y1="99.877"
+          x2="116.893"
+          y2="99.877"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor={GradientVariations[variation][0]} />
+          <stop offset="1" stopColor={GradientVariations[variation][1]} />
+        </linearGradient>
+      </>
+    )}
   </defs>
 );
 

@@ -41,12 +41,13 @@ export const CloseIcon = (props: IconSvgProps) => {
       >
         <path
           vectorEffect="non-scaling-stroke"
-          stroke={color}
+          stroke={gradient ? `url(#gradient${id})` : color}
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeMiterlimit="10"
           d="M35 5L5 35m30 0L5 5"
         />
+        {gradient && <IconGradient variation={gradient} id={id} />}
       </svg>
     </Icon>
   );

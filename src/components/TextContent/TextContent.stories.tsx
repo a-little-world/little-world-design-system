@@ -7,7 +7,7 @@ export default {
   title: 'Components/TextContent',
 };
 
-export const Default = () => (
+export const Default = args => (
   <div>
     <TextPage
       content={[
@@ -24,7 +24,7 @@ export const Default = () => (
         },
         { text: 'Type: Emphasize', type: ContentTypes.Emphasize },
       ]}
+      {...args}
     />
-    ;
   </div>
 );
