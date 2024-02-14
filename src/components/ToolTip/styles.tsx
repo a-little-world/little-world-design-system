@@ -1,6 +1,7 @@
 import { TooltipArrow, TooltipContent } from '@radix-ui/react-tooltip';
 import styled from 'styled-components';
 
+import tokens from '../../tokens';
 import { POPOVER_CONTENT_CSS } from '../Popover/styles';
 
 export const StyledToolTipContent = styled(TooltipContent)`

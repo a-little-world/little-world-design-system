@@ -4,6 +4,8 @@ export * from './variants/Check';
 export * from './variants/ChevronDown';
 export * from './variants/ChevronLeft';
 export * from './variants/ChevronRight';
+export * from './variants/Clock';
+export * from './variants/ClockDashed';
 export * from './variants/Close';
 export * from './variants/Dashboard';
 export * from './variants/Dots';

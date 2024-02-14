@@ -46,7 +46,7 @@ const Popover: React.FC<PopoverProps> = ({
         sideOffset={sideOffset}
         $asToolTip={asToolTip}
         $width={width}
-        $extraPaddingTop={showCloseButton}
+        $extraPaddingTop={!asToolTip && showCloseButton}
         collisionPadding={DEFAULT_SIDE_OFFSET}
       >
         {children}

@@ -111,6 +111,7 @@ export const StyledPopoverContent = styled(PopoverContent)<{
       ? theme.color.surface.bold
       : theme.color.surface.primary};
     color: ${$asToolTip ? theme.color.text.reversed : theme.color.text.primary};
+    padding-right: ${$asToolTip ? tokens.spacing.medium : tokens.spacing.small};
   `}
     
 
