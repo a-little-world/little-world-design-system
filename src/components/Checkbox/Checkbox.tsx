@@ -53,7 +53,7 @@ const Checkbox: React.FC<Props> = ({
               label="check icon"
               labelId="check icon"
               width={10}
-              color={color ? coreColors.white : coreColors.black}
+              // color={color ? coreColors.white : coreColors.black}
             />
           </CheckboxIndicator>
         </CheckboxRoot>

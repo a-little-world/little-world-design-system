@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+
 import tokens from '../../tokens';
 import Checkbox from '../Checkbox/Checkbox';
 import Text from '../Text/Text';
@@ -21,6 +22,8 @@ export const Grid = styled.div<{
   margin-bottom: ${tokens.spacing.small};
   padding-bottom: ${tokens.spacing.xxsmall};
   overflow-x: scroll;
+  background: ${({ theme }) => theme.color.surface.primary};
+  color: ${({ theme }) => theme.color.text.primary};
 `;
 
 export const ColumnHeading = styled(Text)<{ index: number }>`
@@ -37,7 +40,6 @@ export const ColumnHeading = styled(Text)<{ index: number }>`
     `
     position: sticky;
     left: 0;
-    background: white;
   `}
 `;
 
@@ -49,7 +51,6 @@ export const RowHeading = styled(Text)<{ index: number }>`
   text-align: center;
   position: sticky;
   left: 0;
-  background: white;
 `;
 
 export const ScrollableWrapper = styled.div`
@@ -69,9 +70,9 @@ export const StyledCheckbox = styled(Checkbox)<{
   grid-row-start: ${({ $row }) => $row};
   grid-column-start: ${({ $column }) => $column};
 
-  ${({ checked }) =>
+  ${({ checked, theme }) =>
     checked &&
     css`
-      border-color: ${tokens.color.theme.light.border.selected};
+      border-color: ${theme.color.border.selected};
     `};
 `;

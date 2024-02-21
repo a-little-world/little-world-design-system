@@ -53,9 +53,11 @@ const TextArea: React.FC<Props> = ({
           {label}
         </Label>
       )}
-      <Counter
-        type={TextTypes.Body7}
-      >{`${textAreaCount}/${maxLength}`}</Counter>
+      {maxLength && (
+        <Counter
+          type={TextTypes.Body7}
+        >{`${textAreaCount}/${maxLength}`}</Counter>
+      )}
       <Area
         ref={inputRef}
         id={id}

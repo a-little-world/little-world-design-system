@@ -9,9 +9,8 @@ import TextTypes from '../Text/TextTypes';
 const ProgressRoot = styled(Progress.Root)`
   position: relative;
   overflow: hidden;
-  background: var(--blackA9);
   border-radius: 99999px;
-  background: ${tokens.color.theme.light.surface.secondary};
+  background: ${({ theme }) => theme.color.surface.tertiary};
   width: 300px;
   height: 8px;
 
@@ -21,7 +20,7 @@ const ProgressRoot = styled(Progress.Root)`
 `;
 
 const ProgressIndicator = styled(Progress.Indicator)`
-  background-color: ${tokens.color.theme.light.surface.indicator};
+  background-color: ${({ theme }) => theme.color.surface.indicator};
   width: 100%;
   height: 100%;
   transition: transform 660ms cubic-bezier(0.65, 0, 0.35, 1);

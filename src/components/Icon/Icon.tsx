@@ -5,10 +5,10 @@ import { coreColors } from '../../tokens/core';
 import { Gradients } from './IconGradient';
 
 const Circle = styled.div<{ color?: string }>`
-  background: ${coreColors.gray10};
-  border: 2px solid ${coreColors.gray20};
+  background: ${({ theme }) => theme.color.surface.secondary};
+  border: 2px solid ${({ theme }) => theme.color.surface.subtle};
   border-radius: 50%;
-  color: ${({ color }) => color || coreColors.gray30};
+  color: ${({ color, theme }) => color || theme.color.text.tertiary};
   display: inline-flex;
   padding: 10px;
 `;

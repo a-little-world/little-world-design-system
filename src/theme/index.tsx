@@ -1,12 +1,14 @@
 import React, {
-  createContext,
-  useState,
   ReactNode,
+  createContext,
   useCallback,
+  useEffect,
   useMemo,
+  useState,
 } from 'react';
 import { ThemeProvider } from 'styled-components';
 import type { ThemeProps } from 'styled-components';
+
 import tokens from '../tokens';
 import type { Theme } from './theme';
 
@@ -47,6 +49,19 @@ export const CustomThemeProvider = ({
   defaultMode = ThemeVariants.light,
 }: ThemeProviderProps) => {
   const [currentMode, setCurrentMode] = useState(defaultMode);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as ThemeVariants;
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    console.log({ prefersDark, savedTheme });
+    if (savedTheme && ['dark', 'light'].includes(savedTheme)) {
+      setCurrentMode(savedTheme);
+    } else if (prefersDark) {
+      setCurrentMode(ThemeVariants.dark);
+    }
+  }, []);
 
   const toggleMode = useCallback(() => {
     setCurrentMode(currentMode =>

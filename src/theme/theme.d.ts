@@ -1,5 +1,10 @@
 import { Property } from 'csstype';
 
+export interface ThemeShallow {
+  breakpoints: any;
+  color: any;
+  spacing: any;
+}
 export interface Theme {
   color: {
     theme: {

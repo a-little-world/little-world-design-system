@@ -1,5 +1,6 @@
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import styled from 'styled-components';
+
 import tokens from '../../tokens';
 
 const ITEM_WIDTH = '13px';
@@ -14,9 +15,9 @@ export const RadioGroupRoot = styled(RadioGroup.Root)`
 
 export const RadioGroupItem = styled(RadioGroup.Item)`
   all: unset;
-  background: white;
+  background: ${({ theme }) => theme.color.surface.primary};
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.color.surface.contrast};
   width: ${ITEM_WIDTH};
   height: ${ITEM_WIDTH};
   border-radius: 100%;
@@ -41,6 +42,6 @@ export const RadioGroupIndicator = styled(RadioGroup.Indicator)`
     width: 9px;
     height: 9px;
     border-radius: 50%;
-    background-color: black;
+    background-color: ${({ theme }) => theme.color.text.primary};
   }
 `;

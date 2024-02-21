@@ -11,8 +11,8 @@ export enum CardSizes {
 
 const StyledCard = styled.div<{ $height?: string; $width?: string }>`
   border-radius: 40px;
-  background: white;
-  border: 1px solid white;
+  background: ${({ theme }) => theme.color.surface.primary};
+  border: 1px solid ${({ theme }) => theme.color.border.reversed};
   box-shadow: 0px 1px 25px 1px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 100%;

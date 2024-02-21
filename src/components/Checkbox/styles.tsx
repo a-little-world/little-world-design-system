@@ -20,9 +20,10 @@ export const CheckboxRoot = styled(Checkbox.Root)<{
   checked: Checkbox.CheckboxProps['checked'];
 }>`
   all: unset;
-  background: white;
+  background: ${({ theme }) => theme.color.surface.primary};
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.color.border.contrast};
+  color: ${({ theme }) => theme.color.text.primary};
   width: ${ITEM_WIDTH};
   height: ${ITEM_WIDTH};
   display: flex;
@@ -31,12 +32,13 @@ export const CheckboxRoot = styled(Checkbox.Root)<{
   border-color: ${({ $hasError, theme }) =>
     $hasError ? theme.color.border.error : theme.color.border.contrast};
 
-  ${({ $color, checked }) =>
+  ${({ $color, checked, theme }) =>
     $color &&
     checked &&
     css`
       background: ${$color};
       border-color: ${$color};
+      color: ${theme.color.text.reversed};
     `}
 `;
 

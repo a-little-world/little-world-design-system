@@ -14,7 +14,7 @@ export const OPTION_BUTTON_CSS = css<{
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   background: ${({ $backgroundColor, theme }) =>
-    $backgroundColor || theme.color.surface.secondary};
+    $backgroundColor || theme.color.surface.tertiary};
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
   color: ${({ $color, theme }) => $color || theme.color.text.primary};
   border-radius: 15px;
@@ -95,16 +95,16 @@ export const SecondaryButtonCss = css<{
 }>`
   ${StandardButtonCss}
 
-  ${({ $color, $backgroundColor }) => `
+  ${({ $color, $backgroundColor, theme }) => `
     border: 2px solid ${$color || coreColors.blue20};
-    background-color: ${coreColors.white};
+    background-color: ${theme.color.surface.primary};
     color: ${$color || coreColors.blue20};
     transition: background-color 0.5s ease, filter 0.5s ease,
     border-color 0.5s ease, color 0.5s ease, 0.4s;
 
     &:not(:disabled):hover {
       background: ${$backgroundColor || coreColors.blue20};
-      color: white;
+      color: ${theme.color.text.primary};
       border-color: ${$backgroundColor || coreColors.blue20};
       transition: background-color 0.5s ease, filter 0.5s ease,
       border-color 0.5s ease, color 0.5s ease, 0.4s;
@@ -150,7 +150,7 @@ export const StyledButton = styled.button<{
     }
   }
 
-  ${({ $appearance, $color, $variation }) => {
+  ${({ $appearance, $color, $variation, theme }) => {
     if ($variation === ButtonVariations.Basic) {
       if ($appearance === ButtonAppearance.Primary) return PrimaryButtonCss;
       if ($appearance === ButtonAppearance.Secondary) return SecondaryButtonCss;
@@ -160,16 +160,16 @@ export const StyledButton = styled.button<{
 
     if ($variation === ButtonVariations.Control)
       return css`
-        border: 1px solid ${coreColors.gray10};
+        border: 1px solid ${theme.color.surface.minimal};
         border-radius: 50%;
-        background: ${coreColors.white};
+        background: ${theme.color.surface.primary};
         width: 36px;
         height: 36px;
 
         &:not(:disabled):hover {
           background-color: ${coreColors.gray20};
           color: white;
-          border-color: ${coreColors.gray30};
+          border-color: ${theme.color.border.moderate};
         }
       `;
 
@@ -242,10 +242,11 @@ export const Loading = styled.div`
     position: absolute;
     width: 18px;
     height: 18px;
-    border: 2px solid #fff;
+    border: 2px solid ${({ theme }) => theme.color.surface.reversed};
     border-radius: 50%;
     animation: ${loading} 1.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
+    border-color: ${({ theme }) => theme.color.surface.reversed} transparent
+      transparent transparent;
   }
 
   > div:nth-child(1) {
