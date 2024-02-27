@@ -32,6 +32,8 @@ export * from './variants/Profile';
 export * from './variants/ProfileChat';
 export * from './variants/Question';
 export * from './variants/Settings';
+export * from './variants/Tick';
+export * from './variants/TickDouble';
 export * from './variants/Trash';
 export * from './variants/Twitter';
 export * from './variants/Video';

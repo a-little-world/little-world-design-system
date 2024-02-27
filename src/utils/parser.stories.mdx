@@ -16,6 +16,7 @@ When using tags that correspond to html elements, attributes for that element ca
 
 ```
 <a {"href": "little-world"}>this is an anchor</a>
+<button {"data-cal-link":"www.validlink.com", "data-cal-config":"{ layout: stacked }"}>Click Me</button>
 ```
 
 The [Text](?path=/story/components-text--default) component has the text parser baked into it.
@@ -25,6 +26,7 @@ Therefore it always recommended to wrap all text in the Text Component to benefi
 
 | Tag       | Output                                | Requires       |
 | --------- | ------------------------------------- | -------------- |
-| highlight | html strong tag and "highlight" color | -              |
 | a         | html anchor tag                       | href attribute |
+| button    | html button element                   |                |
 | bold      | bold text                             |                |
+| highlight | html strong tag and "highlight" color | -              |
