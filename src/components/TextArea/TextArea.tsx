@@ -53,7 +53,7 @@ const TextArea: React.FC<Props> = ({
           {label}
         </Label>
       )}
-      {maxLength && (
+      {Boolean(maxLength) && (
         <Counter
           type={TextTypes.Body7}
         >{`${textAreaCount}/${maxLength}`}</Counter>
