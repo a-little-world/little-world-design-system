@@ -9,6 +9,8 @@ const LABEL_ID = 'ExclamationIcon';
 
 export const ExclamationIcon = (props: IconSvgProps) => {
   const {
+    backgroundColor,
+    borderColor,
     circular,
     className,
     color,
@@ -25,6 +27,8 @@ export const ExclamationIcon = (props: IconSvgProps) => {
   const id = LABEL_ID + labelId;
   return (
     <Icon
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}
       circular={circular}
       className={className}
       color={color}

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Button from '../components/Button/Button';
 import Link from '../components/Link/Link';
 
 const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
@@ -8,6 +9,7 @@ const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
 `;
 
 const ANCHOR_TAG = 'a';
+const BUTTON_TAG = 'button';
 const regex = RegExp(/<(\w+)([^>]+)*(?:>(.+?)<\/\1>)/, 'gim');
 
 const parseAttributes = (string: string) => {
@@ -48,6 +50,18 @@ const textParser = (text: string) => {
           match[3]
         ),
       );
+      continue;
+    }
+
+    if (tag === BUTTON_TAG) {
+      const attrs = parseAttributes(match[2]?.trim());
+      console.log({ tag, attrs, match: match[2] });
+      components.push(
+        <Button key={tag + match[3]} {...attrs}>
+          {match[3]}
+        </Button>,
+      );
+
       continue;
     }
 

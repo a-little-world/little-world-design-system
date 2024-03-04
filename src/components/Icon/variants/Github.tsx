@@ -8,6 +8,8 @@ const LABEL_ID = 'GithubIcon';
 
 export const GithubIcon = (props: IconSvgProps) => {
   const {
+    backgroundColor,
+    borderColor,
     circular,
     className,
     color,
@@ -22,6 +24,8 @@ export const GithubIcon = (props: IconSvgProps) => {
 
   return (
     <Icon
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}
       circular={circular}
       className={className}
       color={color}

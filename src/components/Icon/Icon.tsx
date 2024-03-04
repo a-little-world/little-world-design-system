@@ -1,14 +1,19 @@
 import React, { SVGProps } from 'react';
 import styled, { css } from 'styled-components';
 
-import { coreColors } from '../../tokens/core';
 import { Gradients } from './IconGradient';
 
-const Circle = styled.div<{ color?: string }>`
-  background: ${coreColors.gray10};
-  border: 2px solid ${coreColors.gray20};
+const Circle = styled.div<{
+  $backgroundColor?: string;
+  $borderColor?: string;
+  color?: string;
+}>`
+  background: ${({ theme, $backgroundColor }) =>
+    $backgroundColor || theme.color.surface.secondary};
+  border: 2px solid
+    ${({ theme, $borderColor }) => $borderColor || theme.color.surface.subtle};
   border-radius: 50%;
-  color: ${({ color }) => color || coreColors.gray30};
+  color: ${({ color, theme }) => color || theme.color.text.tertiary};
   display: inline-flex;
   padding: 10px;
 `;
@@ -42,6 +47,8 @@ export const ImageLabel = styled.span<{ $top: string; $visible?: boolean }>`
 `;
 
 type IconProps = {
+  backgroundColor?: string;
+  borderColor?: string;
   circular?: boolean;
   className?: string;
   color?: string;
@@ -56,6 +63,8 @@ export type IconSvgProps = Omit<IconProps, 'children'> &
   SVGProps<SVGElement> & { gradient?: Gradients };
 
 export const Icon = ({
+  backgroundColor,
+  borderColor,
   children,
   circular,
   className,
@@ -67,7 +76,12 @@ export const Icon = ({
 }: IconProps) => (
   <>
     {circular ? (
-      <Circle className={className} color={color}>
+      <Circle
+        $backgroundColor={backgroundColor}
+        $borderColor={borderColor}
+        className={className}
+        color={color}
+      >
         {children}
       </Circle>
     ) : (

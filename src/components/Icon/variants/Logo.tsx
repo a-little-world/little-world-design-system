@@ -7,12 +7,23 @@ import { getDefaultIconProps } from '../getDefaultIconProps';
 const LABEL_ID = 'Logo';
 
 export const Logo = (props: IconSvgProps) => {
-  const { circular, className, color, height, label, labelId, labelVisible } =
-    getDefaultIconProps(props);
+  const {
+    backgroundColor,
+    borderColor,
+    circular,
+    className,
+    color,
+    height,
+    label,
+    labelId,
+    labelVisible,
+  } = getDefaultIconProps(props);
   const id = LABEL_ID + labelId;
 
   return (
     <Icon
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}
       circular={circular}
       className={className}
       color={color}

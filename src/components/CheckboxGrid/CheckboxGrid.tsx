@@ -81,7 +81,7 @@ const CheckboxGrid: React.FC<Props> = ({
                   name={name}
                   onCheckedChange={state => onSelect({ value, key, state })}
                   value={value}
-                  color={coreColors.orange}
+                  color={coreColors.orange20}
                   $row={rowIndex + 2}
                   $column={columnIndex + 2}
                 />

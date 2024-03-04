@@ -10,7 +10,7 @@ export const MultiSelectionWrapper = styled.div`
 export const Options = styled.div<{ $hasError: boolean }>`
   display: flex;
   border-radius: 15px;
-  background: ${({ theme }) => theme.color.surface.secondary};
+  background: ${({ theme }) => theme.color.surface.tertiary};
   align-items: center;
   text-align: center;
   flex-wrap: wrap;

@@ -1,5 +1,8 @@
 import { IconSvgProps } from './Icon';
+
 export const getDefaultIconProps = ({
+  backgroundColor,
+  borderColor,
   circular,
   className,
   color,
@@ -8,6 +11,8 @@ export const getDefaultIconProps = ({
   width,
   ...rest
 }: IconSvgProps): IconSvgProps => ({
+  backgroundColor,
+  borderColor,
   circular,
   className,
   color: color || 'currentColor',

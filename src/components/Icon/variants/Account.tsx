@@ -8,6 +8,8 @@ const LABEL_ID = 'AccountIcon';
 
 export const AccountIcon = (props: IconSvgProps) => {
   const {
+    backgroundColor,
+    borderColor,
     circular,
     className,
     color,
@@ -22,6 +24,8 @@ export const AccountIcon = (props: IconSvgProps) => {
 
   return (
     <Icon
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}
       circular={circular}
       className={className}
       color={color}

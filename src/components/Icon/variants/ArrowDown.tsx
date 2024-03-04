@@ -8,6 +8,8 @@ const LABEL_ID = 'ArrowDownIcon';
 
 export const ArrowDownIcon = (props: IconSvgProps) => {
   const {
+    backgroundColor,
+    borderColor,
     circular,
     className,
     color,
@@ -22,6 +24,8 @@ export const ArrowDownIcon = (props: IconSvgProps) => {
 
   return (
     <Icon
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}
       circular={circular}
       className={className}
       color={color}

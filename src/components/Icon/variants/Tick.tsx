@@ -4,9 +4,9 @@ import { Icon, IconSvgProps } from '../Icon';
 import IconGradient from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
-const LABEL_ID = 'PencilIcon';
+const LABEL_ID = 'Tick';
 
-export const PencilIcon = (props: IconSvgProps) => {
+export const TickIcon = (props: IconSvgProps) => {
   const {
     backgroundColor,
     borderColor,
@@ -34,15 +34,16 @@ export const PencilIcon = (props: IconSvgProps) => {
       labelVisible={labelVisible}
     >
       <svg
+        aria-labelledby={labelId || LABEL_ID}
+        xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
         className={circular ? undefined : className}
-        viewBox="0 0 13 12"
+        viewBox="0 0 24 24"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M7.11073 2.55667L9.94333 5.38994L3.3326 12H0.5V9.16673L7.11073 2.55601V2.55667ZM8.05493 1.61247L9.47123 0.195508C9.59645 0.0703245 9.76626 0 9.94333 0C10.1204 0 10.2902 0.0703245 10.4154 0.195508L12.3045 2.08457C12.4297 2.2098 12.5 2.37961 12.5 2.55667C12.5 2.73374 12.4297 2.90355 12.3045 3.02877L10.8875 4.44507L8.05493 1.61247Z"
+          d="M10.0002 15.172L19.1922 5.979L20.6072 7.393L10.0002 18L3.63623 11.636L5.05023 10.222L10.0002 15.172Z"
           fill={gradient ? `url(#gradient${id})` : color}
         />
         {gradient && <IconGradient variation={gradient} id={id} />}

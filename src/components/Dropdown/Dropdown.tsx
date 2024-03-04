@@ -8,6 +8,7 @@ import Text from '../Text/Text';
 import {
   DropdownWrapper,
   SelectContent,
+  SelectIcon,
   SelectItem,
   SelectItemIndicator,
   SelectTrigger,
@@ -91,14 +92,14 @@ const Dropdown: React.FC<DropdownProps> = ({
         >
           <SelectValue placeholder={placeholder} />
           {!lockedValue && (
-            <Select.Icon>
+            <SelectIcon>
               <ChevronDownIcon
                 width={ARROW_DOWN_WIDTH}
                 height={ARROW_DOWN_HEIGHT}
                 label="dropdown icon"
                 labelId="dropdown icon"
               />
-            </Select.Icon>
+            </SelectIcon>
           )}
         </SelectTrigger>
         <SelectContent position="popper">

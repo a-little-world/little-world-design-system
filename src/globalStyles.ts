@@ -1,7 +1,9 @@
 // globalStyles.js
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+import type { ThemeShallow } from './theme/theme';
+
+const GlobalStyle = createGlobalStyle<{ theme: ThemeShallow }>`
   body {
     padding: 0;
     margin: 0;
@@ -12,6 +14,8 @@ const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: ${({ theme }) => theme.color.text.primary};
+    background: ${({ theme }) => theme.color.surface.background};
   }
 
   code {

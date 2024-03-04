@@ -1,5 +1,6 @@
 export const coreColors = {
-  orange: '#F39224',
+  orange10: '#F393253D',
+  orange20: '#F39224',
   green10: '#c7ebd1',
   green20: '#92D050',
   green30: '#045e45',
@@ -8,6 +9,7 @@ export const coreColors = {
   gray30: '#A6A6A6',
   gray40: '#4B4C4F',
   gray50: '#e6e8ec80',
+  gray60: '#18191b',
   black: '#000000',
   blue10: '#36A9E0',
   blue20: '#0063AF',

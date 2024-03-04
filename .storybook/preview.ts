@@ -2,8 +2,7 @@ import { withThemeFromJSXProvider } from '@storybook/addon-styling';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from '../src/globalStyles';
-import { ThemeVariants, themes } from '../src/theme';
-import './global.css';
+import { CustomThemeProvider, ThemeVariants, themes } from '../src/theme';
 
 //👇 Configures Storybook to log the actions in the UI.
 export const parameters = {
@@ -20,7 +19,7 @@ export const decorators = [
   withThemeFromJSXProvider({
     themes,
     defaultTheme: ThemeVariants.light,
-    Provider: ThemeProvider,
+    Provider: CustomThemeProvider,
     GlobalStyles: GlobalStyle,
   }),
 ];

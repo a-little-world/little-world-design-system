@@ -24,11 +24,11 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
   line-height: 1.25;
   height: 33px;
   gap: ${tokens.spacing.xsmall};
-  background-color: ${tokens.color.theme.light.surface.secondary};
+  background-color: $ ${({ theme }) => theme.color.surface.tertiary};
   border-radius: 5px;
-  border: 2px solid ${tokens.color.theme.light.border.subtle};
+  border: 2px solid ${({ theme }) => theme.color.border.subtle};
   width: 100%;
-  color: ${tokens.color.theme.light.text.secondary};
+  color: ${({ theme }) => theme.color.text.secondary};
   margin-bottom: ${tokens.spacing.xxxxsmall};
 
   > span:first-child,
@@ -45,15 +45,15 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
   }
 
   svg {
-    color: ${coreColors.gray40};
+    color: ${({ theme }) => theme.color.text.secondary};
   }
 
   &[data-placeholder] {
-    background-color: ${tokens.color.theme.light.surface.primary};
-    color: ${tokens.color.theme.light.text.tertiary};
+    background-color: ${({ theme }) => theme.color.surface.primary};
+    color: ${({ theme }) => theme.color.text.tertiary};
 
     svg {
-      color: ${coreColors.orange};
+      color: ${({ theme }) => theme.color.text.highlight};
     }
   }
 
@@ -62,13 +62,13 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
 
 export const SelectValue = styled(Select.Value)`
   &[data-placeholder] {
-    background-color: ${tokens.color.theme.light.surface.primary};
+    background-color: ${({ theme }) => theme.color.surface.primary};
   }
 `;
 
 export const SelectContent = styled(Select.Content)`
   overflow: hidden;
-  background-color: white;
+  background-color: ${({ theme }) => theme.color.surface.primary};
   border-radius: 6px;
   box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
     0px 10px 20px -15px rgba(22, 23, 24, 0.2);
@@ -79,6 +79,10 @@ export const SelectViewport = styled(Select.Viewport)`
   padding: ${tokens.spacing.xxsmall} ${tokens.spacing.xxxsmall};
   max-height: 200px;
   overflow: scroll;
+`;
+
+export const SelectIcon = styled(Select.Icon)`
+  display: flex;
 `;
 
 export const SelectItem = styled(Select.Item)`
