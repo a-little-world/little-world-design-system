@@ -1,5 +1,5 @@
 export const coreColors = {
-  orange10: '#F393253D',
+  orange10: '#fde5cf',
   orange20: '#F39224',
   green10: '#c7ebd1',
   green20: '#92D050',

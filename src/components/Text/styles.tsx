@@ -13,6 +13,7 @@ const BODY_SHARED_STYLES = css`
 
 const HEADING_SHARED_STYLES = css<{ $color?: string }>`
   font-family: 'Work Sans', sans-serif;
+  font-weight: bold;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 `;
@@ -35,6 +36,7 @@ export const StyledElement = styled.div<{
   ${({ $bold }) => $bold && 'font-weight: bold;'}
   ${({ $center }) => $center && 'text-align: center;'}
   ${({ $color }) => $color && `color: ${$color};`}
+  white-space: pre-line;
 
   ${({ $type }) => {
     if ($type === TextTypes.Body1)

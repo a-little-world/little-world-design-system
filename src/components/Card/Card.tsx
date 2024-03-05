@@ -9,10 +9,15 @@ export enum CardSizes {
   Large = '720px',
 }
 
-const StyledCard = styled.div<{ $height?: string; $width?: string }>`
+const StyledCard = styled.div<{
+  $borderColor?: string;
+  $height?: string;
+  $width?: string;
+}>`
   border-radius: 40px;
   background: ${({ theme }) => theme.color.surface.primary};
-  border: 1px solid ${({ theme }) => theme.color.border.reversed};
+  border: 1px solid
+    ${({ theme, $borderColor }) => $borderColor || theme.color.border.subtle};
   box-shadow: 0px 1px 25px 1px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 100%;
@@ -42,14 +47,26 @@ const StyledCard = styled.div<{ $height?: string; $width?: string }>`
 `;
 
 type CardProps = {
+  borderColor?: string;
   children: React.ReactNode;
   className?: string;
   height?: string;
   width?: keyof typeof CardSizes;
 };
 
-const Card: React.FC<CardProps> = ({ children, className, height, width }) => (
-  <StyledCard className={className} $height={height} $width={width}>
+const Card: React.FC<CardProps> = ({
+  borderColor,
+  children,
+  className,
+  height,
+  width,
+}) => (
+  <StyledCard
+    className={className}
+    $borderColor={borderColor}
+    $height={height}
+    $width={width}
+  >
     {children}
   </StyledCard>
 );
