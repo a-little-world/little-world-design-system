@@ -1,5 +1,6 @@
 export * from './variants/Account';
 export * from './variants/Appointment';
+export * from './variants/Archive';
 export * from './variants/ArrowLeft';
 export * from './variants/Bell';
 export * from './variants/Check';
@@ -32,6 +33,7 @@ export * from './variants/Profile';
 export * from './variants/ProfileChat';
 export * from './variants/Question';
 export * from './variants/Settings';
+export * from './variants/Star';
 export * from './variants/Tick';
 export * from './variants/TickDouble';
 export * from './variants/Trash';
