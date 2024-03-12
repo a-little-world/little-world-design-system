@@ -17,6 +17,7 @@ export * from './variants/EyeClosed';
 export * from './variants/EyeOpen';
 export * from './variants/Facebook';
 export * from './variants/Github';
+export * from './variants/GroupChat';
 export * from './variants/Image';
 export * from './variants/ImageSearch';
 export * from './variants/Info';
