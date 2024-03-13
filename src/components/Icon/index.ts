@@ -33,6 +33,7 @@ export * from './variants/Plus';
 export * from './variants/Profile';
 export * from './variants/ProfileChat';
 export * from './variants/Question';
+export * from './variants/Send';
 export * from './variants/Settings';
 export * from './variants/Star';
 export * from './variants/Tick';

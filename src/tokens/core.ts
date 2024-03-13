@@ -27,6 +27,7 @@ export const coreSpacing = {
   space10: getPixelValue(1),
   space15: getPixelValue(1.5),
   space20: getPixelValue(2),
+  space25: getPixelValue(2.5),
   space30: getPixelValue(3),
   space40: getPixelValue(4),
   space50: getPixelValue(5),
@@ -35,5 +36,6 @@ export const coreSpacing = {
   space80: getPixelValue(8),
   space90: getPixelValue(9),
   space100: getPixelValue(10),
+  space125: getPixelValue(12.5),
   space150: getPixelValue(15),
 } as const;
