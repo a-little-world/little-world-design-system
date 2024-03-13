@@ -9,6 +9,19 @@ export default {
     xlarge: '1200px',
     xxlarge: '1600px',
   },
+  radius: {
+    xxxsmall: coreSpacing.space05,
+    xxsmall: coreSpacing.space10,
+    xsmall: coreSpacing.space15,
+    small: coreSpacing.space20,
+    medium: coreSpacing.space25,
+    large: coreSpacing.space30,
+    xlarge: coreSpacing.space40,
+    xxlarge: coreSpacing.space50,
+    massive: coreSpacing.space125,
+    half: '50%',
+    full: '100%',
+  },
   spacing: {
     xxxxsmall: coreSpacing.space025,
     xxxsmall: coreSpacing.space05,
@@ -21,6 +34,7 @@ export default {
     xxlarge: coreSpacing.space80,
     massive: coreSpacing.space150,
   },
+
   color: {
     theme: {
       light: {
