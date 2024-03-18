@@ -14,6 +14,12 @@ it('should return string including unrecognised tags', () => {
   expect(screen.getByText(text)).toBeInTheDocument();
 });
 
+it('should return string including unrecognised tags containing empty string', () => {
+  const text = 'Empty string <sa></sa>';
+  render(textParser(text));
+  expect(screen.getByText(text)).toBeInTheDocument();
+});
+
 it('should return color text if text contains highlight tag', () => {
   const normalString = 'Mock string with';
   const text = normalString + ' <highlight>this is orange</highlight>';

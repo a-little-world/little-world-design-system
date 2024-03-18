@@ -10,7 +10,7 @@ const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
 
 const ANCHOR_TAG = 'a';
 const BUTTON_TAG = 'button';
-const regex = RegExp(/<(\w+)([^>]+)*(?:>(.+?)<\/\1>)/, 'gim');
+const regex = RegExp(/<(\w+)([^>]+)*(?:>(.*?)<\/\1>)/, 'gim');
 
 const parseAttributes = (string: string) => {
   try {
@@ -30,6 +30,7 @@ const textParser = (text: string) => {
   const components = [];
   let match;
   let currentIndex = 0;
+
   // utilises the exec function - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#return_value
   while ((match = regex.exec(text)) !== null) {
     const textBetweenMatches = text.substring(currentIndex, match.index);
@@ -80,6 +81,7 @@ const textParser = (text: string) => {
     // unrecognised tags are returned unprocessed
     components.push(text.substring(match.index, currentIndex));
   }
+
   // reset regex index
   regex.lastIndex = 0;
 
