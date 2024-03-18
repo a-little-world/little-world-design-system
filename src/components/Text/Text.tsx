@@ -10,6 +10,7 @@ type TextProps = {
   color?: string;
   children: React.ReactNode;
   className?: string;
+  disableParser?: boolean;
   id?: string;
   tag?:
     | 'p'
@@ -31,6 +32,7 @@ const Text = ({
   children,
   color,
   className,
+  disableParser = false,
   id,
   tag = 'p',
   type = TextTypes.Body5,
@@ -44,7 +46,9 @@ const Text = ({
     $type={type}
     as={tag}
   >
-    {typeof children === 'string' ? textParser(children) : children}
+    {typeof children === 'string' && !disableParser
+      ? textParser(children)
+      : children}
   </StyledElement>
 );
 

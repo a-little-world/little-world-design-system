@@ -10,7 +10,7 @@ const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
 
 const ANCHOR_TAG = 'a';
 const BUTTON_TAG = 'button';
-const regex = RegExp(/<(\w+)([^>]+)*(?:>(.*?)<\/\1>)/, 'gim');
+const regex = RegExp(/<(\w+)((?:\s+[^>]*)*)>(.*?)<\/\1>/, 'gim');
 
 const parseAttributes = (string: string) => {
   try {

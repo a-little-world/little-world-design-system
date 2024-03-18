@@ -30,6 +30,7 @@ export const Area = styled.textarea<{
       : tokens.spacing.small};
   box-sizing: border-box;
   margin-bottom: ${tokens.spacing.xxxxsmall};
+  resize: none;
 
   ${({ $hasError }) => $hasError && INPUT_ERROR_CSS};
 `;
