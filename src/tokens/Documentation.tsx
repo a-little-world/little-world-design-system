@@ -47,7 +47,7 @@ const Example = styled.div<{ $background: string }>`
 const ColorSection = ({ section }: { section: string }) => {
   const light = Object.entries(tokens.color.theme.light[section]);
   const dark = Object.entries(tokens.color.theme.dark[section]);
-  console.log({ light, dark });
+
   return (
     <Container>
       <Panel isLight>

@@ -19,6 +19,7 @@ interface Props extends React.ComponentPropsWithoutRef<'textarea'> {
   labelTooltip?: string;
   maxLength?: number;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onSubmit?: () => void;
   size?: TextAreaSize;
   value?: string;
 }
@@ -31,6 +32,7 @@ const TextArea: React.FC<Props> = ({
   labelTooltip,
   maxLength = 999,
   onChange,
+  onSubmit,
   size = TextAreaSize.Small,
   value,
   ...areaProps
@@ -44,6 +46,13 @@ const TextArea: React.FC<Props> = ({
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange?.(e);
     setTextAreaCount(e.target.value.length);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (onSubmit && e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      onSubmit();
+    }
   };
 
   return (
@@ -65,6 +74,7 @@ const TextArea: React.FC<Props> = ({
         $size={size}
         maxLength={maxLength}
         onChange={handleOnChange}
+        onKeyDown={handleKeyDown}
         value={value}
         {...areaProps}
       />
