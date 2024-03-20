@@ -55,7 +55,7 @@ export const CustomThemeProvider = ({
     const prefersDark =
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;
-    console.log({ prefersDark, savedTheme });
+
     if (savedTheme && ['dark', 'light'].includes(savedTheme)) {
       setCurrentMode(savedTheme);
     } else if (prefersDark) {

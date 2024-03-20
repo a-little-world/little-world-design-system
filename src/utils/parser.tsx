@@ -56,7 +56,7 @@ const textParser = (text: string) => {
 
     if (tag === BUTTON_TAG) {
       const attrs = parseAttributes(match[2]?.trim());
-      console.log({ tag, attrs, match: match[2] });
+
       components.push(
         <Button key={tag + match[3]} {...attrs}>
           {match[3]}
