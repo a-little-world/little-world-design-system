@@ -17,7 +17,7 @@ interface Props extends React.ComponentPropsWithoutRef<'textarea'> {
   inputRef?: React.RefObject<HTMLTextAreaElement>;
   label: string;
   labelTooltip?: string;
-  maxLength?: number;
+  maxLength?: number | null;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onSubmit?: () => void;
   size?: TextAreaSize;
@@ -33,6 +33,7 @@ const TextArea: React.FC<Props> = ({
   maxLength = 999,
   onChange,
   onSubmit,
+  readOnly,
   size = TextAreaSize.Small,
   value,
   ...areaProps
@@ -62,7 +63,7 @@ const TextArea: React.FC<Props> = ({
           {label}
         </Label>
       )}
-      {Boolean(maxLength) && (
+      {Boolean(maxLength && !readOnly) && (
         <Counter
           type={TextTypes.Body7}
         >{`${textAreaCount}/${maxLength}`}</Counter>
@@ -75,6 +76,7 @@ const TextArea: React.FC<Props> = ({
         maxLength={maxLength}
         onChange={handleOnChange}
         onKeyDown={handleKeyDown}
+        readOnly={readOnly}
         value={value}
         {...areaProps}
       />
