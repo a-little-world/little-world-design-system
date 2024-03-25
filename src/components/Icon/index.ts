@@ -16,6 +16,7 @@ export * from './variants/Exclamation';
 export * from './variants/EyeClosed';
 export * from './variants/EyeOpen';
 export * from './variants/Facebook';
+export * from './variants/FullScreen';
 export * from './variants/Github';
 export * from './variants/GroupChat';
 export * from './variants/Image';

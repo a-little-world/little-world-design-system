@@ -54,6 +54,7 @@ export default {
           primary: coreColors.white,
           secondary: coreColors.gray10,
           tertiary: coreColors.gray50,
+          contrast: coreColors.black,
           bold: coreColors.blue10,
           message: coreColors.orange10,
           indicator: coreColors.green20,
@@ -70,6 +71,7 @@ export default {
           heading: coreColors.blue20,
           link: coreColors.blue20,
           button: coreColors.white,
+          control: coreColors.gray20,
           error: coreColors.red20,
           success: coreColors.green30,
           highlight: coreColors.orange20,
@@ -103,7 +105,9 @@ export default {
           background: coreColors.black, //
           primary: coreColors.gray60, //
           secondary: coreColors.gray50,
+          contrast: coreColors.white,
           bold: coreColors.blue10,
+          control: coreColors.gray20,
           message: coreColors.orange10,
           indicator: coreColors.green20,
           highlight: coreColors.orange20,
@@ -133,8 +137,10 @@ export default {
           success: coreColors.green10,
         },
         gradient: {
-          blue10: 'linear-gradient(50.19deg, #36a9e0 2.84%, #0367b2 106.82%)',
-          orange: `linear-gradient(43.07deg, #db590b -3.02%, ${coreColors.orange20} 93.96%)`,
+          blue10: `linear-gradient(50.19deg, ${coreColors.blue10} 2.84%, #0367b2 106.82%)`,
+          orange10: `linear-gradient(43.07deg, ${coreColors.orange30} -3.02%, ${coreColors.orange20} 93.96%)`,
+          orange20: `linear-gradient(225.88deg, ${coreColors.orange30} 7.79%, ${coreColors.orange40} 104.6%);
+          `,
         },
       },
     },

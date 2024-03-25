@@ -24,6 +24,7 @@ export type DropdownProps = {
   label?: string;
   labelTooltip?: string;
   lockedValue?: string;
+  maxWidth?: string;
   options: Options;
   onValueChange: (value: string) => void;
   placeholder: string;
@@ -63,6 +64,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   label,
   labelTooltip,
   lockedValue,
+  maxWidth,
   onValueChange,
   options,
   placeholder,
@@ -73,7 +75,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     lockedValue || (value && isValidValue(value, options) ? value : undefined);
 
   return (
-    <DropdownWrapper>
+    <DropdownWrapper $maxWidth={maxWidth}>
       {label && (
         <Label bold htmlFor={ariaLabel} toolTipText={labelTooltip}>
           {label}
