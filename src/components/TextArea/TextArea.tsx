@@ -14,9 +14,9 @@ export enum TextAreaSize {
 interface Props extends React.ComponentPropsWithoutRef<'textarea'> {
   displayCount?: boolean;
   error?: string;
-  id: string;
+  id?: string;
   inputRef?: React.RefObject<HTMLTextAreaElement>;
-  label: string;
+  label?: string;
   labelTooltip?: string;
   maxLength?: number;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -32,7 +32,7 @@ const TextArea: React.FC<Props> = ({
   inputRef,
   label,
   labelTooltip,
-  maxLength = 999,
+  maxLength,
   onChange,
   onSubmit,
   readOnly,
@@ -65,7 +65,7 @@ const TextArea: React.FC<Props> = ({
           {label}
         </Label>
       )}
-      {Boolean(displayCount && !readOnly) && (
+      {Boolean(displayCount && !readOnly && maxLength) && (
         <Counter
           type={TextTypes.Body7}
         >{`${textAreaCount}/${maxLength}`}</Counter>

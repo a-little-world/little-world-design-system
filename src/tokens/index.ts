@@ -86,8 +86,10 @@ export default {
           success: coreColors.green10,
         },
         gradient: {
-          blue10: 'linear-gradient(50.19deg, #36a9e0 2.84%, #0367b2 106.82%)',
-          orange: `linear-gradient(43.07deg, #db590b -3.02%, ${coreColors.orange20} 93.96%)`,
+          blue10: `linear-gradient(50.19deg, ${coreColors.blue10} 2.84%, #0367b2 106.82%)`,
+          orange10: `linear-gradient(43.07deg, ${coreColors.orange30} -3.02%, ${coreColors.orange20} 93.96%)`,
+          orange20: `linear-gradient(225.88deg, ${coreColors.orange30} 7.79%, ${coreColors.orange40} 104.6%);
+          `,
         },
       },
       dark: {
