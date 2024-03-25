@@ -8,9 +8,9 @@ import { BODY_5_CSS } from '../Text/styles';
 
 export const DROPDOWN_MAX_WIDTH = '300px';
 
-export const DropdownWrapper = styled.div`
+export const DropdownWrapper = styled.div<{ $maxWidth?: string }>`
   position: relative;
-  max-width: ${DROPDOWN_MAX_WIDTH};
+  max-width: ${({ $maxWidth }) => $maxWidth || DROPDOWN_MAX_WIDTH};
   width: 100%;
 `;
 
