@@ -32,13 +32,11 @@ const Loading = styled.div<{ $color?: string; $size?: LoadingSizes }>`
     position: absolute;
     width: 18px;
     height: 18px;
-    border: 2px solid
-      ${({ $color, theme }) => $color || theme.color.surface.contrast};
+    border: 2px solid ${({ $color }) => $color || 'currentColor'};
     border-radius: 50%;
     animation: ${loading} 1.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${({ $color, theme }) =>
-        $color || theme.color.surface.contrast}
-      transparent transparent transparent;
+    border-color: ${({ $color }) => $color || 'currentColor'} transparent
+      transparent transparent;
 
     ${({ $size }) => {
       if ($size === LoadingSizes.Medium)
