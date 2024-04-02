@@ -1,8 +1,9 @@
 import React from 'react';
-import Popover from './Popover';
+import styled from 'styled-components';
+
 import Button, { ButtonVariations } from '../Button/Button';
 import { DotsIcon } from '../Icon';
-import styled from 'styled-components';
+import Popover from './Popover';
 
 const StyledOption = styled(Button)`
   font-size: 16px;
@@ -27,6 +28,7 @@ export default {
 export const Default = ({ children, ...args }) => {
   return (
     <Popover
+      showCloseButton={false}
       trigger={
         <Button variation={ButtonVariations.Icon}>
           <DotsIcon label="dotsIcon" labelId="dotsIcon" />

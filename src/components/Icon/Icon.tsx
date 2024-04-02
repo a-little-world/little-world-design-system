@@ -15,7 +15,7 @@ const Circle = styled.div<{
   border-radius: 50%;
   color: ${({ color, theme }) => color || theme.color.text.tertiary};
   display: inline-flex;
-  padding: 10px;
+  padding: ${({ theme }) => theme.spacing.xxsmall};
 `;
 
 // hide element but keep visible to screen readers

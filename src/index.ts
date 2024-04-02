@@ -17,6 +17,7 @@ export * from './components/Illustrations';
 export { default as InputError } from './components/InputError/InputError';
 export { default as Label } from './components/Label/Label';
 export { default as Link } from './components/Link/Link';
+export { default as Loading } from './components/Loading/Loading';
 export { default as Modal } from './components/Modal/Modal';
 export { default as MultiSelection } from './components/MultiSelection/MultiSelection';
 export { default as ProgressBar } from './components/ProgressBar/ProgressBar';

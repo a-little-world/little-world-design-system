@@ -5,7 +5,7 @@ import tokens from '../../tokens';
 import { ChevronLeftIcon, InfoIcon, PhoneIcon } from '../Icon';
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
-import Button, { ButtonVariations } from './Button';
+import Button, { ButtonSizes, ButtonVariations } from './Button';
 
 export default {
   component: Button,
@@ -21,15 +21,33 @@ export const ButtonOption = args => (
   </Button>
 );
 
-export const ButtonControl = args => (
-  <Button variation={ButtonVariations.Control}>
-    <ChevronLeftIcon
-      label="arrowLeft"
-      labelId="arrowLeft"
-      width={6}
-      height={10}
-    />
-  </Button>
+export const ButtonCircle = args => (
+  <div style={{ display: 'flex', gap: tokens.spacing.large }}>
+    <Button variation={ButtonVariations.Circle} color={args.color}>
+      <InfoIcon label="info" labelId="info" />
+    </Button>
+    <Button
+      variation={ButtonVariations.Circle}
+      color={args.color}
+      size={ButtonSizes.Small}
+    >
+      <InfoIcon label="info small" labelId="info" />
+    </Button>
+    <Button
+      variation={ButtonVariations.Circle}
+      color={args.color}
+      size={ButtonSizes.Medium}
+    >
+      <InfoIcon label="info medium" labelId="info" />
+    </Button>
+    <Button
+      variation={ButtonVariations.Circle}
+      color={args.color}
+      size={ButtonSizes.Large}
+    >
+      <InfoIcon label="info large" labelId="info" />
+    </Button>
+  </div>
 );
 
 export const ButtonIcon = args => (
@@ -37,8 +55,26 @@ export const ButtonIcon = args => (
     <Button variation={ButtonVariations.Icon} color={args.color}>
       <InfoIcon label="info" labelId="info" />
     </Button>
-    <Button variation={ButtonVariations.Icon} color={args.color}>
-      <InfoIcon circular label="info" labelId="info" />
+    <Button
+      variation={ButtonVariations.Icon}
+      color={args.color}
+      size={ButtonSizes.Small}
+    >
+      <InfoIcon circular label="info small" labelId="info" />
+    </Button>
+    <Button
+      variation={ButtonVariations.Icon}
+      color={args.color}
+      size={ButtonSizes.Medium}
+    >
+      <InfoIcon circular label="info medium" labelId="info" />
+    </Button>
+    <Button
+      variation={ButtonVariations.Icon}
+      color={args.color}
+      size={ButtonSizes.Large}
+    >
+      <InfoIcon circular label="info large" labelId="info" />
     </Button>
   </div>
 );
