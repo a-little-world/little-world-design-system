@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import tokens from '../../tokens';
 import { coreColors } from '../../tokens/core';
 import textParser from '../../utils/parser';
-import Button, { ButtonVariations } from '../Button/Button';
+import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
 import { QuestionIcon } from '../Icon';
 import { BODY_5_CSS } from '../Text/styles';
 import ToolTip from '../ToolTip/ToolTip';
@@ -24,6 +24,7 @@ const StyledLabel = styled(RadixLabel.Root)<{
       display: ${$inline ? 'inline-flex' : 'block'};
       margin-bottom: ${$marginBottom ?? tokens.spacing.xsmall};
       gap: ${tokens.spacing.xxxsmall};
+      align-items: center;
     `}
 `;
 
@@ -57,14 +58,13 @@ const Label: React.FC<LabelProps> = ({
       {toolTipText && (
         <ToolTip
           trigger={
-            <Button variation={ButtonVariations.Icon}>
-              <QuestionIcon
-                height={'16px'}
-                width={'16px'}
-                label="questionIcon"
-                labelId="questionIcon"
-                color={coreColors.blue10}
-              />
+            <Button
+              variation={ButtonVariations.Icon}
+              size={ButtonSizes.Small}
+              borderColor={coreColors.blue10}
+              color={coreColors.blue10}
+            >
+              <QuestionIcon label="questionIcon" labelId="questionIcon" />
             </Button>
           }
           text={toolTipText}

@@ -2,7 +2,6 @@ import * as Select from '@radix-ui/react-select';
 import styled from 'styled-components';
 
 import tokens from '../../tokens';
-import { coreColors } from '../../tokens/core';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 import { BODY_5_CSS } from '../Text/styles';
 

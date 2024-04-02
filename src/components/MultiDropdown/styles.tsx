@@ -34,3 +34,7 @@ export const Segment = styled.section<{ $locked?: boolean }>`
   gap: ${tokens.spacing.small};
   margin-bottom: ${tokens.spacing.xxsmall};
 `;
+
+export const DeleteButton = styled(Button)`
+  top: ${({ theme }) => theme.spacing.xxsmall};
+`;

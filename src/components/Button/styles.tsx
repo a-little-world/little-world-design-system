@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import tokens from '../../tokens';
 import { coreColors } from '../../tokens/core';
@@ -54,7 +54,7 @@ const StandardButtonCss = css<{ $size?: string }>`
   max-width: 480px;
 
   ${({ $size }) => {
-    if ($size === ButtonSizes.Small) {
+    if ($size === ButtonSizes.Small || !$size) {
       return `min-width: 110px;`;
     }
 
@@ -78,7 +78,7 @@ export const PrimaryButtonCss = css<{ $backgroundColor?: string }>`
   color: ${coreColors.white};
   border: none;
   background: ${({ theme, $backgroundColor }) =>
-    $backgroundColor || theme.color.gradient.orange};
+    $backgroundColor || theme.color.gradient.orange10};
   transition: background-color 0.5s ease, filter 0.5s ease,
     border-color 0.5s ease, color 0.5s ease, 0.4s;
 
@@ -115,12 +115,14 @@ export const SecondaryButtonCss = css<{
 export const StyledButton = styled.button<{
   $appearance?: keyof typeof ButtonAppearance;
   $backgroundColor?: string;
+  $borderColor?: string;
   $color?: string;
   $variation: keyof typeof ButtonVariations;
   $size?: string;
 }>`
   cursor: pointer;
   position: relative;
+  color: ${({ $color }) => $color || 'currentColor'};
   font-family: 'Signika Negative';
   font-size: 1rem;
   display: flex;
@@ -150,7 +152,14 @@ export const StyledButton = styled.button<{
     }
   }
 
-  ${({ $appearance, $color, $variation, theme }) => {
+  ${({
+    $appearance,
+    $backgroundColor,
+    $borderColor,
+    $size,
+    $variation,
+    theme,
+  }) => {
     if ($variation === ButtonVariations.Basic) {
       if ($appearance === ButtonAppearance.Primary) return PrimaryButtonCss;
       if ($appearance === ButtonAppearance.Secondary) return SecondaryButtonCss;
@@ -158,42 +167,72 @@ export const StyledButton = styled.button<{
 
     if ($variation === ButtonVariations.Option) return OPTION_BUTTON_CSS;
 
-    if ($variation === ButtonVariations.Control)
-      return css`
-        border: 1px solid ${theme.color.surface.minimal};
-        border-radius: 50%;
-        background: ${theme.color.surface.primary};
-        width: 36px;
-        height: 36px;
+    let ICON_DIMENSIONS;
+    switch ($size) {
+      case ButtonSizes.Small:
+        ICON_DIMENSIONS = css`
+          width: 16px;
+          height: 16px;
+        `;
+        break;
+      case ButtonSizes.Medium:
+        ICON_DIMENSIONS = css`
+          width: 24px;
+          height: 24px;
+        `;
+        break;
+      case ButtonSizes.Large:
+        ICON_DIMENSIONS = css`
+          width: 32px;
+          height: 32px;
+        `;
+      default:
+        break;
+    }
 
-        &:not(:disabled):hover {
-          background-color: ${coreColors.gray20};
-          color: white;
-          border-color: ${theme.color.border.moderate};
-        }
-      `;
-
-    if ($variation === ButtonVariations.Icon)
+    if ($variation === ButtonVariations.Circle)
       return css`
-        border: none;
-        background: transparent;
-        border-radius: 0px;
-        height: auto;
+        border: 2px solid ${$borderColor || $backgroundColor || 'currentColor'};
+        background: ${$backgroundColor || 'transparent'};
         width: auto;
-        padding: 0px;
-        transition: filter 0.5s ease;
+        height: fit-content;
+        border-radius: 50%;
+        padding: ${theme.spacing.xxsmall};
+        transition: opacity 0.5s ease;
 
         &:not(:disabled):hover {
-          transition: filter 0.5s ease;
-          filter: brightness(0.9);
+          transition: opacity 0.3s ease;
+          opacity: 0.6;
+        }
+
+        svg {
+          ${ICON_DIMENSIONS}
         }
       `;
+
+    if ($variation === ButtonVariations.Icon) {
+      return css`
+        background: ${$backgroundColor || 'transparent'};
+        width: auto;
+        height: fit-content;
+        padding: 0;
+        transition: opacity 0.5s ease;
+
+        &:not(:disabled):hover {
+          transition: opacity 0.3s ease;
+          opacity: 0.6;
+        }
+
+        svg {
+          ${ICON_DIMENSIONS}
+        }
+      `;
+    }
 
     if ($variation === ButtonVariations.Inline)
       return css`
         display: inline-flex;
         border: none;
-        color: ${$color || 'currentColor'};
         border-radius: 0px;
         height: auto;
         width: auto;
@@ -217,47 +256,4 @@ export const StyledButton = styled.button<{
         }
       `;
   }}
-`;
-
-const loading = keyframes`
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-`;
-
-export const Loading = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  > div {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    border: 2px solid ${({ theme }) => theme.color.surface.reversed};
-    border-radius: 50%;
-    animation: ${loading} 1.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${({ theme }) => theme.color.surface.reversed} transparent
-      transparent transparent;
-  }
-
-  > div:nth-child(1) {
-    animation-delay: -0.45s;
-  }
-
-  > div:nth-child(2) {
-    animation-delay: -0.3s;
-  }
-
-  > div:nth-child(3) {
-    animation-delay: -0.15s;
-  }
 `;

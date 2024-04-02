@@ -1,5 +1,4 @@
 import { withThemeFromJSXProvider } from '@storybook/addon-styling';
-import { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from '../src/globalStyles';
 import { CustomThemeProvider, ThemeVariants, themes } from '../src/theme';

@@ -19,7 +19,7 @@ export enum PopoverSizes {
 type PopoverProps = {
   asToolTip?: boolean;
   children: React.ReactNode;
-  showCloseButton: boolean;
+  showCloseButton?: boolean;
   trigger?: React.ReactNode;
   width?: PopoverSizes;
 } & RadixPopover.PopoverProps &
@@ -46,12 +46,12 @@ const Popover: React.FC<PopoverProps> = ({
         sideOffset={sideOffset}
         $asToolTip={asToolTip}
         $width={width}
-        $extraPaddingTop={!asToolTip && showCloseButton}
+        $extraPaddingTop={Boolean(!asToolTip && showCloseButton)}
         collisionPadding={DEFAULT_SIDE_OFFSET}
       >
         {children}
         {showCloseButton && (
-          <StyledPopoverClose asChild $asToolTip>
+          <StyledPopoverClose asChild $asToolTip={asToolTip}>
             <Button variation={ButtonVariations.Icon}>
               <CloseIcon label="popover close" labelId="popover close" />
             </Button>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import tokens from '../../tokens';
-import Button, { ButtonVariations } from '../Button/Button';
+import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
 import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
 import { PlusIcon, TrashIcon } from '../Icon';
 import Label from '../Label/Label';
@@ -9,6 +9,7 @@ import Text from '../Text/Text';
 import {
   AddMore,
   AddMoreButton,
+  DeleteButton,
   MultiDropdownWrapper,
   Segment,
 } from './styles';
@@ -175,17 +176,17 @@ const MultiDropdown: React.FC<Props> = ({
                 error={secondDropdown.errors?.[index]}
               />
               {!!index && !locked && (
-                <Button
+                <DeleteButton
                   variation={ButtonVariations.Icon}
                   onClick={() => handleDelete(index)}
+                  size={ButtonSizes.Small}
                 >
                   <TrashIcon
                     label={DELETE_SEGMENT}
                     labelId={DELETE_SEGMENT}
-                    width={16}
                     color="orange"
                   />
-                </Button>
+                </DeleteButton>
               )}
             </Segment>
           );
@@ -193,9 +194,10 @@ const MultiDropdown: React.FC<Props> = ({
       {!locked && (
         <AddMore>
           <AddMoreButton
-            variation={ButtonVariations.Control}
+            variation={ButtonVariations.Icon}
             disabled={segments === maxSegments}
             onClick={() => setSegments(currentNumber => currentNumber + 1)}
+            size={ButtonSizes.Small}
           >
             <PlusIcon
               label="add more dropdowns"

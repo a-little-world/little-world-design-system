@@ -1,12 +1,12 @@
 import React from 'react';
-import { Loading, StyledButton } from './styles';
 
-export const LOADING_RING_ID = 'loadingRing';
+import LoadingRing from '../Loading/Loading';
+import { StyledButton } from './styles';
 
 export enum ButtonVariations {
   Basic = 'Basic',
   Option = 'Option',
-  Control = 'Control',
+  Circle = 'Circle',
   Icon = 'Icon',
   Inline = 'Inline',
 }
@@ -15,7 +15,6 @@ export enum ButtonAppearance {
   Primary = 'Primary',
   Secondary = 'Secondary',
 }
-
 
 // Applies only to Basic Button Variation
 export enum ButtonSizes {
@@ -27,6 +26,7 @@ export enum ButtonSizes {
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   appearance?: keyof typeof ButtonAppearance;
   backgroundColor?: string;
+  borderColor?: string;
   color?: string;
   loading?: boolean;
   size?: ButtonSizes;
@@ -35,24 +35,16 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
 
 export type Ref = HTMLButtonElement;
 
-export const LoadingRing = () => (
-  <Loading data-testid={LOADING_RING_ID}>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </Loading>
-);
-
 const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
   (
     {
       appearance = ButtonAppearance.Primary,
       backgroundColor,
+      borderColor,
       color,
       children,
       loading,
-      size = ButtonSizes.Small,
+      size,
       variation = ButtonVariations.Basic,
       type = 'button',
       ...rest
@@ -63,6 +55,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
       <StyledButton
         $appearance={appearance}
         $backgroundColor={backgroundColor}
+        $borderColor={borderColor}
         $color={color}
         $size={size}
         $variation={variation}

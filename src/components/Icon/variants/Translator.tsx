@@ -4,9 +4,9 @@ import { Icon, IconSvgProps } from '../Icon';
 import IconGradient from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
-const LABEL_ID = 'Translator';
+const LABEL_ID = 'TranslatorIcon';
 
-export const Translator = (props: IconSvgProps) => {
+export const TranslatorIcon = (props: IconSvgProps) => {
   const {
     backgroundColor,
     borderColor,

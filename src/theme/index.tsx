@@ -18,10 +18,12 @@ export enum ThemeVariants {
 }
 
 export const lightTheme = {
+  ...tokens,
   color: tokens.color.theme.light,
 };
 
 export const darkTheme = {
+  ...tokens,
   color: tokens.color.theme.dark,
 };
 
