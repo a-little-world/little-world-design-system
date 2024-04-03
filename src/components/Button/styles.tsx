@@ -167,6 +167,46 @@ export const StyledButton = styled.button<{
 
     if ($variation === ButtonVariations.Option) return OPTION_BUTTON_CSS;
 
+    let CIRCLE_DIMENSIONS;
+    switch ($size) {
+      case ButtonSizes.Small:
+        CIRCLE_DIMENSIONS = css`
+          width: 28px;
+          height: 28px;
+        `;
+        break;
+      case ButtonSizes.Medium:
+        CIRCLE_DIMENSIONS = css`
+          width: 36px;
+          height: 36px;
+        `;
+        break;
+      default:
+      case ButtonSizes.Large:
+        CIRCLE_DIMENSIONS = css`
+          width: 44px;
+          height: 44px;
+        `;
+        break;
+    }
+
+    if ($variation === ButtonVariations.Circle)
+      return css`
+        border: 1px solid ${$borderColor || $backgroundColor || 'currentColor'};
+        background: ${$backgroundColor || 'transparent'};
+        border-radius: 50%;
+        padding: 0;
+        transition: opacity 0.5s ease;
+        ${CIRCLE_DIMENSIONS}
+
+        &:not(:disabled):hover {
+          transition: opacity 0.3s ease;
+          opacity: 0.6;
+        }
+
+        ${CIRCLE_DIMENSIONS}
+      `;
+
     let ICON_DIMENSIONS;
     switch ($size) {
       case ButtonSizes.Small:
@@ -189,27 +229,6 @@ export const StyledButton = styled.button<{
       default:
         break;
     }
-
-    if ($variation === ButtonVariations.Circle)
-      return css`
-        border: 2px solid ${$borderColor || $backgroundColor || 'currentColor'};
-        background: ${$backgroundColor || 'transparent'};
-        width: auto;
-        height: fit-content;
-        border-radius: 50%;
-        padding: ${theme.spacing.xxsmall};
-        transition: opacity 0.5s ease;
-
-        &:not(:disabled):hover {
-          transition: opacity 0.3s ease;
-          opacity: 0.6;
-        }
-
-        svg {
-          ${ICON_DIMENSIONS}
-        }
-      `;
-
     if ($variation === ButtonVariations.Icon) {
       return css`
         background: ${$backgroundColor || 'transparent'};
