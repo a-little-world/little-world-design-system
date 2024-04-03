@@ -24,7 +24,7 @@ export const ButtonOption = args => (
 export const ButtonCircle = args => (
   <div style={{ display: 'flex', gap: tokens.spacing.large }}>
     <Button variation={ButtonVariations.Circle} color={args.color}>
-      <InfoIcon label="info" labelId="info" />
+      <InfoIcon label="info" labelId="info" width={20} height={20} />
     </Button>
     <Button
       variation={ButtonVariations.Circle}
