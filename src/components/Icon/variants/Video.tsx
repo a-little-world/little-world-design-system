@@ -52,7 +52,7 @@ export const VideoIcon = (props: IconSvgProps) => {
           fill={gradient ? `url(#gradient${id})` : color}
         />
         {gradient && (
-          <IconGradient variation={gradient} id={id} type={GradientTypes.v2} />
+          <IconGradient variation={gradient} id={id} type={GradientTypes.v3} />
         )}
       </svg>
     </Icon>
