@@ -81,6 +81,7 @@ const IconGradient = ({
         </linearGradient>
       </defs>
     );
+  return <></>;
 };
 
 // <defs>
