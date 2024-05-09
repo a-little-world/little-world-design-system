@@ -241,6 +241,12 @@ export default {
           error: '#E04D4D',
           success: '#5C9E5E',
         },
+        gradient: {
+          blue10: `linear-gradient(50.19deg, ${coreColors.blue10} 2.84%, #0367b2 106.82%)`,
+          orange10: `linear-gradient(43.07deg, ${coreColors.orange30} -3.02%, ${coreColors.orange20} 93.96%)`,
+          orange20: `linear-gradient(225.88deg, ${coreColors.orange30} 7.79%, ${coreColors.orange40} 104.6%);
+          `,
+        },
       },
     },
   },
