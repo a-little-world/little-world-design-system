@@ -104,7 +104,7 @@ export const SecondaryButtonCss = css<{
 
     &:not(:disabled):hover {
       background: ${$backgroundColor || coreColors.blue20};
-      color: ${theme.color.text.primary};
+      color: ${theme.color.text.control};
       border-color: ${$backgroundColor || coreColors.blue20};
       transition: background-color 0.5s ease, filter 0.5s ease,
       border-color 0.5s ease, color 0.5s ease, 0.4s;

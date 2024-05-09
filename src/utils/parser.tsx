@@ -17,6 +17,7 @@ const parseAttributes = (string: string) => {
     const attrs = JSON.parse(string);
     return attrs;
   } catch (e) {
+    console.log(e);
     return {};
   }
 };
@@ -56,7 +57,6 @@ const textParser = (text: string) => {
 
     if (tag === BUTTON_TAG) {
       const attrs = parseAttributes(match[2]?.trim());
-
       components.push(
         <Button key={tag + match[3]} {...attrs}>
           {match[3]}
