@@ -17,7 +17,6 @@ const parseAttributes = (string: string) => {
     const attrs = JSON.parse(string);
     return attrs;
   } catch (e) {
-    console.log(e);
     return {};
   }
 };
