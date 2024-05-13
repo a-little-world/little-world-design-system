@@ -41,5 +41,5 @@ export {
 export { default as ToolTip } from './components/ToolTip/ToolTip';
 
 export { default as designTokens } from './tokens';
-export { ThemeVariants } from './theme';
+export { CustomThemeProvider, ThemeVariants, themeContext } from './theme';
 export { default as GlobalStyles } from './globalStyles';

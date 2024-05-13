@@ -45,6 +45,13 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeShallow }>`
     font-weight: normal;
   }
 
+  ul {
+    margin-block-end: 0;
+    margin-block-start: 0;
+    list-style-type: none;
+    padding-inline-start: 0;
+  }
+
   * {
     box-sizing: border-box;
   }
