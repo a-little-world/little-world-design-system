@@ -20,6 +20,8 @@ export const List = styled.ul`
   padding-inline-start: ${tokens.spacing.small};
   margin-block-start: 0;
   margin-block-end: ${tokens.spacing.xxsmall};
+  list-style: disc;
+
   > li:not(:last-child) {
     margin-bottom: ${tokens.spacing.xxsmall};
   }

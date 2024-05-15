@@ -34,6 +34,7 @@ export const ColumnHeading = styled(Text)<{ index: number }>`
   text-align: center;
   max-width: 100%;
   padding: ${tokens.spacing.xxxsmall};
+  background: ${({ theme }) => theme.color.surface.primary};
 
   ${({ index }) =>
     !index &&
@@ -51,6 +52,7 @@ export const RowHeading = styled(Text)<{ index: number }>`
   text-align: center;
   position: sticky;
   left: 0;
+  background: ${({ theme }) => theme.color.surface.primary};
 `;
 
 export const ScrollableWrapper = styled.div`
