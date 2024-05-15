@@ -22,8 +22,10 @@ export const Area = styled.textarea<{
   font-family: 'Signika Negative', sans-serif;
   font-size: 1rem;
   height: ${({ $size }) => $size};
-  border: 1px solid ${tokens.color.theme.light.border.moderate};
+  border: 1px solid ${({ theme }) => theme.color.border.moderate};
   border-radius: ${tokens.spacing.xxsmall};
+  background: ${({ theme }) => theme.color.surface.primary};
+  color: ${({ theme }) => theme.color.text.primary};
   padding: ${({ $size }) =>
     $size === TextAreaSize.Small
       ? tokens.spacing.xxsmall

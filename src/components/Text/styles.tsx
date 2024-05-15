@@ -42,7 +42,6 @@ export const StyledElement = styled.div<{
     if ($type === TextTypes.Body1)
       return css`
         ${BODY_SHARED_STYLES}
-        color: ${tokens.color.theme.light.text.primary};
         font-size: 2rem;
 
         @media (min-width: ${tokens.breakpoints.small}) {
@@ -53,7 +52,6 @@ export const StyledElement = styled.div<{
     if ($type === TextTypes.Body2)
       return css`
         ${BODY_SHARED_STYLES}
-        color: ${tokens.color.theme.light.text.primary};
         font-size: 1.75rem;
 
         @media (min-width: ${tokens.breakpoints.small}) {
