@@ -53,16 +53,16 @@ export const CustomThemeProvider = ({
   const [currentMode, setCurrentMode] = useState(defaultMode);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as ThemeVariants;
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme && ['dark', 'light'].includes(savedTheme)) {
-      setCurrentMode(savedTheme);
-    } else if (prefersDark) {
-      setCurrentMode(ThemeVariants.dark);
-    }
+    // disable dark mode until palette ready
+    // const savedTheme = localStorage.getItem('theme') as ThemeVariants;
+    // const prefersDark =
+    //   window.matchMedia &&
+    //   window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // if (savedTheme && ['dark', 'light'].includes(savedTheme)) {
+    //   setCurrentMode(savedTheme);
+    // } else if (prefersDark) {
+    //   setCurrentMode(ThemeVariants.dark);
+    // }
   }, []);
 
   const toggleMode = useCallback(() => {
