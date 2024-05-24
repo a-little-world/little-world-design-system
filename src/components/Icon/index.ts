@@ -4,6 +4,7 @@ export * from './variants/Archive';
 export * from './variants/ArrowLeft';
 export * from './variants/Bell';
 export * from './variants/Calendar';
+export * from './variants/CalendarAdd';
 export * from './variants/Check';
 export * from './variants/ChevronDown';
 export * from './variants/ChevronLeft';
