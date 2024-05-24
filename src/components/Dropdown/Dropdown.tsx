@@ -20,6 +20,7 @@ type Options = { value: string; label: string }[];
 
 export type DropdownProps = {
   ariaLabel?: string;
+  cannotError?: boolean;
   error?: string;
   label?: string;
   labelTooltip?: string;
@@ -59,6 +60,7 @@ const Option: React.FC<{ children: string; value: string }> = ({
 const Dropdown: React.FC<DropdownProps> = ({
   ariaLabel,
   error,
+  cannotError,
   disabled,
   inputRef,
   label,
@@ -73,6 +75,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const defaultValue =
     lockedValue || (value && isValidValue(value, options) ? value : undefined);
+  const canError = !lockedValue && !cannotError;
 
   return (
     <DropdownWrapper $maxWidth={maxWidth}>
@@ -114,9 +117,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           </SelectViewport>
         </SelectContent>
       </Select.Root>
-      {!lockedValue && (
-        <InputError visible={Boolean(error)}>{error}</InputError>
-      )}
+      {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
     </DropdownWrapper>
   );
 };
