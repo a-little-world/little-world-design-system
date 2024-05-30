@@ -17,6 +17,7 @@ type LinkProps = {
   buttonSize?: keyof typeof ButtonSizes;
   style?: AnchorHTMLAttributes<HTMLAnchorElement>['style'];
   target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
+  state?: any;
 };
 
 const Variants = {
@@ -33,6 +34,7 @@ const Link = ({
   className,
   href,
   onClick,
+  state,
   style,
   target,
   to,
@@ -47,6 +49,7 @@ const Link = ({
       onClick={onClick}
       $buttonAppearance={buttonAppearance}
       $size={buttonSize}
+      state={state}
       style={style}
       target={target}
     >
