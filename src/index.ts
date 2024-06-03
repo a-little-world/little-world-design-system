@@ -24,6 +24,7 @@ export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
 export { default as Popover } from './components/Popover/Popover';
 export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
 export { default as Slider } from './components/Slider/Slider';
+export { default as Tags } from './components/Tags/Tags';
 export { default as Text } from './components/Text/Text';
 export { default as TextTypes } from './components/Text/TextTypes';
 export {

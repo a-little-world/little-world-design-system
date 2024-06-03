@@ -14,13 +14,18 @@ import {
 
 type Props = {
   className?: string;
+  contentClassName?: string;
   items: {
-    content: string;
+    content: string | React.ReactNode;
     header: string;
   }[];
 } & AccordionSingleProps;
 
-const Accordion: React.FC<Props> = ({ className, items }: Props) => {
+const Accordion: React.FC<Props> = ({
+  className,
+  contentClassName,
+  items,
+}: Props) => {
   return (
     <AccordionRoot className={className} type="single" collapsible>
       {items.map(({ content, header }) => (
@@ -36,8 +41,8 @@ const Accordion: React.FC<Props> = ({ className, items }: Props) => {
               />
             </AccordionTrigger>
           </AccordionHeader>
-          <AccordionContent>
-            <Text>{content}</Text>
+          <AccordionContent className={contentClassName}>
+            {content}
           </AccordionContent>
         </AccordionItem>
       ))}

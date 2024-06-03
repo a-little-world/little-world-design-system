@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Text from '../Text/Text';
 import Accordion from './Accordion';
 
 export default {
@@ -14,16 +15,18 @@ export const Default = args => {
 Default.args = {
   items: [
     {
-      content: 'This is content of the highest quality. The finest degree.',
+      content: (
+        <Text>This is content of the highest quality. The finest degree.</Text>
+      ),
       header: 'High quality content',
     },
     {
-      content: 'This is content of a medium quality. A new normal.',
+      content: <Text>This is content of a medium quality. A new normal.</Text>,
       header:
         'Content of a mid range but testing out a longer sentence to see the design when it is multi-line',
     },
     {
-      content: 'This is content of the lowest quality. A new low.',
+      content: <Text>This is content of the lowest quality. A new low.</Text>,
       header: 'Low quality content',
     },
   ],
