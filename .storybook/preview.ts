@@ -1,18 +1,7 @@
-import { withThemeFromJSXProvider } from '@storybook/addon-styling';
+import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 
 import GlobalStyle from '../src/globalStyles';
 import { CustomThemeProvider, ThemeVariants, themes } from '../src/theme';
-
-//👇 Configures Storybook to log the actions in the UI.
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-};
 
 export const decorators = [
   withThemeFromJSXProvider({
@@ -22,3 +11,4 @@ export const decorators = [
     GlobalStyles: GlobalStyle,
   }),
 ];
+export const tags = ['autodocs'];
