@@ -4,54 +4,16 @@ import {
   PopoverContent,
   Root,
 } from '@radix-ui/react-popover';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import tokens from '../../tokens';
+import {
+  slideDownAndFade,
+  slideLeftAndFade,
+  slideRightAndFade,
+  slideUpAndFade,
+} from '../../utils/animations';
 import { PopoverSizes } from './Popover';
-
-const slideUpAndFade = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const slideRightAndFade = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-const slideDownAndFade = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const slideLeftAndFade = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
 
 export const PopoverRoot = styled(Root)``;
 
