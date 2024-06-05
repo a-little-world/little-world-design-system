@@ -26,6 +26,7 @@ export const LINK_HOVER_CSS = css`
 const LINK_CSS = css<{
   $color?: string;
   $buttonAppearance?: keyof typeof ButtonAppearance;
+  $textDecoration: boolean;
 }>`
   position: relative;
   display: inline-flex;
@@ -36,7 +37,7 @@ const LINK_CSS = css<{
     color: currentColor;
   }
 
-  ${({ theme, $buttonAppearance, $color }) =>
+  ${({ theme, $buttonAppearance, $color, $textDecoration }) =>
     $buttonAppearance
       ? css`
           ${$buttonAppearance === ButtonAppearance.Primary
@@ -50,7 +51,7 @@ const LINK_CSS = css<{
       : css`
           color: ${$color || theme.color.text.link};
 
-          ${LINK_HOVER_CSS}
+          ${$textDecoration && LINK_HOVER_CSS}
 
           &:hover {
             cursor: pointer;
@@ -68,6 +69,7 @@ export const RouterLink = styled(Link)<{
   $color?: string;
   $buttonAppearance?: keyof typeof ButtonAppearance;
   $size?: keyof typeof ButtonSizes;
+  $textDecoration: boolean;
 }>`
   ${LINK_CSS}
 `;
@@ -77,6 +79,7 @@ export const Anchor = styled.a<{
   $color?: string;
   $buttonAppearance?: keyof typeof ButtonAppearance;
   $size?: keyof typeof ButtonSizes;
+  $textDecoration: boolean;
 }>`
   ${LINK_CSS}
 `;

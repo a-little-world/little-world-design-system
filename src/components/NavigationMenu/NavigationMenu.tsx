@@ -41,7 +41,12 @@ const NavigationMenuContentItem = React.forwardRef<
 >(({ active, className, children, title, ...props }, forwardedRef) => (
   <li>
     <RadixNavigationMenu.Link asChild active={active}>
-      <ListItemLink className={className} {...props} ref={forwardedRef}>
+      <ListItemLink
+        className={className}
+        {...props}
+        ref={forwardedRef}
+        textDecoration={false}
+      >
         <ListItemHeading tag="h3">{title}</ListItemHeading>
         <ListItemText className="ListItemText">{children}</ListItemText>
       </ListItemLink>
