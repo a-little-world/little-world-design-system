@@ -49,12 +49,7 @@ const Checkbox: React.FC<Props> = ({
           {...rest}
         >
           <CheckboxIndicator>
-            <CheckIcon
-              label="check icon"
-              labelId="check icon"
-              width={10}
-              // color={color ? coreColors.white : coreColors.black}
-            />
+            <CheckIcon label="check icon" labelId="check icon" width={10} />
           </CheckboxIndicator>
         </CheckboxRoot>
         {label && (

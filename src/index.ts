@@ -20,10 +20,22 @@ export { default as Link } from './components/Link/Link';
 export { default as Loading } from './components/Loading/Loading';
 export { default as Modal } from './components/Modal/Modal';
 export { default as MultiSelection } from './components/MultiSelection/MultiSelection';
+export {
+  NavigationMenu,
+  NavigationMenuCallout,
+  NavigationMenuContent,
+  NavigationMenuContentItem,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuTrigger,
+  MenuContentLayout,
+} from './components/NavigationMenu/NavigationMenu';
 export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
 export { default as Popover } from './components/Popover/Popover';
 export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
+export { default as Separator } from './components/Separator/Separator';
 export { default as Slider } from './components/Slider/Slider';
+export { default as StatusMessage } from './components/StatusMessage/StatusMessage';
 export { default as Tags } from './components/Tags/Tags';
 export { default as Text } from './components/Text/Text';
 export { default as TextTypes } from './components/Text/TextTypes';
