@@ -11,7 +11,7 @@ export enum TextAreaSize {
   Large = '160px',
 }
 
-interface Props extends React.ComponentPropsWithoutRef<'textarea'> {
+interface TextAreaProps extends React.ComponentPropsWithoutRef<'textarea'> {
   displayCount?: boolean;
   error?: string;
   id?: string;
@@ -25,7 +25,7 @@ interface Props extends React.ComponentPropsWithoutRef<'textarea'> {
   value?: string;
 }
 
-const TextArea: React.FC<Props> = ({
+const TextArea: React.FC<TextAreaProps> = ({
   displayCount = true,
   error,
   id,
@@ -39,7 +39,7 @@ const TextArea: React.FC<Props> = ({
   size = TextAreaSize.Small,
   value,
   ...areaProps
-}: Props) => {
+}) => {
   const [textAreaCount, setTextAreaCount] = useState(0);
 
   useEffect(() => {

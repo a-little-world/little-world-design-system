@@ -1,13 +1,12 @@
-import React, { AnchorHTMLAttributes } from 'react';
+import React, { AnchorHTMLAttributes, FC, PropsWithChildren } from 'react';
 
 import { ButtonAppearance, ButtonSizes } from '../Button/Button';
 import TextTypes from '../Text/TextTypes';
 import { Anchor, AnchorText, RouterLink } from './styles';
 
-type LinkProps = {
+export interface LinkProps {
   active?: boolean;
   bold?: boolean;
-  children: string;
   className?: string;
   href?: string;
   onClick?: () => void;
@@ -18,14 +17,15 @@ type LinkProps = {
   style?: AnchorHTMLAttributes<HTMLAnchorElement>['style'];
   target?: AnchorHTMLAttributes<HTMLAnchorElement>['target'];
   state?: any;
-};
+  textDecoration?: boolean;
+}
 
 const Variants = {
   href: Anchor,
   to: RouterLink,
 };
 
-const Link = ({
+const Link: FC<PropsWithChildren<LinkProps>> = ({
   active,
   bold,
   buttonAppearance,
@@ -39,7 +39,8 @@ const Link = ({
   target,
   to,
   textType,
-}: LinkProps) => {
+  textDecoration = true,
+}) => {
   const Component = Variants[href ? 'href' : 'to'] as React.ElementType;
   return (
     <Component
@@ -52,6 +53,7 @@ const Link = ({
       state={state}
       style={style}
       target={target}
+      $textDecoration={textDecoration}
     >
       <AnchorText
         as="span"
