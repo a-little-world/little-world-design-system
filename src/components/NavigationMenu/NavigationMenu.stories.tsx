@@ -99,5 +99,6 @@ export const Default = () => (
         <NavigationMenuLink href="">Link</NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenu>
+    <div style={{ zIndex: 100 }}>Z-index Test: 100</div>
   </div>
 );

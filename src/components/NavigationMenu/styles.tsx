@@ -10,6 +10,7 @@ import {
   scaleOut,
 } from '../../utils/animations';
 import { ChevronDownIcon } from '../Icon';
+import Link from '../Link/Link';
 import Text from '../Text/Text';
 
 export const MenuTriggerIcon = styled(ChevronDownIcon)`
@@ -92,6 +93,7 @@ export const NavMenuContent = styled(RadixNavigationMenu.Content)`
   height: 100%;
   animation-duration: 250ms;
   animation-timing-function: ease;
+  z-index: 200;
 
   &[data-motion='from-start'] {
     animation-name: ${enterFromLeft};
@@ -211,7 +213,7 @@ export const ContentList = styled.ul<{ $layout: string }>`
   }}
 `;
 
-export const ListItemLink = styled.a`
+export const ListItemLink = styled(Link)`
   display: block;
   outline: none;
   text-decoration: none;
@@ -254,7 +256,6 @@ export const Callout = styled.a`
   text-decoration: none;
   outline: none;
   user-select: none;
-  //   grid-column: 1 / 2; /* Span the first column */
   grid-row: 1 / -1; /* Span all rows */
 
   &:focus {

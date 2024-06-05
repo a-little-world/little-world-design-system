@@ -12,20 +12,20 @@ import {
   TriggerIcon,
 } from './styles';
 
-type Props = {
+interface AccordionProps extends AccordionSingleProps {
   className?: string;
   contentClassName?: string;
   items: {
     content: string | React.ReactNode;
     header: string;
   }[];
-} & AccordionSingleProps;
+}
 
-const Accordion: React.FC<Props> = ({
+const Accordion: React.FC<AccordionProps> = ({
   className,
   contentClassName,
   items,
-}: Props) => {
+}) => {
   return (
     <AccordionRoot className={className} type="single" collapsible>
       {items.map(({ content, header }) => (
