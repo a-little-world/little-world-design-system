@@ -1,8 +1,8 @@
-// @ts-nocheck
 import * as RadixNavigationMenu from '@radix-ui/react-navigation-menu';
-import React, { HTMLProps, PropsWithChildren } from 'react';
+import React, { HTMLProps, PropsWithChildren, ReactNode } from 'react';
 
 import { Logo } from '../Icon';
+import { LinkProps } from '../Link/Link';
 import {
   Callout,
   CalloutHeading,
@@ -34,6 +34,7 @@ export enum MenuContentLayout {
 interface NavigationMenuContentItemProps extends HTMLProps<HTMLAnchorElement> {
   active?: boolean;
   title?: string;
+  children?: ReactNode;
 }
 const NavigationMenuContentItem = React.forwardRef<
   HTMLAnchorElement,
@@ -43,9 +44,10 @@ const NavigationMenuContentItem = React.forwardRef<
     <RadixNavigationMenu.Link asChild active={active}>
       <ListItemLink
         className={className}
-        {...props}
+        {...(props as LinkProps)}
         ref={forwardedRef}
         textDecoration={false}
+        active={active}
       >
         <ListItemHeading tag="h3">{title}</ListItemHeading>
         <ListItemText className="ListItemText">{children}</ListItemText>
@@ -55,8 +57,16 @@ const NavigationMenuContentItem = React.forwardRef<
 ));
 
 const NavigationMenuList = NavMenuList;
-const NavigationMenuLink = NavMenuLink;
 const NavigationMenuItem = RadixNavigationMenu.Item;
+const NavigationMenuLink = (
+  props: LinkProps & RadixNavigationMenu.NavigationMenuLinkProps,
+) => (
+  <RadixNavigationMenu.Link asChild>
+    <NavMenuLink {...props} textDecoration={false}>
+      {props.children}
+    </NavMenuLink>
+  </RadixNavigationMenu.Link>
+);
 
 const NavigationMenuTrigger = ({ children }: PropsWithChildren) => (
   <NavMenuTrigger>
@@ -75,16 +85,19 @@ interface CalloutProps {
   description: string;
   link: string;
   Icon?: any;
+  to?: string;
+  href?: string;
 }
 const NavigationMenuCallout = ({
   heading,
   description,
-  link,
   Icon,
+  to,
+  href,
 }: CalloutProps) => (
   <li style={{ gridRow: 'span 3' }}>
-    <NavMenuLink asChild>
-      <Callout href={link}>
+    <RadixNavigationMenu.Link asChild>
+      <Callout to={to} href={href}>
         {Icon ? (
           <Icon
             width="48px"
@@ -104,7 +117,7 @@ const NavigationMenuCallout = ({
         <CalloutHeading>{heading}</CalloutHeading>
         <CalloutText>{description}</CalloutText>
       </Callout>
-    </NavMenuLink>
+    </RadixNavigationMenu.Link>
   </li>
 );
 
