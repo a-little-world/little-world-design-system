@@ -7,6 +7,7 @@ module.exports = {
     '@storybook/addon-themes',
     '@storybook/addon-webpack5-compiler-swc',
     '@chromatic-com/storybook',
+    'storybook-addon-remix-react-router',
   ],
 
   framework: {

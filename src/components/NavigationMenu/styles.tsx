@@ -18,19 +18,15 @@ export const MenuTriggerIcon = styled(ChevronDownIcon)`
   color: ${({ theme }) => theme.color.text.primary};
   top: 1px;
   transition: transform 250ms ease;
-
-  [data-state='open'] > .CaretDown {
-    transform: rotate(-180deg);
-  }
 `;
 
 export const NavMenuRoot = styled(RadixNavigationMenu.Root)`
   position: relative;
   display: flex;
   align-items: center;
-  z-index: 1;
+  z-index: 1000;
 
-  [data-state='open'] > ${MenuTriggerIcon} {
+  &[data-state='open'] > ${MenuTriggerIcon} {
     transform: rotate(-180deg);
   }
 `;
@@ -46,7 +42,7 @@ export const NavMenuList = styled(RadixNavigationMenu.List)<{
   border-radius: ${({ theme }) => theme.radius.xxsmall};
   list-style: none;
   margin: 0;
-  gap: ${({ theme }) => theme.spacing.xxxsmall};
+  gap: ${({ theme }) => theme.spacing.xxsmall};
 
   ${({ theme, $withShadow }) =>
     $withShadow && `box-shadow: 0 2px 10px ${theme.color.surface.secondary};`}
@@ -72,10 +68,16 @@ const MENU_ITEM_CSS = css`
   }
 `;
 
-export const NavMenuLink = styled(RadixNavigationMenu.Link)`
+export const NavMenuLink = styled(Link)`
   display: block;
   text-decoration: none;
+
   ${MENU_ITEM_CSS}
+  ${({ active, theme }) =>
+    active &&
+    `
+   box-shadow: 0 0 0 2px ${theme.color.border.bold};  
+`}
 `;
 
 export const NavMenuTrigger = styled(RadixNavigationMenu.Trigger)`
@@ -90,7 +92,6 @@ export const NavMenuContent = styled(RadixNavigationMenu.Content)`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   animation-duration: 250ms;
   animation-timing-function: ease;
   z-index: 200;
@@ -105,7 +106,7 @@ export const NavMenuContent = styled(RadixNavigationMenu.Content)`
     animation-name: ${exitToLeft};
   }
 
-  [data-motion='to-end'] {
+  &[data-motion='to-end'] {
     animation-name: ${exitToRight};
   }
 `;
@@ -124,7 +125,7 @@ export const NavMenuIndicator = styled(RadixNavigationMenu.Indicator)`
     animation: fadeIn 200ms ease;
   }
 
-  &: [data-state= 'hidden' ] {
+  &[data-state='hidden'] {
     animation: fadeOut 200ms ease;
   }
 `;
@@ -139,6 +140,16 @@ export const NavMenuIndicatorArrow = styled.div`
   border-top-left-radius: 2px;
 `;
 
+export const ViewportPosition = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  perspective: 2000px;
+`;
+
 export const NavMenuViewport = styled(RadixNavigationMenu.Viewport)`
   position: relative;
   transform-origin: top center;
@@ -151,7 +162,7 @@ export const NavMenuViewport = styled(RadixNavigationMenu.Viewport)`
     hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
 
   transition: width, height, 300ms ease;
-  height: 260px;
+  height: var(--radix-navigation-menu-viewport-height);
 
   &[data-state='open'] {
     animation: ${scaleIn} 200ms ease;
@@ -159,12 +170,6 @@ export const NavMenuViewport = styled(RadixNavigationMenu.Viewport)`
 
   &[data-state='closed'] {
     animation: ${scaleOut} 200ms ease;
-  }
-
-  @media only screen and (min-width: ${({ theme }) =>
-      theme.breakpoints.medium}) {
-    width: 100%; // var(--radix-navigation-menu-viewport-width);
-    max-width: 100vw;
   }
 `;
 
@@ -174,19 +179,18 @@ export const ContentList = styled.ul<{ $layout: string }>`
   margin: 0;
   column-gap: 10px;
   list-style: none;
+  gap: ${({ theme }) => theme.spacing.xxxsmall};
 
   ${({ $layout }) => {
     if ($layout === 'callout')
       return css`
         width: 100%;
-        height: 100%;
         grid-template-columns: 1fr;
       `;
 
     if ($layout === 'calloutWithList')
       return css`
         width: 100%;
-        height: 100%;
         grid-template-columns: 0.75fr 1fr;
       `;
 
@@ -229,6 +233,12 @@ export const ListItemLink = styled(Link)`
   &:hover {
     background-color: ${({ theme }) => theme.color.surface.tertiary};
   }
+
+  ${({ active, theme }) =>
+    active &&
+    `
+     box-shadow: 0 0 0 2px ${theme.color.border.bold};  
+  `}
 `;
 
 export const ListItemHeading = styled(Text)`
@@ -243,14 +253,14 @@ export const ListItemText = styled(Text)`
   font-weight: initial;
 `;
 
-export const Callout = styled.a`
+export const Callout = styled(Link)`
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
   width: 100%;
   height: 100%;
   background: ${({ theme }) =>
-    `linear-gradient(135deg, ${theme.color.text.primary} 0%, ${theme.color.surface.bold} 100%)`};
+    `linear-gradient(135deg, ${theme.color.text.primary} 0%, ${theme.color.border.bold} 100%)`};
   border-radius: 6px;
   padding: 25px;
   text-decoration: none;
@@ -274,14 +284,4 @@ export const CalloutText = styled(Text)`
   color: ${({ theme }) => theme.color.text.reversed};
   font-size: 14px;
   line-height: 1.3;
-`;
-
-export const ViewportPosition = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  top: 100%;
-  left: 0;
-  perspective: 2000px;
 `;
