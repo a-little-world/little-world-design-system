@@ -1,7 +1,6 @@
-import { CheckboxProps } from '@radix-ui/react-checkbox';
+import { CheckboxProps as RadixCheckboxProps } from '@radix-ui/react-checkbox';
 import React from 'react';
 
-import { coreColors } from '../../tokens/core';
 import { CheckIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import {
@@ -9,20 +8,22 @@ import {
   CheckboxIndicator,
   CheckboxRoot,
   CheckboxWrapper,
+  NonInteractiveCheckbox,
   StyledLabel,
 } from './styles';
 
-type Props = {
+type CheckboxProps = {
   className?: string;
   color?: string;
   error?: string;
   id?: string;
   inputRef?: React.RefObject<HTMLButtonElement>;
   label?: string;
+  readOnly?: boolean;
   required?: boolean;
-} & CheckboxProps;
+} & RadixCheckboxProps;
 
-const Checkbox: React.FC<Props> = ({
+const Checkbox: React.FC<CheckboxProps> = ({
   checked,
   className,
   color,
@@ -32,26 +33,35 @@ const Checkbox: React.FC<Props> = ({
   inputRef,
   label,
   onCheckedChange,
+  readOnly,
   value,
   ...rest
-}: Props) => {
+}) => {
   return (
     <CheckboxWrapper className={className}>
       <CheckboxContainer>
-        <CheckboxRoot
-          ref={inputRef}
-          id={id}
-          checked={checked}
-          onCheckedChange={onCheckedChange}
-          value={value}
-          $hasError={Boolean(error)}
-          $color={color}
-          {...rest}
-        >
-          <CheckboxIndicator>
-            <CheckIcon label="check icon" labelId="check icon" width={10} />
-          </CheckboxIndicator>
-        </CheckboxRoot>
+        {readOnly ? (
+          <NonInteractiveCheckbox $color={color} checked={checked}>
+            {checked && (
+              <CheckIcon label="check icon" labelId="check icon" width={10} />
+            )}
+          </NonInteractiveCheckbox>
+        ) : (
+          <CheckboxRoot
+            ref={inputRef}
+            id={id}
+            checked={checked}
+            onCheckedChange={onCheckedChange}
+            value={value}
+            $hasError={Boolean(error)}
+            $color={color}
+            {...rest}
+          >
+            <CheckboxIndicator>
+              <CheckIcon label="check icon" labelId="check icon" width={10} />
+            </CheckboxIndicator>
+          </CheckboxRoot>
+        )}
         {label && (
           <StyledLabel htmlFor={id} inline>
             {label}

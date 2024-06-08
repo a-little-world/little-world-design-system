@@ -1,7 +1,6 @@
 import * as Checkbox from '@radix-ui/react-checkbox';
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
 import Label from '../Label/Label';
 
 const ITEM_WIDTH = '16px';
@@ -11,10 +10,10 @@ export const CheckboxWrapper = styled.div``;
 export const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: ${tokens.spacing.xxxxsmall};
+  margin: ${({ theme }) => theme.spacing.xxxxsmall} 0;
 `;
 
-export const CheckboxRoot = styled(Checkbox.Root)<{
+const CHECKBOX_STYLES = css<{
   $hasError?: boolean;
   $color?: string;
   checked: Checkbox.CheckboxProps['checked'];
@@ -42,6 +41,21 @@ export const CheckboxRoot = styled(Checkbox.Root)<{
     `}
 `;
 
+export const CheckboxRoot = styled(Checkbox.Root)<{
+  $hasError?: boolean;
+  $color?: string;
+  checked: Checkbox.CheckboxProps['checked'];
+}>`
+  ${CHECKBOX_STYLES}
+`;
+
+export const NonInteractiveCheckbox = styled.div<{
+  $color?: string;
+  checked: Checkbox.CheckboxProps['checked'];
+}>`
+  ${CHECKBOX_STYLES}
+`;
+
 export const CheckboxIndicator = styled(Checkbox.Indicator)`
   display: flex;
   align-items: center;
@@ -49,5 +63,5 @@ export const CheckboxIndicator = styled(Checkbox.Indicator)`
 `;
 
 export const StyledLabel = styled(Label)`
-  margin-left: ${tokens.spacing.xxsmall};
+  margin-left: ${({ theme }) => theme.spacing.xxsmall};
 `;

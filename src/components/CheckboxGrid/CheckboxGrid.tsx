@@ -1,5 +1,6 @@
 import { CheckedState } from '@radix-ui/react-checkbox';
 import React, { useState } from 'react';
+import { useTheme } from 'styled-components';
 
 import { coreColors } from '../../tokens/core';
 import InputError from '../InputError/InputError';
@@ -14,25 +15,30 @@ import {
 
 type SelectedType = { [x: string]: string[] };
 
-type Props = {
+type CheckboxGridProps = {
   columnHeadings: string[];
   rowHeadings: string[];
+  highlightCells: SelectedType;
   checkboxesByColumn: { name: string; value: string; key: string }[][];
   onSelection: (selected: SelectedType) => void;
   preSelected?: SelectedType;
   error?: string;
   name: string;
+  readOnly?: boolean;
 };
 
-const CheckboxGrid: React.FC<Props> = ({
+const CheckboxGrid: React.FC<CheckboxGridProps> = ({
   columnHeadings,
   error,
+  highlightCells,
   rowHeadings,
   checkboxesByColumn,
   preSelected,
   onSelection,
   name,
-}: Props) => {
+  readOnly,
+}) => {
+  const theme = useTheme();
   const [selected, setSelected] = useState<SelectedType>(preSelected || {});
 
   const onSelect = ({
@@ -74,18 +80,23 @@ const CheckboxGrid: React.FC<Props> = ({
               </ColumnHeading>
             ))}
             {checkboxesByColumn.map((column, columnIndex) =>
-              column.map(({ value, key }, rowIndex) => (
-                <StyledCheckbox
-                  key={key + value + rowIndex}
-                  checked={selected[key]?.includes(value)}
-                  name={name}
-                  onCheckedChange={state => onSelect({ value, key, state })}
-                  value={value}
-                  color={coreColors.orange20}
-                  $row={rowIndex + 2}
-                  $column={columnIndex + 2}
-                />
-              )),
+              column.map(({ value, key }, rowIndex) => {
+                console.log({ value, key, rowIndex, columnIndex });
+                return (
+                  <StyledCheckbox
+                    key={key + value + rowIndex}
+                    checked={selected[key]?.includes(value)}
+                    name={name}
+                    onCheckedChange={state => onSelect({ value, key, state })}
+                    value={value}
+                    color={theme.color.surface.selected}
+                    $row={rowIndex + 2}
+                    $column={columnIndex + 2}
+                    $highlight={!!highlightCells?.[key]?.includes(value)}
+                    readOnly={readOnly}
+                  />
+                );
+              }),
             )}
           </ScrollableWrapper>
         </>
