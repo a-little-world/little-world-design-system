@@ -15,15 +15,19 @@ export const Grid = styled.div<{
   display: grid;
   width: 100%;
   row-gap: ${tokens.spacing.xsmall};
+  column-gap: ${tokens.spacing.xxsmall};
 
   grid-template-columns: ${({ $columns }) =>
     `repeat(${$columns}, minmax(max-content, 1fr))`};
   grid-template-rows: ${({ $rows }) => `repeat(${$rows}, 1fr)`};
+  grid-auto-rows: 27.5px;
   margin-bottom: ${tokens.spacing.small};
   padding-bottom: ${tokens.spacing.xxsmall};
   overflow-x: scroll;
   background: ${({ theme }) => theme.color.surface.primary};
   color: ${({ theme }) => theme.color.text.primary};
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ColumnHeading = styled(Text)<{ index: number }>`
@@ -65,16 +69,24 @@ export const StyledCheckbox = styled(Checkbox)<{
   checked: boolean;
   $row: number;
   $column: number;
+  $highlight: boolean;
 }>`
   display: flex;
   align-items: center;
   justify-content: center;
   grid-row-start: ${({ $row }) => $row};
   grid-column-start: ${({ $column }) => $column};
+  height: 100%;
 
   ${({ checked, theme }) =>
     checked &&
     css`
       border-color: ${theme.color.border.selected};
+    `};
+
+  ${({ $highlight, theme }) =>
+    $highlight &&
+    css`
+      background: ${theme.color.surface.accent};
     `};
 `;

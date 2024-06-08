@@ -6,23 +6,22 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { ThemeProvider } from 'styled-components';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
 import type { ThemeProps } from 'styled-components';
 
 import tokens from '../tokens';
-import type { Theme } from './theme';
 
 export enum ThemeVariants {
   light = 'light',
   dark = 'dark',
 }
 
-export const lightTheme = {
+export const lightTheme: DefaultTheme = {
   ...tokens,
   color: tokens.color.theme.light,
 };
 
-export const darkTheme = {
+export const darkTheme: DefaultTheme = {
   ...tokens,
   color: tokens.color.theme.dark,
 };
@@ -34,7 +33,7 @@ export const themes = {
   dark: darkTheme,
 };
 
-export interface ThemeProviderProps extends Partial<ThemeProps<Theme>> {
+export interface ThemeProviderProps extends Partial<ThemeProps<DefaultTheme>> {
   children: ReactNode;
   defaultMode?: ThemeVariants;
 }

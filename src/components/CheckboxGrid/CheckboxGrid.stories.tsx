@@ -1,4 +1,5 @@
 import React from 'react';
+
 import CheckboxGrid from './CheckboxGrid';
 
 export default {
@@ -35,8 +36,14 @@ const checkboxesByColumn = JSON.parse(
 
 Default.args = {
   id: 'multi selector id',
-  onCheckedChange: () => null,
+  onSelection: () => null,
   columnHeadings: columnHeadingsDummy,
   rowHeadings: rowHeadingsDummy,
   checkboxesByColumn,
+  highlightCells: {
+    mo: ['10_12'],
+    sa: ['12_14'],
+    th: ['08_10'],
+    we: ['16_18', '18_20', '20_22'],
+  },
 };
