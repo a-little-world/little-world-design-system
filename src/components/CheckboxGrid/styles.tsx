@@ -11,23 +11,25 @@ export const CheckboxGridWrapper = styled.div`
 export const Grid = styled.div<{
   $columns: number;
   $rows: number;
+  $hasError: boolean;
 }>`
   display: grid;
   width: 100%;
   row-gap: ${tokens.spacing.xsmall};
   column-gap: ${tokens.spacing.xxsmall};
-
   grid-template-columns: ${({ $columns }) =>
     `repeat(${$columns}, minmax(max-content, 1fr))`};
   grid-template-rows: ${({ $rows }) => `repeat(${$rows}, 1fr)`};
   grid-auto-rows: 27.5px;
-  margin-bottom: ${tokens.spacing.small};
+  margin-bottom: ${tokens.spacing.xxsmall};
   padding-bottom: ${tokens.spacing.xxsmall};
   overflow-x: scroll;
   background: ${({ theme }) => theme.color.surface.primary};
   color: ${({ theme }) => theme.color.text.primary};
-  justify-content: center;
   align-items: center;
+  border-bottom: 1px solid
+    ${({ $hasError, theme }) =>
+      $hasError ? theme.color.border.error : theme.color.surface.primary};
 `;
 
 export const ColumnHeading = styled(Text)<{ index: number }>`
@@ -39,6 +41,10 @@ export const ColumnHeading = styled(Text)<{ index: number }>`
   max-width: 100%;
   padding: ${tokens.spacing.xxxsmall};
   background: ${({ theme }) => theme.color.surface.primary};
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   ${({ index }) =>
     !index &&
@@ -57,6 +63,10 @@ export const RowHeading = styled(Text)<{ index: number }>`
   position: sticky;
   left: 0;
   background: ${({ theme }) => theme.color.surface.primary};
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ScrollableWrapper = styled.div`
@@ -88,5 +98,27 @@ export const StyledCheckbox = styled(Checkbox)<{
     $highlight &&
     css`
       background: ${theme.color.surface.accent};
+    `};
+`;
+
+export const BelowGrid = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Legend = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
+`;
+
+export const Square = styled.div`
+  ${({ theme }) =>
+    css`
+      width: 20px;
+      height: 16px;
+      background: ${theme.color.surface.accent};
+      border: 1px solid ${theme.color.border.primary};
     `};
 `;

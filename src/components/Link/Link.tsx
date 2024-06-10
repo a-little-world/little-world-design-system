@@ -51,7 +51,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     ref,
   ) => {
     const Component = Variants[href ? 'href' : 'to'] as React.ElementType;
-    console.log({ Component });
+
     return (
       <Component
         {...(href ? { href } : { to })}
