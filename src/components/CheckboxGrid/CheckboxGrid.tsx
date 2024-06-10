@@ -2,14 +2,17 @@ import { CheckedState } from '@radix-ui/react-checkbox';
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 
-import { coreColors } from '../../tokens/core';
 import InputError from '../InputError/InputError';
+import Text from '../Text/Text';
 import {
+  BelowGrid,
   CheckboxGridWrapper,
   ColumnHeading,
   Grid,
+  Legend,
   RowHeading,
   ScrollableWrapper,
+  Square,
   StyledCheckbox,
 } from './styles';
 
@@ -22,6 +25,7 @@ type CheckboxGridProps = {
   checkboxesByColumn: { name: string; value: string; key: string }[][];
   onSelection: (selected: SelectedType) => void;
   preSelected?: SelectedType;
+  legendText?: string;
   error?: string;
   name: string;
   readOnly?: boolean;
@@ -31,6 +35,7 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
   columnHeadings,
   error,
   highlightCells,
+  legendText,
   rowHeadings,
   checkboxesByColumn,
   preSelected,
@@ -62,26 +67,29 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
 
   return (
     <CheckboxGridWrapper>
-      <Grid $columns={columnHeadings.length} $rows={rowHeadings.length}>
+      <Grid
+        $columns={columnHeadings.length}
+        $rows={rowHeadings.length}
+        $hasError={!!error}
+      >
         <>
           {/* on mobile, first column is fixed */}
-          <ColumnHeading bold index={0}>
+          <ColumnHeading tag="span" bold index={0}>
             {columnHeadings[0]}
           </ColumnHeading>
           {rowHeadings.map((row, index) => (
-            <RowHeading key={row} index={index}>
+            <RowHeading tag="span" key={row} index={index}>
               {row}
             </RowHeading>
           ))}
           <ScrollableWrapper>
             {columnHeadings.slice(1).map((column, index) => (
-              <ColumnHeading bold index={index + 1}>
+              <ColumnHeading tag="span" bold index={index + 1}>
                 {column}
               </ColumnHeading>
             ))}
             {checkboxesByColumn.map((column, columnIndex) =>
               column.map(({ value, key }, rowIndex) => {
-                console.log({ value, key, rowIndex, columnIndex });
                 return (
                   <StyledCheckbox
                     key={key + value + rowIndex}
@@ -101,7 +109,16 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
           </ScrollableWrapper>
         </>
       </Grid>
-      <InputError visible={Boolean(error)}>{error}</InputError>
+      <BelowGrid>
+        {legendText && highlightCells && (
+          <Legend>
+            <Square />
+            <Text tag="span">=</Text>
+            <Text tag="span">{legendText}</Text>
+          </Legend>
+        )}
+        <InputError visible={Boolean(error)}>{error}</InputError>
+      </BelowGrid>
     </CheckboxGridWrapper>
   );
 };
