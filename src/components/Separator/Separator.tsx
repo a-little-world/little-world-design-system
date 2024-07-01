@@ -25,17 +25,20 @@ const StyledSeparator = styled(RadixSeparator.Root)<{
 
 interface SeparatorProps {
   background?: string;
+  className?: string;
   orientation?: 'horizontal' | 'vertical';
   spacing?: string;
 }
 
 const Separator = ({
   background,
+  className,
   orientation = 'horizontal',
   spacing,
 }: SeparatorProps) => {
   return (
     <StyledSeparator
+      className={className}
       orientation={orientation}
       decorative
       $background={background}

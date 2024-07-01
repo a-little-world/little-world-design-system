@@ -84,7 +84,7 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
           ))}
           <ScrollableWrapper>
             {columnHeadings.slice(1).map((column, index) => (
-              <ColumnHeading tag="span" bold index={index + 1}>
+              <ColumnHeading key={column} tag="span" bold index={index + 1}>
                 {column}
               </ColumnHeading>
             ))}
