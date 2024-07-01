@@ -1,0 +1,63 @@
+import React from 'react';
+
+import { Icon, IconSvgProps } from '../Icon';
+import IconGradient from '../IconGradient';
+import { getDefaultIconProps } from '../getDefaultIconProps';
+
+const LABEL_ID = 'PuzzleIcon';
+
+export const PuzzleIcon = (props: IconSvgProps) => {
+  const {
+    backgroundColor,
+    borderColor,
+    circular,
+    className,
+    color,
+    gradient,
+    height,
+    width,
+    label,
+    labelId,
+    labelVisible,
+  } = getDefaultIconProps(props);
+  const id = LABEL_ID + labelId;
+
+  return (
+    <Icon
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}
+      circular={circular}
+      className={className}
+      color={color}
+      labelId={labelId || LABEL_ID}
+      label={label}
+      labelVisible={labelVisible}
+    >
+      <svg
+        aria-labelledby={labelId || LABEL_ID}
+        fill="none"
+        focusable={false}
+        width={width}
+        height={height}
+        className={circular ? undefined : className}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512.001 512.001"
+      >
+        <g>
+          <path
+            fill={gradient ? `url(#gradient${id})` : color}
+            d="M426.67,161.188c13.874-1.972,27.251-8.292,37.924-18.965c26.182-26.182,26.183-68.633,0.001-94.815
+			c-26.185-26.182-68.633-26.182-94.815,0.001c-10.672,10.672-16.992,24.051-18.964,37.924L265.483,0l-94.814,94.815
+			c13.877,1.972,27.252,8.292,37.924,18.964c26.183,26.182,26.183,68.634,0,94.816c-26.183,26.181-68.632,26.181-94.814-0.001
+			c-10.673-10.672-16.993-24.05-18.965-37.925L0.002,265.481l85.335,85.335c-13.877,1.972-27.253,8.292-37.927,18.964
+			c-26.181,26.182-26.182,68.633,0,94.814c26.183,26.182,68.633,26.182,94.815,0.001c10.672-10.673,16.993-24.05,18.964-37.924
+			l85.331,85.331l94.814-94.814c-13.877-1.971-27.251-8.291-37.925-18.964c-26.183-26.183-26.183-68.632,0-94.815
+			c26.183-26.181,68.632-26.183,94.814,0c10.675,10.675,16.992,24.05,18.964,37.924l94.814-94.814L426.67,161.188z"
+          />
+        </g>
+
+        {gradient && <IconGradient variation={gradient} id={id} />}
+      </svg>
+    </Icon>
+  );
+};

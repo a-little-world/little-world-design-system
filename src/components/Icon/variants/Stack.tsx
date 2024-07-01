@@ -4,9 +4,9 @@ import { Icon, IconSvgProps } from '../Icon';
 import IconGradient from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
-const LABEL_ID = 'StarIcon';
+const LABEL_ID = 'StackIcon';
 
-export const StarIcon = (props: IconSvgProps) => {
+export const StackIcon = (props: IconSvgProps) => {
   const {
     backgroundColor,
     borderColor,
@@ -35,18 +35,19 @@ export const StarIcon = (props: IconSvgProps) => {
     >
       <svg
         aria-labelledby={labelId || LABEL_ID}
-        fill="none"
-        focusable={false}
+        xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
         className={circular ? undefined : className}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 17 16"
+        viewBox="0 0 122.88 111.96"
+        fill="none"
       >
-        <path
-          d="M8.50141 12.4584L3.84799 15.3005L5.11307 9.99633L0.972656 6.44966L6.40745 6.01425L8.50141 0.979248L10.5954 6.01425L16.0309 6.44966L11.8897 9.99633L13.1548 15.3005L8.50141 12.4584Z"
-          fill={gradient ? `url(#gradient${id})` : color}
-        />
+        <g>
+          <path
+            fill={gradient ? `url(#gradient${id})` : color}
+            d="M61.15,0L0,26.52l61.41,24.96l61.47-24.88L61.15,0L61.15,0z M122.88,57.12L95.46,45.31L62.73,58.56 c-0.88,0.36-1.83,0.33-2.65,0L27.27,45.22L0,57.05L61.41,82L122.88,57.12L122.88,57.12z M96.14,75.56L62.73,89.08 c-0.88,0.36-1.83,0.33-2.65,0L26.59,75.47L0,87.01l61.41,24.96l61.47-24.88L96.14,75.56L96.14,75.56z"
+          />
+        </g>
 
         {gradient && <IconGradient variation={gradient} id={id} />}
       </svg>
