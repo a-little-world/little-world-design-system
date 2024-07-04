@@ -19,6 +19,7 @@ export { default as Label } from './components/Label/Label';
 export { default as Link } from './components/Link/Link';
 export { default as Loading } from './components/Loading/Loading';
 export { default as Modal } from './components/Modal/Modal';
+export { default as MultiCheckbox } from './components/MultiCheckbox/MultiCheckbox';
 export { default as MultiSelection } from './components/MultiSelection/MultiSelection';
 export {
   NavigationMenu,
