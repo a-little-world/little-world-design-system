@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 import tokens from '../../tokens';
-import { coreColors } from '../../tokens/core';
 import { LINK_HOVER_CSS } from '../Link/styles';
 import { ButtonAppearance, ButtonSizes, ButtonVariations } from './Button';
 
@@ -75,7 +74,7 @@ const StandardButtonCss = css<{ $size?: string }>`
 export const PrimaryButtonCss = css<{ $backgroundColor?: string }>`
   ${StandardButtonCss}
 
-  color: ${coreColors.white};
+  color: ${({ theme }) => theme.color.border.heading};
   border: none;
   background: ${({ theme, $backgroundColor }) =>
     $backgroundColor || theme.color.gradient.orange10};
@@ -96,16 +95,16 @@ export const SecondaryButtonCss = css<{
   ${StandardButtonCss}
 
   ${({ $color, $backgroundColor, theme }) => `
-    border: 2px solid ${$color || coreColors.blue20};
+    border: 2px solid ${$color || theme.color.border.bold};
     background-color: ${theme.color.surface.primary};
-    color: ${$color || coreColors.blue20};
+    color: ${$color || theme.color.text.heading};
     transition: background-color 0.5s ease, filter 0.5s ease,
     border-color 0.5s ease, color 0.5s ease, 0.4s;
 
     &:not(:disabled):hover {
-      background: ${$backgroundColor || coreColors.blue20};
+      background: ${$backgroundColor || theme.color.text.heading};
       color: ${theme.color.text.control};
-      border-color: ${$backgroundColor || coreColors.blue20};
+      border-color: ${$backgroundColor || theme.color.text.heading};
       transition: background-color 0.5s ease, filter 0.5s ease,
       border-color 0.5s ease, color 0.5s ease, 0.4s;
     }

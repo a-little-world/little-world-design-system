@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { coreColors } from '../../../tokens/core';
 import { Icon, IconSvgProps } from '../Icon';
 import IconGradient, { GradientTypes } from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon, IconSvgProps } from '../Icon';
-import IconGradient from '../IconGradient';
+import IconGradient, { GradientTypes } from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'StackIcon';
@@ -49,7 +49,9 @@ export const StackIcon = (props: IconSvgProps) => {
           />
         </g>
 
-        {gradient && <IconGradient variation={gradient} id={id} />}
+        {gradient && (
+          <IconGradient variation={gradient} id={id} type={GradientTypes.v2} />
+        )}
       </svg>
     </Icon>
   );
