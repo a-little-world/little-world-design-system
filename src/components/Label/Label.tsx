@@ -3,7 +3,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import tokens from '../../tokens';
-import { coreColors } from '../../tokens/core';
 import textParser from '../../utils/parser';
 import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
 import { QuestionIcon } from '../Icon';
@@ -26,6 +25,10 @@ const StyledLabel = styled(RadixLabel.Root)<{
       gap: ${tokens.spacing.xxxsmall};
       align-items: center;
     `}
+`;
+
+const ToolTipTrigger = styled(Button)`
+  color: ${({ theme }) => theme.color.surface.bold};
 `;
 
 type LabelProps = RadixLabel.LabelProps & {
@@ -58,14 +61,12 @@ const Label: React.FC<LabelProps> = ({
       {toolTipText && (
         <ToolTip
           trigger={
-            <Button
+            <ToolTipTrigger
               variation={ButtonVariations.Icon}
               size={ButtonSizes.Small}
-              borderColor={coreColors.blue10}
-              color={coreColors.blue10}
             >
               <QuestionIcon label="questionIcon" labelId="questionIcon" />
-            </Button>
+            </ToolTipTrigger>
           }
           text={toolTipText}
         />

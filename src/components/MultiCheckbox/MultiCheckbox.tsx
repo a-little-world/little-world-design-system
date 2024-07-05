@@ -53,7 +53,14 @@ const MultiCheckbox: React.FC<MultiCheckboxProps> = ({
       {heading && <Label bold>{heading}</Label>}
       <MultiCheckboxWrapper>
         {options.map(({ value, label }) => (
-          <CheckboxWrapper $checked={selected.includes(value)}>
+          <CheckboxWrapper
+            key={label}
+            $checked={selected.includes(value)}
+            $error={Boolean(error)}
+            onClick={() =>
+              onSelect({ value, state: !selected.includes(value) })
+            }
+          >
             <StyledCheckbox
               key={label + value}
               checked={selected.includes(value)}
