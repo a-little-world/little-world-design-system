@@ -2,13 +2,10 @@ import { CheckedState } from '@radix-ui/react-checkbox';
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 
+import { CheckboxButton } from '../Checkbox/Checkbox';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
-import {
-  CheckboxWrapper,
-  MultiCheckboxWrapper,
-  StyledCheckbox,
-} from './styles';
+import { MultiCheckboxWrapper } from './styles';
 
 type MultiCheckboxProps = {
   heading?: string;
@@ -39,6 +36,7 @@ const MultiCheckbox: React.FC<MultiCheckboxProps> = ({
     value: string;
     state: CheckedState;
   }) => {
+    console.log('onSelect', { state, value });
     const oldValues = selected || [];
     const newValues = state
       ? [...oldValues, value]
@@ -53,25 +51,16 @@ const MultiCheckbox: React.FC<MultiCheckboxProps> = ({
       {heading && <Label bold>{heading}</Label>}
       <MultiCheckboxWrapper>
         {options.map(({ value, label }) => (
-          <CheckboxWrapper
+          <CheckboxButton
             key={label}
-            $checked={selected.includes(value)}
-            $error={Boolean(error)}
-            onClick={() =>
-              onSelect({ value, state: !selected.includes(value) })
-            }
-          >
-            <StyledCheckbox
-              key={label + value}
-              checked={selected.includes(value)}
-              name={name}
-              onCheckedChange={state => onSelect({ value, state })}
-              label={label}
-              value={value}
-              color={theme.color.surface.selected}
-              readOnly={readOnly}
-            />
-          </CheckboxWrapper>
+            error={error}
+            label={label}
+            checked={selected.includes(value)}
+            name={name}
+            onCheckedChange={state => onSelect({ value, state })}
+            value={value}
+            color={theme.color.surface.selected}
+          />
         ))}
       </MultiCheckboxWrapper>
       <InputError visible={Boolean(error)} textAlign="left">

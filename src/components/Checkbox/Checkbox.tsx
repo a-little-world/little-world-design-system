@@ -4,6 +4,7 @@ import React from 'react';
 import { CheckIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import {
+  CheckboxButtonContainer,
   CheckboxContainer,
   CheckboxIndicator,
   CheckboxRoot,
@@ -22,6 +23,42 @@ type CheckboxProps = {
   readOnly?: boolean;
   required?: boolean;
 } & RadixCheckboxProps;
+
+export const CheckboxButton: React.FC<CheckboxProps> = ({
+  checked,
+  className,
+  color,
+  error,
+  required = true,
+  id,
+  inputRef,
+  label,
+  onCheckedChange,
+  readOnly,
+  value,
+  ...rest
+}) => (
+  <CheckboxButtonContainer
+    ref={inputRef}
+    id={id}
+    checked={checked}
+    onCheckedChange={onCheckedChange}
+    value={value}
+    $hasError={Boolean(error)}
+    {...rest}
+  >
+    <NonInteractiveCheckbox $color={color} checked={checked}>
+      {checked && (
+        <CheckIcon label="check icon" labelId="check icon" width={10} />
+      )}
+    </NonInteractiveCheckbox>
+    {label && (
+      <StyledLabel htmlFor={id} inline>
+        {label}
+      </StyledLabel>
+    )}
+  </CheckboxButtonContainer>
+);
 
 const Checkbox: React.FC<CheckboxProps> = ({
   checked,
