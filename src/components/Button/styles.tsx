@@ -74,7 +74,7 @@ const StandardButtonCss = css<{ $size?: string }>`
 export const PrimaryButtonCss = css<{ $backgroundColor?: string }>`
   ${StandardButtonCss}
 
-  color: ${({ theme }) => theme.color.border.heading};
+  color: ${({ theme }) => theme.color.text.button};
   border: none;
   background: ${({ theme, $backgroundColor }) =>
     $backgroundColor || theme.color.gradient.orange10};

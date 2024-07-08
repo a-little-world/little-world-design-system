@@ -7,6 +7,33 @@ const ITEM_WIDTH = '16px';
 
 export const CheckboxWrapper = styled.div``;
 
+export const CheckboxButtonContainer = styled(Checkbox.Root)<{
+  $hasError?: boolean;
+}>`
+  cursor: pointer;
+  padding: ${({ theme }) => theme.spacing.xxsmall};
+  display: flex;
+  align-items: center;
+  border: 1px solid
+    ${({ theme, checked, $hasError }) =>
+      checked
+        ? $hasError
+          ? theme.color.border.error
+          : theme.color.border.selected
+        : theme.color.border.accent};
+  border-radius: ${({ theme }) => theme.radius.xxsmall};
+  background: ${({ checked, $hasError, theme }) =>
+    checked
+      ? $hasError
+        ? theme.color.surface.error
+        : theme.color.surface.accent
+      : theme.color.surface.subtle};
+
+  label {
+    cursor: pointer;
+  }
+`;
+
 export const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
