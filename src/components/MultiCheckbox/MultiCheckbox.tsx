@@ -36,7 +36,6 @@ const MultiCheckbox: React.FC<MultiCheckboxProps> = ({
     value: string;
     state: CheckedState;
   }) => {
-    console.log('onSelect', { state, value });
     const oldValues = selected || [];
     const newValues = state
       ? [...oldValues, value]
