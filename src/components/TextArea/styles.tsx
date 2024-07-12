@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import tokens from '../../tokens';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
@@ -15,6 +15,7 @@ export const AreaWrapper = styled.div<{ $size?: TextAreaSize }>`
 `;
 
 export const Area = styled.textarea<{
+  $expandable: boolean;
   $hasError: boolean;
   $size?: TextAreaSize;
 }>`
@@ -34,6 +35,13 @@ export const Area = styled.textarea<{
   margin-bottom: ${tokens.spacing.xxxxsmall};
   resize: none;
 
+  ${({ $expandable, $size }) =>
+    $expandable &&
+    css`
+      min-height: ${$size};
+      max-height: 13rem;
+      max-height: 25dvh;
+    `}
   ${({ $hasError }) => $hasError && INPUT_ERROR_CSS};
 `;
 

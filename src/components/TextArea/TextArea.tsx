@@ -14,6 +14,7 @@ export enum TextAreaSize {
 interface TextAreaProps extends React.ComponentPropsWithoutRef<'textarea'> {
   displayCount?: boolean;
   error?: string;
+  expandable?: boolean;
   id?: string;
   inputRef?: React.RefObject<HTMLTextAreaElement>;
   label?: string;
@@ -28,6 +29,7 @@ interface TextAreaProps extends React.ComponentPropsWithoutRef<'textarea'> {
 const TextArea: React.FC<TextAreaProps> = ({
   displayCount = true,
   error,
+  expandable,
   id,
   inputRef,
   label,
@@ -58,6 +60,12 @@ const TextArea: React.FC<TextAreaProps> = ({
     }
   };
 
+  const handleOnInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (!expandable) return;
+    e.target.style.height = 'auto';
+    e.target.style.height = e.target.scrollHeight + 'px';
+  };
+
   return (
     <AreaWrapper $size={size}>
       {label && (
@@ -75,9 +83,11 @@ const TextArea: React.FC<TextAreaProps> = ({
         id={id}
         $hasError={Boolean(error)}
         $size={size}
+        $expandable={Boolean(expandable)}
         maxLength={maxLength}
         onChange={handleOnChange}
         onKeyDown={handleKeyDown}
+        onInput={handleOnInput}
         readOnly={readOnly}
         value={value}
         {...areaProps}

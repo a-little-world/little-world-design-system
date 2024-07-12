@@ -11,7 +11,7 @@ export const Default = args => <MultiCheckbox {...args} />;
 
 Default.args = {
   id: 'multi selector id',
-  onSelection: () => console.log('Chicken'),
+  onSelection: () => null,
   heading: 'Select your favourite veg',
   preSelected: ['carrots', 'Potato'],
   options: [
