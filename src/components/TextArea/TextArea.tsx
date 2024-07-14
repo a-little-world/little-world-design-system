@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
+import useAutosizeTextArea from '../../hooks/useAutosizeTextArea';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import TextTypes from '../Text/TextTypes';
 import { Area, AreaWrapper, Counter } from './styles';
 
 export enum TextAreaSize {
+  Xsmall = '44px',
   Small = '80px',
   Medium = '120px',
   Large = '160px',
@@ -42,6 +44,10 @@ const TextArea: React.FC<TextAreaProps> = ({
   value,
   ...areaProps
 }) => {
+  const [internalValue, setInternalValue] = useState(value ?? '');
+  const textAreaRef = inputRef || useRef<HTMLTextAreaElement>(null);
+
+  useAutosizeTextArea(textAreaRef.current, internalValue);
   const [textAreaCount, setTextAreaCount] = useState(0);
 
   useEffect(() => {
@@ -51,6 +57,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange?.(e);
     setTextAreaCount(e.target.value.length);
+    setInternalValue(e.target.value);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -58,12 +65,6 @@ const TextArea: React.FC<TextAreaProps> = ({
       e.preventDefault();
       onSubmit();
     }
-  };
-
-  const handleOnInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (!expandable) return;
-    e.target.style.height = 'auto';
-    e.target.style.height = e.target.scrollHeight + 'px';
   };
 
   return (
@@ -79,7 +80,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         >{`${textAreaCount}/${maxLength}`}</Counter>
       )}
       <Area
-        ref={inputRef}
+        ref={textAreaRef}
         id={id}
         $hasError={Boolean(error)}
         $size={size}
@@ -87,7 +88,6 @@ const TextArea: React.FC<TextAreaProps> = ({
         maxLength={maxLength}
         onChange={handleOnChange}
         onKeyDown={handleKeyDown}
-        onInput={handleOnInput}
         readOnly={readOnly}
         value={value}
         {...areaProps}
