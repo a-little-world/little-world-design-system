@@ -24,12 +24,17 @@ export const Area = styled.textarea<{
   font-size: 1rem;
   height: ${({ $size }) => $size};
   border: 1px solid ${({ theme }) => theme.color.border.moderate};
-  border-radius: ${tokens.spacing.xxsmall};
+  border-radius: ${({ $size }) =>
+    $size === TextAreaSize.Xsmall
+      ? tokens.radius.large
+      : tokens.radius.xxsmall};
   background: ${({ theme }) => theme.color.surface.primary};
   color: ${({ theme }) => theme.color.text.primary};
   padding: ${({ $size }) =>
     $size === TextAreaSize.Small
       ? tokens.spacing.xxsmall
+      : $size === TextAreaSize.Xsmall
+      ? '11px 14px'
       : tokens.spacing.small};
   box-sizing: border-box;
   margin-bottom: ${tokens.spacing.xxxxsmall};
