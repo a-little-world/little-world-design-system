@@ -51,6 +51,7 @@ const TextArea: React.FC<TextAreaProps> = ({
 
   useEffect(() => {
     setTextAreaCount(value?.length || 0);
+    setInternalValue(value || '');
   }, [value]);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
