@@ -23,7 +23,7 @@ interface TextAreaProps extends React.ComponentPropsWithoutRef<'textarea'> {
   labelTooltip?: string;
   maxLength?: number;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onSubmit?: () => void;
+  onSubmit?: () => boolean;
   size?: TextAreaSize;
   value?: string;
 }
@@ -60,10 +60,11 @@ const TextArea: React.FC<TextAreaProps> = ({
     setInternalValue(e.target.value);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyDown = async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (onSubmit && e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      onSubmit();
+      const submitSuccessful = await onSubmit();
+      if (submitSuccessful) setInternalValue('');
     }
   };
 
