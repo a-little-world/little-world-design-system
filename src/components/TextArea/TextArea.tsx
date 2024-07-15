@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Ref, useEffect, useRef, useState } from 'react';
 
 import useAutosizeTextArea from '../../hooks/useAutosizeTextArea';
 import InputError from '../InputError/InputError';
@@ -18,7 +18,7 @@ interface TextAreaProps extends React.ComponentPropsWithoutRef<'textarea'> {
   error?: string;
   expandable?: boolean;
   id?: string;
-  inputRef?: React.RefObject<HTMLTextAreaElement>;
+  inputRef?: Ref<HTMLFormElement>;
   label?: string;
   labelTooltip?: string;
   maxLength?: number;
@@ -45,8 +45,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   ...areaProps
 }) => {
   const [internalValue, setInternalValue] = useState(value ?? '');
-  const textAreaRef = inputRef || useRef<HTMLTextAreaElement>(null);
-
+  const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   useAutosizeTextArea(textAreaRef.current, internalValue);
   const [textAreaCount, setTextAreaCount] = useState(0);
 
@@ -80,7 +79,11 @@ const TextArea: React.FC<TextAreaProps> = ({
         >{`${textAreaCount}/${maxLength}`}</Counter>
       )}
       <Area
-        ref={textAreaRef}
+        ref={e => {
+          // @ts-ignore
+          inputRef?.(e);
+          textAreaRef.current = e;
+        }}
         id={id}
         $hasError={Boolean(error)}
         $size={size}
