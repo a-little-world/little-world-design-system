@@ -33,13 +33,15 @@ export const AccordionHeader = styled(Accordion.Header)`
   width: 100%;
 `;
 
-export const AccordionContent = styled(Accordion.Content)`
+export const AccordionContent = styled(Accordion.Content)<{ css?: string }>`
   width: 100%;
   background: ${({ theme }) => theme.color.surface.tertiary};
   border-radius: 10px;
   padding: ${tokens.spacing.small};
   margin-bottom: ${tokens.spacing.small};
   line-height: 1.5;
+
+  ${({ css }) => css ?? ''};
 `;
 
 export const AccordionTrigger = styled(Accordion.Trigger)`
