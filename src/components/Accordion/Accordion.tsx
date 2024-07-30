@@ -14,7 +14,9 @@ import {
 
 interface AccordionProps extends AccordionSingleProps {
   className?: string;
-  contentClassName?: string;
+  contentCss?: string;
+  headerType?: keyof typeof TextTypes;
+  headerColor?: string;
   items: {
     content: string | React.ReactNode;
     header: string;
@@ -23,7 +25,9 @@ interface AccordionProps extends AccordionSingleProps {
 
 const Accordion: React.FC<AccordionProps> = ({
   className,
-  contentClassName,
+  contentCss,
+  headerType,
+  headerColor,
   items,
 }) => {
   return (
@@ -32,18 +36,19 @@ const Accordion: React.FC<AccordionProps> = ({
         <AccordionItem value={header} key={header}>
           <AccordionHeader>
             <AccordionTrigger>
-              <Text type={TextTypes.Body4}>{header}</Text>
+              <Text type={headerType || TextTypes.Body4} color={headerColor}>
+                {header}
+              </Text>
               <TriggerIcon
                 label="accordion toggle icon"
                 labelId="accordion-toggle-icon"
                 width="14px"
                 height="14px"
+                color={headerColor}
               />
             </AccordionTrigger>
           </AccordionHeader>
-          <AccordionContent className={contentClassName}>
-            {content}
-          </AccordionContent>
+          <AccordionContent css={contentCss}>{content}</AccordionContent>
         </AccordionItem>
       ))}
     </AccordionRoot>

@@ -13,6 +13,7 @@ export const Logo = (props: IconSvgProps) => {
     circular,
     className,
     color,
+    gradient,
     height,
     label,
     labelId,
@@ -42,32 +43,37 @@ export const Logo = (props: IconSvgProps) => {
         viewBox="-0.01 0 100.38 66.86"
         fill={color}
       >
-        <defs>
-          <linearGradient
-            id="Unbenannter_Verlauf_2"
-            y1="35.21"
-            x2="80"
-            y2="35.21"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop offset="0" stopColor="#d85509"></stop>
-            <stop offset="0.14" stopColor="#df6510"></stop>
-            <stop offset="0.49" stopColor="#ed861f"></stop>
-            <stop offset="0.67" stopColor="#f39325"></stop>
-          </linearGradient>
-          <linearGradient
-            id="Unbenannter_Verlauf_3"
-            x1="20.41"
-            y1="31.58"
-            x2="100.41"
-            y2="31.58"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop offset="0.18" stopColor="#36a9e1"></stop>
-            <stop offset="0.56" stopColor="#1f8bcc"></stop>
-            <stop offset="1" stopColor="#0063af"></stop>
-          </linearGradient>
-        </defs>
+        {gradient ? (
+          <IconGradient variation={gradient} id={id} />
+        ) : (
+          <defs>
+            <linearGradient
+              id="Unbenannter_Verlauf_2"
+              y1="35.21"
+              x2="80"
+              y2="35.21"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0" stopColor="#d85509"></stop>
+              <stop offset="0.14" stopColor="#df6510"></stop>
+              <stop offset="0.49" stopColor="#ed861f"></stop>
+              <stop offset="0.67" stopColor="#f39325"></stop>
+            </linearGradient>
+            <linearGradient
+              id="Unbenannter_Verlauf_3"
+              x1="20.41"
+              y1="31.58"
+              x2="100.41"
+              y2="31.58"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0.18" stopColor="#36a9e1"></stop>
+              <stop offset="0.56" stopColor="#1f8bcc"></stop>
+              <stop offset="1" stopColor="#0063af"></stop>
+            </linearGradient>
+          </defs>
+        )}
+
         <g id="Ebene_2" data-name="Ebene 2">
           <g id="Ebene_1-2" data-name="Ebene 1">
             <path

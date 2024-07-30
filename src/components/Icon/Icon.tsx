@@ -11,7 +11,7 @@ const Circle = styled.div<{
   background: ${({ theme, $backgroundColor }) =>
     $backgroundColor || theme.color.surface.secondary};
   border: 2px solid
-    ${({ theme, $borderColor }) => $borderColor || theme.color.surface.subtle};
+    ${({ theme, $borderColor }) => $borderColor || theme.color.border.contrast};
   border-radius: 50%;
   color: ${({ color, theme }) => color || theme.color.text.tertiary};
   display: inline-flex;
