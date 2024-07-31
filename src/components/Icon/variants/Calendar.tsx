@@ -61,7 +61,7 @@ export const CalendarIcon = (props: IconSvgProps) => {
         />
 
         {gradient && (
-          <IconGradient variation={gradient} id={id} type={GradientTypes.v2} />
+          <IconGradient variation={gradient} id={id} type={GradientTypes.v4} />
         )}
       </svg>
     </Icon>

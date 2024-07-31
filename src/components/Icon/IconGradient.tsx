@@ -14,6 +14,7 @@ export enum GradientTypes {
   v1 = 'v1',
   v2 = 'v2',
   v3 = 'v3',
+  v4 = 'v4',
 }
 
 export type IconGradientProps = {
@@ -80,6 +81,21 @@ const IconGradient = ({
           <stop offset="1" stopColor={GradientVariations[variation][5]} />
         </linearGradient>
       </defs>
+    );
+
+  if (type === GradientTypes.v4)
+    return (
+      <linearGradient
+        id={`gradient${id}`}
+        x1="0%"
+        y1="50%"
+        x2="100%"
+        y2="50%"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0%" stopColor={GradientVariations[variation][0]} />
+        <stop offset="100%" stopColor={GradientVariations[variation][1]} />
+      </linearGradient>
     );
   return <></>;
 };

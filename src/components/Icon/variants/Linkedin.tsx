@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon, IconSvgProps } from '../Icon';
-import IconGradient from '../IconGradient';
+import IconGradient, { GradientTypes } from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'Linkedin';
@@ -47,12 +47,20 @@ export const Linkedin = (props: IconSvgProps) => {
           width="512"
           height="512"
           rx="15%"
-          fill={color !== 'currentColor' ? color : '#0077b5'}
+          fill={
+            gradient
+              ? `url(#gradient${id})`
+              : color !== 'currentColor'
+              ? color
+              : '#0077b5'
+          }
         />
         <circle cx="142" cy="138" r="37" />
         <path stroke="#FFF" strokeWidth="66" d="M244 194v198M142 194v198" />
         <path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32" />
-        {gradient && <IconGradient variation={gradient} id={id} />}
+        {gradient && (
+          <IconGradient variation={gradient} id={id} type={GradientTypes.v4} />
+        )}
       </svg>
     </Icon>
   );

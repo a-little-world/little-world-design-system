@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
+
 import { ImageLabel } from '../Icon/Icon';
 
 type IllustrationProps = {
@@ -8,6 +9,8 @@ type IllustrationProps = {
   children: any;
   labelId: string;
 };
+
+export type SvgProps = SVGProps<SVGElement>;
 
 export const Illustration = ({
   children,

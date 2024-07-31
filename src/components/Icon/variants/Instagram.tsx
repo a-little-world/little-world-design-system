@@ -55,7 +55,7 @@ export const InstagramIcon = (props: IconSvgProps) => {
           d="m423.851562 119.300781c0 16.953125-13.746093 30.699219-30.703124 30.699219-16.953126 0-30.699219-13.746094-30.699219-30.699219 0-16.957031 13.746093-30.699219 30.699219-30.699219 16.957031 0 30.703124 13.742188 30.703124 30.699219zm0 0"
         />
         {gradient && (
-          <IconGradient variation={gradient} id={id} type={GradientTypes.v2} />
+          <IconGradient variation={gradient} id={id} type={GradientTypes.v4} />
         )}
       </svg>
     </Icon>

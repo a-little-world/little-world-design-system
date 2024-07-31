@@ -1,16 +1,17 @@
 import React from 'react';
-import { Illustration } from '../Illustration';
+
+import { Illustration, SvgProps } from '../Illustration';
 
 const LABEL_ID = 'Unmatched with partner Illustration';
 
-export const UnmatchedImage = () => {
+export const UnmatchedImage = ({ height, width }: SvgProps) => {
   return (
     <Illustration labelId={LABEL_ID} label={LABEL_ID} labelVisible={false}>
       <svg
         aria-labelledby={LABEL_ID}
         focusable={false}
-        width="312"
-        height="125"
+        height={height}
+        width={width}
         viewBox="0 0 312 125"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
