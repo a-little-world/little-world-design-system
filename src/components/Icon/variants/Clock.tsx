@@ -56,7 +56,7 @@ export const ClockIcon = (props: IconSvgProps) => {
           fill={gradient ? `url(#gradient${id})` : color}
         />
         {gradient && (
-          <IconGradient variation={gradient} id={id} type={GradientTypes.v2} />
+          <IconGradient variation={gradient} id={id} type={GradientTypes.v4} />
         )}
       </svg>
     </Icon>

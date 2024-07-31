@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon, IconSvgProps } from '../Icon';
-import IconGradient from '../IconGradient';
+import IconGradient, { GradientTypes } from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'LogoutIcon';
@@ -59,7 +59,9 @@ export const LogoutIcon = (props: IconSvgProps) => {
             ></rect>
           </clipPath>
         </defs>
-        {gradient && <IconGradient variation={gradient} id={id} />}
+        {gradient && (
+          <IconGradient variation={gradient} id={id} type={GradientTypes.v3} />
+        )}
       </svg>
     </Icon>
   );
