@@ -30,3 +30,12 @@ export const List = styled.ul`
 export const ListItem = styled(Text)`
   display: list-item;
 `;
+
+export const ImageWrapper = styled.div<{ $marginBottom?: string }>`
+  margin: 0 auto;
+  ${({ $marginBottom }) =>
+    $marginBottom &&
+    css`
+      margin-bottom: ${$marginBottom};
+    `}
+`;

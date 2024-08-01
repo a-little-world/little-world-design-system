@@ -1,5 +1,6 @@
 import type { AccordionSingleProps } from '@radix-ui/react-accordion';
 import React from 'react';
+import { FlattenInterpolation, ThemeProps } from 'styled-components';
 
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
@@ -14,7 +15,7 @@ import {
 
 interface AccordionProps extends AccordionSingleProps {
   className?: string;
-  contentCss?: string;
+  contentCss?: FlattenInterpolation<ThemeProps<any>>;
   headerType?: keyof typeof TextTypes;
   headerColor?: string;
   items: {

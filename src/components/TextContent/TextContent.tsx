@@ -2,7 +2,7 @@ import React from 'react';
 
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
-import { ContentWrapper, List, ListItem } from './styles';
+import { ContentWrapper, ImageWrapper, List, ListItem } from './styles';
 
 export enum ContentTypes {
   Paragraph = 'paragraph',
@@ -12,6 +12,7 @@ export enum ContentTypes {
   Heading = 'heading',
   Emphasize = 'emphasize',
   Sentence = 'sentence',
+  Image = 'image',
 }
 
 type Props = {
@@ -22,24 +23,24 @@ type Props = {
 const TextPage = ({ content, marginBottom }: Props) => {
   return (
     <ContentWrapper $marginBottom={marginBottom}>
-      {content.map(({ text, type, listItems }) => {
+      {content.map(({ color, text, type, listItems, Image }) => {
         if (type === ContentTypes.Heading)
           return (
-            <Text key={text} tag="h2" type={TextTypes.Heading3}>
+            <Text key={text} tag="h2" type={TextTypes.Heading3} color={color}>
               {text}
             </Text>
           );
 
         if (type === ContentTypes.Title)
           return (
-            <Text key={text} tag="h3" type={TextTypes.Body2} bold>
+            <Text key={text} tag="h3" type={TextTypes.Body2} bold color={color}>
               {text}
             </Text>
           );
 
         if (type === ContentTypes.Subtitle)
           return (
-            <Text key={text} tag="h4" type={TextTypes.Body3} bold>
+            <Text key={text} tag="h4" type={TextTypes.Body3} bold color={color}>
               {text}
             </Text>
           );
@@ -63,9 +64,16 @@ const TextPage = ({ content, marginBottom }: Props) => {
 
         if (type === ContentTypes.Emphasize)
           return (
-            <Text key={text} bold>
+            <Text key={text} bold color={color}>
               {text}
             </Text>
+          );
+
+        if (type === ContentTypes.Image)
+          return (
+            <ImageWrapper $marginBottom={marginBottom}>
+              <Image />
+            </ImageWrapper>
           );
       })}
     </ContentWrapper>

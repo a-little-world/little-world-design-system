@@ -2,35 +2,35 @@ import React from 'react';
 
 import { Illustration, SvgProps } from '../Illustration';
 
-const LABEL_ID = 'Swirly Lines Illustration';
+const LABEL_ID = 'Swirly Lines Thin Illustration';
 
-export const SwirlyLinesImage = ({ height, width }: SvgProps) => {
+export const SwirlyLinesThinImage = ({ height, width }: SvgProps) => {
   return (
     <Illustration labelId={LABEL_ID} label={LABEL_ID} labelVisible={false}>
       <svg
         width={width}
         height={height}
-        viewBox="0 0 595 151"
+        viewBox="0 0 593 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
         <rect
-          width="595"
-          height="151"
+          width="593"
+          height="48"
           fill="url(#pattern0_8298_40033)"
-          fillOpacity="0.5"
+          fill-opacity="0.5"
         />
         <defs>
           <pattern
             id="pattern0_8298_40033"
             patternContentUnits="objectBoundingBox"
-            width="0.672269"
-            height="2.64901"
+            width="1"
+            height="1"
           >
             <use
               xlinkHref="#image0_8298_40033"
-              transform="scale(0.00168067 0.00662252)"
+              transform="matrix(0.00250843 0 0 0.0309896 -0.00337268 -4.6875)"
             />
           </pattern>
           <image
