@@ -31,11 +31,18 @@ export const ListItem = styled(Text)`
   display: list-item;
 `;
 
-export const ImageWrapper = styled.div<{ $marginBottom?: string }>`
+export const ImageWrapper = styled.div<{
+  $marginBottom?: string;
+  $width?: string;
+  $maxWidth?: string;
+}>`
   margin: 0 auto;
+  width: ${({ $width }) => $width || '100%'};
+  max-width: ${({ $maxWidth }) => $maxWidth || '100%'};
+
   ${({ $marginBottom }) =>
     $marginBottom &&
     css`
       margin-bottom: ${$marginBottom};
-    `}
+    `};
 `;
