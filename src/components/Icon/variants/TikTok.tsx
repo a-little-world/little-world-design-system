@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon, IconSvgProps } from '../Icon';
-import IconGradient from '../IconGradient';
+import IconGradient, { GradientTypes } from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'TikTok';
@@ -21,7 +21,7 @@ export const TikTok = (props: IconSvgProps) => {
     width,
   } = getDefaultIconProps(props);
   const id = LABEL_ID + labelId;
-  console.log('WHATPSAPP');
+
   return (
     <Icon
       backgroundColor={backgroundColor}
@@ -46,7 +46,13 @@ export const TikTok = (props: IconSvgProps) => {
         <g clipRule="evenodd" fillRule="evenodd">
           <path
             d="M25 0h200c13.808 0 25 11.192 25 25v200c0 13.808-11.192 25-25 25H25c-13.808 0-25-11.192-25-25V25C0 11.192 11.192 0 25 0z"
-            fill={color !== 'currentColor' ? color : '#000'}
+            fill={
+              gradient
+                ? `url(#gradient${id})`
+                : color !== 'currentColor'
+                ? color
+                : '#000'
+            }
           />
 
           <path
@@ -93,7 +99,9 @@ export const TikTok = (props: IconSvgProps) => {
           />
         </g>
 
-        {gradient && <IconGradient variation={gradient} id={id} />}
+        {gradient && (
+          <IconGradient variation={gradient} id={id} type={GradientTypes.v4} />
+        )}
       </svg>
     </Icon>
   );

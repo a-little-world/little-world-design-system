@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon, IconSvgProps } from '../Icon';
-import IconGradient from '../IconGradient';
+import IconGradient, { GradientTypes } from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'PuzzleIcon';
@@ -56,7 +56,9 @@ export const PuzzleIcon = (props: IconSvgProps) => {
           />
         </g>
 
-        {gradient && <IconGradient variation={gradient} id={id} />}
+        {gradient && (
+          <IconGradient variation={gradient} id={id} type={GradientTypes.v4} />
+        )}
       </svg>
     </Icon>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon, IconSvgProps } from '../Icon';
-import IconGradient from '../IconGradient';
+import IconGradient, { GradientTypes } from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'DotsIcon';
@@ -50,7 +50,9 @@ export const DotsIcon = (props: IconSvgProps) => {
 		c0,2.19,1.774,3.965,3.969,3.965c2.188,0,3.965-1.772,3.965-3.965S30.278,12.061,28.09,12.061z"
           />
         </g>
-        {gradient && <IconGradient variation={gradient} id={id} />}
+        {gradient && (
+          <IconGradient variation={gradient} id={id} type={GradientTypes.v4} />
+        )}
       </svg>
     </Icon>
   );

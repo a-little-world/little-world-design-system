@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon, IconSvgProps } from '../Icon';
-import IconGradient from '../IconGradient';
+import IconGradient, { GradientTypes } from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
 const LABEL_ID = 'Telegram';
@@ -21,7 +21,7 @@ export const Telegram = (props: IconSvgProps) => {
     width,
   } = getDefaultIconProps(props);
   const id = LABEL_ID + labelId;
-  console.log('WHATPSAPP');
+
   return (
     <Icon
       backgroundColor={backgroundColor}
@@ -47,7 +47,13 @@ export const Telegram = (props: IconSvgProps) => {
           width="512"
           height="512"
           rx="15%"
-          fill={color !== 'currentColor' ? color : '#37aee2'}
+          fill={
+            gradient
+              ? `url(#gradient${id})`
+              : color !== 'currentColor'
+              ? color
+              : '#37aee2'
+          }
         />
 
         <path fill="#c8daea" d="M199 404c-11 0-10-4-13-14l-32-105 245-144" />
@@ -57,7 +63,9 @@ export const Telegram = (props: IconSvgProps) => {
           d="M204 319l135 99c14 9 26 4 30-14l55-258c5-22-9-32-24-25L79 245c-21 8-21 21-4 26l83 26 190-121c9-5 17-3 11 4"
         />
 
-        {gradient && <IconGradient variation={gradient} id={id} />}
+        {gradient && (
+          <IconGradient variation={gradient} id={id} type={GradientTypes.v4} />
+        )}
       </svg>
     </Icon>
   );
