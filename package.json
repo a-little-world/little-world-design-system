@@ -1,6 +1,6 @@
 {
   "name": "@a-little-world/little-world-design-system",
-  "version": "1.18.16",
+  "version": "1.18.17",
   "description": "Design system for Little World applications",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -73,6 +73,7 @@
     "@radix-ui/react-select": "^1.2.2",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slider": "^1.1.2",
+    "@radix-ui/react-switch": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.0.6",
     "@types/react": "^18.2.47",
     "csstype": "^3.1.2",
