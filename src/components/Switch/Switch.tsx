@@ -4,11 +4,17 @@ import React from 'react';
 import tokens from '../../tokens';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
-import { SwitchRoot, SwitchThumb, SwitchWrapper } from './styles';
+import {
+  SwitchContainer,
+  SwitchRoot,
+  SwitchThumb,
+  SwitchWrapper,
+} from './styles';
 
 type Props = {
   error?: string;
   label?: string;
+  labelInline?: boolean;
   labelTooltip?: string;
   inputRef: React.RefObject<HTMLButtonElement>;
 } & RadixSwitch.SwitchProps;
@@ -16,6 +22,7 @@ type Props = {
 const Switch: React.FC<Props> = ({
   error,
   label,
+  labelInline,
   labelTooltip,
   inputRef,
   checked,
@@ -23,31 +30,33 @@ const Switch: React.FC<Props> = ({
   value,
   ...rest
 }: Props) => (
-  <SwitchWrapper>
+  <SwitchWrapper $labelInline={labelInline}>
     {label && (
       <Label
-        bold
+        bold={!labelInline}
         htmlFor={label}
-        marginBottom={tokens.spacing.small}
+        marginBottom={labelInline ? '20px' : tokens.spacing.small}
         toolTipText={labelTooltip}
       >
         {label}
       </Label>
     )}
-    <SwitchRoot
-      ref={inputRef}
-      checked={checked}
-      value={value}
-      name={label}
-      onCheckedChange={onCheckedChange}
-      $hasError={Boolean(error)}
-      {...rest}
-    >
-      <SwitchThumb />
-    </SwitchRoot>
-    <InputError visible={Boolean(error)} textAlign="left">
-      {error}
-    </InputError>
+    <SwitchContainer>
+      <SwitchRoot
+        ref={inputRef}
+        checked={checked}
+        value={value}
+        name={label}
+        onCheckedChange={onCheckedChange}
+        $hasError={Boolean(error)}
+        {...rest}
+      >
+        <SwitchThumb />
+      </SwitchRoot>
+      <InputError visible={Boolean(error)} textAlign="left">
+        {error}
+      </InputError>
+    </SwitchContainer>
   </SwitchWrapper>
 );
 

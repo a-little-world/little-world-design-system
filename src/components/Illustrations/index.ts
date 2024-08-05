@@ -1,6 +1,7 @@
 export * from './variants/Friendship';
 export * from './variants/GroupHands';
 export * from './variants/LaptopWithPhone';
+export * from './variants/LivingRoom';
 export * from './variants/ManOnRocket';
 export * from './variants/PaperPlane';
 export * from './variants/PeopleTogether';
@@ -11,3 +12,4 @@ export * from './variants/SwirlyLinesThin';
 export * from './variants/Teacher';
 export * from './variants/TimeFlexible';
 export * from './variants/Unmatched';
+export * from './variants/WomanOnRocket';
