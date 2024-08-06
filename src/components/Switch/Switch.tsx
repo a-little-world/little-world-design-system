@@ -14,6 +14,7 @@ import {
 type Props = {
   error?: string;
   label?: string;
+  labelBold?: boolean;
   labelInline?: boolean;
   labelTooltip?: string;
   inputRef: React.RefObject<HTMLButtonElement>;
@@ -22,6 +23,7 @@ type Props = {
 const Switch: React.FC<Props> = ({
   error,
   label,
+  labelBold = true,
   labelInline,
   labelTooltip,
   inputRef,
@@ -33,7 +35,7 @@ const Switch: React.FC<Props> = ({
   <SwitchWrapper $labelInline={labelInline}>
     {label && (
       <Label
-        bold={!labelInline}
+        bold={labelBold}
         htmlFor={label}
         marginBottom={labelInline ? '20px' : tokens.spacing.small}
         toolTipText={labelTooltip}
