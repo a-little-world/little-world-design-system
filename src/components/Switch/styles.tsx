@@ -1,7 +1,15 @@
 import * as Switch from '@radix-ui/react-switch';
 import styled, { css } from 'styled-components';
 
-export const SwitchWrapper = styled.div``;
+export const SwitchWrapper = styled.div<{ $labelInline?: boolean }>`
+  ${({ theme, $labelInline }) =>
+    $labelInline &&
+    css`
+      display: flex;
+      gap: ${theme.spacing.small};
+      align-items: center;
+    `}
+`;
 
 export const SwitchRoot = styled(Switch.Root)<{ $hasError?: boolean }>`
   width: 56px;
@@ -30,6 +38,8 @@ export const SwitchRoot = styled(Switch.Root)<{ $hasError?: boolean }>`
     background-color: ${({ theme }) => theme.color.surface.selected};
   }
 `;
+
+export const SwitchContainer = styled.div``;
 
 export const SwitchThumb = styled(Switch.Thumb)`
   display: block;
