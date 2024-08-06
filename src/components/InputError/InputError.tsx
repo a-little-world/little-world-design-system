@@ -31,7 +31,7 @@ const ErrorText = styled(Text)<{
   text-align: ${({ $textAlign }) => $textAlign};
 
   ${({ $top, $bottom, $right, $left }) =>
-    ($top || $right) &&
+    ($top || $right || $bottom || $left) &&
     `
     position: absolute;
     top: ${$top};
