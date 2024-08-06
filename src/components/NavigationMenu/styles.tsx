@@ -122,11 +122,11 @@ export const NavMenuIndicator = styled(RadixNavigationMenu.Indicator)`
   transition: width, transform 250ms ease;
 
   &[data-state='visible'] {
-    animation: fadeIn 200ms ease;
+    animation: fadeIn 200ms ease forward;
   }
 
   &[data-state='hidden'] {
-    animation: fadeOut 200ms ease;
+    animation: fadeOut 200ms ease forward;
   }
 `;
 

@@ -11,6 +11,7 @@ export const InputWrapper = styled.div<{ $width: string }>`
   flex-direction: column;
   width: 100%;
   max-width: ${({ $width }) => $width};
+  position: relative;
 `;
 
 export const InputContainer = styled.div`
@@ -44,26 +45,26 @@ export const TelephoneInput = styled(PhoneInput)<{ $hasError: boolean }>`
     ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
   }
 
-  .flag-dropdown {
+  .react-tel-input .flag-dropdown {
     overflow: hidden;
   }
 
-  .flag-dropdown.open {
+  .react-tel-input .flag-dropdown.open {
     overflow: visible;
   }
 
-  .flag-dropdown,
-  .flag-dropdown.open {
+  .react-tel-input .flag-dropdown,
+  .react-tel-input .flag-dropdown.open {
     background: none;
     border: none;
     border-radius: 6px 0 0 6px;
   }
 
-  .flag-dropdown.open .selected-flag {
+  .react-tel-input .flag-dropdown.open .selected-flag {
     background: none;
   }
 
-  .selected-flag {
+  .react-tel-input .selected-flag {
     padding: 0 0 0 14px;
     scale: 1.3;
     width: 51px;
@@ -78,19 +79,19 @@ export const TelephoneInput = styled(PhoneInput)<{ $hasError: boolean }>`
     }
   }
 
-  .selected-flag:focus {
+  .react-tel-input .selected-flag:focus {
     background: none;
   }
 
-  flag-dropdown.open .selected-flag {
+  .react-tel-input flag-dropdown.open .selected-flag {
     &:hover {
       background: none;
       filter: brightness(0.8);
     }
   }
 
-  .selected-flag,
-  .flag-dropdown.open .selected-flag {
+  .react-tel-input .selected-flag,
+  .react-tel-input .flag-dropdown.open .selected-flag {
     border-radius: 8px 0 0 8px;
   }
 `;

@@ -15,11 +15,19 @@ export const Default = args => <TextInput {...args} />;
 export const TelephoneInput = args => {
   return (
     <>
-      <TextInput {...args} />
-      <TextInput type="tel" {...args} />
+      <TextInput label="Enter your number" type="tel" {...args} />
     </>
   );
 };
+
+export const InputWithOnSubmit = args => (
+  <TextInput
+    {...args}
+    onSubmit={() => {
+      return true;
+    }}
+  />
+);
 
 Default.args = {
   placeholder: 'Insert your text',

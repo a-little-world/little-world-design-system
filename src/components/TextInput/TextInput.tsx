@@ -22,22 +22,26 @@ export enum InputWidth {
 interface Props extends React.ComponentPropsWithoutRef<'input'> {
   error?: string;
   id: string;
+  inline?: boolean;
+  inputRef?: React.RefObject<HTMLInputElement>;
   label: string;
   labelTooltip?: string;
+  onSubmit?: () => boolean;
   type: string;
-  inputRef?: React.RefObject<HTMLInputElement>;
   width?: InputWidth;
 }
 
 const TextInput: React.FC<Props> = ({
   error,
+  id,
+  inline,
+  inputRef,
   label,
   labelTooltip,
-  id,
-  type = 'text',
-  inputRef,
-  width = InputWidth.Large,
   onChange,
+  onSubmit,
+  type = 'text',
+  width = InputWidth.Large,
   ...inputProps
 }: Props) => {
   const [inputType, setInputType] = React.useState(type); // ['text', 'password'
@@ -46,6 +50,8 @@ const TextInput: React.FC<Props> = ({
   const defaultTelephoneVal = (value ?? defaultValue)?.toString() as
     | string
     | undefined;
+
+  const errorProps = inline ? { bottom: '-16px', right: '0px' } : {};
 
   const handlePasswordVisibilityToggle = () => {
     if (inputType === 'password') {
@@ -63,6 +69,13 @@ const TextInput: React.FC<Props> = ({
     e: ChangeEvent<HTMLInputElement>,
   ) => {
     onChange?.(e);
+  };
+
+  const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (onSubmit && e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      const submitSuccessful = await onSubmit();
+    }
   };
 
   return (
@@ -89,6 +102,7 @@ const TextInput: React.FC<Props> = ({
             type={inputType}
             id={id}
             onChange={onChange}
+            onKeyDown={handleKeyDown}
             {...inputProps}
           />
         )}
@@ -120,6 +134,7 @@ const TextInput: React.FC<Props> = ({
       <InputError
         visible={Boolean(error)}
         textAlign={width === InputWidth.Large ? 'right' : 'left'}
+        {...errorProps}
       >
         {error}
       </InputError>
