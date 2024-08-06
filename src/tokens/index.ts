@@ -66,6 +66,7 @@ export default {
           disabled: coreColors.gray10,
           error: coreColors.red10,
           success: coreColors.green10,
+          on: coreColors.green20,
         },
         text: {
           primary: coreColors.black,
@@ -78,7 +79,7 @@ export default {
           button: coreColors.white,
           control: coreColors.gray20,
           error: coreColors.red20,
-          success: coreColors.green30,
+          success: coreColors.green40,
           accent: coreColors.blue30,
           highlight: coreColors.orange30,
           bold: coreColors.black,

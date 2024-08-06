@@ -14,10 +14,10 @@ export const SwitchWrapper = styled.div<{ $labelInline?: boolean }>`
 export const SwitchRoot = styled(Switch.Root)<{ $hasError?: boolean }>`
   width: 56px;
   height: 32px;
-  background-color: ${({ theme }) => theme.color.surface.accent};
+  background-color: ${({ theme }) => theme.color.surface.secondary};
   border-radius: 9999px;
   position: relative;
-  -webkit-tap-highlight-color: ${({ theme }) => theme.color.surface.selected};
+  -webkit-tap-highlight-color: ${({ theme }) => theme.color.surface.on};
 
   &:focus {
     box-shadow: 0 0 0 2px ${({ theme }) => theme.color.border.subtle};
@@ -27,7 +27,7 @@ export const SwitchRoot = styled(Switch.Root)<{ $hasError?: boolean }>`
     $hasError &&
     css`
       box-shadow: 0 0 0 2px ${({ theme }) => theme.color.border.error};
-      background-color: ${({ theme }) => theme.color.surface.accent};
+      background-color: ${({ theme }) => theme.color.surface.secondary};
 
       &:focus {
         box-shadow: 0 0 0 2px ${({ theme }) => theme.color.border.error};
@@ -35,7 +35,7 @@ export const SwitchRoot = styled(Switch.Root)<{ $hasError?: boolean }>`
     `}
 
   &[data-state='checked'] {
-    background-color: ${({ theme }) => theme.color.surface.selected};
+    background-color: ${({ theme }) => theme.color.surface.on};
   }
 `;
 
