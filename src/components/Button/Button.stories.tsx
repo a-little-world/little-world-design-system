@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import tokens from '../../tokens';
-import { ChevronLeftIcon, InfoIcon, PhoneIcon } from '../Icon';
+import { InfoIcon, PhoneIcon } from '../Icon';
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
 import Button, { ButtonSizes, ButtonVariations } from './Button';
@@ -12,7 +12,15 @@ export default {
   title: 'Components/Button',
 };
 
-export const Default = args => <Button {...args}>Blah Blah</Button>;
+export const Default = args => (
+  <div style={{ display: 'flex', gap: tokens.spacing.large }}>
+    <Button {...args}>Blah Blah</Button>
+    <Button {...args}>
+      Blah Blah{' '}
+      <InfoIcon label="info" labelId="infoId" width={16} height={16} />
+    </Button>
+  </div>
+);
 
 export const ButtonOption = args => (
   <Button variation={ButtonVariations.Option} {...args}>

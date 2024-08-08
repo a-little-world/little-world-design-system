@@ -21,7 +21,7 @@ const StyledLabel = styled(RadixLabel.Root)<{
     css`
       ${$bold && 'font-weight: bold;'}
       display: ${$inline ? 'inline-flex' : 'block'};
-      margin-bottom: ${$marginBottom ?? tokens.spacing.xsmall};
+      margin-bottom: ${$marginBottom ?? tokens.spacing.xxsmall};
       gap: ${tokens.spacing.xxxsmall};
       align-items: center;
     `}
