@@ -21,7 +21,7 @@ export const InputContainer = styled.div`
 
 export const INPUT_CSS = css`
   width: 100%;
-  border: 1px solid ${({ theme }) => theme.color.border.moderate};
+  border: 2px solid ${({ theme }) => theme.color.border.subtle};
   border-radius: 6px;
   box-sizing: border-box;
   padding: ${tokens.spacing.xxsmall};
@@ -45,18 +45,18 @@ export const TelephoneInput = styled(PhoneInput)<{ $hasError: boolean }>`
     ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
   }
 
-  .react-tel-input .flag-dropdown {
+  .flag-dropdown {
     overflow: hidden;
+    border: 2px solid ${({ theme }) => theme.color.border.subtle};
   }
 
-  .react-tel-input .flag-dropdown.open {
+  .flag-dropdown.open {
     overflow: visible;
   }
 
-  .react-tel-input .flag-dropdown,
-  .react-tel-input .flag-dropdown.open {
+  .flag-dropdown,
+  .flag-dropdown.open {
     background: none;
-    border: none;
     border-radius: 6px 0 0 6px;
   }
 
@@ -73,17 +73,17 @@ export const TelephoneInput = styled(PhoneInput)<{ $hasError: boolean }>`
     > .flag {
       margin-top: -6px;
     }
-
-    &:hover {
-      background: ${({ theme }) => theme.color.border.moderate};
-    }
   }
 
   .react-tel-input .selected-flag:focus {
     background: none;
   }
 
-  .react-tel-input flag-dropdown.open .selected-flag {
+  .flag-dropdown .selected-flag:hover {
+    background: ${({ theme }) => theme.color.border.subtle};
+  }
+
+  .react-tel-input .flag-dropdown.open .selected-flag {
     &:hover {
       background: none;
       filter: brightness(0.8);

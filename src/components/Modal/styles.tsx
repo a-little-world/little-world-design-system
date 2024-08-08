@@ -22,7 +22,7 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  z-index: 1000;
   overflow: auto;
   overscroll-behavior: contain;
 

@@ -51,6 +51,7 @@ const StandardButtonCss = css<{ $size?: string }>`
   padding: ${tokens.spacing.xsmall} ${tokens.spacing.small};
   height: 49px;
   max-width: 480px;
+  gap: ${tokens.spacing.xxxxsmall};
 
   ${({ $size }) => {
     if ($size === ButtonSizes.Small || !$size) {
