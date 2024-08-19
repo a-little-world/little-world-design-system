@@ -1,14 +1,15 @@
-import React from 'react';
 import * as RadixRadioGroup from '@radix-ui/react-radio-group';
+import React from 'react';
+
+import tokens from '../../tokens';
+import InputError from '../InputError/InputError';
+import Label from '../Label/Label';
 import {
   RadioGroupIndicator,
   RadioGroupItem,
   RadioGroupRoot,
   RadioGroupWrapper,
 } from './styles';
-import Label from '../Label/Label';
-import tokens from '../../tokens';
-import InputError from '../InputError/InputError';
 
 type Props = {
   error?: string;
@@ -28,12 +29,7 @@ const RadioGroup: React.FC<Props> = ({
 }: Props) => (
   <RadioGroupWrapper>
     {label && (
-      <Label
-        bold
-        htmlFor={label}
-        marginBottom={tokens.spacing.small}
-        toolTipText={labelTooltip}
-      >
+      <Label bold htmlFor={label} toolTipText={labelTooltip}>
         {label}
       </Label>
     )}

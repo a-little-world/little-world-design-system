@@ -1,10 +1,4 @@
-import React, {
-  AnchorHTMLAttributes,
-  FC,
-  HTMLProps,
-  PropsWithChildren,
-  forwardRef,
-} from 'react';
+import React, { forwardRef } from 'react';
 import { LinkProps as RouterLinkProps } from 'react-router-dom';
 
 import { ButtonAppearance, ButtonSizes } from '../Button/Button';

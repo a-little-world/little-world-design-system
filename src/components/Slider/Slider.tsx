@@ -1,16 +1,16 @@
+import * as RadixSlider from '@radix-ui/react-slider';
 import React from 'react';
+
+import Label from '../Label/Label';
+import Text from '../Text/Text';
 import {
-  SliderRoot,
-  SliderTrack,
   SliderRange,
+  SliderRoot,
   SliderThumb,
+  SliderTrack,
   SliderWrapper,
   Steps,
 } from './styles';
-import * as RadixSlider from '@radix-ui/react-slider';
-import Label from '../Label/Label';
-import tokens from '../../tokens';
-import Text from '../Text/Text';
 
 type SliderProps = {
   ariaLabel: string;
@@ -33,12 +33,7 @@ const Slider = ({
 }: SliderProps) => (
   <SliderWrapper>
     {label && (
-      <Label
-        bold
-        htmlFor={label}
-        marginBottom={tokens.spacing.small}
-        toolTipText={labelTooltip}
-      >
+      <Label bold htmlFor={label} toolTipText={labelTooltip}>
         {label}
       </Label>
     )}

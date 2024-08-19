@@ -46,7 +46,6 @@ const LINK_CSS = css<{
           box-sizing: border-box;
           align-items: center;
           justify-content: center;
-          width: 100%;
         `
       : css`
           color: ${$color || theme.color.text.link};

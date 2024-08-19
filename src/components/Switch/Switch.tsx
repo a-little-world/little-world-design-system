@@ -37,7 +37,7 @@ const Switch: React.FC<Props> = ({
       <Label
         bold={labelBold}
         htmlFor={label}
-        marginBottom={labelInline ? '20px' : tokens.spacing.small}
+        marginBottom={labelInline ? '20px' : tokens.spacing.xsmall}
         toolTipText={labelTooltip}
       >
         {label}
