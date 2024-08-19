@@ -1,7 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
+import { ValueOf } from '../../utils/types';
+import Text from '../Text/Text';
+import TextTypes from '../Text/TextTypes';
 
 export enum CardSizes {
   Small = '360px',
@@ -24,13 +26,11 @@ const StyledCard = styled.div<{
 
   display: flex;
   flex-direction: column;
-  padding: ${tokens.spacing.small};
+  padding: ${({ theme }) => theme.spacing.small};
 
-  @media (min-width: ${tokens.breakpoints.small}) {
-    padding: ${({ $width }) =>
-      $width === CardSizes.Small
-        ? tokens.spacing.medium
-        : tokens.spacing.large};
+  @media (min-width: ${({ theme }) => theme.breakpoints.small}) {
+    padding: ${({ $width, theme }) =>
+      $width === CardSizes.Small ? theme.spacing.medium : theme.spacing.large};
 
     ${({ $width }) =>
       $width &&
@@ -46,13 +46,50 @@ const StyledCard = styled.div<{
     `}
 `;
 
+const StyledCardHeader = styled(Text)`
+  margin-bottom: ${({ theme }) => theme.spacing.small};
+`;
+
+const Footer = styled.div<{ $align?: string }>`
+  display: flex;
+  order: 1;
+  margin-top: auto;
+  width: 100%;
+  gap: ${({ theme }) => theme.spacing.small};
+
+  ${({ $align }) =>
+    $align &&
+    css`
+      justify-content: ${$align};
+    `};
+`;
+
 type CardProps = {
   borderColor?: string;
   children: React.ReactNode;
   className?: string;
   height?: string;
-  width?: keyof typeof CardSizes;
+  width?: ValueOf<typeof CardSizes>;
 };
+
+export const CardHeader: React.FC<{
+  align?: string;
+  children: React.ReactNode;
+  textColor?: string;
+  textType?: keyof typeof TextTypes;
+}> = ({ children, textColor, textType }) => (
+  <StyledCardHeader
+    type={textType || TextTypes.Heading4}
+    center
+    color={textColor}
+  >
+    {children}
+  </StyledCardHeader>
+);
+export const CardFooter: React.FC<{
+  align?: string;
+  children: React.ReactNode;
+}> = ({ children, align }) => <Footer $align={align}>{children}</Footer>;
 
 const Card: React.FC<CardProps> = ({
   borderColor,

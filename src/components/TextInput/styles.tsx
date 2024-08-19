@@ -47,7 +47,9 @@ export const TelephoneInput = styled(PhoneInput)<{ $hasError: boolean }>`
 
   .flag-dropdown {
     overflow: hidden;
-    border: 2px solid ${({ theme }) => theme.color.border.subtle};
+    border: 2px solid
+      ${({ theme, $hasError }) =>
+        $hasError ? theme.color.border.error : theme.color.border.subtle};
   }
 
   .flag-dropdown.open {

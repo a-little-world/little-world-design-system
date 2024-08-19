@@ -6,7 +6,12 @@ export {
   ButtonVariations,
 } from './components/Button/Button';
 export { OPTION_BUTTON_CSS } from './components/Button/styles';
-export { default as Card, CardSizes } from './components/Card/Card';
+export {
+  default as Card,
+  CardSizes,
+  CardFooter,
+  CardHeader,
+} from './components/Card/Card';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
