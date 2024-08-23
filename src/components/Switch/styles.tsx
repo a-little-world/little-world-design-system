@@ -14,13 +14,13 @@ export const SwitchWrapper = styled.div<{ $labelInline?: boolean }>`
 export const SwitchRoot = styled(Switch.Root)<{ $hasError?: boolean }>`
   width: 56px;
   height: 32px;
-  background-color: ${({ theme }) => theme.color.surface.secondary};
+  background-color: ${({ theme }) => theme.color.border.subtle};
   border-radius: 9999px;
   position: relative;
   -webkit-tap-highlight-color: ${({ theme }) => theme.color.surface.on};
 
   &:focus {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.color.border.subtle};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.color.border.minimal};
   }
 
   ${({ $hasError }) =>
