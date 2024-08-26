@@ -1,5 +1,6 @@
 export * from './variants/Friendship';
 export * from './variants/GroupHands';
+export * from './variants/Key';
 export * from './variants/LaptopWithPhone';
 export * from './variants/LivingRoom';
 export * from './variants/ManOnRocket';
