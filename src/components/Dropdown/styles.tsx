@@ -23,10 +23,12 @@ export const SelectTrigger = styled(Select.Trigger)<{
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${tokens.spacing.xxsmall} ${tokens.spacing.small};
+  padding: ${({ theme, $height }) =>
+    $height === InputHeight.Small
+      ? theme.spacing.xxsmall
+      : `${theme.spacing.xxsmall} ${theme.spacing.xsmall}`};
   line-height: 1.25;
-  height: ${({ $height }) =>
-    $height === InputHeight.Small ? '33px' : '38.5px'};
+  height: ${({ $height }) => ($height === InputHeight.Small ? '34px' : '40px')};
   gap: ${tokens.spacing.xsmall};
   background-color: $ ${({ theme }) => theme.color.surface.tertiary};
   border-radius: 5px;

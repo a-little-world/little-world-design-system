@@ -26,11 +26,12 @@ export const INPUT_CSS = css<{ $height?: string }>`
   border-radius: 6px;
   box-sizing: border-box;
   padding: ${({ theme, $height }) =>
-    $height === InputHeight.Small ? '5.25px 8px' : theme.spacing.xxsmall};
+    $height === InputHeight.Small ? '5px 8px' : theme.spacing.xxsmall};
+
   margin-bottom: ${tokens.spacing.xxxxsmall};
   font-size: 1rem;
   height: unset;
-  line-height: unset;
+  line-height: 1.25;
 `;
 
 export const Input = styled.input<{ $hasError: boolean; $height?: string }>`
