@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 import tokens from '../../tokens';
 import Button from '../Button/Button';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
+import { InputHeight } from './TextInput';
 
 export const InputWrapper = styled.div<{ $width: string }>`
   display: flex;
@@ -19,25 +20,29 @@ export const InputContainer = styled.div`
   width: 100%;
 `;
 
-export const INPUT_CSS = css`
+export const INPUT_CSS = css<{ $height?: string }>`
   width: 100%;
   border: 2px solid ${({ theme }) => theme.color.border.subtle};
   border-radius: 6px;
   box-sizing: border-box;
-  padding: ${tokens.spacing.xxsmall};
+  padding: ${({ theme, $height }) =>
+    $height === InputHeight.Small ? '5.25px 8px' : theme.spacing.xxsmall};
   margin-bottom: ${tokens.spacing.xxxxsmall};
   font-size: 1rem;
   height: unset;
   line-height: unset;
 `;
 
-export const Input = styled.input<{ $hasError: boolean }>`
+export const Input = styled.input<{ $hasError: boolean; $height?: string }>`
   ${INPUT_CSS}
 
   ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
 `;
 
-export const TelephoneInput = styled(PhoneInput)<{ $hasError: boolean }>`
+export const TelephoneInput = styled(PhoneInput)<{
+  $hasError: boolean;
+  $height?: string;
+}>`
   > input.form-control {
     ${INPUT_CSS}
     padding-left: 52px;

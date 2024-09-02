@@ -5,6 +5,7 @@ import { CheckIcon, ChevronDownIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
+import { InputHeight } from '../TextInput/TextInput';
 import {
   DropdownWrapper,
   SelectContent,
@@ -22,6 +23,7 @@ export type DropdownProps = {
   ariaLabel?: string;
   cannotError?: boolean;
   error?: string;
+  height?: InputHeight;
   label?: string;
   labelTooltip?: string;
   lockedValue?: string;
@@ -62,6 +64,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   error,
   cannotError,
   disabled,
+  height,
   inputRef,
   label,
   labelTooltip,
@@ -94,6 +97,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           aria-label={ariaLabel || label}
           ref={inputRef}
           $hasError={Boolean(error)}
+          $height={height}
         >
           <SelectValue placeholder={placeholder} />
           {!lockedValue && (

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import tokens from '../../tokens';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 import { BODY_5_CSS } from '../Text/styles';
+import { InputHeight } from '../TextInput/TextInput';
 
 export const DROPDOWN_MAX_WIDTH = '300px';
 
@@ -13,7 +14,10 @@ export const DropdownWrapper = styled.div<{ $maxWidth?: string }>`
   width: 100%;
 `;
 
-export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
+export const SelectTrigger = styled(Select.Trigger)<{
+  $hasError: boolean;
+  $height?: string;
+}>`
   all: unset;
   box-sizing: border-box;
   display: inline-flex;
@@ -21,7 +25,8 @@ export const SelectTrigger = styled(Select.Trigger)<{ $hasError: boolean }>`
   justify-content: space-between;
   padding: ${tokens.spacing.xxsmall} ${tokens.spacing.small};
   line-height: 1.25;
-  height: 33px;
+  height: ${({ $height }) =>
+    $height === InputHeight.Small ? '33px' : '38.5px'};
   gap: ${tokens.spacing.xsmall};
   background-color: $ ${({ theme }) => theme.color.surface.tertiary};
   border-radius: 5px;
