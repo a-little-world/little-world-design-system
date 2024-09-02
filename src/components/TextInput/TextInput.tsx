@@ -19,8 +19,14 @@ export enum InputWidth {
   Medium = '240px',
   Large = '480px',
 }
+
+export enum InputHeight {
+  Small = 'Small',
+  Large = 'Large',
+}
 interface Props extends React.ComponentPropsWithoutRef<'input'> {
   error?: string;
+  height?: InputHeight;
   id: string;
   inline?: boolean;
   inputRef?: React.RefObject<HTMLInputElement>;
@@ -33,6 +39,7 @@ interface Props extends React.ComponentPropsWithoutRef<'input'> {
 
 const TextInput: React.FC<Props> = ({
   error,
+  height,
   id,
   inline,
   inputRef,
@@ -94,6 +101,7 @@ const TextInput: React.FC<Props> = ({
             $hasError={!!error}
             value={defaultTelephoneVal}
             countryCodeEditable={false}
+            $height={height}
           />
         ) : (
           <Input
@@ -103,6 +111,7 @@ const TextInput: React.FC<Props> = ({
             id={id}
             onChange={onChange}
             onKeyDown={handleKeyDown}
+            $height={height}
             {...inputProps}
           />
         )}

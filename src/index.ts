@@ -56,6 +56,7 @@ export {
 } from './components/TextContent/TextContent';
 export {
   default as TextInput,
+  InputHeight,
   InputWidth,
 } from './components/TextInput/TextInput';
 export { default as ToolTip } from './components/ToolTip/ToolTip';
