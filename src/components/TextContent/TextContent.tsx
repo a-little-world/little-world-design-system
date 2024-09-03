@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
@@ -26,6 +26,7 @@ type Props = {
     Image?: React.ElementType;
     imageWidth?: string;
     imageMaxWidth?: string;
+    style?: CSSProperties;
   }[];
   marginBottom?: string;
 };
@@ -43,10 +44,12 @@ const TextPage = ({ content, marginBottom }: Props) => {
           Image,
           imageWidth,
           imageMaxWidth,
+          style,
         }) => {
           if (type === ContentTypes.Heading)
             return (
               <Text
+                style={style}
                 key={text}
                 tag="h2"
                 type={TextTypes.Heading3}
@@ -60,6 +63,7 @@ const TextPage = ({ content, marginBottom }: Props) => {
           if (type === ContentTypes.Title)
             return (
               <Text
+                style={style}
                 key={text}
                 tag="h3"
                 type={TextTypes.Body2}
@@ -74,6 +78,7 @@ const TextPage = ({ content, marginBottom }: Props) => {
           if (type === ContentTypes.Subtitle)
             return (
               <Text
+                style={style}
                 key={text}
                 tag="h4"
                 type={TextTypes.Body3}
@@ -87,21 +92,21 @@ const TextPage = ({ content, marginBottom }: Props) => {
 
           if (type === ContentTypes.Paragraph)
             return (
-              <Text key={text} center={center}>
+              <Text style={style} key={text} center={center}>
                 {text}
               </Text>
             );
 
           if (type === ContentTypes.Sentence)
             return (
-              <Text key={text} center={center}>
+              <Text style={style} key={text} center={center}>
                 {text}
               </Text>
             );
 
           if (type === ContentTypes.List)
             return (
-              <List key={listItems?.[0]}>
+              <List key={listItems?.[0]} style={style}>
                 {listItems?.map(item => (
                   <ListItem key={item} tag="li">
                     {item}
@@ -112,7 +117,7 @@ const TextPage = ({ content, marginBottom }: Props) => {
 
           if (type === ContentTypes.OrderedList)
             return (
-              <List key={listItems?.[0]} as="ol" ordered>
+              <List key={listItems?.[0]} as="ol" ordered style={style}>
                 {listItems?.map(item => (
                   <ListItem key={item} tag="li">
                     {item}
@@ -123,7 +128,7 @@ const TextPage = ({ content, marginBottom }: Props) => {
 
           if (type === ContentTypes.Emphasize)
             return (
-              <Text key={text} bold color={color} center={center}>
+              <Text style={style} key={text} bold color={color} center={center}>
                 {text}
               </Text>
             );

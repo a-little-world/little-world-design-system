@@ -35,8 +35,13 @@ export const Default = args => (
           text: 'Type: OrderedList',
           type: ContentTypes.OrderedList,
           listItems: ['Example 1', 'Example 2', 'Example 3'],
+          style: { color: 'red' },
         },
-        { text: 'Type: Emphasize', type: ContentTypes.Emphasize },
+        {
+          text: 'Type: Emphasize',
+          type: ContentTypes.Emphasize,
+          style: { marginBottom: '32px' },
+        },
         {
           text: 'Type: Image',
           type: ContentTypes.Image,
