@@ -4,9 +4,10 @@ import { useEffect } from 'react';
 const useAutosizeTextArea = (
   textAreaRef: HTMLTextAreaElement | null,
   value: string,
+  expandable?: boolean,
 ) => {
   useEffect(() => {
-    if (textAreaRef) {
+    if (textAreaRef && expandable) {
       textAreaRef.style.height = '0px';
       const scrollHeight = textAreaRef.scrollHeight;
 

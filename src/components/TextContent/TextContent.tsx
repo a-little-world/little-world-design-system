@@ -7,6 +7,7 @@ import { ContentWrapper, ImageWrapper, List, ListItem } from './styles';
 export enum ContentTypes {
   Paragraph = 'paragraph',
   List = 'list',
+  OrderedList = 'orderedList',
   Title = 'title',
   Subtitle = 'subtitle',
   Heading = 'heading',
@@ -101,6 +102,17 @@ const TextPage = ({ content, marginBottom }: Props) => {
           if (type === ContentTypes.List)
             return (
               <List key={listItems?.[0]}>
+                {listItems?.map(item => (
+                  <ListItem key={item} tag="li">
+                    {item}
+                  </ListItem>
+                ))}
+              </List>
+            );
+
+          if (type === ContentTypes.OrderedList)
+            return (
+              <List key={listItems?.[0]} as="ol" ordered>
                 {listItems?.map(item => (
                   <ListItem key={item} tag="li">
                     {item}
