@@ -46,7 +46,7 @@ const TextArea: React.FC<TextAreaProps> = ({
 }) => {
   const [internalValue, setInternalValue] = useState(value ?? '');
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
-  useAutosizeTextArea(textAreaRef.current, internalValue);
+  useAutosizeTextArea(textAreaRef.current, internalValue, expandable);
   const [textAreaCount, setTextAreaCount] = useState(0);
 
   useEffect(() => {

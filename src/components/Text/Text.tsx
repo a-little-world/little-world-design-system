@@ -1,4 +1,5 @@
 import React from 'react';
+import { CSSProperties } from 'styled-components';
 
 import textParser from '../../utils/parser';
 import TextTypes from './TextTypes';
@@ -12,6 +13,7 @@ type TextProps = {
   className?: string;
   disableParser?: boolean;
   id?: string;
+  style?: CSSProperties;
   tag?:
     | 'p'
     | 'h1'
@@ -34,11 +36,13 @@ const Text = ({
   className,
   disableParser = false,
   id,
+  style,
   tag = 'p',
   type = TextTypes.Body5,
 }: TextProps) => (
   <StyledElement
     className={className}
+    style={style}
     id={id}
     $bold={bold}
     $center={center}

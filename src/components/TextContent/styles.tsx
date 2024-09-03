@@ -16,11 +16,11 @@ export const ContentWrapper = styled.div<{ $marginBottom?: string }>`
     `}
 `;
 
-export const List = styled.ul`
+export const List = styled.ul<{ ordered?: boolean }>`
   padding-inline-start: ${tokens.spacing.small};
   margin-block-start: 0;
   margin-block-end: ${tokens.spacing.xxsmall};
-  list-style: disc;
+  list-style: ${({ ordered }) => (ordered ? 'decimal' : 'disc')};
 
   > li:not(:last-child) {
     margin-bottom: ${tokens.spacing.xxsmall};

@@ -41,7 +41,10 @@ export { default as Popover } from './components/Popover/Popover';
 export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
 export { default as Separator } from './components/Separator/Separator';
 export { default as Slider } from './components/Slider/Slider';
-export { default as StatusMessage } from './components/StatusMessage/StatusMessage';
+export {
+  default as StatusMessage,
+  MessageTypes,
+} from './components/StatusMessage/StatusMessage';
 export { default as Switch } from './components/Switch/Switch';
 export { default as Tags } from './components/Tags/Tags';
 export { default as Text } from './components/Text/Text';

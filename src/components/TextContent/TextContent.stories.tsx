@@ -1,10 +1,6 @@
 import React from 'react';
 
-import {
-  ManOnRocketImage,
-  SwirlyLinesThickImage,
-  SwirlyLinesThinImage,
-} from '../Illustrations';
+import { ManOnRocketImage, SwirlyLinesThinImage } from '../Illustrations';
 import TextPage, { ContentTypes } from './TextContent';
 
 export default {
@@ -28,13 +24,24 @@ export const Default = args => (
           imageWidth: '50%',
           imageMaxWidth: '200px',
         },
-        { text: 'Type: List Item (below)', type: ContentTypes.Sentence },
+        { text: 'Type: List Item (below)', type: ContentTypes.Emphasize },
         {
           text: 'Type: List',
           type: ContentTypes.List,
           listItems: ['Example 1', 'Example 2', 'Example 3'],
         },
-        { text: 'Type: Emphasize', type: ContentTypes.Emphasize },
+        { text: 'Type: Ordered List (below)', type: ContentTypes.Emphasize },
+        {
+          text: 'Type: OrderedList',
+          type: ContentTypes.OrderedList,
+          listItems: ['Example 1', 'Example 2', 'Example 3'],
+          style: { color: 'red' },
+        },
+        {
+          text: 'Type: Emphasize',
+          type: ContentTypes.Emphasize,
+          style: { marginBottom: '32px' },
+        },
         {
           text: 'Type: Image',
           type: ContentTypes.Image,
