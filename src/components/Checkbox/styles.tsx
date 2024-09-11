@@ -20,7 +20,7 @@ export const CheckboxButtonContainer = styled(Checkbox.Root)<{
         ? $hasError
           ? theme.color.border.error
           : theme.color.border.selected
-        : theme.color.border.accent};
+        : theme.color.border.subtle};
   border-radius: ${({ theme }) => theme.radius.xxsmall};
   background: ${({ checked, $hasError, theme }) =>
     checked

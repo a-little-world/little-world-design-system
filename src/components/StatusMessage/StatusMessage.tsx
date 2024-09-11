@@ -15,7 +15,7 @@ const StatusMessage = styled.div<StatusMessageProps>`
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: ${({ theme }) => theme.spacing.large};
+  min-height: ${({ theme }) => theme.spacing.xlarge};
   padding: ${({ theme }) => theme.spacing.xxsmall};
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   transition: ${({ $visible }) => ($visible ? 'opacity 1s' : 'none')};
