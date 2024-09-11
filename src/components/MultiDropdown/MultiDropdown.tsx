@@ -16,6 +16,14 @@ import {
 
 const DELETE_SEGMENT = 'delete segment';
 
+interface DropdownInstanceProps extends DropdownProps {
+  lockedValue: string;
+  dataField: string;
+  values: string[];
+  ariaLabel: string;
+  errors: string[];
+}
+
 type Props = {
   addMoreLabel: string;
   error?: string;
@@ -25,19 +33,8 @@ type Props = {
   defaultSegments?: number;
   maxSegments?: number;
   onValueChange: (value: { [x: string]: string }[]) => void;
-  firstDropdown: DropdownProps & {
-    lockedValue: string;
-    dataField: string;
-    values: string[];
-    ariaLabel: string;
-    errors: string[];
-  };
-  secondDropdown: DropdownProps & {
-    dataField: string;
-    values: string[];
-    ariaLabel: string;
-    errors: string[];
-  };
+  firstDropdown: DropdownInstanceProps;
+  secondDropdown: DropdownInstanceProps;
 };
 
 const formatValues = (
@@ -55,6 +52,18 @@ const formatValues = (
     }
     return newValues;
   }, []);
+
+const setDropdownValues = (
+  firstDropdown: DropdownInstanceProps,
+  secondDropdown: DropdownInstanceProps,
+) => [
+  (firstDropdown.lockedValue
+    ? [firstDropdown.lockedValue, ...(firstDropdown.values.splice(1) || [])]
+    : firstDropdown.values) || [],
+  (secondDropdown.lockedValue
+    ? [secondDropdown.lockedValue, ...(secondDropdown.values.splice(1) || [])]
+    : secondDropdown.values) || [],
+];
 
 const MultiDropdown: React.FC<Props> = ({
   addMoreLabel = 'Add more rows',
@@ -74,13 +83,12 @@ const MultiDropdown: React.FC<Props> = ({
       defaultSegments,
     ),
   );
-  const [values, setValues] = useState([
-    firstDropdown.values || [],
-    secondDropdown.values || [],
-  ]);
+  const [values, setValues] = useState(
+    setDropdownValues(firstDropdown, secondDropdown),
+  );
 
   useEffect(() => {
-    setValues([firstDropdown.values || [], secondDropdown.values || []]);
+    setValues(setDropdownValues(firstDropdown, secondDropdown));
     setSegments(
       Math.max(
         firstDropdown?.values?.length,
@@ -98,6 +106,7 @@ const MultiDropdown: React.FC<Props> = ({
     setValues(values => {
       const newValues = [...values];
       newValues[position][index] = value;
+
       if (Boolean(values[position || 0]))
         onValueChange(
           formatValues(
@@ -143,8 +152,11 @@ const MultiDropdown: React.FC<Props> = ({
         .fill('')
         .map((_, index) => {
           const isFirstSegment = index === 0;
-          const firstSegmentLockedVal = isFirstSegment
-            ? firstDropdown.lockedValue || values[0][index]
+          const firstSegmentLockedVal1 = isFirstSegment
+            ? firstDropdown.lockedValue
+            : undefined;
+          const firstSegmentLockedVal2 = isFirstSegment
+            ? secondDropdown.lockedValue
             : undefined;
 
           return (
@@ -159,7 +171,7 @@ const MultiDropdown: React.FC<Props> = ({
                 options={firstDropdown.options}
                 value={values[0][index]}
                 lockedValue={
-                  firstSegmentLockedVal ||
+                  firstSegmentLockedVal1 ||
                   (locked ? values[0][index] : undefined)
                 }
                 required={Boolean(values[1][index])}
@@ -171,7 +183,10 @@ const MultiDropdown: React.FC<Props> = ({
                 onValueChange={val => handleValueChange(val, 1, index)}
                 options={secondDropdown.options}
                 value={values[1][index]}
-                lockedValue={locked ? values[1][index] : undefined}
+                lockedValue={
+                  firstSegmentLockedVal2 ||
+                  (locked ? values[1][index] : undefined)
+                }
                 required={Boolean(values[0][index])}
                 error={secondDropdown.errors?.[index]}
               />

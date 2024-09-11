@@ -36,5 +36,5 @@ export const Segment = styled.section<{ $locked?: boolean }>`
 `;
 
 export const DeleteButton = styled(Button)`
-  top: ${({ theme }) => theme.spacing.xxsmall};
+  top: ${({ theme }) => theme.spacing.xsmall};
 `;

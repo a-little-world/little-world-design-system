@@ -54,11 +54,11 @@ const MultiCheckbox: React.FC<MultiCheckboxProps> = ({
             key={label}
             error={error}
             label={label}
-            checked={selected.includes(value)}
             name={name}
+            checked={selected.includes(value)}
             onCheckedChange={state => onSelect({ value, state })}
-            value={value}
             color={theme.color.surface.selected}
+            value={value}
           />
         ))}
       </MultiCheckboxWrapper>

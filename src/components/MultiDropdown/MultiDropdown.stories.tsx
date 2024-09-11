@@ -20,6 +20,7 @@ Default.args = {
     placeholder: 'Select a language...',
     label: 'Language Selector',
     values: [],
+    dataField: 'lang_skill',
   },
   secondDropdown: {
     options: [
@@ -34,5 +35,7 @@ Default.args = {
     placeholder: 'Select a level...',
     label: 'Level Selector',
     values: [],
+    lockedValue: 'B1',
+    dataField: 'lang_level',
   },
 };
