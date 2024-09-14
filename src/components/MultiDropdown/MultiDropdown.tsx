@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash';
 import React, { useEffect, useState } from 'react';
 
 import tokens from '../../tokens';
@@ -16,8 +17,8 @@ import {
 
 const DELETE_SEGMENT = 'delete segment';
 
-interface DropdownInstanceProps extends DropdownProps {
-  lockedValue: string;
+interface DropdownInstanceProps extends Omit<DropdownProps, 'onValueChange'> {
+  lockedValue?: string;
   dataField: string;
   values: string[];
   ariaLabel: string;
@@ -35,6 +36,7 @@ type Props = {
   onValueChange: (value: { [x: string]: string }[]) => void;
   firstDropdown: DropdownInstanceProps;
   secondDropdown: DropdownInstanceProps;
+  restrictions?: { [key: string]: string[] };
 };
 
 const formatValues = (
@@ -56,14 +58,18 @@ const formatValues = (
 const setDropdownValues = (
   firstDropdown: DropdownInstanceProps,
   secondDropdown: DropdownInstanceProps,
-) => [
-  (firstDropdown.lockedValue
-    ? [firstDropdown.lockedValue, ...(firstDropdown.values.splice(1) || [])]
-    : firstDropdown.values) || [],
-  (secondDropdown.lockedValue
-    ? [secondDropdown.lockedValue, ...(secondDropdown.values.splice(1) || [])]
-    : secondDropdown.values) || [],
-];
+) => {
+  const first =
+    (firstDropdown.lockedValue
+      ? [firstDropdown.lockedValue, ...(firstDropdown.values.slice(1) || [])]
+      : firstDropdown.values) || [];
+  const second =
+    (secondDropdown.lockedValue
+      ? [secondDropdown.lockedValue, ...(secondDropdown.values.slice(1) || [])]
+      : secondDropdown.values) || [];
+
+  return [first, second];
+};
 
 const MultiDropdown: React.FC<Props> = ({
   addMoreLabel = 'Add more rows',
@@ -75,14 +81,16 @@ const MultiDropdown: React.FC<Props> = ({
   onValueChange,
   defaultSegments = 1,
   maxSegments = 4,
+  restrictions,
 }) => {
   const [segments, setSegments] = useState(
     Math.max(
-      firstDropdown?.values?.length,
-      secondDropdown?.values?.length,
+      firstDropdown?.values?.length ?? 0,
+      secondDropdown?.values?.length ?? 0,
       defaultSegments,
     ),
   );
+
   const [values, setValues] = useState(
     setDropdownValues(firstDropdown, secondDropdown),
   );
@@ -91,8 +99,8 @@ const MultiDropdown: React.FC<Props> = ({
     setValues(setDropdownValues(firstDropdown, secondDropdown));
     setSegments(
       Math.max(
-        firstDropdown?.values?.length,
-        secondDropdown?.values?.length,
+        firstDropdown?.values?.length ?? 0,
+        secondDropdown?.values?.length ?? 0,
         defaultSegments,
       ),
     );
@@ -181,7 +189,15 @@ const MultiDropdown: React.FC<Props> = ({
                 ariaLabel={secondDropdown.ariaLabel + index}
                 placeholder={secondDropdown.placeholder}
                 onValueChange={val => handleValueChange(val, 1, index)}
-                options={secondDropdown.options}
+                options={
+                  isEmpty(restrictions?.[values[0][index]])
+                    ? secondDropdown.options
+                    : secondDropdown.options.filter(option =>
+                        restrictions?.[values[0][index]]?.includes(
+                          option.value,
+                        ),
+                      )
+                }
                 value={values[1][index]}
                 lockedValue={
                   firstSegmentLockedVal2 ||
