@@ -7,11 +7,11 @@ export default {
   title: 'Components/MultiDropdown',
 };
 
-export const Default = args => <MultiDropdown {...args} />;
-
-Default.args = {
+const DEFAULT_ARGS = {
+  addMoreLabel: 'Add more',
   onValueChange: () => null,
   firstDropdown: {
+    ariaLabel: 'language skill',
     options: [
       { value: 'german', label: 'German' },
       { value: 'french', label: 'French' },
@@ -19,10 +19,12 @@ Default.args = {
     ],
     placeholder: 'Select a language...',
     label: 'Language Selector',
-    values: [],
     dataField: 'lang_skill',
+    errors: [],
+    values: [],
   },
   secondDropdown: {
+    ariaLabel: 'language level',
     options: [
       { value: 'A1', label: 'A1' },
       { value: 'A2', label: 'A2' },
@@ -34,8 +36,70 @@ Default.args = {
     ],
     placeholder: 'Select a level...',
     label: 'Level Selector',
-    values: [],
-    lockedValue: 'B1',
     dataField: 'lang_level',
+    errors: [],
+    values: [],
+  },
+};
+
+export const Default = args => <MultiDropdown {...args} />;
+
+Default.args = DEFAULT_ARGS;
+
+export const WithValues = args => <MultiDropdown {...args} />;
+WithValues.args = {
+  ...DEFAULT_ARGS,
+  firstDropdown: {
+    ...DEFAULT_ARGS.firstDropdown,
+    values: ['german', 'french'],
+  },
+  secondDropdown: {
+    ...DEFAULT_ARGS.secondDropdown,
+    values: ['A1', 'A2'],
+  },
+};
+
+export const LockedValue = () => (
+  <MultiDropdown
+    {...{
+      ...DEFAULT_ARGS,
+      firstDropdown: {
+        ...DEFAULT_ARGS.firstDropdown,
+        values: ['german', 'french'],
+      },
+      secondDropdown: {
+        ...DEFAULT_ARGS.secondDropdown,
+        lockedValue: 'B1',
+        values: ['A1', 'A2'],
+      },
+    }}
+  />
+);
+
+export const AllLocked = args => <MultiDropdown {...args} />;
+AllLocked.args = {
+  ...DEFAULT_ARGS,
+  firstDropdown: {
+    ...DEFAULT_ARGS.firstDropdown,
+    values: ['german', 'french'],
+  },
+  secondDropdown: {
+    ...DEFAULT_ARGS.secondDropdown,
+    values: ['A1', 'A2'],
+  },
+  locked: true,
+};
+
+export const RestrictedOptions = args => <MultiDropdown {...args} />;
+RestrictedOptions.args = {
+  ...DEFAULT_ARGS,
+  restrictions: { german: ['B1', 'B2'], french: ['B1'] },
+  firstDropdown: {
+    ...DEFAULT_ARGS.firstDropdown,
+    values: ['german', 'french'],
+  },
+  secondDropdown: {
+    ...DEFAULT_ARGS.secondDropdown,
+    values: ['A1', 'A2'],
   },
 };
