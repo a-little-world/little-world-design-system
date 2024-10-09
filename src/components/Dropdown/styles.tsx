@@ -30,7 +30,7 @@ export const SelectTrigger = styled(Select.Trigger)<{
   line-height: 1.25;
   height: ${({ $height }) => ($height === InputHeight.Small ? '34px' : '40px')};
   gap: ${tokens.spacing.xsmall};
-  background-color: $ ${({ theme }) => theme.color.surface.tertiary};
+  background-color: ${({ theme }) => theme.color.surface.primary};
   border-radius: 5px;
   border: 2px solid ${({ theme }) => theme.color.border.subtle};
   width: 100%;
