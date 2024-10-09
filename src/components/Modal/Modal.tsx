@@ -62,6 +62,7 @@ const Modal = ({
         setActive(open);
         document.body.style.overflow = 'hidden';
         document.querySelector(ROOT_LABEL)?.setAttribute('inert', 'true');
+        current?.focus();
       }, 10);
     }
 

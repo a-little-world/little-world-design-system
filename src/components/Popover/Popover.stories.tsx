@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Button, { ButtonVariations } from '../Button/Button';
 import { DotsIcon } from '../Icon';
+import Modal from '../Modal/Modal';
 import Popover from './Popover';
 
 const StyledOption = styled(Button)`
@@ -26,26 +27,35 @@ export default {
 };
 
 export const Default = ({ children, ...args }) => {
+  const [open, setOpen] = useState(false);
   return (
-    <Popover
-      showCloseButton={false}
-      trigger={
-        <Button variation={ButtonVariations.Icon}>
-          <DotsIcon label="dotsIcon" labelId="dotsIcon" />
-        </Button>
-      }
-      {...args}
-    >
-      {children || (
-        <>
-          <StyledOption variation={ButtonVariations.Inline}>
-            Report
-          </StyledOption>
-          <StyledOption variation={ButtonVariations.Inline}>
-            Unmatch
-          </StyledOption>
-        </>
-      )}
-    </Popover>
+    <>
+      <Popover
+        showCloseButton={false}
+        trigger={
+          <Button variation={ButtonVariations.Icon}>
+            <DotsIcon label="dotsIcon" labelId="dotsIcon" />
+          </Button>
+        }
+        {...args}
+      >
+        {children || (
+          <>
+            <StyledOption
+              variation={ButtonVariations.Inline}
+              onClick={() => setOpen(true)}
+            >
+              Open Modal
+            </StyledOption>
+            <StyledOption variation={ButtonVariations.Inline}>
+              Unmatch
+            </StyledOption>
+          </>
+        )}
+      </Popover>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        Modal Open
+      </Modal>
+    </>
   );
 };
