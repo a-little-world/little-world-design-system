@@ -1,6 +1,6 @@
 {
   "name": "@a-little-world/little-world-design-system",
-  "version": "1.19.11",
+  "version": "1.19.12",
   "description": "Design system for Little World applications",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

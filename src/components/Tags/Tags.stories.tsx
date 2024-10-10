@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tags from './Tags';
+import Tags, { Tag } from './Tags';
 
 export default {
   component: Tags,
@@ -9,6 +9,10 @@ export default {
 
 export const Default = args => {
   return <Tags {...args} />;
+};
+
+export const SingleTag = args => {
+  return <Tag {...args}>Volunteer</Tag>;
 };
 
 Default.args = {
