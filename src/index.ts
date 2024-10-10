@@ -46,7 +46,12 @@ export {
   MessageTypes,
 } from './components/StatusMessage/StatusMessage';
 export { default as Switch } from './components/Switch/Switch';
-export { default as Tags } from './components/Tags/Tags';
+export {
+  default as Tags,
+  Tag,
+  TagSizes,
+  TagAppearance,
+} from './components/Tags/Tags';
 export { default as Text } from './components/Text/Text';
 export { default as TextTypes } from './components/Text/TextTypes';
 export {
