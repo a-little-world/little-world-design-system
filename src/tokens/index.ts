@@ -110,6 +110,7 @@ export default {
           contrast: '#FFFFFF',
           reversed: '#000000',
           error: '#E04D4D',
+          success: '#6BD36B',
           disabled: '#404040',
         },
         surface: {
