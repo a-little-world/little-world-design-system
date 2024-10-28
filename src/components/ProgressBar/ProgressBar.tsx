@@ -35,6 +35,7 @@ const ProgressBarWrapper = styled.div`
 `;
 
 type ProgressBarProps = {
+  className: string;
   max: number;
   value: number;
 };
@@ -43,7 +44,11 @@ const calculateProgress = (max: number, value: number) => {
   return (value / max) * 100;
 };
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ max, value = 0 }) => {
+const ProgressBar: React.FC<ProgressBarProps> = ({
+  className,
+  max,
+  value = 0,
+}) => {
   const [progress, setProgress] = useState(calculateProgress(max, value));
 
   useEffect(() => {
@@ -51,7 +56,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ max, value = 0 }) => {
   }, [max, value]);
 
   return (
-    <ProgressBarWrapper>
+    <ProgressBarWrapper className={className}>
       <Text id="progressBarIndicator" tag="span" type={TextTypes.Body6}>
         {value}/{max}
       </Text>
