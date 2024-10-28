@@ -18,10 +18,15 @@ const loading = keyframes`
     }
 `;
 
-const Loading = styled.div<{ $color?: string; $size?: LoadingSizes }>`
-  display: inline-flex;
+const Loading = styled.div<{
+  $align?: string;
+  $inline?: boolean;
+  $color?: string;
+  $size?: LoadingSizes;
+}>`
+  display: ${({ $inline }) => ($inline ? 'inline-flex' : 'flex')};
   align-items: center;
-  justify-content: center;
+  justify-content: ${({ $align }) => $align || 'center'};
   position: relative;
   width: 100%;
   height: 100%;
@@ -69,13 +74,22 @@ const Loading = styled.div<{ $color?: string; $size?: LoadingSizes }>`
 `;
 
 export const LoadingRing = ({
+  align,
   color,
   size,
+  inline,
 }: {
+  align?: string;
   color?: string;
+  inline?: boolean;
   size?: LoadingSizes;
 }) => (
-  <Loading $color={color} $size={size} data-testid={LOADING_RING_ID}>
+  <Loading
+    $align={align}
+    $color={color}
+    $size={size}
+    data-testid={LOADING_RING_ID}
+  >
     <div></div>
     <div></div>
     <div></div>

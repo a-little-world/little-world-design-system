@@ -48,6 +48,7 @@ export default {
           contrast: coreColors.black,
           reversed: coreColors.white,
           error: coreColors.red20,
+          success: coreColors.green40,
           disabled: coreColors.gray20,
         },
         surface: {
