@@ -7,7 +7,13 @@ export default {
   title: 'Components/Loading',
 };
 
-export const Default = args => <Loading {...args} />;
+export const Default = args => (
+  <div>
+    <div>Love</div>
+    <Loading {...args} />
+    <div>Love</div>
+  </div>
+);
 
 Default.args = {
   href: 'www.little-world.com',
