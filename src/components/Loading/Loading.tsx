@@ -32,7 +32,7 @@ const Loading = styled.div<{
 }>`
   display: ${({ $inline }) => ($inline ? 'inline-flex' : 'flex')};
   align-items: center;
-  justify-content: center;
+  justify-content: ${({ $align }) => $align || 'center'};
   position: relative;
   width: ${({ $inline, $size }) =>
     $inline ? HEIGHTS[$size || LoadingSizes.Small] : '100%'};
