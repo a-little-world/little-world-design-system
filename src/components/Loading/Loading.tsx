@@ -3,6 +3,12 @@ import styled, { css, keyframes } from 'styled-components';
 
 export const LOADING_RING_ID = 'loadingRing';
 
+const HEIGHTS = {
+  Small: '18px',
+  Medium: '32px',
+  Large: '56px',
+};
+
 export enum LoadingSizes {
   Small = 'Small',
   Medium = 'Medium',
@@ -20,23 +26,25 @@ const loading = keyframes`
 
 const Loading = styled.div<{
   $align?: string;
-  $inline?: boolean;
   $color?: string;
+  $inline?: boolean;
   $size?: LoadingSizes;
 }>`
   display: ${({ $inline }) => ($inline ? 'inline-flex' : 'flex')};
   align-items: center;
   justify-content: ${({ $align }) => $align || 'center'};
   position: relative;
-  width: 100%;
+  width: ${({ $inline, $size }) =>
+    $inline ? HEIGHTS[$size || LoadingSizes.Small] : '100%'};
   height: 100%;
+  min-height: ${({ $size }) => HEIGHTS[$size || LoadingSizes.Small]};
 
   > div {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 18px;
-    height: 18px;
+    width: ${({ $size }) => HEIGHTS[$size || LoadingSizes.Small]};
+    height: ${({ $size }) => HEIGHTS[$size || LoadingSizes.Small]};
     border: 2px solid ${({ $color }) => $color || 'currentColor'};
     border-radius: 50%;
     animation: ${loading} 1.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
@@ -46,15 +54,11 @@ const Loading = styled.div<{
     ${({ $size }) => {
       if ($size === LoadingSizes.Medium)
         return css`
-          width: 32px;
-          height: 32px;
           border-width: 2px;
         `;
 
       if ($size === LoadingSizes.Large)
         return css`
-          width: 56px;
-          height: 56px;
           border-width: 4px;
         `;
     }}
@@ -75,18 +79,22 @@ const Loading = styled.div<{
 
 export const LoadingRing = ({
   align,
+  className,
   color,
-  size,
   inline,
+  size,
 }: {
   align?: string;
+  className?: string;
   color?: string;
   inline?: boolean;
   size?: LoadingSizes;
 }) => (
   <Loading
+    className={className}
     $align={align}
     $color={color}
+    $inline={inline}
     $size={size}
     data-testid={LOADING_RING_ID}
   >
