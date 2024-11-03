@@ -1,14 +1,31 @@
 import * as Switch from '@radix-ui/react-switch';
 import styled, { css } from 'styled-components';
 
-export const SwitchWrapper = styled.div<{ $labelInline?: boolean }>`
-  ${({ theme, $labelInline }) =>
+export const SwitchWrapper = styled.div<{
+  $fullWidth?: boolean;
+  $labelInline?: boolean;
+  $labelAndDescription: boolean;
+}>`
+  ${({ theme, $fullWidth, $labelInline, $labelAndDescription }) =>
     $labelInline &&
     css`
       display: flex;
       gap: ${theme.spacing.small};
-      align-items: center;
+      align-items: ${$labelAndDescription ? 'flex-start' : 'center'};
+      ${$fullWidth &&
+      css`
+        width: 100%;
+        justify-content: space-between;
+      `}
     `}
+`;
+
+export const LabelContainer = styled.div<{ $inline?: boolean }>`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
+  margin-bottom: ${({ theme, $inline }) =>
+    $inline ? '20px' : theme.spacing.xxsmall};
 `;
 
 export const SwitchRoot = styled(Switch.Root)<{ $hasError?: boolean }>`
