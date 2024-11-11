@@ -89,7 +89,12 @@ const Modal = ({
     >
       {!locked && (
         <CloseButton variation={ButtonVariations.Icon} onClick={onClose}>
-          <CloseIcon label={CLOSE_BUTTON_LABEL} labelId={CLOSE_BUTTON_LABEL} />
+          <CloseIcon
+            label={CLOSE_BUTTON_LABEL}
+            labelId={CLOSE_BUTTON_LABEL}
+            height="24"
+            width="24"
+          />
         </CloseButton>
       )}
       {children}
