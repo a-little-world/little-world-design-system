@@ -23,6 +23,7 @@ const StyledCard = styled.div<{
   box-shadow: 0px 1px 25px 1px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 100%;
+  max-height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -48,6 +49,23 @@ const StyledCard = styled.div<{
 
 const StyledCardHeader = styled(Text)`
   margin-bottom: ${({ theme }) => theme.spacing.small};
+`;
+
+export const CardContent = styled.div<{
+  $align?: string;
+  $textAlign?: string;
+  $gap?: string;
+  $marginBottom?: string;
+  children: React.ReactNode;
+}>`
+  display: flex;
+  flex-direction: column;
+  align-items: ${({ $align }) => $align || 'center'};
+  gap: ${({ $gap, theme }) => $gap || theme.spacing.small};
+  text-align: ${({ $textAlign }) => $textAlign || 'left'};
+  margin-bottom: ${({ $marginBottom, theme }) =>
+    $marginBottom || theme.spacing.small};
+  overflow: scroll;
 `;
 
 const Footer = styled.div<{ $align?: string }>`
@@ -86,6 +104,7 @@ export const CardHeader: React.FC<{
     {children}
   </StyledCardHeader>
 );
+
 export const CardFooter: React.FC<{
   align?: string;
   children: React.ReactNode;

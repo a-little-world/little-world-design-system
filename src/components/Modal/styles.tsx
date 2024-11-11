@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
 import Button from '../Button/Button';
 
 export const BackdropContainer = styled.dialog<{ $active: boolean }>`
@@ -12,7 +11,7 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
   width: unset;
   height: unset;
   margin: 0;
-  padding: ${tokens.spacing.small};
+  padding: ${({ theme }) => theme.spacing.small};
   border: none;
   background-color: rgba(51, 51, 51, 0.3);
   backdrop-filter: blur(8px);
@@ -47,19 +46,22 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
       }
     `}
 
-  @media (min-width: ${tokens.breakpoints.medium}) {
-    padding: ${tokens.spacing.large};
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    padding: ${({ theme }) => theme.spacing.large};
   }
 `;
 
 export const CloseButton = styled(Button)`
   position: absolute;
-  top: ${tokens.spacing.small};
-  right: ${tokens.spacing.small};
+  top: ${({ theme }) => theme.spacing.xsmall};
+  right: ${({ theme }) => theme.spacing.xsmall};
   z-index: 2;
+  padding: 7px;
+  background: ${({ theme }) => theme.color.surface.secondary};
+  border-radius: ${({ theme }) => theme.radius.full};
 
-  @media (min-width: ${tokens.breakpoints.medium}) {
-    top: ${tokens.spacing.medium};
-    right: ${tokens.spacing.medium};
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    top: ${({ theme }) => theme.spacing.medium};
+    right: ${({ theme }) => theme.spacing.medium};
   }
 `;
