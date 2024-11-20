@@ -11,6 +11,7 @@ export const RadioGroupRoot = styled(RadioGroup.Root)`
   display: flex;
   flex-direction: column;
   gap: ${tokens.spacing.xxsmall};
+  align-items: flex-start;
 `;
 
 export const RadioGroupItem = styled(RadioGroup.Item)`
@@ -26,6 +27,11 @@ export const RadioGroupItem = styled(RadioGroup.Item)`
   &:focus {
     box-shadow: 0 0 0 2px #eeb612;
   }
+`;
+
+export const ItemContainer = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const RadioGroupIndicator = styled(RadioGroup.Indicator)`

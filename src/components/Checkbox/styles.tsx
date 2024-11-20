@@ -27,7 +27,7 @@ export const CheckboxButtonContainer = styled(Checkbox.Root)<{
       ? $hasError
         ? theme.color.surface.error
         : theme.color.surface.accent
-      : theme.color.surface.subtle};
+      : theme.color.surface.secondary};
 
   label {
     cursor: pointer;
