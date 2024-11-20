@@ -8,6 +8,7 @@ export {
 export { OPTION_BUTTON_CSS } from './components/Button/styles';
 export {
   default as Card,
+  CardContent,
   CardSizes,
   CardFooter,
   CardHeader,

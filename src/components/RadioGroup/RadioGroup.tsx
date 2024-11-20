@@ -5,6 +5,7 @@ import tokens from '../../tokens';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import {
+  ItemContainer,
   RadioGroupIndicator,
   RadioGroupItem,
   RadioGroupRoot,
@@ -35,7 +36,7 @@ const RadioGroup: React.FC<Props> = ({
     )}
     <RadioGroupRoot ref={inputRef} value={undefined} name={label} {...rest}>
       {items?.map(item => (
-        <div key={item.id}>
+        <ItemContainer key={item.id}>
           <RadioGroupItem value={item.value} id={item.id}>
             <RadioGroupIndicator />
           </RadioGroupItem>
@@ -44,7 +45,7 @@ const RadioGroup: React.FC<Props> = ({
               {item.label}
             </Label>
           )}
-        </div>
+        </ItemContainer>
       ))}
       <InputError visible={Boolean(error)}>{error}</InputError>
     </RadioGroupRoot>
