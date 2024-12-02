@@ -5,7 +5,10 @@ import Button from '../components/Button/Button';
 import Link from '../components/Link/Link';
 
 const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
-  color: ${({ theme, color }) => theme.color.text[color]};
+  color: ${({ theme, color }) =>
+    color === SupportedColorTags.bold
+      ? 'currentColor'
+      : theme.color.text[color]};
 `;
 
 const ANCHOR_TAG = 'a';
