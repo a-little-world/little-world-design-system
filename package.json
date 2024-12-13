@@ -10,7 +10,7 @@
     "test-watch": "jest --watch",
     "storybook": "storybook dev -p 6006",
     "prepare": "npm run build",
-    "build": "rm -rf dist && npm run build:esm && npm run build:cjs",
+    "build": "rimraf dist && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc --outDir dist/esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs"
   },
@@ -57,6 +57,7 @@
     "prettier": "^2.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rimraf": "^6.0.1",
     "storybook": "^8.1.5",
     "storybook-addon-remix-react-router": "^3.0.0",
     "ts-loader": "^9.4.2",
