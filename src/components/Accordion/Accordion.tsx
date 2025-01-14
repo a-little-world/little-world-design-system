@@ -35,7 +35,7 @@ const Accordion: React.FC<AccordionProps> = ({
     <AccordionRoot className={className} type="single" collapsible>
       {items.map(({ content, header }) => (
         <AccordionItem value={header} key={header}>
-          <AccordionHeader>
+          <AccordionHeader id={header}>
             <AccordionTrigger>
               <Text type={headerType || TextTypes.Body4} color={headerColor}>
                 {header}
