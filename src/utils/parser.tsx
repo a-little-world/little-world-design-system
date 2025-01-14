@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Button from '../components/Button/Button';
 import Link from '../components/Link/Link';
+import CallWidget from '../components/Widget/CallWidget';
 
 const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
   color: ${({ theme, color }) =>
@@ -13,6 +14,8 @@ const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
 
 const ANCHOR_TAG = 'a';
 const BUTTON_TAG = 'button';
+const CALL_WIDGET_TAG = 'CallWidget';
+
 const regex = RegExp(/<(\w+)((?:\s+[^>]*)*)>(.*?)<\/\1>/, 'gim');
 
 const parseAttributes = (string: string) => {
@@ -64,6 +67,13 @@ const textParser = (text: string) => {
           {match[3]}
         </Button>,
       );
+
+      continue;
+    }
+
+    if (tag === CALL_WIDGET_TAG) {
+      const attrs = parseAttributes(match[2]?.trim());
+      components.push(<CallWidget key={tag + match[3]} {...attrs} />);
 
       continue;
     }

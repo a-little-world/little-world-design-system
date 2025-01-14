@@ -1,11 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { PhoneIcon } from '../Icon';
-import Button, { ButtonVariations } from '../Button/Button';
-import Text from '../Text/Text';
-import TextTypes from '../Text/TextTypes';
+
 import tokens from '../../tokens';
 import { ValueOf } from '../../utils/types';
+import TextTypes from '../Text/TextTypes';
 
 export enum WidgetSizes {
   Small = '360px',
@@ -18,7 +16,8 @@ const StyledWidget = styled.div<{
   $height?: string;
   $width?: string;
 }>`
-  border-radius: ${({ theme }) => theme.radius.medium}; /* Border-radius for consistency */
+  border-radius: ${({ theme }) =>
+    theme.radius.medium}; /* Border-radius for consistency */
   background: ${({ theme }) => theme.color.gradient.orange10};
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
   box-shadow: 0px 1px 15px 1px rgba(0, 0, 0, 0.05);
@@ -40,12 +39,14 @@ const StyledWidget = styled.div<{
   }
 `;
 
-const StyledWidgetHeader = styled(Text)`
+const StyledWidgetHeader = styled.h3<{ $color?: string }>`
+  color: ${({ $color, theme }) => $color || theme.color.text.primary};
+  font-size: ${TextTypes.Heading4};
   margin-bottom: ${({ theme }) => theme.spacing.xsmall};
   text-align: center;
 `;
 
-const WidgetContent = styled.div<{
+export const WidgetContent = styled.div<{
   $align?: string;
   $textAlign?: string;
   $gap?: string;
@@ -57,7 +58,8 @@ const WidgetContent = styled.div<{
   align-items: ${({ $align }) => $align || 'center'};
   gap: ${({ $gap, theme }) => $gap || theme.spacing.xxxsmall};
   text-align: ${({ $textAlign }) => $textAlign || 'left'};
-  margin-bottom: ${({ $marginBottom, theme }) => $marginBottom || theme.spacing.xxxsmall};
+  margin-bottom: ${({ $marginBottom, theme }) =>
+    $marginBottom || theme.spacing.xxxsmall};
   overflow: hidden;
 `;
 
@@ -67,18 +69,16 @@ type WidgetProps = {
   className?: string;
   height?: string;
   width?: ValueOf<typeof WidgetSizes>;
-  callDuration?: string;
+  header?: string | React.ReactNode;
+  footer?: string | React.ReactNode;
 };
 
 export const WidgetHeader: React.FC<{
   align?: string;
   children: React.ReactNode;
   textColor?: string;
-  textType?: keyof typeof TextTypes;
-}> = ({ children, textColor, textType }) => (
-  <StyledWidgetHeader type={textType || TextTypes.Heading4} center color={textColor}>
-    {children}
-  </StyledWidgetHeader>
+}> = ({ children, textColor }) => (
+  <StyledWidgetHeader $color={textColor}>{children}</StyledWidgetHeader>
 );
 
 export const WidgetFooter: React.FC<{
@@ -104,18 +104,20 @@ const Widget: React.FC<WidgetProps> = ({
   borderColor,
   children,
   className,
+  footer,
+  header,
   height,
   width,
-  callDuration,
 }) => (
-  <StyledWidget className={className} $borderColor={borderColor} $height={height} $width={width}>
-    {children}
-    {/* Display call duration if provided */}
-    {callDuration && (
-      <WidgetContent>
-        <Text>Duration: {callDuration}</Text>
-      </WidgetContent>
-    )}
+  <StyledWidget
+    className={className}
+    $borderColor={borderColor}
+    $height={height}
+    $width={width}
+  >
+    {header && <WidgetHeader>{header}</WidgetHeader>}
+    <WidgetContent>{children}</WidgetContent>
+    {footer && <WidgetFooter>{footer}</WidgetFooter>}
   </StyledWidget>
 );
 
