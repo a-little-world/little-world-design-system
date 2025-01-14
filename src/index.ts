@@ -73,3 +73,7 @@ export { default as ToolTip } from './components/ToolTip/ToolTip';
 export { default as designTokens } from './tokens';
 export { CustomThemeProvider, ThemeVariants, themeContext } from './theme';
 export { default as GlobalStyles } from './globalStyles';
+export {
+  default as CallWidget,
+  WidgetSizes,
+} from './components/CallWidget/CallWidget';
