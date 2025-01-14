@@ -18,14 +18,14 @@ const StyledWidget = styled.div<{
   $height?: string;
   $width?: string;
 }>`
-  border-radius: ${tokens.radius.medium}; /* Border-radius for consistency */
-  background-color: ${({ theme }) => theme.color.gradient.orange10 || '#FFA500'}; /* Set to orange */
+  border-radius: ${({ theme }) => theme.radius.medium}; /* Border-radius for consistency */
+  background: ${({ theme }) => theme.color.gradient.orange10};
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
   box-shadow: 0px 1px 15px 1px rgba(0, 0, 0, 0.05);
   width: ${({ $width }) => $width || '300px'}; /* Default smaller width */
   max-width: 100%;
   height: ${({ $height }) => $height || 'auto'}; /* Default smaller height */
-  padding: ${tokens.spacing.xsmall}; /* Consistent padding */
+  padding: ${({ theme }) => theme.spacing.xsmall}; /* Consistent padding */
 
   display: flex;
   flex-direction: column;
@@ -55,9 +55,9 @@ const WidgetContent = styled.div<{
   display: flex;
   flex-direction: column;
   align-items: ${({ $align }) => $align || 'center'};
-  gap: ${({ $gap }) => $gap || '4px'};
+  gap: ${({ $gap, theme }) => $gap || theme.spacing.xxxsmall};
   text-align: ${({ $textAlign }) => $textAlign || 'left'};
-  margin-bottom: ${({ $marginBottom }) => $marginBottom || '4px'};
+  margin-bottom: ${({ $marginBottom, theme }) => $marginBottom || theme.spacing.xxxsmall};
   overflow: hidden;
 `;
 
@@ -91,7 +91,7 @@ const Footer = styled.div<{ $align?: string }>`
   order: 1;
   margin-top: auto;
   width: 100%;
-  gap: 8px;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
 
   ${({ $align }) =>
     $align &&
@@ -113,7 +113,7 @@ const Widget: React.FC<WidgetProps> = ({
     {/* Display call duration if provided */}
     {callDuration && (
       <WidgetContent>
-        <p>Duration: {callDuration}</p>
+        <Text>Duration: {callDuration}</Text>
       </WidgetContent>
     )}
   </StyledWidget>

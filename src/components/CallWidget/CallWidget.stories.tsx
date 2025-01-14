@@ -5,7 +5,6 @@ import Widget, { WidgetHeader } from './CallWidget';
 import WidgetContent from './CallWidget';
 import { PhoneIcon, PhoneSlashIcon } from '../Icon';
 import styled from 'styled-components';
-import tokens from '../../tokens';
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
 
@@ -55,7 +54,7 @@ const ContentContainer = styled.div`
   align-items: center;
   justify-content: space-between; /* Abstand zwischen Icon und Text/Button */
   width: 100%; /* Sorgt dafür, dass die Elemente die komplette Breite nutzen */
-  gap: ${tokens.spacing.small};
+  gap: ${({ theme }) => theme.spacing.small};
 `;
 
 const StyledPhoneIcon = styled.div`
