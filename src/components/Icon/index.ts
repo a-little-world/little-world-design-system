@@ -59,3 +59,5 @@ export * from './variants/Twitter';
 export * from './variants/Video';
 export * from './variants/Whatsapp';
 export * from './variants/AttachementIcon';
+export * from './variants/PhoneSlash';
+
