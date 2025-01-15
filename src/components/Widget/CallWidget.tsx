@@ -24,7 +24,7 @@ const ContentContainer = styled.div`
   gap: ${({ theme }) => theme.spacing.small};
 `;
 
-const StyledButton = styled.div`
+const StyledButton = styled.a`
   display: inline-block;
   background: ${({ theme }) => theme.color.gradient.orange10};
   color: ${({ theme }) => theme.color.text.primary};
@@ -39,7 +39,7 @@ const StyledButton = styled.div`
 interface CallWidgetProps {
   duration?: string;
   isMissed?: boolean;
-  returnCallLink?: string; // Neuer Prop für den Link
+  returnCallLink?: string;
   header?: string;
   returnCallText?: string;
 }
@@ -48,7 +48,7 @@ const CallWidget = ({
   duration,
   header,
   isMissed,
-  returnCallLink, // Neuer Prop
+  returnCallLink,
   returnCallText,
 }: CallWidgetProps) => {
   return (
@@ -63,9 +63,7 @@ const CallWidget = ({
         </StyledPhoneIcon>
         {isMissed ? (
           <a href={returnCallLink} style={{ textDecoration: 'none' }}>
-            <StyledButton>
-              {returnCallText}
-            </StyledButton>
+            {returnCallText}
           </a>
         ) : (
           <DurationText>{duration || 'N/A'}</DurationText>
