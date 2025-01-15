@@ -23,6 +23,7 @@ interface StarRatingProps {
   displayNumber?: boolean;
   id?: string;
   initialRating?: number;
+  ratings?: string[];
   maxRating?: number;
   name?: string;
   onChange?: (rating: number) => void;
@@ -31,10 +32,11 @@ interface StarRatingProps {
 const StarRating = ({
   displayNumber = false,
   id = 'star-rating',
+  initialRating = 0,
   name = 'rating',
   maxRating = 5,
-  initialRating = 0,
   onChange,
+  ratings = DEFAULT_RATINGS,
 }: StarRatingProps) => {
   const [rating, setRating] = useState(initialRating);
   const [hoverRating, setHoverRating] = useState(0);
@@ -173,7 +175,7 @@ const StarRating = ({
           </Rating>
         )}
       </Stars>
-      <TextRating>{DEFAULT_RATINGS[Math.ceil(currentRating - 1)]}</TextRating>
+      <TextRating>{ratings[Math.ceil(currentRating - 1)]}</TextRating>
     </RatingContainer>
   );
 };
