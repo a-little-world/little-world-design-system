@@ -24,7 +24,7 @@ const ContentContainer = styled.div`
   gap: ${({ theme }) => theme.spacing.small};
 `;
 
-const StyledButton = styled.a`
+const ReturnCallAnchor = styled.a`
   display: inline-block;
   background: ${({ theme }) => theme.color.gradient.orange10};
   color: ${({ theme }) => theme.color.text.primary};
@@ -62,9 +62,9 @@ const CallWidget = ({
           )}
         </StyledPhoneIcon>
         {isMissed ? (
-          <a href={returnCallLink} style={{ textDecoration: 'none' }}>
+          <ReturnCallAnchor>
             {returnCallText}
-          </a>
+          </ReturnCallAnchor>
         ) : (
           <DurationText>{duration || 'N/A'}</DurationText>
         )}
