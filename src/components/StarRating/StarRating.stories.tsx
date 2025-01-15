@@ -17,7 +17,4 @@ export const Default = args => {
 Default.args = {
   maxRating: 5,
   initialRating: 0,
-  // onChange?: (rating: number) => void;
-  // name?: string;
-  // id?: string;
 };

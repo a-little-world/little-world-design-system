@@ -1,9 +1,19 @@
 import styled from 'styled-components';
 
+import Text from '../Text/Text';
+
 export const RatingContainer = styled.div`
   display: flex;
-  gap: ${({ theme }) => theme.spacing.xxxsmall};
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
   align-items: center;
+`;
+
+export const Stars = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
 `;
 
 export const StarContainer = styled.button<{ isFocused?: boolean }>`
@@ -11,28 +21,29 @@ export const StarContainer = styled.button<{ isFocused?: boolean }>`
   cursor: pointer;
   background: none;
   border: none;
-  padding: ${({ theme }) => theme.spacing.xxxxsmall};
   outline: none;
   border-radius: ${({ theme }) => theme.radius.xxxsmall};
-
-  &:focus-visible {
+  f &:focus-visible {
     box-shadow: 0 0 0 2px #4f46e5;
   }
 `;
 
 export const StarOverlay = styled.div<{ fillAmount: number }>`
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: 0;
+  left: 0;
   overflow: hidden;
   width: ${props => props.fillAmount * 100}%;
   pointer-events: none;
 `;
 
-export const Rating = styled.span`
+export const Rating = styled(Text)`
   margin-left: ${({ theme }) => theme.spacing.xxsmall};
-  font-size: 14px;
-  color: #666;
+  width: 24px;
+`;
+
+export const TextRating = styled(Text)`
+  height: 16px;
 `;
 
 export const VisuallyHidden = styled.span`
