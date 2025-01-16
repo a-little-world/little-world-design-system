@@ -1,78 +1,81 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
-import Button, { ButtonVariations } from '../Button/Button';
-import { PhoneIcon, PhoneSlashIcon } from '../Icon';
+import { CallIncomingIcon, CallOutgoingIcon } from '../Icon';
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
-import Widget from './Widget';
+import Widget, { WidgetProps, WidgetSizes } from './Widget';
 
-const StyledPhoneIcon = styled.div`
-  color: ${({ theme }) => theme.color.text.primary};
+const CallDescription = styled(Text)`
+  color: ${({ theme }) => theme.color.text.secondary};
 `;
 
-const DurationText = styled.p`
-  font-size: ${TextTypes.Body3};
-  color: ${({ theme }) => theme.color.text.primary};
-`;
-
-const ContentContainer = styled.div`
+const CallLink = styled.a`
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Abstand zwischen Icon und Text/Button */
-  width: 100%; /* Sorgt dafür, dass die Elemente die komplette Breite nutzen */
+  width: 100%;
   gap: ${({ theme }) => theme.spacing.small};
-`;
-
-const ReturnCallAnchor = styled.a`
-  display: inline-block;
-  background: ${({ theme }) => theme.color.gradient.orange10};
-  color: ${({ theme }) => theme.color.text.primary};
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: 
-  text-align: center;
+  border-radius: ${({ theme }) => theme.radius.small};
   cursor: pointer;
 `;
 
-
-interface CallWidgetProps {
-  duration?: string;
+interface CallWidgetProps extends WidgetProps {
+  description: string;
   isMissed?: boolean;
+  isOutgoing?: boolean;
   returnCallLink?: string;
   header?: string;
-  returnCallText?: string;
 }
 
 const CallWidget = ({
-  duration,
+  description,
   header,
   isMissed,
+  isOutgoing,
   returnCallLink,
-  returnCallText,
+  ...widgetProps
 }: CallWidgetProps) => {
+  const theme = useTheme();
   return (
-    <Widget header={header}>
-      <ContentContainer>
-        <StyledPhoneIcon>
-          {isMissed ? (
-            <PhoneSlashIcon label={''} labelId={''} width={30} height={30} />
-          ) : (
-            <PhoneIcon label={''} labelId={''} width={30} height={30} />
-          )}
-        </StyledPhoneIcon>
-        {isMissed ? (
-          <ReturnCallAnchor>
-            {returnCallText}
-          </ReturnCallAnchor>
+    <Widget width={WidgetSizes.Medium} {...widgetProps}>
+      <CallLink href={returnCallLink}>
+        {isOutgoing ? (
+          <CallOutgoingIcon
+            label={''}
+            labelId={''}
+            width={24}
+            height={24}
+            borderColor={theme.color.surface.secondary}
+            color={
+              isMissed ? theme.color.status.error : theme.color.text.primary
+            }
+            circular
+          />
         ) : (
-          <DurationText>{duration || 'N/A'}</DurationText>
+          <CallIncomingIcon
+            label={''}
+            labelId={''}
+            width={24}
+            height={24}
+            borderColor={theme.color.surface.secondary}
+            color={
+              isMissed ? theme.color.status.error : theme.color.text.primary
+            }
+            circular
+          />
         )}
-      </ContentContainer>
+
+        <div>
+          <Text type={TextTypes.Heading6} bold>
+            {header}
+          </Text>
+          <CallDescription disableParser>
+            {description || 'N/A'}
+          </CallDescription>
+        </div>
+      </CallLink>
     </Widget>
   );
 };
-
-
 
 export default CallWidget;
