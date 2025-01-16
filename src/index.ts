@@ -76,3 +76,4 @@ export { CustomThemeProvider, ThemeVariants, themeContext } from './theme';
 export { default as GlobalStyles } from './globalStyles';
 export { default as Widget, WidgetSizes } from './components/Widget/Widget';
 export { default as CallWidget } from './components/Widget/CallWidget';
+export { default as AttachementWidget} from './components/Widget/AttachementWidget';
