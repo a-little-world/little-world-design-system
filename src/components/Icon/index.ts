@@ -5,6 +5,8 @@ export * from './variants/ArrowLeft';
 export * from './variants/Bell';
 export * from './variants/Calendar';
 export * from './variants/CalendarAdd';
+export * from './variants/CallIncoming';
+export * from './variants/CallOutgoing';
 export * from './variants/Check';
 export * from './variants/ChevronDown';
 export * from './variants/ChevronLeft';
@@ -60,4 +62,3 @@ export * from './variants/Video';
 export * from './variants/Whatsapp';
 export * from './variants/AttachementIcon';
 export * from './variants/PhoneSlash';
-
