@@ -75,4 +75,6 @@ export { default as designTokens } from './tokens';
 export { CustomThemeProvider, ThemeVariants, themeContext } from './theme';
 export { default as GlobalStyles } from './globalStyles';
 export { default as Widget, WidgetSizes } from './components/Widget/Widget';
+export { default as AttachmentWidget } from './components/Widget/AttachmentWidget';
 export { default as CallWidget } from './components/Widget/CallWidget';
+export { default as textParser } from './utils/parser';
