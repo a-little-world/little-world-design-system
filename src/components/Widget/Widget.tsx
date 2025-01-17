@@ -18,15 +18,14 @@ const StyledWidget = styled.div<{
 }>`
   display: flex;
   flex-direction: column;
-  border-radius: ${({ theme }) =>
-    theme.radius.medium}; /* Border-radius for consistency */
+  border-radius: ${({ theme }) => theme.radius.medium};
   background: rgba(0, 0, 0, 0.1);
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
   box-shadow: 0px 1px 15px 1px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: ${({ $width }) => $width || '100%'};
-  height: ${({ $height }) => $height || 'auto'}; /* Default smaller height */
-  padding: ${({ theme }) => theme.spacing.xsmall}; /* Consistent padding */
+  height: ${({ $height }) => $height || 'auto'};
+  padding: ${({ theme }) => theme.spacing.xxsmall};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.small}) {
     padding: ${tokens.spacing.xsmall};

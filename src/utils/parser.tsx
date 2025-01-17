@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Button from '../components/Button/Button';
@@ -32,9 +32,16 @@ enum SupportedColorTags {
   bold = 'bold',
 }
 
-const textParser = (text: string) => {
+const textParser = (
+  text: string,
+  customElements?: {
+    Component: React.ElementType;
+    props?: { [key: string]: any };
+    tag: string;
+  }[],
+) => {
   const components = [];
-  let match;
+  let match: RegExpExecArray | null;
   let currentIndex = 0;
 
   // utilises the exec function - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#return_value
@@ -46,8 +53,8 @@ const textParser = (text: string) => {
     currentIndex = match.index + match[0].length;
 
     const tag = match[1];
+    const attrs = parseAttributes(match[2]?.trim());
     if (tag === ANCHOR_TAG) {
-      const attrs = parseAttributes(match[2]?.trim());
       components.push(
         attrs.href ? (
           <Link key={tag + match[3]} to={attrs.href} {...attrs}>
@@ -61,20 +68,11 @@ const textParser = (text: string) => {
     }
 
     if (tag === BUTTON_TAG) {
-      const attrs = parseAttributes(match[2]?.trim());
       components.push(
         <Button key={tag + match[3]} {...attrs}>
           {match[3]}
         </Button>,
       );
-
-      continue;
-    }
-
-    if (tag === CALL_WIDGET_TAG) {
-      const attrs = parseAttributes(match[2]?.trim());
-      components.push(<CallWidget key={tag + match[3]} {...attrs} />);
-
       continue;
     }
 
@@ -89,6 +87,24 @@ const textParser = (text: string) => {
       );
       continue;
     }
+
+    // allows for the text parser to be extended and include custom components
+    const customElementFound = customElements?.some(element => {
+      if (tag === element.tag) {
+        components.push(
+          <element.Component
+            key={tag + match?.[3]}
+            {...attrs}
+            {...element?.props}
+          >
+            {match?.[3] ?? null}
+          </element.Component>,
+        );
+        return true;
+      }
+      return false;
+    });
+    if (customElementFound) continue;
 
     // unrecognised tags are returned unprocessed
     components.push(text.substring(match.index, currentIndex));

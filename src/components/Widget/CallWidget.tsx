@@ -17,9 +17,11 @@ const CallLink = styled.a`
   gap: ${({ theme }) => theme.spacing.small};
   border-radius: ${({ theme }) => theme.radius.small};
   cursor: pointer;
+  text-decoration: none;
+  color: ${({ theme }) => theme.color.text.primary};
 `;
 
-interface CallWidgetProps extends WidgetProps {
+interface CallWidgetProps extends Omit<WidgetProps, 'children'> {
   description: string;
   isMissed?: boolean;
   isOutgoing?: boolean;

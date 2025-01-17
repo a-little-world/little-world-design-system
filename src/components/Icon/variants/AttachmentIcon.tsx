@@ -4,9 +4,9 @@ import { Icon, IconSvgProps } from '../Icon';
 import IconGradient from '../IconGradient';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 
-const LABEL_ID = 'AttachementIcon';
+const LABEL_ID = 'AttachmentIcon';
 
-export const AttachementIcon = (props: IconSvgProps) => {
+export const AttachmentIcon = (props: IconSvgProps) => {
   const {
     backgroundColor,
     borderColor,

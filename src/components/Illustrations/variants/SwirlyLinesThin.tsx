@@ -19,7 +19,7 @@ export const SwirlyLinesThinImage = ({ height, width }: SvgProps) => {
           width="593"
           height="48"
           fill="url(#pattern0_8298_40033)"
-          fill-opacity="0.5"
+          fillOpacity="0.5"
         />
         <defs>
           <pattern
