@@ -6,9 +6,9 @@ import { ValueOf } from '../../utils/types';
 import TextTypes from '../Text/TextTypes';
 
 export enum WidgetSizes {
-  Small = '360px',
-  Medium = '560px',
-  Large = '720px',
+  Small = '180px',
+  Medium = '240px',
+  Large = '320px',
 }
 
 const StyledWidget = styled.div<{
@@ -16,18 +16,17 @@ const StyledWidget = styled.div<{
   $height?: string;
   $width?: string;
 }>`
-  border-radius: ${({ theme }) =>
-    theme.radius.medium}; /* Border-radius for consistency */
-  background: ${({ theme }) => theme.color.gradient.orange10};
-  border: 1px solid ${({ theme }) => theme.color.border.subtle};
-  box-shadow: 0px 1px 15px 1px rgba(0, 0, 0, 0.05);
-  width: ${({ $width }) => $width || '300px'}; /* Default smaller width */
-  max-width: 100%;
-  height: ${({ $height }) => $height || 'auto'}; /* Default smaller height */
-  padding: ${({ theme }) => theme.spacing.xsmall}; /* Consistent padding */
-
   display: flex;
   flex-direction: column;
+  border-radius: ${({ theme }) =>
+    theme.radius.medium}; /* Border-radius for consistency */
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid ${({ theme }) => theme.color.border.subtle};
+  box-shadow: 0px 1px 15px 1px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: ${({ $width }) => $width || '100%'};
+  height: ${({ $height }) => $height || 'auto'}; /* Default smaller height */
+  padding: ${({ theme }) => theme.spacing.xsmall}; /* Consistent padding */
 
   @media (min-width: ${({ theme }) => theme.breakpoints.small}) {
     padding: ${tokens.spacing.xsmall};
@@ -46,24 +45,7 @@ const StyledWidgetHeader = styled.h3<{ $color?: string }>`
   text-align: center;
 `;
 
-export const WidgetContent = styled.div<{
-  $align?: string;
-  $textAlign?: string;
-  $gap?: string;
-  $marginBottom?: string;
-  children: React.ReactNode;
-}>`
-  display: flex;
-  flex-direction: column;
-  align-items: ${({ $align }) => $align || 'center'};
-  gap: ${({ $gap, theme }) => $gap || theme.spacing.xxxsmall};
-  text-align: ${({ $textAlign }) => $textAlign || 'left'};
-  margin-bottom: ${({ $marginBottom, theme }) =>
-    $marginBottom || theme.spacing.xxxsmall};
-  overflow: hidden;
-`;
-
-type WidgetProps = {
+export interface WidgetProps {
   borderColor?: string;
   children: React.ReactNode;
   className?: string;
@@ -71,7 +53,7 @@ type WidgetProps = {
   width?: ValueOf<typeof WidgetSizes>;
   header?: string | React.ReactNode;
   footer?: string | React.ReactNode;
-};
+}
 
 export const WidgetHeader: React.FC<{
   align?: string;
@@ -116,7 +98,7 @@ const Widget: React.FC<WidgetProps> = ({
     $width={width}
   >
     {header && <WidgetHeader>{header}</WidgetHeader>}
-    <WidgetContent>{children}</WidgetContent>
+    {children}
     {footer && <WidgetFooter>{footer}</WidgetFooter>}
   </StyledWidget>
 );
