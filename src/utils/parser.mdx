@@ -5,6 +5,12 @@ import { Meta } from '@storybook/blocks';
 # Text Parser
 
 The Little World Text Parser allows for copy to include pre-defined tags that allows the rendered text to contain certain styling or functional elements.
+The Parser automatically converts html links included in the text into clickable html anchors, unless they are included as part of a pre-defined tag.
+
+```
+https://little-world.com and little-world.com // both will be converted into html anchors
+```
+
 Tags follow the html tag format and must be written as such:
 
 ```
