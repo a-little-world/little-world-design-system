@@ -20,6 +20,20 @@ it('should return string including unrecognised tags containing empty string', (
   expect(screen.getByText(text)).toBeInTheDocument();
 });
 
+it('should return urls as anchor tags', () => {
+  const normalString = 'Mock string and';
+  const endOfString = '. Sign up';
+  const text =
+    normalString +
+    ` little-world.com & https://www.little-world.com` +
+    endOfString;
+  render(textParser(text));
+
+  const links = screen.getAllByRole('link');
+  expect(links[0]).toHaveTextContent('little-world.com');
+  expect(links[1]).toHaveTextContent('https://www.little-world.com');
+});
+
 it('should return color text if text contains highlight tag', () => {
   const normalString = 'Mock string with';
   const text = normalString + ' <highlight>this is orange</highlight>';

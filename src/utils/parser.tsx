@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Button from '../components/Button/Button';
 import Link from '../components/Link/Link';
-import CallWidget from '../components/Widget/CallWidget';
+import replaceUrlsWithAnchors from './replaceUrlsWithAnchors';
 
 const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
   color: ${({ theme, color }) =>
@@ -14,7 +14,6 @@ const ColorText = styled.strong<{ color: keyof typeof SupportedColorTags }>`
 
 const ANCHOR_TAG = 'a';
 const BUTTON_TAG = 'button';
-const CALL_WIDGET_TAG = 'CallWidget';
 
 const regex = RegExp(/<(\w+)((?:\s+[^>]*)*)>(.*?)<\/\1>/, 'gim');
 
@@ -44,9 +43,15 @@ const textParser = (
   let match: RegExpExecArray | null;
   let currentIndex = 0;
 
+  // first convert html links to recognised anchor tag
+  const textWithParsedUrls = replaceUrlsWithAnchors(text);
+
   // utilises the exec function - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#return_value
-  while ((match = regex.exec(text)) !== null) {
-    const textBetweenMatches = text.substring(currentIndex, match.index);
+  while ((match = regex.exec(textWithParsedUrls)) !== null) {
+    const textBetweenMatches = textWithParsedUrls.substring(
+      currentIndex,
+      match.index,
+    );
     components.push(textBetweenMatches);
 
     // update index to be last character of match
@@ -107,17 +112,17 @@ const textParser = (
     if (customElementFound) continue;
 
     // unrecognised tags are returned unprocessed
-    components.push(text.substring(match.index, currentIndex));
+    components.push(textWithParsedUrls.substring(match.index, currentIndex));
   }
 
   // reset regex index
   regex.lastIndex = 0;
 
-  if (!components.length) return text;
+  if (!components.length) return textWithParsedUrls;
 
   // ensure remaining string after last tag is included
-  if (currentIndex !== text.length)
-    components.push(text.substring(currentIndex));
+  if (currentIndex !== textWithParsedUrls.length)
+    components.push(textWithParsedUrls.substring(currentIndex));
 
   return <span>{components.map(section => section)}</span>;
 };

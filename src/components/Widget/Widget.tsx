@@ -15,6 +15,7 @@ const StyledWidget = styled.div<{
   $borderColor?: string;
   $height?: string;
   $width?: string;
+  $padding?: string;
 }>`
   display: flex;
   flex-direction: column;
@@ -25,10 +26,9 @@ const StyledWidget = styled.div<{
   width: 100%;
   max-width: ${({ $width }) => $width || '100%'};
   height: ${({ $height }) => $height || 'auto'};
-  padding: ${({ theme }) => theme.spacing.xxsmall};
+  padding: ${({ theme, $padding }) => $padding || theme.spacing.xxsmall};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.small}) {
-    padding: ${tokens.spacing.xsmall};
     ${({ $width }) =>
       $width &&
       css`
@@ -52,6 +52,7 @@ export interface WidgetProps {
   width?: ValueOf<typeof WidgetSizes>;
   header?: string | React.ReactNode;
   footer?: string | React.ReactNode;
+  padding?: string;
 }
 
 export const WidgetHeader: React.FC<{
@@ -88,12 +89,14 @@ const Widget: React.FC<WidgetProps> = ({
   footer,
   header,
   height,
+  padding,
   width,
 }) => (
   <StyledWidget
     className={className}
     $borderColor={borderColor}
     $height={height}
+    $padding={padding}
     $width={width}
   >
     {header && <WidgetHeader>{header}</WidgetHeader>}

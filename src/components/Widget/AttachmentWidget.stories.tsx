@@ -7,8 +7,8 @@ export default {
   component: AttachmentWidget,
 };
 
-export const Default = args => (
-  <AttachmentWidget
-    imageSrc={'https://patenmatch.de/_next/static/media/3.7cbb6de2.webp'}
-  />
-);
+export const Default = args => <AttachmentWidget {...args} />;
+
+Default.args = {
+  imageSrc: 'https://patenmatch.de/_next/static/media/3.7cbb6de2.webp',
+};

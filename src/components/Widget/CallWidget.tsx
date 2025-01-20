@@ -26,7 +26,6 @@ interface CallWidgetProps extends Omit<WidgetProps, 'children'> {
   isMissed?: boolean;
   isOutgoing?: boolean;
   returnCallLink?: string;
-  header?: string;
 }
 
 const CallWidget = ({

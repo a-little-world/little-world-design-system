@@ -8,9 +8,13 @@ export default {
   component: CallWidget,
 };
 
-export const Default = args => (
-  <CallWidget header="Call" description="120 minutes" isOutgoing />
-);
+export const Default = args => <CallWidget {...args} />;
+
+Default.args = {
+  header: 'Call',
+  description: '120 minutes',
+  isOutgoing: true,
+};
 
 export const Missed = args => (
   <CallWidget header="Missed Call" isMissed description="Tap to call back" />
