@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
-import { AttachmentIcon } from '../Icon';
+import { AttachmentIcon, DownloadIcon } from '../Icon';
+import { ArrowDownIcon } from '../Icon/variants/ArrowDown';
 import Text from '../Text/Text';
 import TextTypes from '../Text/TextTypes';
-import Widget from './Widget';
+import Widget, { WidgetProps, WidgetSizes } from './Widget';
 
 export const ImageSizes = {
   xsmall: '72px',
@@ -17,73 +18,70 @@ export const ImageSizes = {
 const ContentContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Abstand zwischen Icon und Text/Button */
-  width: 100%; /* Sorgt dafür, dass die Elemente die komplette Breite nutzen */
-  gap: ${({ theme }) => theme.spacing.small};
-`;
-
-const PictureContainer = styled.div`
-  display: flex;
-  align-items: center;
   width: 100%;
-  gap: ${({ theme }) => theme.spacing.small};
+  gap: ${({ theme }) => theme.spacing.xxsmall};
+  padding: ${({ theme }) => theme.spacing.xxsmall};
 `;
 
-const AttachmentAnchor = styled.a`
-  display: inline-block;
-  background: ${({ theme }) => theme.color.gradient.orange10};
+const AttachmentDownload = styled.a`
+  display: inline-flex;
   color: ${({ theme }) => theme.color.text.primary};
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: 
+  justify-content: space-between;
+  gap: ${({ theme }) => theme.spacing.small};
   text-align: center;
   cursor: pointer;
+  width: 100%;
 `;
 
 const Image = styled.img`
   background-size: cover;
   background-position: center;
+  border-radius: ${({ theme }) => theme.radius.xxsmall};
   display: flex;
   align-items: end;
   justify-content: center;
   width: 100%;
   height: auto;
-  max-width: 400px;
   object-fit: cover;
 `;
 
-interface AttachmentWidgetProps {
-  header?: string;
+interface AttachmentWidgetProps extends Omit<WidgetProps, 'children'> {
   attachmentTitle?: string;
   attachmentLink?: string;
   imageSrc?: string;
 }
 
 const AttachmentWidget = ({
-  header,
   attachmentTitle,
   attachmentLink,
   imageSrc,
 }: AttachmentWidgetProps) => {
+  const theme = useTheme();
   return (
-    <Widget header={header}>
-      <ContentContainer>
-        <AttachmentIcon
-          label={'attachment icon'}
-          labelId={'attachmentIcon'}
-          width={24}
-          height={24}
-        />
-        {imageSrc ? (
-          <PictureContainer>
-            <Image src={imageSrc} />
-          </PictureContainer>
-        ) : (
-          <AttachmentAnchor href={attachmentLink}>
-            {attachmentTitle}
-          </AttachmentAnchor>
-        )}
-      </ContentContainer>
+    <Widget width={WidgetSizes.Large} padding={imageSrc && '0px'}>
+      {imageSrc ? (
+        <Image src={imageSrc} />
+      ) : (
+        <ContentContainer>
+          <AttachmentIcon
+            label={'attachment icon'}
+            labelId={'attachmentIcon'}
+            width={24}
+            height={24}
+            color={theme.color.text.quaternary}
+          />
+          <AttachmentDownload href={attachmentLink} download>
+            <Text>{attachmentTitle}</Text>
+            <DownloadIcon
+              label={'download icon'}
+              labelId={'downloadIcon'}
+              width={24}
+              height={24}
+              color={theme.color.text.title}
+            />
+          </AttachmentDownload>
+        </ContentContainer>
+      )}
     </Widget>
   );
 };
