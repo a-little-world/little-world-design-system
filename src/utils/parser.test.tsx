@@ -94,3 +94,20 @@ it('should return text after tag elements correctly', () => {
   expect(screen.getByRole('link')).toBeInTheDocument();
   expect(screen.getByText('highlight text')).toBeInTheDocument();
 });
+
+it('should return button if string contains button tag', () => {
+  const normalString = 'Mock string and';
+  const text = `<button>this is a button</button><highlight>highlight text</highlight>${normalString}`;
+  render(textParser(text));
+  expect(screen.getByText('Mock string and')).toBeInTheDocument();
+  expect(screen.getByRole('button')).toHaveTextContent('this is a button');
+  expect(screen.getByText('highlight text')).toBeInTheDocument();
+});
+
+it('should not return parsed button if onlyLinks is true', () => {
+  const text = `<a {"href": "little-world"}>this is an anchor</a><button>this is a button</button><highlight>highlight text</highlight>`;
+
+  render(textParser(text, { onlyLinks: true }));
+  expect(screen.getByRole('link')).toHaveTextContent('this is an anchor');
+  expect(screen.queryByRole('button')).toBeNull();
+});

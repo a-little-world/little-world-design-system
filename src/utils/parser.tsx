@@ -33,11 +33,14 @@ enum SupportedColorTags {
 
 const textParser = (
   text: string,
-  customElements?: {
-    Component: React.ElementType;
-    props?: { [key: string]: any };
-    tag: string;
-  }[],
+  options: {
+    customElements?: {
+      Component: React.ElementType;
+      props?: { [key: string]: any };
+      tag: string;
+    }[];
+    onlyLinks?: boolean;
+  } = {},
 ) => {
   const components = [];
   let match: RegExpExecArray | null;
@@ -72,6 +75,12 @@ const textParser = (
       continue;
     }
 
+    // do not parse other tags if onlyLinks is true
+    if (options.onlyLinks) {
+      components.push(textWithParsedUrls.substring(match.index, currentIndex));
+      continue;
+    }
+
     if (tag === BUTTON_TAG) {
       components.push(
         <Button key={tag + match[3]} {...attrs}>
@@ -94,7 +103,7 @@ const textParser = (
     }
 
     // allows for the text parser to be extended and include custom components
-    const customElementFound = customElements?.some(element => {
+    const customElementFound = options.customElements?.some(element => {
       if (tag === element.tag) {
         components.push(
           <element.Component

@@ -24,13 +24,15 @@ export const WithParser = args => (
   <>
     {textParser(
       '<CallWidget { "header": "Call", "description": "20 mins", "isMissed": false }></CallWidget>',
-      [
-        {
-          tag: 'CallWidget',
-          Component: CallWidget,
-          props: { isOutgoing: true, returnCallLink: 'www.google.com' },
-        },
-      ],
+      {
+        customElements: [
+          {
+            tag: 'CallWidget',
+            Component: CallWidget,
+            props: { isOutgoing: true, returnCallLink: 'www.google.com' },
+          },
+        ],
+      },
     )}
   </>
 );
