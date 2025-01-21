@@ -3,7 +3,6 @@ import styled, { useTheme } from 'styled-components';
 
 import { CallIncomingIcon, CallOutgoingIcon } from '../Icon';
 import Text from '../Text/Text';
-import TextTypes from '../Text/TextTypes';
 import Widget, { Preview, WidgetProps, WidgetSizes } from './Widget';
 
 const CallDescription = styled(Text)`
@@ -14,7 +13,7 @@ const CallLink = styled.a`
   display: flex;
   align-items: center;
   width: 100%;
-  gap: ${({ theme }) => theme.spacing.small};
+  gap: ${({ theme }) => theme.spacing.xsmall};
   border-radius: ${({ theme }) => theme.radius.small};
   cursor: pointer;
   text-decoration: none;
@@ -36,8 +35,8 @@ const CallIcon = ({
     <CallOutgoingIcon
       label={''}
       labelId={''}
-      width={isPreview ? 12 : 24}
-      height={isPreview ? 12 : 24}
+      width={isPreview ? 12 : 20}
+      height={isPreview ? 12 : 20}
       borderColor={theme.color.surface.secondary}
       color={isMissed ? theme.color.status.error : theme.color.text.primary}
       circular={!isPreview}
@@ -46,8 +45,8 @@ const CallIcon = ({
     <CallIncomingIcon
       label={''}
       labelId={''}
-      width={isPreview ? 12 : 24}
-      height={isPreview ? 12 : 24}
+      width={isPreview ? 12 : 20}
+      height={isPreview ? 12 : 20}
       borderColor={theme.color.surface.secondary}
       color={isMissed ? theme.color.status.error : theme.color.text.primary}
       circular={!isPreview}
@@ -89,9 +88,7 @@ const CallWidget = ({
       <CallLink href={returnCallLink}>
         <CallIcon isMissed={isMissed} isOutgoing={isOutgoing} />
         <div>
-          <Text type={TextTypes.Heading6} bold>
-            {header}
-          </Text>
+          <Text bold>{header}</Text>
           {!isPreview && (
             <CallDescription disableParser>
               {description || 'N/A'}
