@@ -1,11 +1,9 @@
 import React from 'react';
 import styled, { useTheme } from 'styled-components';
 
-import { AttachmentIcon, DownloadIcon } from '../Icon';
-import { ArrowDownIcon } from '../Icon/variants/ArrowDown';
+import { AttachmentIcon, CameraIcon, DownloadIcon } from '../Icon';
 import Text from '../Text/Text';
-import TextTypes from '../Text/TextTypes';
-import Widget, { WidgetProps, WidgetSizes } from './Widget';
+import Widget, { Preview, WidgetProps, WidgetSizes } from './Widget';
 
 export const ImageSizes = {
   xsmall: '72px',
@@ -36,7 +34,7 @@ const AttachmentDownload = styled.a`
 const Image = styled.img`
   background-size: cover;
   background-position: center;
-  border-radius: ${({ theme }) => theme.radius.xxsmall};
+  border-radius: ${({ theme }) => theme.radius.small};
   display: flex;
   align-items: end;
   justify-content: center;
@@ -49,18 +47,43 @@ interface AttachmentWidgetProps extends Omit<WidgetProps, 'children'> {
   attachmentTitle?: string;
   attachmentLink?: string;
   imageSrc?: string;
+  isPreview?: boolean;
 }
 
 const AttachmentWidget = ({
   attachmentTitle,
   attachmentLink,
   imageSrc,
+  isPreview,
 }: AttachmentWidgetProps) => {
   const theme = useTheme();
+  const defaultTitle = imageSrc ? 'Photo' : 'File';
+  const title = attachmentTitle || defaultTitle;
+
+  if (isPreview)
+    return (
+      <Preview>
+        {imageSrc ? (
+          <CameraIcon
+            label={'attachment icon'}
+            labelId={'attachmentIcon'}
+            width={16}
+          />
+        ) : (
+          <AttachmentIcon
+            label={'attachment icon'}
+            labelId={'attachmentIcon'}
+            width={12}
+          />
+        )}
+        <Text>{title}</Text>
+      </Preview>
+    );
+
   return (
     <Widget width={WidgetSizes.Large} padding={imageSrc && '0px'}>
       {imageSrc ? (
-        <Image src={imageSrc} />
+        <Image src={imageSrc} alt={title} />
       ) : (
         <ContentContainer>
           <AttachmentIcon
@@ -71,7 +94,7 @@ const AttachmentWidget = ({
             color={theme.color.text.quaternary}
           />
           <AttachmentDownload href={attachmentLink} download>
-            <Text>{attachmentTitle}</Text>
+            <Text>{title}</Text>
             <DownloadIcon
               label={'download icon'}
               labelId={'downloadIcon'}

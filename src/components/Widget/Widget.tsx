@@ -21,20 +21,11 @@ const StyledWidget = styled.div<{
   flex-direction: column;
   border-radius: ${({ theme }) => theme.radius.medium};
   background: rgba(0, 0, 0, 0.1);
-  border: 1px solid ${({ theme }) => theme.color.border.subtle};
   box-shadow: 0px 1px 15px 1px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: ${({ $width }) => $width || '100%'};
   height: ${({ $height }) => $height || 'auto'};
   padding: ${({ theme, $padding }) => $padding || theme.spacing.xxsmall};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.small}) {
-    ${({ $width }) =>
-      $width &&
-      css`
-        width: ${$width};
-      `}
-  }
 `;
 
 const StyledWidgetHeader = styled.h3<{ $color?: string }>`
@@ -80,6 +71,12 @@ const Footer = styled.div<{ $align?: string }>`
     css`
       justify-content: ${$align};
     `};
+`;
+
+export const Preview = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
 `;
 
 const Widget: React.FC<WidgetProps> = ({

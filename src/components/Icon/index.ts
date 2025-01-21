@@ -7,6 +7,7 @@ export * from './variants/Calendar';
 export * from './variants/CalendarAdd';
 export * from './variants/CallIncoming';
 export * from './variants/CallOutgoing';
+export * from './variants/Camera';
 export * from './variants/Check';
 export * from './variants/ChevronDown';
 export * from './variants/ChevronLeft';
