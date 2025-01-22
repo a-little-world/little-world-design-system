@@ -18,7 +18,6 @@ const urlPattern =
 export default function replaceUrlsWithAnchors(text: string): string {
   return text.replace(urlPattern, match => {
     // Ensure URL has protocol for href
-
     const href = match.startsWith('http') ? match : `https://${match}`;
     return `<a {"target":"_blank", "href":"${href}"}>${match}</a>`;
   });

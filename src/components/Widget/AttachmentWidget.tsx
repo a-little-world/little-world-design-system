@@ -30,6 +30,7 @@ const AttachmentDownload = styled.a`
   text-align: center;
   cursor: pointer;
   width: 100%;
+  text-decoration: none;
 `;
 
 const Image = styled.img`
@@ -77,7 +78,7 @@ const AttachmentWidget = ({
             width={12}
           />
         )}
-        <Text>{title}</Text>
+        <Text disableParser>{title}</Text>
       </Preview>
     );
 
@@ -95,7 +96,7 @@ const AttachmentWidget = ({
             color={theme.color.text.tertiary}
           />
           <AttachmentDownload href={attachmentLink} download>
-            <Text>{title}</Text>
+            <Text disableParser>{title}</Text>
             <DownloadIcon
               label={'download icon'}
               labelId={'downloadIcon'}
