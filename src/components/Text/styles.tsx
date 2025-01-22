@@ -114,7 +114,7 @@ export const StyledElement = styled.div<{
     if ($type === TextTypes.Heading3)
       return css`
         ${HEADING_SHARED_STYLES}
-        font-size: 3rem;
+        font-size: 2.5rem;
 
         @media (min-width: ${tokens.breakpoints.small}) {
           font-size: 3rem;

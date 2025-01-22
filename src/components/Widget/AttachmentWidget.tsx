@@ -24,6 +24,7 @@ const ContentContainer = styled.div`
 const AttachmentDownload = styled.a`
   display: inline-flex;
   color: ${({ theme }) => theme.color.text.primary};
+  align-items: center;
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing.small};
   text-align: center;
@@ -89,17 +90,17 @@ const AttachmentWidget = ({
           <AttachmentIcon
             label={'attachment icon'}
             labelId={'attachmentIcon'}
-            width={24}
-            height={24}
-            color={theme.color.text.quaternary}
+            width={20}
+            height={20}
+            color={theme.color.text.tertiary}
           />
           <AttachmentDownload href={attachmentLink} download>
             <Text>{title}</Text>
             <DownloadIcon
               label={'download icon'}
               labelId={'downloadIcon'}
-              width={24}
-              height={24}
+              width={20}
+              height={20}
               color={theme.color.text.title}
             />
           </AttachmentDownload>
