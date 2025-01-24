@@ -20,7 +20,9 @@ const roundToHalf = (value: number): number => {
 const DEFAULT_RATINGS = ['Poor', 'Fair', 'Average', 'Good', 'Excellent'];
 
 interface StarRatingProps {
+  className?: string;
   displayNumber?: boolean;
+  displayTextRatings?: boolean;
   id?: string;
   initialRating?: number;
   ratings?: string[];
@@ -30,7 +32,9 @@ interface StarRatingProps {
 }
 
 const StarRating = ({
+  className,
   displayNumber = false,
+  displayTextRatings = false,
   id = 'star-rating',
   initialRating = 0,
   name = 'rating',
@@ -120,7 +124,11 @@ const StarRating = ({
   const currentRating = hoverRating || rating;
 
   return (
-    <RatingContainer role="group" aria-label="Star rating">
+    <RatingContainer
+      className={className}
+      role="group"
+      aria-label="Star rating"
+    >
       <VisuallyHidden id={`${id}-label`}>
         Rating: {currentRating} out of {maxRating} stars
       </VisuallyHidden>
@@ -144,6 +152,7 @@ const StarRating = ({
               aria-label={`${starNumber} star${starNumber === 1 ? '' : 's'}`}
               aria-describedby={`${id}-label`}
               name={name}
+              type="button"
             >
               {/* Background star */}
               <StarIcon
@@ -175,7 +184,9 @@ const StarRating = ({
           </Rating>
         )}
       </Stars>
-      <TextRating>{ratings[Math.ceil(currentRating - 1)]}</TextRating>
+      {displayTextRatings && (
+        <TextRating>{ratings[Math.ceil(currentRating - 1)]}</TextRating>
+      )}
     </RatingContainer>
   );
 };

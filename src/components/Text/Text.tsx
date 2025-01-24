@@ -23,6 +23,7 @@ type TextProps = {
     | 'h5'
     | 'h6'
     | 'li'
+    | 'label'
     | 'span'
     | 'strong';
   type?: keyof typeof TextTypes;

@@ -35,6 +35,7 @@ export const StarOverlay = styled.div<{ fillAmount: number }>`
   overflow: hidden;
   width: ${props => props.fillAmount * 100}%;
   pointer-events: none;
+  transition: width 0.2s ease;
 `;
 
 export const Rating = styled(Text)`
