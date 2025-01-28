@@ -42,7 +42,10 @@ export { default as Popover } from './components/Popover/Popover';
 export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
 export { default as Separator } from './components/Separator/Separator';
 export { default as Slider } from './components/Slider/Slider';
-export { default as StarRating } from './components/StarRating/StarRating';
+export {
+  default as StarRating,
+  StarRatingSizes,
+} from './components/StarRating/StarRating';
 export {
   default as StatusMessage,
   MessageTypes,

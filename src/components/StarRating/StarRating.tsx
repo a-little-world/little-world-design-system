@@ -19,33 +19,45 @@ const roundToHalf = (value: number): number => {
 
 const DEFAULT_RATINGS = ['Poor', 'Fair', 'Average', 'Good', 'Excellent'];
 
+export enum StarRatingSizes {
+  Small = 24, // px
+  Medium = 32,
+  Large = 48,
+}
 interface StarRatingProps {
   className?: string;
+  color?: string;
   displayNumber?: boolean;
   displayTextRatings?: boolean;
+  enableHalfRatings?: boolean;
   id?: string;
   initialRating?: number;
   ratings?: string[];
   maxRating?: number;
   name?: string;
   onChange?: (rating: number) => void;
+  size?: StarRatingSizes;
 }
 
 const StarRating = ({
   className,
+  color,
   displayNumber = false,
   displayTextRatings = false,
+  enableHalfRatings = false,
   id = 'star-rating',
   initialRating = 0,
   name = 'rating',
   maxRating = 5,
   onChange,
   ratings = DEFAULT_RATINGS,
+  size = StarRatingSizes.Small,
 }: StarRatingProps) => {
   const [rating, setRating] = useState(initialRating);
   const [hoverRating, setHoverRating] = useState(0);
   const [focusedStar, setFocusedStar] = useState<number | null>(null);
   const theme = useTheme();
+  const ratingIncrement = enableHalfRatings ? 0.5 : 1;
 
   const handleMouseMove = (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -53,7 +65,8 @@ const StarRating = ({
   ) => {
     const { left, width } = e.currentTarget.getBoundingClientRect();
     const percent = (e.clientX - left) / width;
-    const newRating = percent <= 0.5 ? starIndex + 0.5 : starIndex + 1;
+    const newRating =
+      enableHalfRatings && percent <= 0.5 ? starIndex + 0.5 : starIndex + 1;
     setHoverRating(roundToHalf(newRating));
   };
 
@@ -63,7 +76,9 @@ const StarRating = ({
 
   const updateRating = useCallback(
     (newRating: number) => {
-      const roundedRating = roundToHalf(newRating);
+      const roundedRating = enableHalfRatings
+        ? roundToHalf(newRating)
+        : newRating;
       setRating(roundedRating);
       onChange?.(roundedRating);
     },
@@ -73,10 +88,9 @@ const StarRating = ({
   const calculateRating = (starNumber: number) => {
     // Toggle between whole, half, and unrated for clicked star
     let newRating;
+
     if (rating === starNumber) {
-      newRating = starNumber - 0.5;
-    } else if (rating === starNumber - 0.5) {
-      newRating = starNumber - 1;
+      newRating = starNumber - ratingIncrement;
     } else {
       newRating = starNumber;
     }
@@ -96,25 +110,27 @@ const StarRating = ({
         // If we're at a whole number, go down by 0.5, otherwise go down by 1
         newRating =
           Math.floor(rating) === rating
-            ? Math.max(0, rating - 0.5)
+            ? Math.max(0, rating - ratingIncrement)
             : Math.max(0, Math.floor(rating));
         updateRating(newRating);
-        setFocusedStar(Math.max(0, starIndex - 1));
+
+        setFocusedStar(Math.max(0, newRating - 1));
         break;
       case 'ArrowRight':
         e.preventDefault();
         // If we're at a whole number, go up by 0.5, otherwise go up by 1
         newRating =
           Math.floor(rating) === rating
-            ? Math.min(maxRating, rating + 0.5)
+            ? Math.min(maxRating, rating + ratingIncrement)
             : Math.min(maxRating, Math.ceil(rating));
+
         updateRating(newRating);
-        setFocusedStar(Math.min(maxRating - 1, starIndex + 1));
+        setFocusedStar(Math.min(maxRating - 1, newRating - 1));
         break;
       case ' ':
       case 'Enter':
         e.preventDefault();
-        calculateRating(starIndex + 1);
+        calculateRating((focusedStar ?? starIndex) + 1);
         break;
       default:
         break;
@@ -158,8 +174,8 @@ const StarRating = ({
               <StarIcon
                 label="background star"
                 labelId="background-star"
-                width={24}
-                height={24}
+                width={size}
+                height={size}
                 color={theme.color.surface.disabled}
                 aria-hidden="true"
               />
@@ -169,9 +185,9 @@ const StarRating = ({
                 <StarIcon
                   label="filled star"
                   labelId="filled-star"
-                  width={24}
-                  height={24}
-                  color={theme.color.surface.selected}
+                  width={size}
+                  height={size}
+                  color={color || theme.color.surface.selected}
                   aria-hidden="true"
                 />
               </StarOverlay>

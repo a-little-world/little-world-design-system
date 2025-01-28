@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Text from '../Text/Text';
 
@@ -13,7 +13,6 @@ export const Stars = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: ${({ theme }) => theme.spacing.xxsmall};
 `;
 
 export const StarContainer = styled.button<{ isFocused?: boolean }>`
@@ -26,16 +25,34 @@ export const StarContainer = styled.button<{ isFocused?: boolean }>`
   f &:focus-visible {
     box-shadow: 0 0 0 2px #4f46e5;
   }
+  padding: ${({ theme }) => theme.spacing.xxsmall};
 `;
 
-export const StarOverlay = styled.div<{ fillAmount: number }>`
+export const StarOverlay = styled.div<{
+  fillAmount: number;
+}>`
   position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
   width: ${props => props.fillAmount * 100}%;
   pointer-events: none;
-  transition: width 0.2s ease;
+  padding: ${({ theme }) => theme.spacing.xxsmall};
+
+  transition: width 0.3s ease-in-out;
+  &:hover {
+    transition: width 1s ease-in-out;
+  }
+
+  > svg {
+    transition: width 0.3s ease-in-out;
+    ${({ fillAmount }) =>
+      !fillAmount &&
+      css`
+        transition: width 0.3s ease-in-out;
+        width: 0;
+      `}:
+  }
 `;
 
 export const Rating = styled(Text)`
