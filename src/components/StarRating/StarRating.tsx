@@ -103,7 +103,7 @@ const StarRating = ({
     starIndex: number,
   ) => {
     let newRating = rating;
-
+    setHoverRating(0);
     switch (e.key) {
       case 'ArrowLeft':
         e.preventDefault();
@@ -152,11 +152,15 @@ const StarRating = ({
         {[...Array(maxRating)].map((_, index) => {
           const fillAmount = Math.max(0, Math.min(1, currentRating - index));
           const starNumber = index + 1;
-
+          const handleClick = () => {
+            // tap devices cannot use hover rating
+            const crossDeviceFillAmount = hoverRating ? fillAmount : 1;
+            calculateRating(index + crossDeviceFillAmount);
+          };
           return (
             <StarContainer
               key={index}
-              onClick={() => calculateRating(index + fillAmount)}
+              onClick={handleClick}
               onMouseMove={e => handleMouseMove(e, index)}
               onMouseLeave={handleMouseLeave}
               onKeyDown={e => handleKeyDown(e, index)}

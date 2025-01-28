@@ -5,7 +5,6 @@ import Text from '../Text/Text';
 export const RatingContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.xxsmall};
   align-items: center;
 `;
 
