@@ -9,6 +9,7 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "prepare": "npm run build",
     "build": "rimraf dist && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc --outDir dist/esm",
