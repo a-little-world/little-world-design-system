@@ -39,3 +39,11 @@ In order to release a new version of this package:
 4. Create a tag that relates to the new version.
 5. Include the release version in the title and give an appropriate description
 6. Hit the "publish release" button which will trigger a github action that will publish the new version to npm.
+
+
+<iframe 
+        src="./storybook-static/index.html"
+        width="100%"
+        height="800px"
+        style="border: none;">
+        </iframe>
