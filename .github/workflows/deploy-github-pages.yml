@@ -27,11 +27,10 @@ jobs:
         with:
           node-version: '20'
       env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}    
       #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+      NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           install_command: npm ci # default: npm ci
           build_command: npm build-storybook # default: npm run build-storybook
