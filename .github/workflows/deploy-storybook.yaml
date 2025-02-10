@@ -4,10 +4,8 @@ name: Build and Publish Storybook to GitHub Pages
 on:
   # Event for the workflow to run on
   workflow_dispatch:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - main  # This will trigger on PRs targeting main branch
+  push:
+    branch: "main"
 
 permissions:
   contents: read
