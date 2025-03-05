@@ -12,6 +12,7 @@ const CLOSE_BUTTON_LABEL = 'dialog close button';
 type ModalProps = {
   children: any;
   className?: string;
+  createInPortal?: boolean;
   open: boolean;
   onClose: () => void;
   locked?: boolean;
@@ -20,6 +21,7 @@ type ModalProps = {
 
 const Modal = ({
   children,
+  createInPortal = true,
   open,
   onClose,
   locked,
@@ -101,7 +103,7 @@ const Modal = ({
     </BackdropContainer>
   );
 
-  if (open) return createPortal(Backdrop, el);
+  if (open) return createInPortal ? createPortal(Backdrop, el) : Backdrop;
   return null;
 };
 
