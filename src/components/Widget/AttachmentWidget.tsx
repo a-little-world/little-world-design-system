@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { useTheme } from 'styled-components';
 
 import { AttachmentIcon, CameraIcon, DownloadIcon } from '../Icon';
+import Modal from '../Modal/Modal';
 import Text from '../Text/Text';
 import Widget, { Preview, WidgetProps, WidgetSizes } from './Widget';
 
@@ -26,11 +27,19 @@ const AttachmentDownload = styled.a`
   color: ${({ theme }) => theme.color.text.primary};
   align-items: center;
   justify-content: space-between;
-  gap: ${({ theme }) => theme.spacing.small};
+  gap: ${({ theme }) => theme.spacing.xxsmall};
   text-align: center;
   cursor: pointer;
   width: 100%;
   text-decoration: none;
+`;
+
+const ImageButton = styled.button`
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 1rem;
 `;
 
 const Image = styled.img`
@@ -43,6 +52,8 @@ const Image = styled.img`
   width: 100%;
   height: auto;
   object-fit: cover;
+  max-height: 100%;
+  max-width: 920px;
 `;
 
 interface AttachmentWidgetProps extends Omit<WidgetProps, 'children'> {
@@ -61,6 +72,7 @@ const AttachmentWidget = ({
   const theme = useTheme();
   const defaultTitle = imageSrc ? 'Photo' : 'File';
   const title = attachmentTitle || defaultTitle;
+  const [viewImage, setViewImage] = React.useState(false);
 
   if (isPreview)
     return (
@@ -85,7 +97,14 @@ const AttachmentWidget = ({
   return (
     <Widget width={WidgetSizes.Large} padding={imageSrc && '0px'}>
       {imageSrc ? (
-        <Image src={imageSrc} alt={title} />
+        <>
+          <Modal open={viewImage} onClose={() => setViewImage(false)}>
+            <Image src={imageSrc} alt={title} />
+          </Modal>
+          <ImageButton onClick={() => setViewImage(true)}>
+            <Image src={imageSrc} alt={title} />
+          </ImageButton>
+        </>
       ) : (
         <ContentContainer>
           <AttachmentIcon
@@ -95,7 +114,7 @@ const AttachmentWidget = ({
             height={20}
             color={theme.color.text.tertiary}
           />
-          <AttachmentDownload href={attachmentLink} download>
+          <AttachmentDownload href={attachmentLink} download target="_blank">
             <Text disableParser>{title}</Text>
             <DownloadIcon
               label={'download icon'}
