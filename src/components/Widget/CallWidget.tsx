@@ -9,15 +9,20 @@ const CallDescription = styled(Text)`
   color: ${({ theme }) => theme.color.text.secondary};
 `;
 
-const CallLink = styled.a`
+const CallButton = styled.button`
   display: flex;
   align-items: center;
+  text-align: left;
   width: 100%;
   gap: ${({ theme }) => theme.spacing.xsmall};
   border-radius: ${({ theme }) => theme.radius.small};
   cursor: pointer;
   text-decoration: none;
   color: ${({ theme }) => theme.color.text.primary};
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
 `;
 
 const CallIcon = ({
@@ -59,7 +64,7 @@ interface CallWidgetProps extends Omit<WidgetProps, 'children'> {
   isPreview?: boolean;
   isMissed?: boolean;
   isOutgoing?: boolean;
-  returnCallLink?: string;
+  onReturnCall?: () => void;
 }
 
 const CallWidget = ({
@@ -68,7 +73,7 @@ const CallWidget = ({
   isMissed,
   isOutgoing,
   isPreview,
-  returnCallLink,
+  onReturnCall,
   ...widgetProps
 }: CallWidgetProps) => {
   if (isPreview)
@@ -85,7 +90,7 @@ const CallWidget = ({
 
   return (
     <Widget width={WidgetSizes.Medium} {...widgetProps}>
-      <CallLink href={returnCallLink}>
+      <CallButton onClick={onReturnCall}>
         <CallIcon isMissed={isMissed} isOutgoing={isOutgoing} />
         <div>
           <Text bold>{header}</Text>
@@ -95,7 +100,7 @@ const CallWidget = ({
             </CallDescription>
           )}
         </div>
-      </CallLink>
+      </CallButton>
     </Widget>
   );
 };
