@@ -28,7 +28,7 @@ const AttachmentDownload = styled.a`
   align-items: center;
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing.xxsmall};
-  text-align: center;
+  text-align: left;
   cursor: pointer;
   width: 100%;
   text-decoration: none;

@@ -26,7 +26,7 @@ const ErrorText = styled(Text)<{
   visibility: hidden;
   opacity: 0;
   transition: visibility 1s, opacity 1s;
-  height: ${tokens.spacing.small};
+  min-height: ${tokens.spacing.small};
   padding-left: 1px;
   text-align: ${({ $textAlign }) => $textAlign};
 
