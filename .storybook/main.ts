@@ -1,6 +1,4 @@
-import remarkGfm from 'remark-gfm';
-
-module.exports = {
+export default {
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-essentials',
