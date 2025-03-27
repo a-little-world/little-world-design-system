@@ -28,6 +28,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   backgroundColor?: string;
   borderColor?: string;
   color?: string;
+  isDummy?: boolean; // Renders a div instead of a button
   loading?: boolean;
   size?: ButtonSizes;
   variation?: keyof typeof ButtonVariations;
@@ -43,6 +44,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
       borderColor,
       color,
       children,
+      isDummy,
       loading,
       size,
       variation = ButtonVariations.Basic,
@@ -59,6 +61,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<Ref, ButtonProps>(
         $color={color}
         $size={size}
         $variation={variation}
+        as={isDummy ? 'div' : 'button'}
         ref={ref}
         type={type}
         {...rest}
