@@ -1,4 +1,7 @@
+import { isValidUrl } from './isValidUrl';
+
 // Example outputs:
+
 /*
 Input: Check out www.google.com for more info
 Output: Check out <a href="https://www.google.com" target="_blank">www.google.com</a> for more info
@@ -18,7 +21,12 @@ const urlPattern =
 export default function replaceUrlsWithAnchors(text: string): string {
   return text.replace(urlPattern, match => {
     // Ensure URL has protocol for href
-    const href = match.startsWith('http') ? match : `https://${match}`;
-    return `<a {"target":"_blank", "href":"${href}"}>${match}</a>`;
+    try {
+      if (!isValidUrl(match)) return match;
+      const href = match.startsWith('http') ? match : `https://${match}`;
+      return `<a {"target":"_blank", "href":"${href}"}>${match}</a>`;
+    } catch {
+      return match;
+    }
   });
 }

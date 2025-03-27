@@ -9,6 +9,7 @@ const BODY_SHARED_STYLES = css`
   -moz-osx-font-smoothing: grayscale;
 
   margin: 0;
+  line-height: 1.5;
 `;
 
 const HEADING_SHARED_STYLES = css<{ $color?: string }>`

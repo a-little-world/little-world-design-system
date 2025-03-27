@@ -16,7 +16,7 @@ const StyledCard = styled.div<{
   $height?: string;
   $width?: string;
 }>`
-  border-radius: 40px;
+  border-radius: ${({ theme }) => theme.radius.small};
   background: ${({ theme }) => theme.color.surface.primary};
   border: 1px solid
     ${({ theme, $borderColor }) => $borderColor || theme.color.border.subtle};
@@ -30,6 +30,7 @@ const StyledCard = styled.div<{
   padding: ${({ theme }) => theme.spacing.small};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.small}) {
+    border-radius: ${({ theme }) => theme.radius.xxlarge};
     padding: ${({ $width, theme }) =>
       $width === CardSizes.Small ? theme.spacing.medium : theme.spacing.large};
 
