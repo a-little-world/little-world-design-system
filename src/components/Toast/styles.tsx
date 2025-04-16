@@ -72,7 +72,6 @@ export const ToastRoot = styled(RadixToast.Root)`
   }
 
   &[data-state='closed'] {
-    // animation: ${hide} 100ms ease-in;
     animation: ${slideOut} 150ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -91,7 +90,7 @@ export const ToastRoot = styled(RadixToast.Root)`
 `;
 
 export const ToastCloseButton = styled(Button)<{ $visible?: boolean }>`
-    position: absolute;
+  position: absolute;
   top: -8px;
   right: -8px;
   border-radius: 50%;
