@@ -1,5 +1,5 @@
 import * as RadixToast from '@radix-ui/react-toast';
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 
 import { ButtonSizes, ButtonVariations } from '../Button/Button';
 import { InfoIcon } from '../Icon';
@@ -47,8 +47,6 @@ const Toast: React.FC<ToastProps> = ({
   onDismiss,
   onClick,
 }: ToastProps) => {
-  const [closeButtonVisible, setCloseButtonVisible] = useState(false);
-
   if (!!actionNode !== !!actionAltText) {
     throw new Error('The action node and altText must both be set or unset');
   }
@@ -71,15 +69,12 @@ const Toast: React.FC<ToastProps> = ({
         defaultOpen={true}
         onOpenChange={onOpenChange}
         duration={duration}
-        onPointerEnter={() => setCloseButtonVisible(true)}
-        onPointerLeave={() => setCloseButtonVisible(false)}
         onClick={onClick}
       >
         <RadixToast.Close asChild>
           <ToastCloseButton
             variation={ButtonVariations.Icon}
             size={ButtonSizes.Small}
-            data-visible={closeButtonVisible}
             onClick={dismissToast}
           >
             <ToastCloseIcon

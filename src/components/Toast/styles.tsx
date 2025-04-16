@@ -13,15 +13,6 @@ const hide = keyframes`
 	}
 `;
 
-const show = keyframes`
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-`;
-
 const slideIn = keyframes`
 	from {
 		transform: translateX(calc(100% + var(--viewport-padding)));
@@ -100,8 +91,7 @@ export const ToastRoot = styled(RadixToast.Root)`
 `;
 
 export const ToastCloseButton = styled(Button)<{ $visible?: boolean }>`
-  opacity: 0;
-  position: absolute;
+    position: absolute;
   top: -8px;
   right: -8px;
   border-radius: 50%;
@@ -109,16 +99,6 @@ export const ToastCloseButton = styled(Button)<{ $visible?: boolean }>`
   width: 16px;
   height: 16px;
   box-shadow: 0px 0px 1px 1px ${({ theme }) => theme.color.border.subtle};
-
-  &[data-visible='true'] {
-    animation: ${show} 100ms ease-in;
-    opacity: 1;
-  }
-
-  &[data-state='false'] {
-    animation: ${hide} 100ms ease-in;
-    opacity: 0;
-  }
 `;
 
 export const ToastCloseIcon = styled(CloseIcon)`
