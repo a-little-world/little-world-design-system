@@ -34,7 +34,7 @@ export const Default = args => {
     actionAltText: 'Action',
     duration: 3000,
     onClose: () => console.log('toast onClose'),
-    onDismiss: () => console.log('toas onDismiss'),
+    onDismiss: () => console.log('toast onDismiss'),
     onClick: () => console.log('toast onClick'),
   };
 
