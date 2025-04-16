@@ -27,9 +27,7 @@
     "url": "https://github.com/a-little-world/little-world-design-system/issues"
   },
   "homepage": "https://github.com/a-little-world/little-world-design-system#readme",
-  "prettier": "@a-little-world/little-world-prettier-config",
   "devDependencies": {
-    "@a-little-world/little-world-prettier-config": "^1.2.0",
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.20.2",
     "@babel/preset-env": "^7.20.2",
@@ -59,7 +57,6 @@
     "react-dom": "^18.2.0",
     "rimraf": "^6.0.1",
     "storybook": "^8.1.5",
-    "storybook-addon-remix-react-router": "^3.0.0",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.3"
   },
@@ -80,7 +77,8 @@
     "csstype": "^3.1.2",
     "lodash": "^4.17.21",
     "react-phone-input-2": "^2.15.1",
-    "react-router-dom": "^6.21.1",
+    "react-router": "^7.5.0",
+    "storybook-addon-remix-react-router": "^4.0.1",
     "styled-components": "^5.3.6"
   },
   "peerDependencies": {

@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { LinkProps as RouterLinkProps } from 'react-router-dom';
+import { LinkProps as RouterLinkProps } from 'react-router';
 
 import { ButtonAppearance, ButtonSizes } from '../Button/Button';
 import TextTypes from '../Text/TextTypes';
