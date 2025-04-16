@@ -9,15 +9,25 @@ export const BACKDROP_LABEL = 'dialog backdrop';
 const ROOT_LABEL = '#root';
 const CLOSE_BUTTON_LABEL = 'dialog close button';
 
-type ModalProps = {
+type BaseModalProps = {
   children: any;
   className?: string;
   createInPortal?: boolean;
   open: boolean;
-  onClose: () => void;
-  locked?: boolean;
   parent?: any;
 };
+
+type UnlockedModalProps = BaseModalProps & {
+  locked?: false;
+  onClose: () => void;
+};
+
+type LockedModalProps = BaseModalProps & {
+  locked: true;
+  onClose?: () => void;
+};
+
+type ModalProps = UnlockedModalProps | LockedModalProps;
 
 const Modal = ({
   children,
