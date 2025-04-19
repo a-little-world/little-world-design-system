@@ -9,7 +9,6 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "storybook": "storybook dev -p 6006",
-    "prepare": "npm run build",
     "build": "rimraf dist && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc --outDir dist/esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs"
@@ -82,8 +81,8 @@
     "styled-components": "^5.3.6"
   },
   "peerDependencies": {
-    "react": ">=17",
-    "react-dom": ">=17"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "jest": {
     "testEnvironment": "jsdom",
