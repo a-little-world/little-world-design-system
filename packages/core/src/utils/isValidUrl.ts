@@ -44,7 +44,7 @@ async function getTlds(): Promise<Domains> {
 
     // Update the cache
     tldCache = {
-      tlds: keyBy(tldList, tld => tld),
+      tlds: keyBy(tldList, (tld: string) => tld),
       timestamp: Date.now(),
     };
 

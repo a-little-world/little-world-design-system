@@ -1,12 +1,11 @@
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { View } from "react-native";
-import { Meta, StoryObj } from "@storybook/react";
 
-import Loading from "./Loading";
-import { LoadingSizes } from "../../../core/src/components/Loading/Loading";
+import Loading, { LoadingSizes } from "./Loading";
 
 const meta = {
-  title: "Components/Loading",
+  title: "Loading",
   component: Loading,
   decorators: [
     (Story) => (
@@ -22,31 +21,34 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    size: LoadingSizes.Medium,
-    color: "#000000",
-    inline: false,
-  },
+  render: () => (
+    <View>
+      <Loading />
+    </View>
+  ),
+  args: {}
 };
 
 export const DifferentSizes: Story = {
   render: () => (
-    <View style={{ gap: 16 }}>
+    <View>
       <Loading size={LoadingSizes.Small} />
       <Loading size={LoadingSizes.Medium} />
       <Loading size={LoadingSizes.Large} />
     </View>
   ),
+  args: {}
 };
 
 export const WithColor: Story = {
   render: () => (
-    <View style={{ gap: 16 }}>
+    <View>
       <Loading color="#FF0000" />
       <Loading color="#00FF00" />
       <Loading color="#0000FF" />
     </View>
   ),
+  args: {}
 };
 
 export const Inline: Story = {
@@ -57,4 +59,5 @@ export const Inline: Story = {
       <Loading inline size={LoadingSizes.Large} />
     </View>
   ),
+  args: {}
 }; 

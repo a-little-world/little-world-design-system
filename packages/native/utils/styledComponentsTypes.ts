@@ -1,6 +1,5 @@
 /**
- * This file provides type definitions for React Native specific styled-components usage.
- * It extends the base styled-components types with React Native specific types.
+ * This file provides type definitions for transforming web styled-components to React Native.
  */
 
 import { DefaultTheme } from 'styled-components';
@@ -20,6 +19,36 @@ export type StyledRNComponentBase<C, T, O, A> = any;
 export type ThemedRNStyledFunction<C, T, O, A> = any;
 export type ThemedRNStyledComponentsModule<T> = any;
 export type ThemedRNCssFunction<T> = any;
+
+// Types for style transformations
+export type WebStyle = {
+  display?: string;
+  flex?: number;
+  width?: string | number;
+  height?: string | number;
+  minHeight?: string | number;
+  position?: string;
+  border?: string;
+  borderRadius?: string | number;
+  color?: string;
+  animation?: string;
+};
+
+export type RNStyle = {
+  display?: 'flex' | 'none';
+  flex?: number;
+  width?: number;
+  height?: number;
+  minHeight?: number;
+  position?: 'absolute' | 'relative';
+  borderWidth?: number;
+  borderColor?: string;
+  borderRadius?: number;
+  color?: string;
+  animationDuration?: string;
+  animationTimingFunction?: string;
+  animationDelay?: string;
+};
 
 // Export animation utilities
 export const createAnimation = (value: RNAnimatedValue, duration: number = 300) => {

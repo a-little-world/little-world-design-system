@@ -1,9 +1,7 @@
 import React from 'react';
 import { Text as RNText, TextStyle as RNTextStyle } from 'react-native';
 
-import TextTypes from '../../../core/src/components/Text/TextTypes';
-import { getTextStyle } from '../../../core/src/components/Text/getTextStyle';
-import { TextStyle as CoreTextStyle } from '../../../core/src/components/Text/types';
+import { TextTypes, getTextStyle, TextStyle as CoreTextStyle } from '@a-little-world/little-world-design-system';
 
 type TextProps = {
   bold?: boolean;

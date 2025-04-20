@@ -1,6 +1,6 @@
 import { StyleSheet, Animated } from 'react-native';
 import styled from 'styled-components';
-import { RNAnimatedValue } from './styledComponentsTypes';
+import { RNAnimatedValue, WebStyle, RNStyle } from './styledComponentsTypes';
 
 /**
  * This utility file provides React Native specific adaptations for styled-components features.
@@ -116,39 +116,80 @@ const convertValue = (value: string) => {
 };
 
 /**
- * A utility function to convert CSS properties to React Native styles
+ * A utility function to convert web styles to React Native styles
  * 
- * @param cssProps CSS properties
+ * @param webStyles Web styles
  * @returns React Native styles
  */
-export const cssToRN = (cssProps: Record<string, any>) => {
-  const rnStyles: Record<string, any> = {};
+export const webToRNStyles = (webStyles: WebStyle): RNStyle => {
+  const rnStyles: RNStyle = {};
   
-  // Convert CSS properties to React Native styles
-  Object.entries(cssProps).forEach(([key, value]) => {
-    // Convert kebab-case to camelCase
-    const camelKey = key.replace(/-([a-z])/g, g => g[1].toUpperCase());
-    
-    // Handle special cases
-    switch (camelKey) {
-      case 'display':
-        // React Native only supports 'flex' and 'none'
-        rnStyles.display = value === 'none' ? 'none' : 'flex';
-        break;
-      case 'fontWeight':
-        // React Native only supports numeric values or 'normal', 'bold'
-        rnStyles.fontWeight = value;
-        break;
-      default:
-        rnStyles[camelKey] = value;
-    }
-  });
+  // Convert display
+  if (webStyles.display) {
+    rnStyles.display = webStyles.display === 'none' ? 'none' : 'flex';
+  }
   
-  return StyleSheet.create({ style: rnStyles }).style;
+  // Convert flex
+  if (webStyles.flex) {
+    rnStyles.flex = webStyles.flex;
+  }
+  
+  // Convert dimensions
+  if (webStyles.width) {
+    rnStyles.width = typeof webStyles.width === 'string' 
+      ? parseFloat(webStyles.width.replace('px', ''))
+      : webStyles.width;
+  }
+  
+  if (webStyles.height) {
+    rnStyles.height = typeof webStyles.height === 'string'
+      ? parseFloat(webStyles.height.replace('px', ''))
+      : webStyles.height;
+  }
+  
+  if (webStyles.minHeight) {
+    rnStyles.minHeight = typeof webStyles.minHeight === 'string'
+      ? parseFloat(webStyles.minHeight.replace('px', ''))
+      : webStyles.minHeight;
+  }
+  
+  // Convert positioning
+  if (webStyles.position) {
+    rnStyles.position = webStyles.position as 'absolute' | 'relative';
+  }
+  
+  // Convert borders
+  if (webStyles.border) {
+    const [width, style, color] = webStyles.border.split(' ');
+    rnStyles.borderWidth = parseInt(width);
+    rnStyles.borderColor = color;
+  }
+  
+  // Convert border radius
+  if (webStyles.borderRadius) {
+    rnStyles.borderRadius = typeof webStyles.borderRadius === 'string'
+      ? parseFloat(webStyles.borderRadius.replace('px', ''))
+      : webStyles.borderRadius;
+  }
+  
+  // Convert colors
+  if (webStyles.color) {
+    rnStyles.color = webStyles.color;
+  }
+  
+  // Convert animations
+  if (webStyles.animation) {
+    const [duration, timing, delay] = webStyles.animation.split(' ');
+    rnStyles.animationDuration = duration;
+    rnStyles.animationTimingFunction = timing;
+    rnStyles.animationDelay = delay;
+  }
+  
+  return rnStyles;
 };
 
 export default {
   createGlobalStyle,
   keyframes,
-  cssToRN,
+  webToRNStyles,
 }; 

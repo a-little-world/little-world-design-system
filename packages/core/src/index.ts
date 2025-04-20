@@ -23,7 +23,7 @@ export * from './components/Illustrations';
 export { default as InputError } from './components/InputError/InputError';
 export { default as Label } from './components/Label/Label';
 export { default as Link } from './components/Link/Link';
-export { default as Loading } from './components/Loading/Loading';
+export { default as Loading, LoadingSizes } from './components/Loading/Loading';
 export { default as Modal } from './components/Modal/Modal';
 export { default as MultiCheckbox } from './components/MultiCheckbox/MultiCheckbox';
 export { default as MultiSelection } from './components/MultiSelection/MultiSelection';
@@ -76,8 +76,12 @@ export { default as ToolTip } from './components/ToolTip/ToolTip';
 
 export { default as designTokens } from './tokens';
 export { CustomThemeProvider, ThemeVariants, themeContext } from './theme';
+export { getTextStyle } from './components/Text/getTextStyle';
 export { default as GlobalStyles } from './globalStyles';
 export { default as Widget, WidgetSizes } from './components/Widget/Widget';
 export { default as AttachmentWidget } from './components/Widget/AttachmentWidget';
 export { default as CallWidget } from './components/Widget/CallWidget';
 export { default as textParser } from './utils/parser';
+
+// types
+export type { TextStyle } from './components/Text/types';
