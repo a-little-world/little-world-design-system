@@ -1,15 +1,10 @@
 import React from 'react';
 import { Text as RNText, TextStyle as RNTextStyle } from 'react-native';
 
-import { TextTypes, getTextStyle, TextStyle as CoreTextStyle } from '@a-little-world/little-world-design-system';
+import { TextBaseProps, TextStyle as CoreTextStyle, TextTypes, getTextStyle } from '@a-little-world/little-world-design-system-core';
 
-type TextProps = {
-  bold?: boolean;
-  center?: boolean;
-  color?: string;
-  children: React.ReactNode;
+type TextProps = TextBaseProps & {
   style?: RNTextStyle;
-  type?: keyof typeof TextTypes;
 };
 
 const mapCoreStyleToRN = (style: CoreTextStyle): RNTextStyle => ({

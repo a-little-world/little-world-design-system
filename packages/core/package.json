@@ -1,18 +1,17 @@
 {
-  "name": "@a-little-world/little-world-design-system",
-  "version": "1.21.0",
-  "description": "Design system for Little World applications",
+  "name": "@a-little-world/little-world-design-system-core",
+  "version": "1.0.0",
+  "description": "Core design tokens and utilities for Little World design system",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "scripts": {
-    "test": "jest",
-    "test-watch": "jest --watch",
-    "storybook": "storybook dev -p 6006",
-    "build": "rimraf dist && npm run build:esm && npm run build:cjs",
+    "preprocess-icons": "node scripts/processIcons.js",
+    "build": "rimraf dist && npm run preprocess-icons && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc --outDir dist/esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -28,69 +27,16 @@
   },
   "homepage": "https://github.com/a-little-world/little-world-design-system#readme",
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.20.2",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-react": "^7.18.6",
-    "@babel/preset-typescript": "^7.18.6",
-    "@chromatic-com/storybook": "^1.5.0",
-    "@mdx-js/react": "^2.2.1",
-    "@storybook/addon-a11y": "^8.1.5",
-    "@storybook/addon-essentials": "^8.1.5",
-    "@storybook/addon-options": "^5.3.21",
-    "@storybook/addon-themes": "^8.1.5",
-    "@storybook/addon-webpack5-compiler-swc": "^1.0.3",
-    "@storybook/react": "^8.1.5",
-    "@storybook/react-webpack5": "^8.1.5",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^29.2.4",
     "@types/lodash": "^4.17.16",
-    "@types/mdx": "^2.0.3",
-    "@types/styled-components": "^5.1.26",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "jest": "^29.3.1",
-    "jest-environment-jsdom": "^29.3.1",
+    "@types/node": "^22.14.1",
+    "@types/react": "^18.2.0",
     "prettier": "^2.8.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "rimraf": "^6.0.1",
-    "storybook": "^8.1.5",
-    "ts-loader": "^9.4.2",
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "@radix-ui/react-accordion": "^1.1.2",
-    "@radix-ui/react-checkbox": "^1.0.3",
-    "@radix-ui/react-label": "^2.0.0",
-    "@radix-ui/react-navigation-menu": "^1.1.4",
-    "@radix-ui/react-popover": "1.0.7-rc.7",
-    "@radix-ui/react-progress": "^1.0.1",
-    "@radix-ui/react-radio-group": "^1.1.0",
-    "@radix-ui/react-select": "^1.2.2",
-    "@radix-ui/react-separator": "^1.0.3",
-    "@radix-ui/react-slider": "^1.1.2",
-    "@radix-ui/react-switch": "^1.1.0",
-    "@radix-ui/react-tooltip": "^1.0.6",
-    "@types/react": "^18.2.47",
     "csstype": "^3.1.2",
     "lodash": "^4.17.21",
-    "react-phone-input-2": "^2.15.1",
-    "react-router": "^7.5.0",
-    "storybook-addon-remix-react-router": "^4.0.1",
-    "styled-components": "^5.3.6"
-  },
-  "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-native": "^0.76.0"
-  },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "moduleNameMapper": {
-      "\\.svg": "<rootDir>/__mocks__/svg.js"
-    }
+    "svgson": "^5.3.1"
   }
 }

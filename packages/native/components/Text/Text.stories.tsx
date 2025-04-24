@@ -3,7 +3,7 @@ import React from "react";
 import { View } from "react-native";
 
 import Text from "./Text";
-import { TextTypes } from "@a-little-world/little-world-design-system";
+import { TextTypes } from "@a-little-world/little-world-design-system-core";
 
 const meta = {
   title: "Text",

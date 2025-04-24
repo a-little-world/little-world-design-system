@@ -1,4 +1,5 @@
 import { StyleSheet, Animated } from 'react-native';
+// Use standard styled-components (non-native) to avoid bundling issues
 import styled from 'styled-components';
 import { RNAnimatedValue, WebStyle, RNStyle } from './styledComponentsTypes';
 
@@ -16,7 +17,7 @@ import { RNAnimatedValue, WebStyle, RNStyle } from './styledComponentsTypes';
  */
 export const createGlobalStyle = (styles: any) => {
   // Create a component that applies the styles to its children
-  return styled.div`
+  return styled.View`
     ${styles}
   `;
 };
@@ -34,40 +35,138 @@ export const keyframes = (keyframeStyles: TemplateStringsArray | string) => {
     ? keyframeStyles 
     : keyframeStyles.join('');
   
-  // Extract from and to values
-  const fromMatch = keyframeString.match(/from\s*{([^}]*)}/);
-  const toMatch = keyframeString.match(/to\s*{([^}]*)}/);
+  // Extract keyframe selectors (from, to, percentages)
+  const keyframeSelectors: Record<string, Record<string, any>> = {};
   
-  const fromStyles = fromMatch ? parseStyles(fromMatch[1]) : {};
-  const toStyles = toMatch ? parseStyles(toMatch[1]) : {};
+  // Match all keyframe selectors and their content
+  const keyframeRegex = /([0-9]+%|from|to)\s*{([^}]*)}/g;
+  let match;
+  
+  while ((match = keyframeRegex.exec(keyframeString)) !== null) {
+    const selector = match[1];
+    const content = match[2];
+    keyframeSelectors[selector] = parseStyles(content);
+  }
+  
+  // Special handling for transform: rotate
+  const hasRotation = Object.values(keyframeSelectors).some(styles => 
+    styles.transform && styles.transform.includes('rotate')
+  );
   
   // Return a function that can be used in animation configurations
-  return () => ({
-    fromStyles,
-    toStyles,
-    createAnimation: (value: RNAnimatedValue, duration: number = 300) => {
-      return Animated.timing(value, {
-        toValue: 1,
-        duration,
-        useNativeDriver: true,
-      });
-    },
-    getAnimatedStyle: (value: RNAnimatedValue) => {
-      const animatedStyle: any = {};
-      
-      // Create interpolations for each property
-      Object.keys(toStyles).forEach(key => {
-        if (key in fromStyles) {
-          animatedStyle[key] = value.interpolate({
-            inputRange: [0, 1],
-            outputRange: [fromStyles[key], toStyles[key]],
-          });
-        }
-      });
-      
-      return animatedStyle;
+  return (animationConfig = {}) => {
+    // Convert from/to to 0%/100% for consistency
+    if (keyframeSelectors.from && !keyframeSelectors['0%']) {
+      keyframeSelectors['0%'] = keyframeSelectors.from;
     }
-  });
+    if (keyframeSelectors.to && !keyframeSelectors['100%']) {
+      keyframeSelectors['100%'] = keyframeSelectors.to;
+    }
+    
+    // Get ordered percentage points (0%, 25%, 50%, etc.)
+    const percentagePoints = Object.keys(keyframeSelectors)
+      .filter(key => key !== 'from' && key !== 'to')
+      .sort((a, b) => {
+        const percentA = parseInt(a);
+        const percentB = parseInt(b);
+        return percentA - percentB;
+      });
+    
+    // If we have rotation, we need special handling
+    if (hasRotation) {
+      return {
+        // Function to create a rotation animation
+        createAnimation: (animValue: Animated.Value, duration = 1000) => {
+          return Animated.timing(animValue, {
+            toValue: 1,
+            duration,
+            useNativeDriver: true,
+            ...animationConfig
+          });
+        },
+        
+        // Function to get the animated style for rotation
+        getAnimatedStyle: (animValue: Animated.Value) => {
+          // Extract rotation angles from transform strings
+          const extractRotation = (transformStr: string): number => {
+            const match = transformStr.match(/rotate\(([^)]+)deg\)/);
+            return match ? parseFloat(match[1]) : 0;
+          };
+          
+          // Build input and output ranges for interpolation
+          const inputRange: number[] = [];
+          const outputRange: string[] = [];
+          
+          percentagePoints.forEach(percent => {
+            const percentValue = parseInt(percent) / 100;
+            if (keyframeSelectors[percent]?.transform) {
+              inputRange.push(percentValue);
+              const rotation = extractRotation(keyframeSelectors[percent].transform);
+              outputRange.push(`${rotation}deg`);
+            }
+          });
+          
+          // If we don't have enough points, add defaults
+          if (inputRange.length < 2) {
+            inputRange.push(0, 1);
+            outputRange.push('0deg', '360deg');
+          }
+          
+          return {
+            transform: [{
+              rotate: animValue.interpolate({
+                inputRange,
+                outputRange,
+              })
+            }]
+          };
+        }
+      };
+    }
+    
+    // For non-rotation animations
+    return {
+      createAnimation: (animValue: Animated.Value, duration = 1000) => {
+        return Animated.timing(animValue, {
+          toValue: 1,
+          duration,
+          useNativeDriver: true,
+          ...animationConfig
+        });
+      },
+      
+      getAnimatedStyle: (animValue: Animated.Value) => {
+        const animatedStyle: any = {};
+        
+        // Handle each style property with interpolation
+        const styleProps = new Set<string>();
+        Object.values(keyframeSelectors).forEach(styles => {
+          Object.keys(styles).forEach(key => styleProps.add(key));
+        });
+        
+        styleProps.forEach(prop => {
+          const inputRange: number[] = [];
+          const outputRange: any[] = [];
+          
+          percentagePoints.forEach(percent => {
+            if (keyframeSelectors[percent] && prop in keyframeSelectors[percent]) {
+              inputRange.push(parseInt(percent) / 100);
+              outputRange.push(keyframeSelectors[percent][prop]);
+            }
+          });
+          
+          if (inputRange.length >= 2) {
+            animatedStyle[prop] = animValue.interpolate({
+              inputRange,
+              outputRange,
+            });
+          }
+        });
+        
+        return animatedStyle;
+      }
+    };
+  };
 };
 
 // Helper function to parse CSS styles
@@ -106,9 +205,8 @@ const convertValue = (value: string) => {
     return parseFloat(value);
   }
   
-  // Handle transform values
+  // Keep transform values as is for later processing
   if (value.includes('translate') || value.includes('rotate') || value.includes('scale')) {
-    // For simplicity, just return the value as is
     return value;
   }
   

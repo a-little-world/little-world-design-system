@@ -16,7 +16,8 @@
     "storybook:android": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --android"
   },
   "dependencies": {
-    "@a-little-world/little-world-design-system": "1.21.0",
+    "@a-little-world/little-world-design-system": "file:../core",
+    "@a-little-world/little-world-design-system-core": "file:../core",
     "@gorhom/bottom-sheet": "^5.1.1",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-community/datetimepicker": "8.2.0",

@@ -45,4 +45,4 @@ export const coreSpacing = {
   space100: getPixelValue(10),
   space125: getPixelValue(12.5),
   space150: getPixelValue(15),
-} as const;
+} as const; 
