@@ -55,7 +55,7 @@ export const ToastViewport = styled(RadixToast.Viewport)`
   max-width: 100vw;
   margin: 0;
   list-style: none;
-  z-index: 2147483647;
+  z-index: 1000;
   outline: none;
 `;
 
@@ -114,7 +114,8 @@ export const ToastContent = styled.div`
 `;
 
 export const ToastHeader = styled.div<{ $backgroundColor?: string }>`
-  padding: ${({ theme }) => `${theme.spacing.xxxsmall} ${theme.spacing.xxsmall}`} ;
+  padding: ${({ theme }) =>
+    `${theme.spacing.xxxsmall} ${theme.spacing.xxsmall}`};
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   display: flex;
   flex-direction: row;
