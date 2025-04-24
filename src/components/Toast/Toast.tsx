@@ -1,7 +1,7 @@
 import { Close } from '@radix-ui/react-toast';
 import React, { ReactNode } from 'react';
 
-import { ButtonSizes, ButtonVariations } from '../Button/Button';
+import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
 import { InfoIcon } from '../Icon';
 import {
   ToastAction,
@@ -22,12 +22,13 @@ export interface ToastProps {
   title?: string;
   description?: string;
   timestamp?: string;
-  actionNode?: ReactNode;
-  actionAltText?: string; // alternative way to achieve the action for screen reader users who cannot access the toast easily.
+  actionText?: string;
+  actionAltText?: string;
   duration?: number;
   onClose?: () => void;
   onDismiss?: () => void;
   onClick?: () => void;
+  onActionClick?: () => void;
 }
 
 const TOAST_DEFAULT_DURATION = 3000;
@@ -40,20 +41,30 @@ const Toast: React.FC<ToastProps> = ({
   title,
   description,
   timestamp,
-  actionNode,
+  actionText,
   actionAltText,
   duration = TOAST_DEFAULT_DURATION,
   onClose,
   onDismiss,
   onClick,
+  onActionClick,
 }: ToastProps) => {
-  if (!!actionNode !== !!actionAltText) {
-    throw new Error('The action node and altText must both be set or unset');
+  const actionWellDefined =
+    !!actionText === !!actionAltText && !!actionText === !!onActionClick;
+  if (!actionWellDefined) {
+    throw new Error(
+      'The action text, click event and alt text must all be set or unset',
+    );
   }
 
   function dismissToast(event: React.MouseEvent<HTMLButtonElement>) {
     event.stopPropagation(); // prevent toast onClick event from firing
     onDismiss?.();
+  }
+
+  function onActionClickInternal(event: React.MouseEvent<HTMLButtonElement>) {
+    event.stopPropagation();
+    onActionClick?.();
   }
 
   function onOpenChange(open: boolean): void {
@@ -102,13 +113,19 @@ const Toast: React.FC<ToastProps> = ({
         <ToastContent>
           {title && <ToastTitle className="ToastTitle">{title}</ToastTitle>}
           {description && <ToastDescription>{description}</ToastDescription>}
-          {actionNode && actionAltText && (
+          {actionText && actionAltText && onActionClick && (
             <ToastAction
               className="ToastAction"
               asChild
               altText={actionAltText}
             >
-              {actionNode}
+              <Button
+                variation={ButtonVariations.Basic}
+                size={ButtonSizes.Small}
+                onClick={onActionClickInternal}
+              >
+                {actionText}
+              </Button>
             </ToastAction>
           )}
         </ToastContent>

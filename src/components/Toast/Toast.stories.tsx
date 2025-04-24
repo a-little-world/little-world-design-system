@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button, { ButtonVariations } from '../Button/Button';
+import Button from '../Button/Button';
 import { Logo } from '../Icon';
 import Toast, { ToastProps } from './Toast';
 import { ToastProvider, ToastViewport } from './styles';
@@ -20,22 +20,15 @@ export const Default = args => {
     title: `This is the title`,
     description: 'This is the description',
     timestamp: new Date().toLocaleTimeString(),
-    actionNode: (
-      <Button
-        variation={ButtonVariations.Basic}
-        onClick={e => {
-          e.stopPropagation();
-          console.log('toast custom action');
-        }}
-      >
-        Action
-      </Button>
-    ),
-    actionAltText: 'Action',
+    actionText: 'Click me',
+    actionAltText: 'Click me',
     duration: 3000,
     onClose: () => console.log('toast onClose'),
     onDismiss: () => console.log('toast onDismiss'),
     onClick: () => console.log('toast onClick'),
+    onActionClick: () => {
+      console.log('toast onActionClick');
+    },
   };
 
   const showToast = () => {
