@@ -43,14 +43,14 @@ const swipeOut = keyframes`
 export const ToastProvider = styled(RadixToast.ToastProvider)``;
 
 export const ToastViewport = styled(RadixToast.Viewport)`
-  --viewport-padding: 25px;
+  --viewport-padding: ${({ theme }) => theme.spacing.medium};
   position: fixed;
   top: 0;
   right: 0;
   display: flex;
   flex-direction: column;
   padding: var(--viewport-padding);
-  gap: 10px;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
   width: 390px;
   max-width: 100vw;
   margin: 0;
@@ -61,7 +61,7 @@ export const ToastViewport = styled(RadixToast.Viewport)`
 
 export const ToastRoot = styled(RadixToast.Root)`
   position: relative;
-  --border-radius: 10px;
+  --border-radius: ${({ theme }) => theme.radius.xxsmall};
   background-color: ${({ theme }) => theme.color.surface.primary};
   border-radius: var(--border-radius);
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
@@ -93,7 +93,7 @@ export const ToastCloseButton = styled(Button)<{ $visible?: boolean }>`
   position: absolute;
   top: -8px;
   right: -8px;
-  border-radius: 50%;
+  border-radius: ${({ theme }) => theme.radius.half};
   background-color: ${({ theme }) => theme.color.surface.tertiary};
   width: 16px;
   height: 16px;
@@ -105,16 +105,16 @@ export const ToastCloseIcon = styled(CloseIcon)`
 `;
 
 export const ToastContent = styled.div`
-  padding: 15px;
+  padding: ${({ theme }) => theme.spacing.small};
   display: grid;
   grid-template-areas: 'headline headline' 'title action' 'description action';
   grid-template-columns: auto max-content;
-  column-gap: 15px;
+  column-gap: ${({ theme }) => theme.spacing.small};
   align-items: center;
 `;
 
 export const ToastHeader = styled.div<{ $backgroundColor?: string }>`
-  padding: 5px 10px 5px 10px;
+  padding: ${({ theme }) => `${theme.spacing.xxxsmall} ${theme.spacing.xxsmall}`} ;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   display: flex;
   flex-direction: row;
@@ -128,12 +128,12 @@ export const ToastHeadline = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: ${({ theme }) => theme.spacing.xxxsmall};
 `;
 
 export const ToastTitle = styled(RadixToast.ToastTitle)`
   grid-area: title;
-  margin-bottom: 5px;
+  margin-bottom: ${({ theme }) => theme.spacing.xxxsmall};
   font-weight: bold;
   color: ${({ theme }) => theme.color.text.primary};
 `;

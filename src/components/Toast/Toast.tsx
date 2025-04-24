@@ -1,4 +1,4 @@
-import * as RadixToast from '@radix-ui/react-toast';
+import { Close } from '@radix-ui/react-toast';
 import React, { ReactNode } from 'react';
 
 import { ButtonSizes, ButtonVariations } from '../Button/Button';
@@ -23,7 +23,7 @@ export interface ToastProps {
   description?: string;
   timestamp?: string;
   actionNode?: ReactNode;
-  actionAltText?: string;
+  actionAltText?: string; // alternative way to achieve the action for screen reader users who cannot access the toast easily.
   duration?: number;
   onClose?: () => void;
   onDismiss?: () => void;
@@ -71,7 +71,7 @@ const Toast: React.FC<ToastProps> = ({
         duration={duration}
         onClick={onClick}
       >
-        <RadixToast.Close asChild>
+        <Close asChild>
           <ToastCloseButton
             variation={ButtonVariations.Icon}
             size={ButtonSizes.Small}
@@ -84,7 +84,7 @@ const Toast: React.FC<ToastProps> = ({
               height={TOAST_ICON_SIZE}
             ></ToastCloseIcon>
           </ToastCloseButton>
-        </RadixToast.Close>
+        </Close>
         <ToastHeader>
           <ToastHeadline>
             {icon ?? (
