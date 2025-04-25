@@ -1,8 +1,8 @@
 import React from 'react';
-import tokens from '../../tokens';
+
 import { Icon } from './Icon';
 import * as allIcons from './index';
-import { Gradients } from '@a-little-world/little-world-design-system-core';
+import { tokens, Gradients } from '@a-little-world/little-world-design-system-core';
 ;
 
 export default {

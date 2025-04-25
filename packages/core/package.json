@@ -6,8 +6,8 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "scripts": {
-    "preprocess-icons": "node scripts/processIcons.js",
-    "build": "rimraf dist && npm run preprocess-icons && npm run build:esm && npm run build:cjs",
+    "preprocess-svgs": "node scripts/processSvgs.js",
+    "build": "rimraf dist && npm run preprocess-svgs && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc --outDir dist/esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "watch": "tsc --watch",

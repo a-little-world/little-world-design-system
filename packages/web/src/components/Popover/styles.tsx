@@ -3,23 +3,22 @@ import {
   PopoverClose,
   PopoverContent,
   Root,
-} from '@radix-ui/react-popover';
-import styled, { css } from 'styled-components';
+} from "@radix-ui/react-popover";
+import styled, { css } from "styled-components";
 
-import tokens from '../../tokens';
 import {
   slideDownAndFade,
   slideLeftAndFade,
   slideRightAndFade,
   slideUpAndFade,
-} from '../../utils/animations';
-import { PopoverSizes } from './Popover';
+} from "../../utils/animations";
+import { PopoverSizes } from "./Popover";
 
 export const PopoverRoot = styled(Root)``;
 
 export const POPOVER_CONTENT_CSS = css`
   border-radius: 4px;
-  padding: ${tokens.spacing.small};
+  padding: ${({ theme }) => theme.spacing.small};
   font-size: 15px;
   line-height: 1.5;
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
@@ -31,16 +30,16 @@ export const POPOVER_CONTENT_CSS = css`
   width: max-content;
   max-width: 360px;
 
-  &[data-state='delayed-open'][data-side='top'] {
+  &[data-state="delayed-open"][data-side="top"] {
     animation-name: ${slideDownAndFade};
   }
-  &[data-state='delayed-open'][data-side='right'] {
+  &[data-state="delayed-open"][data-side="right"] {
     animation-name: ${slideLeftAndFade};
   }
-  &[data-state='delayed-open'][data-side='bottom'] {
+  &[data-state="delayed-open"][data-side="bottom"] {
     animation-name: ${slideUpAndFade};
   }
-  &[data-state='delayed-open'][data-side='left'] {
+  &[data-state="delayed-open"][data-side="left"] {
     animation-name: ${slideRightAndFade};
   }
 `;
@@ -62,10 +61,10 @@ export const StyledPopoverContent = styled(PopoverContent)<{
       width: ${$width};
     `}
 
-  ${({ $extraPaddingTop }) =>
+  ${({ $extraPaddingTop, theme }) =>
     $extraPaddingTop &&
     `
-    padding-top: ${tokens.spacing.medium};
+    padding-top: ${theme.spacing.medium};
   `}
 
   ${({ $asToolTip, theme }) => css`
@@ -73,20 +72,22 @@ export const StyledPopoverContent = styled(PopoverContent)<{
       ? theme.color.surface.bold
       : theme.color.surface.primary};
     color: ${$asToolTip ? theme.color.text.reversed : theme.color.text.primary};
-    padding-right: ${$asToolTip ? tokens.spacing.medium : tokens.spacing.small};
+    padding-right: ${$asToolTip
+      ? theme.spacing.medium
+      : theme.spacing.small};
   `}
     
 
   &[data-state='open'][data-side='top'] {
     animation-name: ${slideDownAndFade};
   }
-  &[data-state='open'][data-side='right'] {
+  &[data-state="open"][data-side="right"] {
     animation-name: ${slideLeftAndFade};
   }
-  &[data-state='open'][data-side='bottom'] {
+  &[data-state="open"][data-side="bottom"] {
     animation-name: ${slideUpAndFade};
   }
-  &[data-state='open'][data-side='left'] {
+  &[data-state="open"][data-side="left"] {
     animation-name: ${slideRightAndFade};
   }
 `;
@@ -95,8 +96,8 @@ export const StyledPopoverClose = styled(PopoverClose)<{
   $asToolTip?: boolean;
 }>`
   position: absolute;
-  top: ${tokens.spacing.xsmall};
-  right: ${tokens.spacing.xsmall};
+  top: ${({ theme }) => theme.spacing.xsmall};
+  right: ${({ theme }) => theme.spacing.xsmall};
   width: 12px !important;
   height: 12px !important;
   color: ${({ $asToolTip, theme }) =>

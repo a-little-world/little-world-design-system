@@ -1,17 +1,22 @@
-import type { Preview } from "@storybook/react";
+import React from 'react';
+import { View } from 'react-native';
+import { CustomThemeProvider } from '../src/theme';
 
-const preview: Preview = {
-  parameters: {
-    // actions: { argTypesRegex: "^on[A-Z].*" },
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/,
-      },
+export const decorators = [
+  (Story: React.ComponentType) => (
+    <CustomThemeProvider>
+      <View style={{ flex: 1, padding: 16 }}>
+        <Story />
+      </View>
+    </CustomThemeProvider>
+  ),
+];
+
+export const parameters = {
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
     },
   },
-
-  tags: ["autodocs"]
 };
-
-export default preview;

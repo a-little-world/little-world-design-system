@@ -9,12 +9,7 @@ import React, {
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import type { ThemeProps } from 'styled-components';
 
-import tokens from '../tokens';
-
-export enum ThemeVariants {
-  light = 'light',
-  dark = 'dark',
-}
+import { ThemeVariants, ThemeContextType, defaultThemeVariant, tokens } from '@a-little-world/little-world-design-system-core';
 
 export const lightTheme: DefaultTheme = {
   ...tokens,
@@ -31,25 +26,25 @@ export const defaultTheme = lightTheme;
 export const themes = {
   light: lightTheme,
   dark: darkTheme,
-};
+} as const;
 
 export interface ThemeProviderProps extends Partial<ThemeProps<DefaultTheme>> {
   children: ReactNode;
   defaultMode?: ThemeVariants;
 }
 
-export const themeContext = createContext({
+export const themeContext = createContext<ThemeContextType>({
   toggleMode: () => {},
-  currentMode: ThemeVariants.light,
+  currentMode: defaultThemeVariant,
 });
 
 const { Provider } = themeContext;
 
 export const CustomThemeProvider = ({
   children,
-  defaultMode = ThemeVariants.light,
+  defaultMode = defaultThemeVariant,
 }: ThemeProviderProps) => {
-  const [currentMode, setCurrentMode] = useState(defaultMode);
+  const [currentMode, setCurrentMode] = useState<ThemeVariants>(defaultMode);
 
   useEffect(() => {
     // disable dark mode until palette ready
@@ -65,7 +60,7 @@ export const CustomThemeProvider = ({
   }, []);
 
   const toggleMode = useCallback(() => {
-    setCurrentMode(currentMode =>
+    setCurrentMode((currentMode: ThemeVariants) =>
       currentMode === ThemeVariants.light
         ? ThemeVariants.dark
         : ThemeVariants.light,

@@ -1,7 +1,6 @@
 import * as RadixRadioGroup from '@radix-ui/react-radio-group';
 import React from 'react';
 
-import tokens from '../../tokens';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import {

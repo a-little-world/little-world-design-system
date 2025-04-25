@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
 import Checkbox from '../Checkbox/Checkbox';
 import Text from '../Text/Text';
 
@@ -15,14 +14,14 @@ export const Grid = styled.div<{
 }>`
   display: grid;
   width: 100%;
-  row-gap: ${tokens.spacing.xsmall};
-  column-gap: ${tokens.spacing.xxsmall};
+  row-gap: ${({ theme }) => theme.spacing.xsmall};
+  column-gap: ${({ theme }) => theme.spacing.xxsmall};
   grid-template-columns: ${({ $columns }) =>
     `repeat(${$columns}, minmax(max-content, 1fr))`};
   grid-template-rows: ${({ $rows }) => `repeat(${$rows}, 1fr)`};
   grid-auto-rows: 27.5px;
-  margin-bottom: ${tokens.spacing.xxsmall};
-  padding-bottom: ${tokens.spacing.xxsmall};
+  margin-bottom: ${({ theme }) => theme.spacing.xxsmall};
+  padding-bottom: ${({ theme }) => theme.spacing.xxsmall};
   overflow-x: scroll;
   background: ${({ theme }) => theme.color.surface.primary};
   color: ${({ theme }) => theme.color.text.primary};
@@ -39,7 +38,7 @@ export const ColumnHeading = styled(Text)<{ index: number }>`
   grid-row-end: 1;
   text-align: center;
   max-width: 100%;
-  padding: ${tokens.spacing.xxxsmall};
+  padding: ${({ theme }) => theme.spacing.xxxsmall};
   background: ${({ theme }) => theme.color.surface.primary};
   height: 100%;
   display: flex;

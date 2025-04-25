@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Text from '../components/Text/Text';
-import tokens from './index';
+import { tokens } from '@a-little-world/little-world-design-system-core';
 
 const Container = styled.div`
   display: flex;

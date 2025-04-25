@@ -18,7 +18,6 @@ export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid'
 export { default as Dropdown } from './components/Dropdown/Dropdown';
 export { default as MultiDropdown } from './components/MultiDropdown/MultiDropdown';
 export * from './components/Icon';
-export { Gradients } from './components/Icon/IconGradient';
 export * from './components/Illustrations';
 export { default as InputError } from './components/InputError/InputError';
 export { default as Label } from './components/Label/Label';
@@ -74,8 +73,7 @@ export {
 } from './components/TextInput/TextInput';
 export { default as ToolTip } from './components/ToolTip/ToolTip';
 
-export { default as designTokens } from './tokens';
-export { CustomThemeProvider, ThemeVariants, themeContext } from './theme';
+export { CustomThemeProvider, themeContext } from './theme';
 export { default as GlobalStyles } from './globalStyles';
 export { default as Widget, WidgetSizes } from './components/Widget/Widget';
 export { default as AttachmentWidget } from './components/Widget/AttachmentWidget';
@@ -84,3 +82,6 @@ export { default as textParser } from './utils/parser';
 
 // types
 export type { TextStyle } from './components/Text/types';
+
+// export core elements
+export { ThemeVariants, Gradients, tokens } from '@a-little-world/little-world-design-system-core'

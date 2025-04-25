@@ -1,15 +1,14 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import tokens from '../../tokens';
-import Button from '../Button/Button';
-import { DROPDOWN_MAX_WIDTH } from '../Dropdown/styles';
+import Button from "../Button/Button";
+import { DROPDOWN_MAX_WIDTH } from "../Dropdown/styles";
 
 export const MultiDropdownWrapper = styled.div``;
 
 export const AddMore = styled.div`
   display: flex;
   align-items: center;
-  gap: ${tokens.spacing.xxsmall};
+  gap: ${({ theme }) => theme.spacing.xxsmall};
 `;
 
 export const AddMoreButton = styled(Button)`
@@ -22,17 +21,19 @@ export const AddMoreButton = styled(Button)`
 
 export const Segment = styled.section<{ $locked?: boolean }>`
   display: grid;
-  max-width: calc(${DROPDOWN_MAX_WIDTH} * 2 + ${tokens.spacing.small});
-  grid-template-columns: ${({ $locked }) =>
+  max-width: calc(
+    ${DROPDOWN_MAX_WIDTH} * 2 + ${({ theme }) => theme.spacing.small}
+  );
+  grid-template-columns: ${({ $locked, theme }) =>
     $locked
-      ? 'repeat(2, minmax(0, 1fr))'
+      ? "repeat(2, minmax(0, 1fr))"
       : `repeat(2, minmax(0, 1fr)) minmax(
-      ${tokens.spacing.small},
+      ${theme.spacing.small},
       auto
     )`};
   align-items: start;
-  gap: ${tokens.spacing.small};
-  margin-bottom: ${tokens.spacing.xxsmall};
+  gap: ${({ theme }) => theme.spacing.small};
+  margin-bottom: ${({ theme }) => theme.spacing.xxsmall};
 `;
 
 export const DeleteButton = styled(Button)`

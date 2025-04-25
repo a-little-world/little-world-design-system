@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 import Text from '../Text/Text';
 import { TextAreaSize } from './TextArea';
@@ -24,20 +23,20 @@ export const Area = styled.textarea<{
   font-size: 1rem;
   height: ${({ $size }) => $size};
   border: 1px solid ${({ theme }) => theme.color.border.moderate};
-  border-radius: ${({ $size }) =>
+  border-radius: ${({ $size, theme }) =>
     $size === TextAreaSize.Xsmall
-      ? tokens.radius.large
-      : tokens.radius.xxsmall};
+      ? theme.radius.large
+      : theme.radius.xxsmall};
   background: ${({ theme }) => theme.color.surface.primary};
   color: ${({ theme }) => theme.color.text.primary};
-  padding: ${({ $size }) =>
+  padding: ${({ $size, theme }) =>
     $size === TextAreaSize.Small
-      ? tokens.spacing.xxsmall
+      ? theme.spacing.xxsmall
       : $size === TextAreaSize.Xsmall
       ? '11px 14px'
-      : tokens.spacing.small};
+      : theme.spacing.small};
   box-sizing: border-box;
-  margin-bottom: ${tokens.spacing.xxxxsmall};
+  margin-bottom: ${({ theme }) => theme.spacing.xxxxsmall};
   resize: none;
 
   ${({ $expandable, $size }) =>
@@ -53,5 +52,5 @@ export const Area = styled.textarea<{
 export const Counter = styled(Text)`
   position: absolute;
   bottom: 0px;
-  right: ${tokens.spacing.xxxxsmall};
+  right: ${({ theme }) => theme.spacing.xxxxsmall};
 `;

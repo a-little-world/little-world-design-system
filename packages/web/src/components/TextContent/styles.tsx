@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
 import Text from '../Text/Text';
 
 export const ContentWrapper = styled.div<{ $marginBottom?: string }>`
@@ -8,7 +7,7 @@ export const ContentWrapper = styled.div<{ $marginBottom?: string }>`
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: ${tokens.spacing.xsmall};
+  gap: ${({ theme }) => theme.spacing.xsmall};
   ${({ $marginBottom }) =>
     $marginBottom &&
     css`
@@ -17,13 +16,13 @@ export const ContentWrapper = styled.div<{ $marginBottom?: string }>`
 `;
 
 export const List = styled.ul<{ ordered?: boolean }>`
-  padding-inline-start: ${tokens.spacing.small};
+  padding-inline-start: ${({ theme }) => theme.spacing.small};
   margin-block-start: 0;
-  margin-block-end: ${tokens.spacing.xxsmall};
+  margin-block-end: ${({ theme }) => theme.spacing.xxsmall};
   list-style: ${({ ordered }) => (ordered ? 'decimal' : 'disc')};
 
   > li:not(:last-child) {
-    margin-bottom: ${tokens.spacing.xxsmall};
+    margin-bottom: ${({ theme }) => theme.spacing.xxsmall};
   }
 `;
 

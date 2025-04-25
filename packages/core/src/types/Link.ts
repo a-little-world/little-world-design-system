@@ -1,14 +1,17 @@
 import { ReactNode } from 'react';
 import { ButtonAppearance, ButtonSizes } from './Button';
+import { TextTypes } from './Text';
 
 export interface LinkBaseProps {
   active?: boolean;
   bold?: boolean;
-  href?: string;
-  onClick?: () => void;
-  to?: string;
   buttonAppearance?: keyof typeof ButtonAppearance;
   buttonSize?: keyof typeof ButtonSizes;
-  textDecoration?: boolean;
   children: ReactNode;
+  href?: string;
+  onClick?: () => void;
+  state?: any;
+  textDecoration?: boolean;
+  textType?: TextTypes;
+  to?: string;
 } 

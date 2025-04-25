@@ -44,6 +44,22 @@ export type IconPathData = {
   clipRule?: string;
 };
 
+export type IllustrationProps = {
+  label: string;
+  labelTop?: string;
+  labelVisible?: boolean;
+  children: any;
+  labelId: string;
+};
+
+export type SvgFactoryOptions = {
+  name: string;
+  svgData: ParsedSvg;
+  labelText?: string;
+  gradient?: GradientTypes;
+};
+
+
 export interface SvgTransformOptions {
   className?: string;
   color?: string;
@@ -59,8 +75,13 @@ export interface SvgTransformOptions {
 
 export interface ParsedSvg {
   viewBox: string;
-  paths: Array<{
-    d: string;
-    [key: string]: any;
-  }>;
+  elements: Array<SvgElement>;
+}
+
+export interface SvgElement {
+  type: string;
+  attributes: {
+    [key: string]: string | number | undefined;
+  };
+  children: SvgElement[];
 }

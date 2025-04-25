@@ -1,30 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
-import tokens from '../tokens';
 
 const Wrapper = styled.div`
   display: flex;
-  gap: ${tokens.spacing.xxsmall};
-  margin: ${tokens.spacing.medium}; 0 ${tokens.spacing.xsmall}; 0;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
+  margin: ${({ theme }) => theme.spacing.medium}; 0 ${({ theme }) => theme.spacing.xsmall}; 0;
 `;
 
 const ReactStatus = styled.div`
   border-radius: 4px;
-  padding: ${tokens.spacing.xxsmall} ${tokens.spacing.xsmall};
+  padding: ${({ theme }) => theme.spacing.xxsmall} ${({ theme }) => theme.spacing.xsmall};
   font-family: monospace;
   background: #20232a;
   color: #61dafb;
   display: flex;
-  gap: ${tokens.spacing.xxsmall};
+  gap: ${({ theme }) => theme.spacing.xxsmall};
   align-items: center;
   font-size: 1rem;
 `;
 
 const FigmaStatus = styled.a`
   border-radius: 4px;
-  padding: ${tokens.spacing.xxsmall} ${tokens.spacing.xsmall};
+  padding: ${({ theme }) => theme.spacing.xxsmall} ${({ theme }) => theme.spacing.xsmall};
   display: flex;
-  gap: ${tokens.spacing.xsmall};
+  gap: ${({ theme }) => theme.spacing.xsmall};
   align-items: center;
   background: #000;
   text-decoration: none;

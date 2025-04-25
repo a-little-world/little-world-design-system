@@ -1,10 +1,9 @@
 import React from 'react';
 
-import { coreColors } from '../../../tokens/';
 import { Icon, IconSvgProps } from '../Icon';
 import { getDefaultIconProps } from '../getDefaultIconProps';
 import { createReactSvg } from '../../../utils/createReactSvg';
-import { exclamationIcon } from '@a-little-world/little-world-design-system-core';
+import { exclamationIcon, coreColors } from '@a-little-world/little-world-design-system-core';
 
 const LABEL_ID = 'ExclamationIcon';
 

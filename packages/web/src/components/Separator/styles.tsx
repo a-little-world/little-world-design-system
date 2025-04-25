@@ -1,8 +1,6 @@
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider';
 import styled from 'styled-components';
 
-import tokens from '../../tokens';
-
 export const SliderWrapper = styled.div``;
 
 export const SliderRoot = styled(Root)`
@@ -33,8 +31,8 @@ export const SliderRange = styled(Range)`
 
 export const SliderThumb = styled(Thumb)`
   display: block;
-  width: ${tokens.spacing.small};
-  height: ${tokens.spacing.small};
+  width: ${({ theme }) => theme.spacing.small};
+  height: ${({ theme }) => theme.spacing.small};
   background-color: ${({ theme }) => theme.color.surface.primary};
   border-radius: 10px;
   border: 1px solid ${props => props.theme.color.border.moderate};

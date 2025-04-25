@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
 import { ValueOf } from '../../utils/types';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
 

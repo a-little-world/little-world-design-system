@@ -1,7 +1,15 @@
 export declare const questionIcon: {
   viewBox: string;
-  paths: {
-    d: string;
-    [key: string]: string;
+  elements: {
+    type: string;
+    attributes: {
+      [key: string]: string;
+    };
+    children: {
+      type: string;
+      attributes: {
+        [key: string]: string;
+      };
+    }[];
   }[];
 };

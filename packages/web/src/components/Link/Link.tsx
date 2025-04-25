@@ -1,22 +1,10 @@
 import React, { forwardRef } from 'react';
 import { LinkProps as RouterLinkProps } from 'react-router';
 
-import { ButtonAppearance, ButtonSizes } from '../Button/Button';
-import { TextTypes } from '@a-little-world/little-world-design-system-core';
+import { LinkBaseProps, TextTypes } from '@a-little-world/little-world-design-system-core';
 import { Anchor, AnchorText, RouterLink } from './styles';
 
-export interface LinkProps extends Omit<RouterLinkProps, 'to'> {
-  active?: boolean;
-  bold?: boolean;
-  href?: string;
-  onClick?: () => void;
-  to?: string;
-  textType?: keyof typeof TextTypes;
-  buttonAppearance?: keyof typeof ButtonAppearance;
-  buttonSize?: keyof typeof ButtonSizes;
-  state?: any;
-  textDecoration?: boolean;
-}
+export type LinkProps = Omit<RouterLinkProps, 'to'> & LinkBaseProps;
 
 const Variants = {
   href: Anchor,

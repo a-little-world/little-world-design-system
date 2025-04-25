@@ -2,7 +2,6 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
 import Button from '../Button/Button';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 import { InputHeight } from './TextInput';
@@ -28,7 +27,7 @@ export const INPUT_CSS = css<{ $height?: string }>`
   padding: ${({ theme, $height }) =>
     $height === InputHeight.Small ? '5px 8px' : theme.spacing.xxsmall};
 
-  margin-bottom: ${tokens.spacing.xxxxsmall};
+  margin-bottom: ${({ theme }) => theme.spacing.xxxxsmall};
   font-size: 1rem;
   height: unset;
   line-height: 1.25;
@@ -106,6 +105,6 @@ export const TelephoneInput = styled(PhoneInput)<{
 
 export const ShowPasswordToggle = styled(Button)`
   position: absolute;
-  right: ${tokens.spacing.xxsmall};
-  top: ${tokens.spacing.xxsmall};
+  right: ${({ theme }) => theme.spacing.xxsmall};
+  top: ${({ theme }) => theme.spacing.xxsmall};
 `;

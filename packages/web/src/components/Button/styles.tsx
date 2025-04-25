@@ -1,20 +1,19 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-import { 
+import {
   ButtonAppearance,
-  ButtonSizes, 
-  ButtonVariations 
-} from '@a-little-world/little-world-design-system-core';
-import tokens from '../../tokens';
-import { LINK_HOVER_CSS } from '../Link/styles';
+  ButtonSizes,
+  ButtonVariations,
+} from "@a-little-world/little-world-design-system-core";
+import { LINK_HOVER_CSS } from "../Link/styles";
 
 export const OPTION_BUTTON_CSS = css<{
   $appearance?: ButtonAppearance;
   $backgroundColor?: string;
   $color?: string;
 }>`
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   background: ${({ $backgroundColor, theme }) =>
     $backgroundColor || theme.color.surface.tertiary};
@@ -26,8 +25,8 @@ export const OPTION_BUTTON_CSS = css<{
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: ${tokens.spacing.xsmall};
-  gap: ${tokens.spacing.xxxsmall};
+  padding: ${({ theme }) => theme.spacing.xsmall};
+  gap: ${({ theme }) => theme.spacing.xxxsmall};
   max-width: 144px;
   align-items: center;
   justify-content: center;
@@ -52,10 +51,10 @@ export const OPTION_BUTTON_CSS = css<{
 const StandardButtonCss = css<{ $size?: string }>`
   font-weight: 700;
   border-radius: 90px;
-  padding: ${tokens.spacing.xsmall} ${tokens.spacing.small};
+  padding: ${({ theme }) => `${theme.spacing.xsmall} ${theme.spacing.small}`};
   height: 49px;
   max-width: 480px;
-  gap: ${tokens.spacing.xxxxsmall};
+  gap: ${({ theme }) => theme.spacing.xxxxsmall};
 
   ${({ $size }) => {
     if ($size === ButtonSizes.Small || !$size) {
@@ -126,8 +125,8 @@ export const StyledButton = styled.button<{
 }>`
   cursor: pointer;
   position: relative;
-  color: ${({ $color }) => $color || 'currentColor'};
-  font-family: 'Signika Negative';
+  color: ${({ $color }) => $color || "currentColor"};
+  font-family: "Signika Negative";
   font-size: 1rem;
   display: flex;
   justify-content: center;
@@ -196,8 +195,8 @@ export const StyledButton = styled.button<{
 
     if ($variation === ButtonVariations.Circle)
       return css`
-        border: 1px solid ${$borderColor || $backgroundColor || 'currentColor'};
-        background: ${$backgroundColor || 'transparent'};
+        border: 1px solid ${$borderColor || $backgroundColor || "currentColor"};
+        background: ${$backgroundColor || "transparent"};
         border-radius: 50%;
         padding: 0;
         transition: opacity 0.5s ease;
@@ -235,7 +234,7 @@ export const StyledButton = styled.button<{
     }
     if ($variation === ButtonVariations.Icon) {
       return css`
-        background: ${$backgroundColor || 'transparent'};
+        background: ${$backgroundColor || "transparent"};
         width: auto;
         height: fit-content;
         padding: 0;
@@ -259,8 +258,8 @@ export const StyledButton = styled.button<{
         border-radius: 0px;
         height: auto;
         width: auto;
-        gap: ${tokens.spacing.xxxsmall};
-        padding: ${tokens.spacing.xxxxsmall} 0;
+        gap: ${({ theme }) => theme.spacing.xxxsmall};
+        padding: ${({ theme }) => theme.spacing.xxxxsmall} 0;
         transition: all 0.3s ease-in-out;
         background: transparent;
 

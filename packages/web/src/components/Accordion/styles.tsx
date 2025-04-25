@@ -1,7 +1,6 @@
 import * as Accordion from '@radix-ui/react-accordion';
 import styled, { FlattenInterpolation, ThemeProps } from 'styled-components';
 
-import tokens from '../../tokens';
 import { ChevronDownIcon } from '../Icon';
 
 export const AccordionRoot = styled(Accordion.Root)`
@@ -19,7 +18,7 @@ export const AccordionItem = styled(Accordion.Item)`
   margin: 0;
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
-  padding: ${tokens.spacing.xxsmall} ${tokens.spacing.small};
+  padding: ${({ theme }) => theme.spacing.xxsmall} ${({ theme }) => theme.spacing.small};
   padding-bottom: 0px;
 
   &:last-child {
@@ -39,8 +38,8 @@ export const AccordionContent = styled(Accordion.Content)<{
   width: 100%;
   background: ${({ theme }) => theme.color.surface.tertiary};
   border-radius: 10px;
-  padding: ${tokens.spacing.small};
-  margin-bottom: ${tokens.spacing.small};
+  padding: ${({ theme }) => theme.spacing.small};
+  margin-bottom: ${({ theme }) => theme.spacing.small};
   line-height: 1.5;
 
   ${({ css }) => css ?? ''};
@@ -51,9 +50,9 @@ export const AccordionTrigger = styled(Accordion.Trigger)`
   align-items: flex-start;
   justify-content: space-between;
   background: none;
-  padding: ${tokens.spacing.xxsmall} 0;
-  padding-bottom: ${tokens.spacing.small};
-  gap: ${tokens.spacing.small};
+  padding: ${({ theme }) => theme.spacing.xxsmall} 0;
+  padding-bottom: ${({ theme }) => theme.spacing.small};
+  gap: ${({ theme }) => theme.spacing.small};
   width: 100%;
   border: none;
   text-align: left;

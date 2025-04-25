@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 
 export const MultiSelectionWrapper = styled.div`
@@ -14,15 +13,15 @@ export const Options = styled.div<{ $hasError: boolean }>`
   align-items: center;
   text-align: center;
   flex-wrap: wrap;
-  gap: ${tokens.spacing.xxsmall};
-  padding: ${tokens.spacing.xxsmall};
-  margin-bottom: ${tokens.spacing.xxsmall};
+  gap: ${({theme}) => theme.spacing.xxsmall};
+  padding: ${({theme}) => theme.spacing.xxsmall};
+  margin-bottom: ${({theme}) => theme.spacing.xxsmall};
   white-space: pre-line;
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
 
   ${({ $hasError }) => $hasError && INPUT_ERROR_CSS} @media
-    (min-width: ${tokens.breakpoints.small}) {
-    padding: ${tokens.spacing.small};
+    (min-width: ${({theme}) => theme.breakpoints.small}) {
+    padding: ${({theme}) => theme.spacing.small};
   }
 `;
 

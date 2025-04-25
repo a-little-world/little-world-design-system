@@ -1,14 +1,7 @@
 import React, { SVGProps } from 'react';
 
 import { ImageLabel } from '../Icon/Icon';
-
-type IllustrationProps = {
-  label: string;
-  labelTop?: string;
-  labelVisible?: boolean;
-  children: any;
-  labelId: string;
-};
+import { IllustrationProps } from '@a-little-world/little-world-design-system-core';
 
 export type SvgProps = SVGProps<SVGElement>;
 

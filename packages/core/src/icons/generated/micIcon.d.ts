@@ -1,7 +1,15 @@
 export declare const micIcon: {
   viewBox: string;
-  paths: {
-    d: string;
-    [key: string]: string;
+  elements: {
+    type: string;
+    attributes: {
+      [key: string]: string;
+    };
+    children: {
+      type: string;
+      attributes: {
+        [key: string]: string;
+      };
+    }[];
   }[];
 };

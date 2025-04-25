@@ -2,7 +2,6 @@ import * as Progress from '@radix-ui/react-progress';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import tokens from '../../tokens';
 import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
 
@@ -30,7 +29,7 @@ const ProgressBarWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: ${tokens.spacing.small};
+  gap: ${({ theme }) => theme.spacing.small};
   font-family: 'Work Sans';
 `;
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
 import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
 
@@ -26,7 +25,7 @@ const ErrorText = styled(Text)<{
   visibility: hidden;
   opacity: 0;
   transition: visibility 1s, opacity 1s;
-  min-height: ${tokens.spacing.small};
+  min-height: ${({ theme }) => theme.spacing.small};
   padding-left: 1px;
   text-align: ${({ $textAlign }) => $textAlign};
 

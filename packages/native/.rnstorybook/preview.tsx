@@ -1,8 +1,20 @@
+import React from 'react';
+import { View } from 'react-native';
 import { withBackgrounds } from "@storybook/addon-ondevice-backgrounds";
 import type { Preview } from "@storybook/react";
+import { CustomThemeProvider } from '../src/theme';
 
 const preview: Preview = {
-  decorators: [withBackgrounds],
+  decorators: [
+    (Story: React.ComponentType) => (
+      <CustomThemeProvider>
+        <View style={{ flex: 1, padding: 16 }}>
+          <Story />
+        </View>
+      </CustomThemeProvider>
+    ),
+    withBackgrounds,
+  ],
 
   parameters: {
     backgrounds: {

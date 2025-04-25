@@ -1,7 +1,6 @@
 import * as Select from '@radix-ui/react-select';
 import styled from 'styled-components';
 
-import tokens from '../../tokens';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 import { BODY_5_CSS } from '../Text/styles';
 import { InputHeight } from '../TextInput/TextInput';
@@ -29,13 +28,13 @@ export const SelectTrigger = styled(Select.Trigger)<{
       : `${theme.spacing.xxsmall} ${theme.spacing.xsmall}`};
   line-height: 1.25;
   height: ${({ $height }) => ($height === InputHeight.Small ? '34px' : '40px')};
-  gap: ${tokens.spacing.xsmall};
+  gap: ${({ theme }) => theme.spacing.xsmall};
   background-color: ${({ theme }) => theme.color.surface.primary};
   border-radius: 5px;
   border: 2px solid ${({ theme }) => theme.color.border.subtle};
   width: 100%;
   color: ${({ theme }) => theme.color.text.secondary};
-  margin-bottom: ${tokens.spacing.xxxxsmall};
+  margin-bottom: ${({ theme }) => theme.spacing.xxxxsmall};
 
   > span:first-child,
   > span:first-child p {
@@ -82,7 +81,7 @@ export const SelectContent = styled(Select.Content)`
 `;
 
 export const SelectViewport = styled(Select.Viewport)`
-  padding: ${tokens.spacing.xxsmall} ${tokens.spacing.xxxsmall};
+  padding: ${({ theme }) => theme.spacing.xxsmall} ${({ theme }) => theme.spacing.xxxsmall};
   max-height: 200px;
   overflow: scroll;
 `;
@@ -98,7 +97,7 @@ export const SelectItem = styled(Select.Item)`
   display: flex;
   align-items: center;
   height: 25px;
-  padding: 0 ${tokens.spacing.large} 0 ${tokens.spacing.medium};
+  padding: 0 ${({ theme }) => theme.spacing.large} 0 ${({ theme }) => theme.spacing.medium};
   position: relative;
   user-select: none;
 

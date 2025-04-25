@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import tokens from '../../tokens';
+import { tokens } from '@a-little-world/little-world-design-system-core'
 import { InfoIcon, PhoneIcon } from '../Icon';
 import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';

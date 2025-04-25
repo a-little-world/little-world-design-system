@@ -1,7 +1,6 @@
 import { isEmpty } from 'lodash';
 import React, { useEffect, useState } from 'react';
 
-import tokens from '../../tokens';
 import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
 import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
 import { PlusIcon, TrashIcon } from '../Icon';
@@ -14,6 +13,7 @@ import {
   MultiDropdownWrapper,
   Segment,
 } from './styles';
+import { useTheme } from 'styled-components';
 
 const DELETE_SEGMENT = 'delete segment';
 
@@ -95,6 +95,8 @@ const MultiDropdown: React.FC<Props> = ({
     setDropdownValues(firstDropdown, secondDropdown),
   );
 
+  const theme = useTheme();
+
   useEffect(() => {
     setValues(setDropdownValues(firstDropdown, secondDropdown));
     setSegments(
@@ -150,7 +152,7 @@ const MultiDropdown: React.FC<Props> = ({
         <Label
           bold
           htmlFor={firstDropdown.label}
-          marginBottom={tokens.spacing.xsmall}
+          marginBottom={theme.spacing.xsmall}
           toolTipText={labelTooltip}
         >
           {label}

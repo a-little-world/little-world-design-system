@@ -2,7 +2,6 @@ import * as RadixLabel from '@radix-ui/react-label';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
 import textParser from '../../utils/parser';
 import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
 import { QuestionIcon } from '../Icon';
@@ -17,12 +16,12 @@ const StyledLabel = styled(RadixLabel.Root)<{
   ${BODY_5_CSS}
   width: fit-content;
 
-  ${({ $bold, $inline, $marginBottom }) =>
+  ${({ $bold, $inline, $marginBottom, theme }) =>
     css`
       ${$bold && 'font-weight: bold;'}
       display: ${$inline ? 'inline-flex' : 'block'};
-      margin-bottom: ${$marginBottom ?? tokens.spacing.xxsmall};
-      gap: ${tokens.spacing.xxxsmall};
+      margin-bottom: ${$marginBottom ?? theme.spacing.xxsmall};
+      gap: ${theme.spacing.xxxsmall};
       align-items: center;
     `}
 `;

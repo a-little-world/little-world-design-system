@@ -1,7 +1,8 @@
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 
 import GlobalStyle from '../src/globalStyles';
-import { CustomThemeProvider, ThemeVariants, themes } from '../src/theme';
+import { CustomThemeProvider, themes } from '../src/theme';
+import { ThemeVariants } from '@a-little-world/little-world-design-system-core';
 
 export const decorators = [
   withThemeFromJSXProvider({
