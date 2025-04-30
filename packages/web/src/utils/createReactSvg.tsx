@@ -2,6 +2,11 @@ import React from 'react';
 import { SvgTransformOptions, ParsedSvg, SvgElement, Gradients } from '@a-little-world/little-world-design-system-core';
 import IconGradient from '../components/Icon/IconGradient';
 
+// Helper function to generate unique keys
+const generateUniqueKey = (element: SvgElement, index: string | number) => {
+  return `${element.type}-${index}-${Math.random().toString(36).substring(2, 11)}`;
+};
+
 // Helper function to safely render children, filtering out null values
 const renderChildren = (children: SvgElement[], options: SvgTransformOptions, parentIndex: string | number) => {
   return children
@@ -33,8 +38,8 @@ const renderSvgElement = (element: SvgElement, options: SvgTransformOptions, ind
     }
   }
   
-  // Add key attribute
-  attrs.key = index.toString();
+  // Add unique key attribute
+  attrs.key = generateUniqueKey(element, index);
   
   switch (element.type) {
     case 'path':

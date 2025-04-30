@@ -17,6 +17,11 @@ import Svg, {
 import { SvgTransformOptions, ParsedSvg, Gradients, SvgElement } from '@a-little-world/little-world-design-system-core';
 import IconGradient from '../components/Icon/IconGradient';
 
+// Helper function to generate unique keys
+const generateUniqueKey = (element: SvgElement, index: string | number) => {
+  return `${element.type}-${index}-${Math.random().toString(36).substring(2, 11)}`;
+};
+
 // Helper function to safely render children, filtering out null values
 const renderChildren = (children: SvgElement[], options: SvgTransformOptions, parentIndex: string | number): ReactElement[] => {
   return children
@@ -24,32 +29,27 @@ const renderChildren = (children: SvgElement[], options: SvgTransformOptions, pa
     .filter(Boolean) as ReactElement[]; // Filter out null elements and cast to ReactElement[]
 };
 
+const FILL_ATTR = 'fill';
+
 // Renders SVG elements recursively
 const renderSvgElement = (element: SvgElement, options: SvgTransformOptions, index: string | number): ReactElement | null => {
   const { gradient, gradientId, color } = options;
   
   // Get all attributes and override fill for path elements if needed
   const attrs = {...element.attributes};
+  console.log({attrs})
   
-  // Handle fill attributes for SVG elements
-  if (element.type === 'path') {
+  // Handle color attributes for SVG elements based on the colorAttribute property
+  if (element.colorAttribute && element.colorAttribute !== 'none') {
     if (gradient) {
-      attrs.fill = `url(#gradient${gradientId})`;
-    } else if (color && !attrs.fill) {
-      attrs.fill = color;
-    } else if (attrs.fill === undefined) {
-      // Set default fill to 'none' if no fill is specified
-      attrs.fill = 'none';
-    }
-  } else {
-    // For non-path elements, also ensure fill is explicitly set
-    if (attrs.fill === undefined) {
-      attrs.fill = 'none';
+      attrs[element.colorAttribute] = `url(#gradient${gradientId})`;
+    } else if (color) {
+      attrs[element.colorAttribute] = color;
     }
   }
   
-  // Add key attribute - React Native components need string keys
-  attrs.key = index.toString();
+  // Add unique key attribute
+  const key = generateUniqueKey(element, index);
   
   switch (element.type) {
     case 'path':
@@ -108,7 +108,7 @@ export const createReactNativeSvg = (svgData: ParsedSvg, options: SvgTransformOp
   } = options;
 
   return (
-    <View style={style}>
+    <View key={`${Math.random().toString(36).substring(2, 11)}`} style={style}>
       <Svg
         width={width}
         height={height}

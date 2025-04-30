@@ -10,6 +10,7 @@ export const chevronDownIcon = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
+      "colorAttribute": "none",
       "children": []
     }
   ]

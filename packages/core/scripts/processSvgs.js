@@ -77,9 +77,18 @@ function processSvg(svgContent) {
     
     // Process supported elements (path, g, circle, rect, etc.)
     if (['path', 'g', 'circle', 'linearGradient', 'clipPath', 'rect', 'line', 'polygon', 'polyline', 'ellipse', 'defs', 'stop'].includes(node.name)) {
+      // Determine which color attribute should be used for this element
+      let colorAttribute = 'none';
+      if (node.attributes.fill && node.attributes.fill !== 'none') {
+        colorAttribute = 'fill';
+      } else if (node.attributes.stroke && node.attributes.stroke !== 'none') {
+        colorAttribute = 'stroke';
+      }
+
       return {
         type: node.name,
         attributes: convertAttributes(node.attributes),
+        colorAttribute,
         // Recursively process children if they exist
         children: node.children && node.children.length > 0 
           ? node.children.map(child => processNode(child)).filter(Boolean)
@@ -175,11 +184,13 @@ iconFiles.forEach(file => {
     attributes: {
       [key: string]: string;
     };
+    colorAttribute?: 'fill' | 'stroke' | 'none';
     children: {
       type: string;
       attributes: {
         [key: string]: string;
       };
+      colorAttribute?: 'fill' | 'stroke' | 'none';
     }[];
   }[];
 };
@@ -201,11 +212,13 @@ illustrationFiles.forEach(file => {
     attributes: {
       [key: string]: string;
     };
+    colorAttribute?: 'fill' | 'stroke' | 'none';
     children: {
       type: string;
       attributes: {
         [key: string]: string;
       };
+      colorAttribute?: 'fill' | 'stroke' | 'none';
     }[];
   }[];
 };

@@ -9,18 +9,18 @@ import {
   ThemeVariants,
   ThemeContextType,
   defaultThemeVariant,
-  designTokens,
+  tokens,
 } from "@a-little-world/little-world-design-system-core";
 import { ThemeProvider } from "styled-components/native";
 
 export const lightTheme = {
-  ...designTokens,
-  color: designTokens.color.theme.light,
+  ...tokens,
+  color: tokens.color.theme.light,
 };
 
 export const darkTheme = {
-  ...designTokens,
-  color: designTokens.color.theme.dark,
+  ...tokens,
+  color: tokens.color.theme.dark,
 };
 
 export const defaultTheme = lightTheme;

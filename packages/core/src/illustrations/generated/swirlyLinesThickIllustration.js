@@ -10,11 +10,13 @@ export const swirlyLinesThickIllustration = {
         "fill": "url(#pattern0_8298_40033)",
         "fillOpacity": "0.5"
       },
+      "colorAttribute": "fill",
       "children": []
     },
     {
       "type": "defs",
       "attributes": {},
+      "colorAttribute": "none",
       "children": []
     }
   ]

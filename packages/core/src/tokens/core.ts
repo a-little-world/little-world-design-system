@@ -1,3 +1,4 @@
+import { mapValues } from 'lodash';
 export const coreColors = {
   orange10: '#fde5cf',
   orange20: '#ffbe74',
@@ -26,23 +27,28 @@ export const coreColors = {
 } as const;
 
 const SPACING_BASE = 8; // px
-const getPixelValue = (multiple: number) => `${multiple * SPACING_BASE}px`;
+
+export const pixelateObjValues = (obj: Record<string, number | string>) => mapValues(
+  obj,
+  (value) => typeof value === 'number' ? `${value}px` : value
+);
+const getValue = (multiple: number) => multiple * SPACING_BASE;
 
 export const coreSpacing = {
-  space025: getPixelValue(0.25),
-  space05: getPixelValue(0.5),
-  space10: getPixelValue(1),
-  space15: getPixelValue(1.5),
-  space20: getPixelValue(2),
-  space25: getPixelValue(2.5),
-  space30: getPixelValue(3),
-  space40: getPixelValue(4),
-  space50: getPixelValue(5),
-  space60: getPixelValue(6),
-  space70: getPixelValue(7),
-  space80: getPixelValue(8),
-  space90: getPixelValue(9),
-  space100: getPixelValue(10),
-  space125: getPixelValue(12.5),
-  space150: getPixelValue(15),
+  space025: getValue(0.25),
+  space05: getValue(0.5),
+  space10: getValue(1),
+  space15: getValue(1.5),
+  space20: getValue(2),
+  space25: getValue(2.5),
+  space30: getValue(3),
+  space40: getValue(4),
+  space50: getValue(5),
+  space60: getValue(6),
+  space70: getValue(7),
+  space80: getValue(8),
+  space90: getValue(9),
+  space100: getValue(10),
+  space125: getValue(12.5),
+  space150: getValue(15),
 } as const; 

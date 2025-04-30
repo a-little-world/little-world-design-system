@@ -9,6 +9,7 @@ export const checkIcon = {
         "fillRule": "evenodd",
         "clipRule": "evenodd"
       },
+      "colorAttribute": "none",
       "children": []
     }
   ]

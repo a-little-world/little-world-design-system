@@ -5,11 +5,13 @@ export declare const accountIcon: {
     attributes: {
       [key: string]: string;
     };
+    colorAttribute?: 'fill' | 'stroke' | 'none';
     children: {
       type: string;
       attributes: {
         [key: string]: string;
       };
+      colorAttribute?: 'fill' | 'stroke' | 'none';
     }[];
   }[];
 };

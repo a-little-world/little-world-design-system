@@ -7,6 +7,7 @@ export const inclusiveIcon = {
       "attributes": {
         "clipPath": "url(#clip0_5366_66554)"
       },
+      "colorAttribute": "none",
       "children": [
         {
           "type": "path",
@@ -17,6 +18,7 @@ export const inclusiveIcon = {
             "strokeWidth": "0.62",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -28,6 +30,7 @@ export const inclusiveIcon = {
             "strokeWidth": "0.57",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -39,6 +42,7 @@ export const inclusiveIcon = {
             "strokeWidth": "0.62",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -50,6 +54,7 @@ export const inclusiveIcon = {
             "strokeWidth": "0.57",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -61,6 +66,7 @@ export const inclusiveIcon = {
             "strokeWidth": "0.62",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -72,6 +78,7 @@ export const inclusiveIcon = {
             "strokeWidth": "0.57",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -83,6 +90,7 @@ export const inclusiveIcon = {
             "strokeWidth": "0.62",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -94,6 +102,7 @@ export const inclusiveIcon = {
             "strokeWidth": "0.57",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -105,6 +114,7 @@ export const inclusiveIcon = {
             "strokeWidth": "0.62",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -117,6 +127,7 @@ export const inclusiveIcon = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -129,6 +140,7 @@ export const inclusiveIcon = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -141,6 +153,7 @@ export const inclusiveIcon = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -153,6 +166,7 @@ export const inclusiveIcon = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -165,6 +179,7 @@ export const inclusiveIcon = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -177,6 +192,7 @@ export const inclusiveIcon = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -189,6 +205,7 @@ export const inclusiveIcon = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -201,6 +218,7 @@ export const inclusiveIcon = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "fill",
           "children": []
         }
       ]
@@ -208,12 +226,14 @@ export const inclusiveIcon = {
     {
       "type": "defs",
       "attributes": {},
+      "colorAttribute": "none",
       "children": [
         {
           "type": "clipPath",
           "attributes": {
             "id": "clip0_5366_66554"
           },
+          "colorAttribute": "none",
           "children": [
             {
               "type": "rect",
@@ -222,6 +242,7 @@ export const inclusiveIcon = {
                 "height": "30",
                 "fill": "white"
               },
+              "colorAttribute": "fill",
               "children": []
             }
           ]

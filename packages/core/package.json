@@ -7,9 +7,12 @@
   "types": "./dist/esm/index.d.ts",
   "scripts": {
     "preprocess-svgs": "node scripts/processSvgs.js",
-    "build": "rimraf dist && npm run preprocess-svgs && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc --outDir dist/esm",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "build": "rimraf dist && npm run preprocess-svgs && npm run build:esm && npm run build:cjs && npm run copy-fonts",
+    "build:esm": "tsc --project tsconfig.json",
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "copy-fonts": "npm run copy-fonts:esm && npm run copy-fonts:cjs",
+    "copy-fonts:esm": "cpy 'src/fonts/*.ttf' dist/esm/fonts",
+    "copy-fonts:cjs": "cpy 'src/fonts/*.ttf' dist/cjs/fonts",
     "watch": "tsc --watch",
     "postinstall": "npm run build"
   },
@@ -30,11 +33,13 @@
     "@types/lodash": "^4.17.16",
     "@types/node": "^22.14.1",
     "@types/react": "^18.2.0",
+    "cpy-cli": "^5.0.0",
     "prettier": "^2.8.0",
     "rimraf": "^6.0.1",
     "typescript": "^4.9.3"
   },
   "dependencies": {
+    "@babel/runtime": "^7.24.0",
     "csstype": "^3.1.2",
     "lodash": "^4.17.21",
     "svgson": "^5.3.1"

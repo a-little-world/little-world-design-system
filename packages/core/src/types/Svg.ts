@@ -63,6 +63,7 @@ export type SvgFactoryOptions = {
 export interface SvgTransformOptions {
   className?: string;
   color?: string;
+  colorAttr?: 'fill' | 'stroke';
   gradient?: string;
   gradientId?: string;
   height?: number | string;
@@ -84,4 +85,5 @@ export interface SvgElement {
     [key: string]: string | number | undefined;
   };
   children: SvgElement[];
+  colorAttribute?: 'fill' | 'stroke' | 'none';
 }

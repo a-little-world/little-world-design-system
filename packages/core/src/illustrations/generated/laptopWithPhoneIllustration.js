@@ -7,6 +7,7 @@ export const laptopWithPhoneIllustration = {
       "attributes": {
         "clipPath": "url(#clip0_5366_66606)"
       },
+      "colorAttribute": "none",
       "children": [
         {
           "type": "path",
@@ -17,6 +18,7 @@ export const laptopWithPhoneIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -28,6 +30,7 @@ export const laptopWithPhoneIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -39,6 +42,7 @@ export const laptopWithPhoneIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -50,6 +54,7 @@ export const laptopWithPhoneIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -61,6 +66,7 @@ export const laptopWithPhoneIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -72,6 +78,7 @@ export const laptopWithPhoneIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -83,6 +90,7 @@ export const laptopWithPhoneIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -94,6 +102,7 @@ export const laptopWithPhoneIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -105,6 +114,7 @@ export const laptopWithPhoneIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -116,6 +126,7 @@ export const laptopWithPhoneIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -127,6 +138,7 @@ export const laptopWithPhoneIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
+          "colorAttribute": "stroke",
           "children": []
         }
       ]
@@ -134,12 +146,14 @@ export const laptopWithPhoneIllustration = {
     {
       "type": "defs",
       "attributes": {},
+      "colorAttribute": "none",
       "children": [
         {
           "type": "clipPath",
           "attributes": {
             "id": "clip0_5366_66606"
           },
+          "colorAttribute": "none",
           "children": [
             {
               "type": "rect",
@@ -148,6 +162,7 @@ export const laptopWithPhoneIllustration = {
                 "height": "34.3",
                 "fill": "white"
               },
+              "colorAttribute": "fill",
               "children": []
             }
           ]

@@ -1,15 +1,32 @@
-import React from 'react';
-import { View } from 'react-native';
-import { CustomThemeProvider } from '../src/theme';
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, View } from "react-native";
+import { CustomThemeProvider } from "../src/theme";
+import { loadFonts } from "../utils/loadFonts";
 
 export const decorators = [
-  (Story: React.ComponentType) => (
-    <CustomThemeProvider>
-      <View style={{ flex: 1, padding: 16 }}>
-        <Story />
-      </View>
-    </CustomThemeProvider>
-  ),
+  (Story: React.ComponentType) => {
+    const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
+
+    useEffect(() => {
+      const prepare = async (): Promise<void> => {
+        try {
+          await loadFonts();
+          setFontsLoaded(true);
+        } catch (e) {
+          console.warn("Failed to load fonts in Storybook:", e);
+        }
+      };
+      prepare();
+    }, []);
+
+    return (
+      <CustomThemeProvider>
+        <View style={{ flex: 1, padding: 16 }}>
+          {!fontsLoaded ? <ActivityIndicator size="large" /> : <Story />}
+        </View>
+      </CustomThemeProvider>
+    );
+  },
 ];
 
 export const parameters = {

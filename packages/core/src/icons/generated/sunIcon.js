@@ -9,6 +9,7 @@ export const sunIcon = {
         "overflow": "visible",
         "transform": "translate(0 -288.533)"
       },
+      "colorAttribute": "none",
       "children": []
     }
   ]

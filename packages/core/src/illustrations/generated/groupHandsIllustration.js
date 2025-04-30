@@ -7,6 +7,7 @@ export const groupHandsIllustration = {
       "attributes": {
         "clipPath": "url(#clip0_5202_65240)"
       },
+      "colorAttribute": "none",
       "children": [
         {
           "type": "path",
@@ -14,6 +15,7 @@ export const groupHandsIllustration = {
             "d": "M22.9111 50.3678C52.7859 51.699 79.8932 73.2223 79.8932 73.2223C79.8932 73.2223 76.5123 75.5481 74.9864 79.3472C73.2959 83.5875 75.7344 87.2745 75.7344 87.2745C75.7344 87.2745 25.0503 71.0984 1.74287 78.8312C1.74287 78.8312 -1.32391 74.4712 3.44081 62.7598C3.51561 62.5803 3.59041 62.3933 3.66521 62.2213C6.9489 54.6605 14.6682 50.0014 22.9036 50.3678H22.9111Z",
             "fill": "url(#paint0_linear_5202_65240)"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -22,6 +24,7 @@ export const groupHandsIllustration = {
             "d": "M132.014 106.061C132.672 104.827 129.277 100.295 129.277 100.295C131.625 101.274 131.655 100.37 131.723 99.6291C131.79 98.8887 128.581 94.97 128.581 94.97C128.581 94.97 131.528 95.5757 130.054 93.7585C120.727 82.2415 97.6215 77.9787 93.0886 77.3954C88.5558 76.8121 81.0609 73.2373 81.0609 73.2373C72.0102 80.1475 76.902 87.2895 76.902 87.2895C84.7934 89.5406 97.0231 103.196 99.9926 105.664C102.962 108.132 113.883 109.187 115.334 107.998C116.785 106.809 114.975 105.133 113.658 104.632C107.847 102.434 101.683 98.4999 103.448 97.939C110.15 95.8225 121.535 105.672 124.25 107.728C126.973 109.792 128.85 108.581 128.327 107.354C127.743 105.986 127.474 105.186 127.474 105.186C127.474 105.186 130.743 108.424 132.014 106.046V106.061Z",
             "fill": "#A17A53"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -32,6 +35,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -42,6 +46,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -52,6 +57,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -62,6 +68,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -70,6 +77,7 @@ export const groupHandsIllustration = {
             "d": "M52.8752 175.656C79.8478 162.756 96.3859 132.34 96.3859 132.34C96.3859 132.34 92.3617 131.525 89.4745 128.623C86.2581 125.385 87.0585 121.033 87.0585 121.033C87.0585 121.033 46.7341 155.726 22.2598 157.73C22.2598 157.73 21.1378 162.943 30.1062 171.857C30.2484 171.999 30.383 172.134 30.5251 172.268C36.5091 177.945 45.4326 179.216 52.8677 175.656H52.8752Z",
             "fill": "#0076BA"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -78,6 +86,7 @@ export const groupHandsIllustration = {
             "d": "M132.978 83.2286C134.062 84.1036 132.716 89.6078 132.716 89.6078C134.496 87.7905 134.877 88.6131 135.229 89.2638C135.581 89.9144 134.152 94.7755 134.152 94.7755C134.152 94.7755 136.628 93.0629 135.984 95.3139C131.9 109.561 112.303 122.513 108.354 124.824C104.404 127.135 98.9064 133.35 98.9064 133.35C87.8735 130.523 89.5864 122.042 89.5864 122.042C95.9668 116.882 101.883 99.5318 103.656 96.0992C105.429 92.6665 115.063 87.4315 116.866 87.955C118.668 88.4785 117.659 90.737 116.641 91.7092C112.153 96.0094 108.017 102.037 109.865 101.858C116.858 101.185 123.485 87.6708 125.183 84.7168C126.881 81.7553 129.08 82.1367 129.088 83.4679C129.088 84.9561 129.148 85.7937 129.148 85.7937C129.148 85.7937 130.891 81.5384 132.992 83.2286H132.978Z",
             "fill": "#5B3D1F"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -88,6 +97,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "0.58",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -98,6 +108,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "0.58",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -108,6 +119,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -118,6 +130,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -126,6 +139,7 @@ export const groupHandsIllustration = {
             "d": "M164.828 181.175C162.629 151.358 140.324 124.892 140.324 124.892C140.324 124.892 138.102 128.339 134.34 129.97C130.151 131.787 126.389 129.454 126.389 129.454C126.389 129.454 144.026 179.635 136.98 203.155C136.98 203.155 141.431 206.094 153.002 200.993C153.182 200.911 153.361 200.836 153.533 200.747C160.998 197.247 165.434 189.394 164.828 181.175Z",
             "fill": "url(#paint2_linear_5202_65240)"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -134,6 +148,7 @@ export const groupHandsIllustration = {
             "d": "M105.984 73.7533C107.196 73.0652 111.826 76.3184 111.826 76.3184C110.779 74.0001 111.684 73.9402 112.417 73.858C113.15 73.7757 117.167 76.8643 117.167 76.8643C117.167 76.8643 116.478 73.9328 118.333 75.3537C130.114 84.3429 135.051 107.31 135.762 111.827C136.472 116.344 140.265 123.732 140.265 123.732C133.615 132.983 126.337 128.294 126.337 128.294C123.854 120.472 109.844 108.648 107.293 105.754C104.742 102.86 103.374 91.971 104.518 90.4903C105.662 89.0095 107.398 90.767 107.929 92.0608C110.3 97.8043 114.407 103.854 114.915 102.067C116.838 95.3065 106.657 84.2232 104.518 81.5609C102.379 78.8985 103.531 76.9915 104.78 77.4701C106.164 78.0086 106.971 78.2628 106.971 78.2628C106.971 78.2628 103.643 75.0919 105.984 73.7533Z",
             "fill": "#FFDBB7"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -144,6 +159,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -154,6 +170,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -164,6 +181,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -174,6 +192,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -182,6 +201,7 @@ export const groupHandsIllustration = {
             "d": "M146.331 6.32684C125.783 28.0446 121.258 62.3636 121.258 62.3636C121.258 62.3636 125.304 61.6831 129.044 63.3583C133.211 65.2279 134.019 69.5805 134.019 69.5805C134.019 69.5805 159.211 22.7348 181.344 12.0853C181.344 12.0853 180.521 6.82043 168.95 1.71258C168.77 1.63031 168.591 1.55553 168.411 1.48074C160.789 -1.67521 152.008 0.343999 146.338 6.32684H146.331Z",
             "fill": "url(#paint3_linear_5202_65240)"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -190,6 +210,7 @@ export const groupHandsIllustration = {
             "d": "M106.612 122.184C105.288 121.758 104.57 116.134 104.57 116.134C103.568 118.468 102.91 117.839 102.349 117.353C101.788 116.867 101.369 111.819 101.369 111.819C101.369 111.819 99.6711 114.302 99.4691 111.969C98.1751 97.206 111.818 78.0834 114.676 74.5161C117.533 70.9488 120.435 63.1711 120.435 63.1711C131.753 61.8474 133.196 70.3879 133.196 70.3879C129.09 77.4926 129.793 95.8075 129.374 99.644C128.955 103.481 121.834 111.827 119.964 111.984C118.094 112.141 118.229 109.673 118.827 108.401C121.475 102.778 123.173 95.6654 121.512 96.4956C115.222 99.6291 113.89 114.624 113.367 117.996C112.843 121.369 110.652 121.81 110.173 120.562C109.634 119.171 109.283 118.408 109.283 118.408C109.283 118.408 109.178 123.007 106.62 122.177L106.612 122.184Z",
             "fill": "#FFDBB7"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -200,6 +221,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -210,6 +232,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -220,6 +243,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -230,6 +254,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -238,6 +263,7 @@ export const groupHandsIllustration = {
             "d": "M221.346 95.8901C194.224 83.2962 160.243 89.8997 160.243 89.8997C160.243 89.8997 162.173 93.5194 161.769 97.5952C161.32 102.135 157.445 104.288 157.445 104.288C157.445 104.288 209.872 113.308 226.994 130.912C226.994 130.912 231.729 128.459 232.903 115.865C232.918 115.671 232.94 115.476 232.948 115.282C233.516 107.056 228.819 99.3676 221.339 95.8901H221.346Z",
             "fill": "url(#paint7_linear_5202_65240)"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -246,6 +272,7 @@ export const groupHandsIllustration = {
             "d": "M98.8555 94.9325C98.8405 93.5415 103.942 91.0811 103.942 91.0811C101.406 90.8717 101.795 90.049 102.079 89.3685C102.364 88.6879 107.016 86.6837 107.016 86.6837C107.016 86.6837 104.121 85.861 106.268 84.9262C119.859 79.0107 142.321 85.8835 146.615 87.454C150.908 89.0245 159.204 89.3161 159.204 89.3161C164.051 99.6216 156.414 103.705 156.414 103.705C148.373 102.067 131.221 108.543 127.451 109.366C123.681 110.189 113.501 106.083 112.761 104.363C112.02 102.643 114.399 101.985 115.798 102.149C121.976 102.875 129.254 102.232 127.945 100.915C122.978 95.9496 108.333 99.4421 104.967 100.01C101.601 100.579 100.494 98.6494 101.518 97.7968C102.663 96.847 103.276 96.2712 103.276 96.2712C103.276 96.2712 98.8854 97.6323 98.8555 94.94V94.9325Z",
             "fill": "#C69869"
           },
+          "colorAttribute": "fill",
           "children": []
         },
         {
@@ -256,6 +283,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -266,6 +294,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -276,6 +305,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         },
         {
@@ -286,6 +316,7 @@ export const groupHandsIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
+          "colorAttribute": "stroke",
           "children": []
         }
       ]
@@ -293,6 +324,7 @@ export const groupHandsIllustration = {
     {
       "type": "defs",
       "attributes": {},
+      "colorAttribute": "none",
       "children": [
         {
           "type": "linearGradient",
@@ -304,12 +336,14 @@ export const groupHandsIllustration = {
             "y2": "57.0816",
             "gradientUnits": "userSpaceOnUse"
           },
+          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -318,6 +352,7 @@ export const groupHandsIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -326,6 +361,7 @@ export const groupHandsIllustration = {
                 "offset": "0.83",
                 "stopColor": "#F9BD6F"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -334,6 +370,7 @@ export const groupHandsIllustration = {
                 "offset": "1",
                 "stopColor": "#FAC482"
               },
+              "colorAttribute": "none",
               "children": []
             }
           ]
@@ -348,12 +385,14 @@ export const groupHandsIllustration = {
             "y2": "149.952",
             "gradientUnits": "userSpaceOnUse"
           },
+          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -362,6 +401,7 @@ export const groupHandsIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -370,6 +410,7 @@ export const groupHandsIllustration = {
                 "offset": "0.83",
                 "stopColor": "#F9BD6F"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -378,6 +419,7 @@ export const groupHandsIllustration = {
                 "offset": "1",
                 "stopColor": "#FAC482"
               },
+              "colorAttribute": "none",
               "children": []
             }
           ]
@@ -392,12 +434,14 @@ export const groupHandsIllustration = {
             "y2": "198.029",
             "gradientUnits": "userSpaceOnUse"
           },
+          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#FAB856"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -406,6 +450,7 @@ export const groupHandsIllustration = {
                 "offset": "0.57",
                 "stopColor": "#FABE6D"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -414,6 +459,7 @@ export const groupHandsIllustration = {
                 "offset": "1",
                 "stopColor": "#FAC482"
               },
+              "colorAttribute": "none",
               "children": []
             }
           ]
@@ -428,12 +474,14 @@ export const groupHandsIllustration = {
             "y2": "34.7902",
             "gradientUnits": "userSpaceOnUse"
           },
+          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ACDA"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -442,6 +490,7 @@ export const groupHandsIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009CD0"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -450,6 +499,7 @@ export const groupHandsIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
+              "colorAttribute": "none",
               "children": []
             }
           ]
@@ -464,12 +514,14 @@ export const groupHandsIllustration = {
             "y2": "104.864",
             "gradientUnits": "userSpaceOnUse"
           },
+          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -478,6 +530,7 @@ export const groupHandsIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -486,6 +539,7 @@ export const groupHandsIllustration = {
                 "offset": "0.83",
                 "stopColor": "#F9BD6F"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -494,6 +548,7 @@ export const groupHandsIllustration = {
                 "offset": "1",
                 "stopColor": "#FAC482"
               },
+              "colorAttribute": "none",
               "children": []
             }
           ]
@@ -508,12 +563,14 @@ export const groupHandsIllustration = {
             "y2": "106.726",
             "gradientUnits": "userSpaceOnUse"
           },
+          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -522,6 +579,7 @@ export const groupHandsIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -530,6 +588,7 @@ export const groupHandsIllustration = {
                 "offset": "0.83",
                 "stopColor": "#F9BD6F"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -538,6 +597,7 @@ export const groupHandsIllustration = {
                 "offset": "1",
                 "stopColor": "#FAC482"
               },
+              "colorAttribute": "none",
               "children": []
             }
           ]
@@ -552,12 +612,14 @@ export const groupHandsIllustration = {
             "y2": "90.9617",
             "gradientUnits": "userSpaceOnUse"
           },
+          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -566,6 +628,7 @@ export const groupHandsIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -574,6 +637,7 @@ export const groupHandsIllustration = {
                 "offset": "0.83",
                 "stopColor": "#F9BD6F"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -582,6 +646,7 @@ export const groupHandsIllustration = {
                 "offset": "1",
                 "stopColor": "#FAC482"
               },
+              "colorAttribute": "none",
               "children": []
             }
           ]
@@ -596,12 +661,14 @@ export const groupHandsIllustration = {
             "y2": "109.538",
             "gradientUnits": "userSpaceOnUse"
           },
+          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -610,6 +677,7 @@ export const groupHandsIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -618,6 +686,7 @@ export const groupHandsIllustration = {
                 "offset": "0.83",
                 "stopColor": "#F9BD6F"
               },
+              "colorAttribute": "none",
               "children": []
             },
             {
@@ -626,6 +695,7 @@ export const groupHandsIllustration = {
                 "offset": "1",
                 "stopColor": "#FAC482"
               },
+              "colorAttribute": "none",
               "children": []
             }
           ]
@@ -635,6 +705,7 @@ export const groupHandsIllustration = {
           "attributes": {
             "id": "clip0_5202_65240"
           },
+          "colorAttribute": "none",
           "children": [
             {
               "type": "rect",
@@ -643,6 +714,7 @@ export const groupHandsIllustration = {
                 "height": "204",
                 "fill": "white"
               },
+              "colorAttribute": "fill",
               "children": []
             }
           ]

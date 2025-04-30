@@ -10,6 +10,7 @@ export const telegramIcon = {
         "rx": "15%",
         "fill": "#37aee2"
       },
+      "colorAttribute": "fill",
       "children": []
     },
     {
@@ -18,6 +19,7 @@ export const telegramIcon = {
         "fill": "#c8daea",
         "d": "M199 404c-11 0-10-4-13-14l-32-105 245-144"
       },
+      "colorAttribute": "fill",
       "children": []
     },
     {
@@ -26,6 +28,7 @@ export const telegramIcon = {
         "fill": "#a9c9dd",
         "d": "M199 404c7 0 11-4 16-8l45-43-56-34"
       },
+      "colorAttribute": "fill",
       "children": []
     },
     {
@@ -34,6 +37,7 @@ export const telegramIcon = {
         "fill": "#f6fbfe",
         "d": "M204 319l135 99c14 9 26 4 30-14l55-258c5-22-9-32-24-25L79 245c-21 8-21 21-4 26l83 26 190-121c9-5 17-3 11 4"
       },
+      "colorAttribute": "fill",
       "children": []
     }
   ]

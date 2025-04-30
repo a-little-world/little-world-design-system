@@ -5,11 +5,13 @@ export declare const raisingMoneyIllustration: {
     attributes: {
       [key: string]: string;
     };
+    colorAttribute?: 'fill' | 'stroke' | 'none';
     children: {
       type: string;
       attributes: {
         [key: string]: string;
       };
+      colorAttribute?: 'fill' | 'stroke' | 'none';
     }[];
   }[];
 };

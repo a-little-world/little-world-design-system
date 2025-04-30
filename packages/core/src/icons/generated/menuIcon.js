@@ -10,6 +10,7 @@ export const menuIcon = {
         "strokeWidth": "2px",
         "d": "M2.5 5.5h35M2.5 19.5h35M2.5 34.5h35"
       },
+      "colorAttribute": "none",
       "children": []
     }
   ]

@@ -1,5 +1,5 @@
 // Export tokens
-export { default as tokens } from './tokens';
+export { tokens, tokensPixelated } from './tokens';
 export { coreColors, coreSpacing } from './tokens/core';
 
 // Export text utilities
@@ -12,6 +12,7 @@ export type { ValueOf } from './utils/types';
 // Export component types
 export * from './types';
 
+export * from './fonts';
 export * from './icons';
 export * from './illustrations';
 

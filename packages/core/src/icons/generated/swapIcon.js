@@ -10,6 +10,7 @@ export const swapIcon = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
+      "colorAttribute": "none",
       "children": []
     }
   ]

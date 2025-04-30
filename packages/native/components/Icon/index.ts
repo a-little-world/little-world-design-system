@@ -1,129 +1,400 @@
-import AccountIcon from './variants/AccountIcon';
-import AppointmentIcon from './variants/AppointmentIcon';
-import ArchiveIcon from './variants/ArchiveIcon';
-import ArrowDownIcon from './variants/ArrowDownIcon';
-import ArrowLeftIcon from './variants/ArrowLeftIcon';
-import ArrowRightIcon from './variants/ArrowRightIcon';
-import BellIcon from './variants/BellIcon';
-import CalendarIcon from './variants/CalendarIcon';
-import CameraIcon from './variants/CameraIcon';
-import CheckIcon from './variants/CheckIcon';
-import ChevronDownIcon from './variants/ChevronDownIcon';
-import ChevronLeftIcon from './variants/ChevronLeftIcon';
-import ChevronRightIcon from './variants/ChevronRightIcon';
-import ClockIcon from './variants/ClockIcon';
-import CloseIcon from './variants/CloseIcon';
-import DashboardIcon from './variants/DashboardIcon';
-import DotsIcon from './variants/DotsIcon';
-import DownloadIcon from './variants/DownloadIcon';
-import ExclamationIcon from './variants/ExclamationIcon';
-import EyeClosedIcon from './variants/EyeClosedIcon';
-import EyeOpenIcon from './variants/EyeOpenIcon';
-import FacebookIcon from './variants/FacebookIcon';
-import FullScreenExitIcon from './variants/FullscreenExitIcon';
-import FullScreenIcon from './variants/FullscreenIcon';
-import GithubIcon from './variants/GithubIcon';
-import GroupChatIcon from './variants/GroupChatIcon';
-import HeartIcon from './variants/HeartIcon';
-import ImageIcon from './variants/ImageIcon';
-import ImageSearchIcon from './variants/ImageSearchIcon';
-import InclusiveIcon from './variants/InclusiveIcon';
-import InfoIcon from './variants/InfoIcon';
-import InstagramIcon from './variants/InstagramIcon';
-import LinkedInIcon from './variants/LinkedinIcon';
-import LogoutIcon from './variants/LogoutIcon';
-import LogoIcon from './variants/LogoIcon';
-import MenuIcon from './variants/MenuIcon';
-import MessageIcon from './variants/MessageIcon';
-import MessageWithQuestionIcon from './variants/MessageWithQuestion';
-import MicIcon from './variants/MicIcon';
-import MoonIcon from './variants/MoonIcon';
-import PencilIcon from './variants/PencilIcon';
-import PhoneIcon from './variants/PhoneIcon';
-import PhoneSlashIcon from './variants/PhoneSlashIcon';
-import PlusIcon from './variants/PlusIcon';
-import ProfileIcon from './variants/ProfileIcon';
-import ProfileChatIcon from './variants/ProfileChatIcon';
-import PuzzleIcon from './variants/PuzzleIcon';
-import QuestionIcon from './variants/QuestionIcon';
-import SendIcon from './variants/SendIcon';
-import SettingsIcon from './variants/SettingsIcon';
-import StackIcon from './variants/StackIcon';
-import StarIcon from './variants/StarIcon';
-import SunIcon from './variants/SunIcon';
-import SwapIcon from './variants/SwapIcon';
-import TelegramIcon from './variants/TelegramIcon';
-import TickDoubleIcon from './variants/TickDoubleIcon';
-import TickIcon from './variants/TickIcon';
-import TikTokIcon from './variants/TikTokIcon';
-import TranslatorIcon from './variants/TranslatorIcon';
-import TrashIcon from './variants/TrashIcon';
-import TwitterIcon from './variants/TwitterIcon';
-import VideoIcon from './variants/VideoIcon';
-import WhatsappIcon from './variants/WhatsappIcon';
+import {
+  accountIcon,
+  appointmentIcon,
+  archiveIcon,
+  arrowLeftIcon,
+  bellIcon,
+  calendarIcon,
+  cameraIcon,
+  checkIcon,
+  chevronDownIcon,
+  chevronLeftIcon,
+  chevronRightIcon,
+  clockIcon,
+  closeIcon,
+  dashboardIcon,
+  dotsIcon,
+  downloadIcon,
+  exclamationIcon,
+  eyeClosedIcon,
+  eyeOpenIcon,
+  facebookIcon,
+  fullScreenExitIcon,
+  fullScreenIcon,
+  githubIcon,
+  groupChatIcon,
+  heartIcon,
+  imageIcon,
+  imageSearchIcon,
+  inclusiveIcon,
+  infoIcon,
+  instagramIcon,
+  linkedinIcon,
+  logoutIcon,
+  logoIcon,
+  menuIcon,
+  messageIcon,
+  messageWithQuestionIcon,
+  micIcon,
+  moonIcon,
+  pencilIcon,
+  phoneIcon,
+  phoneSlashIcon,
+  plusIcon,
+  profileIcon,
+  profileChatIcon,
+  puzzleIcon,
+  questionIcon,
+  sendIcon,
+  settingsIcon,
+  stackIcon,
+  starIcon,
+  sunIcon,
+  swapIcon,
+  telegramIcon,
+  tickDoubleIcon,
+  tickIcon,
+  tiktokIcon,
+  translatorIcon,
+  trashIcon,
+  twitterIcon,
+  videoIcon,
+  whatsappIcon,
+} from "@a-little-world/little-world-design-system-core";
 
-export {
-  AccountIcon,
-  AppointmentIcon,
-  ArchiveIcon,
-  ArrowDownIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  BellIcon,
-  CalendarIcon,
-  CameraIcon,
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ClockIcon,
-  CloseIcon,
-  DashboardIcon,
-  DotsIcon,
-  DownloadIcon,
-  ExclamationIcon,
-  EyeClosedIcon,
-  EyeOpenIcon,
-  FacebookIcon,
-  FullScreenExitIcon,
-  FullScreenIcon,
-  GithubIcon,
-  GroupChatIcon,
-  HeartIcon,
-  ImageIcon,
-  ImageSearchIcon,
-  InclusiveIcon,
-  InfoIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  LogoutIcon,
-  LogoIcon,
-  MenuIcon,
-  MessageIcon,
-  MessageWithQuestionIcon,
-  MicIcon,
-  MoonIcon,
-  PencilIcon,
-  PhoneIcon,
-  PhoneSlashIcon,
-  PlusIcon,
-  ProfileIcon,
-  ProfileChatIcon,
-  PuzzleIcon,
-  QuestionIcon,
-  SendIcon,
-  SettingsIcon,
-  StackIcon,
-  StarIcon,
-  SunIcon,
-  SwapIcon,
-  TelegramIcon,
-  TickDoubleIcon,
-  TickIcon,
-  TikTokIcon,
-  TranslatorIcon,
-  TrashIcon,
-  TwitterIcon,
-  VideoIcon,
-  WhatsappIcon,
-}; 
+import { createIconComponent } from "./createIconComponent";
+
+export const AccountIcon = createIconComponent({
+  name: "Account",
+  svgData: accountIcon,
+});
+
+export const AppointmentIcon = createIconComponent({
+  name: "Appointment",
+  svgData: appointmentIcon,
+});
+
+export const ArchiveIcon = createIconComponent({
+  name: "Archive",
+  svgData: archiveIcon,
+});
+
+export const ArrowLeftIcon = createIconComponent({
+  name: "ArrowLeft",
+  svgData: arrowLeftIcon,
+});
+
+export const BellIcon = createIconComponent({
+  name: "Bell",
+  svgData: bellIcon,
+});
+
+export const CalendarIcon = createIconComponent({
+  name: "Calendar",
+  svgData: calendarIcon,
+});
+
+export const CameraIcon = createIconComponent({
+  name: "Camera",
+  svgData: cameraIcon,
+});
+
+export const CheckIcon = createIconComponent({
+  name: "Check",
+  svgData: checkIcon,
+});
+
+export const ChevronDownIcon = createIconComponent({
+  name: "ChevronDown",
+  svgData: chevronDownIcon,
+});
+
+export const ChevronLeftIcon = createIconComponent({
+  name: "ChevronLeft",
+  svgData: chevronLeftIcon,
+});
+
+export const ChevronRightIcon = createIconComponent({
+  name: "ChevronRight",
+  svgData: chevronRightIcon,
+});
+
+export const ClockIcon = createIconComponent({
+  name: "Clock",
+  svgData: clockIcon,
+});
+
+export const CloseIcon = createIconComponent({
+  name: "Close",
+  svgData: closeIcon,
+});
+
+export const DashboardIcon = createIconComponent({
+  name: "Dashboard",
+  svgData: dashboardIcon,
+});
+
+export const DotsIcon = createIconComponent({
+  name: "Dots",
+  svgData: dotsIcon,
+});
+
+export const DownloadIcon = createIconComponent({
+  name: "Download",
+  svgData: downloadIcon,
+});
+
+export const ExclamationIcon = createIconComponent({
+  name: "Exclamation",
+  svgData: exclamationIcon,
+});
+
+export const EyeClosedIcon = createIconComponent({
+  name: "EyeClosed",
+  svgData: eyeClosedIcon,
+});
+
+export const EyeOpenIcon = createIconComponent({
+  name: "EyeOpen",
+  svgData: eyeOpenIcon,
+});
+
+export const FacebookIcon = createIconComponent({
+  name: "Facebook",
+  svgData: facebookIcon,
+});
+
+export const FullScreenExitIcon = createIconComponent({
+  name: "FullScreenExit",
+  svgData: fullScreenExitIcon,
+});
+
+export const FullScreenIcon = createIconComponent({
+  name: "FullScreen",
+  svgData: fullScreenIcon,
+});
+
+export const GithubIcon = createIconComponent({
+  name: "Github",
+  svgData: githubIcon,
+});
+
+export const GroupChatIcon = createIconComponent({
+  name: "GroupChat",
+  svgData: groupChatIcon,
+});
+
+export const HeartIcon = createIconComponent({
+  name: "Heart",
+  svgData: heartIcon,
+});
+
+export const ImageIcon = createIconComponent({
+  name: "Image",
+  svgData: imageIcon,
+});
+
+export const ImageSearchIcon = createIconComponent({
+  name: "ImageSearch",
+  svgData: imageSearchIcon,
+});
+
+export const InclusiveIcon = createIconComponent({
+  name: "Inclusive",
+  svgData: inclusiveIcon,
+});
+
+export const InfoIcon = createIconComponent({
+  name: "Info",
+  svgData: infoIcon,
+});
+
+export const InstagramIcon = createIconComponent({
+  name: "Instagram",
+  svgData: instagramIcon,
+});
+
+export const LinkedInIcon = createIconComponent({
+  name: "LinkedIn",
+  svgData: linkedinIcon,
+});
+
+export const LogoutIcon = createIconComponent({
+  name: "Logout",
+  svgData: logoutIcon,
+});
+
+export const LogoIcon = createIconComponent({
+  name: "Logo",
+  svgData: logoIcon,
+});
+
+export const MenuIcon = createIconComponent({
+  name: "Menu",
+  svgData: menuIcon,
+});
+
+export const MessageIcon = createIconComponent({
+  name: "Message",
+  svgData: messageIcon,
+});
+
+export const MessageWithQuestionIcon = createIconComponent({
+  name: "MessageWithQuestion",
+  svgData: messageWithQuestionIcon,
+});
+
+export const MicIcon = createIconComponent({
+  name: "Mic",
+  svgData: micIcon,
+});
+
+export const MoonIcon = createIconComponent({
+  name: "Moon",
+  svgData: moonIcon,
+});
+
+export const PencilIcon = createIconComponent({
+  name: "Pencil",
+  svgData: pencilIcon,
+});
+
+export const PhoneIcon = createIconComponent({
+  name: "Phone",
+  svgData: phoneIcon,
+});
+
+export const PhoneSlashIcon = createIconComponent({
+  name: "PhoneSlash",
+  svgData: phoneSlashIcon,
+});
+
+export const PlusIcon = createIconComponent({
+  name: "Plus",
+  svgData: plusIcon,
+});
+
+export const ProfileIcon = createIconComponent({
+  name: "Profile",
+  svgData: profileIcon,
+});
+
+export const ProfileChatIcon = createIconComponent({
+  name: "ProfileChat",
+  svgData: profileChatIcon,
+});
+
+export const PuzzleIcon = createIconComponent({
+  name: "Puzzle",
+  svgData: puzzleIcon,
+});
+
+export const QuestionIcon = createIconComponent({
+  name: "Question",
+  svgData: questionIcon,
+});
+
+export const SendIcon = createIconComponent({
+  name: "Send",
+  svgData: sendIcon,
+});
+
+export const SettingsIcon = createIconComponent({
+  name: "Settings",
+  svgData: settingsIcon,
+});
+
+export const StackIcon = createIconComponent({
+  name: "Stack",
+  svgData: stackIcon,
+});
+
+export const StarIcon = createIconComponent({
+  name: "Star",
+  svgData: starIcon,
+});
+
+export const SunIcon = createIconComponent({
+  name: "Sun",
+  svgData: sunIcon,
+});
+
+export const SwapIcon = createIconComponent({
+  name: "Swap",
+  svgData: swapIcon,
+});
+
+export const TelegramIcon = createIconComponent({
+  name: "Telegram",
+  svgData: telegramIcon,
+});
+
+export const TickDoubleIcon = createIconComponent({
+  name: "TickDouble",
+  svgData: tickDoubleIcon,
+});
+
+export const TickIcon = createIconComponent({
+  name: "Tick",
+  svgData: tickIcon,
+});
+
+export const TiktokIcon = createIconComponent({
+  name: "Tiktok",
+  svgData: tiktokIcon,
+});
+
+export const TranslatorIcon = createIconComponent({
+  name: "Translator",
+  svgData: translatorIcon,
+});
+
+export const TrashIcon = createIconComponent({
+  name: "Trash",
+  svgData: trashIcon,
+});
+
+export const TwitterIcon = createIconComponent({
+  name: "Twitter",
+  svgData: twitterIcon,
+});
+
+export const VideoIcon = createIconComponent({
+  name: "Video",
+  svgData: videoIcon,
+});
+
+export const WhatsappIcon = createIconComponent({
+  name: "Whatsapp",
+  svgData: whatsappIcon,
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

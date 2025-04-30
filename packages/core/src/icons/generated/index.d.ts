@@ -2,9 +2,7 @@
 export { accountIcon } from './accountIcon';
 export { appointmentIcon } from './appointmentIcon';
 export { archiveIcon } from './archiveIcon';
-export { arrowDownIcon } from './arrowDownIcon';
 export { arrowLeftIcon } from './arrowLeftIcon';
-export { arrowRightIcon } from './arrowRightIcon';
 export { attachmentIcon } from './attachmentIcon';
 export { bellIcon } from './bellIcon';
 export { calendarIcon } from './calendarIcon';

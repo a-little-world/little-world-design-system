@@ -11,6 +11,7 @@ export const imageIcon = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
+      "colorAttribute": "stroke",
       "children": []
     },
     {
@@ -22,6 +23,7 @@ export const imageIcon = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
+      "colorAttribute": "stroke",
       "children": []
     },
     {
@@ -33,6 +35,7 @@ export const imageIcon = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
+      "colorAttribute": "stroke",
       "children": []
     },
     {
@@ -44,6 +47,7 @@ export const imageIcon = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
+      "colorAttribute": "stroke",
       "children": []
     }
   ]

@@ -27,6 +27,12 @@ Ensure that you have the required fonts available by including them in your html
 />
 ```
 
+## Gotcha's! Going from web to native...
+
+In React Native, when you set minWidth on a component, it doesn't automatically expand beyond that width based on content like it would on the web. The flexbox implementation in React Native is more strict about respecting explicit dimensions.
+
+Recommendation: For most cases: Use flex: 1 when you want a component to fill its parent. Use `max-width` to limit the size. Otherwise use an explicit `width` and manage the content. 
+
 ## Contributing
 
 Check [contribution guidelines](CONTRIBUTING.md).
