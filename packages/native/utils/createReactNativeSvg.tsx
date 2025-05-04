@@ -29,23 +29,22 @@ const renderChildren = (children: SvgElement[], options: SvgTransformOptions, pa
     .filter(Boolean) as ReactElement[]; // Filter out null elements and cast to ReactElement[]
 };
 
-const FILL_ATTR = 'fill';
-
 // Renders SVG elements recursively
 const renderSvgElement = (element: SvgElement, options: SvgTransformOptions, index: string | number): ReactElement | null => {
   const { gradient, gradientId, color } = options;
   
   // Get all attributes and override fill for path elements if needed
   const attrs = {...element.attributes};
-  console.log({attrs})
   
   // Handle color attributes for SVG elements based on the colorAttribute property
-  if (element.colorAttribute && element.colorAttribute !== 'none') {
+  if ((element.colorAttribute && element.colorAttribute !== 'none')) {
     if (gradient) {
       attrs[element.colorAttribute] = `url(#gradient${gradientId})`;
     } else if (color) {
       attrs[element.colorAttribute] = color;
     }
+  } else if (element.type === 'path') {
+    attrs.fill = color || 'none';
   }
   
   // Add unique key attribute
@@ -53,45 +52,45 @@ const renderSvgElement = (element: SvgElement, options: SvgTransformOptions, ind
   
   switch (element.type) {
     case 'path':
-      return <Path {...attrs} />;
+      return <Path key={key} {...attrs} />;
     case 'g':
       return (
-        <G {...attrs}>
+        <G key={key} {...attrs}>
           {renderChildren(element.children, options, index)}
         </G>
       );
     case 'defs':
       return (
-        <Defs {...attrs}>
+        <Defs key={key} {...attrs}>
           {renderChildren(element.children, options, index)}
         </Defs>
       );
     case 'linearGradient':
       return (
-        <LinearGradient {...attrs}>
+        <LinearGradient key={key} {...attrs}>
           {renderChildren(element.children, options, index)}
         </LinearGradient>
       );
     case 'stop':
-      return <Stop {...attrs} />;
+      return <Stop key={key} {...attrs} />;
     case 'clipPath':
       return (
-        <ClipPath {...attrs}>
+        <ClipPath key={key} {...attrs}>
           {renderChildren(element.children, options, index)}
         </ClipPath>
       );
     case 'circle':
-      return <Circle {...attrs} />;
+      return <Circle key={key} {...attrs} />;
     case 'rect':
-      return <Rect {...attrs} />;
+      return <Rect key={key} {...attrs} />;
     case 'line':
-      return <Line {...attrs} />;
+      return <Line key={key} {...attrs} />;
     case 'polygon':
-      return <Polygon {...attrs} />;
+      return <Polygon key={key} {...attrs} />;
     case 'polyline':
-      return <Polyline {...attrs} />;
+      return <Polyline key={key} {...attrs} />;
     case 'ellipse':
-      return <Ellipse {...attrs} />;
+      return <Ellipse key={key} {...attrs} />;
     default:
       console.warn(`Unsupported SVG element type: ${element.type}`);
       return null;
@@ -113,6 +112,7 @@ export const createReactNativeSvg = (svgData: ParsedSvg, options: SvgTransformOp
         width={width}
         height={height}
         viewBox={svgData.viewBox}
+        fill="none"
       >
         {gradient && <IconGradient variation={gradient as Gradients} id={gradientId as string} />}
         

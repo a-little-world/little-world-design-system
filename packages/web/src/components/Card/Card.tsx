@@ -9,9 +9,9 @@ import {
   CardHeaderProps, 
   CardSizes 
 } from '@a-little-world/little-world-design-system-core';
-import { ValueOf } from '../../utils/types';
 import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
+import { pixelate } from '../../utils/styles';
 
 // Re-export enums for easy access
 export { CardSizes };
@@ -19,7 +19,7 @@ export { CardSizes };
 const StyledCard = styled.div<{
   $borderColor?: string;
   $height?: string;
-  $width?: string;
+  $width?: CardSizes;
 }>`
   border-radius: ${({ theme }) => theme.radius.small};
   background: ${({ theme }) => theme.color.surface.primary};
@@ -37,12 +37,12 @@ const StyledCard = styled.div<{
   @media (min-width: ${({ theme }) => theme.breakpoints.small}) {
     border-radius: ${({ theme }) => theme.radius.xxlarge};
     padding: ${({ $width, theme }) =>
-      $width === CardDimensions[CardSizes.Small] ? theme.spacing.medium : theme.spacing.large};
+      $width === pixelate(CardDimensions[CardSizes.Small]) ? theme.spacing.medium : theme.spacing.large};
 
     ${({ $width }) =>
       $width &&
       css`
-        width: ${$width};
+        width: ${pixelate(CardDimensions[$width])};
       `}
   }
 
@@ -111,7 +111,7 @@ const Card: React.FC<CardProps> = ({
     className={className}
     $borderColor={borderColor}
     $height={height}
-    $width={width as string}
+    $width={width}
   >
     {children}
   </StyledCard>

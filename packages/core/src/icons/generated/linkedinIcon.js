@@ -8,7 +8,7 @@ export const linkedinIcon = {
         "width": "512",
         "height": "512",
         "rx": "15%",
-        "fill": "currentColor"
+        "fill": "#000"
       },
       "colorAttribute": "fill",
       "children": []

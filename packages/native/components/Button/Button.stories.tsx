@@ -19,6 +19,7 @@ export const Default = args => (
       <InfoIcon label="info" width={16} height={16} color='#FFF' />
     </Button>
     <Button appearance={ButtonAppearance.Secondary} {...args}>Secondary Appearance</Button>
+    <Button appearance={ButtonAppearance.Secondary} {...args} loading>Secondary Appearance</Button>
   </View>
 );
 

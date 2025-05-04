@@ -11,5 +11,6 @@ export * from './Tag';
 export * from './Text';
 export * from './TextArea';
 export * from './TextContent';
+export * from './TextInput';
 export * from './ToolTip';
 export * from './Widget'; 

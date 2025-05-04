@@ -79,9 +79,15 @@ function processSvg(svgContent) {
     if (['path', 'g', 'circle', 'linearGradient', 'clipPath', 'rect', 'line', 'polygon', 'polyline', 'ellipse', 'defs', 'stop'].includes(node.name)) {
       // Determine which color attribute should be used for this element
       let colorAttribute = 'none';
+      
+      // Check for stroke-related attributes
+      const hasStrokeAttributes = Object.keys(node.attributes).some(key => 
+        key.startsWith('stroke-') || key === 'stroke'
+      );
+      
       if (node.attributes.fill && node.attributes.fill !== 'none') {
         colorAttribute = 'fill';
-      } else if (node.attributes.stroke && node.attributes.stroke !== 'none') {
+      } else if (hasStrokeAttributes || (node.attributes.stroke && node.attributes.stroke !== 'none')) {
         colorAttribute = 'stroke';
       }
 

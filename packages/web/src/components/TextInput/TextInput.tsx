@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-
+import { InputHeight, InputWidth, TextInputBaseProps } from '@a-little-world/little-world-design-system-core'
 import { ButtonVariations } from '../Button/Button';
 import { EyeClosedIcon, EyeOpenIcon } from '../Icon';
 import InputError from '../InputError/InputError';
@@ -14,27 +14,8 @@ import {
 
 const PASSWORD_TOGGLE_ICON_SIZE = 20;
 
-export enum InputWidth {
-  Small = '136px',
-  Medium = '240px',
-  Large = '480px',
-}
-
-export enum InputHeight {
-  Small = 'Small',
-  Large = 'Large',
-}
-interface Props extends React.ComponentPropsWithoutRef<'input'> {
-  error?: string;
-  height?: InputHeight;
-  id: string;
-  inline?: boolean;
+interface Props extends React.ComponentPropsWithoutRef<'input'>, TextInputBaseProps {
   inputRef?: React.RefObject<HTMLInputElement>;
-  label: string;
-  labelTooltip?: string;
-  onSubmit?: () => boolean;
-  type: string;
-  width?: InputWidth;
 }
 
 const TextInput: React.FC<Props> = ({

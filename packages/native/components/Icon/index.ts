@@ -368,33 +368,3 @@ export const WhatsappIcon = createIconComponent({
   name: "Whatsapp",
   svgData: whatsappIcon,
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

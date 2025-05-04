@@ -70,6 +70,66 @@ When making changes to the core or core packages:
 
 2. Restart the Storybook server after making significant changes to ensure they're picked up.
 
+### Local Development with npm link
+
+This design system is structured as a monorepo with three main packages:
+- `@a-little-world/little-world-design-system-core`: Core design tokens and utilities
+- `@a-little-world/little-world-design-system-web`: Web implementation
+- `@a-little-world/little-world-design-system-native`: React Native implementation
+
+The web and native packages both depend on the core package. Here's how to set up local development:
+
+1. First, build the core package:
+   ```bash
+   cd packages/core
+   npm install
+   npm run build
+   ```
+
+2. Link the core package:
+   ```bash
+   cd packages/core
+   npm link
+   ```
+
+3. In your local project where you want to use the design system:
+   ```bash
+   npm link @a-little-world/little-world-design-system-core
+   ```
+
+4. For web development:
+   ```bash
+   cd packages/web
+   npm install
+   npm link @a-little-world/little-world-design-system-core
+   npm run build
+   npm link
+   ```
+
+5. For native development:
+   ```bash
+   cd packages/native
+   npm install
+   npm link @a-little-world/little-world-design-system-core
+   npm run build
+   npm link
+   ```
+
+6. In your local project:
+   ```bash
+   # For web projects
+   npm link @a-little-world/little-world-design-system-web
+   
+   # For native projects
+   npm link @a-little-world/little-world-design-system-native
+   ```
+
+Important notes:
+- Always run the watch command in the core package when making changes
+- If you make changes to the core package, you'll need to rebuild the dependent packages
+- To unlink packages, use `npm unlink` in both the package directory and your project
+- Make sure to use the correct version of React in your project that matches the design system's peer dependencies
+
 ## Getting started
 
 ### 1. Installing the package and peer dependencies

@@ -73,7 +73,7 @@ export const AllIcons: Story = {
           );
         })}
 
-        <Text style={styles.sectionTitle}>Icon Sizes</Text>
+        {/* <Text style={styles.sectionTitle}>Icon Sizes</Text>
         <View style={styles.container}>
           <View style={styles.iconContainer}>
             <Text style={styles.sizeLabel}>Small (16x16)</Text>
@@ -115,7 +115,7 @@ export const AllIcons: Story = {
             <Icons.AccountIcon width={32} height={32} color="#000000" />
             <Text style={styles.iconLabel}>Black</Text>
           </View>
-        </View>
+        </View> */}
       </View>
     );
   }

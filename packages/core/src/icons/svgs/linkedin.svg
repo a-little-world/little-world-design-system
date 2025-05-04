@@ -3,7 +3,7 @@
     width="512"
     height="512"
     rx="15%"
-    fill="currentColor"
+    fill="#000"
   />
   <circle cx="142" cy="138" r="37" fill="#FFF" />
   <path stroke="#FFF" stroke-width="66" d="M244 194v198M142 194v198" />

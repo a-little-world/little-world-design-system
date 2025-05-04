@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="-0.01 0 100.38 66.86">
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000" viewBox="-0.01 0 100.38 66.86">
   <defs>
     <linearGradient id="orangeGradient" y1="35.21" x2="80" y2="35.21" gradientUnits="userSpaceOnUse">
       <stop offset="0" stopColor="#d85509"></stop>

@@ -3,6 +3,7 @@ import {
   LoadingDimensions,
   LoadingSizes,
 } from "@a-little-world/little-world-design-system-core";
+import { pixelate } from "../../utils/styles";
 
 const loading = keyframes`
     0% {
@@ -24,9 +25,9 @@ export const LoadingContainer = styled.div<{
   justify-content: ${({ $align }) => $align || "center"};
   position: relative;
   width: ${({ $inline, $size }) =>
-    $inline ? LoadingDimensions[$size || LoadingSizes.Small] : "100%"};
+    $inline ? pixelate(LoadingDimensions[$size || LoadingSizes.Small]) : "100%"};
   height: 100%;
-  min-height: ${({ $size }) => LoadingDimensions[$size || LoadingSizes.Small]};
+  min-height: ${({ $size }) => pixelate(LoadingDimensions[$size || LoadingSizes.Small])};
 `;
 
 export const LoadingElement = styled.div<{
@@ -36,8 +37,8 @@ export const LoadingElement = styled.div<{
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: ${({ $size }) => LoadingDimensions[$size || LoadingSizes.Small]};
-    height: ${({ $size }) => LoadingDimensions[$size || LoadingSizes.Small]};
+    width: ${({ $size }) => pixelate(LoadingDimensions[$size || LoadingSizes.Small])};
+    height: ${({ $size }) => pixelate(LoadingDimensions[$size || LoadingSizes.Small])};
     border: 2px solid ${({ $color }) => $color || "currentColor"};
     border-radius: 50%;
     animation: ${loading} 1.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;

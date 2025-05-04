@@ -15,6 +15,7 @@ import Text from "../Text/Text";
 import { getButtonStyles, getButtonTextStyles, StyledButton } from "./styles";
 import { Gradient } from "../Gradient/Gradient";
 import { TouchableOpacity } from "react-native";
+import Loading from "../Loading/Loading";
 
 export { ButtonAppearance, ButtonSizes, ButtonVariations };
 
@@ -85,7 +86,7 @@ const Button: React.FC<ButtonProps> = ({
           )}
         </Gradient>
       ) : loading ? (
-        "Loading"
+        <Loading color={textStyles.color} />
       ) : (
         <Text
           style={[textStyles, disabled && { color: theme.color.text.disabled }]}

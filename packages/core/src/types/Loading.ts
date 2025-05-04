@@ -9,9 +9,9 @@ export enum LoadingSizes {
 
 // Map size names to actual dimensions for direct use
 export const LoadingDimensions = {
-  [LoadingSizes.Small]: '18px',
-  [LoadingSizes.Medium]: '32px',
-  [LoadingSizes.Large]: '56px',
+  [LoadingSizes.Small]: 18,
+  [LoadingSizes.Medium]: 32,
+  [LoadingSizes.Large]: 56,
 };
 
 export interface LoadingBaseProps {

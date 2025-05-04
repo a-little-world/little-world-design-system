@@ -1,6 +1,6 @@
 # Little World Design System
 
-Design system for Little World applications
+Design system for Web Little World applications
 
 This system utilises [Radix Primitives](https://github.com/radix-ui/primitives) to ensure components are accessible and customizable.
 
@@ -26,6 +26,47 @@ Ensure that you have the required fonts available by including them in your html
   rel="stylesheet"
 />
 ```
+
+## Local Development
+
+This package depends on `@a-little-world/little-world-design-system-core`. To set up local development:
+
+1. First, ensure the core package is built and linked:
+   ```bash
+   cd packages/core
+   npm install
+   npm run build
+   npm link
+   ```
+
+2. In the web package directory:
+   ```bash
+   cd packages/web
+   npm install
+   npm link @a-little-world/little-world-design-system-core
+   npm run build
+   npm link
+   ```
+
+3. In your local project:
+   ```bash
+   npm link @a-little-world/little-world-design-system-web
+   ```
+
+4. To watch for changes during development:
+   ```bash
+   cd packages/web
+   npm run watch
+   ```
+
+5. To unlink when done:
+   ```bash
+   # In your project
+   npm unlink @a-little-world/little-world-design-system-web
+   
+   # In the web package directory
+   npm unlink
+   ```
 
 ## Gotcha's! Going from web to native...
 

@@ -4,13 +4,14 @@ import styled, { css } from 'styled-components';
 
 import Button from '../Button/Button';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
-import { InputHeight } from './TextInput';
+import { InputHeight, InputWidth } from '@a-little-world/little-world-design-system-core';
+import { pixelate } from '../../utils/styles';
 
-export const InputWrapper = styled.div<{ $width: string }>`
+export const InputWrapper = styled.div<{ $width: InputWidth }>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: ${({ $width }) => $width};
+  max-width: ${({ $width }) => pixelate($width)};
   position: relative;
 `;
 
@@ -19,7 +20,7 @@ export const InputContainer = styled.div`
   width: 100%;
 `;
 
-export const INPUT_CSS = css<{ $height?: string }>`
+export const INPUT_CSS = css<{ $height?: InputHeight }>`
   width: 100%;
   border: 2px solid ${({ theme }) => theme.color.border.subtle};
   border-radius: 6px;
@@ -33,15 +34,13 @@ export const INPUT_CSS = css<{ $height?: string }>`
   line-height: 1.25;
 `;
 
-export const Input = styled.input<{ $hasError: boolean; $height?: string }>`
+export const Input = styled.input<{ $hasError: boolean; $height?: InputHeight }>`
   ${INPUT_CSS}
-
-  ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
 `;
 
 export const TelephoneInput = styled(PhoneInput)<{
   $hasError: boolean;
-  $height?: string;
+  $height?: InputHeight;
 }>`
   > input.form-control {
     ${INPUT_CSS}

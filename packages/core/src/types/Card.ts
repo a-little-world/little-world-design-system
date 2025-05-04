@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { TextTypes } from './Text';
+import { FlexAlignType, JustifyContentType } from './styles';
 
 export enum CardSizes {
   Small = 'small',
@@ -8,9 +9,9 @@ export enum CardSizes {
 }
 
 export const CardDimensions = {
-  [CardSizes.Small]: '360px',
-  [CardSizes.Medium]: '560px',
-  [CardSizes.Large]: '720px',
+  [CardSizes.Small]: 360,
+  [CardSizes.Medium]: 560,
+  [CardSizes.Large]: 720,
 };
 
 export interface CardBaseProps {
@@ -21,24 +22,24 @@ export interface CardBaseProps {
 }
 
 export interface CardHeaderProps {
-  align?: string;
+  align?: FlexAlignType;
   children: ReactNode;
   textColor?: string;
   textType?: keyof typeof TextTypes;
 }
 
 export interface CardFooterProps {
-  align?: string;
+  align?: JustifyContentType;
   children: ReactNode;
 }
 
 export interface CardContentProps {
-  align?: string;
+  align?: FlexAlignType;
   textAlign?: string;
   gap?: string;
   marginBottom?: string;
   children: ReactNode;
-  $align?: string;
+  $align?: FlexAlignType;
   $textAlign?: string;
   $gap?: string;
   $marginBottom?: string;

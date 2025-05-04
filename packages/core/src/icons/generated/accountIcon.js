@@ -8,9 +8,10 @@ export const accountIcon = {
         "vectorEffect": "non-scaling-stroke",
         "cx": "20",
         "cy": "20",
-        "r": "18.5"
+        "r": "18.5",
+        "stroke": "transparent"
       },
-      "colorAttribute": "none",
+      "colorAttribute": "stroke",
       "children": []
     },
     {
