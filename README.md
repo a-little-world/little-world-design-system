@@ -70,6 +70,22 @@ When making changes to the core or core packages:
 
 2. Restart the Storybook server after making significant changes to ensure they're picked up.
 
+### Local Development Options
+
+There are two main approaches for local development:
+
+1. **Using file references (Recommended for most cases)**
+   - In your `packages/web/package.json`, change the core dependency to:
+     ```json
+     "@a-little-world/little-world-design-system-core": "file:../core"
+     ```
+   - This method requires running `npm run build` in the core package each time you make changes
+   - Run `npm install` in the web package after making this change
+
+2. **Using npm link (Alternative approach)**
+   - See the detailed npm link instructions in the section below
+   - This method is useful when you need to test the package in an external project
+
 ### Local Development with npm link
 
 This design system is structured as a monorepo with three main packages:
