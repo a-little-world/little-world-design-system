@@ -50,7 +50,7 @@ This package depends on `@a-little-world/little-world-design-system-core`. To se
 
 3. In your local project:
    ```bash
-   npm link @a-little-world/little-world-design-system-web
+   npm link @a-little-world/little-world-design-system
    ```
 
 4. To watch for changes during development:
@@ -62,7 +62,7 @@ This package depends on `@a-little-world/little-world-design-system-core`. To se
 5. To unlink when done:
    ```bash
    # In your project
-   npm unlink @a-little-world/little-world-design-system-web
+   npm unlink @a-little-world/little-world-design-system
    
    # In the web package directory
    npm unlink

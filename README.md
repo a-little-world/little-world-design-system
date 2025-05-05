@@ -90,7 +90,7 @@ There are two main approaches for local development:
 
 This design system is structured as a monorepo with three main packages:
 - `@a-little-world/little-world-design-system-core`: Core design tokens and utilities
-- `@a-little-world/little-world-design-system-web`: Web implementation
+- `@a-little-world/little-world-design-system`: Web implementation
 - `@a-little-world/little-world-design-system-native`: React Native implementation
 
 The web and native packages both depend on the core package. Here's how to set up local development:
@@ -134,7 +134,7 @@ The web and native packages both depend on the core package. Here's how to set u
 6. In your local project:
    ```bash
    # For web projects
-   npm link @a-little-world/little-world-design-system-web
+   npm link @a-little-world/little-world-design-system
    
    # For native projects
    npm link @a-little-world/little-world-design-system-native
