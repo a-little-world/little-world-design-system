@@ -7,7 +7,6 @@ export const peopleTogetherIllustration = {
       "attributes": {
         "clipPath": "url(#clip0_5109_65090)"
       },
-      "colorAttribute": "none",
       "children": [
         {
           "type": "path",
@@ -15,8 +14,8 @@ export const peopleTogetherIllustration = {
             "d": "M149.199 283.19C223.984 283.19 284.609 222.565 284.609 147.78C284.609 72.9952 223.984 12.3701 149.199 12.3701C74.4142 12.3701 13.7891 72.9952 13.7891 147.78C13.7891 222.565 74.4142 283.19 149.199 283.19Z",
             "fill": "white"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -24,8 +23,8 @@ export const peopleTogetherIllustration = {
             "d": "M118.96 181.6L140.89 288.59L94.4295 272.79L79.2695 190.14L118.96 181.6Z",
             "fill": "white"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -33,8 +32,8 @@ export const peopleTogetherIllustration = {
             "d": "M155.8 275.061H145.3C118.53 275.061 96.8301 253.361 96.8301 226.591V187.121C96.8301 162.891 114.7 142.231 138.74 139.091C142.54 138.591 146.64 138.311 151.05 138.311C154.71 138.311 158.15 138.501 161.37 138.851C185.84 141.501 204.27 162.391 204.27 187.001V226.581C204.27 253.351 182.57 275.051 155.8 275.051V275.061Z",
             "fill": "url(#paint0_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -42,8 +41,8 @@ export const peopleTogetherIllustration = {
             "d": "M161.191 129.62C161.191 123.888 156.546 119.24 150.816 119.24C145.086 119.24 140.441 123.888 140.441 129.62V147.26C140.441 152.993 145.086 157.64 150.816 157.64C156.546 157.64 161.191 152.993 161.191 147.26V129.62Z",
             "fill": "url(#paint1_radial_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -51,8 +50,8 @@ export const peopleTogetherIllustration = {
             "d": "M120.25 79.9903C120.83 88.2103 120.81 96.4803 122.03 104.63C123.25 112.77 125.81 120.93 130.93 127.32C136.05 133.72 144.06 138.11 152.15 137.34C157.64 136.82 162.77 133.99 166.75 130.11C170.73 126.24 173.66 121.37 175.99 116.3C180.73 105.98 183.13 94.5703 182.97 83.1903C182.96 82.1603 182.91 81.1003 182.49 80.1603C182.12 79.3403 181.49 78.6803 180.85 78.0603C174.3 71.7203 165.48 67.9903 156.47 67.0803C147.46 66.1703 138.27 67.9903 129.98 71.6803C125.95 73.4703 119.96 75.6803 120.27 79.9803L120.25 79.9903Z",
             "fill": "#8B6F54"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -60,8 +59,8 @@ export const peopleTogetherIllustration = {
             "d": "M155.351 69.0001C157.921 65.2401 157.531 56.7701 154.651 51.4201C151.771 46.0701 146.331 42.1901 140.351 41.1801C135.111 40.3001 128.821 42.2201 126.951 47.1901C124.041 47.1401 121.041 47.1701 118.351 48.3101C115.661 49.4501 113.361 51.9301 113.311 54.8501C108.231 53.3201 102.481 58.6001 103.581 63.7801C98.0609 64.7501 94.6809 71.8801 97.4309 76.7601C93.8009 78.8101 92.3909 84.0001 94.4909 87.6001C91.5309 88.9301 90.5209 93.3101 92.6109 95.8001C93.2509 96.5601 94.1509 97.2301 94.2709 98.2201C94.4109 99.3301 93.5009 100.26 92.7409 101.08C91.5809 102.33 90.5709 103.81 90.3109 105.5C90.0609 107.19 90.7309 109.1 92.2409 109.89C92.8209 110.19 93.5209 110.35 93.8909 110.89C94.4509 111.71 93.8809 112.8 93.4109 113.68C91.4409 117.42 92.4109 123.24 96.5209 124.19C95.8009 127.02 95.0909 130.11 96.2709 132.79C97.4509 135.47 101.411 136.99 103.371 134.81C104.061 137.23 106.301 139.12 108.801 139.39C111.301 139.66 113.901 138.3 115.091 136.09C116.381 138.21 118.541 139.98 121.031 140.08C123.521 140.18 126.081 138.09 125.881 135.61C126.691 137.36 130.911 134.91 132.261 133.53C133.611 132.15 133.361 129.05 133.211 127.13C132.891 122.88 130.081 122.19 127.141 119.12C131.311 113.07 127.891 109.97 124.681 106.93C130.141 99.8401 126.721 96.4501 122.301 94.1201C125.081 91.8201 125.231 87.0101 122.581 84.5401C123.361 83.6701 123.271 82.3501 123.391 81.1901C123.811 77.0601 127.391 73.8301 131.301 72.4301C135.211 71.0301 139.331 76.4001 143.481 76.4001C151.721 76.4001 152.771 72.7601 155.341 69.0001H155.351Z",
             "fill": "#433427"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -69,8 +68,8 @@ export const peopleTogetherIllustration = {
             "d": "M152.251 48.4203C157.551 45.9603 163.671 45.3103 169.361 46.6003C175.071 47.8903 180.911 52.0903 181.041 57.9403C182.971 58.9603 184.941 60.0203 186.371 61.6703C187.801 63.3203 188.571 65.7204 187.731 67.7304C192.761 68.6103 195.361 75.7203 192.081 79.6303C197.011 80.4803 199.941 86.9704 197.321 91.2304C199.311 92.5004 201.351 93.8203 202.681 95.7703C204.011 97.7203 204.451 100.47 203.101 102.4C202.381 103.43 201.161 104.33 201.301 105.58C201.401 106.49 202.201 107.13 202.811 107.81C205.651 110.98 205.471 115.44 201.401 116.68C203.451 118.23 205.111 118.93 205.981 121.35C206.851 123.77 204.741 129.52 202.201 129.96C205.401 132.96 204.091 134.81 200.571 137.43C197.051 140.05 191.301 138.68 189.341 134.76C188.921 137.64 186.131 139.98 183.221 139.9C180.311 139.82 177.661 137.33 177.401 134.43C176.611 136.99 173.491 138.54 170.971 137.64C168.451 136.74 167.031 133.55 168.041 131.07C165.651 131.27 164.981 130.2 165.371 127.83C165.761 125.46 167.461 125.96 169.441 124.6C167.411 122.5 166.681 119.23 167.611 116.47C168.541 113.71 171.111 111.56 174.001 111.12C173.271 109.13 172.531 107.08 172.591 104.97C172.651 102.86 173.701 100.62 175.641 99.7903C174.381 98.2503 173.091 96.6203 172.721 94.6604C172.351 92.7104 173.281 90.3603 175.201 89.8403C173.931 87.8403 173.691 85.2303 174.571 83.0303C174.851 82.3403 175.221 81.6903 175.351 80.9603C175.811 78.2203 172.731 76.3503 170.151 75.3203C166.211 73.7403 162.281 72.1603 158.341 70.5803C156.721 69.9303 155.031 69.2303 153.951 67.8603C152.991 66.6503 152.651 65.0803 152.381 63.5603C151.701 59.7103 151.371 55.8003 152.241 48.4403L152.251 48.4203Z",
             "fill": "#433427"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -80,8 +79,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -91,8 +90,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -102,8 +101,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -113,8 +112,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -122,8 +121,8 @@ export const peopleTogetherIllustration = {
             "d": "M132.35 79.8998C136.133 79.8998 139.2 77.3031 139.2 74.0998C139.2 70.8965 136.133 68.2998 132.35 68.2998C128.567 68.2998 125.5 70.8965 125.5 74.0998C125.5 77.3031 128.567 79.8998 132.35 79.8998Z",
             "fill": "#433427"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -131,8 +130,8 @@ export const peopleTogetherIllustration = {
             "d": "M177.121 89.7104C180.905 89.7104 183.971 87.1136 183.971 83.9104C183.971 80.7071 180.905 78.1104 177.121 78.1104C173.338 78.1104 170.271 80.7071 170.271 83.9104C170.271 87.1136 173.338 89.7104 177.121 89.7104Z",
             "fill": "#433427"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -140,8 +139,8 @@ export const peopleTogetherIllustration = {
             "d": "M179.538 77.9915C180.308 74.8823 176.779 71.3321 171.654 70.062C166.529 68.7918 161.75 70.2826 160.979 73.3918C160.209 76.501 163.738 80.0511 168.863 81.3213C173.988 82.5915 178.767 81.1006 179.538 77.9915Z",
             "fill": "#433427"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -149,8 +148,8 @@ export const peopleTogetherIllustration = {
             "d": "M122.051 88.2504C126.419 88.2504 129.961 84.5433 129.961 79.9704C129.961 75.3975 126.419 71.6904 122.051 71.6904C117.682 71.6904 114.141 75.3975 114.141 79.9704C114.141 84.5433 117.682 88.2504 122.051 88.2504Z",
             "fill": "#433427"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -158,8 +157,8 @@ export const peopleTogetherIllustration = {
             "d": "M147.902 72.1198C162.002 72.1198 173.762 80.8098 176.512 92.3798C176.912 90.7098 177.122 88.9798 177.122 87.1998C177.122 73.1498 164.042 61.7598 147.902 61.7598C131.762 61.7598 118.682 73.1498 118.682 87.1998C118.682 88.9698 118.892 90.7098 119.292 92.3798C122.042 80.8098 133.802 72.1198 147.902 72.1198Z",
             "fill": "url(#paint2_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -169,8 +168,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -178,8 +177,8 @@ export const peopleTogetherIllustration = {
             "d": "M18.0795 200.31L82.1294 201.32L118.949 181.59L143.429 292.4C143.429 292.4 110.629 302.81 61.0895 266.54C28.1595 242.43 15.6895 211.85 15.6895 211.85L18.0695 200.3L18.0795 200.31Z",
             "fill": "url(#paint3_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -187,8 +186,8 @@ export const peopleTogetherIllustration = {
             "d": "M79.2866 150.593C78.0191 143.936 71.5973 139.567 64.9431 140.834C58.2889 142.101 53.922 148.524 55.1895 155.181L58.949 174.927C60.2164 181.584 66.6382 185.953 73.2925 184.686C79.9467 183.419 84.3135 176.996 83.0461 170.339L79.2866 150.593Z",
             "fill": "url(#paint4_radial_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -196,8 +195,8 @@ export const peopleTogetherIllustration = {
             "d": "M79.2303 93.7197C85.8003 107.34 88.7603 122.69 87.7303 137.77C87.5103 141.01 86.9803 144.51 84.6403 146.76C83.3203 148.03 81.5603 148.75 79.8203 149.32C66.0603 153.86 50.0903 151.01 38.7503 141.99C36.3903 140.12 34.2003 137.97 32.6703 135.37C29.9603 130.76 29.5503 125.02 30.8803 119.84C32.2103 114.66 35.1403 110.01 38.6903 106.01C48.4503 94.9998 64.3803 88.6297 79.2403 93.7097L79.2303 93.7197Z",
             "fill": "#D1AC8E"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -205,8 +204,8 @@ export const peopleTogetherIllustration = {
             "d": "M34.3898 169.16C37.1098 175.36 34.4098 182.87 29.6498 187.69C26.1398 191.24 21.7198 193.65 17.1298 195.7C14.6498 196.81 14.3098 200.24 16.5598 201.78C21.8398 205.4 29.0498 207.38 34.9898 208.19C38.6498 202.25 42.4098 193.77 42.0298 186.8C41.7298 181.24 37.3998 176.64 34.3998 169.16H34.3898Z",
             "fill": "url(#paint5_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -214,8 +213,8 @@ export const peopleTogetherIllustration = {
             "d": "M35.7791 173.51C39.4191 178.86 41.0491 183.35 39.9791 189.74C38.9091 196.12 34.0591 203.15 28.8691 207.02C33.5591 208.2 36.0591 208.56 39.3191 208.82C52.4191 209.84 65.7491 207.68 77.8591 202.58C72.8291 201.97 58.6791 186.13 54.2291 183.71C42.4491 177.28 44.5991 181.32 35.7791 173.52V173.51Z",
             "fill": "url(#paint6_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -223,8 +222,8 @@ export const peopleTogetherIllustration = {
             "d": "M82.1392 201.329C79.1092 204.309 74.1392 203.429 70.0292 202.339C61.7992 200.169 57.6892 192.529 51.5592 186.619C45.9392 181.189 38.6992 178.779 34.8092 171.999C31.2892 165.859 26.7392 160.309 23.7792 153.879C20.8192 147.449 19.6392 139.629 23.0792 133.439C26.5892 150.959 36.8492 167.039 51.2692 177.599C55.5992 180.769 60.2792 183.469 64.2892 187.029C68.7292 190.979 72.2492 195.949 82.1292 201.329H82.1392Z",
             "fill": "url(#paint7_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -232,8 +231,8 @@ export const peopleTogetherIllustration = {
             "d": "M34.2195 134.26C33.0395 127.47 32.6195 120.55 32.9795 113.66C33.1295 110.82 33.4095 107.96 34.3995 105.29C35.7895 101.55 38.4995 98.44 41.5295 95.86C51.3095 87.56 65.4995 84.79 77.9295 87.97C74.8095 82.52 68.3695 78.83 62.1495 77.98C55.9295 77.13 49.5895 78.43 43.6195 80.37C37.8595 82.24 32.0795 84.88 28.2295 89.56C21.9195 97.25 22.3595 108.39 24.2995 118.14C25.5795 124.55 27.9095 131.55 34.2195 134.26Z",
             "fill": "url(#paint8_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -241,8 +240,8 @@ export const peopleTogetherIllustration = {
             "d": "M27.2402 158.649C34.8002 174.169 54.9102 178.859 66.2702 191.859C69.6502 195.729 72.6002 200.569 77.5302 202.009C80.8702 202.979 84.4502 202.139 87.7902 201.149C97.3602 198.319 106.59 194.319 115.21 189.269C116.78 188.349 118.39 187.339 119.36 185.799C120.65 183.749 120.58 181.169 120.47 178.759C120.37 176.429 120.2 173.939 118.77 172.109C117.14 170.029 114.23 169.329 111.6 169.609C108.97 169.889 106.51 170.979 104.02 171.859C94.6602 175.189 84.5702 175.739 74.6502 176.249C69.0102 176.539 63.3202 176.829 57.7602 175.819C54.0202 175.139 50.4102 173.869 46.8402 172.559C38.9402 169.649 30.3602 165.709 27.2502 158.649H27.2402Z",
             "fill": "url(#paint9_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -250,8 +249,8 @@ export const peopleTogetherIllustration = {
             "d": "M120.191 177.37C101.911 177.29 80.3706 184.07 62.3106 181.22C54.7606 180.03 47.8106 176.43 41.2606 172.5C36.6706 169.75 32.1506 166.77 28.5206 162.84C18.5506 152.03 17.0006 136.15 15.9506 121.48C15.6006 116.59 15.2606 111.61 16.4106 106.85C17.6406 101.73 20.5406 97.1499 23.8306 93.0399C29.3906 86.1099 36.4606 80.0799 44.9206 77.3599C53.3806 74.6499 63.4906 74.8899 70.2206 80.6799C59.3706 78.4399 47.6006 81.1199 37.9806 86.6199C35.2006 88.2099 32.5606 90.1099 30.4006 92.4799C24.0806 99.3899 22.5006 109.84 25.1206 118.83C27.7406 127.82 34.1306 135.38 41.7506 140.82C49.3706 146.26 58.1906 149.77 67.1006 152.64C70.6006 153.77 74.1706 154.82 77.8406 155.14C83.1806 155.61 88.5406 154.52 93.9006 154.75C99.5006 154.99 105.031 156.7 109.781 159.66C114.281 162.46 122.301 171.23 120.191 177.37Z",
             "fill": "url(#paint10_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -259,8 +258,8 @@ export const peopleTogetherIllustration = {
             "d": "M107.95 167.28C97.6102 162.68 85.1802 168.59 73.8702 169.09C65.8602 169.45 57.7802 168.42 50.1102 166.08C43.1302 163.95 36.4102 160.68 30.9902 155.79C25.5702 150.9 22.0402 141.52 20.9902 134.3C25.9902 146.28 36.2602 155.96 48.5202 160.24C61.6702 164.83 76.0402 163.29 89.9702 163.3C96.6902 163.3 104.12 163.99 107.96 167.28H107.95Z",
             "fill": "url(#paint11_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -268,8 +267,8 @@ export const peopleTogetherIllustration = {
             "d": "M34.22 134.259C34.22 134.259 14.42 114.659 30.4 92.4795C30.4 92.4795 17.73 103.979 23.02 119.239C26.85 130.269 34.21 134.269 34.21 134.269L34.22 134.259Z",
             "fill": "url(#paint12_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -279,8 +278,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -290,8 +289,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -301,8 +300,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -312,8 +311,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -321,8 +320,8 @@ export const peopleTogetherIllustration = {
             "d": "M37.9706 137.84C37.0306 105.99 62.4206 98.0695 82.8306 98.2295C84.2806 98.2395 82.1206 89.4895 77.9306 87.9695C73.7406 86.4495 67.5106 85.3695 61.3206 86.2995C50.7506 87.8895 40.3006 92.3295 34.6706 101.43C29.0506 110.52 27.1106 130.889 37.9606 137.84H37.9706Z",
             "fill": "url(#paint13_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -332,8 +331,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -341,8 +340,8 @@ export const peopleTogetherIllustration = {
             "d": "M241.68 155.283L241.072 155.159C233.464 153.604 226.036 158.511 224.482 166.119L221.174 182.305C219.619 189.912 224.526 197.34 232.134 198.895L232.742 199.019C240.35 200.574 247.777 195.667 249.332 188.059L252.64 171.873C254.195 164.266 249.287 156.838 241.68 155.283Z",
             "fill": "url(#paint14_radial_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -350,8 +349,8 @@ export const peopleTogetherIllustration = {
             "d": "M212.93 130.91C211.47 129.55 209.77 128.09 207.77 128.21C206.13 128.31 204.7 129.53 204.04 131.03C203.38 132.53 203.4 134.26 203.75 135.86C204.19 137.85 205.27 139.85 207.14 140.65C209.57 141.69 212.59 140.15 213.69 137.75C214.8 135.35 214.4 132.31 212.91 130.92L212.93 130.91Z",
             "fill": "#DABA9E"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -359,8 +358,8 @@ export const peopleTogetherIllustration = {
             "d": "M230.63 90.8897C217.67 104.84 212.55 117.7 208.73 136.35C207.93 140.24 207.93 151.07 208.66 154.98C209.78 160.99 214.27 165.73 218.56 170.09C220.29 171.85 222.1 173.66 224.42 174.48C226.78 175.31 229.37 175.02 231.84 174.67C241.81 173.26 252.25 170.75 259.37 163.63C266.06 156.94 268.74 147.22 270.88 138.12C272.38 131.73 273.56 125.28 274.48 118.79C275.22 113.58 275.89 107.74 273.1 103.2C270.83 99.4997 266.69 97.4097 262.64 95.8597C253.58 92.3897 243.85 90.6797 230.64 90.8997L230.63 90.8897Z",
             "fill": "#DABA9E"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -368,8 +367,8 @@ export const peopleTogetherIllustration = {
             "d": "M265.9 101.47C255.14 102.17 244.29 101.42 233.73 99.2502C229.19 98.3202 224.53 97.0402 220.97 94.0702C217.41 91.1002 215.24 86.0102 216.93 81.6902C217.87 79.3002 219.88 77.4202 222.21 76.3202C225.08 74.9602 228.46 74.7202 231.48 75.6602C233.54 76.3002 235.4 77.4502 237.41 78.2602C241.32 79.8302 245.63 80.0202 249.84 79.9102C254.05 79.8002 258.27 79.4002 262.45 79.8502C266.63 80.3002 270.87 81.7102 273.85 84.6802C276.83 87.6502 278.24 92.4202 276.48 96.2402C274.72 100.06 269.4 101.24 265.89 101.46L265.9 101.47Z",
             "fill": "#393535"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -377,8 +376,8 @@ export const peopleTogetherIllustration = {
             "d": "M273.441 97.3105C279.821 98.7405 284.301 104.47 287.231 110.32C290.331 116.51 292.321 123.72 290.321 130.34C287.731 138.93 279.341 144.2 271.581 148.71C269.671 149.82 266.891 150.79 265.541 149.04C264.791 148.06 264.931 146.69 265.121 145.47C267.211 131.59 269.451 116.93 264.241 103.9C263.811 102.82 263.321 101.6 263.771 100.53C264.011 99.9505 264.501 99.5105 265.001 99.1305C267.481 97.3005 270.891 96.7505 273.441 97.3205V97.3105Z",
             "fill": "#393535"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -386,8 +385,8 @@ export const peopleTogetherIllustration = {
             "d": "M228.57 97.3101C224.03 99.7501 220.8 104.11 218.54 108.73C216.28 113.35 214.84 118.34 212.93 123.12C212.52 124.15 211.57 125.38 210.59 124.86C210.06 124.58 209.89 123.91 209.81 123.31C209.24 119.03 210.4 114.74 211.18 110.5C211.98 106.13 212.42 101.59 214.5 97.6701C216.57 93.7501 220.86 90.5501 225.22 91.3801C227.08 91.7401 228.9 92.9601 228.58 97.3001L228.57 97.3101Z",
             "fill": "#393535"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -397,8 +396,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -408,8 +407,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -419,8 +418,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -430,8 +429,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -441,8 +440,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -450,8 +449,8 @@ export const peopleTogetherIllustration = {
             "d": "M265.45 151.03C266.11 149.69 266.79 148.32 267.88 147.3C268.97 146.28 270.57 145.66 271.98 146.13C272.9 146.43 273.62 147.14 274.25 147.88C274.7 148.41 275.12 148.96 275.41 149.59C276.34 151.58 275.78 154.09 274.31 155.72C272.83 157.35 270.58 158.16 268.38 158.18C266.49 158.2 264.43 157.56 263.43 155.96C262.29 154.14 262.88 151.69 265.45 151.04V151.03Z",
             "fill": "#DABA9E"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -459,8 +458,8 @@ export const peopleTogetherIllustration = {
             "d": "M274.731 214.61C267.171 203.37 253.781 202.08 249.181 189.34C238.111 190.86 225.551 190.52 221.181 182.3C214.451 188.47 206.871 180.39 197.861 181.85C196.571 182.06 194.951 182.56 193.131 183.26C176.581 189.6 164.471 204.03 160.661 221.33L144.721 293.79C146.141 293.83 147.561 293.86 148.991 293.86C203.731 293.86 251.481 263.94 276.791 219.57C276.151 217.37 275.341 215.53 274.731 214.62V214.61Z",
             "fill": "url(#paint15_linear_5109_65090)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -470,8 +469,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -481,8 +480,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -492,8 +491,8 @@ export const peopleTogetherIllustration = {
             "stroke": "url(#paint16_linear_5109_65090)",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -501,8 +500,8 @@ export const peopleTogetherIllustration = {
             "d": "M132.011 226.719C133.32 226.719 134.381 225.658 134.381 224.35C134.381 223.041 133.32 221.979 132.011 221.979C130.702 221.979 129.641 223.041 129.641 224.35C129.641 225.658 130.702 226.719 132.011 226.719Z",
             "fill": "#FFE463"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -512,8 +511,8 @@ export const peopleTogetherIllustration = {
             "stroke": "url(#paint17_linear_5109_65090)",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -521,8 +520,8 @@ export const peopleTogetherIllustration = {
             "d": "M167.559 223.899C168.868 223.899 169.929 222.838 169.929 221.529C169.929 220.22 168.868 219.159 167.559 219.159C166.251 219.159 165.189 220.22 165.189 221.529C165.189 222.838 166.251 223.899 167.559 223.899Z",
             "fill": "#FFE463"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -530,8 +529,8 @@ export const peopleTogetherIllustration = {
             "d": "M145.53 300.769C181.99 300.769 197.48 274.519 197.48 229.489H93.5801C93.5801 278.429 112.84 300.769 145.53 300.769Z",
             "fill": "#B58971"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -541,8 +540,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -550,8 +549,8 @@ export const peopleTogetherIllustration = {
             "d": "M145.28 176.94C171.24 176.94 181.31 197.1 181.58 229.85H189.95C189.95 187.99 173.48 168.89 145.52 168.89C114.34 168.89 101.09 191.34 101.09 229.85H108.97C109.31 199.65 120.63 176.94 145.27 176.94H145.28Z",
             "fill": "#B58971"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -561,8 +560,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -572,8 +571,8 @@ export const peopleTogetherIllustration = {
             "stroke": "url(#paint18_linear_5109_65090)",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -581,8 +580,8 @@ export const peopleTogetherIllustration = {
             "d": "M123.571 211.869C124.88 211.869 125.941 210.808 125.941 209.499C125.941 208.19 124.88 207.129 123.571 207.129C122.262 207.129 121.201 208.19 121.201 209.499C121.201 210.808 122.262 211.869 123.571 211.869Z",
             "fill": "#FFE463"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -592,8 +591,8 @@ export const peopleTogetherIllustration = {
             "stroke": "#F9A01C",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -601,8 +600,8 @@ export const peopleTogetherIllustration = {
             "d": "M151.44 217.399C152.749 217.399 153.81 216.338 153.81 215.029C153.81 213.72 152.749 212.659 151.44 212.659C150.131 212.659 149.07 213.72 149.07 215.029C149.07 216.338 150.131 217.399 151.44 217.399Z",
             "fill": "#FFE463"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -612,8 +611,8 @@ export const peopleTogetherIllustration = {
             "stroke": "#F9A01C",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -621,8 +620,8 @@ export const peopleTogetherIllustration = {
             "d": "M110.081 225.909C111.39 225.909 112.451 224.848 112.451 223.539C112.451 222.23 111.39 221.169 110.081 221.169C108.772 221.169 107.711 222.23 107.711 223.539C107.711 224.848 108.772 225.909 110.081 225.909Z",
             "fill": "#FFE463"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -632,8 +631,8 @@ export const peopleTogetherIllustration = {
             "stroke": "url(#paint19_linear_5109_65090)",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -641,8 +640,8 @@ export const peopleTogetherIllustration = {
             "d": "M146.029 231.02C146.99 231.02 147.769 230.241 147.769 229.28C147.769 228.319 146.99 227.54 146.029 227.54C145.068 227.54 144.289 228.319 144.289 229.28C144.289 230.241 145.068 231.02 146.029 231.02Z",
             "fill": "#FFE463"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -652,8 +651,8 @@ export const peopleTogetherIllustration = {
             "stroke": "#F9A01C",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -661,8 +660,8 @@ export const peopleTogetherIllustration = {
             "d": "M138.711 206.12C139.672 206.12 140.451 205.341 140.451 204.38C140.451 203.419 139.672 202.64 138.711 202.64C137.75 202.64 136.971 203.419 136.971 204.38C136.971 205.341 137.75 206.12 138.711 206.12Z",
             "fill": "#FFE463"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -672,8 +671,8 @@ export const peopleTogetherIllustration = {
             "stroke": "#F9A01C",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -681,8 +680,8 @@ export const peopleTogetherIllustration = {
             "d": "M167.56 208.4C168.521 208.4 169.3 207.621 169.3 206.66C169.3 205.699 168.521 204.92 167.56 204.92C166.599 204.92 165.82 205.699 165.82 206.66C165.82 207.621 166.599 208.4 167.56 208.4Z",
             "fill": "#FFE463"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -692,8 +691,8 @@ export const peopleTogetherIllustration = {
             "stroke": "#F9A01C",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -701,8 +700,8 @@ export const peopleTogetherIllustration = {
             "d": "M181.991 227.5C183.3 227.5 184.361 226.439 184.361 225.13C184.361 223.821 183.3 222.76 181.991 222.76C180.682 222.76 179.621 223.821 179.621 225.13C179.621 226.439 180.682 227.5 181.991 227.5Z",
             "fill": "#FFE463"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -712,8 +711,8 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -723,15 +722,15 @@ export const peopleTogetherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     },
     {
       "type": "defs",
       "attributes": {},
-      "colorAttribute": "none",
       "children": [
         {
           "type": "linearGradient",
@@ -743,15 +742,14 @@ export const peopleTogetherIllustration = {
             "y2": "206.681",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -759,8 +757,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -768,8 +766,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -777,10 +775,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -792,15 +791,14 @@ export const peopleTogetherIllustration = {
             "y2": "77.0698",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -808,8 +806,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -817,8 +815,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -826,10 +824,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -841,15 +840,14 @@ export const peopleTogetherIllustration = {
             "y2": "225.42",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -857,8 +855,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -866,8 +864,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -875,10 +873,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -890,15 +889,14 @@ export const peopleTogetherIllustration = {
             "y2": "189.44",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -906,8 +904,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.34",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -915,8 +913,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.77",
                 "stopColor": "#0084C2"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -924,10 +922,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -939,15 +938,14 @@ export const peopleTogetherIllustration = {
             "y2": "191.28",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -955,8 +953,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -964,10 +962,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -979,15 +978,14 @@ export const peopleTogetherIllustration = {
             "y2": "184.859",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -995,8 +993,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1004,10 +1002,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -1019,15 +1018,14 @@ export const peopleTogetherIllustration = {
             "y2": "105.99",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1035,8 +1033,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1044,10 +1042,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -1059,15 +1058,14 @@ export const peopleTogetherIllustration = {
             "y2": "180.549",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1075,8 +1073,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1084,10 +1082,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -1099,15 +1098,14 @@ export const peopleTogetherIllustration = {
             "y2": "182.98",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1115,8 +1113,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1124,10 +1122,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -1139,15 +1138,14 @@ export const peopleTogetherIllustration = {
             "y2": "152.14",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1155,8 +1153,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.34",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1164,8 +1162,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.77",
                 "stopColor": "#0084C2"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1173,10 +1171,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -1188,15 +1187,14 @@ export const peopleTogetherIllustration = {
             "y2": "116.579",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1204,8 +1202,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1213,10 +1211,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -1228,15 +1227,14 @@ export const peopleTogetherIllustration = {
             "y2": "98.7695",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1244,8 +1242,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.34",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1253,8 +1251,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.77",
                 "stopColor": "#0084C2"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1262,10 +1260,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -1277,15 +1276,14 @@ export const peopleTogetherIllustration = {
             "y2": "253.5",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1293,8 +1291,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1302,10 +1300,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -1317,15 +1316,14 @@ export const peopleTogetherIllustration = {
             "y2": "225.13",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1333,8 +1331,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1342,8 +1340,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1351,10 +1349,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -1366,15 +1365,14 @@ export const peopleTogetherIllustration = {
             "y2": "221.169",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1382,8 +1380,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1391,8 +1389,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1400,10 +1398,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -1415,15 +1414,14 @@ export const peopleTogetherIllustration = {
             "y2": "210.279",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1431,8 +1429,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1440,8 +1438,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1449,10 +1447,11 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -1464,15 +1463,14 @@ export const peopleTogetherIllustration = {
             "y2": "229.85",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1480,8 +1478,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1489,8 +1487,8 @@ export const peopleTogetherIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -1498,17 +1496,17 @@ export const peopleTogetherIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "clipPath",
           "attributes": {
             "id": "clip0_5109_65090"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "rect",
@@ -1517,12 +1515,14 @@ export const peopleTogetherIllustration = {
                 "height": "303.42",
                 "fill": "white"
               },
-              "colorAttribute": "fill",
-              "children": []
+              "children": [],
+              "colorAttribute": "fill"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     }
   ]
 };

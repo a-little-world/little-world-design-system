@@ -10,8 +10,8 @@ export const livingRoomIllustration = {
         "strokeWidth": "6",
         "strokeMiterlimit": "10"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -22,8 +22,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -34,8 +34,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -46,8 +46,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -58,8 +58,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -70,8 +70,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -82,8 +82,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -94,8 +94,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -106,8 +106,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -118,8 +118,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -130,8 +130,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -142,8 +142,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -154,8 +154,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -166,8 +166,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -178,8 +178,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -190,8 +190,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -202,8 +202,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -214,8 +214,8 @@ export const livingRoomIllustration = {
         "strokeLinecap": "round",
         "strokeLinejoin": "round"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     }
   ]
 };

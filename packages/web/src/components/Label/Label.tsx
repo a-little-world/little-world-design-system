@@ -11,7 +11,7 @@ import ToolTip from '../ToolTip/ToolTip';
 const StyledLabel = styled(RadixLabel.Root)<{
   $bold?: boolean;
   $inline?: boolean;
-  $marginBottom?: string;
+  $marginBottom?: string | number;
 }>`
   ${BODY_5_CSS}
   width: fit-content;
@@ -33,7 +33,7 @@ const ToolTipTrigger = styled(Button)`
 type LabelProps = RadixLabel.LabelProps & {
   bold?: boolean;
   inline?: boolean;
-  marginBottom?: string;
+  marginBottom?: string | number;
   toolTipText?: string;
 };
 
@@ -64,7 +64,7 @@ const Label: React.FC<LabelProps> = ({
               variation={ButtonVariations.Icon}
               size={ButtonSizes.Small}
             >
-              <QuestionIcon label="questionIcon" labelId="questionIcon" />
+              <QuestionIcon label="questionIcon" />
             </ToolTipTrigger>
           }
           text={toolTipText}

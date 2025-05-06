@@ -75,7 +75,6 @@ const NavigationMenuTrigger = ({ children }: PropsWithChildren) => (
       width={12}
       height={12}
       label="menu trigger icon"
-      labelId="menuTriggerIcon"
     />
   </NavMenuTrigger>
 );
@@ -103,7 +102,6 @@ const NavigationMenuCallout = ({
             width="48px"
             height="48px"
             label="Callout Icon"
-            labelId="calloutIcon"
           />
         ) : (
           <Logo
@@ -111,7 +109,6 @@ const NavigationMenuCallout = ({
             height="48px"
             color="white"
             label="Little World Icon"
-            labelId="lwIcon"
           />
         )}
         <CalloutHeading>{heading}</CalloutHeading>

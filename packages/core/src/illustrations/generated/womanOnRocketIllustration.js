@@ -7,7 +7,6 @@ export const womanOnRocketIllustration = {
       "attributes": {
         "clipPath": "url(#clip0_5121_65589)"
       },
-      "colorAttribute": "none",
       "children": [
         {
           "type": "path",
@@ -15,8 +14,8 @@ export const womanOnRocketIllustration = {
             "d": "M341.009 147.94C341.989 124.62 381.599 38.1098 381.599 38.1098L372.479 35.5098C372.479 35.5098 340.909 93.5598 313.619 115.92L315.019 124.2C316.309 131.84 311.159 139.07 303.519 140.36C295.879 141.65 288.649 136.5 287.359 128.86L286.649 124.64C245.449 122.26 168.359 88.4898 168.359 88.4898L163.449 97.4898C163.449 97.4898 256.669 147.19 272.279 169.63C287.889 192.06 288.869 255.23 288.869 255.23C288.869 255.23 330.789 233.63 348.879 217.99C348.879 217.99 340.029 171.25 341.009 147.93V147.94Z",
             "fill": "url(#paint0_linear_5121_65589)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -26,8 +25,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -35,8 +34,8 @@ export const womanOnRocketIllustration = {
             "d": "M267.009 304.5L190.239 334.81L248.909 326.13L148.719 384.62L234.869 346.54L140.119 413.68L205.509 381.23L209.149 391.8L246.109 360.45L230.359 393.06L286.619 338.09L267.009 304.5Z",
             "fill": "url(#paint1_linear_5121_65589)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -46,8 +45,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -57,8 +56,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -68,8 +67,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -79,8 +78,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -90,8 +89,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -101,8 +100,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -112,8 +111,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -123,8 +122,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -134,8 +133,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -145,8 +144,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -156,8 +155,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -167,8 +166,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -176,8 +175,8 @@ export const womanOnRocketIllustration = {
             "d": "M386.13 33.7899L376.29 30.9599C376.29 30.9599 363.12 13.0499 368.71 10.8899C372.14 9.56993 377.09 17.1799 377.09 17.1799C377.09 17.1799 380.22 -2.79007 387.68 0.329932C400.62 5.74993 386.12 33.7799 386.12 33.7799L386.13 33.7899Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -185,8 +184,8 @@ export const womanOnRocketIllustration = {
             "d": "M299.37 37.1697C293.72 37.7397 292.35 41.4497 290.89 41.6497C289.43 41.8397 286.93 38.4997 281.56 39.2597C278.1 39.7497 275.08 40.8397 272.45 42.4197C268 43.5397 263.98 47.8397 260.71 50.9897C258.59 53.0297 255.65 53.8397 252.76 53.3597C251.53 53.1597 250.28 53.0497 248.99 53.0497C241.83 53.0497 235.4 56.3597 230.98 61.6197C229.06 63.8997 226.29 65.1998 223.33 65.1597C223.25 65.1597 223.18 65.1597 223.1 65.1597C216.3 65.1597 210.37 69.0998 207.23 74.9398C205.4 78.3398 201.83 80.2997 198 79.9497C197.65 79.9197 197.3 79.8997 196.94 79.8997C190.12 79.8997 184.59 85.7697 184.59 92.9997C184.59 100.23 192.71 96.9897 192.24 104.12C191.84 110.28 199.68 114.66 204.48 111.87C207.84 109.92 211.6 110.18 215.03 111.98C217.46 113.25 220.2 113.97 223.1 113.97C225.79 113.97 228.35 113.35 230.65 112.24C233.32 110.95 241.15 106.25 243.83 107.53C246.84 108.97 254.06 118.53 264.28 117.91C284.34 116.69 287.99 112.49 300.22 112.49C320.11 112.49 330.65 98.0798 330.65 76.7497C330.65 55.4197 319.15 35.1797 299.36 37.1697H299.37Z",
             "fill": "url(#paint3_linear_5121_65589)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -194,8 +193,8 @@ export const womanOnRocketIllustration = {
             "d": "M312.192 105.465C311.261 99.9376 306.027 96.2108 300.502 97.1413C294.977 98.0718 291.253 103.307 292.184 108.835L294.768 124.179C295.699 129.707 300.933 133.434 306.458 132.503C311.983 131.573 315.707 126.337 314.776 120.809L312.192 105.465Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -203,8 +202,8 @@ export const womanOnRocketIllustration = {
             "d": "M274.839 90.5093C277.412 89.5208 278.505 86.1367 277.281 82.9507C276.056 79.7647 272.978 77.9833 270.406 78.9718C267.833 79.9604 266.741 83.3445 267.965 86.5305C269.189 89.7165 272.267 91.4979 274.839 90.5093Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -212,8 +211,8 @@ export const womanOnRocketIllustration = {
             "d": "M311.372 100.574L291.367 103.961L294.347 121.56L314.352 118.173L311.372 100.574Z",
             "fill": "url(#paint4_radial_5121_65589)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -221,8 +220,8 @@ export const womanOnRocketIllustration = {
             "d": "M291.47 43.6301C291.47 43.6301 291.44 43.6301 291.43 43.6301C291.43 43.6301 291.43 43.6401 291.43 43.6501C291.44 43.6401 291.45 43.6301 291.46 43.6201L291.47 43.6301Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -230,8 +229,8 @@ export const womanOnRocketIllustration = {
             "d": "M292.29 52.4004C292.29 65.0404 287.57 76.4004 270.67 81.1904C270.77 82.8904 271.12 82.3004 271.46 84.0304C274.91 101.71 289.32 112.39 304.09 110.9C326.35 108.65 323.05 87.8904 319.6 70.2104C319.43 69.3104 299.29 65.9704 292.28 52.4004H292.29Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -241,8 +240,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "1.77",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -252,8 +251,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "1.77",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -263,8 +262,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "1.77",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -274,8 +273,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "1.77",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -285,8 +284,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "1.77",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -294,8 +293,8 @@ export const womanOnRocketIllustration = {
             "d": "M292.529 251.58C292.529 251.58 289.169 288.01 315.069 284.4C340.969 280.79 368.979 271.45 368.979 271.45C368.979 271.45 325.329 342.24 313.429 351.87L330.689 354.87C330.689 354.87 419.579 291.35 416.569 251.58C413.559 211.81 350.499 220.35 350.499 220.35L354.829 213.59L352.539 210.55C352.539 210.55 339.019 225.09 292.529 251.58Z",
             "fill": "url(#paint5_linear_5121_65589)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -305,8 +304,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -314,8 +313,8 @@ export const womanOnRocketIllustration = {
             "d": "M396.9 304.81L403.39 337.76L418.42 335.98C418.42 335.98 421.01 315.81 420.52 304.81C420.52 304.81 412.23 302.08 396.9 304.81Z",
             "fill": "url(#paint6_linear_5121_65589)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -325,8 +324,8 @@ export const womanOnRocketIllustration = {
             "strokeWidth": "2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -334,15 +333,15 @@ export const womanOnRocketIllustration = {
             "d": "M166.11 93.5196L171.14 84.3896C171.14 84.3896 165.78 60.2496 159.99 63.1396C156.44 64.9196 158.9 74.4196 158.9 74.4196C158.9 74.4196 140.67 62.3696 137.74 70.5996C132.64 84.8796 166.11 93.5196 166.11 93.5196Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     },
     {
       "type": "defs",
       "attributes": {},
-      "colorAttribute": "none",
       "children": [
         {
           "type": "linearGradient",
@@ -354,15 +353,14 @@ export const womanOnRocketIllustration = {
             "y2": "145.37",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -370,8 +368,8 @@ export const womanOnRocketIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -379,8 +377,8 @@ export const womanOnRocketIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -388,10 +386,11 @@ export const womanOnRocketIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -403,15 +402,14 @@ export const womanOnRocketIllustration = {
             "y2": "323.837",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -419,8 +417,8 @@ export const womanOnRocketIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -428,8 +426,8 @@ export const womanOnRocketIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -437,10 +435,11 @@ export const womanOnRocketIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -452,15 +451,14 @@ export const womanOnRocketIllustration = {
             "y2": "310.369",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -468,8 +466,8 @@ export const womanOnRocketIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -477,8 +475,8 @@ export const womanOnRocketIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -486,10 +484,11 @@ export const womanOnRocketIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -501,15 +500,14 @@ export const womanOnRocketIllustration = {
             "y2": "64.4098",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -517,8 +515,8 @@ export const womanOnRocketIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -526,10 +524,11 @@ export const womanOnRocketIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -541,15 +540,14 @@ export const womanOnRocketIllustration = {
             "y2": "264.96",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -557,8 +555,8 @@ export const womanOnRocketIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -566,10 +564,11 @@ export const womanOnRocketIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -581,15 +580,14 @@ export const womanOnRocketIllustration = {
             "y2": "321.56",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -597,8 +595,8 @@ export const womanOnRocketIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -606,17 +604,17 @@ export const womanOnRocketIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "clipPath",
           "attributes": {
             "id": "clip0_5121_65589"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "rect",
@@ -625,12 +623,14 @@ export const womanOnRocketIllustration = {
                 "height": "539.87",
                 "fill": "white"
               },
-              "colorAttribute": "fill",
-              "children": []
+              "children": [],
+              "colorAttribute": "fill"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     }
   ]
 };

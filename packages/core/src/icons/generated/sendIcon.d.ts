@@ -1,17 +1,18 @@
 export declare const sendIcon: {
   viewBox: string;
-  elements: {
+  elements: Array<{
     type: string;
     attributes: {
-      [key: string]: string;
+      [key: string]: string | number | undefined;
     };
-    colorAttribute?: 'fill' | 'stroke' | 'none';
-    children: {
+    children: Array<{
       type: string;
       attributes: {
-        [key: string]: string;
+        [key: string]: string | number | undefined;
       };
+      children: never[];
       colorAttribute?: 'fill' | 'stroke' | 'none';
-    }[];
-  }[];
+    }>;
+    colorAttribute?: 'fill' | 'stroke' | 'none';
+  }>;
 };

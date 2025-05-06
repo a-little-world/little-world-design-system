@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
 
 export const Gradient: React.FC<GradientProps> = ({ gradient, style, children }) => {
   const { colors, start, end } = parseGradientString(gradient);
-  console.log({ colors, start, end, gradient });
   
   return (
     <LinearGradient

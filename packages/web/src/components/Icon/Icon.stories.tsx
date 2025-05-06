@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Icon } from './Icon';
 import * as allIcons from './index';
-import { tokens, Gradients } from '@a-little-world/little-world-design-system-core';
+import { tokensPixelated, Gradients } from '@a-little-world/little-world-design-system-core';
 ;
 
 export default {
@@ -18,7 +18,7 @@ export default {
 
 export const AllVariants = args => (
   <div
-    style={{ display: 'flex', flexWrap: 'wrap', gap: tokens.spacing.medium }}
+    style={{ display: 'flex', flexWrap: 'wrap', gap: tokensPixelated.spacing.medium }}
   >
     {Object.entries(allIcons).map(([name, Component]) => (
       <Component key={name} label={name} {...args} />

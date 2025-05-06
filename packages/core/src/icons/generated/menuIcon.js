@@ -8,10 +8,11 @@ export const menuIcon = {
         "vectorEffect": "non-scaling-stroke",
         "strokeLinecap": "round",
         "strokeWidth": "2px",
-        "d": "M2.5 5.5h35M2.5 19.5h35M2.5 34.5h35"
+        "d": "M2.5 5.5h35M2.5 19.5h35M2.5 34.5h35",
+        "stroke": "#000"
       },
-      "colorAttribute": "none",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     }
   ]
 };

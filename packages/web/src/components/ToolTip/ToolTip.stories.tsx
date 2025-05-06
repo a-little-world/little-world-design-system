@@ -18,7 +18,7 @@ export const Default = args => {
     <ToolTip
       trigger={
         <Button variation={ButtonVariations.Icon}>
-          <QuestionIcon label="questionIcon" labelId="questionIcon" />
+          <QuestionIcon label="questionIcon" />
         </Button>
       }
       {...args}

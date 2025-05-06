@@ -1,3 +1,8 @@
-import { Theme } from '@a-little-world/little-world-design-system-core';
+import { ThemeNative } from '@a-little-world/little-world-design-system-core';
 
-export type { Theme }; 
+export type { ThemeNative }; 
+
+declare module 'styled-components' {
+    export interface DefaultTheme extends ThemeNative {}
+  }
+  

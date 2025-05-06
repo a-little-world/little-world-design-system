@@ -55,7 +55,7 @@ const Popover: React.FC<PopoverProps> = ({
         {showCloseButton && (
           <StyledPopoverClose asChild $asToolTip={asToolTip}>
             <Button variation={ButtonVariations.Icon}>
-              <CloseIcon label="popover close" labelId="popover close" />
+              <CloseIcon label="popover close" />
             </Button>
           </StyledPopoverClose>
         )}

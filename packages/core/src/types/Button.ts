@@ -58,10 +58,12 @@ export const CIRCLE_DIMENSIONS = {
   [ButtonSizes.Small]: { width: 28, height: 28 },
   [ButtonSizes.Medium]: { width: 36, height: 36 },
   [ButtonSizes.Large]: { width: 44, height: 44 },
+  [ButtonSizes.Stretch]: { width: 44, height: 44 },
 } as const;
 
 export const ICON_DIMENSIONS = {
   [ButtonSizes.Small]: { width: 16, height: 16 },
   [ButtonSizes.Medium]: { width: 24, height: 24 },
   [ButtonSizes.Large]: { width: 32, height: 32 },
+  [ButtonSizes.Stretch]: { width: 32, height: 32 },
 } as const; 

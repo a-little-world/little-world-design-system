@@ -60,6 +60,9 @@ import {
   twitterIcon,
   videoIcon,
   whatsappIcon,
+  attachmentIcon,
+  callIncomingIcon,
+  callOutgoingIcon,
 } from "@a-little-world/little-world-design-system-core";
 
 import { createIconComponent } from "./createIconComponent";
@@ -84,6 +87,11 @@ export const ArrowLeftIcon = createIconComponent({
   svgData: arrowLeftIcon,
 });
 
+export const AttachmentIcon = createIconComponent({
+  name: "Attachment",
+  svgData: attachmentIcon,
+});
+
 export const BellIcon = createIconComponent({
   name: "Bell",
   svgData: bellIcon,
@@ -92,6 +100,16 @@ export const BellIcon = createIconComponent({
 export const CalendarIcon = createIconComponent({
   name: "Calendar",
   svgData: calendarIcon,
+});
+
+export const CallIncomingIcon = createIconComponent({
+  name: "CallIncoming",
+  svgData: callIncomingIcon,
+});
+
+export const CallOutgoingIcon = createIconComponent({
+  name: "CallOutgoing",
+  svgData: callOutgoingIcon,
 });
 
 export const CameraIcon = createIconComponent({
@@ -224,7 +242,7 @@ export const LogoutIcon = createIconComponent({
   svgData: logoutIcon,
 });
 
-export const LogoIcon = createIconComponent({
+export const Logo = createIconComponent({
   name: "Logo",
   svgData: logoIcon,
 });

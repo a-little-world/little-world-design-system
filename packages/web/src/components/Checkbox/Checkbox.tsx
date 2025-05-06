@@ -49,7 +49,7 @@ export const CheckboxButton: React.FC<CheckboxProps> = ({
   >
     <NonInteractiveCheckbox $color={color} checked={checked}>
       {checked && (
-        <CheckIcon label="check icon" labelId="check icon" width={10} />
+        <CheckIcon label="check icon" width={10} />
       )}
     </NonInteractiveCheckbox>
     {label && (
@@ -80,7 +80,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         {readOnly ? (
           <NonInteractiveCheckbox $color={color} checked={checked}>
             {checked && (
-              <CheckIcon label="check icon" labelId="check icon" width={10} />
+              <CheckIcon label="check icon" width={10} />
             )}
           </NonInteractiveCheckbox>
         ) : (
@@ -95,7 +95,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
             {...rest}
           >
             <CheckboxIndicator>
-              <CheckIcon label="check icon" labelId="check icon" width={10} />
+              <CheckIcon label="check icon" width={10} />
             </CheckboxIndicator>
           </CheckboxRoot>
         )}

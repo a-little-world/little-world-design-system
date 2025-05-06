@@ -10,8 +10,8 @@ export const linkedinIcon = {
         "rx": "15%",
         "fill": "#000"
       },
-      "colorAttribute": "fill",
-      "children": []
+      "children": [],
+      "colorAttribute": "fill"
     },
     {
       "type": "circle",
@@ -21,8 +21,8 @@ export const linkedinIcon = {
         "r": "37",
         "fill": "#FFF"
       },
-      "colorAttribute": "fill",
-      "children": []
+      "children": [],
+      "colorAttribute": "fill"
     },
     {
       "type": "path",
@@ -31,8 +31,8 @@ export const linkedinIcon = {
         "strokeWidth": "66",
         "d": "M244 194v198M142 194v198"
       },
-      "colorAttribute": "stroke",
-      "children": []
+      "children": [],
+      "colorAttribute": "stroke"
     },
     {
       "type": "path",
@@ -40,8 +40,8 @@ export const linkedinIcon = {
         "d": "M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32",
         "fill": "#FFF"
       },
-      "colorAttribute": "fill",
-      "children": []
+      "children": [],
+      "colorAttribute": "fill"
     }
   ]
 };

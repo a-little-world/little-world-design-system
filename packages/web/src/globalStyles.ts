@@ -1,7 +1,7 @@
 // globalStyles.js
 import { createGlobalStyle } from 'styled-components';
 
-import type { ThemeShallow } from './theme/theme';
+import { ThemeShallow } from '@a-little-world/little-world-design-system-core';
 
 const GlobalStyle = createGlobalStyle<{ theme: ThemeShallow }>`
   body {

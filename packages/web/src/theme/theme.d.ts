@@ -1,8 +1,8 @@
 import 'styled-components';
-import { Theme } from '@a-little-world/little-world-design-system-core';
+import { ThemeWeb } from '@a-little-world/little-world-design-system-core';
 
-export type { Theme };
+export type { ThemeWeb };
 
 declare module 'styled-components' {
-  export interface DefaultTheme extends Theme {}
+  export interface DefaultTheme extends ThemeWeb {}
 }

@@ -53,7 +53,7 @@ const Option: React.FC<{ children: string; value: string }> = ({
         <Text>{children}</Text>
       </Select.SelectItemText>
       <SelectItemIndicator>
-        <CheckIcon label="selected item" labelId="selected item" width="10px" />
+        <CheckIcon label="selected item" width="10px" />
       </SelectItemIndicator>
     </SelectItem>
   );
@@ -106,7 +106,6 @@ const Dropdown: React.FC<DropdownProps> = ({
                 width={ARROW_DOWN_WIDTH}
                 height={ARROW_DOWN_HEIGHT}
                 label="dropdown icon"
-                labelId="dropdown icon"
               />
             </SelectIcon>
           )}

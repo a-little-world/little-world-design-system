@@ -26,7 +26,6 @@ const Text = ({
     color: color,
     ...mapCoreStyleToRN(getTextStyle(type)),
   };
-  console.log({textStyle})
 
   if (bold) {
     textStyle.fontWeight = 'bold';

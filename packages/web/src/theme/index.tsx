@@ -9,16 +9,16 @@ import React, {
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import type { ThemeProps } from 'styled-components';
 
-import { ThemeVariants, ThemeContextType, defaultThemeVariant, tokens } from '@a-little-world/little-world-design-system-core';
-
+import { ThemeVariants, ThemeContextType, defaultThemeVariant, tokensPixelated } from '@a-little-world/little-world-design-system-core';
+console.log({tokensPixelated}) 
 export const lightTheme: DefaultTheme = {
-  ...tokens,
-  color: tokens.color.theme.light,
+  ...tokensPixelated,
+  color: tokensPixelated.color.theme.light,
 };
 
 export const darkTheme: DefaultTheme = {
-  ...tokens,
-  color: tokens.color.theme.dark,
+  ...tokensPixelated,
+  color: tokensPixelated.color.theme.dark,
 };
 
 export const defaultTheme = lightTheme;

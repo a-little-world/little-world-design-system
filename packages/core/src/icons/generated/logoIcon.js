@@ -5,7 +5,6 @@ export const logoIcon = {
     {
       "type": "defs",
       "attributes": {},
-      "colorAttribute": "none",
       "children": [
         {
           "type": "linearGradient",
@@ -16,7 +15,6 @@ export const logoIcon = {
             "y2": "35.21",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
@@ -24,8 +22,8 @@ export const logoIcon = {
                 "offset": "0",
                 "stopColor": "#d85509"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -33,8 +31,8 @@ export const logoIcon = {
                 "offset": "0.14",
                 "stopColor": "#df6510"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -42,8 +40,8 @@ export const logoIcon = {
                 "offset": "0.49",
                 "stopColor": "#ed861f"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -51,10 +49,11 @@ export const logoIcon = {
                 "offset": "0.67",
                 "stopColor": "#f39325"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -66,7 +65,6 @@ export const logoIcon = {
             "y2": "31.58",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
@@ -74,8 +72,8 @@ export const logoIcon = {
                 "offset": "0.18",
                 "stopColor": "#36a9e1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -83,8 +81,8 @@ export const logoIcon = {
                 "offset": "0.56",
                 "stopColor": "#1f8bcc"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -92,12 +90,14 @@ export const logoIcon = {
                 "offset": "1",
                 "stopColor": "#0063af"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     },
     {
       "type": "g",
@@ -105,7 +105,6 @@ export const logoIcon = {
         "id": "Ebene_2",
         "dataName": "Ebene 2"
       },
-      "colorAttribute": "none",
       "children": [
         {
           "type": "g",
@@ -113,7 +112,6 @@ export const logoIcon = {
             "id": "Ebene_1-2",
             "dataName": "Ebene 1"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "path",
@@ -122,8 +120,8 @@ export const logoIcon = {
                 "fill": "url(#blueGradient)",
                 "d": "M66.69,8.56H50.2a24.68,24.68,0,0,1,9.39,1.85c-.33.32-.65.65-1,1a1.38,1.38,0,0,0-.29,1.72c.17.35.38.68.57,1a8.33,8.33,0,0,0,1.66,1.94A1.61,1.61,0,0,1,61,17.68c-.09.36.12.71-.08,1,0,.06,0,.22.1.33.4.82.74,1,1.65.75a7.1,7.1,0,0,1,2.47-.17,1.76,1.76,0,0,1,1.56,1.05c.1.23.17.46.27.68a1.28,1.28,0,0,0,1.43.9,3,3,0,0,0,2.08-1.09c.25-.31.49-.64.73-1a24.69,24.69,0,0,1,2.5,21,2.7,2.7,0,0,0-.93-.46,1.74,1.74,0,0,1-1-2.71c.06-.1.14-.19.2-.3A1.19,1.19,0,0,0,72,36.37a6.42,6.42,0,0,0-.38-.53,1.24,1.24,0,0,0-2-.17A5.79,5.79,0,0,1,67.35,37c-.93.27-1.87.54-2.81.78a3.77,3.77,0,0,0-1.5.74,1.6,1.6,0,0,1-1.28.44,14.53,14.53,0,0,0-2.09-.23,3.28,3.28,0,0,0-3.29,1.45,2.3,2.3,0,0,1-1.84,1.15l-.22,0a1.23,1.23,0,0,0-.94,1.09,2.67,2.67,0,0,0,1.34,2.8,9.66,9.66,0,0,1,2.51,2.12,4.25,4.25,0,0,1,1.15,1.69c.33,1.14.28,1.77-.62,2.29a10.91,10.91,0,0,0-1.54,1.91A3.1,3.1,0,0,0,56,55.63c.16.58.28,1.17.4,1.75a24.84,24.84,0,0,1-6.2.79H29.8a24.81,24.81,0,1,1,0-49.61h3.92a29.6,29.6,0,0,1,16.48-5H29.8A29.77,29.77,0,0,0,6.94,52.45L4.83,66.86,15,59.22A29.61,29.61,0,0,0,29.8,63.16H50.2A29.79,29.79,0,0,0,66.69,8.56Z"
               },
-              "colorAttribute": "fill",
-              "children": []
+              "children": [],
+              "colorAttribute": "fill"
             },
             {
               "type": "path",
@@ -132,12 +130,14 @@ export const logoIcon = {
                 "fill": "url(#orangeGradient)",
                 "d": "M91.65,12.29,93.45,0,84.26,6.89A29.57,29.57,0,0,0,70.61,3.57H50.2a29.79,29.79,0,0,0-16.48,54.6H50.2a24.79,24.79,0,0,1-23-34.09,2.36,2.36,0,0,0,.59.24,8,8,0,0,1,1,.33c0,.1,0,.13,0,.15a.87.87,0,0,0,.32,1.12,1.43,1.43,0,0,1,.31,2,3.33,3.33,0,0,1-.43.67,4.31,4.31,0,0,0-1,3.61,6.84,6.84,0,0,0,.34,1.42A2.43,2.43,0,0,0,29.59,35a2.32,2.32,0,0,0,2.1.06,3.41,3.41,0,0,1,.76-.26,1.15,1.15,0,0,1,1.41.62c.28.48.56,1,.83,1.46a20.21,20.21,0,0,0,2.55,3.91,2.13,2.13,0,0,1,.49,1.33,1.67,1.67,0,0,1-.56,1.14,13,13,0,0,0-1.77,2.23,1.35,1.35,0,0,0,0,1.58c.35.47.8.57,1.52.36A8.92,8.92,0,0,1,38,47.14a12.34,12.34,0,0,0,2.8-.82,3.68,3.68,0,0,0,2.33-2.56,9.66,9.66,0,0,0,.21-2.84c-.06-1-.09-2.09-.11-3.14a.81.81,0,0,1,.22-.52,7.71,7.71,0,0,1,1.26-1.1,6.71,6.71,0,0,0,1.38-1A1.51,1.51,0,0,0,46.61,34c0-.39,0-.78-.09-1.16-.07-.81-.16-1.61-.2-2.41a2.34,2.34,0,0,1,1.31-2.48,1,1,0,0,0,.61-1.12c-.15-1-.28-2-.49-3a14.88,14.88,0,0,1-.38-3,4.85,4.85,0,0,0-.07-.55h-.83c-.62,0-1.23,0-1.84,0-.4,0-.63-.35-.44-.63a3.46,3.46,0,0,0,.4-1.89,1,1,0,0,0-.81-1c-.61,0-1.22,0-1.83.05a8,8,0,0,1-1.09.08,1.47,1.47,0,0,1-.79-.3,6.3,6.3,0,0,1-1.86-2.58,13.63,13.63,0,0,1-.53-1.82s0-.05,0-.09A24.64,24.64,0,0,1,50.2,8.56H70.61a24.81,24.81,0,0,1,0,49.61H66.69a29.61,29.61,0,0,1-16.49,5H70.61a29.78,29.78,0,0,0,21-50.87Z"
               },
-              "colorAttribute": "fill",
-              "children": []
+              "children": [],
+              "colorAttribute": "fill"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     }
   ]
 };

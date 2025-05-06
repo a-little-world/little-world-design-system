@@ -38,13 +38,13 @@ export const SliderThumb = styled(Thumb)`
   border: 1px solid ${props => props.theme.color.border.moderate};
 
   &:hover {
-    background-color: ${props => props.theme.color.primary};
+    background-color: ${props => props.theme.color.surface.primary};
     cursor: grab;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0px 4px ${props => props.theme.color.shadow};
+    box-shadow: 0 0px 4px ${props => props.theme.color.surface.contrast};
   }
 `;
 

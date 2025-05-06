@@ -91,15 +91,16 @@ function processSvg(svgContent) {
         colorAttribute = 'stroke';
       }
 
-      return {
+      const element = {
         type: node.name,
         attributes: convertAttributes(node.attributes),
-        colorAttribute,
-        // Recursively process children if they exist
         children: node.children && node.children.length > 0 
           ? node.children.map(child => processNode(child)).filter(Boolean)
-          : []
+          : [],
+        colorAttribute
       };
+
+      return element;
     }
     
     // Skip unsupported elements
@@ -185,20 +186,21 @@ iconFiles.forEach(file => {
   
   const declContent = `export declare const ${exportName}: {
   viewBox: string;
-  elements: {
+  elements: Array<{
     type: string;
     attributes: {
-      [key: string]: string;
+      [key: string]: string | number | undefined;
     };
-    colorAttribute?: 'fill' | 'stroke' | 'none';
-    children: {
+    children: Array<{
       type: string;
       attributes: {
-        [key: string]: string;
+        [key: string]: string | number | undefined;
       };
+      children: never[];
       colorAttribute?: 'fill' | 'stroke' | 'none';
-    }[];
-  }[];
+    }>;
+    colorAttribute?: 'fill' | 'stroke' | 'none';
+  }>;
 };
 `;
   
@@ -213,20 +215,21 @@ illustrationFiles.forEach(file => {
   
   const declContent = `export declare const ${exportName}: {
   viewBox: string;
-  elements: {
+  elements: Array<{
     type: string;
     attributes: {
-      [key: string]: string;
+      [key: string]: string | number | undefined;
     };
-    colorAttribute?: 'fill' | 'stroke' | 'none';
-    children: {
+    children: Array<{
       type: string;
       attributes: {
-        [key: string]: string;
+        [key: string]: string | number | undefined;
       };
+      children: never[];
       colorAttribute?: 'fill' | 'stroke' | 'none';
-    }[];
-  }[];
+    }>;
+    colorAttribute?: 'fill' | 'stroke' | 'none';
+  }>;
 };
 `;
   

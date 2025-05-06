@@ -7,7 +7,6 @@ export const teacherIllustration = {
       "attributes": {
         "clipPath": "url(#clip0_5109_65182)"
       },
-      "colorAttribute": "none",
       "children": [
         {
           "type": "path",
@@ -15,8 +14,8 @@ export const teacherIllustration = {
             "d": "M147.779 283.02C222.564 283.02 283.189 222.395 283.189 147.61C283.189 72.8253 222.564 12.2002 147.779 12.2002C72.9943 12.2002 12.3691 72.8253 12.3691 147.61C12.3691 222.395 72.9943 283.02 147.779 283.02Z",
             "fill": "white"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -24,8 +23,8 @@ export const teacherIllustration = {
             "d": "M160.8 26.8597C160.68 26.8597 160.56 26.8697 160.44 26.8797C158.75 24.6397 156.03 23.1797 152.95 23.1797C149.87 23.1797 147.16 24.6397 145.46 26.8797C145.34 26.8797 145.22 26.8597 145.1 26.8597C140.77 26.8597 137.25 30.2797 137.25 34.4997C137.25 38.7197 140.76 42.1397 145.1 42.1397C146.8 42.1397 148.37 41.6097 149.65 40.7097C150.67 41.0897 151.78 41.2997 152.94 41.2997C154.1 41.2997 155.21 41.0797 156.23 40.7097C157.52 41.5997 159.08 42.1397 160.78 42.1397C165.11 42.1397 168.63 38.7197 168.63 34.4997C168.63 30.2797 165.12 26.8597 160.78 26.8597H160.8Z",
             "fill": "url(#paint0_linear_5109_65182)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -35,8 +34,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -44,8 +43,8 @@ export const teacherIllustration = {
             "d": "M198.1 93.1002L196.76 87.6302C195.32 81.7802 194.09 75.8802 193.41 69.9002C190.95 48.3502 173.78 31.6602 152.96 31.6602C132.14 31.6602 114.97 48.3502 112.51 69.9002C111.83 75.8802 110.6 81.7902 109.16 87.6302L107.82 93.1002C104.97 104.7 113.75 115.9 125.69 115.9H138.33C142.87 117.77 147.8 118.8 152.96 118.8C158.12 118.8 163.05 117.76 167.59 115.9H180.23C192.17 115.9 200.96 104.7 198.1 93.1002Z",
             "fill": "url(#paint1_linear_5109_65182)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -55,8 +54,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -66,8 +65,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -75,8 +74,8 @@ export const teacherIllustration = {
             "d": "M266.27 171.94C260.62 178.88 252.06 183.35 243.14 184.03C234.22 184.71 225.08 181.57 218.45 175.56C212.06 169.76 208.2 161.75 202.91 154.92C193.45 142.71 184.15 135.18 176.36 131.15C171.17 128.47 166.36 127.76 162.57 127.26C159.72 126.88 156.67 126.67 153.43 126.67C149.53 126.67 145.9 126.97 142.54 127.51C136.6 128.46 128.04 132.44 124.64 135.43C115.8 143.22 112.28 149.89 110.27 155.32C108.96 158.41 107.89 161.67 107.1 165.07C106.37 166.81 105.44 168.32 103.96 169.6C98.8399 174.02 93.2899 171.78 85.5299 169.65C74.6699 166.67 68.1699 172.4 68.1699 172.4C68.1699 172.4 68.1399 178.47 73.2199 177.87C78.2999 177.27 72.3199 179.36 88.4699 189.53C94.0399 193.04 99.8999 193.87 105.46 193.18V222.26C105.46 223.92 105.53 258.06 105.65 259.68C105.65 259.68 138.2 265.3 159.19 265.3C180.18 265.3 200.34 259.68 200.34 259.68C200.46 258.06 200.53 223.92 200.53 222.26V196.01C202.33 197.58 204.2 199.07 206.16 200.43C218.87 209.26 235.98 209.99 250.67 205.1C264.35 200.54 273.66 183.15 273.66 183.15L266.27 171.91V171.94Z",
             "fill": "url(#paint2_linear_5109_65182)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -84,15 +83,14 @@ export const teacherIllustration = {
             "d": "M164.519 117.26C164.519 111.052 159.487 106.02 153.279 106.02C147.071 106.02 142.039 111.052 142.039 117.26V136.37C142.039 142.577 147.071 147.61 153.279 147.61C159.487 147.61 164.519 142.577 164.519 136.37V117.26Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "g",
           "attributes": {
             "clipPath": "url(#clip1_5109_65182)"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "path",
@@ -100,10 +98,11 @@ export const teacherIllustration = {
                 "d": "M164.48 118H142V135.85H164.48V118Z",
                 "fill": "url(#paint3_radial_5109_65182)"
               },
-              "colorAttribute": "fill",
-              "children": []
+              "children": [],
+              "colorAttribute": "fill"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "path",
@@ -111,8 +110,8 @@ export const teacherIllustration = {
             "d": "M120.171 63.5204C120.791 72.4204 120.781 81.3804 122.101 90.2004C123.421 99.0204 126.191 107.85 131.741 114.78C137.291 121.71 145.961 126.47 154.721 125.63C160.671 125.06 166.221 122 170.531 117.8C174.841 113.6 178.011 108.34 180.531 102.85C185.661 91.6704 188.261 79.3104 188.081 66.9904C188.061 65.8704 188.021 64.7204 187.561 63.7104C187.161 62.8304 186.481 62.1104 185.781 61.4404C178.681 54.5704 169.141 50.5304 159.371 49.5504C149.611 48.5704 139.661 50.5404 130.681 54.5304C126.321 56.4704 119.831 58.8604 120.161 63.5204H120.171Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -122,8 +121,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -133,8 +132,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -144,8 +143,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -155,8 +154,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -164,8 +163,8 @@ export const teacherIllustration = {
             "d": "M140.899 89.81C142.158 89.81 143.179 88.7892 143.179 87.53C143.179 86.2708 142.158 85.25 140.899 85.25C139.64 85.25 138.619 86.2708 138.619 87.53C138.619 88.7892 139.64 89.81 140.899 89.81Z",
             "fill": "#0076BA"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -173,8 +172,8 @@ export const teacherIllustration = {
             "d": "M162.93 89.81C164.19 89.81 165.21 88.7892 165.21 87.53C165.21 86.2708 164.19 85.25 162.93 85.25C161.671 85.25 160.65 86.2708 160.65 87.53C160.65 88.7892 161.671 89.81 162.93 89.81Z",
             "fill": "#0076BA"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -184,8 +183,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -193,8 +192,8 @@ export const teacherIllustration = {
             "d": "M273.55 183.14C273.55 183.14 306.89 183.64 307.26 170.55C307.51 161.77 288.21 163.93 288.21 163.93C288.21 163.93 294.81 154.66 287.27 154.07C279.73 153.47 266.24 171.92 266.24 171.92L273.54 183.15L273.55 183.14Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -204,8 +203,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -215,8 +214,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -227,8 +226,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -239,8 +238,8 @@ export const teacherIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -251,8 +250,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -263,8 +262,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -275,8 +274,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -287,8 +286,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -299,8 +298,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -311,8 +310,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -323,8 +322,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -335,8 +334,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -347,8 +346,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -359,8 +358,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -371,8 +370,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -383,8 +382,8 @@ export const teacherIllustration = {
             "strokeLinecap": "round",
             "strokeLinejoin": "round"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -392,8 +391,8 @@ export const teacherIllustration = {
             "d": "M68.1694 172.41C63.7594 172.74 59.6794 174.9 56.9594 178.39C53.5794 182.72 51.5494 188.2 61.4394 189.34C78.5594 191.31 79.1994 179.36 79.1994 179.36C79.1994 179.36 87.2495 182.73 93.1595 181.41C100.189 179.84 89.6894 175.38 83.3794 173.04C80.7294 172.06 77.9094 171.67 75.0894 171.88L68.1595 172.4L68.1694 172.41Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -401,8 +400,8 @@ export const teacherIllustration = {
             "d": "M184.23 47.8303C175.68 35.8403 163.5 31.1903 157.03 37.4403C155.97 38.4703 155.14 39.7403 154.51 41.1803C150.06 33.5203 138.49 33.3803 128.54 40.9103C118.52 48.5003 112.28 68.4703 116.66 76.2903C121.04 84.1103 134.38 76.8303 144.4 69.2503C148.9 65.8403 157.7 66.1203 160.79 70.4503C169.34 82.4403 181.52 87.0903 187.99 80.8403C194.46 74.5903 192.78 59.8103 184.23 47.8303Z",
             "fill": "url(#paint4_linear_5109_65182)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -410,8 +409,8 @@ export const teacherIllustration = {
             "d": "M191.391 88.9352C192.259 85.4235 190.764 82.0329 188.051 81.362C185.338 80.6912 182.435 82.9941 181.567 86.5058C180.698 90.0175 182.193 93.4081 184.906 94.079C187.619 94.7498 190.522 92.4469 191.391 88.9352Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -419,8 +418,8 @@ export const teacherIllustration = {
             "d": "M122.144 91.5387C124.761 90.5596 125.855 87.0192 124.588 83.631C123.32 80.2429 120.171 78.29 117.554 79.2691C114.936 80.2482 113.842 83.7886 115.109 87.1768C116.377 90.565 119.526 92.5179 122.144 91.5387Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -430,15 +429,15 @@ export const teacherIllustration = {
             "strokeWidth": "1.2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     },
     {
       "type": "defs",
       "attributes": {},
-      "colorAttribute": "none",
       "children": [
         {
           "type": "linearGradient",
@@ -450,15 +449,14 @@ export const teacherIllustration = {
             "y2": "32.6497",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -466,8 +464,8 @@ export const teacherIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -475,8 +473,8 @@ export const teacherIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -484,10 +482,11 @@ export const teacherIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -499,15 +498,14 @@ export const teacherIllustration = {
             "y2": "75.2302",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -515,8 +513,8 @@ export const teacherIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -524,8 +522,8 @@ export const teacherIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -533,10 +531,11 @@ export const teacherIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -548,15 +547,14 @@ export const teacherIllustration = {
             "y2": "196",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -564,8 +562,8 @@ export const teacherIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -573,10 +571,11 @@ export const teacherIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -588,15 +587,14 @@ export const teacherIllustration = {
             "y2": "59.1403",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -604,8 +602,8 @@ export const teacherIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -613,8 +611,8 @@ export const teacherIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -622,17 +620,17 @@ export const teacherIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "clipPath",
           "attributes": {
             "id": "clip0_5109_65182"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "rect",
@@ -641,17 +639,17 @@ export const teacherIllustration = {
                 "height": "295.57",
                 "fill": "white"
               },
-              "colorAttribute": "fill",
-              "children": []
+              "children": [],
+              "colorAttribute": "fill"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "clipPath",
           "attributes": {
             "id": "clip1_5109_65182"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "rect",
@@ -661,12 +659,14 @@ export const teacherIllustration = {
                 "fill": "white",
                 "transform": "translate(142 118)"
               },
-              "colorAttribute": "fill",
-              "children": []
+              "children": [],
+              "colorAttribute": "fill"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     }
   ]
 };

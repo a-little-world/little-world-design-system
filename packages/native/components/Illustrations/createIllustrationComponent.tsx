@@ -1,34 +1,35 @@
 import React from 'react';
 import { ViewStyle } from 'react-native';
 
-import { Illustration, SvgProps } from './Illustration';
+import { Illustration } from './Illustration';
 import { createReactNativeSvg } from '../../utils/createReactNativeSvg';
-import { SvgFactoryOptions, SvgTransformOptions } from '@a-little-world/little-world-design-system-core';
+import { IllustrationProps, SvgFactoryOptions, SvgTransformOptions } from '@a-little-world/little-world-design-system-core';
+import { SvgProps } from 'react-native-svg';
 
 export const createIllustrationComponent = ({ 
   name, 
   svgData, 
   labelText 
 }: SvgFactoryOptions) => {
-  const LABEL_ID = `${labelText || name} Illustration`;
-  
   const Component = ({ 
     height = 24, 
     width = 24, 
     style, 
-    color 
-  }: SvgProps & { style?: ViewStyle, color?: string }) => {
+    color,
+    label,
+    labelVisible
+  }: SvgProps & { style?: ViewStyle, color?: string } & IllustrationProps) => {
     // Create the transform options for React Native SVG
     const svgOptions: SvgTransformOptions = {
       width,
       height,
       style,
       color,
-      labelId: LABEL_ID
+      label: labelText
     };
     
     return (
-      <Illustration labelId={LABEL_ID} label={LABEL_ID} labelVisible={false}>
+      <Illustration label={label || labelText} labelVisible={labelVisible}>
         {createReactNativeSvg(svgData, svgOptions)}
       </Illustration>
     );

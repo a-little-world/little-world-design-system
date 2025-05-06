@@ -39,7 +39,6 @@ const CallIcon = ({
   return isOutgoing ? (
     <CallOutgoingIcon
       label={''}
-      labelId={''}
       width={isPreview ? 12 : 20}
       height={isPreview ? 12 : 20}
       borderColor={theme.color.surface.secondary}
@@ -49,7 +48,6 @@ const CallIcon = ({
   ) : (
     <CallIncomingIcon
       label={''}
-      labelId={''}
       width={isPreview ? 12 : 20}
       height={isPreview ? 12 : 20}
       borderColor={theme.color.surface.secondary}

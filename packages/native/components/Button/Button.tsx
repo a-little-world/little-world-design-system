@@ -6,13 +6,10 @@ import {
   ButtonBaseProps,
   ButtonSizes,
   ButtonVariations,
-  BUTTON_DIMENSIONS,
-  CIRCLE_DIMENSIONS,
-  ICON_DIMENSIONS,
 } from "@a-little-world/little-world-design-system-core";
-// import Loading from '../Loading/Loading';
+
 import Text from "../Text/Text";
-import { getButtonStyles, getButtonTextStyles, StyledButton } from "./styles";
+import { getButtonStyles, getButtonTextStyles } from "./styles";
 import { Gradient } from "../Gradient/Gradient";
 import { TouchableOpacity } from "react-native";
 import Loading from "../Loading/Loading";
@@ -73,7 +70,7 @@ const Button: React.FC<ButtonProps> = ({
       {hasGradient ? (
         <Gradient gradient={theme.color.gradient.orange10} style={buttonStyles}>
           {loading ? (
-            "Loading"
+            <Loading color={textStyles.color} />
           ) : (
             <Text
               style={[

@@ -177,7 +177,6 @@ const StarRating = ({
               {/* Background star */}
               <StarIcon
                 label="background star"
-                labelId="background-star"
                 width={size}
                 height={size}
                 color={theme.color.surface.disabled}
@@ -188,7 +187,6 @@ const StarRating = ({
               <StarOverlay fillAmount={fillAmount}>
                 <StarIcon
                   label="filled star"
-                  labelId="filled-star"
                   width={size}
                   height={size}
                   color={color || theme.color.surface.selected}

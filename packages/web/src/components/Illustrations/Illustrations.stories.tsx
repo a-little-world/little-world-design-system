@@ -1,6 +1,6 @@
 import React from "react";
 
-import { tokens } from "@a-little-world/little-world-design-system-core";
+import { tokensPixelated } from "@a-little-world/little-world-design-system-core";
 import Text from "../Text/Text";
 import * as allIllustrations from "./index";
 
@@ -14,13 +14,13 @@ export default {
 };
 
 export const AllVariants = (args) => (
-  <div style={{ display: "flex", flexWrap: "wrap", gap: tokens.spacing.large }}>
+  <div style={{ display: "flex", flexWrap: "wrap", gap: tokensPixelated.spacing.large }}>
     {Object.entries(allIllustrations).map(([name, Component]) => (
       <div
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: tokens.spacing.xxsmall,
+          gap: tokensPixelated.spacing.xxsmall,
           alignItems: "center",
           justifyContent: "center",
           borderRadius: "8px",

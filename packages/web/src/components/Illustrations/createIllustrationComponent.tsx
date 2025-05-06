@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { Illustration, SvgProps } from './Illustration';
+import { Illustration } from './Illustration';
 import { createReactSvg } from '../../utils/createReactSvg';
 import { SvgFactoryOptions } from '@a-little-world/little-world-design-system-core';
 
 export const createIllustrationComponent = ({ 
   name, 
-  svgData, 
-  labelText 
+  svgData,  
 }: SvgFactoryOptions) => {
-  const LABEL_ID = `${labelText || name} Illustration`;
   
-  const Component = ({ height, width }: SvgProps) => {
+  const Component = ({ height, width, label, labelVisible }: SVGProps<SVGElement> & { label: string, labelVisible?: boolean }) => {
     return (
-      <Illustration labelId={LABEL_ID} label={LABEL_ID} labelVisible={false}>
+      <Illustration label={label} labelVisible={labelVisible}>
         {createReactSvg(svgData, {
+          label,
           width,
           height,
         })}

@@ -37,7 +37,6 @@ const Accordion: React.FC<AccordionProps> = ({
               </Text>
               <TriggerIcon
                 label="accordion toggle icon"
-                labelId="accordion-toggle-icon"
                 width="14px"
                 height="14px"
                 color={headerColor}

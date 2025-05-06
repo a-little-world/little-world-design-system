@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Text from '../components/Text/Text';
-import { tokens } from '@a-little-world/little-world-design-system-core';
+import { tokensPixelated } from '@a-little-world/little-world-design-system-core';
 
 const Container = styled.div`
   display: flex;
@@ -15,14 +15,14 @@ const Panel = styled.div<{ isLight?: boolean }>`
   background: ${({ isLight }) => (isLight ? '#FFFFFF' : '#000000')};
   display: flex;
   flex-direction: column;
-  gap: ${tokens.spacing.small};
+  gap: ${tokensPixelated.spacing.small};
   align-items: ${({ isLight }) => (isLight ? 'flex-end' : 'flex-start')};
   padding: ${({ isLight }) =>
     isLight
-      ? `${tokens.spacing.large} 0 ${tokens.spacing.large}
-  ${tokens.spacing.large}`
-      : `${tokens.spacing.large} ${tokens.spacing.large}
-    ${tokens.spacing.large} 0`};
+      ? `${tokensPixelated.spacing.large} 0 ${tokensPixelated.spacing.large}
+  ${tokensPixelated.spacing.large}`
+      : `${tokensPixelated.spacing.large} ${tokensPixelated.spacing.large}
+    ${tokensPixelated.spacing.large} 0`};
   width: 100%;
 `;
 
@@ -31,8 +31,8 @@ const Entry = styled.div<{ isLight?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: ${tokens.spacing.small};
-  gap: ${tokens.spacing.small};
+  margin-bottom: ${tokensPixelated.spacing.small};
+  gap: ${tokensPixelated.spacing.small};
 `;
 
 const Example = styled.div<{ $background: string }>`
@@ -45,8 +45,8 @@ const Example = styled.div<{ $background: string }>`
 `;
 
 const ColorSection = ({ section }: { section: string }) => {
-  const light = Object.entries(tokens.color.theme.light[section]);
-  const dark = Object.entries(tokens.color.theme.dark[section]);
+  const light = Object.entries(tokensPixelated.color.theme.light[section]);
+  const dark = Object.entries(tokensPixelated.color.theme.dark[section]);
 
   return (
     <Container>

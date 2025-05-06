@@ -21,20 +21,12 @@ const renderSvgElement = (element: SvgElement, options: SvgTransformOptions, ind
   // Get all attributes and override fill for path elements if needed
   const attrs = {...element.attributes};
   
-  // Handle fill attributes for SVG elements
-  if (element.type === 'path') {
+  // Handle color attributes for SVG elements based on the colorAttribute property
+  if (element.colorAttribute && element.colorAttribute !== 'none') {
     if (gradient) {
-      attrs.fill = `url(#gradient${gradientId})`;
-    } else if (color && !attrs.fill) {
-      attrs.fill = color;
-    } else if (attrs.fill === undefined) {
-      // Set default fill to 'none' if no fill is specified
-      attrs.fill = 'none';
-    }
-  } else {
-    // For non-path elements, also ensure fill is explicitly set
-    if (attrs.fill === undefined) {
-      attrs.fill = 'none';
+      attrs[element.colorAttribute] = `url(#gradient${gradientId})`;
+    } else {
+      attrs[element.colorAttribute] = color || 'currentColor';
     }
   }
   
@@ -95,12 +87,12 @@ export const createReactSvg = (svgData: ParsedSvg, options: SvgTransformOptions)
     gradient,
     gradientId,
     className,
-    labelId,
+    label
   } = options;
 
   return (
     <svg
-      aria-labelledby={labelId}
+      aria-labelledby={label}
       fill="none"
       focusable={false}
       width={width}

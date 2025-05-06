@@ -24,7 +24,7 @@ export interface IconBaseProps {
   color?: string;
   gradient?: Gradients;
   height?: number | string;
-  label?: string;
+  label: string;
   labelTop?: number | string;
   labelVisible?: boolean;
   size?: number | string;
@@ -49,13 +49,11 @@ export type IllustrationProps = {
   labelTop?: string;
   labelVisible?: boolean;
   children: any;
-  labelId: string;
 };
 
 export type SvgFactoryOptions = {
   name: string;
   svgData: ParsedSvg;
-  labelText?: string;
   gradient?: GradientTypes;
 };
 
@@ -63,11 +61,11 @@ export type SvgFactoryOptions = {
 export interface SvgTransformOptions {
   className?: string;
   color?: string;
-  colorAttr?: 'fill' | 'stroke';
+  colorAttr?: string;
   gradient?: string;
   gradientId?: string;
   height?: number | string;
-  labelId?: string;
+  label: string;
   style?: any;
   width?: number | string;
   accessible?: boolean;
@@ -85,5 +83,5 @@ export interface SvgElement {
     [key: string]: string | number | undefined;
   };
   children: SvgElement[];
-  colorAttribute?: 'fill' | 'stroke' | 'none';
+  colorAttribute?: string;
 }

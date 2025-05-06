@@ -7,7 +7,6 @@ export const friendshipIllustration = {
       "attributes": {
         "clipPath": "url(#clip0_5109_64963)"
       },
-      "colorAttribute": "none",
       "children": [
         {
           "type": "path",
@@ -15,8 +14,8 @@ export const friendshipIllustration = {
             "d": "M177.68 282C252.464 282 313.09 221.375 313.09 146.59C313.09 71.8048 252.464 11.1797 177.68 11.1797C102.895 11.1797 42.2695 71.8048 42.2695 146.59C42.2695 221.375 102.895 282 177.68 282Z",
             "fill": "white"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -26,8 +25,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -35,8 +34,8 @@ export const friendshipIllustration = {
             "d": "M266.569 214.15C266.569 214.15 291.629 265.35 290.899 288.59H299.249C299.249 288.59 309.109 231.74 293.149 191.03C280.139 157.85 263.489 142 254.069 138.61C243.449 134.79 184.139 138.78 168.159 147.77C152.179 156.76 151.279 166.57 151.279 166.57C151.279 166.57 197.819 177.73 201.419 188.76C211.009 218.14 196.839 252.63 196.839 252.63C196.839 252.63 215.459 262.68 235.329 262.07C258.249 261.36 263.489 254.81 263.489 254.81C263.489 254.81 268.019 233.02 266.559 214.14L266.569 214.15Z",
             "fill": "url(#paint0_linear_5109_64963)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -46,8 +45,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -55,8 +54,8 @@ export const friendshipIllustration = {
             "d": "M62.26 96.0896C62.26 96.0896 57.26 94.0596 50.84 98.9396C42.69 105.13 55.66 121.06 36.97 136.94C18.28 152.82 0 127.69 0 127.69C0 127.69 12.14 126.17 20.61 118.21C29.08 110.25 19.51 96.6196 29.53 84.5496C39.55 72.4796 62.84 84.6496 62.84 84.6496C62.84 84.6496 65.86 89.1396 62.26 96.0796V96.0896Z",
             "fill": "url(#paint1_linear_5109_64963)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -64,8 +63,8 @@ export const friendshipIllustration = {
             "d": "M83.6595 118.16C83.6595 118.16 108.72 136.71 123.37 122.07C138.02 107.43 119.79 80.0797 119.79 80.0797C119.79 80.0797 103.59 76.7497 84.0695 87.4197C72.7495 93.6097 67.4395 109.27 83.6595 118.16Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -73,8 +72,8 @@ export const friendshipIllustration = {
             "d": "M61.8809 90.4699C61.2309 100.21 69.6809 123.71 79.6009 122.31C82.6109 121.89 84.2309 119.45 82.5009 114.27C82.1709 113.28 77.0809 113.62 77.0809 109.93C77.0809 106.24 80.7709 108.28 80.6509 107.36C80.2909 104.6 80.5909 101.78 82.4109 99.2099C89.3409 89.4499 118.771 86.8899 125.551 73.2799C129.051 66.2499 124.041 53.8699 111.661 53.8799C99.0809 53.8799 63.6709 63.5299 61.8709 90.4899L61.8809 90.4699Z",
             "fill": "url(#paint2_linear_5109_64963)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -82,8 +81,8 @@ export const friendshipIllustration = {
             "d": "M124.31 130.42C124.31 130.42 155.04 120.09 180.61 120.8C235.2 122.31 260.1 140.4 260.1 140.4L254.08 147.78C254.08 147.78 244.91 144.62 230.78 142.21C217.24 139.9 179.62 139.55 163.7 168.32C147.78 197.09 169.85 259.94 169.85 259.94C143.59 275.86 95.4398 277.48 95.4398 277.48C95.4398 277.48 91.0898 270.33 88.1798 261.16C82.2298 242.42 83.6698 209.82 83.6698 209.82C83.6698 209.82 72.1498 216.98 62.2698 238.86C51.7998 262.04 51.8998 294.81 51.8998 294.81L42.8798 299.43C42.8798 299.43 38.9698 285.9 36.2598 261.84C33.5498 237.78 40.1398 210.11 54.2998 185.46C75.9498 147.78 103.61 138.16 103.61 138.16L124.31 130.43V130.42Z",
             "fill": "url(#paint3_linear_5109_64963)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -91,8 +90,8 @@ export const friendshipIllustration = {
             "d": "M260.1 140.4C260.1 140.4 265.16 141.53 270.24 146.39C278.33 154.12 275.39 160.95 272.34 161.44C266.34 162.39 261.29 153.81 261.29 153.81C261.29 153.81 263 160.33 260.07 159.98C256.43 159.54 254.08 147.79 254.08 147.79L260.1 140.41V140.4Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -100,8 +99,8 @@ export const friendshipIllustration = {
             "d": "M42.8706 299.43C42.8706 299.43 39.9006 324.49 49.7306 325.78C56.3206 326.65 56.1906 311.96 56.1906 311.96C56.1906 311.96 62.6506 317.65 63.6906 312.02C64.7306 306.39 51.8906 294.81 51.8906 294.81L42.8706 299.43Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -109,8 +108,8 @@ export const friendshipIllustration = {
             "d": "M101.91 126.74C101.91 126.74 101.82 150.7 116.25 147.78C130.68 144.86 121.33 123.85 121.33 123.85C121.33 123.85 119.09 126.1 112.38 126.94C105.67 127.78 101.9 126.74 101.9 126.74H101.91Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -118,8 +117,8 @@ export const friendshipIllustration = {
             "d": "M114.1 134.64C119.57 133.96 122.48 132.47 123.74 131.63C122.87 127.31 121.33 123.84 121.33 123.84C121.33 123.84 119.09 126.09 112.38 126.93C105.67 127.77 101.9 126.73 101.9 126.73C101.9 126.73 101.9 130.33 102.72 134.57C104.32 134.86 108.25 135.36 114.1 134.62V134.64Z",
             "fill": "url(#paint4_linear_5109_64963)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -129,8 +128,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -140,8 +139,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -151,8 +150,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -162,8 +161,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -173,8 +172,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -184,8 +183,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.2",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -195,8 +194,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -206,8 +205,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -217,8 +216,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -226,8 +225,8 @@ export const friendshipIllustration = {
             "d": "M233.123 132.249L249.675 135.236C249.941 135.284 250.119 135.54 250.071 135.806L247.469 150.223C246.597 155.055 241.962 158.273 237.13 157.401C232.298 156.529 229.08 151.893 229.952 147.061L232.554 132.644C232.602 132.379 232.857 132.201 233.123 132.249Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -235,8 +234,8 @@ export const friendshipIllustration = {
             "d": "M240.12 146.56C243.99 146.37 246.82 145.48 248.44 144.89L250.08 135.79C250.13 135.52 249.95 135.27 249.68 135.22L233.13 132.23C232.86 132.18 232.61 132.36 232.56 132.63L230.32 145.03C232.01 145.61 235.55 146.79 240.11 146.56H240.12Z",
             "fill": "url(#paint5_linear_5109_64963)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -244,8 +243,8 @@ export const friendshipIllustration = {
             "d": "M226.771 98.6804C223.841 107.37 212.361 127.92 224.821 136.03C237.291 144.13 256.211 137.64 264.621 122.37C273.031 107.1 275.631 82.1104 256.301 82.1104C236.971 82.1104 229.691 89.9904 226.761 98.6904L226.771 98.6804Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -253,8 +252,8 @@ export const friendshipIllustration = {
             "d": "M264.37 120.66C263.97 122.33 265.61 123.78 267.21 123.15C272.23 121.18 280.35 115.35 278.33 98.5002C277.28 89.7102 270.47 84.6602 270.47 84.6602L263.5 96.7802C263.5 96.7802 268.32 102.2 266.54 110.88C265.66 115.15 264.91 118.43 264.38 120.66H264.37Z",
             "fill": "url(#paint6_linear_5109_64963)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -262,8 +261,8 @@ export const friendshipIllustration = {
             "d": "M227 97.7804C227 97.7804 229.81 90.0604 238.4 88.1304C246.99 86.2004 237.87 79.5404 233.84 80.7604C229.81 81.9804 225.77 88.6604 227 97.7704V97.7804Z",
             "fill": "url(#paint7_linear_5109_64963)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -271,8 +270,8 @@ export const friendshipIllustration = {
             "d": "M228.181 67.7496C229.921 63.7196 236.351 63.0996 238.931 66.7796C239.961 68.2396 241.411 69.4996 243.481 70.1496C250.701 72.4296 265.581 70.1496 272.371 75.0896C279.161 80.0296 280.951 90.5596 278.661 96.0296C275.481 103.63 266.561 103.39 264.781 100.27C262.741 96.6896 253.181 94.1196 245.501 95.3496C237.891 96.5696 225.961 92.1096 225.971 79.1796C225.971 75.1496 226.691 71.2196 228.181 67.7496Z",
             "fill": "url(#paint8_linear_5109_64963)"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -280,8 +279,8 @@ export const friendshipIllustration = {
             "d": "M270.15 115.86C271.69 117.71 271.04 120.79 268.69 122.73C266.35 124.67 264.47 126.66 262.94 124.81C261.4 122.96 260.79 117.97 263.13 116.03C265.47 114.09 268.61 114.01 270.15 115.86Z",
             "fill": "#FFDCB8"
           },
-          "colorAttribute": "fill",
-          "children": []
+          "children": [],
+          "colorAttribute": "fill"
         },
         {
           "type": "path",
@@ -291,8 +290,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -302,8 +301,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -313,8 +312,8 @@ export const friendshipIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -324,15 +323,15 @@ export const friendshipIllustration = {
             "strokeWidth": "1.5",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     },
     {
       "type": "defs",
       "attributes": {},
-      "colorAttribute": "none",
       "children": [
         {
           "type": "linearGradient",
@@ -344,15 +343,14 @@ export const friendshipIllustration = {
             "y2": "251.6",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#00ADDB"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -360,8 +358,8 @@ export const friendshipIllustration = {
                 "offset": "0.35",
                 "stopColor": "#009DD1"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -369,10 +367,11 @@ export const friendshipIllustration = {
                 "offset": "1",
                 "stopColor": "#0076BA"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -384,15 +383,14 @@ export const friendshipIllustration = {
             "y2": "110.71",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -400,8 +398,8 @@ export const friendshipIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -409,8 +407,8 @@ export const friendshipIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -418,10 +416,11 @@ export const friendshipIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -433,15 +432,14 @@ export const friendshipIllustration = {
             "y2": "88.1099",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -449,8 +447,8 @@ export const friendshipIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -458,8 +456,8 @@ export const friendshipIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -467,10 +465,11 @@ export const friendshipIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -482,15 +481,14 @@ export const friendshipIllustration = {
             "y2": "164.19",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -498,8 +496,8 @@ export const friendshipIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -507,8 +505,8 @@ export const friendshipIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -516,10 +514,11 @@ export const friendshipIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -531,15 +530,14 @@ export const friendshipIllustration = {
             "y2": "131.4",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -547,8 +545,8 @@ export const friendshipIllustration = {
                 "offset": "0.18",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -556,8 +554,8 @@ export const friendshipIllustration = {
                 "offset": "0.57",
                 "stopColor": "#FCC06F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -565,10 +563,11 @@ export const friendshipIllustration = {
                 "offset": "1",
                 "stopColor": "#FFDCB8"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -580,15 +579,14 @@ export const friendshipIllustration = {
             "y2": "145.58",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -596,8 +594,8 @@ export const friendshipIllustration = {
                 "offset": "0.18",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -605,8 +603,8 @@ export const friendshipIllustration = {
                 "offset": "0.57",
                 "stopColor": "#FCC06F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -614,10 +612,11 @@ export const friendshipIllustration = {
                 "offset": "1",
                 "stopColor": "#FFDCB8"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -629,15 +628,14 @@ export const friendshipIllustration = {
             "y2": "103.98",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -645,8 +643,8 @@ export const friendshipIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -654,8 +652,8 @@ export const friendshipIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -663,10 +661,11 @@ export const friendshipIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -678,15 +677,14 @@ export const friendshipIllustration = {
             "y2": "89.1904",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -694,8 +692,8 @@ export const friendshipIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -703,8 +701,8 @@ export const friendshipIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -712,10 +710,11 @@ export const friendshipIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "linearGradient",
@@ -727,15 +726,14 @@ export const friendshipIllustration = {
             "y2": "83.3296",
             "gradientUnits": "userSpaceOnUse"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "stop",
               "attributes": {
                 "stopColor": "#F9A01C"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -743,8 +741,8 @@ export const friendshipIllustration = {
                 "offset": "0.27",
                 "stopColor": "#F9A833"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -752,8 +750,8 @@ export const friendshipIllustration = {
                 "offset": "0.82",
                 "stopColor": "#FABD6F"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             },
             {
               "type": "stop",
@@ -761,17 +759,17 @@ export const friendshipIllustration = {
                 "offset": "1",
                 "stopColor": "#FBC583"
               },
-              "colorAttribute": "none",
-              "children": []
+              "children": [],
+              "colorAttribute": "none"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         },
         {
           "type": "clipPath",
           "attributes": {
             "id": "clip0_5109_64963"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "rect",
@@ -780,12 +778,14 @@ export const friendshipIllustration = {
                 "height": "325.82",
                 "fill": "white"
               },
-              "colorAttribute": "fill",
-              "children": []
+              "children": [],
+              "colorAttribute": "fill"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     }
   ]
 };

@@ -80,13 +80,11 @@ const AttachmentWidget = ({
         {imageSrc ? (
           <CameraIcon
             label={'attachment icon'}
-            labelId={'attachmentIcon'}
             width={16}
           />
         ) : (
           <AttachmentIcon
             label={'attachment icon'}
-            labelId={'attachmentIcon'}
             width={12}
           />
         )}
@@ -109,7 +107,6 @@ const AttachmentWidget = ({
         <ContentContainer>
           <AttachmentIcon
             label={'attachment icon'}
-            labelId={'attachmentIcon'}
             width={20}
             height={20}
             color={theme.color.text.tertiary}
@@ -118,7 +115,6 @@ const AttachmentWidget = ({
             <Text disableParser>{title}</Text>
             <DownloadIcon
               label={'download icon'}
-              labelId={'downloadIcon'}
               width={20}
               height={20}
               color={theme.color.text.title}

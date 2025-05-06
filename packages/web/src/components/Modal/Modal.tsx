@@ -103,7 +103,6 @@ const Modal = ({
         <CloseButton variation={ButtonVariations.Icon} onClick={onClose}>
           <CloseIcon
             label={CLOSE_BUTTON_LABEL}
-            labelId={CLOSE_BUTTON_LABEL}
             height="24"
             width="24"
           />

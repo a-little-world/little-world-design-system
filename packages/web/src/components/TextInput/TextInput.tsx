@@ -14,7 +14,8 @@ import {
 
 const PASSWORD_TOGGLE_ICON_SIZE = 20;
 
-interface Props extends React.ComponentPropsWithoutRef<'input'>, TextInputBaseProps {
+export { InputWidth, InputHeight }
+interface Props extends Omit<React.ComponentPropsWithoutRef<'input'>, 'height' | 'onSubmit' | 'width'>, TextInputBaseProps {
   inputRef?: React.RefObject<HTMLInputElement>;
 }
 
@@ -105,14 +106,12 @@ const TextInput: React.FC<Props> = ({
             {showPassword ? (
               <EyeClosedIcon
                 label="show password"
-                labelId="showPassword"
                 width={PASSWORD_TOGGLE_ICON_SIZE}
                 height={PASSWORD_TOGGLE_ICON_SIZE}
               />
             ) : (
               <EyeOpenIcon
                 label="hide password"
-                labelId="hidePassword"
                 width={PASSWORD_TOGGLE_ICON_SIZE}
                 height={PASSWORD_TOGGLE_ICON_SIZE}
               />

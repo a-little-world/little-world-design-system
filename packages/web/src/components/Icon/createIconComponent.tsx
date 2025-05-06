@@ -2,11 +2,12 @@ import React from "react";
 import { ViewStyle } from "react-native";
 
 import { Icon, IconSvgProps } from "./Icon";
-import { createReactNativeSvg } from "../../utils/createReactNativeSvg";
+
 import {
   SvgFactoryOptions,
   SvgTransformOptions,
 } from "@a-little-world/little-world-design-system-core";
+import { createReactSvg } from "../../utils/createReactSvg";
 
 export const createIconComponent = ({
   name,
@@ -47,7 +48,7 @@ export const createIconComponent = ({
         label={label}
         labelVisible={labelVisible}
       >
-        {createReactNativeSvg(svgData, svgOptions)}
+        {createReactSvg(svgData, svgOptions)}
       </Icon>
     );
   };

@@ -84,4 +84,4 @@ export { default as textParser } from './utils/parser';
 export type { TextStyle } from './components/Text/types';
 
 // export core elements
-export { ThemeVariants, Gradients, tokens } from '@a-little-world/little-world-design-system-core'
+export { ThemeVariants, Gradients, tokensPixelated as tokens } from '@a-little-world/little-world-design-system-core'

@@ -34,7 +34,7 @@ export const Default = ({ children, ...args }) => {
         showCloseButton={false}
         trigger={
           <Button variation={ButtonVariations.Icon}>
-            <DotsIcon label="dotsIcon" labelId="dotsIcon" />
+            <DotsIcon label="dotsIcon" />
           </Button>
         }
         {...args}

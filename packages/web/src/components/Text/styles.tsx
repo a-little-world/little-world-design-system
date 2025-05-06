@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { TextTypes, getTextStyle, tokens } from '@a-little-world/little-world-design-system-core';
+import { TextTypes, getTextStyle } from '@a-little-world/little-world-design-system-core';
 
 const BODY_SHARED_STYLES = css`
   font-family: 'Signika Negative', sans-serif;
@@ -20,7 +20,7 @@ export const BODY_5_CSS = css`
   ${BODY_SHARED_STYLES}
   font-size: 1rem;
 
-  @media (min-width: ${tokens.breakpoints.small}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.small}) {
     font-size: 1rem;
   }
 `;
@@ -52,7 +52,7 @@ export const StyledElement = styled.div<{
   ${({ $color }) => $color && `color: ${$color};`}
   white-space: pre-line;
 
-  ${({ $type }) => {
+  ${({ $type, theme }) => {
     const style = styles[$type];
     return css`
       ${style.styleType === 'body' ? BODY_SHARED_STYLES : HEADING_SHARED_STYLES}
@@ -60,7 +60,7 @@ export const StyledElement = styled.div<{
       ${style.fontWeight ? `font-weight: ${style.fontWeight};` : ''}
       
       ${style.desktopFontSize && css`
-        @media (min-width: ${tokens.breakpoints.small}) {
+        @media (min-width: ${theme.breakpoints.small}) {
           font-size: ${style.desktopFontSize}rem;
         }
       `}

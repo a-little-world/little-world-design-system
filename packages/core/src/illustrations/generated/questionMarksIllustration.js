@@ -7,7 +7,6 @@ export const questionMarksIllustration = {
       "attributes": {
         "clipPath": "url(#clip0_5368_66704)"
       },
-      "colorAttribute": "none",
       "children": [
         {
           "type": "path",
@@ -17,8 +16,8 @@ export const questionMarksIllustration = {
             "strokeWidth": "0.75",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         },
         {
           "type": "path",
@@ -28,22 +27,21 @@ export const questionMarksIllustration = {
             "strokeWidth": "0.75",
             "strokeMiterlimit": "10"
           },
-          "colorAttribute": "stroke",
-          "children": []
+          "children": [],
+          "colorAttribute": "stroke"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     },
     {
       "type": "defs",
       "attributes": {},
-      "colorAttribute": "none",
       "children": [
         {
           "type": "clipPath",
           "attributes": {
             "id": "clip0_5368_66704"
           },
-          "colorAttribute": "none",
           "children": [
             {
               "type": "rect",
@@ -52,12 +50,14 @@ export const questionMarksIllustration = {
                 "height": "31.63",
                 "fill": "white"
               },
-              "colorAttribute": "fill",
-              "children": []
+              "children": [],
+              "colorAttribute": "fill"
             }
-          ]
+          ],
+          "colorAttribute": "none"
         }
-      ]
+      ],
+      "colorAttribute": "none"
     }
   ]
 };

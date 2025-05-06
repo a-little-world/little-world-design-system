@@ -31,20 +31,20 @@ export const SliderRange = styled(Range)`
 
 export const SliderThumb = styled(Thumb)`
   display: block;
-  width: ${({ theme }) => theme.pacing.small};
+  width: ${({ theme }) => theme.spacing.small};
   height: ${({ theme }) => theme.spacing.small};
   background-color: ${({ theme }) => theme.color.surface.primary};
   border-radius: 10px;
   border: 1px solid ${props => props.theme.color.border.moderate};
 
   &:hover {
-    background-color: ${props => props.theme.color.primary};
+    background-color: ${props => props.theme.color.surface.primary};
     cursor: grab;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0px 4px ${props => props.theme.color.shadow};
+    box-shadow: 0 0px 4px ${props => props.theme.color.surface.contrast};
   }
 `;
 

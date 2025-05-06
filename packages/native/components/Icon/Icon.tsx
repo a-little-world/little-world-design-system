@@ -1,108 +1,80 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import styled from 'styled-components/native';
+import React from "react";
+import { Text, View } from "react-native";
+import { DefaultTheme, useTheme } from "styled-components/native";
 
-import { Gradients, IconBaseProps } from '@a-little-world/little-world-design-system-core';
+import {
+  Gradients,
+  IconBaseProps,
+  tokens,
+} from "@a-little-world/little-world-design-system-core";
 
-const Circle = styled.View<{
-  $backgroundColor?: string;
-  $borderColor?: string;
-  color?: string;
-}>`
-  background-color: ${({ theme, $backgroundColor }) =>
-    $backgroundColor || theme.color.surface.secondary};
-  border: 2px solid ${({ theme, $borderColor }) => 
-    $borderColor || theme.color.border.contrast};
-  border-radius: 999px;
-  align-items: center;
-  justify-content: center;
-  padding: ${({ theme }) => theme.spacing.xxsmall};
-`;
+const getCircleStyles = ({
+  theme,
+  backgroundColor,
+  borderColor,
+}: {
+  backgroundColor?: string;
+  borderColor?: string;
+  theme: DefaultTheme;
+}) => ({
+  backgroundColor: backgroundColor || theme.color.surface.secondary,
+  borderWidth: 2,
+  borderColor: borderColor || theme.color.border.contrast,
+  borderRadius: theme.radius.full,
+  alignItems: "center",
+  justifyContent: "center",
+  padding: theme.spacing.xxsmall,
+});
 
-const StyledImageLabel = styled.Text<{ 
-  $top: string; 
-  $visible?: boolean 
-}>`
-  ${({ $top, $visible }) =>
-    $visible
-      ? `
-          position: relative;
-          margin-top: ${$top};
-        `
-      : `
-          position: absolute;
-          height: 1px;
-          width: 1px;
-          overflow: hidden;
-        `}
-`;
+const getLabelStyles = ({ top }: { top: number }) => ({
+  position: "relative",
+  marginTop: top,
+});
 
-export type IconSvgProps = Omit<IconBaseProps, 'children'> & {
+export const ImageLabel = ({ children, top }: { children: string, top: number }) =>
+    <Text
+      accessible={true}
+      accessibilityLabel={children}
+      style={getLabelStyles({ top })}
+    >
+      {children}
+    </Text>
+
+export type IconSvgProps = Omit<IconBaseProps, "children"> & {
   gradient?: Gradients;
   width?: number | string;
   height?: number | string;
   viewBox?: string;
 };
 
-// ImageLabel component
-export const ImageLabel = ({ 
-  children, 
-  $visible, 
-  $top, 
-  id 
-}: { 
-  children: React.ReactNode; 
-  $visible?: boolean; 
-  $top: string;
-  id?: string;
-}) => (
-  <StyledImageLabel 
-    $visible={$visible} 
-    $top={$top}
-    accessible={true}
-    accessibilityLabel={children?.toString()}
-    nativeID={id}
-  >
-    {children}
-  </StyledImageLabel>
-);
-
-// Main Icon component
 export const Icon = ({
   backgroundColor,
   borderColor,
   children,
   circular,
   style,
-  color,
   label,
   labelVisible,
-  labelTop = '56px',
-  labelId,
-}: Omit<IconBaseProps, 'className'> & { style?: any }) => (
-  <>
-    {circular ? (
-      <Circle
-        $backgroundColor={backgroundColor}
-        $borderColor={borderColor}
-        style={style}
-        color={color}
-      >
-        {children}
-      </Circle>
-    ) : (
-      <View style={style}>{children}</View>
-    )}
-    {label && (
-      <ImageLabel 
-        $visible={labelVisible} 
-        $top={labelTop}
-        id={labelId}
-      >
-        {label}
-      </ImageLabel>
-    )}
-  </>
-);
+  labelTop = tokens.spacing.xxlarge,
+}: Omit<IconBaseProps, "className"> & { style?: any }) => {
+  const theme = useTheme();
+  return (
+    <>
+      {circular ? (
+        <View
+          style={[
+            getCircleStyles({ theme, backgroundColor, borderColor }),
+            style,
+          ]}
+        >
+          {children}
+        </View>
+      ) : (
+        <View style={style}>{children}</View>
+      )}
+      {labelVisible && <ImageLabel top={labelTop}>{label}</ImageLabel>}
+    </>
+  );
+};
 
 export default Icon;

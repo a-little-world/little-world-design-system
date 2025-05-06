@@ -13,14 +13,14 @@ const Circle = styled.div<{
   border: 2px solid
     ${({ theme, $borderColor }) => $borderColor || theme.color.border.contrast};
   border-radius: 50%;
-  color: ${({ color, theme }) => color || theme.color.text.tertiary};
+  color: ${({ color }) => color || 'currentColor'};
   display: inline-flex;
   padding: ${({ theme }) => theme.spacing.xxsmall};
 `;
 
 // hide element but keep visible to screen readers
 // parent requires position: relative;
-export const ImageLabel = styled.span<{ $top: string; $visible?: boolean }>`
+export const ImageLabel = styled.span<{ $top: string | number; $visible?: boolean }>`
   ${({ $top, $visible }) =>
     $visible
       ? css`
@@ -59,7 +59,6 @@ export const Icon = ({
   label,
   labelVisible,
   labelTop = '56px',
-  labelId,
 }: IconBaseProps) => (
   <>
     {circular ? (
@@ -74,7 +73,7 @@ export const Icon = ({
     ) : (
       children
     )}
-    <ImageLabel id={labelId} $visible={labelVisible} $top={labelTop}>
+    <ImageLabel id={label} $visible={labelVisible} $top={labelTop}>
       {label}
     </ImageLabel>
   </>

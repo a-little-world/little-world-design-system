@@ -216,7 +216,6 @@ const MultiDropdown: React.FC<Props> = ({
                 >
                   <TrashIcon
                     label={DELETE_SEGMENT}
-                    labelId={DELETE_SEGMENT}
                     color="orange"
                   />
                 </DeleteButton>
@@ -234,7 +233,6 @@ const MultiDropdown: React.FC<Props> = ({
           >
             <PlusIcon
               label="add more dropdowns"
-              labelId="add more dropdowns"
               width={10}
             />
           </AddMoreButton>
