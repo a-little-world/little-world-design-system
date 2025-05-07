@@ -18,6 +18,9 @@ Run the setup script to install and build all packages:
 ./setup.sh
 ```
 
+If you get a permission error you may need to run `chmod +x setup.sh`
+Then run the setup script again.
+
 ### Manual Setup
 
 If you prefer to set up manually, follow these steps:

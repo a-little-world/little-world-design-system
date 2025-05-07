@@ -1,4 +1,3 @@
-import { mapValues } from 'lodash';
 export const coreColors = {
   orange10: '#fde5cf',
   orange20: '#ffbe74',
@@ -28,10 +27,19 @@ export const coreColors = {
 
 const SPACING_BASE = 8; // px
 
-export const pixelateObjValues = (obj: Record<string, number | string>) => mapValues(
-  obj,
-  (value) => typeof value === 'number' ? `${value}px` : value
-);
+// Type-safe helper function that preserves the keys of the original object
+export const pixelateObjValues = <T extends Record<string, number | string>>(obj: T): { [K in keyof T]: string } => {
+  const result = {} as { [K in keyof T]: string };
+  
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      result[key] = typeof obj[key] === 'number' ? `${obj[key]}px` : String(obj[key]);
+    }
+  }
+  
+  return result;
+};
+
 const getValue = (multiple: number) => multiple * SPACING_BASE;
 
 export const coreSpacing = {

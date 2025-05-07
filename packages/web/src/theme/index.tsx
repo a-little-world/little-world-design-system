@@ -10,7 +10,7 @@ import { DefaultTheme, ThemeProvider } from 'styled-components';
 import type { ThemeProps } from 'styled-components';
 
 import { ThemeVariants, ThemeContextType, defaultThemeVariant, tokensPixelated } from '@a-little-world/little-world-design-system-core';
-console.log({tokensPixelated}) 
+
 export const lightTheme: DefaultTheme = {
   ...tokensPixelated,
   color: tokensPixelated.color.theme.light,

@@ -20,8 +20,6 @@ export default {
     '../src/tokens/*.mdx',
   ],
 
-  staticDirs: ['../public'],
-
   features: {
     interactionsDebugger: true,
   },
