@@ -3,7 +3,7 @@ import { ActivityIndicator, View } from "react-native";
 import { withBackgrounds } from "@storybook/addon-ondevice-backgrounds";
 import type { Preview } from "@storybook/react";
 import { CustomThemeProvider } from "../src/theme";
-import { loadFonts } from "../utils/loadFonts";
+import { loadFonts } from "../src/utils/loadFonts";
 
 const preview: Preview = {
   decorators: [

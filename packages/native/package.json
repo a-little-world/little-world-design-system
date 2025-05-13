@@ -2,6 +2,7 @@
   "name": "@a-little-world/little-world-design-system-native",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "start": "expo start",
@@ -13,7 +14,8 @@
     "storybook-generate": "sb-rn-get-stories --config-path .rnstorybook",
     "storybook": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start",
     "storybook:ios": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --ios",
-    "storybook:android": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --android"
+    "storybook:android": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --android",
+    "build": "rimraf dist && tsc --project tsconfig.json"
   },
   "dependencies": {
     "@a-little-world/little-world-design-system": "file:../core",

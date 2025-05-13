@@ -35,7 +35,7 @@ export const WithSubElements = (args: CardBaseProps) => (
     </Card>
     <Card {...args}>
       <CardHeader textColor="#FF0000">Colored Header</CardHeader>
-      <CardContent align="flex-start" gap="24px">
+      <CardContent align="flex-start" gap={tokens.spacing.medium}>
         <Text>Left-aligned content with custom gap</Text>
       </CardContent>
       <CardFooter align="space-between">

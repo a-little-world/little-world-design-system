@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 import { CustomThemeProvider } from "../src/theme";
-import { loadFonts } from "../utils/loadFonts";
+import { loadFonts } from "../src/utils/loadFonts";
 
 export const decorators = [
   (Story: React.ComponentType) => {

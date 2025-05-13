@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { ButtonAppearance, tokens, tokensPixelated } from '@a-little-world/little-world-design-system-core';
+import { ButtonAppearance, tokens } from '@a-little-world/little-world-design-system-core';
 import { InfoIcon, PhoneIcon } from '../Icon';
 import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
@@ -30,7 +30,7 @@ export default {
 };
 
 export const Default = args => (
-  <View style={{ flexDirection: 'row', gap: tokensPixelated.spacing.medium, flexWrap: 'wrap' }}>
+  <View style={{ flexDirection: 'row', gap: tokens.spacing.medium, flexWrap: 'wrap' }}>
     <Button {...args}>Primary Appearance</Button>
     <Button {...args}>
       With Icon{' '}
@@ -53,7 +53,7 @@ ButtonOption.args = {
 };
 
 export const ButtonCircle = args => (
-  <View style={{ flexDirection: 'row', gap: tokensPixelated.spacing.large }}>
+  <View style={{ flexDirection: 'row', gap: tokens.spacing.large }}>
     <Button variation={ButtonVariations.Circle} color={args.color}>
       <InfoIcon label="info" width={20} height={20} color={args.color} />
     </Button>
@@ -86,7 +86,7 @@ ButtonCircle.args = {
 };
 
 export const ButtonIcon = args => (
-  <View style={{ flexDirection: 'row', gap: tokensPixelated.spacing.large }}>
+  <View style={{ flexDirection: 'row', gap: tokens.spacing.large }}>
     <Button variation={ButtonVariations.Icon} color={args.color}>
       <InfoIcon label="info" />
     </Button>
@@ -121,7 +121,7 @@ ButtonIcon.args = {
 export const ButtonInline = args => (
   <View>
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-      <Text type={TextTypes.Body4} style={{ marginRight: tokensPixelated.spacing.xxsmall }}>
+      <Text type={TextTypes.Body4} style={{ marginRight: tokens.spacing.xxsmall }}>
         This is the default styling:
       </Text>
       <Button variation={ButtonVariations.Inline} {...args}>
@@ -130,8 +130,8 @@ export const ButtonInline = args => (
         </Text>
       </Button>
     </View>
-    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: tokensPixelated.spacing.small }}>
-      <Text type={TextTypes.Body4} style={{ marginRight: tokensPixelated.spacing.xxsmall }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: tokens.spacing.small }}>
+      <Text type={TextTypes.Body4} style={{ marginRight: tokens.spacing.xxsmall }}>
         This is with the color prop set:
       </Text>
       <Button variation={ButtonVariations.Inline} color="red" {...args}>

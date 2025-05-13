@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import { Text } from "./index"
+import { Text } from "./src/index"
 
 function App() {
   return (
