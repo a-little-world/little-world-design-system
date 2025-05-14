@@ -8,8 +8,7 @@ import { SvgProps } from 'react-native-svg';
 
 export const createIllustrationComponent = ({ 
   name, 
-  svgData, 
-  labelText 
+  svgData,
 }: SvgFactoryOptions) => {
   const Component = ({ 
     height = 24, 
@@ -25,11 +24,11 @@ export const createIllustrationComponent = ({
       height,
       style,
       color,
-      label: labelText
+      label
     };
     
     return (
-      <Illustration label={label || labelText} labelVisible={labelVisible}>
+      <Illustration label={label} labelVisible={labelVisible}>
         {createReactNativeSvg(svgData, svgOptions)}
       </Illustration>
     );

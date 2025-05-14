@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export enum Gradients {
   Blue = "blue",
   Orange = "orange",
@@ -18,7 +20,7 @@ export const GradientVariations = {
 export interface IconBaseProps {
   backgroundColor?: string;
   borderColor?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   circular?: boolean;
   className?: string;
   color?: string;
@@ -46,7 +48,7 @@ export type IconPathData = {
 
 export type IllustrationProps = {
   label: string;
-  labelTop?: string;
+  labelTop?: number | string;
   labelVisible?: boolean;
   children: any;
 };

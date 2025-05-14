@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView, FlexAlignType, ViewStyle, DimensionValue } from "react-native";
+import { View, ScrollView, ViewStyle, DimensionValue } from "react-native";
 import {
   CardBaseProps,
   CardContentProps,
@@ -50,8 +50,8 @@ export const CardContent: React.FC<CardContentProps> = ({
   const theme = useTheme();
   const styles = getCardContentStyles({ 
     align,
-    gap, 
-    marginBottom, 
+    gap: gap as number, 
+    marginBottom: marginBottom as number, 
     theme
   });
   const { flexDirection, alignItems, gap: contentGap, marginBottom: contentMarginBottom, ...containerStyle } = styles;

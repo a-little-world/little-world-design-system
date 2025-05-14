@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { TouchableOpacityProps, Linking } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 import { LinkBaseProps, TextTypes } from '@a-little-world/little-world-design-system-core';
 import { TouchableLink, ExternalLink, LinkText } from './styles';
@@ -34,7 +34,7 @@ const Link = forwardRef<any, LinkProps>(
     ref,
   ) => {
     // Use try/catch to handle cases when NavigationContainer isn't available
-    let navigation;
+    let navigation: NavigationProp<any> | undefined;
     try {
       navigation = useNavigation();
     } catch (error) {

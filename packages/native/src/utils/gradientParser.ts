@@ -1,13 +1,15 @@
 // utils/gradientParser.ts
 type GradientInfo = {
-  colors: string[];
+  colors: readonly [string, string, ...string[]];
   start: { x: number; y: number };
   end: { x: number; y: number };
 };
 
 export const parseGradientString = (gradientString: string): GradientInfo => {
-  // Example implementation - you'll need to customize based on your gradient format
   const colors = gradientString.match(/#[a-fA-F0-9]{6}/g) || [];
+  if (colors.length < 2) {
+    throw new Error('Gradient must have at least 2 colors');
+  }
 
   // Extract angle if present (this is simplified, adjust for your format)
   const angleMatch = gradientString.match(/(\d+\.?\d*)deg/);
@@ -24,5 +26,9 @@ export const parseGradientString = (gradientString: string): GradientInfo => {
     y: 0.5 + Math.sin(radians) / 2,
   };
 
-  return { colors, start, end };
+  return {
+    colors: colors as unknown as readonly [string, string, ...string[]],
+    start,
+    end
+  };
 };

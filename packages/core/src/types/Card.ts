@@ -17,7 +17,7 @@ export const CardDimensions = {
 export interface CardBaseProps {
   borderColor?: string;
   children: ReactNode;
-  height?: string;
+  height?: string | number;
   width?: CardSizes;
 }
 
@@ -36,11 +36,7 @@ export interface CardFooterProps {
 export interface CardContentProps {
   align?: FlexAlignType;
   textAlign?: string;
-  gap?: string;
-  marginBottom?: string;
+  gap?: string | number;
+  marginBottom?: string | number;
   children: ReactNode;
-  $align?: FlexAlignType;
-  $textAlign?: string;
-  $gap?: string;
-  $marginBottom?: string;
 } 

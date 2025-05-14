@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TextStyle, View } from "react-native";
 import { DefaultTheme, useTheme } from "styled-components/native";
 
 import {
@@ -26,7 +26,7 @@ const getCircleStyles = ({
   padding: theme.spacing.xxsmall,
 });
 
-const getLabelStyles = ({ top }: { top: number }) => ({
+const getLabelStyles = ({ top }: { top: number }): TextStyle => ({
   position: "relative",
   marginTop: top,
 });
@@ -72,7 +72,7 @@ export const Icon = ({
       ) : (
         <View style={style}>{children}</View>
       )}
-      {labelVisible && <ImageLabel top={labelTop}>{label}</ImageLabel>}
+      {labelVisible && <ImageLabel top={labelTop as number}>{label}</ImageLabel>}
     </>
   );
 };

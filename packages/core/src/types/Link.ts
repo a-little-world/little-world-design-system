@@ -5,8 +5,8 @@ import { TextTypes } from './Text';
 export interface LinkBaseProps {
   active?: boolean;
   bold?: boolean;
-  buttonAppearance?: keyof typeof ButtonAppearance;
-  buttonSize?: keyof typeof ButtonSizes;
+  buttonAppearance?: ButtonAppearance;
+  buttonSize?: ButtonSizes;
   children: ReactNode;
   href?: string;
   onClick?: () => void;

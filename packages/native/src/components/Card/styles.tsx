@@ -42,8 +42,8 @@ export const getCardContentStyles = ({
   theme,
 }: {
   align?: FlexAlignType,
-  gap?: string,
-  marginBottom?: string,
+  gap?: number,
+  marginBottom?: number,
   theme: any
 }): ViewStyle => ({
   flexDirection: 'column',

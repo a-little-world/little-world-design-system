@@ -2,10 +2,6 @@
  * This file provides type definitions for transforming web styled-components to React Native.
  */
 
-import { DefaultTheme } from 'styled-components';
-
-// Re-export types from styled-components
-export { DefaultTheme } from 'styled-components';
 
 // Define React Native specific types
 export type RNStyleProp = Record<string, any>;

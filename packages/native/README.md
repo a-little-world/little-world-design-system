@@ -1,7 +1,19 @@
+
 # RN Storybook (ondevice)
 
-In this template you can now run `npm storybook` to start ondevice storybook or `npm start` to start your expo app.
-This works via env variables and expo constants.
+## Local Testing & Development
+
+To test the Native Design system we use expo and storybook, which allows the visualisation and interaction of all elements and components. 
+
+All local testing related code can be found in `./testApp`. When you want to run the test app or storybook, you need to do the following:
+```
+cd ./testApp
+npm install
+```
+
+In order for the testApp to access the src folder, we use a symlink that can be updated by running `npm run prestorybook`
+
+You can then run `npm storybook` to start the storybook app or `npm start` to start your expo app.
 
 ```sh
 # either
@@ -14,7 +26,7 @@ npm storybook:ios
 npm storybook:android
 ```
 
-If you add new stories on the native (ondevice version) you either need to have the watcher running or run the stories loader
+If you add new stories you either need to have the watcher running or run the stories loader
 
 To update the stories one time
 
@@ -36,9 +48,9 @@ build react native web storybook:
 npm build-storybook
 ```
 
-## Local Development Options
+### Developing locally with the core package
 
-There are two main approaches for local development:
+The native Design System relies on share elements and types from the core design system. You may need to make changes in the core package. In order to test local `core` changes in the native package locally there are two main approaches:
 
 1. **Using file references (Recommended for most cases)**
    - In your `packages/native/package.json`, change the core dependency to:
@@ -52,7 +64,7 @@ There are two main approaches for local development:
    - See the detailed npm link instructions in the section below
    - This method is useful when you need to test the package in an external project
 
-## Local Development
+#### Npm linking method (Not optimal, option 1 above is recommended)
 
 This package depends on `@a-little-world/little-world-design-system-core`. To set up local development:
 

@@ -70,12 +70,12 @@ const Button: React.FC<ButtonProps> = ({
       {hasGradient ? (
         <Gradient gradient={theme.color.gradient.orange10} style={buttonStyles}>
           {loading ? (
-            <Loading color={textStyles.color} />
+            <Loading color={textStyles.color as string} />
           ) : (
             <Text
               style={[
                 textStyles,
-                disabled && { color: theme.color.text.disabled },
+                disabled ? { color: theme.color.text.disabled } : {},
               ]}
             >
               {children}
@@ -83,10 +83,10 @@ const Button: React.FC<ButtonProps> = ({
           )}
         </Gradient>
       ) : loading ? (
-        <Loading color={textStyles.color} />
+        <Loading color={textStyles.color as string} />
       ) : (
         <Text
-          style={[textStyles, disabled && { color: theme.color.text.disabled }]}
+          style={[textStyles, disabled ? { color: theme.color.text.disabled } : {}]}
         >
           {children}
         </Text>

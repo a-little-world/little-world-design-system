@@ -49,6 +49,7 @@ export const BUTTON_DIMENSIONS = {
   },
   [ButtonSizes.Stretch]: {
     height: 44,
+    minWidth: undefined,
     width: '100%',
     padding: { horizontal: 20, vertical: 16 },
   },

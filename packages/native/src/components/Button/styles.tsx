@@ -35,7 +35,9 @@ export const getButtonStyles = ({
       ? {
           paddingHorizontal: theme.spacing.small,
           flex: 1,
-          ...BUTTON_DIMENSIONS[size],
+          height: BUTTON_DIMENSIONS[size].height,
+          minWidth: BUTTON_DIMENSIONS[size].minWidth,
+          paddingVertical: BUTTON_DIMENSIONS[size].padding.vertical,
         }
       : {}),
   };

@@ -1,6 +1,5 @@
 import { StyleSheet, Animated } from 'react-native';
-// Use standard styled-components (non-native) to avoid bundling issues
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { RNAnimatedValue, WebStyle, RNStyle } from './styledComponentsTypes';
 
 /**

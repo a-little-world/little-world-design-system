@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text as RNText, TextStyle as RNTextStyle } from 'react-native';
+import { Text as RNText, TextStyle as RNTextStyle, StyleProp } from 'react-native';
 
 import { TextBaseProps, TextStyle as CoreTextStyle, TextTypes, getTextStyle } from '@a-little-world/little-world-design-system-core';
 
 type TextProps = TextBaseProps & {
-  style?: RNTextStyle;
+  style?: StyleProp<RNTextStyle>;
 };
 
 const mapCoreStyleToRN = (style: CoreTextStyle): RNTextStyle => ({
