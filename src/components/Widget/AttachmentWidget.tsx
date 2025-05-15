@@ -68,6 +68,7 @@ const Image = styled.img`
 const Caption = styled(Text)`
   padding: 0 ${({ theme }) => theme.spacing.xxxsmall};
   margin-top: ${({ theme }) => theme.spacing.xxxsmall};
+  margin-bottom: ${({ theme }) => theme.spacing.xxxxsmall};
 `;
 
 interface AttachmentWidgetProps extends Omit<WidgetProps, 'children'> {
