@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import tokens from '../../tokens';
 import { ValueOf } from '../../utils/types';
 import TextTypes from '../Text/TextTypes';
 
@@ -54,11 +53,6 @@ export const WidgetHeader: React.FC<{
   <StyledWidgetHeader $color={textColor}>{children}</StyledWidgetHeader>
 );
 
-export const WidgetFooter: React.FC<{
-  align?: string;
-  children: React.ReactNode;
-}> = ({ children, align }) => <Footer $align={align}>{children}</Footer>;
-
 const Footer = styled.div<{ $align?: string }>`
   display: flex;
   order: 1;
@@ -72,6 +66,11 @@ const Footer = styled.div<{ $align?: string }>`
       justify-content: ${$align};
     `};
 `;
+
+export const WidgetFooter: React.FC<{
+  align?: string;
+  children: React.ReactNode;
+}> = ({ children, align }) => <Footer $align={align}>{children}</Footer>;
 
 export const Preview = styled.div`
   display: flex;
