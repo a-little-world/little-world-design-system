@@ -24,11 +24,11 @@ export const getTagStyles = ({
         borderWidth: 2,
         borderColor: color,
         borderRadius: theme.radius.large,
-        minWidth: 60,
-        width: 150,
-        height: size === TagSizes.small ? 44 : 50,
+        minWidth: 30,
+        width: 120,
+        height: size === TagSizes.small ? 32 : 40,
         paddingHorizontal: theme.spacing.xsmall,
-        paddingVertical: size === TagSizes.small ? theme.spacing.xsmall : theme.spacing.xxsmall
+        paddingVertical: size === TagSizes.small ? theme.spacing.xxxsmall : theme.spacing.xxxxsmall
     }
     if (appearance === TagAppearance.solid)
         return ({

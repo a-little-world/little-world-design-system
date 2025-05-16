@@ -1,9 +1,9 @@
 import React from "react";
-import { View, ScrollView, FlexAlignType, ViewStyle, DimensionValue } from "react-native";
+import { View, } from "react-native";
 import {
     TagBaseProps,
 } from "@a-little-world/little-world-design-system-core";
-import { ButtonAppearance, TagAppearance, TagSizes, tokens } from '@a-little-world/little-world-design-system-core';
+import { TagSizes, tokens } from '@a-little-world/little-world-design-system-core';
 import Text from "../Text/Text";
 import { getTagStyles } from './styles';
 import { useTheme } from "styled-components/native";
@@ -35,7 +35,7 @@ export const Tag: React.FC<TagProps> = ({
                 color,
             }), style]}
         >
-            <Text>
+            <Text style={{ fontSize: size === TagSizes.small ? 14 : 16 }}>
                 {children}
             </Text>
         </View>
@@ -51,10 +51,10 @@ function Tags({
 }: TagsProps) {
     return (
         <View style={{
-            ...style,
             flexDirection: 'row',
             gap: tokens.spacing.medium,
             flexWrap: 'wrap',
+            ...style,
         }}>
             {content.map(tag => (
                 <Tag

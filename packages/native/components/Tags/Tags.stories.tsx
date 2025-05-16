@@ -1,17 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
-import { ButtonAppearance, TagAppearance, TagSizes, tokens } from '@a-little-world/little-world-design-system-core';
+import { TagAppearance, TagSizes, tokens } from '@a-little-world/little-world-design-system-core';
 import type { TagProps, TagsProps } from './Tags';
-import { CardSizes, CardBaseProps } from '@a-little-world/little-world-design-system-core';
-import Text from '../Text/Text';
-import Button from '../Button/Button';
 import Tags, { Tag } from './Tags';
 
 export default {
     component: Tag,
     title: 'Components/Tags',
 };
-
 
 export const Default = (args: TagsProps) => (
     <View style={{ flexDirection: 'column', gap: tokens.spacing.medium, flexWrap: 'wrap' }}>
