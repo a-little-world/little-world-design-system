@@ -1,17 +1,24 @@
-import { TouchableOpacity, View } from 'react-native';
-import styled from 'styled-components/native';
-import { ThemeProps } from 'styled-components';
+import {
+  ButtonAppearance,
+  ButtonSizes,
+} from "@a-little-world/little-world-design-system-core";
+import { DefaultTheme } from "styled-components/native";
 
-import { ButtonAppearance, ButtonSizes } from '@a-little-world/little-world-design-system-core';
-import Text from '../Text/Text';
+export const getButtonStyles = ({
+  theme,
+  buttonAppearance,
+  size,
+}: {
+  theme: DefaultTheme;
+  buttonAppearance: ButtonAppearance | undefined;
+  size: ButtonSizes | undefined;
+}) => {
+  const sizeStyles = size
+    ? {
+        /* Add size-specific styles based on ButtonSizes */
+      }
+    : {};
 
-const getButtonStyles = (
-  theme: any, 
-  buttonAppearance: ButtonAppearance | undefined, 
-  size: ButtonSizes | undefined
-) => {
-  const sizeStyles = size ? { /* Add size-specific styles based on ButtonSizes */ } : {};
-  
   if (buttonAppearance === ButtonAppearance.Primary) {
     return {
       backgroundColor: theme.color.gradient.orange10,
@@ -21,7 +28,7 @@ const getButtonStyles = (
     };
   } else if (buttonAppearance === ButtonAppearance.Secondary) {
     return {
-      backgroundColor: 'transparent',
+      backgroundColor: "transparent",
       borderWidth: 1,
       borderColor: theme.color.border.bold,
       padding: 10,
@@ -29,65 +36,36 @@ const getButtonStyles = (
       ...sizeStyles,
     };
   }
-  
+
   return {};
 };
 
-interface LinkStyledProps {
-  $active?: boolean;
-  $color?: string;
-  $buttonAppearance?: ButtonAppearance;
-  $size?: ButtonSizes;
-}
+export const getLinkStyles = ({
+  theme,
+  color,
+}: {
+  theme: DefaultTheme;
+  color?: string;
+}) => ({
+  color: color || theme.color.text.link,
+});
 
-export const TouchableLink = styled(TouchableOpacity)<LinkStyledProps>`
-  ${({ theme, $buttonAppearance, $size, $color }: ThemeProps<any> & LinkStyledProps) => {
-    if ($buttonAppearance) {
-      return getButtonStyles(theme, $buttonAppearance, $size);
-    }
-    
-    return {
-      color: $color || theme.color.text.link,
-    };
-  }}
-`;
-
-export const ExternalLink = styled(TouchableOpacity)<LinkStyledProps>`
-  ${({ theme, $buttonAppearance, $size, $color }: ThemeProps<any> & LinkStyledProps) => {
-    if ($buttonAppearance) {
-      return getButtonStyles(theme, $buttonAppearance, $size);
-    }
-    
-    return {
-      color: $color || theme.color.text.link,
-    };
-  }}
-`;
-
-interface LinkTextProps {
-  $buttonAppearance?: ButtonAppearance;
-  $color?: string;
-  $underlineOnHover?: boolean;
-}
-
-export const LinkText = styled(Text)<LinkTextProps>`
-  ${({ theme, $buttonAppearance, $color }: ThemeProps<any> & LinkTextProps) => 
-    $buttonAppearance === ButtonAppearance.Primary
-      ? { color: theme.color.text.button }
-      : { color: $color || theme.color.text.link }
-  }
-  
-  ${({ $underlineOnHover }) => 
-    $underlineOnHover && {
-      textDecorationLine: 'underline'
-    }
-  }
-`;
-
-// For the underline effect when needed
-export const UnderlineView = styled.View<{ $color?: string }>`
-  height: 1px;
-  background-color: ${({ theme, $color }: ThemeProps<any> & { $color?: string }) => $color || theme.color.text.link};
-  width: 100%;
-  margin-top: 2px;
-`;
+export const getLinkTextStyles = ({
+  theme,
+  buttonAppearance,
+  color,
+  textDecoration,
+}: {
+  theme: DefaultTheme;
+  buttonAppearance?: ButtonAppearance;
+  color?: string;
+  textDecoration?: boolean;
+}) => ({
+  color:
+    buttonAppearance === ButtonAppearance.Primary
+      ? theme.color.text.button
+      : color || theme.color.text.link,
+  textDecorationLine: textDecoration
+    ? ("underline" as const)
+    : ("none" as const),
+});

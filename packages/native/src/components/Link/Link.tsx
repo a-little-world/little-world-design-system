@@ -1,9 +1,11 @@
 import React, { forwardRef } from 'react';
-import { TouchableOpacityProps, Linking } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps, Linking } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 import { LinkBaseProps, TextTypes } from '@a-little-world/little-world-design-system-core';
-import { TouchableLink, ExternalLink, LinkText } from './styles';
+import { getButtonStyles, getLinkStyles, getLinkTextStyles } from './styles';
+import Text from '../Text/Text';
+import { useTheme } from 'styled-components/native';
 
 export type LinkProps = Omit<TouchableOpacityProps, 'onPress'> & LinkBaseProps & {
   params?: Record<string, any>;
@@ -33,6 +35,7 @@ const Link = forwardRef<any, LinkProps>(
     },
     ref,
   ) => {
+    const theme = useTheme();
     // Use try/catch to handle cases when NavigationContainer isn't available
     let navigation: NavigationProp<any> | undefined;
     try {
@@ -60,28 +63,25 @@ const Link = forwardRef<any, LinkProps>(
     };
 
     // Choose appropriate component based on link type
-    const Component = href ? ExternalLink : TouchableLink;
+    // const Component = href ? ExternalLink : TouchableLink;
+    const linkStyles = buttonAppearance ? getButtonStyles({theme, buttonAppearance, size: buttonSize}) : getLinkStyles({ theme });
     
     return (
-      <Component
+      <TouchableOpacity
         ref={ref}
-        $active={active}
         onPress={handlePress}
-        $buttonAppearance={buttonAppearance}
-        $size={buttonSize}
-        style={style}
         accessibilityRole="link"
+        style={[linkStyles, style]}
         {...props}
       >
-        <LinkText
+        <Text
           type={textType || TextTypes.Body5}
           bold={Boolean(bold)}
-          $buttonAppearance={buttonAppearance}
-          $underlineOnHover={textDecoration}
+          style={getLinkTextStyles({ theme, buttonAppearance, textDecoration })}
         >
           {children}
-        </LinkText>
-      </Component>
+        </Text>
+      </TouchableOpacity>
     );
   },
 );

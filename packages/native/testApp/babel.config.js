@@ -11,7 +11,8 @@ module.exports = function (api) {
       ["babel-plugin-react-docgen-typescript", { exclude: "node_modules" }],
       ["@babel/plugin-transform-react-jsx", {
         runtime: "automatic",
-        importSource: "react"
+        importSource: "react",
+        useBuiltIns: true
       }]
     ],
     env: {

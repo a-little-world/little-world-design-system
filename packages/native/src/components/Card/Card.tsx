@@ -1,11 +1,10 @@
 import React from "react";
-import { View, ScrollView, ViewStyle, DimensionValue } from "react-native";
+import { View, ScrollView, DimensionValue } from "react-native";
 import {
   CardBaseProps,
   CardContentProps,
   CardFooterProps,
   CardHeaderProps,
-  CardSizes,
   TextTypes,
 } from "@a-little-world/little-world-design-system-core";
 import Text from "../Text/Text";
@@ -16,9 +15,6 @@ import {
   getCardFooterStyles,
 } from "./styles";
 import { useTheme } from "styled-components/native";
-
-// Re-export enums for easy access
-export { CardSizes };
 
 type CardProps = CardBaseProps & {
   style?: any;

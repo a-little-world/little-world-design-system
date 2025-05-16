@@ -1,5 +1,5 @@
 {
-  "name": "@a-little-world/little-world-design-system-native",
+  "name": "@a-little-world/little-world-design-system-native-test-app",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "types": "dist/index.d.ts",
@@ -35,7 +35,8 @@
     "react-native-reanimated": "~3.16.1",
     "react-native-safe-area-context": "4.12.0",
     "react-native-svg": "15.8.0",
-    "react-native-web": "~0.19.13"
+    "react-native-web": "~0.19.13",
+    "styled-components": "^6.1.18"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",

@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { ButtonAppearance, tokens } from '@a-little-world/little-world-design-system-core';
 import { Card, CardHeader, CardContent, CardFooter, Text, Button } from '@a-little-world/little-world-design-system-native';
-import { CardSizes, CardBaseProps } from '@a-little-world/little-world-design-system-core';
+import { CardBaseProps } from '@a-little-world/little-world-design-system-core';
 
 export default {
   component: Card,

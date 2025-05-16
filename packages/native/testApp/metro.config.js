@@ -6,23 +6,16 @@ const defaultConfig = getDefaultConfig(__dirname);
 
 // Add watchFolders to the default config
 defaultConfig.watchFolders = [
-  ...(defaultConfig.watchFolders || []),
   path.resolve(__dirname, '../../core'),
-  path.resolve(__dirname, '..') 
+  path.resolve(__dirname, '..')
 ];
 
-// Redirect module resolution
+// Enhance resolver configuration
 defaultConfig.resolver = {
   ...defaultConfig.resolver,
   extraNodeModules: {
-    ...(defaultConfig.resolver.extraNodeModules || {}),
-    '@a-little-world/little-world-design-system': path.resolve(__dirname, '../../core'),
-    '@a-little-world/little-world-design-system-native': path.resolve(__dirname, '..'),
-    'react': path.resolve(__dirname, './node_modules/react'),
-    'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
-    'react-native': path.resolve(__dirname, './node_modules/react-native'),
-    'react-router': path.resolve(__dirname, './node_modules/react-router-native'),
-    'react-router-dom': path.resolve(__dirname, './node_modules/react-router-native')
+    '@a-little-world/little-world-design-system-core': path.resolve(__dirname, '../../core'),
+    '@a-little-world/little-world-design-system-native': path.resolve(__dirname, '..')
   }
 };
 
