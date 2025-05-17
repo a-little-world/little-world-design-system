@@ -1,3 +1,19 @@
+import React from 'react';
+
+// Force hooks to be accessed through React
+const {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+  createContext,
+  forwardRef
+} = React;
+
+console.log('React version in native package:', React.version);
+console.log('React hooks available:', !!React.useState);
+
 export { default as Button } from "./components/Button/Button";
 export { default as Card, CardHeader, CardContent, CardFooter } from "./components/Card/Card";
 export * from "./components/Icon";

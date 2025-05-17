@@ -1,15 +1,21 @@
-import React, { forwardRef } from 'react';
-import { TouchableOpacity, TouchableOpacityProps, Linking } from 'react-native';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { getButtonStyles } from "../Button/styles";
+import Text from "../Text/Text";
+import { getLinkStyles, getLinkTextStyles } from "./styles";
+import {
+  ButtonSizes,
+  ButtonVariations,
+  LinkBaseProps,
+  TextTypes,
+} from "@a-little-world/little-world-design-system-core";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import React, { forwardRef } from "react";
+import { TouchableOpacity, TouchableOpacityProps, Linking } from "react-native";
+import { useTheme } from "styled-components/native";
 
-import { LinkBaseProps, TextTypes } from '@a-little-world/little-world-design-system-core';
-import { getButtonStyles, getLinkStyles, getLinkTextStyles } from './styles';
-import Text from '../Text/Text';
-import { useTheme } from 'styled-components/native';
-
-export type LinkProps = Omit<TouchableOpacityProps, 'onPress'> & LinkBaseProps & {
-  params?: Record<string, any>;
-};
+export type LinkProps = Omit<TouchableOpacityProps, "onPress"> &
+  LinkBaseProps & {
+    params?: Record<string, any>;
+  };
 
 /**
  * Link component for React Native
@@ -33,7 +39,7 @@ const Link = forwardRef<any, LinkProps>(
       onClick,
       ...props
     },
-    ref,
+    ref
   ) => {
     const theme = useTheme();
     // Use try/catch to handle cases when NavigationContainer isn't available
@@ -48,24 +54,33 @@ const Link = forwardRef<any, LinkProps>(
       if (onClick) {
         onClick();
       }
-      
+
       if (href) {
         // Handle external link
         Linking.openURL(href).catch((err) => {
-          console.error('Failed to open URL:', err);
+          console.error("Failed to open URL:", err);
         });
       } else if (to && navigation) {
         // Handle internal navigation if navigation is available
         navigation.navigate(to, params);
       } else if (to) {
-        console.warn('Navigation not available. Make sure your Link is inside NavigationContainer.');
+        console.warn(
+          "Navigation not available. Make sure your Link is inside NavigationContainer."
+        );
       }
     };
 
     // Choose appropriate component based on link type
     // const Component = href ? ExternalLink : TouchableLink;
-    const linkStyles = buttonAppearance ? getButtonStyles({theme, buttonAppearance, size: buttonSize}) : getLinkStyles({ theme });
-    
+    const linkStyles = buttonAppearance
+      ? getButtonStyles({
+          theme,
+          appearance: buttonAppearance,
+          size: buttonSize || ButtonSizes.Stretch,
+          variation: ButtonVariations.Basic,
+        })
+      : getLinkStyles({ theme });
+
     return (
       <TouchableOpacity
         ref={ref}
@@ -83,7 +98,7 @@ const Link = forwardRef<any, LinkProps>(
         </Text>
       </TouchableOpacity>
     );
-  },
+  }
 );
 
 export default Link;

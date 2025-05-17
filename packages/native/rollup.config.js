@@ -22,7 +22,8 @@ module.exports = defineConfig({
         react: 'React',
         'react-native': 'ReactNative',
         'styled-components': 'styled'
-      }
+      },
+      interop: 'auto'
     },
     {
       file: "dist/index.esm.js",
@@ -33,7 +34,8 @@ module.exports = defineConfig({
         react: 'React',
         'react-native': 'ReactNative',
         'styled-components': 'styled'
-      }
+      },
+      interop: 'auto'
     }
   ],
   plugins: [
@@ -68,7 +70,9 @@ module.exports = defineConfig({
         }],
         ["@babel/preset-react", { 
           runtime: "automatic",
-          importSource: "react"
+          importSource: "react",
+          useBuiltIns: true,
+          development: process.env.NODE_ENV === 'development'
         }],
         ["@babel/preset-typescript", { 
           isTSX: true,

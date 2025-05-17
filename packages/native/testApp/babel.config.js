@@ -3,16 +3,15 @@ module.exports = function (api) {
   return {
     presets: [
       ["babel-preset-expo", {
-        jsxRuntime: 'automatic',
-        jsxImportSource: 'react'
+        jsxRuntime: 'automatic'
       }]
     ],
     plugins: [
       ["babel-plugin-react-docgen-typescript", { exclude: "node_modules" }],
       ["@babel/plugin-transform-react-jsx", {
         runtime: "automatic",
-        importSource: "react",
-        useBuiltIns: true
+        useBuiltIns: true,
+        importSource: "@a-little-world/little-world-design-system-native/node_modules/react"
       }]
     ],
     env: {

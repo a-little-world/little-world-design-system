@@ -10,12 +10,29 @@ defaultConfig.watchFolders = [
   path.resolve(__dirname, '..')
 ];
 
+// Log module resolution
+defaultConfig.resolver.resolveRequest = (context, moduleName, platform) => {
+  if (moduleName === 'react' || moduleName.includes('@a-little-world')) {    
+    // Force React to always resolve from test app's node_modules
+    if (moduleName === 'react') {
+      return {
+        type: 'sourceFile',
+        filePath: path.resolve(__dirname, 'node_modules/react/index.js')
+      };
+    }
+  }
+  return context.resolveRequest(context, moduleName, platform);
+};
+
 // Enhance resolver configuration
 defaultConfig.resolver = {
   ...defaultConfig.resolver,
   extraNodeModules: {
     '@a-little-world/little-world-design-system-core': path.resolve(__dirname, '../../core'),
-    '@a-little-world/little-world-design-system-native': path.resolve(__dirname, '..')
+    '@a-little-world/little-world-design-system-native': path.resolve(__dirname, '..'),
+    // Ensure React is resolved from test app's node_modules
+    'react': path.resolve(__dirname, 'node_modules/react'),
+    'react-dom': path.resolve(__dirname, 'node_modules/react-dom')
   }
 };
 
