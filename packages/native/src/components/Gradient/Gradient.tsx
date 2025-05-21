@@ -1,4 +1,3 @@
-// components/Gradient.tsx
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet, ViewStyle } from 'react-native';
@@ -34,3 +33,5 @@ export const Gradient: React.FC<GradientProps> = ({ gradient, style, children })
     </LinearGradient>
   );
 };
+
+export default Gradient;

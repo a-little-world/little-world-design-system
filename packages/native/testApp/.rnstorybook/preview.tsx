@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 import { withBackgrounds } from "@storybook/addon-ondevice-backgrounds";
 import type { Preview } from "@storybook/react";
-import { CustomThemeProvider, loadFonts } from "@a-little-world/little-world-design-system-native";
+import {
+  CustomThemeProvider,
+  loadFonts,
+} from "@a-little-world/little-world-design-system-native";
+import { PortalHost } from "@rn-primitives/portal";
 
 const preview: Preview = {
   decorators: [
@@ -26,6 +30,7 @@ const preview: Preview = {
           <View style={{ flex: 1, padding: 16 }}>
             {!fontsLoaded ? <ActivityIndicator size="large" /> : <Story />}
           </View>
+          <PortalHost />
         </CustomThemeProvider>
       );
     },

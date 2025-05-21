@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 import { CustomThemeProvider, loadFonts } from "@a-little-world/little-world-design-system-native";
+import { PortalHost } from "@rn-primitives/portal";
 
 export const decorators = [
   (Story: React.ComponentType) => {
@@ -23,6 +24,7 @@ export const decorators = [
         <View style={{ flex: 1, padding: 16 }}>
           {!fontsLoaded ? <ActivityIndicator size="large" /> : <Story />}
         </View>
+        <PortalHost />
       </CustomThemeProvider>
     );
   },

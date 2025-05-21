@@ -9,10 +9,8 @@ import {
   ButtonVariations,
 } from "@a-little-world/little-world-design-system-core";
 
-import Text from "../Text/Text";
+import { Gradient, Text, Loading } from "@a-little-world/little-world-design-system-native";
 import { getButtonStyles, getButtonTextStyles } from "./styles";
-import { Gradient } from "../Gradient/Gradient";
-import Loading from "../Loading/Loading";
 
 export { ButtonAppearance, ButtonSizes, ButtonVariations };
 
@@ -58,7 +56,7 @@ const Button = React.forwardRef<React.ElementRef<typeof TouchableOpacity>, Butto
     variation === ButtonVariations.Basic;
 
   const content = loading ? (
-    <Loading color={textStyles.color as string} />
+    <Loading />
   ) : (
     <Text
       style={[textStyles, disabled ? { color: theme.color.text.disabled } : {}]}
@@ -82,7 +80,7 @@ const Button = React.forwardRef<React.ElementRef<typeof TouchableOpacity>, Butto
       ]}
     >
       {hasGradient ? (
-        <Gradient gradient={theme.color.gradient.orange10} style={buttonStyles}>
+        <Gradient gradient={'orange10'}>
           {content}
         </Gradient>
       ) : (

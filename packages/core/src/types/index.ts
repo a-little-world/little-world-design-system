@@ -5,6 +5,7 @@ export * from './Card';
 export * from './InputError';
 export * from './Link';
 export * from './Loading';
+export * from './Popover';
 export * from './ProgressBar';
 export * from './Svg';
 export * from './Tag';
