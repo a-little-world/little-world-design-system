@@ -1,4 +1,3 @@
-import { css } from "styled-components/native";
 import { ViewStyle, TextStyle } from "react-native";
 
 import {
@@ -147,46 +146,46 @@ export const getButtonTextStyles = ({
   return baseStyles;
 };
 
-export const OPTION_BUTTON_CSS = css<{
-  $appearance?: ButtonAppearance;
-  $backgroundColor?: string;
-  $color?: string;
-}>`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  background: ${({ $backgroundColor, theme }) =>
-    $backgroundColor || theme.color.surface.tertiary};
-  border: 1px solid ${({ theme }) => theme.color.border.subtle};
-  color: ${({ $color, theme }) => $color || theme.color.text.primary};
-  border-radius: 15px;
-  font-weight: 700;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: ${({ theme }) => theme.spacing.xsmall};
-  gap: ${({ theme }) => theme.spacing.xxxsmall};
-  max-width: 144px;
-  align-items: center;
-  justify-content: center;
-  font-weight: normal;
-  min-height: 69px;
+// export const OPTION_BUTTON_CSS = css<{
+//   $appearance?: ButtonAppearance;
+//   $backgroundColor?: string;
+//   $color?: string;
+// }>`
+//   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+//     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+//     sans-serif;
+//   background: ${({ $backgroundColor, theme }) =>
+//     $backgroundColor || theme.color.surface.tertiary};
+//   border: 1px solid ${({ theme }) => theme.color.border.subtle};
+//   color: ${({ $color, theme }) => $color || theme.color.text.primary};
+//   border-radius: 15px;
+//   font-weight: 700;
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   flex: 1;
+//   padding: ${({ theme }) => theme.spacing.xsmall};
+//   gap: ${({ theme }) => theme.spacing.xxxsmall};
+//   max-width: 144px;
+//   align-items: center;
+//   justify-content: center;
+//   font-weight: normal;
+//   min-height: 69px;
 
-  &:not(:disabled):hover {
-    filter: brightness(95%);
-    cursor: pointer;
-    box-shadow: 0 0 10px 1px rgb(0 0 0 / 11%),
-      0 0 8px 3px rgb(255 255 255 / 15%);
-  }
+//   &:not(:disabled):hover {
+//     filter: brightness(95%);
+//     cursor: pointer;
+//     box-shadow: 0 0 10px 1px rgb(0 0 0 / 11%),
+//       0 0 8px 3px rgb(255 255 255 / 15%);
+//   }
 
-  ${({ $appearance, $backgroundColor, $color, theme }) =>
-    $appearance === ButtonAppearance.Secondary &&
-    css`
-      color: ${$color || theme.color.text.button};
-      background: ${$backgroundColor || theme.color.surface.primary};
-    `}
-`;
+//   ${({ $appearance, $backgroundColor, $color, theme }) =>
+//     $appearance === ButtonAppearance.Secondary &&
+//     css`
+//       color: ${$color || theme.color.text.button};
+//       background: ${$backgroundColor || theme.color.surface.primary};
+//     `}
+// `;
 
 //     svg {
 //       ${ICON_DIMENSIONS}

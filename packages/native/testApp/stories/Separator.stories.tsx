@@ -1,8 +1,7 @@
 import React from 'react';
 
-import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
-import Separator from './Separator';
+import { Separator, Text } from '@a-little-world/little-world-design-system-native';
 
 export default {
   component: Separator,
@@ -11,7 +10,7 @@ export default {
 
 export const Default = args => (
   <div>
-    <Text tag="h3" type={TextTypes.Heading4}>
+    <Text type={TextTypes.Heading4}>
       Little World
     </Text>
     <div className="Text">Let's separate our content.</div>
