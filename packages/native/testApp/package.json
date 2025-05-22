@@ -71,10 +71,11 @@
   },
   "resolutions": {
     "react-docgen-typescript": "2.2.2",
-    "expo-linear-gradient": "~14.0.2"
+    "expo-linear-gradient": "14.0.2"
   },
   "overrides": {
-    "react-docgen-typescript": "2.2.2"
+    "react-docgen-typescript": "2.2.2",
+    "expo-linear-gradient": "~14.0.2"
   },
   "pnpm": {
     "overrides": {
