@@ -14,6 +14,15 @@ export const ImageSizes = {
   flex: '100%',
 };
 
+const WidgetContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: ${WidgetSizes.Large};
+  height: auto;
+`;
+
+
 const ContentContainer = styled.div`
   display: flex;
   align-items: center;
@@ -56,9 +65,16 @@ const Image = styled.img`
   max-width: 920px;
 `;
 
+const Caption = styled(Text)`
+  padding: 0 ${({ theme }) => theme.spacing.xxxsmall};
+  margin-top: ${({ theme }) => theme.spacing.xxxsmall};
+  margin-bottom: ${({ theme }) => theme.spacing.xxxxsmall};
+`;
+
 interface AttachmentWidgetProps extends Omit<WidgetProps, 'children'> {
   attachmentTitle?: string;
   attachmentLink?: string;
+  caption?: string;
   imageSrc?: string;
   isPreview?: boolean;
 }
@@ -66,6 +82,7 @@ interface AttachmentWidgetProps extends Omit<WidgetProps, 'children'> {
 const AttachmentWidget = ({
   attachmentTitle,
   attachmentLink,
+  caption,
   imageSrc,
   isPreview,
 }: AttachmentWidgetProps) => {
@@ -95,38 +112,41 @@ const AttachmentWidget = ({
     );
 
   return (
-    <Widget width={WidgetSizes.Large} padding={imageSrc && '0px'}>
-      {imageSrc ? (
-        <>
-          <Modal open={viewImage} onClose={() => setViewImage(false)}>
-            <Image src={imageSrc} alt={title} />
-          </Modal>
-          <ImageButton onClick={() => setViewImage(true)}>
-            <Image src={imageSrc} alt={title} />
-          </ImageButton>
-        </>
-      ) : (
-        <ContentContainer>
-          <AttachmentIcon
-            label={'attachment icon'}
-            labelId={'attachmentIcon'}
-            width={20}
-            height={20}
-            color={theme.color.text.tertiary}
-          />
-          <AttachmentDownload href={attachmentLink} download target="_blank">
-            <Text disableParser>{title}</Text>
-            <DownloadIcon
-              label={'download icon'}
-              labelId={'downloadIcon'}
+    <WidgetContainer>
+      <Widget width={WidgetSizes.Large} padding={imageSrc && '0px'}>
+        {imageSrc ? (
+          <>
+            <Modal open={viewImage} onClose={() => setViewImage(false)}>
+              <Image src={imageSrc} alt={title} />
+            </Modal>
+            <ImageButton onClick={() => setViewImage(true)}>
+              <Image src={imageSrc} alt={title} />
+            </ImageButton>
+          </>
+        ) : (
+          <ContentContainer>
+            <AttachmentIcon
+              label={'attachment icon'}
+              labelId={'attachmentIcon'}
               width={20}
               height={20}
-              color={theme.color.text.title}
+              color={theme.color.text.tertiary}
             />
-          </AttachmentDownload>
-        </ContentContainer>
-      )}
-    </Widget>
+            <AttachmentDownload href={attachmentLink} download target="_blank">
+              <Text disableParser>{title}</Text>
+              <DownloadIcon
+                label={'download icon'}
+                labelId={'downloadIcon'}
+                width={20}
+                height={20}
+                color={theme.color.text.title}
+              />
+            </AttachmentDownload>
+          </ContentContainer>
+        )}
+      </Widget>
+      {caption && <Caption>{caption}</Caption>}
+    </WidgetContainer>
   );
 };
 
