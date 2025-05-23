@@ -1,5 +1,5 @@
 import { Close } from '@radix-ui/react-toast';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
 import { InfoIcon } from '../Icon';
@@ -57,36 +57,53 @@ const Toast: React.FC<ToastProps> = ({
     );
   }
 
-  function dismissToast(event: React.MouseEvent<HTMLButtonElement>) {
+  const [open, setOpen] = useState(true);
+
+  function onClickInternal(
+    event: React.MouseEvent<HTMLLIElement, MouseEvent>,
+  ): void {
+    event.stopPropagation();
+    onClick?.();
+    closeToast();
+  }
+
+  function onDismissClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.stopPropagation(); // prevent toast onClick event from firing
     onDismiss?.();
+    closeToast();
   }
 
   function onActionClickInternal(event: React.MouseEvent<HTMLButtonElement>) {
     event.stopPropagation();
     onActionClick?.();
+    closeToast();
   }
 
   function onOpenChange(open: boolean): void {
     if (!open) {
       onClose?.();
+      closeToast();
     }
+  }
+
+  function closeToast(): void {
+    setOpen(false);
   }
 
   return (
     <div className={className}>
       <ToastRoot
         className="ToastRoot"
-        defaultOpen={true}
+        open={open}
         onOpenChange={onOpenChange}
         duration={duration}
-        onClick={onClick}
+        onClick={onClickInternal}
       >
         <Close asChild>
           <ToastCloseButton
             variation={ButtonVariations.Icon}
             size={ButtonSizes.Small}
-            onClick={dismissToast}
+            onClick={onDismissClick}
           >
             <ToastCloseIcon
               label={'ToastCloseIcon'}
