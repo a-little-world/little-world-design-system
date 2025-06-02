@@ -14,6 +14,7 @@ const mapCoreStyleToRN = (style: CoreTextStyle): RNTextStyle => ({
 });
 
 const Text = ({
+  id,
   bold = false,
   center = false,
   children,
@@ -31,7 +32,7 @@ const Text = ({
     textStyle.fontWeight = 'bold';
   }
 
-  return <RNText style={[textStyle, style]}>{children}</RNText>;
+  return <RNText id={id} style={[textStyle, style]}>{children}</RNText>;
 };
 
 export default Text; 

@@ -2,33 +2,44 @@ import React from "react";
 import {
   Button,
   CustomThemeProvider,
-  // Popover,
+  Popover,
   Text,
 } from "@a-little-world/little-world-design-system-native";
 import { StyleSheet, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+// import { NavigationContainer } from "@react-navigation/native";
+// import { GestureHandlerRootView } from "react-native-gesture-handler";
+// import { SafeAreaProvider } from "react-native-safe-area-context";
 import { PortalHost } from "@rn-primitives/portal";
+import { ButtonAppearance } from "@a-little-world/little-world-design-system-core";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 16
+  },
+});
 
 function AppContent() {
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
-      <Button>
+      <Button onPress={() => console.log('presssing!!')}>
         <Text>Open Popover</Text>
       </Button>
-      {/* <Popover
+      <Popover
         asToolTip
         showCloseButton={false}
         trigger={
-          <Button>
+          <Button appearance={ButtonAppearance.Secondary}>
             <Text>Open Popover</Text>
           </Button>
         }
       >
         <Text>This is tooltip text with tooltip styling</Text>
-      </Popover> */}
+      </Popover>
     </View>
   );
 }
@@ -44,25 +55,10 @@ function App() {
 
   return (
     <CustomThemeProvider>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <SafeAreaProvider>
-          <NavigationContainer>
-            <AppContent />
-            <PortalHost />
-          </NavigationContainer>
-        </SafeAreaProvider>
-      </GestureHandlerRootView>
+      <AppContent />
+      <PortalHost />
     </CustomThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default App;

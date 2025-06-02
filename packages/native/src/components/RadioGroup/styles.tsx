@@ -15,8 +15,8 @@ export const getRadioGroupStyles = ({ theme }: { theme: DefaultTheme }) => Style
     alignItems: 'center'
   },
   item: {
-    all: 'unset',
-    background: theme.color.surface.primary,
+    // all: 'unset',
+    backgroundColor: theme.color.surface.primary,
     borderWidth: 1,
     borderColor: theme.color.surface.contrast,
     borderRadius: theme.radius.full,

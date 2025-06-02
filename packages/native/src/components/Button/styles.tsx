@@ -1,6 +1,3 @@
-import { css } from "styled-components/native";
-import { ViewStyle, TextStyle } from "react-native";
-
 import {
   BUTTON_DIMENSIONS,
   ButtonAppearance,
@@ -8,6 +5,8 @@ import {
   ButtonVariations,
   CIRCLE_DIMENSIONS,
 } from "@a-little-world/little-world-design-system-core";
+import { ViewStyle, TextStyle, StyleSheet } from "react-native";
+import { css } from "styled-components/native";
 
 export const getButtonStyles = ({
   appearance,
@@ -34,10 +33,10 @@ export const getButtonStyles = ({
     ...(variation === ButtonVariations.Basic
       ? {
           paddingHorizontal: theme.spacing.small,
-          flex: 1,
+          // flex: 1,
           height: BUTTON_DIMENSIONS[size].height,
           minWidth: BUTTON_DIMENSIONS[size].minWidth,
-          paddingVertical: BUTTON_DIMENSIONS[size].padding.vertical,
+          // paddingVertical: BUTTON_DIMENSIONS[size].padding.vertical,
         }
       : {}),
   };
@@ -106,6 +105,16 @@ export const getButtonStyles = ({
     borderColor: color || theme.color.border.bold,
   };
 };
+
+export const gradientStyles = StyleSheet.create({
+  fullSize: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+});
 
 export const getButtonTextStyles = ({
   color,

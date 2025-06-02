@@ -28,14 +28,17 @@ const RadioGroup: React.FC<Props> = ({
   return (
     <View>
       {label && (
-        <Label bold htmlFor={label} toolTipText={labelTooltip}>
+        <Label
+        bold
+        // toolTipText={labelTooltip}
+        >
           {label}
         </Label>
       )}
       <RadioGroupPrimitive.Root
-        ref={inputRef}
-        value={undefined}
-        name={label}
+        // ref={inputRef}
+        // value={undefined}
+        // name={label}
         {...rest}
       >
         {items?.map((item) => (
@@ -44,7 +47,7 @@ const RadioGroup: React.FC<Props> = ({
               <RadioGroupPrimitive.Indicator style={styles.indicator} />
             </RadioGroupPrimitive.Item>
             {item.label && (
-              <Label htmlFor={item.id} inline>
+              <Label  inline>
                 {item.label}
               </Label>
             )}

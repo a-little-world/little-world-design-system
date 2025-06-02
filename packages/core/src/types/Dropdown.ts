@@ -1,6 +1,6 @@
 import { InputHeight } from "./TextInput";
 
-type Options = { value: string; label: string }[];
+export type Options = { value: string; label: string }[];
 
 export type DropdownBaseProps = {
     ariaLabel?: string;
@@ -10,7 +10,7 @@ export type DropdownBaseProps = {
     label?: string;
     labelTooltip?: string;
     lockedValue?: string;
-    maxWidth?: string;
+    maxWidth?: string | number;
     options: Options;
     onValueChange: (value: string) => void;
     placeholder: string;

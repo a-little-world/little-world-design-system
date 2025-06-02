@@ -4,33 +4,18 @@ import Label from "../Label/Label";
 import Text from "../Text/Text";
 import { getDropdownStyles } from "./styles";
 import {
-  InputHeight,
   Options,
-  DropdownProps,
+  InputHeight,
+  DropdownBaseProps,
 } from "@a-little-world/little-world-design-system-core";
 import * as DropdownMenuPrimitive from "@rn-primitives/dropdown-menu";
 import React from "react";
 import { StyleProp, View, ViewStyle } from "react-native";
 import { useTheme } from "styled-components/native";
 
-export type DropdownProps = {
-  ariaLabel?: string;
-  cannotError?: boolean;
-  error?: string;
-  height?: InputHeight;
-  label?: string;
-  labelTooltip?: string;
-  lockedValue?: string;
-  maxWidth?: string;
-  options: Options;
-  onValueChange: (value: string) => void;
-  placeholder: string;
-  value?: string;
-  disabled?: boolean;
-  required?: boolean;
-  inputRef?: React.RefObject<HTMLButtonElement>;
-} & {
+export type DropdownProps = DropdownBaseProps & {
   style?: StyleProp<ViewStyle>;
+  inputRef?: React.RefObject<HTMLButtonElement>;
 };
 
 const ARROW_DOWN_WIDTH = 13;
@@ -44,10 +29,10 @@ const Option: React.FC<{ children: string; value: string }> = ({
   value,
 }) => {
   return (
-    <DropdownMenuPrimitive.Item value={value}>
-      <DropdownMenuPrimitive.SelectItemText>
-        <Text>{children}</Text>
-      </DropdownMenuPrimitive.SelectItemText>
+    <DropdownMenuPrimitive.Item
+    // value={value}
+    >
+      <Text>{children}</Text>
       <DropdownMenuPrimitive.ItemIndicator>
         <CheckIcon label="selected item" width={10} />
       </DropdownMenuPrimitive.ItemIndicator>
@@ -76,8 +61,8 @@ const Dropdown: React.FC<DropdownProps> = ({
   const theme = useTheme();
   const styles = getDropdownStyles({
     theme,
-    maxWidth,
-    height,
+    maxWidth: maxWidth as number,
+    height: height as InputHeight,
     hasError: Boolean(error),
   });
   const defaultValue =
@@ -87,41 +72,42 @@ const Dropdown: React.FC<DropdownProps> = ({
   return (
     <View style={[styles.wrapper, style]}>
       {label && (
-        <Label bold toolTipText={labelTooltip}>
+        <Label
+        bold
+        // toolTipText={labelTooltip}
+        >
           {label}
         </Label>
       )}
       <DropdownMenuPrimitive.Root
-        disabled={disabled || !!lockedValue}
-        onValueChange={onValueChange}
-        required={required}
-        defaultValue={defaultValue}
+        // disabled={disabled || !!lockedValue}
+        // onValueChange={onValueChange}
+        // required={required}
+        // defaultValue={defaultValue}
       >
         <DropdownMenuPrimitive.Trigger
           aria-label={ariaLabel || label}
-          ref={inputRef}
-          $hasError={Boolean(error)}
-          $height={height}
+          // ref={inputRef}
+          // $hasError={Boolean(error)}
+          // $height={height}
         >
-          <DropdownMenuPrimitive.Value placeholder={placeholder} />
+          {/* <DropdownMenuPrimitive.Value placeholder={placeholder} /> */}
           {!lockedValue && (
-            <DropdownMenuPrimitive.Icon>
-              <ChevronDownIcon
-                width={ARROW_DOWN_WIDTH}
-                height={ARROW_DOWN_HEIGHT}
-                label="dropdown icon"
-              />
-            </DropdownMenuPrimitive.Icon>
+            <ChevronDownIcon
+              width={ARROW_DOWN_WIDTH}
+              height={ARROW_DOWN_HEIGHT}
+              label="dropdown icon"
+            />
           )}
         </DropdownMenuPrimitive.Trigger>
-        <DropdownMenuPrimitive.Content position="popper">
-          <DropdownMenuPrimitive.Viewport>
-            {options.map((option) => (
-              <Option key={option.label} value={option.value}>
-                {option.label}
-              </Option>
-            ))}
-          </DropdownMenuPrimitive.Viewport>
+        <DropdownMenuPrimitive.Content>
+          {/* <DropdownMenuPrimitive.Viewport> */}
+          {options.map((option) => (
+            <Option key={option.label} value={option.value}>
+              {option.label}
+            </Option>
+          ))}
+          {/* </DropdownMenuPrimitive.Viewport> */}
         </DropdownMenuPrimitive.Content>
       </DropdownMenuPrimitive.Root>
       {canError && <InputError visible={Boolean(error)}>{error}</InputError>}

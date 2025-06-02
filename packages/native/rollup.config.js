@@ -21,7 +21,8 @@ module.exports = defineConfig({
       globals: {
         react: 'React',
         'react-native': 'ReactNative',
-        'styled-components': 'styled'
+        'styled-components': 'styled',
+        'expo-linear-gradient': 'ExpoLinearGradient'
       },
       interop: 'auto'
     },
@@ -33,7 +34,8 @@ module.exports = defineConfig({
       globals: {
         react: 'React',
         'react-native': 'ReactNative',
-        'styled-components': 'styled'
+        'styled-components': 'styled',
+        'expo-linear-gradient': 'ExpoLinearGradient'
       },
       interop: 'auto'
     }
@@ -101,6 +103,6 @@ module.exports = defineConfig({
     '@a-little-world/little-world-design-system-core',
     /^expo-/,
     /^react-native/,
-    /node_modules/
+    /^@rn-primitives/ 
   ]
 });

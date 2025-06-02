@@ -1,13 +1,13 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet } from "react-native";
 
 import {
+  Button,
   Popover,
   DotsIcon,
   Text,
 } from "@a-little-world/little-world-design-system-native";
 import { ButtonVariations } from "@a-little-world/little-world-design-system-core";
-import Button from "../Button/Button";
 // import Modal from '../Modal/Modal';
 
 const styles = StyleSheet.create({

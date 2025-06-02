@@ -39,7 +39,7 @@ export const getContainerStyles = ({ theme }: { theme: DefaultTheme }) => StyleS
   }
 })
 
-export const getCheckboxStyles = ({ theme, hasError, color, checked }: { theme: DefaultTheme, hasError: boolean, color: string, checked: boolean }) => StyleSheet.create({
+export const getCheckboxStyles = ({ theme, hasError, color, checked }: { theme: DefaultTheme, hasError: boolean, color?: string, checked: boolean }) => StyleSheet.create({
   checkbox: {
     color: theme.color.text.primary,
     width: ITEM_WIDTH,

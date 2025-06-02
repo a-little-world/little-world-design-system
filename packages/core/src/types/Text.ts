@@ -11,6 +11,7 @@ export interface TextStyle {
 }
 
 export interface TextBaseProps {
+  id?: string;
   bold?: boolean;
   center?: boolean;
   color?: string;
