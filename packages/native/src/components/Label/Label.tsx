@@ -7,6 +7,7 @@ export interface LabelProps {
   style?: StyleProp<TextStyle>;
   bold?: boolean;
   children?: any;
+  nativeId?: string;
   inline?: boolean;
   marginBottom?: number;
 }
@@ -17,6 +18,7 @@ export const Label: React.FC<LabelProps> = ({
   bold,
   inline,
   marginBottom,
+  nativeId,
 }) => {
   const theme = useTheme();
   return (
@@ -31,6 +33,7 @@ export const Label: React.FC<LabelProps> = ({
         }),
         style,
       ]}
+      nativeID={nativeId}
     >
       {children}
     </Text>

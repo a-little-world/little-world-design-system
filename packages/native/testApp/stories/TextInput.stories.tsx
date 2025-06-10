@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { TextInput } from '@a-little-world/little-world-design-system-native';
+import { View } from 'react-native';
 
 export default {
   component: TextInput,
@@ -10,13 +11,15 @@ export default {
   },
 };
 
-export const Default = args => <TextInput {...args} />;
+export const Default = args => <View>
+  <TextInput {...args} onChange={() => console.log('changing')} onSubmit={() => console.log('submit')} />
+  </View>;
 
 export const TelephoneInput = args => {
   return (
-    <>
+    <View>
       <TextInput label="Enter your number" type="tel" {...args} />
-    </>
+    </View>
   );
 };
 

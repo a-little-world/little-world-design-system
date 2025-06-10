@@ -32,7 +32,7 @@ export { default as Separator } from "./components/Separator/Separator";
 export { default as Tags, Tag } from "./components/Tags/Tags";
 export type { TagProps, TagsProps } from "./components/Tags/Tags";
 export { default as Text } from "./components/Text/Text";
-export { default as TextInput } from "./components/Text/Text";
+export { default as TextInput } from "./components/TextInput/TextInput";
 export { default as ToolTip } from "./components/ToolTip/ToolTip";
 
 export * from "./theme";

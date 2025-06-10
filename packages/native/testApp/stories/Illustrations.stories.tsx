@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 
-import Text from '@a-little-world/little-world-design-system-native';
+import { Text } from '@a-little-world/little-world-design-system-native';
 import * as allIllustrations from '@a-little-world/little-world-design-system-native/src/components/Illustrations';
 
-// Use numeric values for spacing
 const spacing = {
   xxsmall: 4,
   small: 8,
@@ -17,6 +16,8 @@ const IllustrationsScreen = () => (
       flex: 1, 
       flexDirection: 'row', 
       flexWrap: 'wrap', 
+      alignItems: 'center',
+      justifyContent: 'center',
       padding: spacing.medium,
     }}>
       {Object.entries(allIllustrations).map(([name, Component]) => (
@@ -34,7 +35,7 @@ const IllustrationsScreen = () => (
           key={name}
         >
           <Component 
-          label={name}
+            label={name}
             key={name} 
             height={100} 
             width={100} 

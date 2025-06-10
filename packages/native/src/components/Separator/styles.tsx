@@ -9,7 +9,7 @@ export const getSeparatorStyles = ({ theme, background, spacing }: { theme: Defa
       width: "100%",
     },
     vertical: {
-      height: 100,
+      height: "100%",
       width: 1,
       marginHorizontal: spacing || theme.spacing.medium,
     },
