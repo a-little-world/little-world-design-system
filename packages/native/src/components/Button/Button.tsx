@@ -9,7 +9,7 @@ import {
   ButtonVariations,
 } from "@a-little-world/little-world-design-system-core";
 import React from "react";
-import { StyleProp, ViewStyle, TouchableOpacity } from "react-native";
+import { StyleProp, ViewStyle, TouchableOpacity, Pressable } from "react-native";
 import { useTheme } from "styled-components/native";
 
 export { ButtonAppearance, ButtonSizes, ButtonVariations };
@@ -22,7 +22,7 @@ export interface ButtonProps extends ButtonBaseProps {
 }
 
 const Button = React.forwardRef<
-  React.ElementRef<typeof TouchableOpacity>,
+  React.ElementRef<typeof Pressable>,
   ButtonProps
 >(
   (
@@ -76,15 +76,18 @@ const Button = React.forwardRef<
     );
 
     return (
-      <TouchableOpacity
+      <Pressable
         ref={ref}
         onPress={onPress}
         disabled={disabled || loading}
-        style={[
+        style={({ pressed }) => [
           buttonStyles,
           disabled && {
             backgroundColor: theme.color.surface.disabled,
             borderColor: theme.color.border.disabled,
+          },
+          pressed && {
+            opacity: 0.8,
           },
           style,
         ]}
@@ -96,7 +99,7 @@ const Button = React.forwardRef<
           />
         )}
         {content}
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 );

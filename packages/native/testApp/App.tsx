@@ -8,7 +8,7 @@ import {
 import { StyleSheet, View } from "react-native";
 // import { NavigationContainer } from "@react-navigation/native";
 // import { GestureHandlerRootView } from "react-native-gesture-handler";
-// import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { PortalHost } from "@rn-primitives/portal";
 import { ButtonAppearance } from "@a-little-world/little-world-design-system-core";
 
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    gap: 16
+    gap: 16,
   },
 });
 
@@ -26,8 +26,8 @@ function AppContent() {
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
-      <Button onPress={() => console.log('presssing!!')}>
-        <Text>Open Popover</Text>
+      <Button onPress={() => console.log("presssing!!")}>
+        <Text>Basic button</Text>
       </Button>
       <Popover
         asToolTip
@@ -54,10 +54,12 @@ function App() {
   }
 
   return (
-    <CustomThemeProvider>
-      <AppContent />
-      <PortalHost />
-    </CustomThemeProvider>
+    <SafeAreaProvider>
+      <CustomThemeProvider>
+        <AppContent />
+        <PortalHost />
+      </CustomThemeProvider>
+    </SafeAreaProvider>
   );
 }
 

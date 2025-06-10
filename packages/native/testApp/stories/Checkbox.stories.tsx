@@ -7,5 +7,5 @@ export default {
 };
 
 export const Default = args => {
-  return <Checkbox {...args} />;
+  return <Checkbox {...args} onCheckedChange={(value) => console.log({checked: value })}/>;
 };

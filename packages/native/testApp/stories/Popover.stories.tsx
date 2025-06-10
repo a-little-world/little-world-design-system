@@ -8,7 +8,6 @@ import {
   Text,
 } from "@a-little-world/little-world-design-system-native";
 import { ButtonVariations } from "@a-little-world/little-world-design-system-core";
-// import Modal from '../Modal/Modal';
 
 const styles = StyleSheet.create({
   option: {
@@ -45,10 +44,6 @@ export const Default = () => (
     <Button variation={ButtonVariations.Inline} style={styles.option}>
       Unmatch
     </Button>
-
-    {/* <Modal open={open} onClose={() => setOpen(false)}>
-        Modal Open
-      </Modal> */}
   </Popover>
 );
 

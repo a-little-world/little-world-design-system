@@ -37,7 +37,8 @@ export const getPopoverContentStyles = ({
     content: {
       display: "flex",
       flexDirection: "column",
-      zIndex: 1000,
+      position: "absolute",
+      zIndex: 9999,
       borderRadius: theme.radius.xxxsmall,
       padding: theme.spacing.small,
       width: width || undefined,

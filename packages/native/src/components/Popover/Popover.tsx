@@ -15,7 +15,7 @@ type PopoverProps = {
 } & PopoverPrimitive.RootProps &
   PopoverPrimitive.ContentProps;
 
-const DEFAULT_SIDE_OFFSET = 4; //px
+const DEFAULT_SIDE_OFFSET = 0; //px
 
 const Popover: React.FC<PopoverProps> = ({
   asToolTip,

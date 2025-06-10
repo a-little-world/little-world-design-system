@@ -4,6 +4,7 @@ import React from 'react';
 import Popover from '../Popover/Popover';
 import Text from '../Text/Text';
 import { PopoverSizes,TextTypes } from '@a-little-world/little-world-design-system-core';
+import { useTheme } from 'styled-components/native';
 
 type Props = {
   text: string;
@@ -13,6 +14,8 @@ type Props = {
 
 const DEFAULT_SIDE_OFFSET = 4; //px
 
+
+
 const ToolTip: React.FC<Props> = ({
   // open,
   side = 'top',
@@ -20,7 +23,9 @@ const ToolTip: React.FC<Props> = ({
   trigger,
   text,
   // ...rest
-}) => (
+}) => {
+  const theme = useTheme();
+  return (
   <Popover
     asToolTip
     // open={open}
@@ -31,8 +36,8 @@ const ToolTip: React.FC<Props> = ({
     width={PopoverSizes.Large}
     // {...rest}
   >
-    <Text type={TextTypes.Body5}>{text}</Text>
+    <Text color={theme.color.text.reversed} type={TextTypes.Body5}>{text}</Text>
   </Popover>
-);
+)};
 
 export default ToolTip;

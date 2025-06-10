@@ -29,8 +29,8 @@ const Loading: React.FC<LoadingProps> = ({
       Animated.timing(spinValue, {
         toValue: 1,
         duration: 1400,
-        easing: Easing.bezier(0.5, 0, 0.5, 1),
-        useNativeDriver: true,
+        easing: Easing.linear,
+        useNativeDriver: false,
       }).start(() => {
         spinValue.setValue(0);
         startAnimation();
