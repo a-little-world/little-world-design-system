@@ -1,7 +1,8 @@
 import { getLabelStyles } from "./styles";
 import React from "react";
-import { Text, TextStyle, StyleProp } from "react-native";
+import { Text, TextStyle, StyleProp, Platform } from "react-native";
 import { useTheme } from "styled-components/native";
+import * as TooltipPrimitive from '@rn-primitives/tooltip';
 
 export interface LabelProps {
   style?: StyleProp<TextStyle>;
@@ -20,20 +21,30 @@ export const Label: React.FC<LabelProps> = ({
 }) => {
   const theme = useTheme();
   return (
-    <Text
-      style={[
-        getLabelStyles({
-          theme,
-          bold,
-          inline,
-          marginBottom,
-          //toolTipText,
-        }),
-        style,
-      ]}
-    >
-      {children}
-    </Text>
+    <TooltipPrimitive.Root>
+      <TooltipPrimitive.Trigger>
+        <Text>{Platform.OS === 'web' ? "Hover me" : "Press me"}</Text>
+      </TooltipPrimitive.Trigger>
+      <TooltipPrimitive.Portal>
+        <TooltipPrimitive.Content>
+          <Text
+            style={[
+              getLabelStyles({
+                theme,
+                bold,
+                inline,
+                marginBottom,
+                //toolTipText,
+              }),
+              style,
+            ]}
+          >
+            {children + "Hello"}
+          </Text>
+        </TooltipPrimitive.Content>
+      </TooltipPrimitive.Portal>
+    </TooltipPrimitive.Root>
+
   );
 };
 
