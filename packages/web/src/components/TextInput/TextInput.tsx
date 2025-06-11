@@ -1,21 +1,30 @@
-import React, { ChangeEvent } from 'react';
-import { InputHeight, InputWidth, TextInputBaseProps } from '@a-little-world/little-world-design-system-core'
-import { ButtonVariations } from '../Button/Button';
-import { EyeClosedIcon, EyeOpenIcon } from '../Icon';
-import InputError from '../InputError/InputError';
-import Label from '../Label/Label';
+import { ButtonVariations } from "../Button/Button";
+import { EyeClosedIcon, EyeOpenIcon } from "../Icon";
+import InputError from "../InputError/InputError";
+import Label from "../Label/Label";
 import {
   Input,
   InputContainer,
   InputWrapper,
   ShowPasswordToggle,
   TelephoneInput,
-} from './styles';
+} from "./styles";
+import {
+  InputHeight,
+  InputWidth,
+  TextInputBaseProps,
+} from "@a-little-world/little-world-design-system-core";
+import React, { ChangeEvent } from "react";
 
 const PASSWORD_TOGGLE_ICON_SIZE = 20;
 
-export { InputWidth, InputHeight }
-interface Props extends Omit<React.ComponentPropsWithoutRef<'input'>, 'height' | 'onSubmit' | 'width'>, TextInputBaseProps {
+export { InputWidth, InputHeight };
+interface Props
+  extends Omit<
+      React.ComponentPropsWithoutRef<"input">,
+      "height" | "onSubmit" | "width"
+    >,
+    TextInputBaseProps {
   inputRef?: React.RefObject<HTMLInputElement>;
 }
 
@@ -29,7 +38,7 @@ const TextInput: React.FC<Props> = ({
   labelTooltip,
   onChange,
   onSubmit,
-  type = 'text',
+  type = "text",
   width = InputWidth.Large,
   ...inputProps
 }: Props) => {
@@ -40,14 +49,14 @@ const TextInput: React.FC<Props> = ({
     | string
     | undefined;
 
-  const errorProps = inline ? { bottom: '-16px', right: '0px' } : {};
+  const errorProps = inline ? { bottom: "-16px", right: "0px" } : {};
 
   const handlePasswordVisibilityToggle = () => {
-    if (inputType === 'password') {
-      setInputType('text');
+    if (inputType === "password") {
+      setInputType("text");
       setShowPassword(true);
     } else {
-      setInputType('password');
+      setInputType("password");
       setShowPassword(false);
     }
   };
@@ -55,13 +64,13 @@ const TextInput: React.FC<Props> = ({
   const handleTelephoneChange = (
     value: string,
     country: string,
-    e: ChangeEvent<HTMLInputElement>,
+    e: ChangeEvent<HTMLInputElement>
   ) => {
     onChange?.(e);
   };
 
   const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (onSubmit && e.key === 'Enter' && !e.shiftKey) {
+    if (onSubmit && e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       const submitSuccessful = await onSubmit();
     }
@@ -75,7 +84,7 @@ const TextInput: React.FC<Props> = ({
         </Label>
       )}
       <InputContainer>
-        {type === 'tel' ? (
+        {type === "tel" ? (
           <TelephoneInput
             country="de"
             onChange={handleTelephoneChange}
@@ -97,7 +106,7 @@ const TextInput: React.FC<Props> = ({
             {...inputProps}
           />
         )}
-        {type === 'password' && (
+        {type === "password" && (
           <ShowPasswordToggle
             type="button"
             variation={ButtonVariations.Icon}
@@ -122,7 +131,7 @@ const TextInput: React.FC<Props> = ({
 
       <InputError
         visible={Boolean(error)}
-        textAlign={width === InputWidth.Large ? 'right' : 'left'}
+        textAlign={width === InputWidth.Large ? "right" : "left"}
         {...errorProps}
       >
         {error}

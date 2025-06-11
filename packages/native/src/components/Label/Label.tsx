@@ -8,6 +8,7 @@ export interface LabelProps {
   style?: StyleProp<TextStyle>;
   bold?: boolean;
   children?: any;
+  nativeId?: string;
   inline?: boolean;
   marginBottom?: number;
 }
@@ -18,6 +19,7 @@ export const Label: React.FC<LabelProps> = ({
   bold,
   inline,
   marginBottom,
+  nativeId,
 }) => {
   const theme = useTheme();
   return (
@@ -37,14 +39,13 @@ export const Label: React.FC<LabelProps> = ({
                 //toolTipText,
               }),
               style,
-            ]}
+            ]} nativeID={nativeId}
           >
             {children + "Hello"}
           </Text>
         </TooltipPrimitive.Content>
       </TooltipPrimitive.Portal>
     </TooltipPrimitive.Root>
-
   );
 };
 
