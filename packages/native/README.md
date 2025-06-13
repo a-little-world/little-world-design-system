@@ -48,7 +48,7 @@ build react native web storybook:
 npm build-storybook
 ```
 
-### Developing locally with the core package
+## Developing locally with the core package
 
 The native Design System relies on share elements and types from the core design system. You may need to make changes in the core package. In order to test local `core` changes in the native package locally there are two main approaches:
 
@@ -64,7 +64,7 @@ The native Design System relies on share elements and types from the core design
    - See the detailed npm link instructions in the section below
    - This method is useful when you need to test the package in an external project
 
-#### Npm linking method (Not optimal, option 1 above is recommended)
+### Npm linking method (Not optimal, option 1 above is recommended)
 
 This package depends on `@a-little-world/little-world-design-system-core`. To set up local development:
 
