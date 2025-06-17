@@ -2,6 +2,8 @@ import React from "react";
 import {
   Button,
   CustomThemeProvider,
+  EyeOpenIcon,
+  Logo,
   Popover,
   Text,
 } from "@a-little-world/little-world-design-system-native";
@@ -32,6 +34,10 @@ function AppContent() {
       <Button onPress={() => console.log("presssing!!")}>
         <Text>Basic button</Text>
       </Button>
+      <View>
+        <Logo label="Logo" /> 
+        <EyeOpenIcon label="EyeOpenIcon" />
+      </View>
       <Popover
         asToolTip
         showCloseButton={false}

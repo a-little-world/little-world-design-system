@@ -38,6 +38,14 @@ defaultConfig.resolver.resolveRequest = (context, moduleName, platform) => {
     };
   }
   
+  // Force react-native-svg to always resolve from test app's node_modules
+  if (moduleName === "react-native-svg") {
+    return {
+      type: "sourceFile",
+      filePath: path.resolve(__dirname, "node_modules/react-native-svg/lib/commonjs/index.js"),
+    };
+  }
+  
   // Add special handling for expo-linear-gradient
   if (moduleName === "expo-linear-gradient") {
     return {
@@ -65,6 +73,7 @@ defaultConfig.resolver = {
     react: path.resolve(__dirname, "node_modules/react"),
     "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
     "styled-components": path.resolve(__dirname, "node_modules/styled-components"),
+    "react-native-svg": path.resolve(__dirname, "node_modules/react-native-svg"),
     "expo-linear-gradient": path.resolve(
       __dirname,
       "node_modules/expo-linear-gradient"
