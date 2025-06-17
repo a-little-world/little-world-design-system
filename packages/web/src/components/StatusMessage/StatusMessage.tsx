@@ -1,16 +1,8 @@
 import styled, { css } from 'styled-components';
+import { StatusBaseProps, StatusTypes } from '@a-little-world/little-world-design-system-core';
 
-export enum MessageTypes {
-  Error = 'Error',
-  Success = 'Success',
-}
 
-interface StatusMessageProps {
-  $visible?: boolean;
-  $type: keyof typeof MessageTypes;
-}
-
-const StatusMessage = styled.div<StatusMessageProps>`
+const StatusMessage = styled.div<StatusBaseProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,13 +15,13 @@ const StatusMessage = styled.div<StatusMessageProps>`
   margin: ${({ theme }) => theme.spacing.xxsmall} 0;
 
   ${({ $type }) => {
-    if ($type === MessageTypes.Error)
+    if ($type === StatusTypes.Error)
       return css`
         background: ${({ theme }) => theme.color.surface.error};
         color: ${({ theme }) => theme.color.text.error};
       `;
 
-    if ($type === MessageTypes.Success)
+    if ($type === StatusTypes.Success)
       return css`
         background: ${({ theme }) => theme.color.surface.success};
         color: ${({ theme }) => theme.color.text.success};

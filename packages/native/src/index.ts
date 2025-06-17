@@ -36,4 +36,5 @@ export { default as TextInput } from "./components/TextInput/TextInput";
 export { default as ToolTip } from "./components/ToolTip/ToolTip";
 
 export * from "./theme";
+export * from './types';
 export { loadFonts } from "./utils/loadFonts";

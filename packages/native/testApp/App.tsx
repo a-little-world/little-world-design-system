@@ -10,7 +10,8 @@ import { StyleSheet, View } from "react-native";
 // import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { PortalHost } from "@rn-primitives/portal";
-import { ButtonAppearance } from "@a-little-world/little-world-design-system-core";
+import { ButtonAppearance, TextTypes } from "@a-little-world/little-world-design-system-core";
+import { useTheme } from "styled-components/native";
 
 const styles = StyleSheet.create({
   container: {
@@ -23,9 +24,11 @@ const styles = StyleSheet.create({
 });
 
 function AppContent() {
+  const theme = useTheme();
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
+      <Text color={theme.color.text.highlight} type={TextTypes.Heading4}>Testing the theme</Text>
       <Button onPress={() => console.log("presssing!!")}>
         <Text>Basic button</Text>
       </Button>

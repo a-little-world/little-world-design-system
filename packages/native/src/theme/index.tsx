@@ -26,8 +26,8 @@ export const darkTheme: DefaultTheme = {
 export const defaultTheme = lightTheme;
 
 export const themes = {
-  light: lightTheme,
-  dark: darkTheme,
+  [ThemeVariants.light]: lightTheme,
+  [ThemeVariants.dark]: darkTheme,
 } as const;
 
 export interface ThemeProviderProps {
