@@ -7,7 +7,7 @@ import {
   Popover,
   Text,
 } from "@a-little-world/little-world-design-system-native";
-import { StyleSheet, View } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 // import { NavigationContainer } from "@react-navigation/native";
 // import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 function AppContent() {
   const theme = useTheme();
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
       <Text color={theme.color.text.highlight} type={TextTypes.Heading4}>Testing the theme</Text>
       <Button onPress={() => console.log("presssing!!")}>
@@ -49,7 +49,7 @@ function AppContent() {
       >
         <Text>This is tooltip text with tooltip styling</Text>
       </Popover>
-    </View>
+    </SafeAreaView>
   );
 }
 
