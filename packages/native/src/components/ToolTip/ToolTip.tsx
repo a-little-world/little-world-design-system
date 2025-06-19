@@ -1,10 +1,18 @@
-import { PopoverContentProps, PopoverProps } from '@radix-ui/react-popover';
 import React from 'react';
 
 import Popover from '../Popover/Popover';
 import Text from '../Text/Text';
 import { PopoverSizes,TextTypes } from '@a-little-world/little-world-design-system-core';
 import { useTheme } from 'styled-components/native';
+
+type PopoverProps = {
+  side?: 'top' | 'bottom';
+  sideOffset?: number;
+};
+
+type PopoverContentProps = {
+  // Add any content-specific props if needed
+};
 
 type Props = {
   text: string;
@@ -13,8 +21,6 @@ type Props = {
   PopoverContentProps;
 
 const DEFAULT_SIDE_OFFSET = 4; //px
-
-
 
 const ToolTip: React.FC<Props> = ({
   // open,

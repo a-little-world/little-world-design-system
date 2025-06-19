@@ -1,153 +1,130 @@
 # Little World Design System
 
-This repository contains the design system for Little World applications.
+A monorepo containing the Little World design system packages.
 
-## Package Structure
+## Packages
 
-- `packages/core`: Core design tokens, types, and utilities (platform-agnostic)
-- `packages/web`: Web implementation of the design system using styled-components
-- `packages/native`: React Native implementation of the design system
+- **`@a-little-world/little-world-design-system-core`** - Core design tokens and utilities
+- **`@a-little-world/little-world-design-system`** - Web components and Storybook
+- **`@a-little-world/little-world-design-system-native`** - React Native components
 
-## Development Setup
+## Getting Started
 
-### Automated Setup
+### Prerequisites
 
-Run the setup script to install and build all packages:
+- Node.js 18+
+- pnpm 9.0.0+
+
+### Installation
 
 ```bash
-./setup.sh
+# Install dependencies
+pnpm install
+
+# Build all packages
+pnpm build
 ```
 
-If you get a permission error you may need to run `chmod +x setup.sh`
-Then run the setup script again.
+### Development
 
-### Manual Setup
+```bash
+# Start development mode for all packages
+pnpm dev
 
-If you prefer to set up manually, follow these steps:
+# Build specific package
+pnpm --filter @a-little-world/little-world-design-system-core build
 
-1. Install and build the core package:
-   ```bash
-   cd packages/core
-   npm install
-   npm run build
-   ```
-
-2. Install and build the core package:
-   ```bash
-   cd packages/web
-   npm install
-   npm run build
-   ```
-
-3. Install dependencies for the native package:
-   ```bash
-   cd packages/native
-   npm install
-   ```
-
-## Development Workflow
+# Run tests
+pnpm test
+```
 
 ### Running Storybook
 
-To run the React Native Storybook:
+```bash
+# Web Storybook (port 6006)
+pnpm storybook:web
+
+# Native Storybook
+pnpm storybook:native
+
+# Native Storybook on specific platforms
+pnpm storybook:native:ios
+pnpm storybook:native:android
+
+# Build web Storybook for production
+pnpm storybook:web:build
+```
+
+### Running Native App
 
 ```bash
-cd packages/native
-npm run storybook
+# Start native app (Expo development server)
+pnpm native:start
+
+# Run on specific platforms
+pnpm native:ios
+pnpm native:android
+pnpm native:web
 ```
+
+### Versioning and Releases
+
+This monorepo uses [Changesets](https://github.com/changesets/changesets) for version management.
+
+```bash
+# Create a changeset
+pnpm changeset
+
+# Version packages
+pnpm version-packages
+
+# Release packages
+pnpm release
+```
+
+## Package Dependencies
+
+- **Core** has no internal dependencies
+- **Web** depends on **Core**
+- **Native** depends on **Core**
+
+## Build System
+
+This monorepo uses [Turborepo](https://turbo.build/repo) for build orchestration. The build pipeline ensures dependencies are built in the correct order.
+
+## Workspace Configuration
+
+The workspace is configured using pnpm workspaces with the following structure:
+
+```
+packages/
+├── core/          # Core design tokens
+├── web/           # Web components
+└── native/        # React Native components
+```
+
+## Development Workflow
 
 ### Working on Local Packages
 
-When making changes to the core or core packages:
+When making changes to packages:
 
 1. Keep a terminal window running with the watch command:
    ```bash
    # For core
-   cd packages/core
-   npm run watch
+   pnpm --filter @a-little-world/little-world-design-system-core watch
    
    # For web
-   cd packages/web
-   npm run watch
+   pnpm --filter @a-little-world/little-world-design-system watch
    ```
 
 2. Restart the Storybook server after making significant changes to ensure they're picked up.
 
-### Local Development Options
+### Local Development
 
-There are two main approaches for local development:
+The monorepo uses pnpm workspaces with `workspace:*` references, which automatically handles local package dependencies. No manual linking or file references are needed.
 
-1. **Using file references (Recommended for most cases)**
-   - In your `packages/web/package.json`, change the core dependency to:
-     ```json
-     "@a-little-world/little-world-design-system-core": "file:../core"
-     ```
-   - This method requires running `npm run build` in the core package each time you make changes
-   - Run `npm install` in the web package after making this change
-
-2. **Using npm link (Alternative approach)**
-   - See the detailed npm link instructions in the section below
-   - This method is useful when you need to test the package in an external project
-
-### Local Development with npm link
-
-This design system is structured as a monorepo with three main packages:
-- `@a-little-world/little-world-design-system-core`: Core design tokens and utilities
-- `@a-little-world/little-world-design-system`: Web implementation
-- `@a-little-world/little-world-design-system-native`: React Native implementation
-
-The web and native packages both depend on the core package. Here's how to set up local development:
-
-1. First, build the core package:
-   ```bash
-   cd packages/core
-   npm install
-   npm run build
-   ```
-
-2. Link the core package:
-   ```bash
-   cd packages/core
-   npm link
-   ```
-
-3. In your local project where you want to use the design system:
-   ```bash
-   npm link @a-little-world/little-world-design-system-core
-   ```
-
-4. For web development:
-   ```bash
-   cd packages/web
-   npm install
-   npm link @a-little-world/little-world-design-system-core
-   npm run build
-   npm link
-   ```
-
-5. For native development:
-   ```bash
-   cd packages/native
-   npm install
-   npm link @a-little-world/little-world-design-system-core
-   npm run build
-   npm link
-   ```
-
-6. In your local project:
-   ```bash
-   # For web projects
-   npm link @a-little-world/little-world-design-system
-   
-   # For native projects
-   npm link @a-little-world/little-world-design-system-native
-   ```
-
-Important notes:
-- Always run the watch command in the core package when making changes
-- If you make changes to the core package, you'll need to rebuild the dependent packages
-- To unlink packages, use `npm unlink` in both the package directory and your project
-- Make sure to use the correct version of React in your project that matches the design system's peer dependencies
+When you make changes to the core package, dependent packages will automatically use the updated version after rebuilding.
 
 ## Getting started
 

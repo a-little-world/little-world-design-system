@@ -1,5 +1,4 @@
-import React from "react";
-import { ViewStyle } from "react-native";
+import React, { CSSProperties } from "react";
 
 import { Icon, IconSvgProps } from "./Icon";
 
@@ -26,7 +25,7 @@ export const createIconComponent = ({
     circular,
     label,
     labelVisible,
-  }: IconSvgProps & { style?: ViewStyle; color?: string }) => {
+  }: IconSvgProps & { style?: CSSProperties; color?: string }) => {
     // Create the transform options for React Native SVG
     const svgOptions: SvgTransformOptions = {
       width,

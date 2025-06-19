@@ -1,0 +1,46 @@
+{
+  "name": "little-world-design-system",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Little World Design System Monorepo",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "turbo run clean",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build && changeset publish",
+    "storybook:web": "turbo run storybook --filter=@a-little-world/little-world-design-system",
+    "storybook:web:build": "turbo run build-storybook --filter=@a-little-world/little-world-design-system",
+    "native:build": "cd packages/native && pnpm install && pnpm build",
+    "native:pack": "cd packages/native && pnpm install && pnpm build && node prepare-package.js && cd dist && npm pack && mv *.tgz ..",
+    "native:install": "cd nativeTestApp && npm uninstall @a-little-world/little-world-design-system-native && npm install ../packages/native/a-little-world-little-world-design-system-native-1.0.0.tgz",
+    "native:start": "pnpm native:pack && pnpm native:install && cd nativeTestApp && npx expo start -c",
+    "native:ios": "pnpm native:pack && pnpm native:install && cd nativeTestApp && npx expo run:ios",
+    "native:android": "pnpm native:pack && pnpm native:install && cd nativeTestApp && npx expo run:android",
+    "native:web": "pnpm native:pack && pnpm native:install && cd nativeTestApp && npx expo start --web",
+    "storybook:native": "pnpm native:pack && pnpm native:install && cd nativeTestApp && npm run storybook",
+    "storybook:native:ios": "pnpm native:pack && pnpm native:install && cd nativeTestApp && npm run storybook:ios",
+    "storybook:native:android": "pnpm native:pack && pnpm native:install && cd nativeTestApp && npm run storybook:android"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "turbo": "^2.1.7"
+  },
+  "resolutions": {
+    "react-docgen-typescript": "2.2.2",
+    "styled-components": "^6.1.18"
+  },
+  "pnpm": {
+    "overrides": {
+      "react-docgen-typescript": "2.2.2",
+      "@rn-primitives/hooks": "1.2.0"
+    }
+  },
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "packages/*"
+  ]
+} 

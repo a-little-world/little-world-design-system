@@ -9,6 +9,7 @@ export * from './Loading';
 export * from './Popover';
 export * from './ProgressBar';
 export * from './Separator';
+export * from './Status';
 export * from './Svg';
 export * from './Tag';
 export * from './Text';

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
-import { CustomThemeProvider, loadFonts } from "@a-little-world/little-world-design-system-native";
+import { CustomThemeProvider } from "@a-little-world/little-world-design-system-native";
 import { PortalHost } from "@rn-primitives/portal";
+import { loadFonts } from "../utils/loadFonts";
 
 export const decorators = [
   (Story: React.ComponentType) => {

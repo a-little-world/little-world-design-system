@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 import { withBackgrounds } from "@storybook/addon-ondevice-backgrounds";
 import type { Preview } from "@storybook/react";
-import {
-  CustomThemeProvider,
-  loadFonts,
-} from "@a-little-world/little-world-design-system-native";
+import { CustomThemeProvider } from "@a-little-world/little-world-design-system-native";
 import { PortalHost } from "@rn-primitives/portal";
+import { loadFonts } from "../utils/loadFonts";
 
 const preview: Preview = {
   decorators: [

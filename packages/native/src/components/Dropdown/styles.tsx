@@ -1,4 +1,3 @@
-import * as Select from '@radix-ui/react-select';
 import styled from 'styled-components';
 
 // import { INPUT_ERROR_CSS } from '../InputError/InputError';

@@ -15,17 +15,17 @@
     "prepare": "npm run build"
   },
   "peerDependencies": {
+    "@babel/runtime": "^7.24.0",
     "@react-navigation/native": "^7.1.6",
     "expo-linear-gradient": "~14.0.2",
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0",
-    "react-native": ">=0.70.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native": "0.76.7",
     "react-native-svg": ">=15.0.0",
     "styled-components": ">=6.0.0"
   },
   "dependencies": {
-    "@a-little-world/little-world-design-system-core": "file:../core",
-    "@babel/runtime": "^7.24.0",
+    "@a-little-world/little-world-design-system-core": "workspace:*",
     "@rn-primitives/accordion": "^1.2.0",
     "@rn-primitives/checkbox": "^1.1.0",
     "@rn-primitives/dropdown-menu": "^1.2.0",
@@ -51,20 +51,8 @@
     "rimraf": "^5.0.5",
     "rollup": "^4.9.6",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "tslib": "^2.6.2",
     "typescript": "~5.3.3"
-  },
-  "resolutions": {
-    "react-docgen-typescript": "2.2.2",
-    "styled-components": "^6.1.18"
-  },
-  "overrides": {
-    "react-docgen-typescript": "2.2.2",
-    "@rn-primitives/hooks": "1.2.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "react-docgen-typescript": "2.2.2"
-    }
   },
   "private": true
 }

@@ -13,7 +13,6 @@ import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
 import { pixelate } from '../../utils/styles';
 
-// Re-export enums for easy access
 export { CardSizes };
 
 const StyledCard = styled.div<{
@@ -60,11 +59,11 @@ const StyledCardHeader = styled(Text)`
 export const CardContent = styled.div<CardContentProps>`
   display: flex;
   flex-direction: column;
-  align-items: ${({ $align }) => $align || 'center'};
-  gap: ${({ $gap, theme }) => $gap || theme.spacing.small};
-  text-align: ${({ $textAlign }) => $textAlign || 'left'};
-  margin-bottom: ${({ $marginBottom, theme }) =>
-    $marginBottom || theme.spacing.small};
+  align-items: ${({ align }) => align || 'center'};
+  gap: ${({ gap, theme }) => gap || theme.spacing.small};
+  text-align: ${({ textAlign }) => textAlign || 'left'};
+  margin-bottom: ${({ marginBottom, theme }) =>
+    marginBottom || theme.spacing.small};
   overflow: scroll;
 `;
 
@@ -110,7 +109,7 @@ const Card: React.FC<CardProps> = ({
   <StyledCard
     className={className}
     $borderColor={borderColor}
-    $height={height}
+    $height={height as string}
     $width={width}
   >
     {children}
