@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -47,7 +50,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Create GitHub Release
-        if: steps.changesets.outputs.publishedPackages != '[]'
+        if: github.ref == 'refs/heads/main' && steps.changesets.outputs.publishedPackages != '[]'
         run: |
           # Parse the published packages from the changesets output
           PUBLISHED_PACKAGES=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[]')

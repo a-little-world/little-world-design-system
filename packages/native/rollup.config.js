@@ -94,7 +94,6 @@ module.exports = defineConfig({
     'styled-components',
     'react-native-svg',
     '@react-navigation/native',
-    'expo-modules-core',
     'expo-linear-gradient',
     /^expo-/,
     /^@babel\/runtime/,
