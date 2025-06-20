@@ -1,13 +1,13 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React from "react";
+import styled, { css } from "styled-components";
 
-import { ValueOf } from '../../utils/types';
-import { TextTypes } from '@a-little-world/little-world-design-system-core';
+import { ValueOf } from "../../utils/types";
+import { TextTypes } from "@a-little-world/little-world-design-system-core";
 
 export enum WidgetSizes {
-  Small = '180px',
-  Medium = '240px',
-  Large = '320px',
+  Small = "180px",
+  Medium = "240px",
+  Large = "320px",
 }
 
 const StyledWidget = styled.div<{
@@ -22,8 +22,8 @@ const StyledWidget = styled.div<{
   background: rgba(0, 0, 0, 0.1);
   box-shadow: 0px 1px 15px 1px rgba(0, 0, 0, 0.05);
   width: 100%;
-  max-width: ${({ $width }) => $width || '100%'};
-  height: ${({ $height }) => $height || 'auto'};
+  max-width: ${({ $width }) => $width || "100%"};
+  height: ${({ $height }) => $height || "auto"};
   padding: ${({ theme, $padding }) => $padding || theme.spacing.xxsmall};
 `;
 
@@ -53,11 +53,6 @@ export const WidgetHeader: React.FC<{
   <StyledWidgetHeader $color={textColor}>{children}</StyledWidgetHeader>
 );
 
-export const WidgetFooter: React.FC<{
-  align?: string;
-  children: React.ReactNode;
-}> = ({ children, align }) => <Footer $align={align}>{children}</Footer>;
-
 const Footer = styled.div<{ $align?: string }>`
   display: flex;
   order: 1;
@@ -71,6 +66,11 @@ const Footer = styled.div<{ $align?: string }>`
       justify-content: ${$align};
     `};
 `;
+
+export const WidgetFooter: React.FC<{
+  align?: string;
+  children: React.ReactNode;
+}> = ({ children, align }) => <Footer $align={align}>{children}</Footer>;
 
 export const Preview = styled.div`
   display: flex;

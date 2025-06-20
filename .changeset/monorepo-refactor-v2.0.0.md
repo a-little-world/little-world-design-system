@@ -1,5 +1,6 @@
 ---
 "@a-little-world/little-world-design-system": major
+"@a-little-world/little-world-design-system-core": minor
 ---
 
 # BREAKING: Monorepo Refactor - Core Package Extraction
@@ -8,11 +9,13 @@
 - **Extracted shared design tokens and types** into a new `@a-little-world/little-world-design-system-core` package
 - **Restructured the design system** into a monorepo with separate packages for web, native, and core
 - **Updated styled-components** from v5 to v6 for better compatibility
+- **Added Toast component** to the core package
 
 ## Why This Change Was Made
 - **Better separation of concerns** - Core tokens and types are now reusable across web and native
 - **Improved maintainability** - Shared code is centralized and versioned independently
 - **Enhanced developer experience** - Clear package boundaries and dependencies
+- **New functionality** - Toast component provides consistent notification system
 
 ## How to Update Your Code
 
@@ -22,7 +25,7 @@
    {
      "dependencies": {
        "@a-little-world/little-world-design-system": "^2.0.0",
-       "@a-little-world/little-world-design-system-core": "^1.0.0"
+       "@a-little-world/little-world-design-system-core": "^1.1.0"
      }
    }
    ```
@@ -47,7 +50,7 @@
    {
      "dependencies": {
        "@a-little-world/little-world-design-system-native": "^0.1.0",
-       "@a-little-world/little-world-design-system-core": "^1.0.0"
+       "@a-little-world/little-world-design-system-core": "^1.1.0"
      }
    }
    ```

@@ -68,6 +68,8 @@ export {
   InputHeight,
   InputWidth,
 } from "./components/TextInput/TextInput";
+export { default as Toast } from "./components/Toast/Toast";
+export { ToastProvider, ToastViewport } from './components/Toast/styles';
 export { default as ToolTip } from "./components/ToolTip/ToolTip";
 
 export { CustomThemeProvider, themeContext } from "./theme";
