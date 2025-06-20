@@ -1,8 +1,8 @@
 // import PhoneInput from 'react-phone-input-2';
+import React from 'react';
 import { StyleSheet, View, TextInput as RNTextInput } from 'react-native';
 import { InputHeight, InputWidth } from '@a-little-world/little-world-design-system-core';
 import { useTheme } from 'styled-components/native';
-
 import Button from '../Button/Button';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 

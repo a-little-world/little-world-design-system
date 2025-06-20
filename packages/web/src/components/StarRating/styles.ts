@@ -28,13 +28,13 @@ export const StarContainer = styled.button<{ isFocused?: boolean }>`
 `;
 
 export const StarOverlay = styled.div<{
-  fillAmount: number;
+  $fillAmount: number;
 }>`
   position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
-  width: ${props => props.fillAmount * 100}%;
+  width: ${props => props.$fillAmount * 100}%;
   pointer-events: none;
   padding: ${({ theme }) => theme.spacing.xxsmall};
 
@@ -45,8 +45,8 @@ export const StarOverlay = styled.div<{
 
   > svg {
     transition: width 0.3s ease-in-out;
-    ${({ fillAmount }) =>
-      !fillAmount &&
+    ${({ $fillAmount }) =>
+      !$fillAmount &&
       css`
         transition: width 0.3s ease-in-out;
         width: 0;

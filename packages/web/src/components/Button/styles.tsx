@@ -75,12 +75,12 @@ const StandardButtonCss = css<{ $size?: string }>`
   }}
 `;
 
-export const PrimaryButtonCss = css<{ $backgroundColor?: string }>`
+export const PrimaryButtonCss = css`
   ${StandardButtonCss}
 
   color: ${({ theme }) => theme.color.text.button};
   border: none;
-  background: ${({ theme, $backgroundColor }) =>
+  background: ${({ theme, $backgroundColor }: any) =>
     $backgroundColor || theme.color.gradient.orange10};
   transition: background-color 0.5s ease, filter 0.5s ease,
     border-color 0.5s ease, color 0.5s ease, 0.4s;
@@ -92,13 +92,10 @@ export const PrimaryButtonCss = css<{ $backgroundColor?: string }>`
   }
 `;
 
-export const SecondaryButtonCss = css<{
-  $color?: string;
-  $backgroundColor?: string;
-}>`
+export const SecondaryButtonCss = css`
   ${StandardButtonCss}
 
-  ${({ $color, $backgroundColor, theme }) => `
+  ${({ $color, $backgroundColor, theme }: any) => `
     border: 2px solid ${$color || theme.color.border.bold};
     background-color: ${theme.color.surface.primary};
     color: ${$color || theme.color.text.heading};

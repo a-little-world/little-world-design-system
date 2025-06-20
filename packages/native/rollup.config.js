@@ -21,8 +21,7 @@ module.exports = defineConfig({
       globals: {
         react: 'React',
         'react-native': 'ReactNative',
-        'styled-components': 'styled',
-        'expo-linear-gradient': 'ExpoLinearGradient'
+        'styled-components': 'styled'
       },
       interop: 'auto'
     },
@@ -34,15 +33,15 @@ module.exports = defineConfig({
       globals: {
         react: 'React',
         'react-native': 'ReactNative',
-        'styled-components': 'styled',
-        'expo-linear-gradient': 'ExpoLinearGradient'
+        'styled-components': 'styled'
       },
       interop: 'auto'
     }
   ],
   plugins: [
     peerDepsExternal({
-      includeDependencies: false
+      includeDependencies: false,
+      exclude: ['expo-linear-gradient']
     }),
     typescript({
       tsconfig: "./tsconfig.json",
@@ -71,8 +70,7 @@ module.exports = defineConfig({
           modules: false
         }],
         ["@babel/preset-react", { 
-          runtime: "automatic",
-          importSource: "react",
+          runtime: "classic",
           useBuiltIns: true,
           development: process.env.NODE_ENV === 'development'
         }],
@@ -96,12 +94,11 @@ module.exports = defineConfig({
     'styled-components',
     'react-native-svg',
     '@react-navigation/native',
-    'expo-linear-gradient',
     'expo-modules-core',
-    'expo-font',
+    'expo-linear-gradient',
+    /^expo-/,
     /^@babel\/runtime/,
     '@a-little-world/little-world-design-system-core',
-    /^expo-/,
     /^react-native/,
     /^@rn-primitives/ 
   ]

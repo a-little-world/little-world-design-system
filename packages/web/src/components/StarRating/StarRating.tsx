@@ -184,7 +184,7 @@ const StarRating = ({
               />
 
               {/* Filled overlay star */}
-              <StarOverlay fillAmount={fillAmount}>
+              <StarOverlay $fillAmount={fillAmount}>
                 <StarIcon
                   label="filled star"
                   width={size}

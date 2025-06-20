@@ -7,7 +7,6 @@ import React, {
   useState,
 } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
-import type { ThemeProps } from 'styled-components';
 
 import { ThemeVariants, ThemeContextType, defaultThemeVariant, tokensPixelated } from '@a-little-world/little-world-design-system-core';
 
@@ -28,7 +27,7 @@ export const themes = {
   dark: darkTheme,
 } as const;
 
-export interface ThemeProviderProps extends Partial<ThemeProps<DefaultTheme>> {
+export interface ThemeProviderProps {
   children: ReactNode;
   defaultMode?: ThemeVariants;
 }

@@ -2,7 +2,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { ScrollView, View, Text, StyleSheet } from "react-native";
 
-import * as Icons from "@a-little-world/little-world-design-system-native/src/components/Icon";
+import * as AllExports from "@a-little-world/little-world-design-system-native";
+
+// Filter to only get icon components (those ending with 'Icon')
+const Icons = Object.fromEntries(
+  Object.entries(AllExports).filter(([name]) => name.endsWith('Icon'))
+);
 
 const meta = {
   title: "Icon",

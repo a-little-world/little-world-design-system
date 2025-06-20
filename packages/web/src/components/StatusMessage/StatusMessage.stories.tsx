@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import StatusMessage, { MessageTypes } from './StatusMessage';
+import StatusMessage from './StatusMessage';
+import { StatusTypes } from '@a-little-world/little-world-design-system-core';
 
 const meta: Meta<typeof StatusMessage> = {
   component: StatusMessage,
@@ -14,7 +15,7 @@ type Story = StoryObj<typeof StatusMessage>;
 export const Error: Story = {
   args: {
     $visible: true,
-    $type: MessageTypes.Error,
+    $type: StatusTypes.Error,
     children: 'This is an error message to indicate something went wrong!',
   },
 };
@@ -22,7 +23,7 @@ export const Error: Story = {
 export const Success: Story = {
   args: {
     ...Error.args,
-    $type: MessageTypes.Success,
+    $type: StatusTypes.Success,
     children: 'This is a succes message to indicate something went right!',
   },
 };

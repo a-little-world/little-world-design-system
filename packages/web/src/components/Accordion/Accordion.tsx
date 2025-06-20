@@ -1,6 +1,5 @@
 import type { AccordionSingleProps } from '@radix-ui/react-accordion';
 import React from 'react';
-import { FlattenInterpolation, ThemeProps } from 'styled-components';
 
 import { AccordionBaseProps } from '@a-little-world/little-world-design-system-core';
 import Text from '../Text/Text';
@@ -16,7 +15,7 @@ import {
 
 interface AccordionProps extends AccordionBaseProps, AccordionSingleProps {
   className?: string;
-  contentCss?: FlattenInterpolation<ThemeProps<any>>;
+  contentCss?: any; // Simplified for v6 compatibility
 }
 
 const Accordion: React.FC<AccordionProps> = ({

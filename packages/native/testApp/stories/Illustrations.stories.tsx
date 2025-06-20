@@ -2,7 +2,12 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 
 import { Text } from '@a-little-world/little-world-design-system-native';
-import * as allIllustrations from '@a-little-world/little-world-design-system-native/src/components/Illustrations';
+import * as allExports from '@a-little-world/little-world-design-system-native';
+
+// Filter to only get illustration components (those ending with 'Image')
+const Illustrations = Object.fromEntries(
+  Object.entries(allExports).filter(([name]) => name.endsWith('Image'))
+);
 
 const spacing = {
   xxsmall: 4,
@@ -20,7 +25,7 @@ const IllustrationsScreen = () => (
       justifyContent: 'center',
       padding: spacing.medium,
     }}>
-      {Object.entries(allIllustrations).map(([name, Component]) => (
+      {Object.entries(Illustrations).map(([name, Component]) => (
         <View
           style={{
             flexDirection: 'column',

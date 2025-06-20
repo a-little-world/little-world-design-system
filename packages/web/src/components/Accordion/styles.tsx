@@ -1,5 +1,5 @@
 import * as Accordion from '@radix-ui/react-accordion';
-import styled, { FlattenInterpolation, ThemeProps } from 'styled-components';
+import styled from 'styled-components';
 
 import { ChevronDownIcon } from '../Icon';
 
@@ -33,7 +33,7 @@ export const AccordionHeader = styled(Accordion.Header)`
 `;
 
 export const AccordionContent = styled(Accordion.Content)<{
-  css?: FlattenInterpolation<ThemeProps<any>>;
+  css?: any; // Simplified for v6 compatibility
 }>`
   width: 100%;
   background: ${({ theme }) => theme.color.surface.tertiary};

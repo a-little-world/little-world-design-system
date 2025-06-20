@@ -14,8 +14,7 @@
     "copy-fonts": "npm run copy-fonts:esm && npm run copy-fonts:cjs",
     "copy-fonts:esm": "cpy 'src/fonts/*.ttf' dist/esm/fonts",
     "copy-fonts:cjs": "cpy 'src/fonts/*.ttf' dist/cjs/fonts",
-    "watch": "tsc --watch --outDir dist/esm",
-    "postinstall": "npm run build"
+    "watch": "tsc --watch --outDir dist/esm"
   },
   "repository": {
     "type": "git",

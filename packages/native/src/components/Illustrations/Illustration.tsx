@@ -1,3 +1,4 @@
+import React from 'react';
 import { View } from 'react-native';
 import { IllustrationProps, tokens } from '@a-little-world/little-world-design-system-core';
 
