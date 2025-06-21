@@ -171,7 +171,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm version-packages
+          publish: ${{ github.ref == 'refs/heads/main' && 'pnpm version-packages' || 'false' }}
           title: "chore: version packages"
           commit: "chore: version packages"
         env:
