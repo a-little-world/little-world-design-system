@@ -57,30 +57,113 @@ jobs:
           
           # Check if there are any changesets
           if [ -d ".changeset" ] && [ "$(ls -A .changeset)" ]; then
-            echo "### Changesets Found:" >> $GITHUB_STEP_SUMMARY
+            echo "### 📝 Changesets Found:" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             
-            # List all changeset files
+            # List all changeset files with their content
             for file in .changeset/*.md; do
               if [ -f "$file" ]; then
                 echo "**$(basename "$file" .md):**" >> $GITHUB_STEP_SUMMARY
-                cat "$file" | sed 's/^/  /' >> $GITHUB_STEP_SUMMARY
+                echo '```' >> $GITHUB_STEP_SUMMARY
+                cat "$file" >> $GITHUB_STEP_SUMMARY
+                echo '```' >> $GITHUB_STEP_SUMMARY
                 echo "" >> $GITHUB_STEP_SUMMARY
               fi
             done
             
-            echo "### Packages that will be versioned:" >> $GITHUB_STEP_SUMMARY
+            echo "### 📊 Current Package Versions:" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             
-            # Run changesets version in dry-run mode to see what would change
-            pnpm changeset version --dry-run || true
+            # Show current versions of all packages
+            echo "| Package | Current Version |" >> $GITHUB_STEP_SUMMARY
+            echo "|---------|----------------|" >> $GITHUB_STEP_SUMMARY
             
-            echo "**Note:** These changes will be committed to this PR when the workflow runs." >> $GITHUB_STEP_SUMMARY
+            for package in packages/*/package.json; do
+              if [ -f "$package" ]; then
+                PACKAGE_NAME=$(node -p "require('$package').name")
+                PACKAGE_VERSION=$(node -p "require('$package').version")
+                echo "| $PACKAGE_NAME | $PACKAGE_VERSION |" >> $GITHUB_STEP_SUMMARY
+              fi
+            done
+            
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### 🔄 What will happen:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "- Package versions will be bumped according to the changesets" >> $GITHUB_STEP_SUMMARY
+            echo "- CHANGELOG.md files will be updated with the new changes" >> $GITHUB_STEP_SUMMARY
+            echo "- These changes will be committed to this PR" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Note:** When this PR is merged to main, packages will be published to npm." >> $GITHUB_STEP_SUMMARY
           else
-            echo "### No changesets found" >> $GITHUB_STEP_SUMMARY
+            echo "### ❌ No changesets found" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "No version changes will be made. Add a changeset file to trigger versioning." >> $GITHUB_STEP_SUMMARY
+            echo "No version changes will be made. To trigger versioning:" >> $GITHUB_STEP_SUMMARY
+            echo "1. Run \`pnpm changeset\` locally" >> $GITHUB_STEP_SUMMARY
+            echo "2. Select the packages to version and the type of change" >> $GITHUB_STEP_SUMMARY
+            echo "3. Commit the changeset file" >> $GITHUB_STEP_SUMMARY
           fi
+
+      - name: Comment PR with Version Preview
+        if: github.event_name == 'pull_request'
+        run: |
+          # Create the comment content
+          COMMENT_BODY="## 📦 Package Version Preview
+          
+          "
+          
+          # Check if there are any changesets
+          if [ -d ".changeset" ] && [ "$(ls -A .changeset)" ]; then
+            COMMENT_BODY+="### 📝 Changesets Found:
+            
+            "
+            
+            # List all changeset files with their content
+            for file in .changeset/*.md; do
+              if [ -f "$file" ]; then
+                COMMENT_BODY+="**$(basename "$file" .md):**
+                \`\`\`
+                $(cat "$file")
+                \`\`\`
+                
+                "
+              fi
+            done
+            
+            COMMENT_BODY+="### 📊 Current Package Versions:
+            
+            | Package | Current Version |
+            |---------|----------------|
+            "
+            
+            # Show current versions of all packages
+            for package in packages/*/package.json; do
+              if [ -f "$package" ]; then
+                PACKAGE_NAME=$(node -p "require('$package').name")
+                PACKAGE_VERSION=$(node -p "require('$package').version")
+                COMMENT_BODY+="| $PACKAGE_NAME | $PACKAGE_VERSION |
+                "
+              fi
+            done
+            
+            COMMENT_BODY+="
+            ### 🔄 What will happen:
+            
+            - Package versions will be bumped according to the changesets
+            - CHANGELOG.md files will be updated with the new changes
+            - These changes will be committed to this PR
+            
+            **Note:** When this PR is merged to main, packages will be published to npm."
+          else
+            COMMENT_BODY+="### ❌ No changesets found
+            
+            No version changes will be made. To trigger versioning:
+            1. Run \`pnpm changeset\` locally
+            2. Select the packages to version and the type of change
+            3. Commit the changeset file"
+          fi
+          
+          # Create or update the comment
+          gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT_BODY"
 
       - name: Create Release Pull Request or Publish
         id: changesets
