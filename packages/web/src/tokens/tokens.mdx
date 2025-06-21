@@ -1,0 +1,41 @@
+import { Meta, Unstyled } from '@storybook/blocks';
+
+import ColorSection from './Documentation';
+import { tokensPixelated } from '@a-little-world/little-world-design-system-core';
+
+<Meta title="Foundations/ColorSystem" />
+
+# Color System
+
+All the colors of our app to support theming and complex UI components.
+The color palette for the Little World Design System is defined by four overarching goals:
+
+Comprehensive
+The color system supports theming, data visualization, accent colors, and complex user interfaces.
+
+Accessible
+The color system provides sufficient contrast ratio and adheres to Web Content Accessibility Guidelines where possible.
+
+Consistent
+The color system enables a consistent appearance across varied products and platforms.
+
+Scalable
+The color system can be extended with minimal disruption to existing implementations.
+
+The LW Design System utilises color tokens, which allows a designer or developer to understand how or when to apply our palette and the options available. They are used to bridge the gap between naming and use.
+Color tokens are semantically named styled labels.
+Currently we have two themes, light and dark, so each color token is assigned two color values.
+
+After the the theme value, comes the label that represents the UI element that the color is for. The next is the role of that color or it's emphasis.
+
+## Text
+
+<Unstyled>
+  <ColorSection section="text" />
+</Unstyled>
+
+## Surface
+
+<Unstyled>
+  <ColorSection section="surface" />
+</Unstyled>
