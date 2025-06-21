@@ -80,8 +80,8 @@ jobs:
             
             for package in packages/*/package.json; do
               if [ -f "$package" ]; then
-                PACKAGE_NAME=$(node -p "require('$package').name")
-                PACKAGE_VERSION=$(node -p "require('$package').version")
+                PACKAGE_NAME=$(node -p "require('$package').name" 2>/dev/null || echo "Unknown")
+                PACKAGE_VERSION=$(node -p "require('$package').version" 2>/dev/null || echo "Unknown")
                 echo "| $PACKAGE_NAME | $PACKAGE_VERSION |" >> $GITHUB_STEP_SUMMARY
               fi
             done
@@ -138,8 +138,8 @@ jobs:
             # Show current versions of all packages
             for package in packages/*/package.json; do
               if [ -f "$package" ]; then
-                PACKAGE_NAME=$(node -p "require('$package').name")
-                PACKAGE_VERSION=$(node -p "require('$package').version")
+                PACKAGE_NAME=$(node -p "require('$package').name" 2>/dev/null || echo "Unknown")
+                PACKAGE_VERSION=$(node -p "require('$package').version" 2>/dev/null || echo "Unknown")
                 COMMENT_BODY+="| $PACKAGE_NAME | $PACKAGE_VERSION |
                 "
               fi
