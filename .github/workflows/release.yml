@@ -86,12 +86,21 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm release
+          publish: pnpm version-packages
           title: "chore: version packages"
           commit: "chore: version packages"
-          create: ${{ github.event_name == 'pull_request' && 'false' || 'pr' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish Packages
+        if: github.ref == 'refs/heads/main' && steps.changesets.outputs.publishedPackages != '[]'
+        run: |
+          echo "Publishing packages to npm..."
+          pnpm --filter=@a-little-world/little-world-design-system-core publish --access public
+          pnpm --filter=@a-little-world/little-world-design-system-native publish --access public
+          pnpm --filter=@a-little-world/little-world-design-system publish --access public
+        env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create GitHub Release
