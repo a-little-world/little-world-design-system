@@ -49,6 +49,39 @@ jobs:
       - name: Build Packages
         run: pnpm build
 
+      - name: Preview Version Changes
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "## 📦 Package Version Preview" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check if there are any changesets
+          if [ -d ".changeset" ] && [ "$(ls -A .changeset)" ]; then
+            echo "### Changesets Found:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            # List all changeset files
+            for file in .changeset/*.md; do
+              if [ -f "$file" ]; then
+                echo "**$(basename "$file" .md):**" >> $GITHUB_STEP_SUMMARY
+                cat "$file" | sed 's/^/  /' >> $GITHUB_STEP_SUMMARY
+                echo "" >> $GITHUB_STEP_SUMMARY
+              fi
+            done
+            
+            echo "### Packages that will be versioned:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            # Run changesets version in dry-run mode to see what would change
+            pnpm changeset version --dry-run || true
+            
+            echo "**Note:** These changes will be committed to this PR when the workflow runs." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### No changesets found" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "No version changes will be made. Add a changeset file to trigger versioning." >> $GITHUB_STEP_SUMMARY
+          fi
+
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
@@ -56,7 +89,7 @@ jobs:
           publish: pnpm release
           title: "chore: version packages"
           commit: "chore: version packages"
-          create: "pr"
+          create: ${{ github.event_name == 'pull_request' && 'false' || 'pr' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
