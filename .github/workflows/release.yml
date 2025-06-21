@@ -101,6 +101,7 @@ jobs:
             echo "1. Run \`pnpm changeset\` locally" >> $GITHUB_STEP_SUMMARY
             echo "2. Select the packages to version and the type of change" >> $GITHUB_STEP_SUMMARY
             echo "3. Commit the changeset file" >> $GITHUB_STEP_SUMMARY
+          fi
 
       - name: Comment PR with Version Preview
         if: github.event_name == 'pull_request'
@@ -189,6 +190,8 @@ jobs:
 
       - name: Create GitHub Release
         if: github.ref == 'refs/heads/main' && steps.changesets.outputs.publishedPackages != '[]'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Parse the published packages from the changesets output
           PUBLISHED_PACKAGES=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[]')
@@ -205,7 +208,7 @@ jobs:
             echo "" >> release_notes.md
             
             # Get the package version from package.json
-            PACKAGE_VERSION=$(node -p "require('./packages/${package#@a-little-world/little-world-design-system-}/package.json').version")
+            PACKAGE_VERSION=$(node -p "require('./packages/${package#@a-little-world/little-world-design-system-}/package.json').version" 2>/dev/null || echo "Unknown")
             echo "**Version:** $PACKAGE_VERSION" >> release_notes.md
             echo "" >> release_notes.md
             
