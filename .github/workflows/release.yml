@@ -101,7 +101,6 @@ jobs:
             echo "1. Run \`pnpm changeset\` locally" >> $GITHUB_STEP_SUMMARY
             echo "2. Select the packages to version and the type of change" >> $GITHUB_STEP_SUMMARY
             echo "3. Commit the changeset file" >> $GITHUB_STEP_SUMMARY
-          fi
 
       - name: Comment PR with Version Preview
         if: github.event_name == 'pull_request'
@@ -167,11 +166,28 @@ jobs:
           # Create or update the comment
           gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT_BODY"
 
+      - name: Version Packages on PR
+        if: github.event_name == 'pull_request'
+        run: |
+          # Only version packages if there are changesets
+          if [ -d ".changeset" ] && [ "$(ls -A .changeset)" ]; then
+            echo "Versioning packages for PR..."
+            pnpm changeset version
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add .
+            git commit -m "chore: version packages"
+            git push
+          else
+            echo "No changesets found, skipping versioning"
+          fi
+
       - name: Create Release Pull Request or Publish
+        if: github.ref == 'refs/heads/main'
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: ${{ github.ref == 'refs/heads/main' && 'pnpm version-packages' || 'false' }}
+          publish: pnpm version-packages
           title: "chore: version packages"
           commit: "chore: version packages"
         env:
