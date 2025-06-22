@@ -64,9 +64,9 @@ jobs:
             for file in .changeset/*.md; do
               if [ -f "$file" ]; then
                 echo "**$(basename "$file" .md):**" >> $GITHUB_STEP_SUMMARY
-                echo '```' >> $GITHUB_STEP_SUMMARY
-                cat "$file" >> $GITHUB_STEP_SUMMARY
-                echo '```' >> $GITHUB_STEP_SUMMARY
+                while IFS= read -r line; do
+                  echo "> $line" >> $GITHUB_STEP_SUMMARY
+                done < "$file"
                 echo "" >> $GITHUB_STEP_SUMMARY
               fi
             done
@@ -122,12 +122,11 @@ jobs:
             # List all changeset files with their content
             for file in .changeset/*.md; do
               if [ -f "$file" ]; then
-                COMMENT_BODY+="**$(basename "$file" .md):**
-                \`\`\`markdown
-                $(cat "$file" | sed 's/```/\\`\\`\\`/g')
-                \`\`\`
-                
-                "
+                COMMENT_BODY+="**$(basename "$file" .md):**\n"
+                while IFS= read -r line; do
+                  COMMENT_BODY+=" > $line\n"
+                done < "$file"
+                COMMENT_BODY+="\n"
               fi
             done
             
