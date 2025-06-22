@@ -87,13 +87,13 @@ jobs:
             done
             
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "### 🔄 What will happen:" >> $GITHUB_STEP_SUMMARY
+            echo "### 🔄 What will happen when this PR is merged to main:" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "- Package versions will be bumped according to the changesets" >> $GITHUB_STEP_SUMMARY
             echo "- CHANGELOG.md files will be updated with the new changes" >> $GITHUB_STEP_SUMMARY
-            echo "- These changes will be committed to this PR" >> $GITHUB_STEP_SUMMARY
+            echo "- Packages will be published to npm automatically" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Note:** When this PR is merged to main, packages will be published to npm." >> $GITHUB_STEP_SUMMARY
+            echo "**Note:** Versioning and publishing only happens when this PR is merged to main." >> $GITHUB_STEP_SUMMARY
           else
             echo "### ❌ No changesets found" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
@@ -148,13 +148,13 @@ jobs:
             done
             
             COMMENT_BODY+="
-            ### 🔄 What will happen:
+            ### 🔄 What will happen when this PR is merged to main:
             
             - Package versions will be bumped according to the changesets
             - CHANGELOG.md files will be updated with the new changes
-            - These changes will be committed to this PR
+            - Packages will be published to npm automatically
             
-            **Note:** When this PR is merged to main, packages will be published to npm."
+            **Note:** Versioning and publishing only happens when this PR is merged to main."
           else
             COMMENT_BODY+="### ❌ No changesets found
             
@@ -166,22 +166,6 @@ jobs:
           
           # Create or update the comment
           gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT_BODY"
-
-      - name: Version Packages on PR
-        if: github.event_name == 'pull_request'
-        run: |
-          # Only version packages if there are changesets
-          if [ -d ".changeset" ] && [ "$(ls -A .changeset)" ]; then
-            echo "Versioning packages for PR..."
-            pnpm changeset version
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add .
-            git commit -m "chore: version packages"
-            git push
-          else
-            echo "No changesets found, skipping versioning"
-          fi
 
       - name: Create Release Pull Request or Publish
         if: github.ref == 'refs/heads/main'
