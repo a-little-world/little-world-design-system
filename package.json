@@ -17,7 +17,7 @@
     "build:core": "pnpm --filter=@a-little-world/little-world-design-system-core build",
     "build:native": "pnpm --filter=@a-little-world/little-world-design-system-native build",
     "build:web": "pnpm --filter=@a-little-world/little-world-design-system build",
-    "native:testapp:setup": "pnpm --filter=@a-little-world/little-world-design-system-core build && pnpm --filter=@a-little-world/little-world-design-system-native build && cd packages/core/dist && npm pack && cd ../../native/dist && npm pack && cd ../../native/testApp && npm install ../../core/dist/a-little-world-little-world-design-system-core-1.0.0.tgz ../../native/dist/a-little-world-little-world-design-system-native-1.0.0.tgz",
+    "native:testapp:setup": "pnpm --filter=@a-little-world/little-world-design-system-core build && pnpm --filter=@a-little-world/little-world-design-system-native build && cd packages/core/dist && npm pack && cd ../../native/dist && npm pack && cd ../../native/testApp && npm install ../../core/dist/a-little-world-little-world-design-system-core-*.tgz ../../native/dist/a-little-world-little-world-design-system-native-*.tgz",
     "native:start": "pnpm native:testapp:setup && cd packages/native/testApp && npx expo start -c",
     "storybook:native": "pnpm native:testapp:setup && cd packages/native/testApp && npm run storybook"
   },

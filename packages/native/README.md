@@ -1,108 +1,111 @@
+# @a-little-world/little-world-design-system-native
 
-# RN Storybook (ondevice)
+React Native components for the Little World Design System.
 
-## Local Testing & Development
+## Installation
 
-To test the Native Design system we use expo and storybook, which allows the visualisation and interaction of all elements and components. 
-
-All local testing related code can be found in `./testApp`. When you want to run the test app or storybook, you need to do the following:
+```bash
+npm install @a-little-world/little-world-design-system-native
 ```
-cd ./testApp
+
+## Usage
+
+```tsx
+import { Button, Text } from '@a-little-world/little-world-design-system-native';
+
+export default function App() {
+  return (
+    <Button variant="primary">
+      <Text>Hello World</Text>
+    </Button>
+  );
+}
+```
+
+## Local Development & Testing
+
+The native package includes a test app for local development and testing of components.
+
+### Prerequisites
+
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) installed globally
+- [Expo Go](https://expo.dev/client) app installed on your mobile device
+- iOS Simulator (for iOS testing) or Android Emulator (for Android testing)
+
+### Quick Start
+
+From the root of the monorepo:
+
+```bash
+# Build and setup test app (builds core + native, creates tarballs, installs in testApp)
+pnpm native:testapp:setup
+
+# Start Expo development server
+pnpm native:start
+
+# Or run Storybook for native components
+pnpm storybook:native
+```
+
+### What the setup script does:
+
+1. **Builds core package** - Compiles design tokens and utilities
+2. **Builds native package** - Compiles React Native components  
+3. **Creates tarballs** - Packages both libraries for local installation
+4. **Installs in testApp** - Installs the local packages in the Expo test app
+
+### Development Workflow
+
+1. **Make changes** to core or native packages
+2. **Run setup** - `pnpm native:testapp:setup` (rebuilds and reinstalls)
+3. **Start app** - `pnpm native:start` (starts Expo dev server)
+4. **Test on device** - Scan QR code with Expo Go app
+5. **Hot reload** - Changes will automatically reload in the app
+
+### Manual Setup (Alternative)
+
+If you prefer to work directly in the testApp directory:
+
+```bash
+cd packages/native/testApp
 npm install
+npm start  # Start Expo app
+npm run storybook  # Start Storybook
 ```
 
-In order for the testApp to access the src folder, we use a symlink that can be updated by running `npm run prestorybook`
+### Troubleshooting
 
-You can then run `npm storybook` to start the storybook app or `npm start` to start your expo app.
+- **Clear cache**: Use `npx expo start -c` to clear Expo cache
+- **Reset testApp**: Delete `packages/native/testApp/node_modules` and run setup again
+- **Version conflicts**: The setup script uses wildcards to automatically find the latest tarball versions
 
-```sh
-# either
-npm storybook
+## Storybook
 
-# ios
-npm storybook:ios
+The native package includes Storybook for component development and testing:
 
-# android
-npm storybook:android
+```bash
+# From root
+pnpm storybook:native
+
+# Or from testApp directory
+cd packages/native/testApp
+npm run storybook
 ```
 
-If you add new stories you either need to have the watcher running or run the stories loader
+## Building
 
-To update the stories one time
+```bash
+# Build the native package
+pnpm build:native
 
-```sh
-npm storybook-generate
+# Or from the native package directory
+cd packages/native
+npm run build
 ```
 
-# Web
+## Dependencies
 
-Start react native web storybook:
-
-```
-npm storybook:web
-```
-
-build react native web storybook:
-
-```sh
-npm build-storybook
-```
-
-### Developing locally with the core package
-
-The native Design System relies on share elements and types from the core design system. You may need to make changes in the core package. In order to test local `core` changes in the native package locally there are two main approaches:
-
-1. **Using file references (Recommended for most cases)**
-   - In your `packages/native/package.json`, change the core dependency to:
-     ```json
-     "@a-little-world/little-world-design-system-core": "file:../core"
-     ```
-   - This method requires running `npm run build` in the core package each time you make changes
-   - Run `npm install` in the native package after making this change
-
-2. **Using npm link (Alternative approach)**
-   - See the detailed npm link instructions in the section below
-   - This method is useful when you need to test the package in an external project
-
-#### Npm linking method (Not optimal, option 1 above is recommended)
-
-This package depends on `@a-little-world/little-world-design-system-core`. To set up local development:
-
-1. First, ensure the core package is built and linked:
-   ```bash
-   cd packages/core
-   npm install
-   npm run build
-   npm link
-   ```
-
-2. In the native package directory:
-   ```bash
-   cd packages/native
-   npm install
-   npm link @a-little-world/little-world-design-system-core
-   npm run build
-   npm link
-   ```
-
-3. In your local React Native project:
-   ```bash
-   npm link @a-little-world/little-world-design-system-native
-   ```
-
-4. To watch for changes during development:
-   ```bash
-   cd packages/native
-   npm run watch
-   ```
-
-5. To unlink when done:
-   ```bash
-   # In your project
-   npm unlink @a-little-world/little-world-design-system-native
-   
-   # In the native package directory
-   npm unlink
-   ```
-
-Note: When using the native package locally, you may need to restart your Metro bundler and rebuild your app to see changes.
+This package depends on:
+- `@a-little-world/little-world-design-system-core` - Core design tokens and utilities
+- `react-native` - React Native framework
+- `styled-components` - Styling library

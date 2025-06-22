@@ -55,11 +55,47 @@ pnpm storybook:web:build
 
 ### Running Native App
 
+The native testApp is an Expo React Native application that allows you to test the native components in a real mobile environment.
+
+#### Prerequisites
+
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) installed globally
+- [Expo Go](https://expo.dev/client) app installed on your mobile device
+- iOS Simulator (for iOS testing) or Android Emulator (for Android testing)
+
+#### Setup and Testing
+
 ```bash
-# Start native app (Expo development server)
-pnpm native:testapp:start
+# Build core and native packages, create tarballs, and install in testApp
+pnpm native:testapp:setup
+
+# Start the Expo development server
+pnpm native:start
+
+# Or run Storybook for native components
+pnpm storybook:native
 ```
 
+#### What the setup script does:
+
+1. **Builds core package** - Compiles design tokens and utilities
+2. **Builds native package** - Compiles React Native components
+3. **Creates tarballs** - Packages both libraries for local installation
+4. **Installs in testApp** - Installs the local packages in the Expo test app
+
+#### Testing Workflow
+
+1. **Make changes** to core or native packages
+2. **Run setup** - `pnpm native:testapp:setup` (rebuilds and reinstalls)
+3. **Start app** - `pnpm native:start` (starts Expo dev server)
+4. **Test on device** - Scan QR code with Expo Go app
+5. **Hot reload** - Changes will automatically reload in the app
+
+#### Troubleshooting
+
+- **Clear cache**: Use `npx expo start -c` to clear Expo cache
+- **Reset testApp**: Delete `packages/native/testApp/node_modules` and run setup again
+- **Version conflicts**: The setup script uses wildcards to automatically find the latest tarball versions
 
 ### Versioning and Releases
 
