@@ -80,8 +80,8 @@ jobs:
             
             for package in packages/*/package.json; do
               if [ -f "$package" ]; then
-                PACKAGE_NAME=$(node -p "require('$package').name" 2>/dev/null || echo "Unknown")
-                PACKAGE_VERSION=$(node -p "require('$package').version" 2>/dev/null || echo "Unknown")
+                PACKAGE_NAME=$(node -e "console.log(require('$(pwd)/$package').name)" 2>/dev/null || echo "Unknown")
+                PACKAGE_VERSION=$(node -e "console.log(require('$(pwd)/$package').version)" 2>/dev/null || echo "Unknown")
                 echo "| $PACKAGE_NAME | $PACKAGE_VERSION |" >> $GITHUB_STEP_SUMMARY
               fi
             done
@@ -122,11 +122,11 @@ jobs:
             # List all changeset files with their content
             for file in .changeset/*.md; do
               if [ -f "$file" ]; then
-                COMMENT_BODY+="**$(basename "$file" .md):**\n"
+                COMMENT_BODY+="**$(basename "$file" .md):**"$'\n'
                 while IFS= read -r line; do
-                  COMMENT_BODY+=" > $line\n"
+                  COMMENT_BODY+="> $line"$'\n'
                 done < "$file"
-                COMMENT_BODY+="\n"
+                COMMENT_BODY+=$'\n'
               fi
             done
             
@@ -139,10 +139,9 @@ jobs:
             # Show current versions of all packages
             for package in packages/*/package.json; do
               if [ -f "$package" ]; then
-                PACKAGE_NAME=$(node -p "require('$package').name" 2>/dev/null || echo "Unknown")
-                PACKAGE_VERSION=$(node -p "require('$package').version" 2>/dev/null || echo "Unknown")
-                COMMENT_BODY+="| $PACKAGE_NAME | $PACKAGE_VERSION |
-                "
+                PACKAGE_NAME=$(node -e "console.log(require('$(pwd)/$package').name)" 2>/dev/null || echo "Unknown")
+                PACKAGE_VERSION=$(node -e "console.log(require('$(pwd)/$package').version)" 2>/dev/null || echo "Unknown")
+                COMMENT_BODY+="| $PACKAGE_NAME | $PACKAGE_VERSION |"$'\n'
               fi
             done
             
