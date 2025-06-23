@@ -90,10 +90,10 @@ jobs:
                 NEW_VERSION="$PACKAGE_VERSION"
                 for changeset_file in .changeset/*.md; do
                   if [ -f "$changeset_file" ]; then
-                    # Check if this package is mentioned in the changeset
-                    if grep -q "$PACKAGE_NAME" "$changeset_file"; then
-                      # Extract the version bump type (patch, minor, major)
-                      BUMP_TYPE=$(grep -A 10 "$PACKAGE_NAME" "$changeset_file" | grep -E "(patch|minor|major)" | head -1 | sed 's/.*"\(patch\|minor\|major\)".*/\1/')
+                    # Check if this package is mentioned in the changeset frontmatter
+                    if grep -q "\"$PACKAGE_NAME\":" "$changeset_file"; then
+                      # Extract the version bump type from the frontmatter
+                      BUMP_TYPE=$(sed -n '/^---$/,/^---$/p' "$changeset_file" | grep "\"$PACKAGE_NAME\":" | sed 's/.*"'"$PACKAGE_NAME"'": *\(major\|minor\|patch\).*/\1/')
                       
                       if [ "$BUMP_TYPE" = "major" ]; then
                         # Increment major version
@@ -186,10 +186,10 @@ jobs:
                 NEW_VERSION="$PACKAGE_VERSION"
                 for changeset_file in .changeset/*.md; do
                   if [ -f "$changeset_file" ]; then
-                    # Check if this package is mentioned in the changeset
-                    if grep -q "$PACKAGE_NAME" "$changeset_file"; then
-                      # Extract the version bump type (patch, minor, major)
-                      BUMP_TYPE=$(grep -A 10 "$PACKAGE_NAME" "$changeset_file" | grep -E "(patch|minor|major)" | head -1 | sed 's/.*"\(patch\|minor\|major\)".*/\1/')
+                    # Check if this package is mentioned in the changeset frontmatter
+                    if grep -q "\"$PACKAGE_NAME\":" "$changeset_file"; then
+                      # Extract the version bump type from the frontmatter
+                      BUMP_TYPE=$(sed -n '/^---$/,/^---$/p' "$changeset_file" | grep "\"$PACKAGE_NAME\":" | sed 's/.*"'"$PACKAGE_NAME"'": *\(major\|minor\|patch\).*/\1/')
                       
                       if [ "$BUMP_TYPE" = "major" ]; then
                         # Increment major version
