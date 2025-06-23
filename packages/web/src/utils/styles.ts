@@ -1,0 +1,1 @@
+export const pixelate = (value: number) => `${value}px`;

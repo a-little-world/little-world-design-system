@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "ESNext",
+    "target": "ES2017",
+    "moduleResolution": "Node",
+    "declaration": true,
+    "declarationDir": "dist",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "noEmit": true, // Let rollup handle the actual output
+    "lib": ["ES2017", "DOM"]
+  },
+  "include": ["src"],
+  "exclude": ["testApp", "node_modules", "dist"]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "@a-little-world/little-world-design-system-core",
+  "version": "1.0.0",
+  "description": "Core design tokens and utilities for Little World design system",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "scripts": {
+    "preprocess-svgs": "node scripts/processSvgs.js",
+    "clean": "rimraf dist && rimraf src/**/*.d.ts && rimraf src/**/*.d.ts.map",
+    "build": "npm run clean && npm run preprocess-svgs && npm run build:esm && npm run build:cjs && npm run copy-fonts",
+    "build:esm": "tsc --project tsconfig.json --outDir dist/esm",
+    "build:cjs": "tsc --project tsconfig.cjs.json --outDir dist/cjs",
+    "copy-fonts": "npm run copy-fonts:esm && npm run copy-fonts:cjs",
+    "copy-fonts:esm": "cpy 'src/fonts/*.ttf' dist/esm/fonts",
+    "copy-fonts:cjs": "cpy 'src/fonts/*.ttf' dist/cjs/fonts",
+    "watch": "tsc --watch --outDir dist/esm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/a-little-world/little-world-design-system"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/a-little-world/little-world-design-system/issues"
+  },
+  "homepage": "https://github.com/a-little-world/little-world-design-system#readme",
+  "devDependencies": {
+    "@types/lodash": "^4.17.16",
+    "@types/node": "^22.14.1",
+    "@types/react": "~18.3.12",
+    "cpy-cli": "^5.0.0",
+    "prettier": "^2.8.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^4.9.3"
+  },
+  "peerDependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.24.0",
+    "csstype": "^3.1.2",
+    "lodash": "^4.17.21",
+    "svgson": "^5.3.1"
+  }
+}
