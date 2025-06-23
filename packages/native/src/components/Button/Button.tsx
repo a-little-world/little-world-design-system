@@ -95,7 +95,7 @@ const Button = React.forwardRef<
         {hasGradient && (
           <Gradient
             gradient={theme.color.gradient.orange10}
-            style={{...buttonStyles, ...gradientStyles.fullSize}}
+            style={{ ...buttonStyles, ...gradientStyles.fullSize }}
           />
         )}
         {content}

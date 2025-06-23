@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Label, LabelProps } from '@a-little-world/little-world-design-system-native';
+import { Label, LabelProps, } from '@a-little-world/little-world-design-system-native';
 
 export default {
     component: Label,
@@ -9,6 +9,14 @@ export default {
 
 
 export const Default = (args: LabelProps) => (
-    <Label {...args}>Default Label</Label>
-
+    <Label
+        toolTipText='Tool Tip text Tool Tip text Tool Tip text Tool Tip text'
+        {...args}
+    >Default text</Label>
 );
+
+export const LabelWithoutIcon = (args: LabelProps) => (
+    <Label
+        {...args}
+    >Default text</Label>
+)

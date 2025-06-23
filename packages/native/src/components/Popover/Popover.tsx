@@ -1,7 +1,7 @@
 import Button, { ButtonVariations } from "../Button/Button";
 import { CloseIcon } from "../Icon";
 import { getPopoverCloseStyles, getPopoverContentStyles } from "./styles";
-import { PopoverSizes } from "@a-little-world/little-world-design-system-core";
+import { ButtonSizes, PopoverSizes } from "@a-little-world/little-world-design-system-core";
 import * as PopoverPrimitive from "@rn-primitives/popover";
 import React, { useMemo, useState } from "react";
 import { useTheme } from "styled-components/native";
@@ -69,8 +69,9 @@ const Popover: React.FC<PopoverProps> = ({
             style={closeStyles.close}
             onPress={() => setIsOpen(false)}
           >
-            <Button variation={ButtonVariations.Icon}>
-              <CloseIcon label="popover close" />
+            <Button variation={ButtonVariations.Icon}
+              size={ButtonSizes.Small}>
+              <CloseIcon label="popover close" width={18} height={18} />
             </Button>
           </PopoverPrimitive.Close>
         )}

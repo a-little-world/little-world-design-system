@@ -1,5 +1,8 @@
 import { TextStyle } from "react-native";
 import { DefaultTheme } from "styled-components/native";
+import { StyleSheet } from 'react-native';
+import { transform } from "@babel/core";
+
 
 export const getLabelStyles = ({
   theme,
@@ -26,3 +29,18 @@ export const getLabelStyles = ({
 
   return baseStyles;
 };
+
+export const createStyles = ({ theme }: { theme: DefaultTheme; }) =>
+  StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 4,
+    },
+    text: {
+      fontSize: 12,
+    },
+  });
+
+export default createStyles;
+

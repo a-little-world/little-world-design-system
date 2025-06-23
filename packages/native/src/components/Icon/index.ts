@@ -145,6 +145,8 @@ export const ClockIcon = createIconComponent({
 export const CloseIcon = createIconComponent({
   name: "Close",
   svgData: closeIcon,
+  iconWidth: 18,
+  iconHeight: 18,
 });
 
 export const DashboardIcon = createIconComponent({

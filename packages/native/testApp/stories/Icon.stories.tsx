@@ -67,7 +67,7 @@ export const AllIcons: Story = {
           const Component = IconComponent as React.FC<any>;
           return (
             <View key={name} style={styles.iconContainer}>
-              <Component color="#0063AF" width={32} height={32} />
+              <Component color="#0063AF" width={60} height={60} />
               <Text style={styles.iconLabel}>{name}</Text>
             </View>
           );

@@ -24,7 +24,7 @@ export * from "./components/Illustrations";
 export { default as Label } from "./components/Label/Label";
 export type { LabelProps } from "./components/Label/Label";
 export { default as Link } from "./components/Link/Link";
-export { default as Loading} from "./components/Loading/Loading";
+export { default as Loading } from "./components/Loading/Loading";
 export { default as Popover } from "./components/Popover/Popover";
 export { default as ProgressBar } from "./components/ProgressBar/ProgressBar";
 export { default as RadioGroup } from "./components/RadioGroup/RadioGroup";
@@ -34,6 +34,7 @@ export type { TagProps, TagsProps } from "./components/Tags/Tags";
 export { default as Text } from "./components/Text/Text";
 export { default as TextInput } from "./components/TextInput/TextInput";
 export { default as ToolTip } from "./components/ToolTip/ToolTip";
+export { default as Switch } from "./components/Switch/Switch";
 
 export * from "./theme";
 export { loadFonts } from "./utils/loadFonts";

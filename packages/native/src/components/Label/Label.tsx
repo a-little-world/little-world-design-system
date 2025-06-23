@@ -1,8 +1,10 @@
-import { getLabelStyles } from "./styles";
+import createStyles, { getLabelStyles } from "./styles";
 import React from "react";
-import { Text, TextStyle, StyleProp, Platform } from "react-native";
+import { Text, TextStyle, StyleProp, View, StyleSheet } from "react-native";
 import { useTheme } from "styled-components/native";
-import * as TooltipPrimitive from '@rn-primitives/tooltip';
+import ToolTip from "../ToolTip/ToolTip";
+import Button, { ButtonVariations } from "../Button/Button";
+import { QuestionIcon } from "../Icon";
 
 export interface LabelProps {
   style?: StyleProp<TextStyle>;
@@ -11,6 +13,8 @@ export interface LabelProps {
   nativeId?: string;
   inline?: boolean;
   marginBottom?: number;
+  toolTipText?: string;
+  toolTip?: boolean;
 }
 
 export const Label: React.FC<LabelProps> = ({
@@ -20,33 +24,36 @@ export const Label: React.FC<LabelProps> = ({
   inline,
   marginBottom,
   nativeId,
+  toolTipText,
+  toolTip = false,
 }) => {
   const theme = useTheme();
+  const styles = createStyles({ theme })
   return (
-    <TooltipPrimitive.Root>
-      <TooltipPrimitive.Trigger>
-        <Text>{Platform.OS === 'web' ? "Hover me" : "Press me"}</Text>
-      </TooltipPrimitive.Trigger>
-      <TooltipPrimitive.Portal>
-        <TooltipPrimitive.Content>
-          <Text
-            style={[
-              getLabelStyles({
-                theme,
-                bold,
-                inline,
-                marginBottom,
-                //toolTipText,
-              }),
-              style,
-            ]} nativeID={nativeId}
-          >
-            {children + "Hello"}
-          </Text>
-        </TooltipPrimitive.Content>
-      </TooltipPrimitive.Portal>
-    </TooltipPrimitive.Root>
+    <View style={styles.container}>
+      <Text
+        style={[
+          getLabelStyles({
+            theme,
+            bold,
+            inline,
+            marginBottom,
+          }),
+          style,
+        ]} nativeID={nativeId}
+      >
+        {children}
+      </Text>
+      {toolTipText ? <ToolTip
+        trigger={<Button variation={ButtonVariations.Icon}>
+          <QuestionIcon label="questionIcon" width={18} height={18} />
+        </Button>}
+        text={toolTipText as string}
+      /> : null}
+    </View>
   );
 };
 
 export default Label;
+
+
