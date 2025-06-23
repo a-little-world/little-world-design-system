@@ -138,6 +138,7 @@ jobs:
             echo "1. Run \`pnpm changeset\` locally" >> $GITHUB_STEP_SUMMARY
             echo "2. Select the packages to version and the type of change" >> $GITHUB_STEP_SUMMARY
             echo "3. Commit the changeset file" >> $GITHUB_STEP_SUMMARY
+          fi
 
       - name: Comment PR with Version Preview
         if: github.event_name == 'pull_request'
