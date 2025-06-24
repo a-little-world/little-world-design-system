@@ -285,26 +285,26 @@ jobs:
           # Publish only the packages that were versioned
           for package in $PUBLISHED_PACKAGES; do
             echo "### Publishing $package..." >> $GITHUB_STEP_SUMMARY
-
+            
             if echo "$package" | grep -q "little-world-design-system-core"; then
-              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-core publish --access public" >> $GITHUB_STEP_SUMMARY
-              if pnpm --filter=@a-little-world/little-world-design-system-core publish --access public; then
+              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-core publish --access restricted" >> $GITHUB_STEP_SUMMARY
+              if pnpm --filter=@a-little-world/little-world-design-system-core publish --access restricted; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
                 exit 1
               fi
             elif echo "$package" | grep -q "little-world-design-system-native"; then
-              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-native publish --access public" >> $GITHUB_STEP_SUMMARY
-              if pnpm --filter=@a-little-world/little-world-design-system-native publish --access public; then
+              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-native publish --access restricted" >> $GITHUB_STEP_SUMMARY
+              if pnpm --filter=@a-little-world/little-world-design-system-native publish --access restricted; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
                 exit 1
               fi
             elif echo "$package" | grep -q "^@a-little-world/little-world-design-system$"; then
-              echo "Running: pnpm --filter=@a-little-world/little-world-design-system publish --access public" >> $GITHUB_STEP_SUMMARY
-              if pnpm --filter=@a-little-world/little-world-design-system publish --access public; then
+              echo "Running: pnpm --filter=@a-little-world/little-world-design-system publish --access restricted" >> $GITHUB_STEP_SUMMARY
+              if pnpm --filter=@a-little-world/little-world-design-system publish --access restricted; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
@@ -313,7 +313,7 @@ jobs:
             else
               echo "⚠️ Unknown package: $package" >> $GITHUB_STEP_SUMMARY
             fi
-
+            
             echo "" >> $GITHUB_STEP_SUMMARY
           done
 
