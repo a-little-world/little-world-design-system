@@ -186,16 +186,13 @@ This will show you:
 # 1. Create changesets
 pnpm changeset
 
-# 2. Preview versions (optional but recommended)
-pnpm version-packages:preview
-
-# 3. If versions look correct, apply them
+# 2. If versions look correct, apply them
 pnpm version-packages
 
-# 4. Review the changes
+# 3. Review the changes
 git diff
 
-# 5. Commit and push (triggers automated release)
+# 4. Commit and push (triggers automated release)
 git add .
 git commit -m "chore: version packages"
 git push origin main

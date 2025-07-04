@@ -1,6 +1,4 @@
-// import { CheckboxProps as RadixCheckboxProps } from '@radix-ui/react-checkbox';
 import { CheckIcon } from "../Icon";
-// import InputError from '../InputError/InputError';
 import {
   getCheckboxStyles,
   getContainerStyles,
@@ -8,8 +6,9 @@ import {
 } from "./styles";
 import * as CheckboxPrimitive from "@rn-primitives/checkbox";
 import React, { useMemo } from "react";
-import { StyleProp, View, ViewStyle } from "react-native";
+import { GestureResponderEvent, StyleProp, View, ViewStyle } from "react-native";
 import { useTheme } from "styled-components/native";
+import Label from "../Label/Label";
 
 type CheckboxProps = {
   style?: StyleProp<ViewStyle>;
@@ -22,54 +21,17 @@ type CheckboxProps = {
   required?: boolean;
 } & CheckboxPrimitive.RootProps;
 
-// export const CheckboxButton: React.FC<CheckboxProps> = ({
-//   checked,
-//   color,
-//   error,
-//   required = true,
-//   id,
-//   inputRef,
-//   label,
-//   onCheckedChange,
-//   readOnly,
-//   style,
-//   value,
-//   ...rest
-// }) => (
-//   <CheckboxButtonContainer
-//     ref={inputRef}
-//     id={id}
-//     checked={checked}
-//     onCheckedChange={onCheckedChange}
-//     value={value}
-//     $hasError={Boolean(error)}
-//     {...rest}
-//   >
-//     <NonInteractiveCheckbox $color={color} checked={checked}>
-//       {checked && (
-//         <CheckIcon label="check icon" width={10} />
-//       )}
-//     </NonInteractiveCheckbox>
-//     {label && (
-//       <StyledLabel htmlFor={id} inline>
-//         {label}
-//       </StyledLabel>
-//     )}
-//   </CheckboxButtonContainer>
-// );
-
 const Checkbox: React.FC<CheckboxProps> = ({
   checked,
   color,
   error,
   required = true,
+  inputRef,
   id,
-  // inputRef,
   label,
   onCheckedChange,
   readOnly,
   style,
-  // value,
   ...rest
 }) => {
   const theme = useTheme();
@@ -82,42 +44,41 @@ const Checkbox: React.FC<CheckboxProps> = ({
       getCheckboxStyles({ theme, hasError: Boolean(error), color, checked }),
     [theme, error, color, checked]
   );
-
+  function handlePress(ev: GestureResponderEvent) {
+    onCheckedChange(!checked);
+  }
+  const [checked1, setChecked] = React.useState(false);
   return (
-    <View style={style}>
-      <View style={checkboxContainerStyle.container}>
-        {readOnly ? (
-          <View style={checkboxstyles.checkbox}>
-            {checked && <CheckIcon label="check icon" width={10} />}
-          </View>
-        ) : (
-          <CheckboxPrimitive.Root
-            id={id}
-            checked={checked}
-            onCheckedChange={onCheckedChange}
-            style={checkboxstyles.checkbox}
-            // ref={inputRef}
-            // value={value}
-            {...rest}
-          >
-            <CheckboxPrimitive.Indicator style={indicatorStyles.indicator}>
-              <CheckIcon label="check icon" width={10} />
-            </CheckboxPrimitive.Indicator>
-          </CheckboxPrimitive.Root>
-        )}
-        {/* {label && (
-          <StyledLabel htmlFor={id} inline>
-            {label}
-          </StyledLabel>
-        )} */}
+    <View style={checkboxContainerStyle.container}>
+      readOnly ? (
+      <View style={checkboxstyles.container}>
+        {checked && <CheckIcon label="check icon"
+          width={10}
+          height={10}
+          style={indicatorStyles.indicator}
+        />}
       </View>
-      {/* {required && (
-        <InputError visible={Boolean(error)} textAlign="left">
-          {error}
-        </InputError>
-      )} */}
+      ) :
+      <CheckboxPrimitive.Root
+        id={id}
+        style={checkboxstyles.checkbox}
+        onPress={handlePress}
+        {...rest}
+        checked={checked1}
+        onCheckedChange={setChecked}
+      >
+        <CheckboxPrimitive.Indicator>
+          <CheckIcon label="check icon"
+            width={10}
+            height={10}
+            style={indicatorStyles.indicator}
+          />
+        </CheckboxPrimitive.Indicator>
+      </CheckboxPrimitive.Root>
+      <Label style={checkboxstyles.text} >{label}</Label>
     </View>
   );
+
 };
 
 export default Checkbox;

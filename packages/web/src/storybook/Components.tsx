@@ -6,9 +6,21 @@ const Item = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xxxsmall};
   margin-bottom: ${({ theme }) => theme.spacing.small};
+  color: ${({ theme }) => theme.color.text.primary};
+  
+  > * {
+    margin: 0px !important;
+  }
 `;
 
-const Details = styled.div``;
+const Details = styled.div`
+ font-family: SignikaNegative;
+   font-family: 'Signika Negative', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  line-height: 1.5;
+`;
 
 export const TypographyItem = ({ item, details }: any) => (
   <Item>

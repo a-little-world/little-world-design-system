@@ -45,8 +45,21 @@ const Example = styled.div<{ $background: string }>`
 `;
 
 const ColorSection = ({ section }: { section: string }) => {
-  const light = Object.entries(tokensPixelated.color.theme.light[section]);
-  const dark = Object.entries(tokensPixelated.color.theme.dark[section]);
+  const lightSection = tokensPixelated.color.theme.light[section];
+  const darkSection = tokensPixelated.color.theme.dark[section];
+
+  // Check if sections exist
+  if (!lightSection || !darkSection) {
+    console.warn(`Color section "${section}" not found in tokens`);
+    return (
+      <Container>
+        <Text>Color section "{section}" not found</Text>
+      </Container>
+    );
+  }
+
+  const light = Object.entries(lightSection);
+  const dark = Object.entries(darkSection);
 
   return (
     <Container>

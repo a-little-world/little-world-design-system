@@ -145,3 +145,6 @@ storybook-static/
 # Temporary files
 *.tmp
 *.temp
+
+# Cursor
+.cursorrules

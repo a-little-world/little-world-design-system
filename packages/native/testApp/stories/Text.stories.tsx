@@ -63,6 +63,17 @@ export const WithBold: Story = {
   args: {}
 };
 
+export const WithItalic: Story = {
+  render: () => (
+    <View>
+      <Text>Normal Text</Text>
+      <Text italic>Italic Text</Text>
+      <Text italic bold>Italic Bold Text</Text>
+    </View>
+  ),
+  args: {}
+};
+
 export const WithCenter: Story = {
   render: () => (
     <View>

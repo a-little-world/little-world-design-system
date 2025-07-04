@@ -15,9 +15,9 @@ export default {
 
   stories: [
     '../src/components/**/*.stories.tsx',
-    // '../src/components/**/*.mdx',
+    '../src/components/**/*.mdx',
     '../src/utils/*.mdx',
-    '../src/tokens/*.mdx',
+    '../src/storybook/*.mdx',
   ],
 
   features: {

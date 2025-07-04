@@ -1,6 +1,6 @@
 {
   "name": "@a-little-world/little-world-design-system-core",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Core design tokens and utilities for Little World design system",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -12,8 +12,8 @@
     "build:esm": "tsc --project tsconfig.json --outDir dist/esm",
     "build:cjs": "tsc --project tsconfig.cjs.json --outDir dist/cjs",
     "copy-fonts": "npm run copy-fonts:esm && npm run copy-fonts:cjs",
-    "copy-fonts:esm": "cpy 'src/fonts/*Variable*.ttf' dist/esm/fonts",
-    "copy-fonts:cjs": "cpy 'src/fonts/*Variable*.ttf' dist/cjs/fonts",
+    "copy-fonts:esm": "cpy 'src/fonts/SignikaNegative-Variable.ttf' 'src/fonts/SignikaNegative-Bold.ttf' 'src/fonts/WorkSans-Bold.ttf' dist/esm/fonts --flat",
+    "copy-fonts:cjs": "cpy 'src/fonts/SignikaNegative-Variable.ttf' 'src/fonts/SignikaNegative-Bold.ttf' 'src/fonts/WorkSans-Bold.ttf' dist/cjs/fonts --flat",
     "watch": "tsc --watch --outDir dist/esm"
   },
   "repository": {
