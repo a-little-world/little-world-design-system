@@ -1,27 +1,5 @@
 # @a-little-world/little-world-design-system-core
 
-## 1.1.3
-
-### Patch Changes
-
-- ## 🐛 Bug Fixes
-
-  - **Native Checkbox**: Fixed checkbox component rendering issues in React Native
-  - **Typography**: Resolved text component styling problems in native package
-
-  ## 📚 Documentation Improvements
-
-  - **Storybook MDX**: Enhanced theme accessibility in MDX documentation files
-  - **Design Tokens**: Added comprehensive documentation for spacing, radius, and breakpoints
-  - **Color System**: Improved color token documentation with proper theme implementation
-  - **Typography**: Updated typography documentation with accurate font size values from core
-
-  ## 🔧 Technical Improvements
-
-  - **Theme Integration**: Fixed MDX files to use theme directly instead of tokensPixelated
-  - **Documentation Structure**: Reorganized foundation documentation for better discoverability
-  - **Implementation Examples**: Updated all code examples to use proper styled-components theme pattern
-
 ## 1.1.2
 
 ### Patch Changes
