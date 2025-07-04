@@ -1,89 +1,92 @@
 import { Meta } from '@storybook/blocks';
 import { Unstyled } from '@storybook/blocks';
+import { CustomThemeProvider } from '../../theme';
 
 import { TypographyItem } from '../../storybook/Components';
 import Text from './Text';
-import TextTypes from './TextTypes';
+import { TextTypes } from '@a-little-world/little-world-design-system-core';
 
 <Meta title="Foundations/Typography" />
 
-# Typography
+<CustomThemeProvider>
+  # Typography
 
-All accepted Typography across the Little World appliction is stored in `TextTypes`, which is comprised of two different types: Heading & Body.
-All font-sizes use the [rem]()
+  All accepted Typography across the Little World appliction is stored in `TextTypes`, which is comprised of two different types: Heading & Body.
+  All font-sizes use the [rem]()
 
-## Headings
+  ## Headings
 
-Headings are used to summmarize and highlight a particular section on a page.
-Font-family: 'Signika Negative'
-Font-family: 'Work Sans'
+  Headings are used to summmarize and highlight a particular section on a page.
+  Font-family: 'Signika Negative'
+  Font-family: 'Work Sans'
 
-Here are the following Heading sizes that we use across the app:
+  Here are the following Heading sizes that we use across the app:
 
-<Unstyled>
+  <Unstyled>
 
-<TypographyItem
-  item={<Text type={TextTypes.Heading1}>Heading1</Text>}
-  details={'Font Size: Mobile: 4rem, Desktop: 5rem'}
-/>
+  <TypographyItem
+    item={<Text type={TextTypes.Heading1}>Heading1</Text>}
+    details={'Font Size: Mobile: 4rem, Desktop: 5rem'}
+  />
 
-<TypographyItem
-  item={<Text type={TextTypes.Heading2}>Heading2</Text>}
-  details={'Font Size: Mobile: 3.5rem, Desktop: 4rem'}
-/>
+  <TypographyItem
+    item={<Text type={TextTypes.Heading2}>Heading2</Text>}
+    details={'Font Size: Mobile: 3.5rem, Desktop: 4rem'}
+  />
 
-<TypographyItem
-  item={<Text type={TextTypes.Heading3}>Heading3</Text>}
-  details={'Font Size: Mobile: 3rem, Desktop: 3rem'}
-/>
+  <TypographyItem
+    item={<Text type={TextTypes.Heading3}>Heading3</Text>}
+    details={'Font Size: Mobile: 2.5rem, Desktop: 3rem'}
+  />
 
-<TypographyItem
-  item={<Text type={TextTypes.Heading4}>Heading4</Text>}
-  details={'Font Size: Mobile: 2rem , Desktop: 2rem'}
-/>
+  <TypographyItem
+    item={<Text type={TextTypes.Heading4}>Heading4</Text>}
+    details={'Font Size: Mobile: 2rem, Desktop: 2rem'}
+  />
 
-<TypographyItem
-  item={<Text type={TextTypes.Heading5}>Heading5</Text>}
-  details={'Font Size: Mobile: 1.5rem, Desktop: 1.5rem'}
-/>
-
-<TypographyItem item={<Text type={TextTypes.Heading6}>Heading6</Text>} details={'Font Size: Mobile: 1rem, Desktop: 1rem'} />
-</Unstyled>
-
-## Body
-
-Font-family: 'Signika Negative'
-
-Here are the following Body sizes that we use across the app:
-
-<Unstyled>
-    <TypographyItem
-    item={<Text type={TextTypes.Body1}>Body1</Text>}
-    details={'Font Size: Mobile: 3rem, Desktop: 2rem'}
-    />
-
-    <TypographyItem
-    item={<Text type={TextTypes.Body2}>Body2</Text>}
-    details={'Font Size: Mobile: 1.75rem, Desktop: 2rem'}
-    />
-
-    <TypographyItem
-    item={<Text type={TextTypes.Body3}>Body3</Text>}
-    details={'Font Size: Mobile: 1.5rem, Desktop: 1.75rem'}
-    />
-
-    <TypographyItem
-    item={<Text type={TextTypes.Body4}>Body4</Text>}
+  <TypographyItem
+    item={<Text type={TextTypes.Heading5}>Heading5</Text>}
     details={'Font Size: Mobile: 1.5rem, Desktop: 1.5rem'}
-    />
+  />
 
-    <TypographyItem
-    item={<Text type={TextTypes.Body5}>Body5</Text>}
-    details={'Font Size: Mobile: 1rem, Desktop: 1rem'}
-    />
+  <TypographyItem item={<Text type={TextTypes.Heading6}>Heading6</Text>} details={'Font Size: Mobile: 1rem, Desktop: 1rem'} />
+  </Unstyled>
 
-    <TypographyItem item={<Text type={TextTypes.Body6}>Body6</Text>} details={'Font Size: Mobile: 0.8725rem, Desktop: 0.8725rem'} />
+  ## Body
 
-    <TypographyItem item={<Text type={TextTypes.Body6}>Body7</Text>} details={'Font Size: Mobile: 0.75rem, Desktop: 0.75rem'} />
+  Font-family: 'Signika Negative'
 
-</Unstyled>
+  Here are the following Body sizes that we use across the app:
+
+  <Unstyled>
+      <TypographyItem
+      item={<Text type={TextTypes.Body1}>Body1</Text>}
+      details={'Font Size: Mobile: 2rem, Desktop: 2.5rem'}
+      />
+
+      <TypographyItem
+      item={<Text type={TextTypes.Body2}>Body2</Text>}
+      details={'Font Size: Mobile: 1.75rem, Desktop: 2rem'}
+      />
+
+      <TypographyItem
+      item={<Text type={TextTypes.Body3}>Body3</Text>}
+      details={'Font Size: Mobile: 1.5rem, Desktop: 1.5rem'}
+      />
+
+      <TypographyItem
+      item={<Text type={TextTypes.Body4}>Body4</Text>}
+      details={'Font Size: Mobile: 1.25rem, Desktop: 1.25rem'}
+      />
+
+      <TypographyItem
+      item={<Text type={TextTypes.Body5}>Body5</Text>}
+      details={'Font Size: Mobile: 1rem, Desktop: 1rem'}
+      />
+
+      <TypographyItem item={<Text type={TextTypes.Body6}>Body6</Text>} details={'Font Size: Mobile: 0.8725rem, Desktop: 0.8725rem'} />
+
+      <TypographyItem item={<Text type={TextTypes.Body7}>Body7</Text>} details={'Font Size: Mobile: 0.75rem, Desktop: 0.75rem'} />
+
+  </Unstyled>
+</CustomThemeProvider>

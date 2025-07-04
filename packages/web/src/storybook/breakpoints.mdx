@@ -1,0 +1,83 @@
+import { Meta, Unstyled } from '@storybook/blocks';
+import { CustomThemeProvider } from '../theme';
+
+import BreakpointSection from './BreakpointDocumentation';
+
+<Meta title="Foundations/Breakpoints" />
+
+<CustomThemeProvider>
+  # Breakpoints System
+
+  The breakpoints system defines responsive design breakpoints used throughout the Little World Design System. These breakpoints ensure consistent responsive behavior across all components and layouts.
+
+  ## Breakpoint Tokens
+
+  <Unstyled>
+    <BreakpointSection />
+  </Unstyled>
+
+  ## Usage Guidelines
+
+  - **xsmall (360px)**: Mobile devices in portrait mode
+  - **small (500px)**: Small tablets and large mobile devices
+  - **medium (700px)**: Tablets and small laptops
+  - **large (900px)**: Desktop screens and large tablets
+  - **xlarge (1200px)**: Large desktop screens
+  - **xxlarge (1600px)**: Extra large screens and high-resolution displays
+
+  ## Implementation
+
+  ```tsx
+  // Use breakpoints in styled-components
+  const ResponsiveContainer = styled.div`
+    padding: ${({ theme }) => theme.spacing.small};
+    
+    @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+      padding: ${({ theme }) => theme.spacing.large};
+    }
+    
+    @media (min-width: ${({ theme }) => theme.breakpoints.large}) {
+      padding: ${({ theme }) => theme.spacing.xlarge};
+    }
+  `;
+  ```
+
+  ## Responsive Design Best Practices
+
+  1. **Mobile First**: Start with mobile styles and enhance for larger screens
+  2. **Consistent Breakpoints**: Always use the defined breakpoint tokens
+  3. **Content Priority**: Ensure important content is accessible on all screen sizes
+  4. **Touch Targets**: Maintain minimum 44px touch targets on mobile
+  5. **Performance**: Optimize images and assets for different screen densities
+
+  ## Common Patterns
+
+  ```tsx
+  // Responsive typography
+  const ResponsiveText = styled(Text)`
+    font-size: 1rem; // Mobile default
+    
+    @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+      font-size: 1.25rem;
+    }
+    
+    @media (min-width: ${({ theme }) => theme.breakpoints.large}) {
+      font-size: 1.5rem;
+    }
+  `;
+
+  // Responsive layout
+  const Grid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr; // Single column on mobile
+    
+    @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+      grid-template-columns: repeat(2, 1fr); // Two columns on tablet
+    }
+    
+    @media (min-width: ${({ theme }) => theme.breakpoints.large}) {
+      grid-template-columns: repeat(3, 1fr); // Three columns on desktop
+    }
+  `;
+  ```
+</CustomThemeProvider> 
