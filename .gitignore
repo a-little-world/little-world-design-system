@@ -103,3 +103,48 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Turbo cache
+.turbo
+
+# Build outputs
+dist/
+build/
+out/
+
+# Package manager files
+.pnpm-store/
+.yarn/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Storybook build
+storybook-static/
+
+# Expo
+.expo/
+.expo-shared/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# Metro
+.metro-health-check*
+
+# Temporary files
+*.tmp
+*.temp
+
+# Cursor
+.cursorrules

@@ -1,0 +1,117 @@
+import { Meta, Unstyled } from '@storybook/blocks';
+import { CustomThemeProvider } from '../theme';
+
+import ColorSection from './Documentation';
+
+<Meta title="Foundations/Color System" />
+
+<CustomThemeProvider>
+  # Color System
+
+  All the colors of our app to support theming and complex UI components.
+  The color palette for the Little World Design System is defined by four overarching goals:
+
+  **Comprehensive**
+  The color system supports theming, data visualization, accent colors, and complex user interfaces.
+
+  **Accessible**
+  The color system provides sufficient contrast ratio and adheres to Web Content Accessibility Guidelines where possible.
+
+  **Consistent**
+  The color system enables a consistent appearance across varied products and platforms.
+
+  **Scalable**
+  The color system can be extended with minimal disruption to existing implementations.
+
+  The LW Design System utilises color tokens, which allows a designer or developer to understand how or when to apply our palette and the options available. They are used to bridge the gap between naming and use.
+  Color tokens are semantically named styled labels.
+  Currently we have two themes, light and dark, so each color token is assigned two color values.
+
+  After the theme value, comes the label that represents the UI element that the color is for. The next is the role of that color or it's emphasis.
+
+  ## Text Colors
+  ### Usage Guidelines
+  - **Primary**: Main text content
+  - **Secondary**: Supporting text and descriptions
+  - **Tertiary**: Muted text and placeholders
+  - **Quaternary**: Very subtle text
+  - **Title**: Page and section titles
+  - **Heading**: Component headings
+  - **Link**: Interactive text links
+  - **Button**: Text on button backgrounds
+  - **Control**: Form control labels
+  - **Error**: Error messages and validation
+  - **Success**: Success messages and confirmations
+  - **Accent**: Highlighted or emphasized text
+  - **Highlight**: Important or featured text
+  - **Bold**: Strong emphasis text
+  - **Disabled**: Inactive or disabled text
+  - **Reversed**: Text on dark backgrounds
+
+  <Unstyled>
+    <ColorSection section="text" />
+  </Unstyled>
+
+  ## Surface Colors
+  ### Usage Guidelines
+  - **Background**: Main page background
+  - **Primary**: Primary content areas
+  - **Secondary**: Secondary content areas
+  - **Tertiary**: Tertiary content areas
+  - **Contrast**: High contrast surfaces
+  - **Bold**: Prominent surfaces
+  - **Selected**: Selected or active states
+  - **Subtle**: Subtle background variations
+  - **Accent**: Accent color surfaces
+  - **Message**: Message and notification backgrounds
+  - **Indicator**: Status indicators
+  - **Highlight**: Highlighted content areas
+  - **Disabled**: Disabled or inactive surfaces
+  - **Error**: Error state backgrounds
+  - **Success**: Success state backgrounds
+  - **On**: Active or enabled states
+
+  <Unstyled>
+    <ColorSection section="surface" />
+  </Unstyled>
+
+  ## Border Colors
+  ### Usage Guidelines
+  - **Minimal**: Very subtle borders
+  - **Subtle**: Standard subtle borders
+  - **Moderate**: Medium strength borders
+  - **Accent**: Accent color borders
+  - **Bold**: Strong borders
+  - **Selected**: Selected state borders
+  - **Contrast**: High contrast borders
+  - **Reversed**: Borders on dark backgrounds
+  - **Error**: Error state borders
+  - **Success**: Success state borders
+  - **Disabled**: Disabled state borders
+
+  <Unstyled>
+    <ColorSection section="border" />
+  </Unstyled>
+
+  ## Status Colors
+  ### Usage Guidelines
+  - **Info**: Informational messages
+  - **Warning**: Warning messages
+  - **Error**: Error messages
+  - **Success**: Success messages
+
+  <Unstyled>
+    <ColorSection section="status" />
+  </Unstyled>
+
+  ## Implementation
+
+  ```tsx
+  // Use color tokens in styled-components
+  const Card = styled.div`
+    background: ${({ theme }) => theme.color.surface.primary};
+    color: ${({ theme }) => theme.color.text.primary};
+    border: 1px solid ${({ theme }) => theme.color.border.subtle};
+  `;
+  ```
+</CustomThemeProvider>

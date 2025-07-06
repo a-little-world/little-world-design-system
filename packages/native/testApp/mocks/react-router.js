@@ -1,0 +1,12 @@
+export default {};
+export const useNavigate = () => () => {};
+export const useParams = () => ({});
+export const useLocation = () => ({});
+export const useRouteMatch = () => ({});
+export const Link = () => null;
+export const Route = () => null;
+export const Routes = () => null;
+export const Router = () => null;
+export const BrowserRouter = () => null;
+export const Navigate = () => null;
+export const Outlet = () => null;

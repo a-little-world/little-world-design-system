@@ -1,0 +1,45 @@
+import { Meta, Unstyled } from '@storybook/blocks';
+import { CustomThemeProvider } from '../theme';
+
+import SpacingSection from './SpacingDocumentation';
+
+<Meta title="Foundations/Spacing" />
+
+<CustomThemeProvider>
+  # Spacing System
+
+  The spacing system provides consistent spacing values across the Little World Design System. All spacing values are based on an 8px base unit and follow a systematic scale.
+
+  ## Spacing Scale
+
+  Our spacing system uses a base unit of 8px, with values calculated as multiples of this base unit. This ensures consistency and makes it easy to maintain proportional spacing throughout the application.
+
+  ## Spacing Tokens
+
+  <Unstyled>
+    <SpacingSection />
+  </Unstyled>
+
+  ## Usage Guidelines
+
+  - **xxxxsmall (2px)**: Use for minimal spacing, such as between closely related elements
+  - **xxxsmall (4px)**: Use for tight spacing in compact layouts
+  - **xxsmall (8px)**: Use for standard spacing between related elements
+  - **xsmall (12px)**: Use for comfortable spacing in most layouts
+  - **small (16px)**: Use for standard spacing between sections
+  - **medium (24px)**: Use for breathing room between major sections
+  - **large (32px)**: Use for generous spacing between page sections
+  - **xlarge (40px)**: Use for substantial spacing in spacious layouts
+  - **xxlarge (64px)**: Use for maximum spacing in hero sections
+  - **massive (120px)**: Use for dramatic spacing in large layouts
+
+  ## Implementation
+
+  ```tsx
+  // Use spacing tokens in styled-components
+  const Container = styled.div`
+    padding: ${({ theme }) => theme.spacing.medium};
+    margin-bottom: ${({ theme }) => theme.spacing.large};
+  `;
+  ```
+</CustomThemeProvider> 

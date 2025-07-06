@@ -1,0 +1,362 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.0.0
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Packages
+        run: pnpm build
+
+      - name: Preview Version Changes
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "## 📦 Package Version Preview" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check if there are any changesets
+          if [ -d ".changeset" ] && [ "$(ls -A .changeset)" ]; then
+            echo "### 📝 Changesets Found:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+
+            # List all changeset files with their content
+            for file in .changeset/*.md; do
+              if [ -f "$file" ]; then
+                echo "**$(basename "$file" .md):**" >> $GITHUB_STEP_SUMMARY
+                while IFS= read -r line; do
+                  echo "> $line" >> $GITHUB_STEP_SUMMARY
+                done < "$file"
+                echo "" >> $GITHUB_STEP_SUMMARY
+              fi
+            done
+
+            echo "### 📊 Package Versions:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+
+            # Show current versions of all packages
+            echo "| Package | Current Version | New Version |" >> $GITHUB_STEP_SUMMARY
+            echo "|---------|----------------|-------------|" >> $GITHUB_STEP_SUMMARY
+
+            for package in packages/*/package.json; do
+              if [ -f "$package" ]; then
+                PACKAGE_NAME=$(node -e "console.log(require('$(pwd)/$package').name)" 2>/dev/null || echo "Unknown")
+                PACKAGE_VERSION=$(node -e "console.log(require('$(pwd)/$package').version)" 2>/dev/null || echo "Unknown")
+
+                # Get the package directory name for changesets
+                PACKAGE_DIR=$(dirname "$package" | sed 's|packages/||')
+
+                # Check if this package is mentioned in any changeset files
+                NEW_VERSION="$PACKAGE_VERSION"
+                for changeset_file in .changeset/*.md; do
+                  if [ -f "$changeset_file" ]; then
+                    # Check if this package is mentioned in the changeset frontmatter
+                    if grep -q "\"$PACKAGE_NAME\":" "$changeset_file"; then
+                      # Extract the version bump type from the frontmatter
+                      BUMP_LINE=$(sed -n '/^---$/,/^---$/p' "$changeset_file" | grep "\"$PACKAGE_NAME\":")
+                      if echo "$BUMP_LINE" | grep -q "major"; then
+                        BUMP_TYPE="major"
+                      elif echo "$BUMP_LINE" | grep -q "minor"; then
+                        BUMP_TYPE="minor"
+                      elif echo "$BUMP_LINE" | grep -q "patch"; then
+                        BUMP_TYPE="patch"
+                      else
+                        BUMP_TYPE=""
+                      fi
+
+                      if [ "$BUMP_TYPE" = "major" ]; then
+                        # Increment major version
+                        MAJOR=$(echo "$PACKAGE_VERSION" | cut -d. -f1)
+                        NEW_MAJOR=$((MAJOR + 1))
+                        NEW_VERSION="${NEW_MAJOR}.0.0"
+                      elif [ "$BUMP_TYPE" = "minor" ]; then
+                        # Increment minor version
+                        MAJOR=$(echo "$PACKAGE_VERSION" | cut -d. -f1)
+                        MINOR=$(echo "$PACKAGE_VERSION" | cut -d. -f2)
+                        NEW_MINOR=$((MINOR + 1))
+                        NEW_VERSION="${MAJOR}.${NEW_MINOR}.0"
+                      elif [ "$BUMP_TYPE" = "patch" ]; then
+                        # Increment patch version
+                        MAJOR=$(echo "$PACKAGE_VERSION" | cut -d. -f1)
+                        MINOR=$(echo "$PACKAGE_VERSION" | cut -d. -f2)
+                        PATCH=$(echo "$PACKAGE_VERSION" | cut -d. -f3)
+                        NEW_PATCH=$((PATCH + 1))
+                        NEW_VERSION="${MAJOR}.${MINOR}.${NEW_PATCH}"
+                      fi
+                      break
+                    fi
+                  fi
+                done
+
+                echo "| $PACKAGE_NAME | $PACKAGE_VERSION | $NEW_VERSION |" >> $GITHUB_STEP_SUMMARY
+              fi
+            done
+
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### 🔄 What will happen when this PR is merged to main:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "- Package versions will be bumped according to the changesets" >> $GITHUB_STEP_SUMMARY
+            echo "- CHANGELOG.md files will be updated with the new changes" >> $GITHUB_STEP_SUMMARY
+            echo "- Packages will be published to npm automatically" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Note:** Versioning and publishing only happens when this PR is merged to main." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ❌ No changesets found" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "No version changes will be made. To trigger versioning:" >> $GITHUB_STEP_SUMMARY
+            echo "1. Run \`pnpm changeset\` locally" >> $GITHUB_STEP_SUMMARY
+            echo "2. Select the packages to version and the type of change" >> $GITHUB_STEP_SUMMARY
+            echo "3. Commit the changeset file" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Comment PR with Version Preview
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Create the comment content
+          COMMENT_BODY="## 📦 Package Version Preview
+
+          "
+
+          # Check if there are any changesets
+          if [ -d ".changeset" ] && [ "$(ls -A .changeset)" ]; then
+            COMMENT_BODY+="### 📝 Changesets Found:
+
+            "
+
+            # List all changeset files with their content
+            for file in .changeset/*.md; do
+              if [ -f "$file" ]; then
+                COMMENT_BODY+="**$(basename "$file" .md):**"$'\n'
+                while IFS= read -r line; do
+                  COMMENT_BODY+="> $line"$'\n'
+                done < "$file"
+                COMMENT_BODY+=$'\n'
+              fi
+            done
+
+            COMMENT_BODY+="### 📊 Package Versions:
+
+            | Package | Current Version | New Version |
+            |---------|----------------|-------------|
+            "
+
+            # Show current versions and predicted new versions of all packages
+            for package in packages/*/package.json; do
+              if [ -f "$package" ]; then
+                PACKAGE_NAME=$(node -e "console.log(require('$(pwd)/$package').name)" 2>/dev/null || echo "Unknown")
+                PACKAGE_VERSION=$(node -e "console.log(require('$(pwd)/$package').version)" 2>/dev/null || echo "Unknown")
+
+                # Get the package directory name for changesets
+                PACKAGE_DIR=$(dirname "$package" | sed 's|packages/||')
+
+                # Check if this package is mentioned in any changeset files
+                NEW_VERSION="$PACKAGE_VERSION"
+                for changeset_file in .changeset/*.md; do
+                  if [ -f "$changeset_file" ]; then
+                    # Check if this package is mentioned in the changeset frontmatter
+                    if grep -q "\"$PACKAGE_NAME\":" "$changeset_file"; then
+                      # Extract the version bump type from the frontmatter
+                      BUMP_LINE=$(sed -n '/^---$/,/^---$/p' "$changeset_file" | grep "\"$PACKAGE_NAME\":")
+                      if echo "$BUMP_LINE" | grep -q "major"; then
+                        BUMP_TYPE="major"
+                      elif echo "$BUMP_LINE" | grep -q "minor"; then
+                        BUMP_TYPE="minor"
+                      elif echo "$BUMP_LINE" | grep -q "patch"; then
+                        BUMP_TYPE="patch"
+                      else
+                        BUMP_TYPE=""
+                      fi
+
+                      if [ "$BUMP_TYPE" = "major" ]; then
+                        # Increment major version
+                        MAJOR=$(echo "$PACKAGE_VERSION" | cut -d. -f1)
+                        NEW_MAJOR=$((MAJOR + 1))
+                        NEW_VERSION="${NEW_MAJOR}.0.0"
+                      elif [ "$BUMP_TYPE" = "minor" ]; then
+                        # Increment minor version
+                        MAJOR=$(echo "$PACKAGE_VERSION" | cut -d. -f1)
+                        MINOR=$(echo "$PACKAGE_VERSION" | cut -d. -f2)
+                        NEW_MINOR=$((MINOR + 1))
+                        NEW_VERSION="${MAJOR}.${NEW_MINOR}.0"
+                      elif [ "$BUMP_TYPE" = "patch" ]; then
+                        # Increment patch version
+                        MAJOR=$(echo "$PACKAGE_VERSION" | cut -d. -f1)
+                        MINOR=$(echo "$PACKAGE_VERSION" | cut -d. -f2)
+                        PATCH=$(echo "$PACKAGE_VERSION" | cut -d. -f3)
+                        NEW_PATCH=$((PATCH + 1))
+                        NEW_VERSION="${MAJOR}.${MINOR}.${NEW_PATCH}"
+                      fi
+                      break
+                    fi
+                  fi
+                done
+
+                COMMENT_BODY+="| $PACKAGE_NAME | $PACKAGE_VERSION | $NEW_VERSION |"$'\n'
+              fi
+            done
+
+            COMMENT_BODY+="
+            ### 🔄 What will happen when this PR is merged to main:
+
+            - Package versions will be bumped according to the changesets
+            - CHANGELOG.md files will be updated with the new changes
+            - Packages will be published to npm automatically
+
+            **Note:** Versioning and publishing only happens when this PR is merged to main."
+          else
+            COMMENT_BODY+="### ❌ No changesets found
+
+            No version changes will be made. To trigger versioning:
+            1. Run \`pnpm changeset\` locally
+            2. Select the packages to version and the type of change
+            3. Commit the changeset file"
+          fi
+
+          # Create or update the comment
+          gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT_BODY"
+
+      - name: Create Release Pull Request or Publish
+        if: github.ref == 'refs/heads/main'
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm version-packages
+          title: "chore: Release packages"
+          commit: "chore: Release packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish Packages
+        if: github.ref == 'refs/heads/main' && steps.changesets.outputs.publishedPackages != '[]'
+        run: |
+          echo "## 📦 Publishing packages..." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Parse the published packages from the changesets output
+          PUBLISHED_PACKAGES=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[]')
+
+          echo "Packages to publish: $PUBLISHED_PACKAGES" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Publish only the packages that were versioned
+          for package in $PUBLISHED_PACKAGES; do
+            echo "### Publishing $package..." >> $GITHUB_STEP_SUMMARY
+            
+            if echo "$package" | grep -q "little-world-design-system-core"; then
+              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-core publish --access restricted" >> $GITHUB_STEP_SUMMARY
+              if pnpm --filter=@a-little-world/little-world-design-system-core publish --access restricted; then
+                echo "✅ Successfully published @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
+              else
+                echo "❌ Failed to publish @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
+                exit 1
+              fi
+            elif echo "$package" | grep -q "little-world-design-system-native"; then
+              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-native publish --access restricted" >> $GITHUB_STEP_SUMMARY
+              if pnpm --filter=@a-little-world/little-world-design-system-native publish --access restricted; then
+                echo "✅ Successfully published @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
+              else
+                echo "❌ Failed to publish @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
+                exit 1
+              fi
+            elif echo "$package" | grep -q "^@a-little-world/little-world-design-system$"; then
+              echo "Running: pnpm --filter=@a-little-world/little-world-design-system publish --access restricted" >> $GITHUB_STEP_SUMMARY
+              if pnpm --filter=@a-little-world/little-world-design-system publish --access restricted; then
+                echo "✅ Successfully published @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
+              else
+                echo "❌ Failed to publish @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
+                exit 1
+              fi
+            else
+              echo "⚠️ Unknown package: $package" >> $GITHUB_STEP_SUMMARY
+            fi
+            
+            echo "" >> $GITHUB_STEP_SUMMARY
+          done
+
+          echo "🎉 All packages published successfully!" >> $GITHUB_STEP_SUMMARY
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Release
+        if: github.ref == 'refs/heads/main' && steps.changesets.outputs.publishedPackages != '[]'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Parse the published packages from the changesets output
+          PUBLISHED_PACKAGES=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[]')
+
+          # Get the latest tag
+          LATEST_TAG=$(git describe --tags --abbrev=0)
+
+          # Create release notes
+          echo "## Released Packages" > release_notes.md
+          echo "" >> release_notes.md
+
+          for package in $PUBLISHED_PACKAGES; do
+            echo "### $package" >> release_notes.md
+            echo "" >> release_notes.md
+
+            # Get the package version from package.json
+            PACKAGE_VERSION=$(node -p "require('./packages/${package#@a-little-world/little-world-design-system-}/package.json').version" 2>/dev/null || echo "Unknown")
+            echo "**Version:** $PACKAGE_VERSION" >> release_notes.md
+            echo "" >> release_notes.md
+
+            # Get changelog content for this package
+            if [ -f "./packages/${package#@a-little-world/little-world-design-system-}/CHANGELOG.md" ]; then
+              echo "**Changes:**" >> release_notes.md
+              echo "" >> release_notes.md
+              # Extract the latest version section from changelog
+              sed -n "/^## \[$PACKAGE_VERSION\]/,/^## /p" "./packages/${package#@a-little-world/little-world-design-system-}/CHANGELOG.md" | head -n -1 >> release_notes.md
+              echo "" >> release_notes.md
+            fi
+          done
+
+          # Create the GitHub release
+          gh release create $LATEST_TAG \
+            --title "Release $LATEST_TAG" \
+            --notes-file release_notes.md \
+            --repo ${{ github.repository }}
