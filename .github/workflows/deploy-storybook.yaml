@@ -41,6 +41,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Build core package first (required dependency)
+      - name: Build core package
+        run: pnpm --filter=@a-little-world/little-world-design-system-core build
+
       # Build Storybook for web package
       - name: Build Storybook
         run: pnpm --filter=@a-little-world/little-world-design-system build-storybook
