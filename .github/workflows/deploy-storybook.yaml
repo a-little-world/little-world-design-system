@@ -1,0 +1,60 @@
+# Workflow name
+name: Build and Publish Storybook to GitHub Pages
+
+on:
+  # Event for the workflow to run on
+  workflow_dispatch:
+  push:
+    branch: "main"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# List of jobs
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.build-publish.outputs.page_url }}
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      # Manual Checkout
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }} # This ensures it checks out the PR's code
+
+      # Set up Node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Install pnpm
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 9.0.0
+
+      # Install dependencies using pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Build core package first (required dependency)
+      - name: Build core package
+        run: pnpm --filter=@a-little-world/little-world-design-system-core build
+
+      # Build Storybook for web package
+      - name: Build Storybook
+        run: pnpm --filter=@a-little-world/little-world-design-system build-storybook
+
+      # Deploy to GitHub Pages
+      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          install_command: echo "Dependencies already installed"
+          build_command: echo "Storybook already built"
+          path: packages/web/storybook-static # Updated path for web package
+          checkout: false # default: true
