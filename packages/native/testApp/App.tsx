@@ -8,12 +8,15 @@ import {
   Text,
 } from "@a-little-world/little-world-design-system-native";
 import { SafeAreaView, StyleSheet, View } from "react-native";
-// import { NavigationContainer } from "@react-navigation/native";
-// import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { PortalHost } from "@rn-primitives/portal";
 import { ButtonAppearance, TextTypes } from "@a-little-world/little-world-design-system-core";
 import { useTheme } from "styled-components/native";
+import TestPage from "./TestPage";
+
+const Stack = createNativeStackNavigator();
 
 const styles = StyleSheet.create({
   container: {
@@ -32,14 +35,14 @@ const textParser = {
   button: `<a {"href": "CHANGE_ME", "target":"_blank", "buttonAppearance": "Primary"}>Button</a>`,
 }
 
-function AppContent() {
+function AppContent({ navigation }: { navigation: any }) {
   const theme = useTheme();
   return (
     <SafeAreaView style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
       <Text color={theme.color.text.highlight} type={TextTypes.Heading4}>Passwort zurücksetzen</Text>
       <Button onPress={() => console.log("presssing!!")}>
-        <Text>Basic button</Text>
+        Basic button
       </Button>
       <View>
         <Logo label="Logo" /> 
@@ -50,7 +53,7 @@ function AppContent() {
         showCloseButton={false}
         trigger={
           <Button appearance={ButtonAppearance.Secondary}>
-            <Text>Open Popover</Text>
+            Open Popover
           </Button>
         }
       >
@@ -63,8 +66,19 @@ function AppContent() {
         <Text>{textParser.link}</Text>
         <Text>{textParser.button}</Text>
       </View>
+
+      <Button 
+        appearance={ButtonAppearance.Primary}
+        onPress={() => navigation.navigate("TestPage")}
+      >
+        Go to Test Page
+      </Button>
     </SafeAreaView>
   );
+}
+
+function MainScreen({ navigation }: { navigation: any }) {
+  return <AppContent navigation={navigation} />;
 }
 
 function App() {
@@ -79,7 +93,20 @@ function App() {
   return (
     <SafeAreaProvider>
       <CustomThemeProvider>
-        <AppContent />
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen 
+              name="Main" 
+              component={MainScreen}
+              options={{ title: "Main App" }}
+            />
+            <Stack.Screen 
+              name="TestPage" 
+              component={TestPage}
+              options={{ title: "Test Page" }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
         <PortalHost />
       </CustomThemeProvider>
     </SafeAreaProvider>
