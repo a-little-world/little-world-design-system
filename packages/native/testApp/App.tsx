@@ -25,12 +25,19 @@ const styles = StyleSheet.create({
   },
 });
 
+const textParser = {
+  bold: "<bold>This will be bold</bold>",
+  highlight: "<highlight>This will be orange</highlight>",
+  link:  `<a {"href": "CHANGE_ME", "target":"_blank"}>Link</a>`,
+  button: `<a {"href": "CHANGE_ME", "target":"_blank", "buttonAppearance": "Primary"}>Button</a>`,
+}
+
 function AppContent() {
   const theme = useTheme();
   return (
     <SafeAreaView style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
-      <Text color={theme.color.text.highlight} type={TextTypes.Heading4}>Testing the theme</Text>
+      <Text color={theme.color.text.highlight} type={TextTypes.Heading4}>Passwort zurücksetzen</Text>
       <Button onPress={() => console.log("presssing!!")}>
         <Text>Basic button</Text>
       </Button>
@@ -49,6 +56,13 @@ function AppContent() {
       >
         <Text>This is tooltip text with tooltip styling</Text>
       </Popover>
+
+      <View>
+        <Text>{textParser.bold}</Text>
+        <Text>{textParser.highlight}</Text>
+        <Text>{textParser.link}</Text>
+        <Text>{textParser.button}</Text>
+      </View>
     </SafeAreaView>
   );
 }

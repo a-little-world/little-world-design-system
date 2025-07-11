@@ -12,8 +12,10 @@ import {
   getTextStyle,
 } from "@a-little-world/little-world-design-system-core";
 import { DefaultTheme, useTheme } from "styled-components/native";
+import textParser from "../../utils/parser";
 
 type TextProps = TextBaseProps & {
+  disableParser?: boolean;
   italic?: boolean;
   style?: StyleProp<RNTextStyle>;
 };
@@ -52,6 +54,7 @@ const Text = ({
   center = false,
   children,
   color,
+  disableParser = false,
   italic = false,
   style,
   type = TextTypes.Body5,
@@ -68,7 +71,9 @@ const Text = ({
 
   return (
     <RNText id={id} style={[textStyles, style]}>
-      {children}
+      {typeof children === 'string' && !disableParser
+      ? textParser(children)
+      : children}
     </RNText>
   );
 };
