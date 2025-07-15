@@ -12,7 +12,7 @@ const ColorText = styled.Text<{ color: keyof typeof SupportedColorTags }>`
       ? 'currentColor'
       : theme.color.text[color]};
   font-weight: ${({ color }) =>
-    color === SupportedColorTags.bold ? 'bold' : 'normal'};
+    (color === SupportedColorTags.bold || color === SupportedColorTags.highlight) ? 'bold' : 'normal'};
 `;
 
 const ANCHOR_TAG = 'a';
@@ -58,7 +58,7 @@ const textParser = (
       currentIndex,
       match.index,
     );
-    
+
     // Only add text if it's not empty
     if (textBetweenMatches) {
       components.push(textBetweenMatches);
@@ -69,11 +69,11 @@ const textParser = (
 
     const tag = match[1];
     const attrs = parseAttributes(match[2]?.trim());
-    
+
     if (tag === ANCHOR_TAG) {
       components.push(
-        attrs.href ? (
-          <Link key={tag + match[3]} to={attrs.href} {...attrs}>
+        attrs.href || attrs.to ? (
+          <Link key={tag + match[3]} to={attrs.href || attrs.to} {...attrs}>
             {match[3]}
           </Link>
         ) : (
@@ -153,7 +153,7 @@ const textParser = (
     }
   }
 
-  return <Text>{components.map((section, index) => 
+  return <Text>{components.map((section, index) =>
     typeof section === 'string' ? (
       <Text key={index}>{section}</Text>
     ) : (

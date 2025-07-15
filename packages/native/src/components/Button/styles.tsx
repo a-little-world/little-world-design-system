@@ -32,12 +32,12 @@ export const getButtonStyles = ({
     borderRadius: 90,
     ...(variation === ButtonVariations.Basic
       ? {
-          paddingHorizontal: theme.spacing.small,
-          // flex: 1,
-          height: BUTTON_DIMENSIONS[size].height,
-          minWidth: BUTTON_DIMENSIONS[size].minWidth,
-          // paddingVertical: BUTTON_DIMENSIONS[size].padding.vertical,
-        }
+        paddingHorizontal: theme.spacing.small,
+        // flex: 1,
+        height: BUTTON_DIMENSIONS[size].height,
+        minWidth: BUTTON_DIMENSIONS[size].minWidth,
+        // paddingVertical: BUTTON_DIMENSIONS[size].padding.vertical,
+      }
       : {}),
   };
 

@@ -29,10 +29,11 @@ const styles = StyleSheet.create({
 });
 
 const textParser = {
-  bold: "<bold>This will be bold</bold>",
-  highlight: "<highlight>This will be orange</highlight>",
-  link:  `<a {"href": "CHANGE_ME", "target":"_blank"}>Link</a>`,
-  button: `<a {"href": "CHANGE_ME", "target":"_blank", "buttonAppearance": "Primary"}>Button</a>`,
+  bold: "<bold>This will be bold</bold> Hallo",
+  highlight: "<highlight>This will be orange</highlight>sdfa",
+  link: `<a {"href": "https://little-world.com/", "target":"_blank"}>Link</a>`,
+  linkAsButton: `<a {"to": "TestPage", "target":"_blank", "buttonAppearance": "primary"}>Button</a>`,
+  button: "<button>Test Button</button>"
 }
 
 function AppContent({ navigation }: { navigation: any }) {
@@ -40,12 +41,12 @@ function AppContent({ navigation }: { navigation: any }) {
   return (
     <SafeAreaView style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
-      <Text color={theme.color.text.highlight} type={TextTypes.Heading4}>Passwort zurücksetzen</Text>
+      <Text >{"<highlight>Passwort zurücksetzen</highlight> <bold>passwort zurücksetzen</bold>"}</Text>
       <Button onPress={() => console.log("presssing!!")}>
         Basic button
       </Button>
       <View>
-        <Logo label="Logo" /> 
+        <Logo label="Logo" />
         <EyeOpenIcon label="EyeOpenIcon" />
       </View>
       <Popover
@@ -64,10 +65,11 @@ function AppContent({ navigation }: { navigation: any }) {
         <Text>{textParser.bold}</Text>
         <Text>{textParser.highlight}</Text>
         <Text>{textParser.link}</Text>
+        <Text>{textParser.linkAsButton}</Text>
         <Text>{textParser.button}</Text>
       </View>
 
-      <Button 
+      <Button
         appearance={ButtonAppearance.Primary}
         onPress={() => navigation.navigate("TestPage")}
       >
@@ -95,13 +97,13 @@ function App() {
       <CustomThemeProvider>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen 
-              name="Main" 
+            <Stack.Screen
+              name="Main"
               component={MainScreen}
               options={{ title: "Main App" }}
             />
-            <Stack.Screen 
-              name="TestPage" 
+            <Stack.Screen
+              name="TestPage"
               component={TestPage}
               options={{ title: "Test Page" }}
             />
