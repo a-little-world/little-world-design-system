@@ -61,6 +61,38 @@ pnpm native:testapp:setup
 3. **Test in native** - `pnpm native:testapp:setup` (rebuilds and tests)
 4. **Test in web** - `pnpm storybook:web` (if web components use core tokens)
 
+## Publishing
+
+### Automated Releases (Recommended)
+
+**Releases should ideally be automated and handled via merging into the main branch of the repo.** 
+
+See the [Versioning and Releases section in the root README](../../README.md#versioning-and-releases) for detailed information about the automated release process using Changesets.
+
+The automated workflow will:
+- Detect version changes in package.json
+- Publish to GitHub Packages registry
+- Create GitHub releases with changelog information
+- Handle all publishing steps automatically
+
+### Manual Publishing (Fallback)
+
+If you need to publish manually (not recommended):
+
+```bash
+# Ensure you're authenticated to GitHub Packages
+npm login --registry=https://npm.pkg.github.com
+
+# Build the package
+pnpm build:core
+
+# Publish from the core package directory
+cd packages/core
+npm publish --access restricted
+```
+
+**Note**: Manual publishing bypasses the automated changelog generation and release management. Use the automated process whenever possible.
+
 ## TypeScript
 
 The package includes TypeScript definitions for all design tokens and utilities:
