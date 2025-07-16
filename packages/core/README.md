@@ -34,6 +34,23 @@ The core package provides:
 
 ## Local Development
 
+### ⚠️ Important: Build from Root
+
+**Always build and publish from the root of the monorepo, never from individual package directories.**
+
+✅ **Correct (from root):**
+```bash
+pnpm build:core
+pnpm --filter=@a-little-world/little-world-design-system-core publish
+```
+
+❌ **Incorrect (from package directory):**
+```bash
+cd packages/core
+npm run build
+npm publish  # This will break workspace dependencies!
+```
+
 ### Building
 
 ```bash

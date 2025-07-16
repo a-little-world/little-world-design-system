@@ -39,6 +39,23 @@ Ensure that you have the required fonts available by including them in your HTML
 
 ## Local Development
 
+### ⚠️ Important: Build from Root
+
+**Always build and publish from the root of the monorepo, never from individual package directories.**
+
+✅ **Correct (from root):**
+```bash
+pnpm build:web
+pnpm --filter=@a-little-world/little-world-design-system publish
+```
+
+❌ **Incorrect (from package directory):**
+```bash
+cd packages/web
+npm run build
+npm publish  # This will break workspace dependencies!
+```
+
 ### Quick Start
 
 From the root of the monorepo:

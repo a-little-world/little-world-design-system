@@ -40,6 +40,34 @@ pnpm --filter @a-little-world/little-world-design-system-core build
 pnpm test
 ```
 
+### ⚠️ Critical: Always Build and Publish from Root
+
+**IMPORTANT: Never build or publish from individual package directories!**
+
+This monorepo uses pnpm workspaces with `workspace:*` dependencies. If you build or publish from inside a package directory, the workspace dependencies won't be resolved properly, causing installation errors in consuming applications.
+
+✅ **Correct (from root of monorepo):**
+```bash
+# Build packages
+pnpm build:core
+pnpm build:web
+pnpm build:native
+
+# Publish packages (if needed manually)
+pnpm --filter=@a-little-world/little-world-design-system-core publish
+pnpm --filter=@a-little-world/little-world-design-system publish
+pnpm --filter=@a-little-world/little-world-design-system-native publish
+```
+
+❌ **Incorrect (from package directories):**
+```bash
+cd packages/web
+npm run build
+npm publish  # This will break workspace dependencies!
+```
+
+**The automated GitHub workflow handles publishing correctly from the root. Only use manual publishing as a last resort.**
+
 ### Running Storybook
 
 ```bash

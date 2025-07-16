@@ -26,6 +26,23 @@ export default function App() {
 
 The native package includes a test app for local development and testing of components.
 
+### ⚠️ Important: Build from Root
+
+**Always build and publish from the root of the monorepo, never from individual package directories.**
+
+✅ **Correct (from root):**
+```bash
+pnpm build:native
+pnpm --filter=@a-little-world/little-world-design-system-native publish
+```
+
+❌ **Incorrect (from package directory):**
+```bash
+cd packages/native
+npm run build
+npm publish  # This will break workspace dependencies!
+```
+
 ### Prerequisites
 
 - [Expo CLI](https://docs.expo.dev/get-started/installation/) installed globally
