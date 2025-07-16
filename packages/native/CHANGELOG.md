@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.1.4
+
+### Patch Changes
+
+- Implement Native Text Parser
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.1.3
+
 ## 0.1.3
 
 ### Patch Changes
