@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system
 
+## 2.0.3
+
+### Patch Changes
+
+- Fix patch build issue with incorrect reference to workspaces
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.1.4
+
 ## 2.0.2
 
 ### Patch Changes
