@@ -86,7 +86,7 @@ jobs:
 
           # Get the merge base with origin/main for proper version comparison
           MERGE_BASE=$(git merge-base HEAD origin/main 2>/dev/null || echo "")
-          
+
           if [ -z "$MERGE_BASE" ]; then
             echo "⚠️ Could not determine merge base, showing current versions only" >> $GITHUB_STEP_SUMMARY
             # Fallback: just show current versions without comparison
@@ -215,50 +215,63 @@ jobs:
         run: |
           echo "Checking for version changes..." >> $GITHUB_STEP_SUMMARY
 
-          # Get the merge base with origin/main for proper version comparison
-          MERGE_BASE=$(git merge-base HEAD origin/main)
-          echo "Comparing against merge base: $MERGE_BASE" >> $GITHUB_STEP_SUMMARY
+          # For main branch, compare against the previous commit
+          PREV_COMMIT=$(git rev-parse HEAD~1 2>/dev/null || echo "")
 
-          # Get the previous commit's package versions from the merge base
-          git show $MERGE_BASE:packages/core/package.json > /tmp/prev_core.json 2>/dev/null || echo '{"version": "0.0.0"}' > /tmp/prev_core.json
-          git show $MERGE_BASE:packages/web/package.json > /tmp/prev_web.json 2>/dev/null || echo '{"version": "0.0.0"}' > /tmp/prev_web.json
-          git show $MERGE_BASE:packages/native/package.json > /tmp/prev_native.json 2>/dev/null || echo '{"version": "0.0.0"}' > /tmp/prev_native.json
-
-          # Get current versions
-          CORE_VERSION=$(node -e "console.log(require('./packages/core/package.json').version)")
-          WEB_VERSION=$(node -e "console.log(require('./packages/web/package.json').version)")
-          NATIVE_VERSION=$(node -e "console.log(require('./packages/native/package.json').version)")
-
-          # Get previous versions
-          PREV_CORE_VERSION=$(node -e "console.log(require('/tmp/prev_core.json').version)")
-          PREV_WEB_VERSION=$(node -e "console.log(require('/tmp/prev_web.json').version)")
-          PREV_NATIVE_VERSION=$(node -e "console.log(require('/tmp/prev_native.json').version)")
-
-          # Check if versions changed
-          VERSION_CHANGES=""
-
-          if [ "$CORE_VERSION" != "$PREV_CORE_VERSION" ]; then
-            VERSION_CHANGES="$VERSION_CHANGES core"
-            echo "✅ Core version changed: $PREV_CORE_VERSION → $CORE_VERSION" >> $GITHUB_STEP_SUMMARY
-          fi
-
-          if [ "$WEB_VERSION" != "$PREV_WEB_VERSION" ]; then
-            VERSION_CHANGES="$VERSION_CHANGES web"
-            echo "✅ Web version changed: $PREV_WEB_VERSION → $WEB_VERSION" >> $GITHUB_STEP_SUMMARY
-          fi
-
-          if [ "$NATIVE_VERSION" != "$PREV_NATIVE_VERSION" ]; then
-            VERSION_CHANGES="$VERSION_CHANGES native"
-            echo "✅ Native version changed: $PREV_NATIVE_VERSION → $NATIVE_VERSION" >> $GITHUB_STEP_SUMMARY
-          fi
-
-          if [ -z "$VERSION_CHANGES" ]; then
-            echo "❌ No version changes detected" >> $GITHUB_STEP_SUMMARY
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-          else
-            echo "🎉 Version changes detected: $VERSION_CHANGES" >> $GITHUB_STEP_SUMMARY
+          if [ -z "$PREV_COMMIT" ]; then
+            echo "⚠️ No previous commit found, assuming first commit" >> $GITHUB_STEP_SUMMARY
+            # If this is the first commit, assume all packages have changed
+            CORE_VERSION=$(node -e "console.log(require('./packages/core/package.json').version)")
+            WEB_VERSION=$(node -e "console.log(require('./packages/web/package.json').version)")
+            NATIVE_VERSION=$(node -e "console.log(require('./packages/native/package.json').version)")
+            
+            echo "✅ First commit detected, all packages will be published" >> $GITHUB_STEP_SUMMARY
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "changed_packages=$VERSION_CHANGES" >> $GITHUB_OUTPUT
+            echo "changed_packages=core web native" >> $GITHUB_OUTPUT
+          else
+            echo "Comparing against previous commit: $PREV_COMMIT" >> $GITHUB_STEP_SUMMARY
+
+            # Get the previous commit's package versions
+            git show $PREV_COMMIT:packages/core/package.json > /tmp/prev_core.json 2>/dev/null || echo '{"version": "0.0.0"}' > /tmp/prev_core.json
+            git show $PREV_COMMIT:packages/web/package.json > /tmp/prev_web.json 2>/dev/null || echo '{"version": "0.0.0"}' > /tmp/prev_web.json
+            git show $PREV_COMMIT:packages/native/package.json > /tmp/prev_native.json 2>/dev/null || echo '{"version": "0.0.0"}' > /tmp/prev_native.json
+
+            # Get current versions
+            CORE_VERSION=$(node -e "console.log(require('./packages/core/package.json').version)")
+            WEB_VERSION=$(node -e "console.log(require('./packages/web/package.json').version)")
+            NATIVE_VERSION=$(node -e "console.log(require('./packages/native/package.json').version)")
+
+            # Get previous versions
+            PREV_CORE_VERSION=$(node -e "console.log(require('/tmp/prev_core.json').version)")
+            PREV_WEB_VERSION=$(node -e "console.log(require('/tmp/prev_web.json').version)")
+            PREV_NATIVE_VERSION=$(node -e "console.log(require('/tmp/prev_native.json').version)")
+
+            # Check if versions changed
+            VERSION_CHANGES=""
+
+            if [ "$CORE_VERSION" != "$PREV_CORE_VERSION" ]; then
+              VERSION_CHANGES="$VERSION_CHANGES core"
+              echo "✅ Core version changed: $PREV_CORE_VERSION → $CORE_VERSION" >> $GITHUB_STEP_SUMMARY
+            fi
+
+            if [ "$WEB_VERSION" != "$PREV_WEB_VERSION" ]; then
+              VERSION_CHANGES="$VERSION_CHANGES web"
+              echo "✅ Web version changed: $PREV_WEB_VERSION → $WEB_VERSION" >> $GITHUB_STEP_SUMMARY
+            fi
+
+            if [ "$NATIVE_VERSION" != "$PREV_NATIVE_VERSION" ]; then
+              VERSION_CHANGES="$VERSION_CHANGES native"
+              echo "✅ Native version changed: $PREV_NATIVE_VERSION → $NATIVE_VERSION" >> $GITHUB_STEP_SUMMARY
+            fi
+
+            if [ -z "$VERSION_CHANGES" ]; then
+              echo "❌ No version changes detected" >> $GITHUB_STEP_SUMMARY
+              echo "has_changes=false" >> $GITHUB_OUTPUT
+            else
+              echo "🎉 Version changes detected: $VERSION_CHANGES" >> $GITHUB_STEP_SUMMARY
+              echo "has_changes=true" >> $GITHUB_OUTPUT
+              echo "changed_packages=$VERSION_CHANGES" >> $GITHUB_OUTPUT
+            fi
           fi
 
       - name: Publish Packages
