@@ -108,8 +108,8 @@ jobs:
 
           **Note:** Make sure to bump package versions locally before merging to trigger releases."
 
-          # Create or update the comment (edit last if exists)
-          gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT_BODY" --edit-last
+          # Create or update the comment (edit last if exists, create if none)
+          gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT_BODY" --edit-last --create-if-none
 
       - name: Check for Version Changes
         if: github.ref == 'refs/heads/main'
