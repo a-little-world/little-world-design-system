@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.1.3
+
+### Patch Changes
+
+- Add isValidUrl to utils - required for text parser
+
 ## 1.1.2
 
 ### Patch Changes

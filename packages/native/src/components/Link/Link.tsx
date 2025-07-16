@@ -1,7 +1,8 @@
-import { getButtonStyles } from "../Button/styles";
+import { getButtonStyles, gradientStyles } from "../Button/styles";
 import Text from "../Text/Text";
 import { getLinkStyles, getLinkTextStyles } from "./styles";
 import {
+  ButtonAppearance,
   ButtonSizes,
   ButtonVariations,
   LinkBaseProps,
@@ -11,6 +12,7 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React, { forwardRef } from "react";
 import { TouchableOpacity, TouchableOpacityProps, Linking } from "react-native";
 import { useTheme } from "styled-components/native";
+import Gradient from "../Gradient/Gradient";
 
 export type LinkProps = Omit<TouchableOpacityProps, "onPress"> &
   LinkBaseProps & {
@@ -49,6 +51,8 @@ const Link = forwardRef<any, LinkProps>(
     } catch (error) {
       // Navigation container not available, will handle in onPress
     }
+    const hasGradient =
+      buttonAppearance === ButtonAppearance.Primary;
 
     const handlePress = () => {
       if (onClick) {
@@ -74,11 +78,11 @@ const Link = forwardRef<any, LinkProps>(
     // const Component = href ? ExternalLink : TouchableLink;
     const linkStyles = buttonAppearance
       ? getButtonStyles({
-          theme,
-          appearance: buttonAppearance,
-          size: buttonSize || ButtonSizes.Stretch,
-          variation: ButtonVariations.Basic,
-        })
+        theme,
+        appearance: buttonAppearance,
+        size: buttonSize || ButtonSizes.Stretch,
+        variation: ButtonVariations.Basic,
+      })
       : getLinkStyles({ theme });
 
     return (
@@ -89,10 +93,16 @@ const Link = forwardRef<any, LinkProps>(
         style={[linkStyles, style]}
         {...props}
       >
+        {hasGradient && (
+          <Gradient
+            gradient={theme.color.gradient.orange10}
+            style={{ ...linkStyles, ...gradientStyles.fullSize }}
+          />
+        )}
         <Text
           type={textType || TextTypes.Body5}
-          bold={Boolean(bold)}
-          style={getLinkTextStyles({ theme, buttonAppearance, textDecoration })}
+          bold={Boolean(buttonAppearance || bold)}
+          style={getLinkTextStyles({ theme, buttonAppearance, textDecoration: buttonAppearance ? false : textDecoration })}
         >
           {children}
         </Text>

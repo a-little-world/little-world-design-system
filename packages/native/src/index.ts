@@ -24,7 +24,7 @@ export * from "./components/Illustrations";
 export { default as Label } from "./components/Label/Label";
 export type { LabelProps } from "./components/Label/Label";
 export { default as Link } from "./components/Link/Link";
-export { default as Loading} from "./components/Loading/Loading";
+export { default as Loading } from "./components/Loading/Loading";
 export { default as Popover } from "./components/Popover/Popover";
 export { default as ProgressBar } from "./components/ProgressBar/ProgressBar";
 export { default as RadioGroup } from "./components/RadioGroup/RadioGroup";

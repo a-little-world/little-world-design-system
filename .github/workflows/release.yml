@@ -82,34 +82,132 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Create the comment content
-          COMMENT_BODY="## 📦 Package Version Preview
+          echo "## 📦 Analyzing package version changes..." >> $GITHUB_STEP_SUMMARY
 
-          ### 📊 Current Package Versions:
+          # Get the merge base with origin/main for proper version comparison
+          MERGE_BASE=$(git merge-base HEAD origin/main 2>/dev/null || echo "")
+          
+          if [ -z "$MERGE_BASE" ]; then
+            echo "⚠️ Could not determine merge base, showing current versions only" >> $GITHUB_STEP_SUMMARY
+            # Fallback: just show current versions without comparison
+            COMMENT_BODY="## 📦 Package Version Preview
 
-          | Package | Version |
-          |---------|---------|
-          "
+            ### 📊 Current Package Versions:
 
-          # Show current versions of all packages
-          for package in packages/*/package.json; do
-            if [ -f "$package" ]; then
-              PACKAGE_NAME=$(node -e "console.log(require('$(pwd)/$package').name)" 2>/dev/null || echo "Unknown")
-              PACKAGE_VERSION=$(node -e "console.log(require('$(pwd)/$package').version)" 2>/dev/null || echo "Unknown")
-              COMMENT_BODY+="| $PACKAGE_NAME | $PACKAGE_VERSION |"$'\n'
+            | Package | Version |
+            |---------|---------|
+            "
+
+            # Show current versions of all packages
+            for package in packages/*/package.json; do
+              if [ -f "$package" ]; then
+                PACKAGE_NAME=$(node -e "console.log(require('$(pwd)/$package').name)" 2>/dev/null || echo "Unknown")
+                PACKAGE_VERSION=$(node -e "console.log(require('$(pwd)/$package').version)" 2>/dev/null || echo "Unknown")
+                COMMENT_BODY+="| $PACKAGE_NAME | $PACKAGE_VERSION |"$'\n'
+              fi
+            done
+
+            COMMENT_BODY+="
+
+            ### 📋 Summary:
+            ⚠️ **Version comparison unavailable.** Please check package.json files manually to see if versions have changed.
+
+            ---
+            *This comment updates automatically on each commit.*"
+          else
+            echo "Comparing against merge base: $MERGE_BASE" >> $GITHUB_STEP_SUMMARY
+
+            # Get the previous commit's package versions from the merge base
+            git show $MERGE_BASE:packages/core/package.json > /tmp/prev_core.json 2>/dev/null || echo '{"version": "0.0.0"}' > /tmp/prev_core.json
+            git show $MERGE_BASE:packages/web/package.json > /tmp/prev_web.json 2>/dev/null || echo '{"version": "0.0.0"}' > /tmp/prev_web.json
+            git show $MERGE_BASE:packages/native/package.json > /tmp/prev_native.json 2>/dev/null || echo '{"version": "0.0.0"}' > /tmp/prev_native.json
+
+            # Get current versions
+            CORE_VERSION=$(node -e "console.log(require('./packages/core/package.json').version)")
+            WEB_VERSION=$(node -e "console.log(require('./packages/web/package.json').version)")
+            NATIVE_VERSION=$(node -e "console.log(require('./packages/native/package.json').version)")
+
+            # Get previous versions
+            PREV_CORE_VERSION=$(node -e "console.log(require('/tmp/prev_core.json').version)")
+            PREV_WEB_VERSION=$(node -e "console.log(require('/tmp/prev_web.json').version)")
+            PREV_NATIVE_VERSION=$(node -e "console.log(require('/tmp/prev_native.json').version)")
+
+            # Create the comment content
+            COMMENT_BODY="## 📦 Package Version Analysis
+
+            ### 🔄 Version Changes:
+
+            | Package | Previous | Current | Status |
+            |---------|----------|---------|--------|
+            "
+
+            # Check each package for changes
+            CORE_CHANGED=false
+            WEB_CHANGED=false
+            NATIVE_CHANGED=false
+
+            if [ "$CORE_VERSION" != "$PREV_CORE_VERSION" ]; then
+              COMMENT_BODY+="| @a-little-world/little-world-design-system-core | $PREV_CORE_VERSION | **$CORE_VERSION** | ✅ **Will be published** |"$'\n'
+              CORE_CHANGED=true
+            else
+              COMMENT_BODY+="| @a-little-world/little-world-design-system-core | $PREV_CORE_VERSION | $CORE_VERSION | ⏭️ No change |"$'\n'
             fi
-          done
 
-          COMMENT_BODY+="
-          ### 🔄 What will happen when this PR is merged to main:
+            if [ "$WEB_VERSION" != "$PREV_WEB_VERSION" ]; then
+              COMMENT_BODY+="| @a-little-world/little-world-design-system | $PREV_WEB_VERSION | **$WEB_VERSION** | ✅ **Will be published** |"$'\n'
+              WEB_CHANGED=true
+            else
+              COMMENT_BODY+="| @a-little-world/little-world-design-system | $PREV_WEB_VERSION | $WEB_VERSION | ⏭️ No change |"$'\n'
+            fi
 
-          - Packages will be published to npm with their current versions
-          - GitHub releases will be created for each published package
+            if [ "$NATIVE_VERSION" != "$PREV_NATIVE_VERSION" ]; then
+              COMMENT_BODY+="| @a-little-world/little-world-design-system-native | $PREV_NATIVE_VERSION | **$NATIVE_VERSION** | ✅ **Will be published** |"$'\n'
+              NATIVE_CHANGED=true
+            else
+              COMMENT_BODY+="| @a-little-world/little-world-design-system-native | $PREV_NATIVE_VERSION | $NATIVE_VERSION | ⏭️ No change |"$'\n'
+            fi
 
-          **Note:** Make sure to bump package versions locally before merging to trigger releases."
+            COMMENT_BODY+="
 
-          # Create or update the comment (edit last if exists)
-          gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT_BODY" --edit-last
+            ### 📋 Summary:"
+
+            if [ "$CORE_CHANGED" = true ] || [ "$WEB_CHANGED" = true ] || [ "$NATIVE_CHANGED" = true ]; then
+              COMMENT_BODY+="
+              🎉 **This PR will trigger releases!** The following packages will be published to npm:"
+              
+              if [ "$CORE_CHANGED" = true ]; then
+                COMMENT_BODY+="
+              - @a-little-world/little-world-design-system-core@$CORE_VERSION"
+              fi
+              
+              if [ "$WEB_CHANGED" = true ]; then
+                COMMENT_BODY+="
+              - @a-little-world/little-world-design-system@$WEB_VERSION"
+              fi
+              
+              if [ "$NATIVE_CHANGED" = true ]; then
+                COMMENT_BODY+="
+              - @a-little-world/little-world-design-system-native@$NATIVE_VERSION"
+              fi
+              
+              COMMENT_BODY+="
+
+              A GitHub release will also be created with changelog information."
+            else
+              COMMENT_BODY+="
+              ⚠️ **No version changes detected.** This PR will not trigger any releases.
+              
+              To trigger a release, bump the version in the relevant package.json file(s) before merging."
+            fi
+
+            COMMENT_BODY+="
+
+            ---
+            *This comment updates automatically on each commit.*"
+          fi
+
+          # Create or update the comment (edit last if exists, create if none)
+          gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT_BODY" --edit-last --create-if-none
 
       - name: Check for Version Changes
         if: github.ref == 'refs/heads/main'

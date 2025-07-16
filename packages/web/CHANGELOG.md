@@ -1,20 +1,28 @@
 # @a-little-world/little-world-design-system
 
+## 2.0.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.1.3
+
 ## 2.0.1
 
 ### Patch Changes
-  ## 📚 Documentation Improvements
 
-  - **Storybook MDX**: Enhanced theme accessibility in MDX documentation files
-  - **Design Tokens**: Added comprehensive documentation for spacing, radius, and breakpoints
-  - **Color System**: Improved color token documentation with proper theme implementation
-  - **Typography**: Updated typography documentation with accurate font size values from core
+## 📚 Documentation Improvements
 
-  ## 🔧 Technical Improvements
+- **Storybook MDX**: Enhanced theme accessibility in MDX documentation files
+- **Design Tokens**: Added comprehensive documentation for spacing, radius, and breakpoints
+- **Color System**: Improved color token documentation with proper theme implementation
+- **Typography**: Updated typography documentation with accurate font size values from core
 
-  - **Theme Integration**: Fixed MDX files to use theme directly instead of tokensPixelated
-  - **Documentation Structure**: Reorganized foundation documentation for better discoverability
-  - **Implementation Examples**: Updated all code examples to use proper styled-components theme pattern
+## 🔧 Technical Improvements
+
+- **Theme Integration**: Fixed MDX files to use theme directly instead of tokensPixelated
+- **Documentation Structure**: Reorganized foundation documentation for better discoverability
+- **Implementation Examples**: Updated all code examples to use proper styled-components theme pattern
 
 - Updated dependencies
   - @a-little-world/little-world-design-system-core@1.1.2

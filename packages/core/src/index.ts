@@ -5,6 +5,7 @@ export { coreColors, coreSpacing } from './tokens/core';
 // Export text utilities
 export { getTextStyle } from './utils/text/getTextStyle';
 export { parseSvg } from './utils/svgs';
+export { isValidUrl } from './utils/isValidUrl';
 
 // Export common types
 export type { ValueOf } from './utils/types';
