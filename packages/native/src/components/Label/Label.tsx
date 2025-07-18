@@ -1,7 +1,8 @@
 import { getLabelStyles } from "./styles";
 import React from "react";
-import { Text, TextStyle, StyleProp } from "react-native";
+import { TextStyle, StyleProp } from "react-native";
 import { useTheme } from "styled-components/native";
+import Text from "../Text/Text";
 
 export interface LabelProps {
   style?: StyleProp<TextStyle>;
@@ -23,17 +24,17 @@ export const Label: React.FC<LabelProps> = ({
   const theme = useTheme();
   return (
     <Text
+
       style={[
         getLabelStyles({
           theme,
           bold,
           inline,
           marginBottom,
-          //toolTipText,
         }),
         style,
       ]}
-      nativeID={nativeId}
+
     >
       {children}
     </Text>

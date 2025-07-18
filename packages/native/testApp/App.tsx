@@ -6,6 +6,7 @@ import {
   Logo,
   Popover,
   Text,
+  Checkbox
 } from "@a-little-world/little-world-design-system-native";
 import { SafeAreaView, StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -15,6 +16,7 @@ import { PortalHost } from "@rn-primitives/portal";
 import { ButtonAppearance, TextTypes } from "@a-little-world/little-world-design-system-core";
 import { useTheme } from "styled-components/native";
 import TestPage from "./TestPage";
+import CheckboxStories from "./stories/Checkbox.stories";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
 const textParser = {
   bold: "<bold>This will be bold</bold> Hallo",
   highlight: "<highlight>This will be orange</highlight>sdfa",
-  link: `<a {"href": "https://little-world.com/", "target":"_blank"}>Link</a>`,
+  link: `Text davor <a {"href": "https://little-world.com/", "target":"_blank"}>Link</a> und text danach`,
   linkAsButton: `<a {"to": "TestPage", "target":"_blank", "buttonAppearance": "primary"}>Button</a>`,
   button: "<button>Test Button</button>"
 }
@@ -67,6 +69,7 @@ function AppContent({ navigation }: { navigation: any }) {
         <Text>{textParser.link}</Text>
         <Text>{textParser.linkAsButton}</Text>
         <Text>{textParser.button}</Text>
+        <Checkbox onCheckedChange={(value) => console.log({ checked: value })} label='Hallo ein <bold>guten</bold> Tag' checked={false}></Checkbox>
       </View>
 
       <Button

@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  GestureResponderEvent,
   Text as RNText,
   TextStyle as RNTextStyle,
   StyleProp,
@@ -18,6 +19,7 @@ type TextProps = TextBaseProps & {
   disableParser?: boolean;
   italic?: boolean;
   style?: StyleProp<RNTextStyle>;
+  onPress?: (event: GestureResponderEvent) => void;
 };
 
 const getStyles = ({
@@ -45,7 +47,7 @@ const getStyles = ({
         ? "SignikaNegativeBold"
         : "SignikaNegative"
       : "WorkSans",
-      ...(italic && { fontStyle: "italic", transform: [{ skewX: "-12deg" }]})
+  ...(italic && { fontStyle: "italic", transform: [{ skewX: "-12deg" }] })
 });
 
 const Text = ({
@@ -57,6 +59,7 @@ const Text = ({
   disableParser = false,
   italic = false,
   style,
+  onPress,
   type = TextTypes.Body5,
 }: TextProps) => {
   const theme = useTheme();
@@ -70,10 +73,10 @@ const Text = ({
   });
 
   return (
-    <RNText id={id} style={[textStyles, style]}>
+    <RNText id={id} style={[textStyles, style]} onPress={onPress}>
       {typeof children === 'string' && !disableParser
-      ? textParser(children)
-      : children}
+        ? textParser(children)
+        : children}
     </RNText>
   );
 };
