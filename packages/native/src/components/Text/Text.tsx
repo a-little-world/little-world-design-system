@@ -71,9 +71,20 @@ const Text = ({
     color,
     theme
   });
+  const [pressed, setPressed] = React.useState(false);
+  const clickable = typeof onPress === 'function';
 
   return (
-    <RNText id={id} style={[textStyles, style]} onPress={onPress}>
+    <RNText id={id} style={[
+      textStyles,
+      style,
+      clickable && pressed && { opacity: 0.5 },
+    ]}
+      onPress={onPress}
+      onPressIn={clickable ? () => setPressed(true) : undefined}
+      onPressOut={clickable ? () => setPressed(false) : undefined}
+      suppressHighlighting
+    >
       {typeof children === 'string' && !disableParser
         ? textParser(children)
         : children}
