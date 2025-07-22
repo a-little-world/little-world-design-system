@@ -4,27 +4,11 @@ import {
   Link,
   Text,
 } from "@a-little-world/little-world-design-system-native";
-import { SafeAreaView, StyleSheet, View, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { ButtonAppearance, TextTypes } from "@a-little-world/little-world-design-system-core";
 import { useTheme } from "styled-components/native";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  scrollContent: {
-    padding: 20,
-    gap: 20,
-  },
-  section: {
-    gap: 12,
-    marginBottom: 24,
-  },
-  sectionTitle: {
-    marginBottom: 8,
-  },
-});
+import { getTestPageStyles } from "./TestPage.styles";
 
 interface TestPageProps {
   navigation: any;
@@ -32,15 +16,14 @@ interface TestPageProps {
 
 function TestPage({ navigation }: TestPageProps) {
   const theme = useTheme();
+  const styles = getTestPageStyles(theme);
 
   const handleButtonPress = (buttonType: string) => {
     console.log(`${buttonType} button pressed!`);
-    alert(`${buttonType} button pressed!`);
   };
 
   const handleLinkPress = (linkType: string) => {
     console.log(`${linkType} link pressed!`);
-    alert(`${linkType} link pressed!`);
   };
 
   const testTexts = {

@@ -66,6 +66,7 @@ const Button = React.forwardRef<
       <Loading color={textStyles.color as string} />
     ) : (
       <Text
+        bold
         style={[
           textStyles,
           disabled ? { color: theme.color.text.disabled } : {},

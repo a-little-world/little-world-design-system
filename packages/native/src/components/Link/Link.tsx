@@ -10,11 +10,11 @@ import {
 } from "@a-little-world/little-world-design-system-core";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React, { forwardRef } from "react";
-import { TouchableOpacity, TouchableOpacityProps, Linking } from "react-native";
+import { Pressable, PressableProps, Linking } from "react-native";
 import { useTheme } from "styled-components/native";
 import Gradient from "../Gradient/Gradient";
 
-export type LinkProps = Omit<TouchableOpacityProps, "onPress"> &
+export type LinkProps = Omit<PressableProps, "onPress"> &
   LinkBaseProps & {
     params?: Record<string, any>;
   };
@@ -74,8 +74,6 @@ const Link = forwardRef<any, LinkProps>(
       }
     };
 
-    // Choose appropriate component based on link type
-    // const Component = href ? ExternalLink : TouchableLink;
     const linkStyles = buttonAppearance
       ? getButtonStyles({
         theme,
@@ -84,21 +82,9 @@ const Link = forwardRef<any, LinkProps>(
         variation: ButtonVariations.Basic,
       })
       : getLinkStyles({ theme });
-    if (!buttonAppearance) {
-      return <Text
 
-        onPress={handlePress}
-        accessibilityRole="link"
-        type={textType || TextTypes.Body5}
-        bold={Boolean(buttonAppearance || bold)}
-        style={[linkStyles, style, getLinkTextStyles({ theme, buttonAppearance, textDecoration: buttonAppearance ? false : textDecoration })]}
-        {...props}
-      >
-        {children}
-      </Text>
-    }
     return (
-      <TouchableOpacity
+      <Pressable
         ref={ref}
         onPress={handlePress}
         accessibilityRole="link"
@@ -114,11 +100,15 @@ const Link = forwardRef<any, LinkProps>(
         <Text
           type={textType || TextTypes.Body5}
           bold={Boolean(buttonAppearance || bold)}
-          style={[getLinkTextStyles({ theme, buttonAppearance, textDecoration: buttonAppearance ? false : textDecoration })]}
+          style={getLinkTextStyles({ 
+            theme, 
+            buttonAppearance, 
+            textDecoration: buttonAppearance ? false : textDecoration 
+          })}
         >
           {children}
         </Text>
-      </TouchableOpacity>
+      </Pressable>
     );
   }
 );

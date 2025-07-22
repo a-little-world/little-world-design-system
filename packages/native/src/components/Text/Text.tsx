@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  GestureResponderEvent,
   Text as RNText,
   TextStyle as RNTextStyle,
   StyleProp,
@@ -19,7 +18,6 @@ type TextProps = TextBaseProps & {
   disableParser?: boolean;
   italic?: boolean;
   style?: StyleProp<RNTextStyle>;
-  onPress?: (event: GestureResponderEvent) => void;
 };
 
 const getStyles = ({
@@ -59,7 +57,6 @@ const Text = ({
   disableParser = false,
   italic = false,
   style,
-  onPress,
   type = TextTypes.Body5,
 }: TextProps) => {
   const theme = useTheme();
@@ -71,20 +68,9 @@ const Text = ({
     color,
     theme
   });
-  const [pressed, setPressed] = React.useState(false);
-  const clickable = typeof onPress === 'function';
 
   return (
-    <RNText id={id} style={[
-      textStyles,
-      style,
-      clickable && pressed && { opacity: 0.5 },
-    ]}
-      onPress={onPress}
-      onPressIn={clickable ? () => setPressed(true) : undefined}
-      onPressOut={clickable ? () => setPressed(false) : undefined}
-      suppressHighlighting
-    >
+    <RNText id={id} style={[textStyles, style]}>
       {typeof children === 'string' && !disableParser
         ? textParser(children)
         : children}
