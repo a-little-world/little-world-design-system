@@ -239,8 +239,6 @@ After running `version-packages`:
 
 The GitHub Action workflow automatically handles publishing when you push to the `main` branch with changesets. No manual publishing is required.
 
-**Note:** The `pnpm release` command is no longer needed since GitHub Actions handles the entire release process automatically.
-
 ## Individual Package Releases
 
 You can release individual packages by creating changesets that only affect specific packages:
@@ -453,23 +451,6 @@ In order to release a new version of this package:
 5. Include the release version in the title and give an appropriate description
 6. Hit the "publish release" button which will trigger a github action that will publish the new version to npm.
 
-## Initial Publishing
-
-For new packages that haven't been published yet (core and native), use the initial publishing script:
-
-```bash
-# Authenticate to GitHub Packages first
-npm login --registry=https://npm.pkg.github.com
-
-# Run the initial publishing script
-pnpm publish:initial
-```
-
-This script will:
-- Check authentication to GitHub Packages
-- Build all packages
-- Check if packages already exist (skips if they do)
-- Publish new packages to GitHub Packages
 
 ## GitHub Releases Integration
 
