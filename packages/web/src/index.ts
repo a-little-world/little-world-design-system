@@ -16,6 +16,7 @@ export {
 export { default as Checkbox } from "./components/Checkbox/Checkbox";
 export { default as CheckboxGrid } from "./components/CheckboxGrid/CheckboxGrid";
 export { default as Dropdown } from "./components/Dropdown/Dropdown";
+
 export { default as MultiDropdown } from "./components/MultiDropdown/MultiDropdown";
 export * from "./components/Icon";
 export * from "./components/Illustrations";
@@ -84,7 +85,10 @@ export type { TextStyle } from "./components/Text/types";
 
 // export core elements
 export {
-  ThemeVariants,
   Gradients,
+  StatusTypes,
+  TextTypes,
+  ToastBaseProps,
+  ThemeVariants,
   tokensPixelated as tokens,
 } from "@a-little-world/little-world-design-system-core";

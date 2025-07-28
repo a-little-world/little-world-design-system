@@ -9,7 +9,7 @@ import {
   ButtonVariations,
 } from "@a-little-world/little-world-design-system-core";
 import React from "react";
-import { StyleProp, ViewStyle, TouchableOpacity, Pressable } from "react-native";
+import { StyleProp, ViewStyle, Pressable } from "react-native";
 import { useTheme } from "styled-components/native";
 
 export { ButtonAppearance, ButtonSizes, ButtonVariations };

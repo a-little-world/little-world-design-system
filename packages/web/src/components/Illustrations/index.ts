@@ -10,8 +10,7 @@ import {
   peopleTogetherIllustration,
   questionMarksIllustration,
   raisingMoneyIllustration,
-  swirlyLinesThickIllustration,
-  swirlyLinesThinIllustration,
+  wavyLinesIllustration,
   teacherIllustration,
   timeFlexibleIllustration,
   unmatchedIllustration,
@@ -75,16 +74,6 @@ export const RaisingMoneyImage = createIllustrationComponent({
   svgData: raisingMoneyIllustration,
 });
 
-export const SwirlyLinesThickImage = createIllustrationComponent({
-  name: "SwirlyLinesThick",
-  svgData: swirlyLinesThickIllustration,
-});
-
-export const SwirlyLinesThinImage = createIllustrationComponent({
-  name: "SwirlyLinesThin",
-  svgData: swirlyLinesThinIllustration,
-});
-
 export const TeacherImage = createIllustrationComponent({
   name: "Teacher",
   svgData: teacherIllustration,
@@ -98,6 +87,11 @@ export const TimeFlexibleImage = createIllustrationComponent({
 export const UnmatchedImage = createIllustrationComponent({
   name: "Unmatched",
   svgData: unmatchedIllustration,
+});
+
+export const WavyLinesImage = createIllustrationComponent({
+  name: "WavyLines",
+  svgData: wavyLinesIllustration,
 });
 
 export const WomanOnRocketImage = createIllustrationComponent({

@@ -68,14 +68,14 @@ The core package is automatically built and tested when you run the native testA
 
 ```bash
 # This will build both core and native packages
-pnpm native:testapp:setup
+pnpm native:setup
 ```
 
 ### Development Workflow
 
 1. **Make changes** to design tokens or utilities
 2. **Build core** - `pnpm build:core`
-3. **Test in native** - `pnpm native:testapp:setup` (rebuilds and tests)
+3. **Test in native** - `pnpm native:setup-and-start` (rebuilds and tests)
 4. **Test in web** - `pnpm storybook:web` (if web components use core tokens)
 
 ## Publishing
