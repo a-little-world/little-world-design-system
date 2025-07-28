@@ -1,5 +1,15 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.1.5
+
+### Patch Changes
+
+- **Illustrations**: Updated and optimized SVG illustrations including brokenChain, laptopWithPhone, livingRoom, questionMarks, and wavyLines
+- **Icons**: Enhanced profileChat icon with improved SVG structure
+- **Color Tokens**: Refined color system with updated token definitions for better consistency
+- **Core Tokens**: Improved core design token structure and organization
+- **SVG Processing**: Enhanced SVG generation and processing utilities for better performance
+
 ## 1.1.4
 
 ### Patch Changes

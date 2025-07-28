@@ -6,7 +6,12 @@ import {
 } from "./styles";
 import * as CheckboxPrimitive from "@rn-primitives/checkbox";
 import React, { useMemo } from "react";
-import { GestureResponderEvent, StyleProp, View, ViewStyle } from "react-native";
+import {
+  GestureResponderEvent,
+  StyleProp,
+  View,
+  ViewStyle,
+} from "react-native";
 import { useTheme } from "styled-components/native";
 import Label from "../Label/Label";
 
@@ -50,35 +55,39 @@ const Checkbox: React.FC<CheckboxProps> = ({
   const [checked1, setChecked] = React.useState(false);
   return (
     <View style={checkboxContainerStyle.container}>
-      readOnly ? (
-      <View style={checkboxstyles.container}>
-        {checked && <CheckIcon label="check icon"
-          width={10}
-          height={10}
-          style={indicatorStyles.indicator}
-        />}
-      </View>
-      ) :
-      <CheckboxPrimitive.Root
-        id={id}
-        style={checkboxstyles.checkbox}
-        onPress={handlePress}
-        {...rest}
-        checked={checked1}
-        onCheckedChange={setChecked}
-      >
-        <CheckboxPrimitive.Indicator>
-          <CheckIcon label="check icon"
-            width={10}
-            height={10}
-            style={indicatorStyles.indicator}
-          />
-        </CheckboxPrimitive.Indicator>
-      </CheckboxPrimitive.Root>
-      <Label style={checkboxstyles.text} >{label}</Label>
+      {readOnly ? (
+        <View style={checkboxstyles.checkbox}>
+          {checked && (
+            <CheckIcon
+              label="check icon"
+              width={10}
+              height={10}
+              style={indicatorStyles.indicator}
+            />
+          )}
+        </View>
+      ) : (
+        <CheckboxPrimitive.Root
+          id={id}
+          style={checkboxstyles.checkbox}
+          onPress={handlePress}
+          {...rest}
+          checked={checked1}
+          onCheckedChange={setChecked}
+        >
+          <CheckboxPrimitive.Indicator>
+            <CheckIcon
+              label="check icon"
+              width={10}
+              height={10}
+              style={indicatorStyles.indicator}
+            />
+          </CheckboxPrimitive.Indicator>
+        </CheckboxPrimitive.Root>
+      )}
+      <Label style={checkboxstyles.text}>{label}</Label>
     </View>
   );
-
 };
 
 export default Checkbox;

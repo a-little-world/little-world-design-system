@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ManOnRocketImage, SwirlyLinesThinImage } from '../Illustrations';
+import { ManOnRocketImage, WavyLinesImage } from '../Illustrations';
 import TextPage, { ContentTypes } from './TextContent';
 
 export default {
@@ -45,7 +45,7 @@ export const Default = args => (
         {
           text: 'Type: Image',
           type: ContentTypes.Image,
-          Image: SwirlyLinesThinImage,
+          Image: WavyLinesImage,
         },
       ]}
       {...args}

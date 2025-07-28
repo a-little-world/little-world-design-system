@@ -95,9 +95,12 @@ The native testApp is an Expo React Native application that allows you to test t
 
 ```bash
 # Build core and native packages, create tarballs, and install in testApp
-pnpm native:testapp:setup
+pnpm native:setup
 
-# Start the Expo development server
+# Setup and start the Expo development test app
+pnpm native:setup
+
+# Start the test app only (without setup)
 pnpm native:start
 
 # Or run Storybook for native components
@@ -114,10 +117,9 @@ pnpm storybook:native
 #### Testing Workflow
 
 1. **Make changes** to core or native packages
-2. **Run setup** - `pnpm native:testapp:setup` (rebuilds and reinstalls)
-3. **Start app** - `pnpm native:start` (starts Expo dev server)
-4. **Test on device** - Scan QR code with Expo Go app
-5. **Hot reload** - Changes will automatically reload in the app
+2. **Run setup and start app** - `pnpm native:setup-and-start` (rebuilds and reinstalls)
+3. **Test on device** - Scan QR code with Expo Go app
+4. **Hot reload** - Changes will automatically reload in the app
 
 #### Troubleshooting
 

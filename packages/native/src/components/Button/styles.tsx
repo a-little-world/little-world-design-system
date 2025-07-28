@@ -129,10 +129,8 @@ export const getButtonTextStyles = ({
 }): TextStyle => {
   const baseStyles: TextStyle = {
     color: color || theme.color.text.primary,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
     fontWeight: "700",
+    textAlign: "center",
   };
 
   if (variation === ButtonVariations.Option) {

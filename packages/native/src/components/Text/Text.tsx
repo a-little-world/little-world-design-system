@@ -45,7 +45,7 @@ const getStyles = ({
         ? "SignikaNegativeBold"
         : "SignikaNegative"
       : "WorkSans",
-      ...(italic && { fontStyle: "italic", transform: [{ skewX: "-12deg" }]})
+  ...(italic && { fontStyle: "italic", transform: [{ skewX: "-12deg" }] })
 });
 
 const Text = ({
@@ -72,8 +72,8 @@ const Text = ({
   return (
     <RNText id={id} style={[textStyles, style]}>
       {typeof children === 'string' && !disableParser
-      ? textParser(children)
-      : children}
+        ? textParser(children)
+        : children}
     </RNText>
   );
 };

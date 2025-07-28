@@ -1,5 +1,22 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.1.6
+
+### Patch Changes
+
+- **Button Component**: Fixed font-weight issues and improved button styling consistency
+- **Checkbox Component**: Enhanced checkbox text rendering and resolved styling problems
+- **Link Component**: Fixed link height issues and improved text alignment
+- **Text Component**: Added onPress animation support and improved text rendering
+- **Label Component**: Enhanced label component styling and functionality
+- **Illustrations**: Updated illustration components with improved SVG processing
+- **Font Handling**: Resolved font-weight and boldness issues across components
+- **Text Parser**: Improved text parsing utilities for better content rendering
+- **Component Styling**: Enhanced overall component styling consistency and theme integration
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.1.5
+
 ## 0.1.5
 
 ### Patch Changes

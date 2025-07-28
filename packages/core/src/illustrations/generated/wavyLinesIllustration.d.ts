@@ -1,4 +1,4 @@
-export declare const swirlyLinesThinIllustration: {
+export declare const wavyLinesIllustration: {
   viewBox: string;
   elements: Array<{
     type: string;
