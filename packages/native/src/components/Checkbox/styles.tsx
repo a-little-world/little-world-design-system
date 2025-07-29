@@ -7,7 +7,7 @@ const ITEM_WIDTH = 16;
 export const getContainerStyles = ({ theme }: { theme: DefaultTheme }) => StyleSheet.create({
   container: {
     display: 'flex',
-    alignItems: 'flex-start',
+    alignItems: 'flex-end',
     marginVertical: theme.spacing.xxxxsmall,
     flexDirection: 'row',
   }
