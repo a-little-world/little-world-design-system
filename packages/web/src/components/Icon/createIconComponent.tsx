@@ -26,7 +26,7 @@ export const createIconComponent = ({
     label,
     labelVisible,
   }: IconSvgProps & { style?: CSSProperties; color?: string }) => {
-    // Create the transform options for React Native SVG
+    
     const svgOptions: SvgTransformOptions = {
       width,
       height,

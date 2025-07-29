@@ -95,9 +95,12 @@ The native testApp is an Expo React Native application that allows you to test t
 
 ```bash
 # Build core and native packages, create tarballs, and install in testApp
-pnpm native:testapp:setup
+pnpm native:setup
 
-# Start the Expo development server
+# Setup and start the Expo development test app
+pnpm native:setup
+
+# Start the test app only (without setup)
 pnpm native:start
 
 # Or run Storybook for native components
@@ -114,10 +117,9 @@ pnpm storybook:native
 #### Testing Workflow
 
 1. **Make changes** to core or native packages
-2. **Run setup** - `pnpm native:testapp:setup` (rebuilds and reinstalls)
-3. **Start app** - `pnpm native:start` (starts Expo dev server)
-4. **Test on device** - Scan QR code with Expo Go app
-5. **Hot reload** - Changes will automatically reload in the app
+2. **Run setup and start app** - `pnpm native:setup-and-start` (rebuilds and reinstalls)
+3. **Test on device** - Scan QR code with Expo Go app
+4. **Hot reload** - Changes will automatically reload in the app
 
 #### Troubleshooting
 
@@ -236,8 +238,6 @@ After running `version-packages`:
 ### 3. Publish Packages
 
 The GitHub Action workflow automatically handles publishing when you push to the `main` branch with changesets. No manual publishing is required.
-
-**Note:** The `pnpm release` command is no longer needed since GitHub Actions handles the entire release process automatically.
 
 ## Individual Package Releases
 
@@ -451,23 +451,6 @@ In order to release a new version of this package:
 5. Include the release version in the title and give an appropriate description
 6. Hit the "publish release" button which will trigger a github action that will publish the new version to npm.
 
-## Initial Publishing
-
-For new packages that haven't been published yet (core and native), use the initial publishing script:
-
-```bash
-# Authenticate to GitHub Packages first
-npm login --registry=https://npm.pkg.github.com
-
-# Run the initial publishing script
-pnpm publish:initial
-```
-
-This script will:
-- Check authentication to GitHub Packages
-- Build all packages
-- Check if packages already exist (skips if they do)
-- Publish new packages to GitHub Packages
 
 ## GitHub Releases Integration
 

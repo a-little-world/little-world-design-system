@@ -55,7 +55,7 @@ From the root of the monorepo:
 
 ```bash
 # Build and setup test app (builds core + native, creates tarballs, installs in testApp)
-pnpm native:testapp:setup
+pnpm native:setup
 
 # Start Expo development server
 pnpm native:start
@@ -74,7 +74,7 @@ pnpm storybook:native
 ### Development Workflow
 
 1. **Make changes** to core or native packages
-2. **Run setup** - `pnpm native:testapp:setup` (rebuilds and reinstalls)
+2. **Run setup** - `pnpm native:setup` (rebuilds and reinstalls)
 3. **Start app** - `pnpm native:start` (starts Expo dev server)
 4. **Test on device** - Scan QR code with Expo Go app
 5. **Hot reload** - Changes will automatically reload in the app

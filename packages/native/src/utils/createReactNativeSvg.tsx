@@ -50,16 +50,20 @@ const renderSvgElement = (
 
   // Get all attributes and override fill for path elements if needed
   const attrs = { ...element.attributes };
-
+  
   // Handle color attributes for SVG elements based on the colorAttribute property
+  // If element has color set that isn't #000 - do not override
   if (element.colorAttribute && element.colorAttribute !== "none") {
-    if (gradient) {
-      attrs[element.colorAttribute] = `url(#gradient${gradientId})`;
-    } else if (color) {
-      attrs[element.colorAttribute] = color;
+    if (attrs[element.colorAttribute] === "#000") {
+      attrs[element.colorAttribute] = color || "currentColor";
+    } else {
+      if (gradient) {
+        attrs[element.colorAttribute] = `url(#gradient${gradientId})`;
+      } else {
+        attrs[element.colorAttribute] =
+          attrs[element.colorAttribute] || color || "currentColor";
+      }
     }
-  } else if (element.type === "path" && color) {
-    attrs.fill = color;
   }
 
   // Add unique key attribute

@@ -28,7 +28,7 @@ const textParser = {
   bold: "<bold>This will be bold</bold> Hallo",
   highlight: "<highlight>This will be orange</highlight>sdfa",
   link: `Text davor <a {"href": "https://little-world.com/", "target":"_blank"}>Link</a> und text danach`,
-  linkAsButton: `<a {"to": "TestPage", "target":"_blank", "buttonAppearance": "primary"}>Button</a>`,
+  linkAsButton: `<a {"to": "TestPage", "target":"_blank", "buttonAppearance": "primary"}>Link as Button</a>`,
   button: "<button>Test Button</button>"
 }
 
@@ -63,7 +63,7 @@ function AppContent({ navigation }: { navigation: any }) {
       <Text type={TextTypes.Heading2}>Home Page</Text>
       <Text >{"<highlight>Passwort zurücksetzen</highlight> <bold>passwort zurücksetzen</bold>"}</Text>
       <Button onPress={() => console.log("presssing!!")}>
-        Basic button
+        Basic button test
       </Button>
       <View>
         <Logo label="Logo" />

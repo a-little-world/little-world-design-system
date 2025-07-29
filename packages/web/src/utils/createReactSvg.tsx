@@ -1,78 +1,97 @@
-import React from 'react';
-import { SvgTransformOptions, ParsedSvg, SvgElement, Gradients } from '@a-little-world/little-world-design-system-core';
-import IconGradient from '../components/Icon/IconGradient';
+import React from "react";
+import {
+  SvgTransformOptions,
+  ParsedSvg,
+  SvgElement,
+  Gradients,
+} from "@a-little-world/little-world-design-system-core";
+import IconGradient from "../components/Icon/IconGradient";
 
 // Helper function to generate unique keys
 const generateUniqueKey = (element: SvgElement, index: string | number) => {
-  return `${element.type}-${index}-${Math.random().toString(36).substring(2, 11)}`;
+  return `${element.type}-${index}-${Math.random()
+    .toString(36)
+    .substring(2, 11)}`;
 };
 
 // Helper function to safely render children, filtering out null values
-const renderChildren = (children: SvgElement[], options: SvgTransformOptions, parentIndex: string | number) => {
+const renderChildren = (
+  children: SvgElement[],
+  options: SvgTransformOptions,
+  parentIndex: string | number
+) => {
   return children
     .map((child, i) => renderSvgElement(child, options, `${parentIndex}-${i}`))
     .filter(Boolean); // Filter out null elements
 };
 
 // Renders SVG elements recursively
-const renderSvgElement = (element: SvgElement, options: SvgTransformOptions, index: string | number) => {
+const renderSvgElement = (
+  element: SvgElement,
+  options: SvgTransformOptions,
+  index: string | number
+) => {
   const { gradient, gradientId, color } = options;
-  
+
   // Get all attributes and override fill for path elements if needed
-  const attrs = {...element.attributes};
+  const attrs = { ...element.attributes };
   
   // Handle color attributes for SVG elements based on the colorAttribute property
-  if (element.colorAttribute && element.colorAttribute !== 'none') {
-    if (gradient) {
-      attrs[element.colorAttribute] = `url(#gradient${gradientId})`;
+  // If element has color set that isn't #000 - do not override
+  if (element.colorAttribute && element.colorAttribute !== "none") {
+    if (attrs[element.colorAttribute] === "#000") {
+      attrs[element.colorAttribute] = color || "currentColor";
     } else {
-      attrs[element.colorAttribute] = color || 'currentColor';
+      if (gradient) {
+        attrs[element.colorAttribute] = `url(#gradient${gradientId})`;
+      } else {
+        attrs[element.colorAttribute] =
+          attrs[element.colorAttribute] || color || "currentColor";
+      }
     }
   }
-  
+
   // Add unique key attribute
   attrs.key = generateUniqueKey(element, index);
-  
+
   switch (element.type) {
-    case 'path':
+    case "path":
       return <path {...attrs} />;
-    case 'g':
+    case "g":
       return (
-        <g {...attrs}>
-          {renderChildren(element.children, options, index)}
-        </g>
+        <g {...attrs}>{renderChildren(element.children, options, index)}</g>
       );
-    case 'defs':
+    case "defs":
       return (
         <defs {...attrs}>
           {renderChildren(element.children, options, index)}
         </defs>
       );
-    case 'linearGradient':
+    case "linearGradient":
       return (
         <linearGradient {...attrs}>
           {renderChildren(element.children, options, index)}
         </linearGradient>
       );
-    case 'clipPath':
+    case "clipPath":
       return (
         <clipPath {...attrs}>
           {renderChildren(element.children, options, index)}
         </clipPath>
       );
-    case 'stop':
+    case "stop":
       return <stop {...attrs} />;
-    case 'circle':
+    case "circle":
       return <circle {...attrs} />;
-    case 'rect':
+    case "rect":
       return <rect {...attrs} />;
-    case 'line':
+    case "line":
       return <line {...attrs} />;
-    case 'polygon':
+    case "polygon":
       return <polygon {...attrs} />;
-    case 'polyline':
+    case "polyline":
       return <polyline {...attrs} />;
-    case 'ellipse':
+    case "ellipse":
       return <ellipse {...attrs} />;
     default:
       console.warn(`Unsupported SVG element type: ${element.type}`);
@@ -80,15 +99,11 @@ const renderSvgElement = (element: SvgElement, options: SvgTransformOptions, ind
   }
 };
 
-export const createReactSvg = (svgData: ParsedSvg, options: SvgTransformOptions) => {
-  const {
-    width,
-    height,
-    gradient,
-    gradientId,
-    className,
-    label
-  } = options;
+export const createReactSvg = (
+  svgData: ParsedSvg,
+  options: SvgTransformOptions
+) => {
+  const { width, height, gradient, gradientId, className, label } = options;
 
   return (
     <svg
@@ -101,10 +116,15 @@ export const createReactSvg = (svgData: ParsedSvg, options: SvgTransformOptions)
       xmlns="http://www.w3.org/2000/svg"
       viewBox={svgData.viewBox}
     >
-      {svgData.elements.map((element, index) => 
+      {svgData.elements.map((element, index) =>
         renderSvgElement(element, options, index)
       )}
-      {gradient && <IconGradient variation={gradient as unknown as Gradients} id={gradientId as string} />}
+      {gradient && (
+        <IconGradient
+          variation={gradient as Gradients}
+          id={gradientId as string}
+        />
+      )}
     </svg>
   );
 };

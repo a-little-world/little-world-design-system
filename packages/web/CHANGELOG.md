@@ -1,5 +1,20 @@
 # @a-little-world/little-world-design-system
 
+## 2.1.0
+
+### Minor Changes
+
+- **Illustration Components**: Enhanced illustration component system with improved SVG processing and better component structure
+- **Icon Components**: Updated icon component creation utilities for better performance and consistency
+- **Theme Integration**: Improved theme handling and integration across components
+- **SVG Utilities**: Enhanced SVG processing utilities for better web rendering
+- **Component Exports**: Updated component exports to include latest illustration and icon improvements
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.1.5
+
 ## 2.0.3
 
 ### Patch Changes

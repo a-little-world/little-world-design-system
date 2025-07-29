@@ -10,13 +10,14 @@ import {
 } from "@a-little-world/little-world-design-system-core";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React, { forwardRef } from "react";
-import { Pressable, PressableProps, Linking } from "react-native";
+import { Pressable, PressableProps, ViewStyle, Linking, StyleProp } from "react-native";
 import { useTheme } from "styled-components/native";
 import Gradient from "../Gradient/Gradient";
 
 export type LinkProps = Omit<PressableProps, "onPress"> &
   LinkBaseProps & {
     params?: Record<string, any>;
+    style?: StyleProp<ViewStyle>;
   };
 
 /**
@@ -100,10 +101,10 @@ const Link = forwardRef<any, LinkProps>(
         <Text
           type={textType || TextTypes.Body5}
           bold={Boolean(buttonAppearance || bold)}
-          style={getLinkTextStyles({ 
-            theme, 
-            buttonAppearance, 
-            textDecoration: buttonAppearance ? false : textDecoration 
+          style={getLinkTextStyles({
+            theme,
+            buttonAppearance,
+            textDecoration: buttonAppearance ? false : textDecoration
           })}
         >
           {children}
