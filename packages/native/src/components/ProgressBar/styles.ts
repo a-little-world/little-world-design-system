@@ -5,7 +5,8 @@ export const getProgressBarStyles = ({ theme }: { theme: DefaultTheme }) => Styl
     wrapper: {
         flexDirection: 'row',
         alignItems: 'center',
-        width: '90%',
+        width: '100%',
+        gap: theme.spacing.xxxsmall,
         display: 'flex'
     },
     root: {
