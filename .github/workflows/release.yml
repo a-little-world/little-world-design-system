@@ -10,6 +10,12 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+# Add permissions for package publishing
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
 jobs:
   release:
     name: Release
@@ -25,6 +31,7 @@ jobs:
         with:
           node-version: 18
           registry-url: "https://npm.pkg.github.com"
+          scope: "@a-little-world"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
