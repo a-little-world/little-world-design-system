@@ -1,5 +1,5 @@
 import { getButtonStyles, gradientStyles } from "../Button/styles";
-import Text from "../Text/Text";
+import BaseText from "../Text/BaseText";
 import { getLinkStyles, getLinkTextStyles } from "./styles";
 import {
   ButtonAppearance,
@@ -98,7 +98,7 @@ const Link = forwardRef<any, LinkProps>(
             style={{ ...linkStyles, ...gradientStyles.fullSize }}
           />
         )}
-        <Text
+        <BaseText
           type={textType || TextTypes.Body5}
           bold={Boolean(buttonAppearance || bold)}
           style={getLinkTextStyles({
@@ -108,7 +108,7 @@ const Link = forwardRef<any, LinkProps>(
           })}
         >
           {children}
-        </Text>
+        </BaseText>
       </Pressable>
     );
   }

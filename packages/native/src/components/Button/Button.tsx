@@ -1,6 +1,6 @@
 import { Gradient } from "../Gradient/Gradient";
 import Loading from "../Loading/Loading";
-import Text from "../Text/Text";
+import BaseText from "../Text/BaseText";
 import { getButtonStyles, getButtonTextStyles, gradientStyles } from "./styles";
 import {
   ButtonAppearance,
@@ -65,7 +65,7 @@ const Button = React.forwardRef<
     const content = loading ? (
       <Loading color={textStyles.color as string} />
     ) : (
-      <Text
+      <BaseText
         bold
         style={[
           textStyles,
@@ -73,7 +73,7 @@ const Button = React.forwardRef<
         ]}
       >
         {children}
-      </Text>
+      </BaseText>
     );
 
     return (
