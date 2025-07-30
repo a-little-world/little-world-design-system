@@ -6,7 +6,8 @@ import {
   Logo,
   Popover,
   Text,
-  Checkbox
+  Checkbox,
+  ProgressBar
 } from "@a-little-world/little-world-design-system-native";
 import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -16,7 +17,8 @@ import { PortalHost } from "@rn-primitives/portal";
 import { ButtonAppearance, TextTypes } from "@a-little-world/little-world-design-system-core";
 import { useTheme } from "styled-components/native";
 import TestPage from "./TestPage";
-
+import CheckboxStories from "./stories/Checkbox.stories";
+// import * as SplashScreen from 'expo-splash-screen';
 import { loadFonts } from "./utils/loadFonts";
 import { getAppStyles } from "./App.styles";
 
@@ -88,7 +90,7 @@ function AppContent({ navigation }: { navigation: any }) {
         <Checkbox onCheckedChange={(value) => console.log({ checked: value })} label='Hallo ein <bold>guten</bold> Tag' checked={false}></Checkbox>
         <Checkbox onCheckedChange={(value) => console.log({ checked: value })} label='Read only' readOnly checked />
       </View>
-
+      <ProgressBar max={8} value={2}></ProgressBar>
       <Button
         appearance={ButtonAppearance.Primary}
         onPress={() => navigation.navigate("TestPage")}

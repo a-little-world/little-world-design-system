@@ -3,22 +3,22 @@ import { DefaultTheme } from "styled-components/native";
 
 export const getProgressBarStyles = ({ theme }: { theme: DefaultTheme }) => StyleSheet.create({
     wrapper: {
-        display: 'flex',
+        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
-        gap: theme.spacing.small,
+        width: '100%',
+        gap: theme.spacing.xxxsmall,
+        display: 'flex'
     },
     root: {
+        flex: 1,
         position: 'relative',
         overflow: 'hidden',
-        borderRadius: theme.radius.full,
+        borderRadius: theme.radius.xsmall,
         backgroundColor: theme.color.surface.tertiary,
-        width: 300,
         height: 8,
     },
     indicator: {
         backgroundColor: theme.color.surface.indicator,
-        width: '100%',
         height: '100%',
     }
 })

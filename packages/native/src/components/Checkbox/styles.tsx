@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import Label from '../Label/Label';
 import { DefaultTheme } from 'styled-components/native';
 
 const ITEM_WIDTH = 16;
@@ -7,7 +6,7 @@ const ITEM_WIDTH = 16;
 export const getContainerStyles = ({ theme }: { theme: DefaultTheme }) => StyleSheet.create({
   container: {
     display: 'flex',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     marginVertical: theme.spacing.xxxxsmall,
     flexDirection: 'row',
   }

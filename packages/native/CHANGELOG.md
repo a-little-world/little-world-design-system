@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.1.7
+
+### Patch Changes
+
+- Improve progress bar styling
+- Improve createReactNativeSvg helper function
+- Add missing ClockDashedIcon
+
 ## 0.1.6
 
 ### Patch Changes

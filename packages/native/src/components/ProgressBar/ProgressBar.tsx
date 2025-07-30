@@ -25,7 +25,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ style, max, value = 0 }) => {
 
   return (
     <View style={[styles.wrapper, style]}>
-      <Text id="progressBarIndicator" type={TextTypes.Body6}>
+      <Text id="progressBarIndicator" type={TextTypes.Body6} style={{ minWidth: 40 }}>
         {value}/{max}
       </Text>
       <ProgressPrimitive.Root

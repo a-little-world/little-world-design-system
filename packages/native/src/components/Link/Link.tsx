@@ -101,10 +101,10 @@ const Link = forwardRef<any, LinkProps>(
         <Text
           type={textType || TextTypes.Body5}
           bold={Boolean(buttonAppearance || bold)}
-          style={getLinkTextStyles({ 
-            theme, 
-            buttonAppearance, 
-            textDecoration: buttonAppearance ? false : textDecoration 
+          style={getLinkTextStyles({
+            theme,
+            buttonAppearance,
+            textDecoration: buttonAppearance ? false : textDecoration
           })}
         >
           {children}
