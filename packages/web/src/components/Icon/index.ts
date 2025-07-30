@@ -11,6 +11,7 @@ import {
     chevronLeftIcon,
     chevronRightIcon,
     clockIcon,
+    clockDashedIcon,
     closeIcon,
     dashboardIcon,
     dotsIcon,
@@ -140,6 +141,11 @@ import {
   export const ClockIcon = createIconComponent({
     name: "Clock",
     svgData: clockIcon,
+  });
+
+  export const ClockDashedIcon = createIconComponent({
+    name: "ClockDashed",
+    svgData: clockDashedIcon,
   });
   
   export const CloseIcon = createIconComponent({
