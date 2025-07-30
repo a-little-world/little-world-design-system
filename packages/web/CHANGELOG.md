@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system
 
+## 2.2.0
+
+### Minor Changes
+
+- Fix issues with loading fonts in web environments
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.2.0
+
 ## 2.1.0
 
 ### Minor Changes
