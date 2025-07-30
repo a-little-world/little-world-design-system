@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.2.0
+
+### Minor Changes
+
+- improved Progressbar
+
 ## 0.1.6
 
 ### Patch Changes
