@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 2.2.1
+
+### Patch Changes
+
+- Fix theme provider in web package and also web package tests
+
 ## 2.2.0
 
 ### Minor Changes
