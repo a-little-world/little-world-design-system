@@ -135,12 +135,8 @@ If you need to publish manually (not recommended):
 # Ensure you're authenticated to GitHub Packages
 npm login --registry=https://npm.pkg.github.com
 
-# Build the package
 pnpm build:web
-
-# Publish from the web package directory
-cd packages/web
-npm publish --access restricted
+pnpm --filter=@a-little-world/little-world-design-system publish
 ```
 
 **Note**: Manual publishing bypasses the automated changelog generation and release management. Use the automated process whenever possible.

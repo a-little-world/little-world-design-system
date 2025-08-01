@@ -76,7 +76,7 @@ export const CustomThemeProvider = ({
 
   return (
     <Provider value={contextValue}>
-      <ThemeProvider theme={themes[currentMode]}>{children}</ThemeProvider>
+      <ThemeProvider theme={themes[currentMode] || defaultTheme}>{children}</ThemeProvider>
     </Provider>
   );
 };

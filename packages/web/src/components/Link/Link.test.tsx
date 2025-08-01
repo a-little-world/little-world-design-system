@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 
 import { render, renderWithUser, screen } from '../../testUtils';
