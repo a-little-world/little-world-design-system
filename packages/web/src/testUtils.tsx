@@ -1,6 +1,5 @@
 // @ts-nocheck
 import React, { ReactNode } from "react";
-import "@testing-library/dom/node_modules/pretty-format";
 import "@testing-library/jest-dom/extend-expect";
 import {
   render as defaultRender,

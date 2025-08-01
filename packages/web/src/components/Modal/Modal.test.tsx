@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { render, renderWithUser, screen } from '../../testUtils';
 import Modal, { BACKDROP_LABEL } from './Modal';

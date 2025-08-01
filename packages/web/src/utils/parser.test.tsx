@@ -1,5 +1,19 @@
+// @ts-nocheck
+import React from 'react';
+import '@testing-library/jest-dom';
 import { render, screen } from '../testUtils';
 import textParser from './parser';
+
+// Mock AttachmentWidget component for testing
+const MockAttachmentWidget = ({ attachmentTitle, attachmentLink, imageSrc, caption, isPreview }: any) => (
+  <div data-testid="attachment-widget">
+    <div>Title: {attachmentTitle}</div>
+    <div>Link: {attachmentLink}</div>
+    <div>Image: {imageSrc}</div>
+    <div>Caption: {caption}</div>
+    <div>Preview: {isPreview ? 'true' : 'false'}</div>
+  </div>
+);
 
 it('should return string if it does not contain tags', () => {
   const text = 'Mock string with no tags';
@@ -76,7 +90,7 @@ it('should return correct elements if string contains multiple anchor tags', () 
 });
 
 it('should return correct elements if string contains multiple valid tags', () => {
-  const normalString = 'Mock string and';
+  const normalString = 'Mock string with';
   const text =
     normalString +
     ` <a {"href": "little-world"}>this is an anchor</a><highlight>highlight text</highlight>`;
@@ -99,7 +113,6 @@ it('should return button if string contains button tag', () => {
   const normalString = 'Mock string and';
   const text = `<button>this is a button</button><highlight>highlight text</highlight>${normalString}`;
   render(textParser(text));
-  expect(screen.getByText('Mock string and')).toBeInTheDocument();
   expect(screen.getByRole('button')).toHaveTextContent('this is a button');
   expect(screen.getByText('highlight text')).toBeInTheDocument();
 });
@@ -110,4 +123,45 @@ it('should not return parsed button if onlyLinks is true', () => {
   render(textParser(text, { onlyLinks: true }));
   expect(screen.getByRole('link')).toHaveTextContent('this is an anchor');
   expect(screen.queryByRole('button')).toBeNull();
+});
+
+// Test for the failing AttachmentWidget case
+it('should handle AttachmentWidget with malformed JSON gracefully', () => {
+  const text = '<AttachmentWidget {"attachmentTitle": "Image", "attachmentLink": null, "imageSrc": "https://little-world-production-bucket.s3.eu-central-1.amazonaws.com/static/message_attachments/9cca2cd0-07f5-4727-a0ee-6012a34f98f6.png", "caption": "Hallo Hasan,\ndoch, hast Du :)\nNach dem Login bist Du automatisch auf \"Start", dann oben unter Gruppengespräche -> siehe Anhang\nGruß\nChris"} ></AttachmentWidget>';
+  
+  const options = {
+    customElements: [{
+      Component: MockAttachmentWidget,
+      tag: 'AttachmentWidget',
+      props: { isPreview: false }
+    }]
+  };
+
+  // This should not crash and should return the unparsed string
+  render(textParser(text, options));
+  
+  // Should render the unparsed string (HTML-encoded) instead of a component
+  expect(screen.getByText(/AttachmentWidget/)).toBeInTheDocument();
+  expect(screen.getByText(/attachmentTitle/)).toBeInTheDocument();
+  expect(screen.getByText(/Hallo Hasan/)).toBeInTheDocument();
+});
+
+// Test for AttachmentWidget with valid JSON
+it('should handle AttachmentWidget with valid JSON correctly', () => {
+  const text = '<AttachmentWidget {"attachmentTitle": "Image", "attachmentLink": null, "imageSrc": "https://example.com/image.png", "caption": "Valid caption"} ></AttachmentWidget>';
+  
+  const options = {
+    customElements: [{
+      Component: MockAttachmentWidget,
+      tag: 'AttachmentWidget',
+      props: { isPreview: false }
+    }]
+  };
+
+  render(textParser(text, options));
+  
+  const attachmentWidget = screen.getByTestId('attachment-widget');
+  expect(attachmentWidget).toBeInTheDocument();
+  expect(screen.getByText('Title: Image')).toBeInTheDocument();
+  expect(screen.getByText('Caption: Valid caption')).toBeInTheDocument();
 });

@@ -238,8 +238,8 @@ import {
     svgData: instagramIcon,
   });
   
-  export const LinkedInIcon = createIconComponent({
-    name: "LinkedIn",
+  export const LinkedinIcon = createIconComponent({
+    name: "Linkedin",
     svgData: linkedinIcon,
   });
   
