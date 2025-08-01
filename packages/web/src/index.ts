@@ -92,3 +92,5 @@ export {
   ThemeVariants,
   tokensPixelated as tokens,
 } from "@a-little-world/little-world-design-system-core";
+
+export type { ThemeWeb } from '@a-little-world/little-world-design-system-core';
