@@ -1,6 +1,6 @@
 {
   "name": "@a-little-world/little-world-design-system",
-  "version": "2.2.4",
+  "version": "2.2.0",
   "description": "Design system for Little World applications",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -61,7 +61,6 @@
     "storybook-addon-remix-react-router": "^4.0.1",
     "ts-jest": "^29.1.0",
     "ts-loader": "^9.4.2",
-    "ts-node": "^10.9.2",
     "typescript": "^4.9.3"
   },
   "dependencies": {
@@ -83,11 +82,26 @@
     "lodash": "^4.17.21",
     "react-phone-input-2": "^2.15.1",
     "react-router": "^6.23.1",
-    "react-router-dom": "6.23.1"
+    "styled-components": "^6.1.18"
   },
   "peerDependencies": {
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "styled-components": "^6.1.18"
+    "react-dom": "18.3.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ],
+    "moduleNameMapper": {
+      "\\.svg": "<rootDir>/__mocks__/svg.js"
+    },
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "testMatch": [
+      "**/__tests__/**/*.(ts|tsx|js)",
+      "**/*.(test|spec).(ts|tsx|js)"
+    ]
   }
 }

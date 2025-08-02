@@ -9,18 +9,26 @@ type TextProps = BaseTextProps & {
   disableParser?: boolean;
 };
 
-const Text = ({
+const Text = React.memo(({
   disableParser = false,
   children,
   ...baseTextProps
 }: TextProps) => {
+  // Memoize the parsed content to prevent unnecessary re-parsing
+  const parsedContent = React.useMemo(() => {
+    if (typeof children === 'string' && !disableParser) {
+      return textParser(children);
+    }
+    return children;
+  }, [children, disableParser]);
+
   return (
     <BaseText {...baseTextProps}>
-      {typeof children === 'string' && !disableParser
-        ? textParser(children)
-        : children}
+      {parsedContent}
     </BaseText>
   );
-};
+});
+
+Text.displayName = 'Text';
 
 export default Text;

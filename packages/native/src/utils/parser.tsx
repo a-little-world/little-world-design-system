@@ -6,6 +6,7 @@ import Button from "../components/Button/Button";
 import Link from "../components/Link/Link";
 import replaceUrlsWithAnchors from "./replaceUrlsWithAnchors";
 
+// Move styled component creation to module level to prevent dynamic creation
 const ColorText = styled.Text<{ color: keyof typeof SupportedColorTags }>`
   color: ${({ theme, color }) =>
     color === SupportedColorTags.bold
@@ -43,17 +44,18 @@ enum SupportedColorTags {
   bold = "bold",
 }
 
-const textParser = (
-  text: string,
-  options: {
+// Create a React component to prevent dynamic styled component creation
+const ParsedText: React.FC<{
+  text: string;
+  options?: {
     customElements?: {
       Component: React.ElementType;
       props?: { [key: string]: any };
       tag: string;
     }[];
     onlyLinks?: boolean;
-  } = {}
-) => {
+  };
+}> = React.memo(({ text, options = {} }) => {
   const components: React.ReactNode[] = [];
   let match: RegExpExecArray | null;
   let currentIndex = 0;
@@ -173,6 +175,21 @@ const textParser = (
       )}
     </Text>
   );
+});
+
+// Keep the original function signature for backward compatibility
+const textParser = (
+  text: string,
+  options: {
+    customElements?: {
+      Component: React.ElementType;
+      props?: { [key: string]: any };
+      tag: string;
+    }[];
+    onlyLinks?: boolean;
+  } = {}
+) => {
+  return <ParsedText text={text} options={options} />;
 };
 
 export default textParser;

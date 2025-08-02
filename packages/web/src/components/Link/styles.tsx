@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import { ButtonAppearance, ButtonSizes } from '../Button/Button';
