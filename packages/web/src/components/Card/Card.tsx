@@ -13,7 +13,7 @@ import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
 import { pixelate } from '../../utils/styles';
 
-export { CardSizes };
+export { CardSizes, CardDimensions };
 
 const StyledCard = styled.div<{
   $borderColor?: string;

@@ -5,10 +5,15 @@ import React, {
   useEffect,
   useMemo,
   useState,
-} from 'react';
-import { DefaultTheme, ThemeProvider } from 'styled-components';
+} from "react";
+import { DefaultTheme, ThemeProvider } from "styled-components";
 
-import { ThemeVariants, ThemeContextType, defaultThemeVariant, tokensPixelated } from '@a-little-world/little-world-design-system-core';
+import {
+  ThemeVariants,
+  ThemeContextType,
+  defaultThemeVariant,
+  tokensPixelated,
+} from "@a-little-world/little-world-design-system-core";
 
 export const lightTheme: DefaultTheme = {
   ...tokensPixelated,
@@ -30,6 +35,7 @@ export const themes = {
 export interface ThemeProviderProps {
   children: ReactNode;
   defaultMode?: ThemeVariants;
+  enableDarkMode?: boolean;
 }
 
 export const themeContext = createContext<ThemeContextType>({
@@ -42,19 +48,21 @@ const { Provider } = themeContext;
 export const CustomThemeProvider = ({
   children,
   defaultMode = defaultThemeVariant,
+  enableDarkMode = false,
 }: ThemeProviderProps) => {
   const [currentMode, setCurrentMode] = useState<ThemeVariants>(defaultMode);
 
   useEffect(() => {
-    // disable dark mode until palette ready
-    const savedTheme = localStorage.getItem('theme') as ThemeVariants;
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme && ['dark', 'light'].includes(savedTheme)) {
-      setCurrentMode(savedTheme);
-    } else if (prefersDark) {
-      setCurrentMode(ThemeVariants.dark);
+    if (enableDarkMode) {
+      const savedTheme = localStorage.getItem("theme") as ThemeVariants;
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (savedTheme && ["dark", "light"].includes(savedTheme)) {
+        setCurrentMode(savedTheme);
+      } else if (prefersDark) {
+        setCurrentMode(ThemeVariants.dark);
+      }
     }
   }, []);
 
@@ -62,7 +70,7 @@ export const CustomThemeProvider = ({
     setCurrentMode((currentMode: ThemeVariants) =>
       currentMode === ThemeVariants.light
         ? ThemeVariants.dark
-        : ThemeVariants.light,
+        : ThemeVariants.light
     );
   }, []);
 
@@ -71,12 +79,14 @@ export const CustomThemeProvider = ({
       currentMode,
       toggleMode,
     }),
-    [currentMode, toggleMode],
+    [currentMode, toggleMode]
   );
 
   return (
     <Provider value={contextValue}>
-      <ThemeProvider theme={themes[currentMode] || defaultTheme}>{children}</ThemeProvider>
+      <ThemeProvider theme={themes[currentMode] || defaultTheme}>
+        {children}
+      </ThemeProvider>
     </Provider>
   );
 };

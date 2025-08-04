@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 2.2.2
+
+### Patch Changes
+
+- Export ThemeWeb type
+
 ## 2.2.1
 
 ### Patch Changes

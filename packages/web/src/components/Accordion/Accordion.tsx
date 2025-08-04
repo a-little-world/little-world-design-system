@@ -1,4 +1,3 @@
-import type { AccordionSingleProps } from '@radix-ui/react-accordion';
 import React from 'react';
 
 import { AccordionBaseProps } from '@a-little-world/little-world-design-system-core';
@@ -13,7 +12,7 @@ import {
   TriggerIcon,
 } from './styles';
 
-interface AccordionProps extends AccordionBaseProps, AccordionSingleProps {
+interface AccordionProps extends AccordionBaseProps {
   className?: string;
   contentCss?: any; // Simplified for v6 compatibility
 }

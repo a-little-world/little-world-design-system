@@ -4,6 +4,7 @@ import {
   ParsedSvg,
   SvgElement,
   Gradients,
+  GradientTypes,
 } from "@a-little-world/little-world-design-system-core";
 import IconGradient from "../components/Icon/IconGradient";
 
@@ -35,19 +36,17 @@ const renderSvgElement = (
 
   // Get all attributes and override fill for path elements if needed
   const attrs = { ...element.attributes };
-  
+
   // Handle color attributes for SVG elements based on the colorAttribute property
   // If element has color set that isn't #000 - do not override
   if (element.colorAttribute && element.colorAttribute !== "none") {
     if (attrs[element.colorAttribute] === "#000") {
-      attrs[element.colorAttribute] = color || "currentColor";
+      attrs[element.colorAttribute] = gradient
+        ? `url(#${gradientId})`
+        : color || "currentColor";
     } else {
-      if (gradient) {
-        attrs[element.colorAttribute] = `url(#gradient${gradientId})`;
-      } else {
-        attrs[element.colorAttribute] =
-          attrs[element.colorAttribute] || color || "currentColor";
-      }
+      attrs[element.colorAttribute] =
+        attrs[element.colorAttribute] || color || "currentColor";
     }
   }
 
@@ -103,7 +102,15 @@ export const createReactSvg = (
   svgData: ParsedSvg,
   options: SvgTransformOptions
 ) => {
-  const { width, height, gradient, gradientId, className, label } = options;
+  const {
+    className,
+    width,
+    height,
+    gradient,
+    gradientId,
+    gradientType,
+    label,
+  } = options;
 
   return (
     <svg
@@ -122,6 +129,7 @@ export const createReactSvg = (
       {gradient && (
         <IconGradient
           variation={gradient as Gradients}
+          type={gradientType as GradientTypes}
           id={gradientId as string}
         />
       )}

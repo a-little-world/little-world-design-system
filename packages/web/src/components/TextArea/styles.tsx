@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 import Text from '../Text/Text';
-import { TextAreaSize } from './TextArea';
+import { TextAreaDimensions, TextAreaSize } from '@a-little-world/little-world-design-system-core';
 
 export const AreaWrapper = styled.div<{ $size?: TextAreaSize }>`
   display: flex;
@@ -16,7 +16,7 @@ export const AreaWrapper = styled.div<{ $size?: TextAreaSize }>`
 export const Area = styled.textarea<{
   $expandable: boolean;
   $hasError: boolean;
-  $size?: TextAreaSize;
+  $size: TextAreaSize;
 }>`
   width: 100%;
   font-family: 'Signika Negative', sans-serif;
@@ -42,7 +42,7 @@ export const Area = styled.textarea<{
   ${({ $expandable, $size }) =>
     $expandable &&
     css`
-      min-height: ${$size};
+      min-height: ${TextAreaDimensions[$size]};
       max-height: 13rem;
       max-height: 25dvh;
     `}

@@ -9,6 +9,7 @@ export { OPTION_BUTTON_CSS } from "./components/Button/styles";
 export {
   default as Card,
   CardContent,
+  CardDimensions,
   CardSizes,
   CardFooter,
   CardHeader,
@@ -72,13 +73,14 @@ export {
 export { default as Toast } from "./components/Toast/Toast";
 export { ToastProvider, ToastViewport } from './components/Toast/styles';
 export { default as ToolTip } from "./components/ToolTip/ToolTip";
+export { default as CallWidget } from "./components/Widget/CallWidget";
+export { default as Widget, WidgetSizes } from "./components/Widget/Widget";
+export { default as AttachmentWidget } from "./components/Widget/AttachmentWidget";
 
 export { CustomThemeProvider, themeContext } from "./theme";
 export { default as GlobalStyles } from "./globalStyles";
-export { default as Widget, WidgetSizes } from "./components/Widget/Widget";
-export { default as AttachmentWidget } from "./components/Widget/AttachmentWidget";
-export { default as CallWidget } from "./components/Widget/CallWidget";
 export { default as textParser } from "./utils/parser";
+export { pixelate } from "./utils/styles";
 
 // types
 export type { TextStyle } from "./components/Text/types";
