@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { LinkProps as RouterLinkProps } from 'react-router';
+import { LinkProps as RouterLinkProps } from 'react-router-dom';
 
 import { LinkBaseProps, TextTypes } from '@a-little-world/little-world-design-system-core';
 import { Anchor, AnchorText, RouterLink } from './styles';

@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.1.8
+
+### Patch Changes
+
+- Improve Icon and Gradients
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.2.1
+
 ## 0.1.7
 
 ### Patch Changes

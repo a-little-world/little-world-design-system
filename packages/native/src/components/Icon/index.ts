@@ -3,8 +3,11 @@ import {
   appointmentIcon,
   archiveIcon,
   arrowLeftIcon,
+  attachmentIcon,
   bellIcon,
   calendarIcon,
+  callIncomingIcon,
+  callOutgoingIcon,
   cameraIcon,
   checkIcon,
   chevronDownIcon,
@@ -60,9 +63,7 @@ import {
   twitterIcon,
   videoIcon,
   whatsappIcon,
-  attachmentIcon,
-  callIncomingIcon,
-  callOutgoingIcon,
+  GradientTypes,
 } from "@a-little-world/little-world-design-system-core";
 
 import { createIconComponent } from "./createIconComponent";
@@ -90,11 +91,13 @@ export const ArrowLeftIcon = createIconComponent({
 export const AttachmentIcon = createIconComponent({
   name: "Attachment",
   svgData: attachmentIcon,
+  gradientType: GradientTypes.v3
 });
 
 export const BellIcon = createIconComponent({
   name: "Bell",
   svgData: bellIcon,
+  gradientType: GradientTypes.v2
 });
 
 export const CalendarIcon = createIconComponent({
@@ -120,21 +123,25 @@ export const CameraIcon = createIconComponent({
 export const CheckIcon = createIconComponent({
   name: "Check",
   svgData: checkIcon,
+  gradientType: GradientTypes.v3
 });
 
 export const ChevronDownIcon = createIconComponent({
   name: "ChevronDown",
   svgData: chevronDownIcon,
+  gradientType: GradientTypes.v3
 });
 
 export const ChevronLeftIcon = createIconComponent({
   name: "ChevronLeft",
   svgData: chevronLeftIcon,
+  gradientType: GradientTypes.v2
 });
 
 export const ChevronRightIcon = createIconComponent({
   name: "ChevronRight",
   svgData: chevronRightIcon,
+  gradientType: GradientTypes.v2
 });
 
 export const ClockIcon = createIconComponent({
@@ -165,6 +172,7 @@ export const DownloadIcon = createIconComponent({
 export const ExclamationIcon = createIconComponent({
   name: "Exclamation",
   svgData: exclamationIcon,
+  gradientType: GradientTypes.v2
 });
 
 export const EyeClosedIcon = createIconComponent({
@@ -190,6 +198,7 @@ export const FullScreenExitIcon = createIconComponent({
 export const FullScreenIcon = createIconComponent({
   name: "FullScreen",
   svgData: fullScreenIcon,
+  gradientType: GradientTypes.v2
 });
 
 export const GithubIcon = createIconComponent({
@@ -255,16 +264,19 @@ export const MenuIcon = createIconComponent({
 export const MessageIcon = createIconComponent({
   name: "Message",
   svgData: messageIcon,
+  gradientType: GradientTypes.v3
 });
 
 export const MessageWithQuestionIcon = createIconComponent({
   name: "MessageWithQuestion",
   svgData: messageWithQuestionIcon,
+  gradientType: GradientTypes.v3
 });
 
 export const MicIcon = createIconComponent({
   name: "Mic",
   svgData: micIcon,
+  gradientType: GradientTypes.v2
 });
 
 export const MoonIcon = createIconComponent({
@@ -300,6 +312,7 @@ export const ProfileIcon = createIconComponent({
 export const ProfileChatIcon = createIconComponent({
   name: "ProfileChat",
   svgData: profileChatIcon,
+  gradientType: GradientTypes.v2
 });
 
 export const PuzzleIcon = createIconComponent({
@@ -325,6 +338,7 @@ export const SettingsIcon = createIconComponent({
 export const StackIcon = createIconComponent({
   name: "Stack",
   svgData: stackIcon,
+  gradientType: GradientTypes.v2
 });
 
 export const StarIcon = createIconComponent({
@@ -340,6 +354,7 @@ export const SunIcon = createIconComponent({
 export const SwapIcon = createIconComponent({
   name: "Swap",
   svgData: swapIcon,
+  gradientType: GradientTypes.v2
 });
 
 export const TelegramIcon = createIconComponent({
@@ -380,6 +395,7 @@ export const TwitterIcon = createIconComponent({
 export const VideoIcon = createIconComponent({
   name: "Video",
   svgData: videoIcon,
+  gradientType: GradientTypes.v3
 });
 
 export const WhatsappIcon = createIconComponent({

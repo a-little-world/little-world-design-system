@@ -1,10 +1,23 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.2.1
+
+### Patch Changes
+
+- **Type Definitions**: Enhanced SVG type definitions for better TypeScript support
+
 ## 1.2.0
 
 ### Minor Changes
 
-- Fix issues with loading fonts in web environments
+- **Font Loading**: Fixed issues with loading fonts in web environments by implementing conditional font exports
+- **Theme Integration**: Improved theme construction to properly preserve breakpoints, radius, and spacing properties
+- **Module Resolution**: Resolved circular dependency issues in native package components
+
+### Patch Changes
+
+- **Build System**: Enhanced build process for better cross-platform compatibility
+- **Package Structure**: Improved package organization and exports
 
 ## 1.1.5
 

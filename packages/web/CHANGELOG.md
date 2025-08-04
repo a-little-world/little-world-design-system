@@ -1,27 +1,49 @@
 # @a-little-world/little-world-design-system
 
+## 2.2.3
+
+### Patch Changes
+
+- **Theme System**: Fixed critical theme provider issues that were causing undefined theme objects and runtime errors in consuming applications
+- **Dependencies**: Moved react-router and styled-components to peer dependencies to prevent version conflicts and bundling issues
+- **Accordion Component**: Fixed TypeScript issues with Accordion component by removing required type prop dependency
+- **Icon System**: Improved gradient system with better universal gradient support for square icons
+- **Build Process**: Enhanced build configuration and dependency management
+- **Component Exports**: Added ThemeWeb type export for better TypeScript support
+- **Testing**: Improved test configuration and setup for better reliability
+
+### Updated Dependencies
+- @a-little-world/little-world-design-system-core@1.2.1
+
 ## 2.2.2
 
 ### Patch Changes
 
-- Export ThemeWeb type
+- **Type Exports**: Added ThemeWeb type export for better TypeScript integration
+- **Component Improvements**: Enhanced various component implementations and exports
 
 ## 2.2.1
 
 ### Patch Changes
 
-- Fix theme provider in web package and also web package tests
+- **Theme Provider**: Fixed theme provider issues in web package that were causing undefined theme objects
+- **Testing**: Resolved test configuration issues and improved test setup
+- **Component Stability**: Enhanced component stability and error handling
 
 ## 2.2.0
 
 ### Minor Changes
 
-- Fix issues with loading fonts in web environments
+- **Font Loading**: Fixed issues with loading fonts in web environments by implementing conditional font exports
+- **Theme Integration**: Improved theme construction to properly preserve breakpoints, radius, and spacing properties
 
 ### Patch Changes
 
-- Updated dependencies
-  - @a-little-world/little-world-design-system-core@1.2.0
+- **Build System**: Enhanced build process for better cross-platform compatibility
+- **Package Structure**: Improved package organization and exports
+
+### Updated Dependencies
+- @a-little-world/little-world-design-system-core@1.2.0
 
 ## 2.1.0
 
