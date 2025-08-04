@@ -289,6 +289,13 @@ jobs:
         run: |
           echo "## 📦 Publishing packages..." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Debug: Check npm configuration
+          echo "### 🔍 Debug Information:" >> $GITHUB_STEP_SUMMARY
+          echo "NPM Registry: $(npm config get registry)" >> $GITHUB_STEP_SUMMARY
+          echo "NPM Scope: $(npm config get scope)" >> $GITHUB_STEP_SUMMARY
+          echo "NPM Auth Token exists: $([ -n "$NODE_AUTH_TOKEN" ] && echo "Yes" || echo "No")" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
 
           CHANGED_PACKAGES="${{ steps.version-check.outputs.changed_packages }}"
 

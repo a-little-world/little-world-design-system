@@ -3,6 +3,7 @@ import React, { CSSProperties } from "react";
 import { Icon, IconSvgProps } from "./Icon";
 
 import {
+  GradientTypes,
   SvgFactoryOptions,
   SvgTransformOptions,
 } from "@a-little-world/little-world-design-system-core";
@@ -11,8 +12,9 @@ import { createReactSvg } from "../../utils/createReactSvg";
 export const createIconComponent = ({
   name,
   svgData,
+  gradientType,
 }: SvgFactoryOptions) => {
-  const gradientId = `${name} gradientId`;
+  const gradientId = `gradient-${name}`;
 
   const Component = ({
     height = 24,
@@ -35,6 +37,7 @@ export const createIconComponent = ({
       color,
       gradient,
       gradientId,
+      gradientType
     };
   
     return (

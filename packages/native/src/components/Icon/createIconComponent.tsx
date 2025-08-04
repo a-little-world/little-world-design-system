@@ -11,8 +11,9 @@ import {
 export const createIconComponent = ({
   name,
   svgData,
+  gradientType
 }: SvgFactoryOptions) => {
-  const gradientId = `${name} gradientId`;
+  const gradientId = `gradient-${name}`;
 
   const Component = ({
     height = 24,
@@ -35,6 +36,7 @@ export const createIconComponent = ({
       color,
       gradient,
       gradientId,
+      gradientType
     };
   
     return (

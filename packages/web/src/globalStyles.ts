@@ -1,9 +1,13 @@
 // globalStyles.js
 import { createGlobalStyle } from 'styled-components';
 
-import { ThemeShallow } from '@a-little-world/little-world-design-system-core';
+import { ThemeWeb } from '@a-little-world/little-world-design-system-core';
 
-const GlobalStyle = createGlobalStyle<{ theme: ThemeShallow }>`
+const GlobalStyle = createGlobalStyle<{ theme: ThemeWeb }>`
+  html {
+    background: ${({ theme }) => theme.color.surface.background};
+  }  
+
   body {
     padding: 0;
     margin: 0;

@@ -1,6 +1,10 @@
-import React from 'react';
-import { Defs, LinearGradient, Stop } from 'react-native-svg';
-import { GradientTypes, GradientVariations, IconGradientProps } from '@a-little-world/little-world-design-system-core';
+import React from "react";
+import { Defs, LinearGradient, Stop } from "react-native-svg";
+import {
+  GradientTypes,
+  GradientVariations,
+  IconGradientProps,
+} from "@a-little-world/little-world-design-system-core";
 
 const IconGradient = ({
   id,
@@ -11,15 +15,16 @@ const IconGradient = ({
     return (
       <Defs>
         <LinearGradient
-          id={`gradient${id}`}
-          x1="1.84595"
-          y1="16.9964"
-          x2="34.8008"
-          y2="16.9964"
-          gradientUnits="userSpaceOnUse"
+          id={id}
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+          gradientUnits="objectBoundingBox"
         >
-          <Stop stopColor={GradientVariations[variation][0]} />
-          <Stop offset="1" stopColor={GradientVariations[variation][1]} />
+          <Stop offset="0%" stopColor={GradientVariations[variation][0]} />
+          <Stop offset="33%" stopColor={GradientVariations[variation][0]} />
+          <Stop offset="100%" stopColor={GradientVariations[variation][1]} />
         </LinearGradient>
       </Defs>
     );
@@ -28,7 +33,7 @@ const IconGradient = ({
     return (
       <Defs>
         <LinearGradient
-          id={`gradient${id}`}
+          id={id}
           x1="27.9721"
           y1="99.877"
           x2="116.893"
@@ -45,7 +50,7 @@ const IconGradient = ({
     return (
       <Defs>
         <LinearGradient
-          id={`gradient${id}`}
+          id={id}
           x1="8.6001"
           y1="94.48"
           x2="186.19"
@@ -62,21 +67,6 @@ const IconGradient = ({
       </Defs>
     );
 
-  if (type === GradientTypes.v4)
-    return (
-      <LinearGradient
-        id={`gradient${id}`}
-        x1="0%"
-        y1="50%"
-        x2="100%"
-        y2="50%"
-        gradientUnits="userSpaceOnUse"
-      >
-        <Stop offset="0%" stopColor={GradientVariations[variation][0]} />
-        <Stop offset="100%" stopColor={GradientVariations[variation][1]} />
-      </LinearGradient>
-    );
-    
   return null;
 };
 

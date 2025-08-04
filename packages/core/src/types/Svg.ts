@@ -56,7 +56,8 @@ export type IllustrationProps = {
 export type SvgFactoryOptions = {
   name: string;
   svgData: ParsedSvg;
-  gradient?: GradientTypes;
+  gradient?: Gradients;
+  gradientType?: GradientTypes;
 };
 
 
@@ -66,6 +67,7 @@ export interface SvgTransformOptions {
   colorAttr?: string;
   gradient?: string;
   gradientId?: string;
+  gradientType?: GradientTypes;
   height?: number | string;
   label: string;
   style?: any;

@@ -22,7 +22,7 @@ import {
 } from "@a-little-world/little-world-design-system-core";
 import IconGradient from "../components/Icon/IconGradient";
 
-const BLACK_HEX = '#000';
+const BLACK_HEX = "#000";
 
 // Helper function to generate unique keys
 const generateUniqueKey = (element: SvgElement, index: string | number) => {
@@ -52,19 +52,17 @@ const renderSvgElement = (
 
   // Get all attributes and override fill for path elements if needed
   const attrs = { ...element.attributes };
-  
+
   // Handle color attributes for SVG elements based on the colorAttribute property
   // If element has color set that isn't #000 - do not override
   if (element.colorAttribute && element.colorAttribute !== "none") {
     if (attrs[element.colorAttribute] === BLACK_HEX) {
-      attrs[element.colorAttribute] = color || BLACK_HEX;
+      attrs[element.colorAttribute] = gradient
+        ? `url(#${gradientId})`
+        : color || BLACK_HEX;
     } else {
-      if (gradient) {
-        attrs[element.colorAttribute] = `url(#gradient${gradientId})`;
-      } else {
-        attrs[element.colorAttribute] =
-          attrs[element.colorAttribute] || color || BLACK_HEX;
-      }
+      attrs[element.colorAttribute] =
+        attrs[element.colorAttribute] || color || BLACK_HEX;
     }
   }
 
@@ -123,7 +121,7 @@ export const createReactNativeSvg = (
   options: SvgTransformOptions
 ) => {
   const { label, width, height, gradient, gradientId, style } = options;
-  
+
   return (
     <View key={`${Math.random().toString(36).substring(2, 11)}`} style={style}>
       <Svg
