@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 2.2.5
+
+### Patch Changes
+
+- Fix theme type declaration import
+
 ## 2.2.4
 
 ### Patch Changes
