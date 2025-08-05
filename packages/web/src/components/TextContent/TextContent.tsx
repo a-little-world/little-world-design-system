@@ -20,7 +20,7 @@ type Props = {
   content: {
     center?: boolean;
     type: ContentTypes;
-    text: string;
+    text?: string;
     listItems?: string[];
     color?: string;
     Image?: React.ElementType;
@@ -141,7 +141,7 @@ const TextPage = ({ content, marginBottom }: Props) => {
                   $maxWidth={imageMaxWidth}
                   $marginBottom={marginBottom}
                 >
-                  <Image />
+                  <Image color={color} {...style} />
                 </ImageWrapper>
               )
             );

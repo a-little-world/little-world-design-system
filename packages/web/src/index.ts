@@ -1,3 +1,6 @@
+// Import theme declarations to ensure styled-components types are available
+import './theme/theme';
+
 export { default as Accordion } from "./components/Accordion/Accordion";
 export {
   default as Button,

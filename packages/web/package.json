@@ -10,9 +10,12 @@
     "test-watch": "jest --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "rimraf dist && npm run build:esm && npm run build:cjs",
+    "build": "rimraf dist && npm run build:esm && npm run build:cjs && npm run copy-declarations",
     "build:esm": "tsc --outDir dist/esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "copy-declarations": "npm run copy-declarations:esm && npm run copy-declarations:cjs",
+    "copy-declarations:esm": "cp src/theme/theme.d.ts dist/esm/theme/",
+    "copy-declarations:cjs": "cp src/theme/theme.d.ts dist/cjs/theme/",
     "watch": "tsc --watch"
   },
   "repository": {

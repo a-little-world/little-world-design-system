@@ -3,7 +3,6 @@ import React, { CSSProperties } from "react";
 import { Icon, IconSvgProps } from "./Icon";
 
 import {
-  GradientTypes,
   SvgFactoryOptions,
   SvgTransformOptions,
 } from "@a-little-world/little-world-design-system-core";
@@ -14,8 +13,6 @@ export const createIconComponent = ({
   svgData,
   gradientType,
 }: SvgFactoryOptions) => {
-  const gradientId = `gradient-${name}`;
-
   const Component = ({
     height = 24,
     width = 24,
@@ -28,7 +25,7 @@ export const createIconComponent = ({
     label,
     labelVisible,
   }: IconSvgProps & { style?: CSSProperties; color?: string }) => {
-    
+    const gradientId = `gradient-${label.replace(/\s/g, '')}`;
     const svgOptions: SvgTransformOptions = {
       width,
       height,

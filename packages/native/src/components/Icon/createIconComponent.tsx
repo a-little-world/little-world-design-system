@@ -13,8 +13,6 @@ export const createIconComponent = ({
   svgData,
   gradientType
 }: SvgFactoryOptions) => {
-  const gradientId = `gradient-${name}`;
-
   const Component = ({
     height = 24,
     width = 24,
@@ -27,7 +25,7 @@ export const createIconComponent = ({
     label,
     labelVisible,
   }: IconSvgProps & { style?: ViewStyle; color?: string }) => {
-    // Create the transform options for React Native SVG
+    const gradientId = `gradient-${label.replace(/\s/g, '')}`;
     const svgOptions: SvgTransformOptions = {
       width,
       height,
