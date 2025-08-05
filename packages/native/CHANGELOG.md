@@ -1,5 +1,14 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.1.9
+
+### Patch Changes
+
+- **Icon System**: Enhanced icon gradient system with improved diagonal gradient support for better visual consistency
+- **SVG Processing**: Improved SVG gradient definitions with better universal applicability across different icon shapes
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.2.2
+
 ## 0.1.8
 
 ### Patch Changes
