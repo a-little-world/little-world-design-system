@@ -43,7 +43,6 @@ jobs:
 
       - name: Configure pnpm for GitHub Package Registry
         run: |
-          pnpm config set registry https://npm.pkg.github.com
           pnpm config set @a-little-world:registry https://npm.pkg.github.com
           pnpm config set //npm.pkg.github.com/:_authToken ${{ secrets.PACKAGE_PUBLISH_TOKEN }}
 
