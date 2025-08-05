@@ -41,6 +41,12 @@ jobs:
         with:
           version: 9.0.0
 
+      - name: Configure pnpm for GitHub Package Registry
+        run: |
+          pnpm config set registry https://npm.pkg.github.com
+          pnpm config set @a-little-world:registry https://npm.pkg.github.com
+          pnpm config set //npm.pkg.github.com/:_authToken ${{ secrets.PACKAGE_PUBLISH_TOKEN }}
+
       - name: Get pnpm store directory
         shell: bash
         run: |
@@ -294,6 +300,8 @@ jobs:
           echo "### 🔍 Debug Information:" >> $GITHUB_STEP_SUMMARY
           echo "NPM Registry: $(npm config get registry)" >> $GITHUB_STEP_SUMMARY
           echo "NPM Scope: $(npm config get scope)" >> $GITHUB_STEP_SUMMARY
+          echo "PNPM Registry: $(pnpm config get registry)" >> $GITHUB_STEP_SUMMARY
+          echo "PNPM Scope Registry: $(pnpm config get @a-little-world:registry)" >> $GITHUB_STEP_SUMMARY
           echo "NPM Auth Token exists: $([ -n "$NODE_AUTH_TOKEN" ] && echo "Yes" || echo "No")" >> $GITHUB_STEP_SUMMARY
           echo "NPM Auth Token length: ${#NODE_AUTH_TOKEN}" >> $GITHUB_STEP_SUMMARY
           echo "NPM Auth Token prefix: ${NODE_AUTH_TOKEN:0:10}..." >> $GITHUB_STEP_SUMMARY
