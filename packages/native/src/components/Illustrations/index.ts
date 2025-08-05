@@ -1,11 +1,13 @@
 import {
   brokenChainIllustration,
+  confettiIllustration,
   friendshipIllustration,
   groupHandsIllustration,
   keyIllustration,
   livingRoomIllustration,
   laptopWithPhoneIllustration,
   manOnRocketIllustration,
+  matchSearchingIllustration,
   paperPlaneIllustration,
   peopleTogetherIllustration,
   questionMarksIllustration,
@@ -22,6 +24,11 @@ import { createIllustrationComponent } from "./createIllustrationComponent";
 export const BrokenChainImage = createIllustrationComponent({
   name: "BrokenChain",
   svgData: brokenChainIllustration,
+});
+
+export const ConfettiImage = createIllustrationComponent({
+  name: "Confetti",
+  svgData: confettiIllustration,
 });
 
 export const FriendshipImage = createIllustrationComponent({
@@ -52,6 +59,11 @@ export const LaptopWithPhoneImage = createIllustrationComponent({
 export const ManOnRocketImage = createIllustrationComponent({
   name: "ManOnRocket",
   svgData: manOnRocketIllustration,
+});
+
+export const MatchSearchingImage = createIllustrationComponent({
+  name: "MatchSearching",
+  svgData: matchSearchingIllustration,
 });
 
 export const PaperPlaneImage = createIllustrationComponent({

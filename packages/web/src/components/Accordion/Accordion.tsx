@@ -12,14 +12,15 @@ import {
   TriggerIcon,
 } from './styles';
 
+export { AccordionContent }
 interface AccordionProps extends AccordionBaseProps {
   className?: string;
-  contentCss?: any; // Simplified for v6 compatibility
+  ContentWrapper?: React.ComponentType<{ children: React.ReactNode }>;
 }
 
 const Accordion: React.FC<AccordionProps> = ({
   className,
-  contentCss,
+  ContentWrapper,
   headerType,
   headerColor,
   items,
@@ -41,7 +42,11 @@ const Accordion: React.FC<AccordionProps> = ({
               />
             </AccordionTrigger>
           </AccordionHeader>
-          <AccordionContent css={contentCss}>{content}</AccordionContent>
+          {ContentWrapper ? (
+            <ContentWrapper>{content}</ContentWrapper>
+          ) : (
+            <AccordionContent>{content}</AccordionContent>
+          )}
         </AccordionItem>
       ))}
     </AccordionRoot>

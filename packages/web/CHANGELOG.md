@@ -1,5 +1,17 @@
 # @a-little-world/little-world-design-system
 
+## 2.2.4
+
+### Patch Changes
+
+- **TypeScript Integration**: Fixed styled-components theme type declarations by ensuring theme.d.ts is included in build output, resolving "Property 'color' does not exist on type 'DefaultTheme'" errors in consuming applications
+- **Accordion Component**: Added ContentWrapper prop for flexible content styling - consumers can now pass custom styled components to wrap accordion content
+- **Icon System**: Enhanced icon gradient system with improved diagonal gradient support for better visual consistency
+- **SVG Processing**: Improved SVG gradient definitions with better universal applicability across different icon shapes
+- **Accordion Component**: Fixed TypeScript issues with Accordion component by removing required type prop dependency
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.2.2
+
 ## 2.2.3
 
 ### Patch Changes
@@ -13,6 +25,7 @@
 - **Testing**: Improved test configuration and setup for better reliability
 
 ### Updated Dependencies
+
 - @a-little-world/little-world-design-system-core@1.2.1
 
 ## 2.2.2
@@ -43,6 +56,7 @@
 - **Package Structure**: Improved package organization and exports
 
 ### Updated Dependencies
+
 - @a-little-world/little-world-design-system-core@1.2.0
 
 ## 2.1.0

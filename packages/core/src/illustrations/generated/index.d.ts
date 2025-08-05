@@ -1,11 +1,13 @@
 // Auto-generated file. Do not edit directly.
 export { brokenChainIllustration } from './brokenChainIllustration';
+export { confettiIllustration } from './confettiIllustration';
 export { friendshipIllustration } from './friendshipIllustration';
 export { groupHandsIllustration } from './groupHandsIllustration';
 export { keyIllustration } from './keyIllustration';
 export { laptopWithPhoneIllustration } from './laptopWithPhoneIllustration';
 export { livingRoomIllustration } from './livingRoomIllustration';
 export { manOnRocketIllustration } from './manOnRocketIllustration';
+export { matchSearchingIllustration } from './matchSearchingIllustration';
 export { paperPlaneIllustration } from './paperPlaneIllustration';
 export { peopleTogetherIllustration } from './peopleTogetherIllustration';
 export { questionMarksIllustration } from './questionMarksIllustration';

@@ -10,6 +10,7 @@ export const closeIcon = {
         "strokeLinejoin": "round",
         "strokeMiterlimit": "10",
         "d": "M35 5L5 35m30 0L5 5",
+        "strokeWidth": "2",
         "stroke": "#000"
       },
       "children": [],

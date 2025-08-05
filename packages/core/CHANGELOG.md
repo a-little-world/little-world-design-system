@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.2.2
+
+### Patch Changes
+
+- **Icon System**: Add new Icons and Illustrations
+
 ## 1.2.1
 
 ### Patch Changes

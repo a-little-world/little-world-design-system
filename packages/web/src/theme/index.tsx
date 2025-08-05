@@ -15,6 +15,9 @@ import {
   tokensPixelated,
 } from "@a-little-world/little-world-design-system-core";
 
+// Import theme declarations for styled-components types
+import './theme.d';
+
 export const lightTheme: DefaultTheme = {
   ...tokensPixelated,
   color: tokensPixelated.color.theme.light,
