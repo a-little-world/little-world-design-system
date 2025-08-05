@@ -4,6 +4,8 @@
 
 ### Patch Changes
 
+- **TypeScript Integration**: Fixed styled-components theme type declarations by ensuring theme.d.ts is included in build output, resolving "Property 'color' does not exist on type 'DefaultTheme'" errors in consuming applications
+- **Accordion Component**: Added ContentWrapper prop for flexible content styling - consumers can now pass custom styled components to wrap accordion content
 - **Theme System**: Fixed critical theme provider issues that were causing undefined theme objects and runtime errors in consuming applications
 - **Dependencies**: Moved react-router and styled-components to peer dependencies to prevent version conflicts and bundling issues
 - **Accordion Component**: Fixed TypeScript issues with Accordion component by removing required type prop dependency
