@@ -18,4 +18,4 @@ export * from './TextContent';
 export * from './TextInput';
 export * from './Toast';
 export * from './ToolTip';
-export * from './Widget'; 
+export * from './Widget';

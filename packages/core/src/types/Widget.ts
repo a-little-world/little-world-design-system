@@ -31,4 +31,4 @@ export interface WidgetHeaderProps {
 export interface WidgetFooterProps {
   align?: string;
   children: ReactNode;
-} 
+}

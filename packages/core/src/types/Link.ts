@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import { ButtonAppearance, ButtonSizes } from './Button';
 import { TextTypes } from './Text';
 
@@ -14,4 +15,4 @@ export interface LinkBaseProps {
   textDecoration?: boolean;
   textType?: TextTypes;
   to?: string;
-} 
+}

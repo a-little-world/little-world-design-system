@@ -8,4 +8,4 @@ export interface InputErrorBaseProps {
   left?: string;
   visible: boolean;
   textAlign?: 'left' | 'center' | 'right';
-} 
+}

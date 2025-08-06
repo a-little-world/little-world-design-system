@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import { TextTypes } from './Text';
+
 import { FlexAlignType, JustifyContentType } from './styles';
+import { TextTypes } from './Text';
 
 export enum CardSizes {
   Small = 'small',
@@ -39,4 +40,4 @@ export interface CardContentProps {
   gap?: string | number;
   marginBottom?: string | number;
   children: ReactNode;
-} 
+}

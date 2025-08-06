@@ -7,4 +7,4 @@ export interface ToolTipBaseProps {
   open?: boolean;
   side?: 'top' | 'right' | 'bottom' | 'left';
   sideOffset?: number;
-} 
+}

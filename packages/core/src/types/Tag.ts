@@ -22,4 +22,4 @@ export interface TagBaseProps {
 
 export interface TagsBaseProps extends TagBaseProps {
   content: string[];
-} 
+}

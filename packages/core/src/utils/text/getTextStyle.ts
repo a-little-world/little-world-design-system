@@ -3,87 +3,87 @@ import { TextTypes, TextStyle } from '../../types/Text';
 export const getTextStyle = (type: keyof typeof TextTypes): TextStyle => {
   switch (type) {
     case TextTypes.Body1:
-      return { 
+      return {
         fontSize: 2,
         desktopFontSize: 2.5,
-        styleType: 'body'
+        styleType: 'body',
       };
     case TextTypes.Body2:
-      return { 
+      return {
         fontSize: 1.75,
         desktopFontSize: 2,
-        styleType: 'body'
+        styleType: 'body',
       };
     case TextTypes.Body3:
-      return { 
+      return {
         fontSize: 1.5,
         desktopFontSize: 1.5,
-        styleType: 'body'
+        styleType: 'body',
       };
     case TextTypes.Body4:
-      return { 
+      return {
         fontSize: 1.25,
-        styleType: 'body'
+        styleType: 'body',
       };
     case TextTypes.Body5:
-      return { 
+      return {
         fontSize: 1,
-        styleType: 'body'
+        styleType: 'body',
       };
     case TextTypes.Body6:
-      return { 
+      return {
         fontSize: 0.8725,
-        styleType: 'body'
+        styleType: 'body',
       };
     case TextTypes.Body7:
-      return { 
+      return {
         fontSize: 0.75,
-        styleType: 'body'
+        styleType: 'body',
       };
     case TextTypes.Heading1:
-      return { 
+      return {
         fontSize: 4,
         desktopFontSize: 5,
         fontWeight: 'bold',
-        styleType: 'heading'
+        styleType: 'heading',
       };
     case TextTypes.Heading2:
-      return { 
+      return {
         fontSize: 3.5,
         desktopFontSize: 4,
         fontWeight: 'bold',
-        styleType: 'heading'
+        styleType: 'heading',
       };
     case TextTypes.Heading3:
-      return { 
+      return {
         fontSize: 2.5,
         desktopFontSize: 3,
         fontWeight: 'bold',
-        styleType: 'heading'
+        styleType: 'heading',
       };
     case TextTypes.Heading4:
-      return { 
+      return {
         fontSize: 2,
         desktopFontSize: 2,
         fontWeight: 'bold',
-        styleType: 'heading'
+        styleType: 'heading',
       };
     case TextTypes.Heading5:
-      return { 
+      return {
         fontSize: 1.5,
         fontWeight: 'bold',
-        styleType: 'heading'
+        styleType: 'heading',
       };
     case TextTypes.Heading6:
-      return { 
+      return {
         fontSize: 1,
         fontWeight: 'bold',
-        styleType: 'heading'
+        styleType: 'heading',
       };
     default:
-      return { 
+      return {
         fontSize: 1,
-        styleType: 'body'
+        styleType: 'body',
       };
   }
-}; 
+};

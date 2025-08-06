@@ -20,4 +20,4 @@ export interface LoadingBaseProps {
   inline?: boolean;
   size?: LoadingSizes;
   children?: ReactNode;
-} 
+}

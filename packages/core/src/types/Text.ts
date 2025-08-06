@@ -17,7 +17,7 @@ export interface TextBaseProps {
   color?: string;
   children: ReactNode;
   type?: keyof typeof TextTypes;
-} 
+}
 
 export enum TextTypes {
   Heading1 = 'Heading1',

@@ -67,4 +67,4 @@ export const ICON_DIMENSIONS = {
   [ButtonSizes.Medium]: { width: 24, height: 24 },
   [ButtonSizes.Large]: { width: 32, height: 32 },
   [ButtonSizes.Stretch]: { width: 32, height: 32 },
-} as const; 
+} as const;

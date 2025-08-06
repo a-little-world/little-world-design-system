@@ -4,4 +4,4 @@ export const calculateProgress = (max: number, value: number) => {
 export interface ProgressBarBaseProps {
   max: number;
   value: number;
-} 
+}

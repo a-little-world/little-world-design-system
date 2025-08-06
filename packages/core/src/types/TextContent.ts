@@ -27,4 +27,4 @@ export interface ContentItem {
 export interface TextContentBaseProps {
   content: ContentItem[];
   marginBottom?: string;
-} 
+}
