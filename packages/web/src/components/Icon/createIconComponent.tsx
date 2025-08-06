@@ -14,27 +14,29 @@ export const createIconComponent = ({
   gradientType,
 }: SvgFactoryOptions) => {
   const Component = ({
-    height = 24,
-    width = 24,
-    style,
-    color,
     backgroundColor,
-    gradient,
     borderColor,
     circular,
+    className,
+    color,
+    gradient,
+    height = 24,
     label,
     labelVisible,
+    style,
+    width = 24,
   }: IconSvgProps & { style?: CSSProperties; color?: string }) => {
     const gradientId = `gradient-${label.replace(/\s/g, '')}`;
     const svgOptions: SvgTransformOptions = {
-      width,
-      height,
-      style,
-      label,
       color,
+      className: circular ? undefined : className,
       gradient,
       gradientId,
-      gradientType
+      gradientType,
+      height,
+      label,
+      style,
+      width,
     };
   
     return (
@@ -42,6 +44,7 @@ export const createIconComponent = ({
         backgroundColor={backgroundColor}
         borderColor={borderColor}
         circular={circular}
+        className={className}
         style={style}
         color={color}
         label={label}

@@ -1,6 +1,14 @@
 # @a-little-world/little-world-design-system
 
-## 2.2.7
+## 2.2.9
+
+### Patch Changes
+
+- Ensure web Icons take className prop and add surface.quaternary
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.2.3
+
+## 2.2.8
 
 ### Patch Changes
 
@@ -8,11 +16,11 @@
 - Improve styling of AccordionContent
 - Remove redundant copy-declaration scripts
 
-## 2.2.6
+## 2.2.7
 
 ### Patch Changes
 
-- Fix theme type declaration import in index file
+- Fix theme type declaration import in index file (Unsuccessful)
 
 ## 2.2.6
 

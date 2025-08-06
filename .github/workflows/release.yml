@@ -305,6 +305,8 @@ jobs:
 
       - name: Publish Packages
         if: github.ref == 'refs/heads/main' && steps.version-check.outputs.has_changes == 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_PUBLISH_TOKEN }}
         run: |
           echo "## 📦 Publishing packages..." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -313,8 +315,6 @@ jobs:
           echo "### 🔍 Debug Information:" >> $GITHUB_STEP_SUMMARY
           echo "NPM Registry: $(npm config get registry)" >> $GITHUB_STEP_SUMMARY
           echo "NPM Scope: $(npm config get scope)" >> $GITHUB_STEP_SUMMARY
-          echo "PNPM Registry: $(pnpm config get registry)" >> $GITHUB_STEP_SUMMARY
-          echo "PNPM Scope Registry: $(pnpm config get @a-little-world:registry)" >> $GITHUB_STEP_SUMMARY
           echo "NPM Auth Token exists: $([ -n "$NODE_AUTH_TOKEN" ] && echo "Yes" || echo "No")" >> $GITHUB_STEP_SUMMARY
           echo "NPM Auth Token length: ${#NODE_AUTH_TOKEN}" >> $GITHUB_STEP_SUMMARY
           echo "NPM Auth Token prefix: ${NODE_AUTH_TOKEN:0:10}..." >> $GITHUB_STEP_SUMMARY
@@ -339,29 +339,35 @@ jobs:
             echo "### Publishing $package..." >> $GITHUB_STEP_SUMMARY
             
             if [ "$package" = "core" ]; then
-              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-core publish --access restricted --registry https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
-              if pnpm --filter=@a-little-world/little-world-design-system-core publish --access restricted --registry https://npm.pkg.github.com; then
+              cd packages/core
+              echo "Running: npm publish --registry=https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
+              if npm publish --registry=https://npm.pkg.github.com; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
                 exit 1
               fi
+              cd ../..
             elif [ "$package" = "native" ]; then
-              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-native publish --access restricted --registry https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
-              if pnpm --filter=@a-little-world/little-world-design-system-native publish --access restricted --registry https://npm.pkg.github.com; then
+              cd packages/native
+              echo "Running: npm publish --registry=https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
+              if npm publish --registry=https://npm.pkg.github.com; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
                 exit 1
               fi
+              cd ../..
             elif [ "$package" = "web" ]; then
-              echo "Running: pnpm --filter=@a-little-world/little-world-design-system publish --access restricted --registry https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
-              if pnpm --filter=@a-little-world/little-world-design-system publish --access restricted --registry https://npm.pkg.github.com; then
+              cd packages/web
+              echo "Running: npm publish --registry=https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
+              if npm publish --registry=https://npm.pkg.github.com; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
                 exit 1
               fi
+              cd ../..
             fi
             
             echo "" >> $GITHUB_STEP_SUMMARY

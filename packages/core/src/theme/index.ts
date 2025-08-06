@@ -24,6 +24,7 @@ export interface Colors {
     primary: string;
     secondary: string;
     tertiary: string;
+    quaternary: string;
     contrast: string;
     bold: string;
     selected: string;

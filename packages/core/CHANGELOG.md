@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.2.3
+
+### Patch Changes
+
+- Ensure web Icons take className prop and add surface.quaternary
+
 ## 1.2.2
 
 ### Patch Changes

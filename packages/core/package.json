@@ -1,6 +1,6 @@
 {
   "name": "@a-little-world/little-world-design-system-core",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Core design tokens and utilities for Little World design system",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

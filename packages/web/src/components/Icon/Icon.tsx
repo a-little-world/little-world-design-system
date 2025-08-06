@@ -15,6 +15,8 @@ const Circle = styled.div<{
   border-radius: 50%;
   color: ${({ color }) => color || 'currentColor'};
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: ${({ theme }) => theme.spacing.xxsmall};
 `;
 
