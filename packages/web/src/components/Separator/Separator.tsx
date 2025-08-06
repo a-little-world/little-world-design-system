@@ -23,10 +23,12 @@ const StyledSeparator = styled(RadixSeparator.Root)<{
   }
 `;
 
-interface SeparatorProps {
+export interface SeparatorProps {
   background?: string;
   className?: string;
+  color?: string;
   orientation?: 'horizontal' | 'vertical';
+  size?: 'small' | 'medium' | 'large';
   spacing?: string;
 }
 

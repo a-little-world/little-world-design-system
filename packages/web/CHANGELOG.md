@@ -1,5 +1,24 @@
 # @a-little-world/little-world-design-system
 
+## 2.3.0
+
+### Minor Changes
+
+- **ESLint Integration**: Added comprehensive ESLint configuration with TypeScript support, React hooks rules, and accessibility guidelines
+- **Code Quality**: Implemented strict linting rules for better code consistency and maintainability across all components
+- **Type Safety**: Enhanced TypeScript configurations with proper project references and type checking
+- **Component Improvements**: Enhanced various component implementations with better styling and functionality
+
+### Patch Changes
+
+- **Utility Consolidation**: Removed duplicate utility files (`isValidUrl.ts`, `validDomains.ts`) and consolidated them in the core package
+- **Theme System**: Fixed theme provider issues and improved browser API handling with proper SSR support
+- **Component Styling**: Enhanced component styling consistency and improved theme integration
+- **Build System**: Updated build configurations for better cross-platform compatibility
+- **Dependencies**: Updated and optimized package dependencies for improved performance and security
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.3.0
+
 ## 2.2.9
 
 ### Patch Changes
@@ -150,14 +169,12 @@
 - bd7e9d2: # BREAKING: Monorepo Refactor - Core Package Extraction
 
   ## What Changed
-
   - **Extracted shared design tokens and types** into a new `@a-little-world/little-world-design-system-core` package
   - **Restructured the design system** into a monorepo with separate packages for web, native, and core
   - **Updated styled-components** from v5 to v6 for better compatibility
   - **Added Toast component** to the core package
 
   ## Why This Change Was Made
-
   - **Better separation of concerns** - Core tokens and types are now reusable across web and native
   - **Improved maintainability** - Shared code is centralized and versioned independently
   - **Enhanced developer experience** - Clear package boundaries and dependencies
@@ -166,7 +183,6 @@
   ## How to Update Your Code
 
   ### For Web Applications
-
   1. **Update your package.json**:
 
      ```json
@@ -185,22 +201,21 @@
      import {
        colors,
        spacing,
-     } from "@a-little-world/little-world-design-system";
+     } from '@a-little-world/little-world-design-system';
 
      // NEW
      import {
        colors,
        spacing,
-     } from "@a-little-world/little-world-design-system-core";
+     } from '@a-little-world/little-world-design-system-core';
      ```
 
   3. **Component imports remain the same**:
      ```typescript
-     import { Button, Text } from "@a-little-world/little-world-design-system";
+     import { Button, Text } from '@a-little-world/little-world-design-system';
      ```
 
   ### For React Native Applications
-
   1. **Add the native package**:
 
      ```json
@@ -217,11 +232,10 @@
      import {
        Button,
        Text,
-     } from "@a-little-world/little-world-design-system-native";
+     } from '@a-little-world/little-world-design-system-native';
      ```
 
   ## Migration Checklist
-
   - [ ] Update package.json dependencies
   - [ ] Update any direct token imports to use the core package
   - [ ] Test your application thoroughly

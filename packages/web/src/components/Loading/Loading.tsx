@@ -10,7 +10,7 @@ export { LoadingSizes };
 
 export const LOADING_RING_ID = 'loadingRing';
 
-interface LoadingProps extends LoadingBaseProps {
+export interface LoadingProps extends LoadingBaseProps {
   className?: string;
 }
 

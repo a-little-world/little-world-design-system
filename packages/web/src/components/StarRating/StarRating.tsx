@@ -24,7 +24,7 @@ export enum StarRatingSizes {
   Medium = 32,
   Large = 48,
 }
-interface StarRatingProps {
+export interface StarRatingProps {
   className?: string;
   color?: string;
   displayNumber?: boolean;

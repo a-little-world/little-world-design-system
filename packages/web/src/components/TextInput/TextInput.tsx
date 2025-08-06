@@ -19,7 +19,7 @@ import React, { ChangeEvent } from 'react';
 const PASSWORD_TOGGLE_ICON_SIZE = 20;
 
 export { InputWidth, InputHeight };
-interface Props
+export interface Props
   extends Omit<
       React.ComponentPropsWithoutRef<'input'>,
       'height' | 'onSubmit' | 'width'

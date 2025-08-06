@@ -15,7 +15,18 @@
     "skipLibCheck": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "**/*.config.js", "**/*.config.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.config.js",
+    "**/*.config.ts",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "**/*.test.tsx",
+    "**/*.test.ts",
+    "**/testUtils.tsx",
+    "**/setupTests.ts"
+  ],
   "types": ["@testing-library/jest-dom"],
   "typeRoots": ["./node_modules/@types"]
 }

@@ -11,7 +11,8 @@ import { Area, AreaWrapper, Counter } from './styles';
 
 export { TextAreaSize };
 
-interface TextAreaProps extends React.ComponentPropsWithoutRef<'textarea'> {
+export interface TextAreaProps
+  extends React.ComponentPropsWithoutRef<'textarea'> {
   displayCount?: boolean;
   error?: string;
   expandable?: boolean;

@@ -1,5 +1,17 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.3.0
+
+### Minor Changes
+
+- **ESLint Integration**: Added comprehensive ESLint configuration with TypeScript support, React hooks rules, and accessibility guidelines
+- **Code Quality**: Implemented strict linting rules for better code consistency and maintainability
+- **Type Safety**: Enhanced TypeScript configurations with proper project references and type checking
+
+### Patch Changes
+
+- **Type Definitions**: Enhanced type definitions for better TypeScript support across all components
+
 ## 1.2.3
 
 ### Patch Changes

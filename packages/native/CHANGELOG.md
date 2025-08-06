@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.1.11
+
+### Patch Changes
+
+- **ESLint Integration**: Added comprehensive ESLint configuration with TypeScript support and React Native specific rules
+- **Code Quality**: Implemented strict linting rules for better code consistency and maintainability across all components
+- **Type Safety**: Enhanced TypeScript configurations with proper project references and type checking
+- **Component Improvements**: Enhanced various component implementations with better styling and functionality
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.3.0
+
 ## 0.1.10
 
 ### Patch Changes
@@ -70,7 +81,6 @@
 ### Patch Changes
 
 - ## 🐛 Bug Fixes
-
   - **Native Checkbox**: Fixed checkbox component rendering issues in React Native
   - **Typography**: Resolved text component styling problems in native package
 
