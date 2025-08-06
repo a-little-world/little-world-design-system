@@ -1,1 +1,40 @@
-node_modules
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+*.tgz
+
+# Generated files
+*.d.ts
+*.d.ts.map
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Storybook build
+storybook-static/
+
+# Native specific
+packages/native/testApp/
+packages/native/dist/

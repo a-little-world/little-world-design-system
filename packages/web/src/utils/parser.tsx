@@ -18,16 +18,16 @@ const BUTTON_TAG = 'button';
 const regex = RegExp(/<(\w+)((?:\s+[^>]*)*)>(.*?)<\/\1>/, 'gim');
 
 const parseAttributes = (string: string) => {
-  if (!string || !string.trim()) {
+  if (!string?.trim()) {
     return {};
   }
-  
+
   try {
     return JSON.parse(string);
   } catch (e) {
     console.warn('Text Parser: Failed to parse attributes:', {
       string,
-      error: e instanceof Error ? e.message : String(e)
+      error: e instanceof Error ? e.message : String(e),
     });
     return {};
   }

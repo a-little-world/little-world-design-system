@@ -1,10 +1,10 @@
-import React from "react";
-import { Defs, LinearGradient, Stop } from "react-native-svg";
+import React from 'react';
+import { Defs, LinearGradient, Stop } from 'react-native-svg';
 import {
   GradientTypes,
   GradientVariations,
   IconGradientProps,
-} from "@a-little-world/little-world-design-system-core";
+} from '@a-little-world/little-world-design-system-core';
 
 const IconGradient = ({
   id,

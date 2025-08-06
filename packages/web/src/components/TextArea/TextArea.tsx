@@ -3,12 +3,16 @@ import React, { Ref, useEffect, useRef, useState } from 'react';
 import useAutosizeTextArea from '../../hooks/useAutosizeTextArea';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
-import { TextAreaSize, TextTypes } from '@a-little-world/little-world-design-system-core';
+import {
+  TextAreaSize,
+  TextTypes,
+} from '@a-little-world/little-world-design-system-core';
 import { Area, AreaWrapper, Counter } from './styles';
 
 export { TextAreaSize };
 
-interface TextAreaProps extends React.ComponentPropsWithoutRef<'textarea'> {
+export interface TextAreaProps
+  extends React.ComponentPropsWithoutRef<'textarea'> {
   displayCount?: boolean;
   error?: string;
   expandable?: boolean;

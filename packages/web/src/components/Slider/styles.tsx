@@ -16,7 +16,7 @@ export const SliderRoot = styled(Root)`
 
 export const SliderTrack = styled(Track)`
   position: relative;
-  background-color: ${props => props.theme.color.surface.tertiary};
+  background-color: ${props => props.theme.color.surface.secondary};
   flex-grow: 1;
   border-radius: 9999px;
   height: 3px;

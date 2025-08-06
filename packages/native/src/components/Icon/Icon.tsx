@@ -1,12 +1,12 @@
-import React from "react";
-import { Text, TextStyle, View } from "react-native";
-import { DefaultTheme, useTheme } from "styled-components/native";
+import React from 'react';
+import { Text, TextStyle, View } from 'react-native';
+import { DefaultTheme, useTheme } from 'styled-components/native';
 
 import {
   Gradients,
   IconBaseProps,
   tokens,
-} from "@a-little-world/little-world-design-system-core";
+} from '@a-little-world/little-world-design-system-core';
 
 const getCircleStyles = ({
   theme,
@@ -21,26 +21,33 @@ const getCircleStyles = ({
   borderWidth: 2,
   borderColor: borderColor || theme.color.border.contrast,
   borderRadius: theme.radius.full,
-  alignItems: "center",
-  justifyContent: "center",
+  alignItems: 'center',
+  justifyContent: 'center',
   padding: theme.spacing.xxsmall,
 });
 
 const getLabelStyles = ({ top }: { top: number }): TextStyle => ({
-  position: "relative",
+  position: 'relative',
   marginTop: top,
 });
 
-export const ImageLabel = ({ children, top }: { children: string, top: number }) =>
-    <Text
-      accessible={true}
-      accessibilityLabel={children}
-      style={getLabelStyles({ top })}
-    >
-      {children}
-    </Text>
+export const ImageLabel = ({
+  children,
+  top,
+}: {
+  children: string;
+  top: number;
+}) => (
+  <Text
+    accessible={true}
+    accessibilityLabel={children}
+    style={getLabelStyles({ top })}
+  >
+    {children}
+  </Text>
+);
 
-export type IconSvgProps = Omit<IconBaseProps, "children"> & {
+export type IconSvgProps = Omit<IconBaseProps, 'children'> & {
   gradient?: Gradients;
   width?: number | string;
   height?: number | string;
@@ -56,7 +63,7 @@ export const Icon = ({
   label,
   labelVisible,
   labelTop = tokens.spacing.xxlarge,
-}: Omit<IconBaseProps, "className"> & { style?: any }) => {
+}: Omit<IconBaseProps, 'className'> & { style?: any }) => {
   const theme = useTheme();
   return (
     <>
@@ -72,7 +79,9 @@ export const Icon = ({
       ) : (
         <View style={style}>{children}</View>
       )}
-      {labelVisible && <ImageLabel top={labelTop as number}>{label}</ImageLabel>}
+      {labelVisible && (
+        <ImageLabel top={labelTop as number}>{label}</ImageLabel>
+      )}
     </>
   );
 };

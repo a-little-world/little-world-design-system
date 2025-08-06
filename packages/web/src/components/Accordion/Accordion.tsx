@@ -12,10 +12,13 @@ import {
   TriggerIcon,
 } from './styles';
 
-export { AccordionContent }
-interface AccordionProps extends AccordionBaseProps {
+export { AccordionContent };
+export interface AccordionProps extends AccordionBaseProps {
+  children?: React.ReactNode;
   className?: string;
   ContentWrapper?: React.ComponentType<{ children: React.ReactNode }>;
+  defaultOpen?: boolean;
+  onToggle?: (isOpen: boolean) => void;
 }
 
 const Accordion: React.FC<AccordionProps> = ({

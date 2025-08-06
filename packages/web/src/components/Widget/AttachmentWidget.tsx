@@ -1,17 +1,17 @@
-import React from "react";
-import styled, { useTheme } from "styled-components";
+import React from 'react';
+import styled, { useTheme } from 'styled-components';
 
-import { AttachmentIcon, CameraIcon, DownloadIcon } from "../Icon";
-import Modal from "../Modal/Modal";
-import Text from "../Text/Text";
-import Widget, { Preview, WidgetProps, WidgetSizes } from "./Widget";
+import { AttachmentIcon, CameraIcon, DownloadIcon } from '../Icon';
+import Modal from '../Modal/Modal';
+import Text from '../Text/Text';
+import Widget, { Preview, WidgetProps, WidgetSizes } from './Widget';
 
 export const ImageSizes = {
-  xsmall: "72px",
-  small: "128px",
-  medium: "154px",
-  large: "180px",
-  flex: "100%",
+  xsmall: '72px',
+  small: '128px',
+  medium: '154px',
+  large: '180px',
+  flex: '100%',
 };
 
 const WidgetContainer = styled.div`
@@ -70,7 +70,7 @@ const Caption = styled(Text)`
   margin-bottom: ${({ theme }) => theme.spacing.xxxxsmall};
 `;
 
-interface AttachmentWidgetProps extends Omit<WidgetProps, "children"> {
+interface AttachmentWidgetProps extends Omit<WidgetProps, 'children'> {
   attachmentTitle?: string;
   attachmentLink?: string;
   caption?: string;
@@ -86,7 +86,7 @@ const AttachmentWidget = ({
   isPreview,
 }: AttachmentWidgetProps) => {
   const theme = useTheme();
-  const defaultTitle = imageSrc ? "Photo" : "File";
+  const defaultTitle = imageSrc ? 'Photo' : 'File';
   const title = attachmentTitle || defaultTitle;
   const [viewImage, setViewImage] = React.useState(false);
 
@@ -94,9 +94,9 @@ const AttachmentWidget = ({
     return (
       <Preview>
         {imageSrc ? (
-          <CameraIcon label={"attachment icon"} width={16} />
+          <CameraIcon label={'attachment icon'} width={16} />
         ) : (
-          <AttachmentIcon label={"attachment icon"} width={12} />
+          <AttachmentIcon label={'attachment icon'} width={12} />
         )}
         <Text disableParser>{title}</Text>
       </Preview>
@@ -104,7 +104,7 @@ const AttachmentWidget = ({
 
   return (
     <WidgetContainer>
-      <Widget width={WidgetSizes.Large} padding={imageSrc && "0px"}>
+      <Widget width={WidgetSizes.Large} padding={imageSrc && '0px'}>
         {imageSrc ? (
           <>
             <Modal open={viewImage} onClose={() => setViewImage(false)}>
@@ -117,7 +117,7 @@ const AttachmentWidget = ({
         ) : (
           <ContentContainer>
             <AttachmentIcon
-              label={"attachment icon"}
+              label={'attachment icon'}
               width={20}
               height={20}
               color={theme.color.text.tertiary}
@@ -125,7 +125,7 @@ const AttachmentWidget = ({
             <AttachmentDownload href={attachmentLink} download target="_blank">
               <Text disableParser>{title}</Text>
               <DownloadIcon
-                label={"download icon"}
+                label={'download icon'}
                 width={20}
                 height={20}
                 color={theme.color.text.title}

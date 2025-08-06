@@ -44,7 +44,7 @@ const Modal = ({
   const el = useMemo(() => document.createElement('div'), []);
 
   useEffect(() => {
-    const target = parent && parent.appendChild ? parent : document.body;
+    const target = parent?.appendChild ? parent : document.body;
     target.appendChild(el);
 
     return () => {
@@ -101,11 +101,7 @@ const Modal = ({
     >
       {!locked && (
         <CloseButton variation={ButtonVariations.Icon} onClick={onClose}>
-          <CloseIcon
-            label={CLOSE_BUTTON_LABEL}
-            height="24"
-            width="24"
-          />
+          <CloseIcon label={CLOSE_BUTTON_LABEL} height="24" width="24" />
         </CloseButton>
       )}
       {children}

@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
-import { INPUT_ERROR_CSS } from "../InputError/InputError";
+import { INPUT_ERROR_CSS } from '../InputError/InputError';
 
 export const MultiSelectionWrapper = styled.div`
   width: 100%:
@@ -9,7 +9,7 @@ export const MultiSelectionWrapper = styled.div`
 export const Options = styled.div<{ $hasError: boolean }>`
   display: flex;
   border-radius: 15px;
-  background: ${({ theme }) => theme.color.surface.tertiary};
+  background: ${({ theme }) => theme.color.surface.secondary};
   align-items: center;
   text-align: center;
   flex-wrap: wrap;
@@ -26,7 +26,7 @@ export const Options = styled.div<{ $hasError: boolean }>`
 `;
 
 export const Option = styled.button<{ $selected: boolean }>`
-  font-family: "Signika Negative";
+  font-family: 'Signika Negative';
   background: ${({ theme }) => theme.color.surface.primary};
   border-radius: 10px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.03);

@@ -1,20 +1,20 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export enum Gradients {
-  Blue = "blue",
-  Orange = "orange",
+  Blue = 'blue',
+  Orange = 'orange',
 }
 
 export enum GradientTypes {
-  v1 = "v1",
-  v2 = "v2",
-  v3 = "v3",
-  v4 = "v4",
+  v1 = 'v1',
+  v2 = 'v2',
+  v3 = 'v3',
+  v4 = 'v4',
 }
 
 export const GradientVariations = {
-  blue: ["#36A9E0", "#0367B2", "#2c9cd7", "#1f8acb", "#1881c4", "#127abf"],
-  orange: ["#F28D00", "#f6cf87", "#F49718", "#F6AA47", "#F8B663", "#F9BA6E"],
+  blue: ['#36A9E0', '#0367B2', '#2c9cd7', '#1f8acb', '#1881c4', '#127abf'],
+  orange: ['#F28D00', '#f6cf87', '#F49718', '#F6AA47', '#F8B663', '#F9BA6E'],
 };
 
 export interface IconBaseProps {
@@ -42,7 +42,7 @@ export type IconGradientProps = {
 
 export type IconPathData = {
   path: string;
-  fillRule?: "nonzero" | "evenodd" | "inherit";
+  fillRule?: 'nonzero' | 'evenodd' | 'inherit';
   clipRule?: string;
 };
 
@@ -59,7 +59,6 @@ export type SvgFactoryOptions = {
   gradient?: Gradients;
   gradientType?: GradientTypes;
 };
-
 
 export interface SvgTransformOptions {
   className?: string;

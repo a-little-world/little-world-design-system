@@ -1,9 +1,9 @@
 import {
   TagAppearance,
   TagSizes,
-} from "@a-little-world/little-world-design-system-core";
-import { ViewStyle } from "react-native";
-import { DefaultTheme } from "styled-components/native";
+} from '@a-little-world/little-world-design-system-core';
+import { ViewStyle } from 'react-native';
+import { DefaultTheme } from 'styled-components/native';
 
 export const getTagStyles = ({
   theme,
@@ -17,10 +17,10 @@ export const getTagStyles = ({
   color?: string;
 }): ViewStyle => {
   const baseStyles: ViewStyle = {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: theme.spacing.xxxsmall,
     backgroundColor: theme.color.surface.primary,
     borderWidth: 2,
@@ -34,7 +34,7 @@ export const getTagStyles = ({
       size === TagSizes.small ? theme.spacing.xsmall : theme.spacing.xxsmall,
   };
 
-  if (appearance === TagAppearance.solid)
+  if (appearance === TagAppearance.filled)
     return {
       ...baseStyles,
       backgroundColor: theme.color.surface.accent,

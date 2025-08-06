@@ -37,15 +37,18 @@ export const coreColors = {
 const SPACING_BASE = 8; // px
 
 // Type-safe helper function that preserves the keys of the original object
-export const pixelateObjValues = <T extends Record<string, number | string>>(obj: T): { [K in keyof T]: string } => {
+export const pixelateObjValues = <T extends Record<string, number | string>>(
+  obj: T,
+): { [K in keyof T]: string } => {
   const result = {} as { [K in keyof T]: string };
-  
+
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      result[key] = typeof obj[key] === 'number' ? `${obj[key]}px` : String(obj[key]);
+      result[key] =
+        typeof obj[key] === 'number' ? `${obj[key]}px` : String(obj[key]);
     }
   }
-  
+
   return result;
 };
 
@@ -68,4 +71,4 @@ export const coreSpacing = {
   space100: getValue(10),
   space125: getValue(12.5),
   space150: getValue(15),
-} as const; 
+} as const;

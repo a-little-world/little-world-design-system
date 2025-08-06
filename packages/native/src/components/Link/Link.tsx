@@ -1,20 +1,26 @@
-import { getButtonStyles, gradientStyles } from "../Button/styles";
-import BaseText from "../Text/BaseText";
-import { getLinkStyles, getLinkTextStyles } from "./styles";
+import { getButtonStyles, gradientStyles } from '../Button/styles';
+import BaseText from '../Text/BaseText';
+import { getLinkStyles, getLinkTextStyles } from './styles';
 import {
   ButtonAppearance,
   ButtonSizes,
   ButtonVariations,
   LinkBaseProps,
   TextTypes,
-} from "@a-little-world/little-world-design-system-core";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import React, { forwardRef } from "react";
-import { Pressable, PressableProps, ViewStyle, Linking, StyleProp } from "react-native";
-import { useTheme } from "styled-components/native";
-import Gradient from "../Gradient/Gradient";
+} from '@a-little-world/little-world-design-system-core';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import React, { forwardRef } from 'react';
+import {
+  Pressable,
+  PressableProps,
+  ViewStyle,
+  Linking,
+  StyleProp,
+} from 'react-native';
+import { useTheme } from 'styled-components/native';
+import Gradient from '../Gradient/Gradient';
 
-export type LinkProps = Omit<PressableProps, "onPress"> &
+export type LinkProps = Omit<PressableProps, 'onPress'> &
   LinkBaseProps & {
     params?: Record<string, any>;
     style?: StyleProp<ViewStyle>;
@@ -42,7 +48,7 @@ const Link = forwardRef<any, LinkProps>(
       onClick,
       ...props
     },
-    ref
+    ref,
   ) => {
     const theme = useTheme();
     // Use try/catch to handle cases when NavigationContainer isn't available
@@ -52,8 +58,7 @@ const Link = forwardRef<any, LinkProps>(
     } catch (error) {
       // Navigation container not available, will handle in onPress
     }
-    const hasGradient =
-      buttonAppearance === ButtonAppearance.Primary;
+    const hasGradient = buttonAppearance === ButtonAppearance.Primary;
 
     const handlePress = () => {
       if (onClick) {
@@ -62,26 +67,26 @@ const Link = forwardRef<any, LinkProps>(
 
       if (href) {
         // Handle external link
-        Linking.openURL(href).catch((err) => {
-          console.error("Failed to open URL:", err);
+        Linking.openURL(href).catch(err => {
+          console.error('Failed to open URL:', err);
         });
       } else if (to && navigation) {
         // Handle internal navigation if navigation is available
         navigation.navigate(to, params);
       } else if (to) {
         console.warn(
-          "Navigation not available. Make sure your Link is inside NavigationContainer."
+          'Navigation not available. Make sure your Link is inside NavigationContainer.',
         );
       }
     };
 
     const linkStyles = buttonAppearance
       ? getButtonStyles({
-        theme,
-        appearance: buttonAppearance,
-        size: buttonSize || ButtonSizes.Stretch,
-        variation: ButtonVariations.Basic,
-      })
+          theme,
+          appearance: buttonAppearance,
+          size: buttonSize || ButtonSizes.Stretch,
+          variation: ButtonVariations.Basic,
+        })
       : getLinkStyles({ theme });
 
     return (
@@ -104,14 +109,14 @@ const Link = forwardRef<any, LinkProps>(
           style={getLinkTextStyles({
             theme,
             buttonAppearance,
-            textDecoration: buttonAppearance ? false : textDecoration
+            textDecoration: buttonAppearance ? false : textDecoration,
           })}
         >
           {children}
         </BaseText>
       </Pressable>
     );
-  }
+  },
 );
 
 export default Link;

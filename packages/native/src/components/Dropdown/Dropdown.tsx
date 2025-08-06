@@ -1,17 +1,17 @@
-import { CheckIcon, ChevronDownIcon } from "../Icon";
-import InputError from "../InputError/InputError";
-import Label from "../Label/Label";
-import Text from "../Text/Text";
-import { getDropdownStyles } from "./styles";
+import { CheckIcon, ChevronDownIcon } from '../Icon';
+import InputError from '../InputError/InputError';
+import Label from '../Label/Label';
+import Text from '../Text/Text';
+import { getDropdownStyles } from './styles';
 import {
   Options,
   InputHeight,
   DropdownBaseProps,
-} from "@a-little-world/little-world-design-system-core";
-import * as DropdownMenuPrimitive from "@rn-primitives/dropdown-menu";
-import React from "react";
-import { StyleProp, View, ViewStyle } from "react-native";
-import { useTheme } from "styled-components/native";
+} from '@a-little-world/little-world-design-system-core';
+import * as DropdownMenuPrimitive from '@rn-primitives/dropdown-menu';
+import React from 'react';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import { useTheme } from 'styled-components/native';
 
 export type DropdownProps = DropdownBaseProps & {
   style?: StyleProp<ViewStyle>;
@@ -73,17 +73,17 @@ const Dropdown: React.FC<DropdownProps> = ({
     <View style={[styles.wrapper, style]}>
       {label && (
         <Label
-        bold
-        // toolTipText={labelTooltip}
+          bold
+          // toolTipText={labelTooltip}
         >
           {label}
         </Label>
       )}
       <DropdownMenuPrimitive.Root
-        // disabled={disabled || !!lockedValue}
-        // onValueChange={onValueChange}
-        // required={required}
-        // defaultValue={defaultValue}
+      // disabled={disabled || !!lockedValue}
+      // onValueChange={onValueChange}
+      // required={required}
+      // defaultValue={defaultValue}
       >
         <DropdownMenuPrimitive.Trigger
           aria-label={ariaLabel || label}
@@ -102,7 +102,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         </DropdownMenuPrimitive.Trigger>
         <DropdownMenuPrimitive.Content>
           {/* <DropdownMenuPrimitive.Viewport> */}
-          {options.map((option) => (
+          {options.map(option => (
             <Option key={option.label} value={option.value}>
               {option.label}
             </Option>

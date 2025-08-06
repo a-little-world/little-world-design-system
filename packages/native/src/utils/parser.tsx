@@ -1,33 +1,33 @@
-import React from "react";
-import { Text } from "react-native";
-import styled, { css } from "styled-components/native";
+import React from 'react';
+import { Text } from 'react-native';
+import styled, { css } from 'styled-components/native';
 
-import Button from "../components/Button/Button";
-import Link from "../components/Link/Link";
-import replaceUrlsWithAnchors from "./replaceUrlsWithAnchors";
+import Button from '../components/Button/Button';
+import Link from '../components/Link/Link';
+import replaceUrlsWithAnchors from './replaceUrlsWithAnchors';
 
 const ColorText = styled.Text<{ color: keyof typeof SupportedColorTags }>`
   color: ${({ theme, color }) =>
     color === SupportedColorTags.bold
-      ? "currentColor"
+      ? 'currentColor'
       : theme.color.text[color]};
 
   ${({ color }) =>
     color === SupportedColorTags.bold || color === SupportedColorTags.highlight
       ? css`
           font-weight: bold;
-          font-family: "SignikaNegativeBold";
+          font-family: 'SignikaNegativeBold';
         `
       : css`
           font-weight: normal;
-          font-family: "SignikaNegative";
+          font-family: 'SignikaNegative';
         `};
 `;
 
-const ANCHOR_TAG = "a";
-const BUTTON_TAG = "button";
+const ANCHOR_TAG = 'a';
+const BUTTON_TAG = 'button';
 
-const regex = RegExp(/<(\w+)((?:\s+[^>]*)*)>(.*?)<\/\1>/, "gim");
+const regex = RegExp(/<(\w+)((?:\s+[^>]*)*)>(.*?)<\/\1>/, 'gim');
 
 const parseAttributes = (string: string) => {
   try {
@@ -39,8 +39,8 @@ const parseAttributes = (string: string) => {
 };
 
 enum SupportedColorTags {
-  highlight = "highlight",
-  bold = "bold",
+  highlight = 'highlight',
+  bold = 'bold',
 }
 
 const textParser = (
@@ -52,7 +52,7 @@ const textParser = (
       tag: string;
     }[];
     onlyLinks?: boolean;
-  } = {}
+  } = {},
 ) => {
   const components: React.ReactNode[] = [];
   let match: RegExpExecArray | null;
@@ -65,7 +65,7 @@ const textParser = (
   while ((match = regex.exec(textWithParsedUrls)) !== null) {
     const textBetweenMatches = textWithParsedUrls.substring(
       currentIndex,
-      match.index
+      match.index,
     );
 
     // Only add text if it's not empty
@@ -87,7 +87,7 @@ const textParser = (
           </Link>
         ) : (
           <Text key={tag + match[3]}>{match[3]}</Text>
-        )
+        ),
       );
       continue;
     }
@@ -97,7 +97,7 @@ const textParser = (
       components.push(
         <Text key={match.index}>
           {textWithParsedUrls.substring(match.index, currentIndex)}
-        </Text>
+        </Text>,
       );
       continue;
     }
@@ -106,7 +106,7 @@ const textParser = (
       components.push(
         <Button key={tag + match[3]} {...attrs}>
           {match[3]}
-        </Button>
+        </Button>,
       );
       continue;
     }
@@ -118,13 +118,13 @@ const textParser = (
           color={SupportedColorTags[tag as SupportedColorTags]}
         >
           {match[3]}
-        </ColorText>
+        </ColorText>,
       );
       continue;
     }
 
     // allows for the text parser to be extended and include custom components
-    const customElementFound = options.customElements?.some((element) => {
+    const customElementFound = options.customElements?.some(element => {
       if (tag === element.tag) {
         components.push(
           <element.Component
@@ -133,7 +133,7 @@ const textParser = (
             {...element?.props}
           >
             {match?.[3] ?? null}
-          </element.Component>
+          </element.Component>,
         );
         return true;
       }
@@ -145,7 +145,7 @@ const textParser = (
     components.push(
       <Text key={match.index}>
         {textWithParsedUrls.substring(match.index, currentIndex)}
-      </Text>
+      </Text>,
     );
   }
 
@@ -165,11 +165,11 @@ const textParser = (
   return (
     <Text>
       {components.map((section, index) =>
-        typeof section === "string" ? (
+        typeof section === 'string' ? (
           <Text key={index}>{section}</Text>
         ) : (
           React.cloneElement(section as React.ReactElement, { key: index })
-        )
+        ),
       )}
     </Text>
   );

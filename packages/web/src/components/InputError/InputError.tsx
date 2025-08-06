@@ -24,7 +24,9 @@ const ErrorText = styled(Text)<{
   color: ${({ theme }) => theme.color.text.error};
   visibility: hidden;
   opacity: 0;
-  transition: visibility 1s, opacity 1s;
+  transition:
+    visibility 1s,
+    opacity 1s;
   min-height: ${({ theme }) => theme.spacing.small};
   padding-left: 1px;
   text-align: ${({ $textAlign }) => $textAlign};

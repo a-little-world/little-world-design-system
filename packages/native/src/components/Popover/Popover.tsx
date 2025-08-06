@@ -1,10 +1,10 @@
-import Button, { ButtonVariations } from "../Button/Button";
-import { CloseIcon } from "../Icon";
-import { getPopoverCloseStyles, getPopoverContentStyles } from "./styles";
-import { PopoverSizes } from "@a-little-world/little-world-design-system-core";
-import * as PopoverPrimitive from "@rn-primitives/popover";
-import React, { useMemo, useState } from "react";
-import { useTheme } from "styled-components/native";
+import Button, { ButtonVariations } from '../Button/Button';
+import { CloseIcon } from '../Icon';
+import { getPopoverCloseStyles, getPopoverContentStyles } from './styles';
+import { PopoverSizes } from '@a-little-world/little-world-design-system-core';
+import * as PopoverPrimitive from '@rn-primitives/popover';
+import React, { useMemo, useState } from 'react';
+import { useTheme } from 'styled-components/native';
 
 type PopoverProps = {
   asToolTip?: boolean;
@@ -39,7 +39,7 @@ const Popover: React.FC<PopoverProps> = ({
         extraPaddingTop: Boolean(!asToolTip && showCloseButton),
         asToolTip,
       }),
-    [theme, width, showCloseButton, asToolTip]
+    [theme, width, showCloseButton, asToolTip],
   );
 
   const closeStyles = useMemo(
@@ -48,7 +48,7 @@ const Popover: React.FC<PopoverProps> = ({
         theme,
         asToolTip,
       }),
-    [theme, asToolTip]
+    [theme, asToolTip],
   );
 
   return (

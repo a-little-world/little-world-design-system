@@ -4,9 +4,9 @@
 //   slideRightAndFade,
 //   slideUpAndFade,
 // } from "../../utils/animations";
-import { PopoverSizes } from "@a-little-world/little-world-design-system-core";
-import { StyleSheet } from "react-native";
-import { DefaultTheme } from "styled-components/native";
+import { PopoverSizes } from '@a-little-world/little-world-design-system-core';
+import { StyleSheet } from 'react-native';
+import { DefaultTheme } from 'styled-components/native';
 
 //   &[data-state="delayed-open"][data-side="top"] {
 //     animation-name: ${slideDownAndFade};
@@ -35,15 +35,15 @@ export const getPopoverContentStyles = ({
 }) =>
   StyleSheet.create({
     content: {
-      display: "flex",
-      flexDirection: "column",
-      position: "absolute",
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'absolute',
       zIndex: 9999,
       borderRadius: theme.radius.xxxsmall,
       padding: theme.spacing.small,
       width: width || undefined,
       maxWidth: PopoverSizes.Large,
-      shadowColor: "rgba(20, 25, 30, 0.35)", // iOS
+      shadowColor: 'rgba(20, 25, 30, 0.35)', // iOS
       shadowOffset: { width: 0, height: 10 },
       shadowOpacity: 0.35,
       shadowRadius: 20,
@@ -67,7 +67,7 @@ export const getPopoverCloseStyles = ({
 }) =>
   StyleSheet.create({
     close: {
-      position: "absolute" as const,
+      position: 'absolute' as const,
       top: theme.spacing.xsmall,
       right: theme.spacing.xsmall,
       width: 12,

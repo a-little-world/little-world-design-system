@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -9,7 +8,8 @@ const Wrapper = styled.div`
 
 const ReactStatus = styled.div`
   border-radius: 4px;
-  padding: ${({ theme }) => theme.spacing.xxsmall} ${({ theme }) => theme.spacing.xsmall};
+  padding: ${({ theme }) => theme.spacing.xxsmall}
+    ${({ theme }) => theme.spacing.xsmall};
   font-family: monospace;
   background: #20232a;
   color: #61dafb;
@@ -21,7 +21,8 @@ const ReactStatus = styled.div`
 
 const FigmaStatus = styled.a`
   border-radius: 4px;
-  padding: ${({ theme }) => theme.spacing.xxsmall} ${({ theme }) => theme.spacing.xsmall};
+  padding: ${({ theme }) => theme.spacing.xxsmall}
+    ${({ theme }) => theme.spacing.xsmall};
   display: flex;
   gap: ${({ theme }) => theme.spacing.xsmall};
   align-items: center;

@@ -1,12 +1,12 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties } from 'react';
 
-import { Icon, IconSvgProps } from "./Icon";
+import { Icon, IconSvgProps } from './Icon';
 
 import {
   SvgFactoryOptions,
   SvgTransformOptions,
-} from "@a-little-world/little-world-design-system-core";
-import { createReactSvg } from "../../utils/createReactSvg";
+} from '@a-little-world/little-world-design-system-core';
+import { createReactSvg } from '../../utils/createReactSvg';
 
 export const createIconComponent = ({
   name,
@@ -38,7 +38,7 @@ export const createIconComponent = ({
       style,
       width,
     };
-  
+
     return (
       <Icon
         backgroundColor={backgroundColor}

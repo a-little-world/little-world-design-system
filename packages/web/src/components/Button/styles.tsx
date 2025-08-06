@@ -1,22 +1,22 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 import {
   ButtonAppearance,
   ButtonSizes,
   ButtonVariations,
-} from "@a-little-world/little-world-design-system-core";
-import { LINK_HOVER_CSS } from "../Link/styles";
+} from '@a-little-world/little-world-design-system-core';
+import { LINK_HOVER_CSS } from '../Link/styles';
 
 export const OPTION_BUTTON_CSS = css<{
   $appearance?: ButtonAppearance;
   $backgroundColor?: string;
   $color?: string;
 }>`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   background: ${({ $backgroundColor, theme }) =>
-    $backgroundColor || theme.color.surface.tertiary};
+    $backgroundColor || theme.color.surface.secondary};
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
   color: ${({ $color, theme }) => $color || theme.color.text.primary};
   border-radius: 15px;
@@ -36,7 +36,8 @@ export const OPTION_BUTTON_CSS = css<{
   &:not(:disabled):hover {
     filter: brightness(95%);
     cursor: pointer;
-    box-shadow: 0 0 10px 1px rgb(0 0 0 / 11%),
+    box-shadow:
+      0 0 10px 1px rgb(0 0 0 / 11%),
       0 0 8px 3px rgb(255 255 255 / 15%);
   }
 
@@ -82,13 +83,21 @@ export const PrimaryButtonCss = css`
   border: none;
   background: ${({ theme, $backgroundColor }: any) =>
     $backgroundColor || theme.color.gradient.orange10};
-  transition: background-color 0.5s ease, filter 0.5s ease,
-    border-color 0.5s ease, color 0.5s ease, 0.4s;
+  transition:
+    background-color 0.5s ease,
+    filter 0.5s ease,
+    border-color 0.5s ease,
+    color 0.5s ease,
+    0.4s;
 
   &:not(:disabled):hover {
     filter: brightness(80%);
-    transition: background-color 0.5s ease, filter 0.5s ease,
-      border-color 0.5s ease, color 0.5s ease, 0.4s;
+    transition:
+      background-color 0.5s ease,
+      filter 0.5s ease,
+      border-color 0.5s ease,
+      color 0.5s ease,
+      0.4s;
   }
 `;
 
@@ -122,19 +131,27 @@ export const StyledButton = styled.button<{
 }>`
   cursor: pointer;
   position: relative;
-  color: ${({ $color }) => $color || "currentColor"};
-  font-family: "Signika Negative";
+  color: ${({ $color }) => $color || 'currentColor'};
+  font-family: 'Signika Negative';
   font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  transition: background-color 0.5s ease, filter 0.5s ease,
-    border-color 0.5s ease, color 0.5s ease, 0.4s;
+  transition:
+    background-color 0.5s ease,
+    filter 0.5s ease,
+    border-color 0.5s ease,
+    color 0.5s ease,
+    0.4s;
 
   &:not(:disabled):hover {
-    transition: background-color 0.5s ease, filter 0.5s ease,
-      border-color 0.5s ease, color 0.5s ease, 0.4s;
+    transition:
+      background-color 0.5s ease,
+      filter 0.5s ease,
+      border-color 0.5s ease,
+      color 0.5s ease,
+      0.4s;
   }
 
   & > * {
@@ -152,14 +169,7 @@ export const StyledButton = styled.button<{
     }
   }
 
-  ${({
-    $appearance,
-    $backgroundColor,
-    $borderColor,
-    $size,
-    $variation,
-    theme,
-  }) => {
+  ${({ $appearance, $backgroundColor, $borderColor, $size, $variation }) => {
     if ($variation === ButtonVariations.Basic) {
       if ($appearance === ButtonAppearance.Primary) return PrimaryButtonCss;
       if ($appearance === ButtonAppearance.Secondary) return SecondaryButtonCss;
@@ -192,8 +202,8 @@ export const StyledButton = styled.button<{
 
     if ($variation === ButtonVariations.Circle)
       return css`
-        border: 1px solid ${$borderColor || $backgroundColor || "currentColor"};
-        background: ${$backgroundColor || "transparent"};
+        border: 1px solid ${$borderColor || $backgroundColor || 'currentColor'};
+        background: ${$backgroundColor || 'transparent'};
         border-radius: 50%;
         padding: 0;
         transition: opacity 0.5s ease;
@@ -226,12 +236,13 @@ export const StyledButton = styled.button<{
           width: 32px;
           height: 32px;
         `;
+        break;
       default:
         break;
     }
     if ($variation === ButtonVariations.Icon) {
       return css`
-        background: ${$backgroundColor || "transparent"};
+        background: ${$backgroundColor || 'transparent'};
         width: auto;
         height: fit-content;
         padding: 0;

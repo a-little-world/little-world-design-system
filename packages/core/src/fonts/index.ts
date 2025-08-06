@@ -1,14 +1,14 @@
 // For web environments, we export paths and family names
 export const fontPaths = {
-  'SignikaNegative': './fonts/SignikaNegative-Variable.ttf',
-  'SignikaNegativeBold': './fonts/SignikaNegative-Bold.ttf',
-  'WorkSans': './fonts/WorkSans-Bold.ttf'
+  SignikaNegative: './fonts/SignikaNegative-Variable.ttf',
+  SignikaNegativeBold: './fonts/SignikaNegative-Bold.ttf',
+  WorkSans: './fonts/WorkSans-Bold.ttf',
 };
 
 export const fontFamilies = {
-  'SignikaNegative': 'Signika Negative',
-  'SignikaNegativeBold': 'Signika Negative Bold',
-  'WorkSans': 'Work Sans'
+  SignikaNegative: 'Signika Negative',
+  SignikaNegativeBold: 'Signika Negative Bold',
+  WorkSans: 'Work Sans',
 };
 
 // For native environments that can handle binary imports
@@ -19,13 +19,13 @@ try {
   const SignikaNegative = require('./SignikaNegative-Variable.ttf');
   const SignikaNegativeBold = require('./SignikaNegative-Bold.ttf');
   const WorkSans = require('./WorkSans-Bold.ttf');
-  
+
   fontFiles = {
-    'SignikaNegative': SignikaNegative,
-    'SignikaNegativeBold': SignikaNegativeBold,
-    'WorkSans': WorkSans
+    SignikaNegative,
+    SignikaNegativeBold,
+    WorkSans,
   };
-} catch (error) {
+} catch {
   // In web environments, fontFiles will remain undefined
   // Native apps should check if fontFiles exists before using
 }

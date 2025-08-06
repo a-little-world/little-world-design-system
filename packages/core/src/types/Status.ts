@@ -1,8 +1,8 @@
 export enum StatusTypes {
-  Error = "Error",
-  Success = "Success",
-  Info = "Info",
-  Warning = "Warning",
+  Error = 'Error',
+  Success = 'Success',
+  Info = 'Info',
+  Warning = 'Warning',
 }
 
 export interface StatusBaseProps {

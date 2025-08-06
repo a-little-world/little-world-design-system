@@ -1,9 +1,9 @@
 import {
   ButtonAppearance,
   ButtonSizes,
-} from "@a-little-world/little-world-design-system-core";
-import { DefaultTheme } from "styled-components/native";
-import { StyleSheet, ViewStyle, TextStyle } from "react-native";
+} from '@a-little-world/little-world-design-system-core';
+import { DefaultTheme } from 'styled-components/native';
+import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
 
 export const getLinkStyles = ({
   theme,
@@ -12,16 +12,16 @@ export const getLinkStyles = ({
 }): ViewStyle => {
   return StyleSheet.create({
     container: {
-      alignSelf: "baseline",
+      alignSelf: 'baseline',
       margin: 0,
       padding: 0,
-      display: "flex",
-      flexDirection: "row",
-      height: "auto",
+      display: 'flex',
+      flexDirection: 'row',
+      height: 'auto',
       minHeight: 0,
-      alignItems: "baseline",
-      justifyContent: "flex-start",
-      width: "auto",
+      alignItems: 'baseline',
+      justifyContent: 'flex-start',
+      width: 'auto',
       minWidth: 0,
     },
   }).container;
@@ -45,16 +45,16 @@ export const getLinkTextStyles = ({
           ? theme.color.text.button
           : color || theme.color.text.link,
       textDecorationLine: textDecoration
-        ? ("underline" as const)
-        : ("none" as const),
+        ? ('underline' as const)
+        : ('none' as const),
       ...(!buttonAppearance
         ? {
             margin: 0,
             padding: 0,
             lineHeight: undefined,
-            textAlignVertical: "auto",
+            textAlignVertical: 'auto',
             flex: undefined,
-            alignSelf: "baseline",
+            alignSelf: 'baseline',
           }
         : {}),
     },

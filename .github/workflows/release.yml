@@ -31,8 +31,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@a-little-world"
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@a-little-world'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_PUBLISH_TOKEN }}
 
@@ -49,10 +49,11 @@ jobs:
           # Set up fresh config for GitHub Package Registry
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_PUBLISH_TOKEN }}" > ~/.npmrc
           echo "@a-little-world:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "registry=https://registry.npmjs.org/" >> ~/.npmrc
 
-          # Configure pnpm to use the same registry
-          pnpm config set registry https://npm.pkg.github.com
+          # Configure pnpm to use the same registry settings
           pnpm config set @a-little-world:registry https://npm.pkg.github.com
+          pnpm config set registry https://registry.npmjs.org/
 
           # Verify configuration
           echo "=== NPM Config ==="
@@ -310,7 +311,7 @@ jobs:
         run: |
           echo "## 📦 Publishing packages..." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           # Debug: Check npm configuration
           echo "### 🔍 Debug Information:" >> $GITHUB_STEP_SUMMARY
           echo "NPM Registry: $(npm config get registry)" >> $GITHUB_STEP_SUMMARY

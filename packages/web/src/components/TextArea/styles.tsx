@@ -2,7 +2,10 @@ import styled, { css } from 'styled-components';
 
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 import Text from '../Text/Text';
-import { TextAreaDimensions, TextAreaSize } from '@a-little-world/little-world-design-system-core';
+import {
+  TextAreaDimensions,
+  TextAreaSize,
+} from '@a-little-world/little-world-design-system-core';
 
 export const AreaWrapper = styled.div<{ $size?: TextAreaSize }>`
   display: flex;
@@ -24,17 +27,15 @@ export const Area = styled.textarea<{
   height: ${({ $size }) => $size};
   border: 1px solid ${({ theme }) => theme.color.border.moderate};
   border-radius: ${({ $size, theme }) =>
-    $size === TextAreaSize.Xsmall
-      ? theme.radius.large
-      : theme.radius.xxsmall};
+    $size === TextAreaSize.Xsmall ? theme.radius.large : theme.radius.xxsmall};
   background: ${({ theme }) => theme.color.surface.primary};
   color: ${({ theme }) => theme.color.text.primary};
   padding: ${({ $size, theme }) =>
     $size === TextAreaSize.Small
       ? theme.spacing.xxsmall
       : $size === TextAreaSize.Xsmall
-      ? '11px 14px'
-      : theme.spacing.small};
+        ? '11px 14px'
+        : theme.spacing.small};
   box-sizing: border-box;
   margin-bottom: ${({ theme }) => theme.spacing.xxxxsmall};
   resize: none;

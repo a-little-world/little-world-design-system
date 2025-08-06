@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import { TextTypes } from './Text';
 
 export interface AccordionItemProps {
@@ -10,4 +11,4 @@ export interface AccordionBaseProps {
   headerType?: TextTypes;
   headerColor?: string;
   items: AccordionItemProps[];
-} 
+}

@@ -1,7 +1,10 @@
 import React, { SVGProps } from 'react';
 import styled, { css } from 'styled-components';
 
-import { Gradients, IconBaseProps } from '@a-little-world/little-world-design-system-core';
+import {
+  Gradients,
+  IconBaseProps,
+} from '@a-little-world/little-world-design-system-core';
 
 const Circle = styled.div<{
   $backgroundColor?: string;
@@ -22,7 +25,10 @@ const Circle = styled.div<{
 
 // hide element but keep visible to screen readers
 // parent requires position: relative;
-export const ImageLabel = styled.span<{ $top: string | number; $visible?: boolean }>`
+export const ImageLabel = styled.span<{
+  $top: string | number;
+  $visible?: boolean;
+}>`
   ${({ $top, $visible }) =>
     $visible
       ? css`

@@ -3,7 +3,6 @@ import React from 'react';
 import styled, { useTheme } from 'styled-components';
 
 import Text from '../components/Text/Text';
-import { tokensPixelated } from '@a-little-world/little-world-design-system-core';
 
 const Container = styled.div`
   display: flex;
@@ -53,17 +52,61 @@ const RadiusValue = styled.div`
 const RadiusSection = () => {
   const theme = useTheme();
   const radiusTokens = [
-    { key: 'xxxsmall', value: theme.radius.xxxsmall, description: '4px - Subtle rounding' },
-    { key: 'xxsmall', value: theme.radius.xxsmall, description: '8px - Standard rounding' },
-    { key: 'xsmall', value: theme.radius.xsmall, description: '12px - Comfortable rounding' },
-    { key: 'small', value: theme.radius.small, description: '16px - Noticeable rounding' },
-    { key: 'medium', value: theme.radius.medium, description: '20px - Prominent rounding' },
-    { key: 'large', value: theme.radius.large, description: '24px - Generous rounding' },
-    { key: 'xlarge', value: theme.radius.xlarge, description: '32px - Substantial rounding' },
-    { key: 'xxlarge', value: theme.radius.xxlarge, description: '40px - Maximum rounding' },
-    { key: 'massive', value: theme.radius.massive, description: '100px - Dramatic rounding' },
-    { key: 'half', value: theme.radius.half, description: '50% - Circular elements' },
-    { key: 'full', value: theme.radius.full, description: '100% - Fully rounded' },
+    {
+      key: 'xxxsmall',
+      value: theme.radius.xxxsmall,
+      description: '4px - Subtle rounding',
+    },
+    {
+      key: 'xxsmall',
+      value: theme.radius.xxsmall,
+      description: '8px - Standard rounding',
+    },
+    {
+      key: 'xsmall',
+      value: theme.radius.xsmall,
+      description: '12px - Comfortable rounding',
+    },
+    {
+      key: 'small',
+      value: theme.radius.small,
+      description: '16px - Noticeable rounding',
+    },
+    {
+      key: 'medium',
+      value: theme.radius.medium,
+      description: '20px - Prominent rounding',
+    },
+    {
+      key: 'large',
+      value: theme.radius.large,
+      description: '24px - Generous rounding',
+    },
+    {
+      key: 'xlarge',
+      value: theme.radius.xlarge,
+      description: '32px - Substantial rounding',
+    },
+    {
+      key: 'xxlarge',
+      value: theme.radius.xxlarge,
+      description: '40px - Maximum rounding',
+    },
+    {
+      key: 'massive',
+      value: theme.radius.massive,
+      description: '100px - Dramatic rounding',
+    },
+    {
+      key: 'half',
+      value: theme.radius.half,
+      description: '50% - Circular elements',
+    },
+    {
+      key: 'full',
+      value: theme.radius.full,
+      description: '100% - Fully rounded',
+    },
   ];
 
   return (
@@ -71,9 +114,7 @@ const RadiusSection = () => {
       {radiusTokens.map(({ key, value, description }) => (
         <RadiusItem key={key}>
           <RadiusVisual $radius={value}>
-            <Text type="Body4">
-              {value}
-            </Text>
+            <Text type="Body4">{value}</Text>
           </RadiusVisual>
           <RadiusInfo>
             <RadiusLabel>
@@ -89,4 +130,4 @@ const RadiusSection = () => {
   );
 };
 
-export default RadiusSection; 
+export default RadiusSection;

@@ -1,17 +1,17 @@
-import React from "react";
-import { ViewStyle } from "react-native";
+import React from 'react';
+import { ViewStyle } from 'react-native';
 
-import { Icon, IconSvgProps } from "./Icon";
-import { createReactNativeSvg } from "../../utils/createReactNativeSvg";
+import { Icon, IconSvgProps } from './Icon';
+import { createReactNativeSvg } from '../../utils/createReactNativeSvg';
 import {
   SvgFactoryOptions,
   SvgTransformOptions,
-} from "@a-little-world/little-world-design-system-core";
+} from '@a-little-world/little-world-design-system-core';
 
 export const createIconComponent = ({
   name,
   svgData,
-  gradientType
+  gradientType,
 }: SvgFactoryOptions) => {
   const Component = ({
     height = 24,
@@ -34,9 +34,9 @@ export const createIconComponent = ({
       color,
       gradient,
       gradientId,
-      gradientType
+      gradientType,
     };
-  
+
     return (
       <Icon
         backgroundColor={backgroundColor}

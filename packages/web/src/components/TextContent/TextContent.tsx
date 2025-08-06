@@ -117,7 +117,7 @@ const TextPage = ({ content, marginBottom }: Props) => {
 
           if (type === ContentTypes.OrderedList)
             return (
-              <List key={listItems?.[0]} as="ol" ordered style={style}>
+              <List key={listItems?.[0]} as="ol" $ordered style={style}>
                 {listItems?.map(item => (
                   <ListItem key={item} tag="li">
                     {item}

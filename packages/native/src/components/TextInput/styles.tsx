@@ -1,46 +1,56 @@
 // import PhoneInput from 'react-phone-input-2';
 import React from 'react';
 import { StyleSheet, View, TextInput as RNTextInput } from 'react-native';
-import { InputHeight, InputWidth } from '@a-little-world/little-world-design-system-core';
+import {
+  InputHeight,
+  InputWidth,
+} from '@a-little-world/little-world-design-system-core';
 import { useTheme } from 'styled-components/native';
-import Button from '../Button/Button';
-import { INPUT_ERROR_CSS } from '../InputError/InputError';
 
-export const createStyles = (theme: any) => StyleSheet.create({
-  inputWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    maxWidth: InputWidth.Large,
-  },
-  inputContainer: {
-    position: 'relative',
-    width: '100%',
-  },
-  input: {
-    width: '100%',
-    borderWidth: 2,
-    borderColor: theme.color.border.subtle,
-    borderRadius: 6,
-    padding: theme.spacing.xxsmall,
-    marginBottom: theme.spacing.xxxxsmall,
-    fontSize: 16, // 1rem equivalent
-    lineHeight: 20, // 1.25 equivalent
-  },
-  inputSmall: {
-    padding: 5,
-  },
-  inputError: {
-    borderColor: theme.color.border.error,
-  },
-  showPasswordToggle: {
-    position: 'absolute',
-    right: theme.spacing.xxsmall,
-    top: theme.spacing.xxsmall,
-  },
-});
+export const createStyles = (theme: any) =>
+  StyleSheet.create({
+    inputWrapper: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      maxWidth: InputWidth.Large,
+    },
+    inputContainer: {
+      position: 'relative',
+      width: '100%',
+    },
+    input: {
+      width: '100%',
+      borderWidth: 2,
+      borderColor: theme.color.border.subtle,
+      borderRadius: 6,
+      padding: theme.spacing.xxsmall,
+      marginBottom: theme.spacing.xxxxsmall,
+      fontSize: 16, // 1rem equivalent
+      lineHeight: 20, // 1.25 equivalent
+    },
+    inputSmall: {
+      padding: 5,
+    },
+    inputError: {
+      borderColor: theme.color.border.error,
+    },
+    showPasswordToggle: {
+      position: 'absolute',
+      right: theme.spacing.xxsmall,
+      top: theme.spacing.xxsmall,
+    },
+  });
 
-export const InputWrapper = ({ children, width = InputWidth.Large, style }: { children: React.ReactNode; width?: InputWidth; style?: any }) => {
+export const InputWrapper = ({
+  children,
+  width = InputWidth.Large,
+  style,
+}: {
+  children: React.ReactNode;
+  width?: InputWidth;
+  style?: any;
+}) => {
   const theme = useTheme();
   const styles = createStyles(theme);
   return (
@@ -50,17 +60,28 @@ export const InputWrapper = ({ children, width = InputWidth.Large, style }: { ch
   );
 };
 
-export const InputContainer = ({ children, style }: { children: React.ReactNode; style?: any }) => {
+export const InputContainer = ({
+  children,
+  style,
+}: {
+  children: React.ReactNode;
+  style?: any;
+}) => {
   const theme = useTheme();
   const styles = createStyles(theme);
-  return (
-    <View style={[styles.inputContainer, style]}>
-      {children}
-    </View>
-  );
+  return <View style={[styles.inputContainer, style]}>{children}</View>;
 };
 
-export const Input = ({ hasError, height, style, ...props }: { hasError?: boolean; height?: InputHeight; style?: any } & React.ComponentProps<typeof RNTextInput>) => {
+export const Input = ({
+  hasError,
+  height,
+  style,
+  ...props
+}: {
+  hasError?: boolean;
+  height?: InputHeight;
+  style?: any;
+} & React.ComponentProps<typeof RNTextInput>) => {
   const theme = useTheme();
   const styles = createStyles(theme);
   return (
@@ -140,7 +161,13 @@ export const Input = ({ hasError, height, style, ...props }: { hasError?: boolea
 //   }
 // `;
 
-export const ShowPasswordToggle = ({ children, style, ...props }: { children: React.ReactNode; style?: any } & React.ComponentProps<typeof View>) => {
+export const ShowPasswordToggle = ({
+  children,
+  style,
+  ...props
+}: { children: React.ReactNode; style?: any } & React.ComponentProps<
+  typeof View
+>) => {
   const theme = useTheme();
   const styles = createStyles(theme);
   return (

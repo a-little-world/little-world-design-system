@@ -1,16 +1,16 @@
-import { Gradient } from "../Gradient/Gradient";
-import Loading from "../Loading/Loading";
-import BaseText from "../Text/BaseText";
-import { getButtonStyles, getButtonTextStyles, gradientStyles } from "./styles";
+import { Gradient } from '../Gradient/Gradient';
+import Loading from '../Loading/Loading';
+import BaseText from '../Text/BaseText';
+import { getButtonStyles, getButtonTextStyles, gradientStyles } from './styles';
 import {
   ButtonAppearance,
   ButtonBaseProps,
   ButtonSizes,
   ButtonVariations,
-} from "@a-little-world/little-world-design-system-core";
-import React from "react";
-import { StyleProp, ViewStyle, Pressable } from "react-native";
-import { useTheme } from "styled-components/native";
+} from '@a-little-world/little-world-design-system-core';
+import React from 'react';
+import { StyleProp, ViewStyle, Pressable } from 'react-native';
+import { useTheme } from 'styled-components/native';
 
 export { ButtonAppearance, ButtonSizes, ButtonVariations };
 
@@ -39,7 +39,7 @@ const Button = React.forwardRef<
       variation = ButtonVariations.Basic,
       style,
     },
-    ref
+    ref,
   ) => {
     const theme = useTheme();
 
@@ -96,15 +96,15 @@ const Button = React.forwardRef<
         {hasGradient && (
           <Gradient
             gradient={theme.color.gradient.orange10}
-            style={{...buttonStyles, ...gradientStyles.fullSize}}
+            style={{ ...buttonStyles, ...gradientStyles.fullSize }}
           />
         )}
         {content}
       </Pressable>
     );
-  }
+  },
 );
 
-Button.displayName = "Button";
+Button.displayName = 'Button';
 
 export default Button;

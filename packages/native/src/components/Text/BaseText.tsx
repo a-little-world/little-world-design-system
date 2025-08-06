@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 import {
   Text as RNText,
   TextStyle as RNTextStyle,
   StyleProp,
-} from "react-native";
+} from 'react-native';
 
 import {
   TextBaseProps,
   TextStyle as CoreTextStyle,
   TextTypes,
   getTextStyle,
-} from "@a-little-world/little-world-design-system-core";
-import { DefaultTheme, useTheme } from "styled-components/native";
+} from '@a-little-world/little-world-design-system-core';
+import { DefaultTheme, useTheme } from 'styled-components/native';
 
 export type BaseTextProps = TextBaseProps & {
   italic?: boolean;
@@ -33,17 +33,17 @@ const getStyles = ({
   italic?: boolean;
   theme: DefaultTheme;
 }): RNTextStyle => ({
-  textAlign: center ? "center" : "auto",
+  textAlign: center ? 'center' : 'auto',
   color: color ?? theme.color.text.primary,
   fontSize: typeStyles.fontSize * 16, // Convert rem to pixels (1rem = 16px)
-  fontWeight: typeStyles.fontWeight === "bold" || bold ? "bold" : "normal",
+  fontWeight: typeStyles.fontWeight === 'bold' || bold ? 'bold' : 'normal',
   fontFamily:
-    typeStyles.styleType === "body"
+    typeStyles.styleType === 'body'
       ? bold
-        ? "SignikaNegativeBold"
-        : "SignikaNegative"
-      : "WorkSans",
-  ...(italic && { fontStyle: "italic", transform: [{ skewX: "-12deg" }] })
+        ? 'SignikaNegativeBold'
+        : 'SignikaNegative'
+      : 'WorkSans',
+  ...(italic && { fontStyle: 'italic', transform: [{ skewX: '-12deg' }] }),
 });
 
 const BaseText = ({
@@ -63,7 +63,7 @@ const BaseText = ({
     italic,
     center,
     color,
-    theme
+    theme,
   });
 
   return (
@@ -73,4 +73,4 @@ const BaseText = ({
   );
 };
 
-export default BaseText; 
+export default BaseText;

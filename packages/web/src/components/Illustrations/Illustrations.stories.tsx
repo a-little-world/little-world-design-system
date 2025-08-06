@@ -3,6 +3,7 @@ import React from "react";
 import { tokensPixelated } from "@a-little-world/little-world-design-system-core";
 import Text from "../Text/Text";
 import * as allIllustrations from "./index";
+import styled from "styled-components";
 
 export default {
   title: "Components/Illustrations",
@@ -35,3 +36,18 @@ export const AllVariants = (args) => (
     ))}
   </div>
 );
+
+const StyledMatchSearching = styled(allIllustrations.MatchSearchingImage)`
+  height: 64px;
+  width: 64px;
+  background-color: red;
+`;
+
+export const StyledIllustration = (args) => {
+  return (
+    <div>
+      <Text>Icon should have custom styles applied: Red background and height of 64px</Text>
+      <StyledMatchSearching label="Stack Icon" />
+    </div>
+  )
+}

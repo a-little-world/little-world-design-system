@@ -1,5 +1,5 @@
-import React, { ReactElement } from "react";
-import { View } from "react-native";
+import React, { ReactElement } from 'react';
+import { View } from 'react-native';
 import Svg, {
   Path,
   G,
@@ -13,16 +13,16 @@ import Svg, {
   LinearGradient,
   Stop,
   ClipPath,
-} from "react-native-svg";
+} from 'react-native-svg';
 import {
   SvgTransformOptions,
   ParsedSvg,
   Gradients,
   SvgElement,
-} from "@a-little-world/little-world-design-system-core";
-import IconGradient from "../components/Icon/IconGradient";
+} from '@a-little-world/little-world-design-system-core';
+import IconGradient from '../components/Icon/IconGradient';
 
-const BLACK_HEX = "#000";
+const BLACK_HEX = '#000';
 
 // Helper function to generate unique keys
 const generateUniqueKey = (element: SvgElement, index: string | number) => {
@@ -35,7 +35,7 @@ const generateUniqueKey = (element: SvgElement, index: string | number) => {
 const renderChildren = (
   children: SvgElement[],
   options: SvgTransformOptions,
-  parentIndex: string | number
+  parentIndex: string | number,
 ): ReactElement[] => {
   return children
     .map((child, i) => renderSvgElement(child, options, `${parentIndex}-${i}`))
@@ -46,7 +46,7 @@ const renderChildren = (
 const renderSvgElement = (
   element: SvgElement,
   options: SvgTransformOptions,
-  index: string | number
+  index: string | number,
 ): ReactElement | null => {
   const { gradient, gradientId, color } = options;
 
@@ -55,7 +55,7 @@ const renderSvgElement = (
 
   // Handle color attributes for SVG elements based on the colorAttribute property
   // If element has color set that isn't #000 - do not override
-  if (element.colorAttribute && element.colorAttribute !== "none") {
+  if (element.colorAttribute && element.colorAttribute !== 'none') {
     if (attrs[element.colorAttribute] === BLACK_HEX) {
       attrs[element.colorAttribute] = gradient
         ? `url(#${gradientId})`
@@ -70,45 +70,45 @@ const renderSvgElement = (
   const key = generateUniqueKey(element, index);
 
   switch (element.type) {
-    case "path":
+    case 'path':
       return <Path key={key} {...attrs} />;
-    case "g":
+    case 'g':
       return (
         <G key={key} {...attrs}>
           {renderChildren(element.children, options, index)}
         </G>
       );
-    case "defs":
+    case 'defs':
       return (
         <Defs key={key} {...attrs}>
           {renderChildren(element.children, options, index)}
         </Defs>
       );
-    case "linearGradient":
+    case 'linearGradient':
       return (
         <LinearGradient key={key} {...attrs}>
           {renderChildren(element.children, options, index)}
         </LinearGradient>
       );
-    case "stop":
+    case 'stop':
       return <Stop key={key} {...attrs} />;
-    case "clipPath":
+    case 'clipPath':
       return (
         <ClipPath key={key} {...attrs}>
           {renderChildren(element.children, options, index)}
         </ClipPath>
       );
-    case "circle":
+    case 'circle':
       return <Circle key={key} {...attrs} />;
-    case "rect":
+    case 'rect':
       return <Rect key={key} {...attrs} />;
-    case "line":
+    case 'line':
       return <Line key={key} {...attrs} />;
-    case "polygon":
+    case 'polygon':
       return <Polygon key={key} {...attrs} />;
-    case "polyline":
+    case 'polyline':
       return <Polyline key={key} {...attrs} />;
-    case "ellipse":
+    case 'ellipse':
       return <Ellipse key={key} {...attrs} />;
     default:
       console.warn(`Unsupported SVG element type: ${element.type}`);
@@ -118,7 +118,7 @@ const renderSvgElement = (
 
 export const createReactNativeSvg = (
   svgData: ParsedSvg,
-  options: SvgTransformOptions
+  options: SvgTransformOptions,
 ) => {
   const { label, width, height, gradient, gradientId, style } = options;
 
@@ -140,7 +140,7 @@ export const createReactNativeSvg = (
         )}
 
         {svgData.elements.map((element, index) =>
-          renderSvgElement(element, options, index)
+          renderSvgElement(element, options, index),
         )}
       </Svg>
     </View>

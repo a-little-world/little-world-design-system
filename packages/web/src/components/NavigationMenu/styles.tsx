@@ -60,7 +60,7 @@ const MENU_ITEM_CSS = css`
   color: ${({ theme }) => theme.color.text.primary};
 
   &:focus {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.color.surface.tertiary};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.color.surface.secondary};
   }
 
   &:hover {
@@ -119,7 +119,9 @@ export const NavMenuIndicator = styled(RadixNavigationMenu.Indicator)`
   top: 100%;
   overflow: hidden;
   z-index: 1;
-  transition: width, transform 250ms ease;
+  transition:
+    width,
+    transform 250ms ease;
 
   &[data-state='visible'] {
     animation: fadeIn 200ms ease forward;
@@ -158,10 +160,14 @@ export const NavMenuViewport = styled(RadixNavigationMenu.Viewport)`
   background-color: ${({ theme }) => theme.color.surface.primary};
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+  box-shadow:
+    hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
     hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
 
-  transition: width, height, 300ms ease;
+  transition:
+    width,
+    height,
+    300ms ease;
   height: var(--radix-navigation-menu-viewport-height);
 
   &[data-state='open'] {
@@ -231,7 +237,7 @@ export const ListItemLink = styled(Link)`
     box-shadow: 0 0 0 2px ${({ theme }) => theme.color.surface.secondary};
   }
   &:hover {
-    background-color: ${({ theme }) => theme.color.surface.tertiary};
+    background-color: ${({ theme }) => theme.color.surface.secondary};
   }
 
   ${({ active, theme }) =>

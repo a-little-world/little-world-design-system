@@ -1,9 +1,12 @@
-import { Close } from "@radix-ui/react-toast";
-import React, { useState } from "react";
-import { ToastBaseProps, TOAST_DEFAULT_DURATION } from "@a-little-world/little-world-design-system-core";
+import { Close } from '@radix-ui/react-toast';
+import React, { useState } from 'react';
+import {
+  ToastBaseProps,
+  TOAST_DEFAULT_DURATION,
+} from '@a-little-world/little-world-design-system-core';
 
-import Button, { ButtonSizes, ButtonVariations } from "../Button/Button";
-import { InfoIcon } from "../Icon";
+import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
+import { InfoIcon } from '../Icon';
 import {
   ToastAction,
   ToastCloseButton,
@@ -14,9 +17,9 @@ import {
   ToastHeadline,
   ToastRoot,
   ToastTitle,
-} from "./styles";
+} from './styles';
 
-export const TOAST_ICON_SIZE = "24px";
+export const TOAST_ICON_SIZE = '24px';
 
 const Toast: React.FC<ToastBaseProps> = ({
   className,
@@ -37,7 +40,7 @@ const Toast: React.FC<ToastBaseProps> = ({
     !!actionText === !!actionAltText && !!actionText === !!onActionClick;
   if (!actionWellDefined) {
     throw new Error(
-      "The action text, click event and alt text must all be set or unset"
+      'The action text, click event and alt text must all be set or unset',
     );
   }
 
@@ -60,7 +63,6 @@ const Toast: React.FC<ToastBaseProps> = ({
     onDismiss?.();
     closeToast();
   }
-
 
   function onActionClickInternal(event: React.MouseEvent<HTMLButtonElement>) {
     event.stopPropagation();
@@ -91,7 +93,7 @@ const Toast: React.FC<ToastBaseProps> = ({
             onClick={onDismissClick}
           >
             <ToastCloseIcon
-              label={"ToastCloseIcon"}
+              label={'ToastCloseIcon'}
               width={TOAST_ICON_SIZE}
               height={TOAST_ICON_SIZE}
             ></ToastCloseIcon>
@@ -101,7 +103,7 @@ const Toast: React.FC<ToastBaseProps> = ({
           <ToastHeadline>
             {icon ?? (
               <InfoIcon
-                label={"ToastInfoIcon"}
+                label={'ToastInfoIcon'}
                 width={TOAST_ICON_SIZE}
                 height={TOAST_ICON_SIZE}
               />

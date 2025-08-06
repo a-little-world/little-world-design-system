@@ -2,8 +2,8 @@ import {
   GradientTypes,
   GradientVariations,
   IconGradientProps,
-} from "@a-little-world/little-world-design-system-core";
-import React from "react";
+} from '@a-little-world/little-world-design-system-core';
+import React from 'react';
 
 const IconGradient = ({
   id,

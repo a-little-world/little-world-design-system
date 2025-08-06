@@ -1,13 +1,13 @@
 import React from 'react';
 
-import TextArea, { TextAreaSize } from './TextArea';
+import TextArea, { TextAreaSize, TextAreaProps } from './TextArea';
 
 export default {
   component: TextArea,
   title: 'Components/TextArea',
 };
 
-export const Default = args => <TextArea {...args} />;
+export const Default = (args: TextAreaProps) => <TextArea {...args} />;
 
 Default.args = {
   placeholder: 'Insert your text',
@@ -15,7 +15,7 @@ Default.args = {
   label: 'Text Input',
 };
 
-export const MessageBox = args => <TextArea {...args} />;
+export const MessageBox = (args: TextAreaProps) => <TextArea {...args} />;
 
 MessageBox.args = {
   placeholder: 'Insert your message',

@@ -1,5 +1,5 @@
-import { colors } from "./colors";
-import { coreSpacing, pixelateObjValues } from "./core";
+import { colors } from './colors';
+import { coreSpacing, pixelateObjValues } from './core';
 
 const breakpoints = {
   xsmall: 360,
@@ -20,8 +20,8 @@ const radius = {
   xlarge: coreSpacing.space40,
   xxlarge: coreSpacing.space50,
   massive: coreSpacing.space125,
-  half: "50%",
-  full: "100%",
+  half: '50%',
+  full: '100%',
 };
 
 const spacing = {
@@ -41,12 +41,12 @@ export const tokensPixelated = {
   breakpoints: pixelateObjValues(breakpoints),
   radius: pixelateObjValues(radius),
   spacing: pixelateObjValues(spacing),
-  color: colors
-}
+  color: colors,
+};
 
 export const tokens = {
   breakpoints,
   radius,
   spacing,
-  color: colors
+  color: colors,
 };

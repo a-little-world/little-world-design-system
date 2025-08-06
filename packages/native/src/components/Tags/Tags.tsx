@@ -1,13 +1,13 @@
-import Text from "../Text/Text";
-import { getTagStyles } from "./styles";
-import { TagBaseProps } from "@a-little-world/little-world-design-system-core";
+import Text from '../Text/Text';
+import { getTagStyles } from './styles';
+import { TagBaseProps } from '@a-little-world/little-world-design-system-core';
 import {
   TagSizes,
   tokens,
-} from "@a-little-world/little-world-design-system-core";
-import React from "react";
-import { View } from "react-native";
-import { useTheme } from "styled-components/native";
+} from '@a-little-world/little-world-design-system-core';
+import React from 'react';
+import { View } from 'react-native';
+import { useTheme } from 'styled-components/native';
 
 export interface TagProps extends TagBaseProps {
   style?: any;
@@ -47,13 +47,13 @@ function Tags({ appearance, bold, color, content, size, style }: TagsProps) {
   return (
     <View
       style={{
-        flexDirection: "row",
+        flexDirection: 'row',
         gap: tokens.spacing.medium,
-        flexWrap: "wrap",
+        flexWrap: 'wrap',
         ...style,
       }}
     >
-      {content.map((tag) => (
+      {content.map(tag => (
         <Tag
           key={tag}
           bold={bold}

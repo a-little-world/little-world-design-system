@@ -75,13 +75,15 @@ export const SelectContent = styled(Select.Content)`
   overflow: hidden;
   background-color: ${({ theme }) => theme.color.surface.primary};
   border-radius: 6px;
-  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+  box-shadow:
+    0px 10px 38px -10px rgba(22, 23, 24, 0.35),
     0px 10px 20px -15px rgba(22, 23, 24, 0.2);
   z-index: 100;
 `;
 
 export const SelectViewport = styled(Select.Viewport)`
-  padding: ${({ theme }) => theme.spacing.xxsmall} ${({ theme }) => theme.spacing.xxxsmall};
+  padding: ${({ theme }) => theme.spacing.xxsmall}
+    ${({ theme }) => theme.spacing.xxxsmall};
   max-height: 200px;
   overflow: scroll;
 `;
@@ -97,7 +99,8 @@ export const SelectItem = styled(Select.Item)`
   display: flex;
   align-items: center;
   height: 25px;
-  padding: 0 ${({ theme }) => theme.spacing.large} 0 ${({ theme }) => theme.spacing.medium};
+  padding: 0 ${({ theme }) => theme.spacing.large} 0
+    ${({ theme }) => theme.spacing.medium};
   position: relative;
   user-select: none;
 

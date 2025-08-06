@@ -1,19 +1,19 @@
-import { CheckIcon } from "../Icon";
+import { CheckIcon } from '../Icon';
 import {
   getCheckboxStyles,
   getContainerStyles,
   indicatorStyles, // StyledLabel,
-} from "./styles";
-import * as CheckboxPrimitive from "@rn-primitives/checkbox";
-import React, { useMemo } from "react";
+} from './styles';
+import * as CheckboxPrimitive from '@rn-primitives/checkbox';
+import React, { useMemo } from 'react';
 import {
   GestureResponderEvent,
   StyleProp,
   View,
   ViewStyle,
-} from "react-native";
-import { useTheme } from "styled-components/native";
-import Label from "../Label/Label";
+} from 'react-native';
+import { useTheme } from 'styled-components/native';
+import Label from '../Label/Label';
 
 type CheckboxProps = {
   style?: StyleProp<ViewStyle>;
@@ -42,12 +42,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
   const theme = useTheme();
   const checkboxContainerStyle = useMemo(
     () => getContainerStyles({ theme }),
-    [theme]
+    [theme],
   );
   const checkboxstyles = useMemo(
     () =>
       getCheckboxStyles({ theme, hasError: Boolean(error), color, checked }),
-    [theme, error, color, checked]
+    [theme, error, color, checked],
   );
   function handlePress(ev: GestureResponderEvent) {
     onCheckedChange(!checked);

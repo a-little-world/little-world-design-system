@@ -1,13 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { 
-  CardBaseProps, 
-  CardContentProps, 
+import {
+  CardBaseProps,
+  CardContentProps,
   CardDimensions,
-  CardFooterProps, 
-  CardHeaderProps, 
-  CardSizes 
+  CardFooterProps,
+  CardHeaderProps,
+  CardSizes,
 } from '@a-little-world/little-world-design-system-core';
 import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
@@ -36,7 +36,9 @@ const StyledCard = styled.div<{
   @media (min-width: ${({ theme }) => theme.breakpoints.small}) {
     border-radius: ${({ theme }) => theme.radius.xxlarge};
     padding: ${({ $width, theme }) =>
-      $width === pixelate(CardDimensions[CardSizes.Small]) ? theme.spacing.medium : theme.spacing.large};
+      $width === pixelate(CardDimensions[CardSizes.Small])
+        ? theme.spacing.medium
+        : theme.spacing.large};
 
     ${({ $width }) =>
       $width &&
@@ -85,7 +87,11 @@ type CardProps = CardBaseProps & {
   className?: string;
 };
 
-export const CardHeader: React.FC<CardHeaderProps> = ({ children, textColor, textType }) => (
+export const CardHeader: React.FC<CardHeaderProps> = ({
+  children,
+  textColor,
+  textType,
+}) => (
   <StyledCardHeader
     type={textType || TextTypes.Heading4}
     center

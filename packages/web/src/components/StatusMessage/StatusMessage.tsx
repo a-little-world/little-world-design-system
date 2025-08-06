@@ -1,5 +1,8 @@
 import styled, { css } from 'styled-components';
-import { StatusBaseProps, StatusTypes } from '@a-little-world/little-world-design-system-core';
+import {
+  StatusBaseProps,
+  StatusTypes,
+} from '@a-little-world/little-world-design-system-core';
 
 const StatusMessage = styled.div<StatusBaseProps>`
   display: flex;

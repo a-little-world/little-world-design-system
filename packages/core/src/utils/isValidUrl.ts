@@ -82,7 +82,7 @@ function isValidUrl(urlString: string | null | undefined): boolean {
     // If no protocol is provided, add http:// temporarily for validation
     const hasProtocol: boolean = /^[a-zA-Z]+:\/\//.test(urlToCheck);
     if (!hasProtocol) {
-      urlToCheck = 'http://' + urlToCheck;
+      urlToCheck = `http://${urlToCheck}`;
     }
 
     // Use URL constructor for basic validation
@@ -116,7 +116,7 @@ function isValidUrl(urlString: string | null | undefined): boolean {
     const tld = domainParts[domainParts.length - 1].toLowerCase();
     const isValid = Object.prototype.hasOwnProperty.call(validDomains, tld);
     return isValid;
-  } catch (error) {
+  } catch {
     return false;
   }
 }
@@ -136,7 +136,7 @@ async function processUrl(input: string): Promise<string> {
     if (isValid) {
       // If it's valid but has no protocol, you might want to add one
       const hasProtocol: boolean = /^[a-zA-Z]+:\/\//.test(input);
-      return hasProtocol ? input : 'https://' + input;
+      return hasProtocol ? input : `https://${input}`;
     } else {
       // Return the original string if not a valid URL
       return input;

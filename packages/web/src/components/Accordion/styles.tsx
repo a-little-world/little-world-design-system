@@ -8,7 +8,7 @@ export const AccordionRoot = styled(Accordion.Root)`
   border-radius: 8px;
 
   :root {
-    --radix-accordion-content-width: 100%:
+    --radix-accordion-content-width: 100%;
     --radix-collapsible-content-width: 100%;
   }
 `;
@@ -18,7 +18,8 @@ export const AccordionItem = styled(Accordion.Item)`
   margin: 0;
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
-  padding: ${({ theme }) => theme.spacing.xxsmall} ${({ theme }) => theme.spacing.small};
+  padding: ${({ theme }) => theme.spacing.xxsmall}
+    ${({ theme }) => theme.spacing.small};
   padding-bottom: 0px;
 
   &:last-child {
@@ -34,7 +35,7 @@ export const AccordionHeader = styled(Accordion.Header)`
 
 export const AccordionContent = styled(Accordion.Content)`
   width: 100%;
-  background: ${({ theme }) => theme.color.surface.tertiary};
+  background: ${({ theme }) => theme.color.surface.secondary};
   border-radius: 10px;
   gap: ${({ theme }) => theme.spacing.xxsmall};
   padding: ${({ theme }) => theme.spacing.small};

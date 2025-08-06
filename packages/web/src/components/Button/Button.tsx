@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { 
-  ButtonAppearance, 
-  ButtonBaseProps, 
-  ButtonSizes, 
-  ButtonVariations 
+import {
+  ButtonAppearance,
+  ButtonBaseProps,
+  ButtonSizes,
+  ButtonVariations,
 } from '@a-little-world/little-world-design-system-core';
 import Loading from '../Loading/Loading';
 import { StyledButton } from './styles';
@@ -12,7 +12,9 @@ import { StyledButton } from './styles';
 // Re-export enums for easy access
 export { ButtonAppearance, ButtonSizes, ButtonVariations };
 
-export interface ButtonProps extends ButtonBaseProps, React.ComponentPropsWithoutRef<'button'> {
+export interface ButtonProps
+  extends ButtonBaseProps,
+    React.ComponentPropsWithoutRef<'button'> {
   isDummy?: boolean; // Renders a div instead of a button
 }
 

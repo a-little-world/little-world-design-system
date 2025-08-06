@@ -144,8 +144,8 @@ export interface ThemeNative {
 }
 
 export enum ThemeVariants {
-  light = "light",
-  dark = "dark",
+  light = 'light',
+  dark = 'dark',
 }
 
 export interface ThemeContextType {
@@ -156,6 +156,6 @@ export interface ThemeContextType {
 export const defaultThemeVariant = ThemeVariants.light;
 
 export const themes = {
-  light: "light",
-  dark: "dark",
+  light: 'light',
+  dark: 'dark',
 } as const;

@@ -117,7 +117,7 @@ const MultiDropdown: React.FC<Props> = ({
       const newValues = [...values];
       newValues[position][index] = value;
 
-      if (Boolean(values[position || 0]))
+      if (values[position || 0])
         onValueChange(
           formatValues(
             newValues,
@@ -132,7 +132,7 @@ const MultiDropdown: React.FC<Props> = ({
   const handleDelete = (index: number) => {
     setValues(values => {
       const newValues = [...values];
-      newValues[0].splice(index, 1),
+      (newValues[0].splice(index, 1),
         newValues[1].splice(index, 1),
         onValueChange(
           formatValues(
@@ -140,7 +140,7 @@ const MultiDropdown: React.FC<Props> = ({
             firstDropdown.dataField,
             secondDropdown.dataField,
           ),
-        );
+        ));
       return newValues;
     });
     setSegments(currentNumber => currentNumber - 1);
@@ -214,10 +214,7 @@ const MultiDropdown: React.FC<Props> = ({
                   onClick={() => handleDelete(index)}
                   size={ButtonSizes.Small}
                 >
-                  <TrashIcon
-                    label={DELETE_SEGMENT}
-                    color="orange"
-                  />
+                  <TrashIcon label={DELETE_SEGMENT} color="orange" />
                 </DeleteButton>
               )}
             </Segment>
@@ -231,10 +228,7 @@ const MultiDropdown: React.FC<Props> = ({
             onClick={() => setSegments(currentNumber => currentNumber + 1)}
             size={ButtonSizes.Small}
           >
-            <PlusIcon
-              label="add more dropdowns"
-              width={10}
-            />
+            <PlusIcon label="add more dropdowns" width={10} />
           </AddMoreButton>
           <Button
             variation={ButtonVariations.Inline}

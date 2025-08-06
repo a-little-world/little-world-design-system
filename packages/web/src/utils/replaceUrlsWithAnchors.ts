@@ -1,4 +1,4 @@
-import { isValidUrl } from './isValidUrl';
+import { isValidUrl } from '@a-little-world/little-world-design-system-core';
 
 // Example outputs:
 

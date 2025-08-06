@@ -54,7 +54,7 @@ const Loading: React.FC<LoadingProps> = ({
       style={[getLoadingContainerStyles(align as any, inline, size), style]}
       testID={LOADING_RING_ID}
     >
-      {[0, 1, 2, 3].map((index) => (
+      {[0, 1, 2, 3].map(index => (
         <Animated.View
           key={index}
           style={[

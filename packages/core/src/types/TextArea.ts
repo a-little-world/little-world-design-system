@@ -14,7 +14,8 @@ export const TextAreaDimensions = {
   [TextAreaSize.Large]: '160px',
 };
 
-export interface TextAreaBaseProps extends Omit<ComponentPropsWithoutRef<'textarea'>, 'onChange' | 'ref'> {
+export interface TextAreaBaseProps
+  extends Omit<ComponentPropsWithoutRef<'textarea'>, 'onChange' | 'ref'> {
   displayCount?: boolean;
   error?: string;
   expandable?: boolean;
@@ -26,4 +27,4 @@ export interface TextAreaBaseProps extends Omit<ComponentPropsWithoutRef<'textar
   onSubmit?: () => boolean | Promise<boolean>;
   size?: TextAreaSize;
   value?: string;
-} 
+}

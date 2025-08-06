@@ -59,6 +59,7 @@ const MultiCheckbox: React.FC<MultiCheckboxProps> = ({
             onCheckedChange={state => onSelect({ value, state })}
             color={theme.color.surface.selected}
             value={value}
+            readOnly={readOnly}
           />
         ))}
       </MultiCheckboxWrapper>
