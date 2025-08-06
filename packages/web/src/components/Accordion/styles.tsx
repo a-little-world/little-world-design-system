@@ -36,9 +36,16 @@ export const AccordionContent = styled(Accordion.Content)`
   width: 100%;
   background: ${({ theme }) => theme.color.surface.tertiary};
   border-radius: 10px;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
   padding: ${({ theme }) => theme.spacing.small};
   margin-bottom: ${({ theme }) => theme.spacing.small};
   line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+
+  &[hidden] {
+    display: none;
+  }
 `;
 
 export const AccordionTrigger = styled(Accordion.Trigger)`

@@ -43,8 +43,22 @@ jobs:
 
       - name: Configure pnpm for GitHub Package Registry
         run: |
+          # Clear any existing config
+          rm -f ~/.npmrc
+
+          # Set up fresh config for GitHub Package Registry
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_PUBLISH_TOKEN }}" > ~/.npmrc
+          echo "@a-little-world:registry=https://npm.pkg.github.com" >> ~/.npmrc
+
+          # Configure pnpm to use the same registry
+          pnpm config set registry https://npm.pkg.github.com
           pnpm config set @a-little-world:registry https://npm.pkg.github.com
-          pnpm config set //npm.pkg.github.com/:_authToken ${{ secrets.PACKAGE_PUBLISH_TOKEN }}
+
+          # Verify configuration
+          echo "=== NPM Config ==="
+          cat ~/.npmrc
+          echo "=== PNPM Config ==="
+          pnpm config list
 
       - name: Get pnpm store directory
         shell: bash

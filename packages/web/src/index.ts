@@ -1,4 +1,11 @@
-import './theme/theme';
+import 'styled-components';
+import { ThemeWeb } from '@a-little-world/little-world-design-system-core';
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends ThemeWeb {}
+}
+
+export type { ThemeWeb } from '@a-little-world/little-world-design-system-core';
 
 export { default as Accordion, AccordionContent } from "./components/Accordion/Accordion";
 export {
@@ -96,5 +103,3 @@ export {
   ThemeVariants,
   tokensPixelated as tokens,
 } from "@a-little-world/little-world-design-system-core";
-
-export type { ThemeWeb } from '@a-little-world/little-world-design-system-core';

@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system
 
+## 2.2.7
+
+### Patch Changes
+
+- Move theme declaration into index file
+- Improve styling of AccordionContent
+- Remove redundant copy-declaration scripts
+
 ## 2.2.6
 
 ### Patch Changes
