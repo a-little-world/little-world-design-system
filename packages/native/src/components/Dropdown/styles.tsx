@@ -7,38 +7,49 @@ import { StyleSheet } from 'react-native';
 import { DefaultTheme } from 'styled-components/native';
 export const DROPDOWN_MAX_WIDTH = 300;
 
-
-export const getDropdownStyles = ({ theme, maxWidth, height, hasError }: { theme: DefaultTheme, maxWidth: number, height: InputHeight, hasError: boolean }) => StyleSheet.create({
-  wrapper: {
-    position: 'relative',
-    maxWidth: maxWidth || DROPDOWN_MAX_WIDTH,
-    width: '100%',
-  },
-  trigger: {
-    // all: 'unset',
-    // boxSizing: 'border-box',
-    // display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: theme.spacing.xxsmall,
-    paddingHorizontal: height === InputHeight.Small ? theme.spacing.small : theme.spacing.xsmall,
-    lineHeight: 1.25,
-    height: height === InputHeight.Small ? 34 : 40,
-    gap: theme.spacing.xsmall,
-    backgroundColor: theme.color.surface.primary,
-    borderRadius: theme.radius.xxxsmall,
-    borderWidth: 2,
-    borderColor: theme.color.border.subtle,
-    width: '100%',
-    color: theme.color.text.secondary,
-    marginBottom: theme.spacing.xxxxsmall,
-  },
-  triggerWithError: {
-    // input error styles
-  }
-});
-
-
+export const getDropdownStyles = ({
+  theme,
+  maxWidth,
+  height,
+  hasError,
+}: {
+  theme: DefaultTheme;
+  maxWidth: number;
+  height: InputHeight;
+  hasError: boolean;
+}) =>
+  StyleSheet.create({
+    wrapper: {
+      position: 'relative',
+      maxWidth: maxWidth || DROPDOWN_MAX_WIDTH,
+      width: '100%',
+    },
+    trigger: {
+      // all: 'unset',
+      // boxSizing: 'border-box',
+      // display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingVertical: theme.spacing.xxsmall,
+      paddingHorizontal:
+        height === InputHeight.Small
+          ? theme.spacing.small
+          : theme.spacing.xsmall,
+      lineHeight: 1.25,
+      height: height === InputHeight.Small ? 34 : 40,
+      gap: theme.spacing.xsmall,
+      backgroundColor: theme.color.surface.primary,
+      borderRadius: theme.radius.xxxsmall,
+      borderWidth: 2,
+      borderColor: theme.color.border.subtle,
+      width: '100%',
+      color: theme.color.text.secondary,
+      marginBottom: theme.spacing.xxxxsmall,
+    },
+    triggerWithError: {
+      // input error styles
+    },
+  });
 
 // export const SelectTrigger = styled(Select.Trigger)<{
 //   $hasError: boolean;

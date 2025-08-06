@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { DefaultTheme } from "styled-components/native";
+import { StyleSheet } from 'react-native';
+import { DefaultTheme } from 'styled-components/native';
 
 // export const AccordionRoot = styled(Accordion.Root)`
 //   :root {
@@ -41,15 +41,15 @@ export const getAccordionStyles = ({ theme }: { theme: DefaultTheme }) =>
       marginBottom: theme.spacing.small,
     },
     trigger: {
-      display: "flex",
-      alignItems: "flex-start",
-      justifyContent: "space-between",
-      backgroundColor: "none",
+      display: 'flex',
+      alignItems: 'flex-start',
+      justifyContent: 'space-between',
+      backgroundColor: 'none',
       paddingVertical: theme.spacing.xxsmall,
       paddingHorizontal: theme.spacing.small,
       gap: theme.spacing.small,
       width: 100,
-      textAlign: "left",
+      textAlign: 'left',
     },
     triggerIcon: {
       flexShrink: 0,

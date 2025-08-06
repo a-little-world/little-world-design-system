@@ -1,10 +1,10 @@
-import InputError from "../InputError/InputError";
-import Label from "../Label/Label";
-import { getRadioGroupStyles } from "./styles";
-import * as RadioGroupPrimitive from "@rn-primitives/radio-group";
-import React from "react";
-import { View } from "react-native";
-import { useTheme } from "styled-components/native";
+import InputError from '../InputError/InputError';
+import Label from '../Label/Label';
+import { getRadioGroupStyles } from './styles';
+import * as RadioGroupPrimitive from '@rn-primitives/radio-group';
+import React from 'react';
+import { View } from 'react-native';
+import { useTheme } from 'styled-components/native';
 
 type Props = {
   error?: string;
@@ -29,8 +29,8 @@ const RadioGroup: React.FC<Props> = ({
     <View>
       {label && (
         <Label
-        bold
-        // toolTipText={labelTooltip}
+          bold
+          // toolTipText={labelTooltip}
         >
           {label}
         </Label>
@@ -41,16 +41,12 @@ const RadioGroup: React.FC<Props> = ({
         // name={label}
         {...rest}
       >
-        {items?.map((item) => (
+        {items?.map(item => (
           <View key={item.id} style={styles.itemContainer}>
             <RadioGroupPrimitive.Item value={item.value} id={item.id}>
               <RadioGroupPrimitive.Indicator style={styles.indicator} />
             </RadioGroupPrimitive.Item>
-            {item.label && (
-              <Label  inline>
-                {item.label}
-              </Label>
-            )}
+            {item.label && <Label inline>{item.label}</Label>}
           </View>
         ))}
         <InputError visible={Boolean(error)}>{error}</InputError>

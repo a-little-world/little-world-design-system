@@ -1,14 +1,14 @@
-import Text from "../Text/Text";
+import Text from '../Text/Text';
 import {
   ProgressBarBaseProps,
   calculateProgress,
-} from "@a-little-world/little-world-design-system-core";
-import { TextTypes } from "@a-little-world/little-world-design-system-core";
-import * as ProgressPrimitive from "@rn-primitives/progress";
-import React, { useEffect, useState } from "react";
-import { StyleProp, View, ViewStyle } from "react-native";
-import { useTheme } from "styled-components/native";
-import { getProgressBarStyles } from "./styles";
+} from '@a-little-world/little-world-design-system-core';
+import { TextTypes } from '@a-little-world/little-world-design-system-core';
+import * as ProgressPrimitive from '@rn-primitives/progress';
+import React, { useEffect, useState } from 'react';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import { useTheme } from 'styled-components/native';
+import { getProgressBarStyles } from './styles';
 
 interface ProgressBarProps extends ProgressBarBaseProps {
   style?: StyleProp<ViewStyle>;
@@ -25,7 +25,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ style, max, value = 0 }) => {
 
   return (
     <View style={[styles.wrapper, style]}>
-      <Text id="progressBarIndicator" type={TextTypes.Body6} style={{ minWidth: 40 }}>
+      <Text
+        id="progressBarIndicator"
+        type={TextTypes.Body6}
+        style={{ minWidth: 40 }}
+      >
         {value}/{max}
       </Text>
       <ProgressPrimitive.Root
@@ -35,7 +39,10 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ style, max, value = 0 }) => {
         style={styles.root}
       >
         <ProgressPrimitive.Indicator
-          style={[styles.indicator, { transform: `translateX(-${100 - progress}%)` }]}
+          style={[
+            styles.indicator,
+            { transform: `translateX(-${100 - progress}%)` },
+          ]}
         />
       </ProgressPrimitive.Root>
     </View>

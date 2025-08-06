@@ -1,20 +1,20 @@
-import React from "react";
-import { View, ScrollView, DimensionValue } from "react-native";
+import React from 'react';
+import { View, ScrollView, DimensionValue } from 'react-native';
 import {
   CardBaseProps,
   CardContentProps,
   CardFooterProps,
   CardHeaderProps,
   TextTypes,
-} from "@a-little-world/little-world-design-system-core";
-import Text from "../Text/Text";
+} from '@a-little-world/little-world-design-system-core';
+import Text from '../Text/Text';
 import {
   getCardStyles,
   getCardHeaderStyles,
   getCardContentStyles,
   getCardFooterStyles,
-} from "./styles";
-import { useTheme } from "styled-components/native";
+} from './styles';
+import { useTheme } from 'styled-components/native';
 
 type CardProps = CardBaseProps & {
   style?: any;
@@ -27,15 +27,16 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
 }) => {
   const theme = useTheme();
   return (
-  <Text
-    style={getCardHeaderStyles({ theme })}
-    type={textType || TextTypes.Heading4}
-    center
-    color={textColor}
-  >
-    {children}
-  </Text>
-)};
+    <Text
+      style={getCardHeaderStyles({ theme })}
+      type={textType || TextTypes.Heading4}
+      center
+      color={textColor}
+    >
+      {children}
+    </Text>
+  );
+};
 
 export const CardContent: React.FC<CardContentProps> = ({
   children,
@@ -44,18 +45,29 @@ export const CardContent: React.FC<CardContentProps> = ({
   marginBottom,
 }) => {
   const theme = useTheme();
-  const styles = getCardContentStyles({ 
+  const styles = getCardContentStyles({
     align,
-    gap: gap as number, 
-    marginBottom: marginBottom as number, 
-    theme
+    gap: gap as number,
+    marginBottom: marginBottom as number,
+    theme,
   });
-  const { flexDirection, alignItems, gap: contentGap, marginBottom: contentMarginBottom, ...containerStyle } = styles;
-  
+  const {
+    flexDirection,
+    alignItems,
+    gap: contentGap,
+    marginBottom: contentMarginBottom,
+    ...containerStyle
+  } = styles;
+
   return (
-    <ScrollView 
+    <ScrollView
       style={containerStyle}
-      contentContainerStyle={{ flexDirection, alignItems, gap: contentGap, marginBottom: contentMarginBottom }}
+      contentContainerStyle={{
+        flexDirection,
+        alignItems,
+        gap: contentGap,
+        marginBottom: contentMarginBottom,
+      }}
     >
       {children}
     </ScrollView>
@@ -65,13 +77,16 @@ export const CardContent: React.FC<CardContentProps> = ({
 export const CardFooter: React.FC<CardFooterProps> = ({ children, align }) => {
   const theme = useTheme();
   return (
-  <View style={getCardFooterStyles({ 
-    align, 
-    theme
-  })}>
-    {children}
-  </View>
-)};
+    <View
+      style={getCardFooterStyles({
+        align,
+        theme,
+      })}
+    >
+      {children}
+    </View>
+  );
+};
 
 const Card: React.FC<CardProps> = ({
   borderColor,
@@ -82,16 +97,20 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const theme = useTheme();
   return (
-  <View
-    style={[getCardStyles({ 
-      borderColor, 
-      height: height as DimensionValue, 
-      width, 
-      theme
-    }), style]}
-  >
-    {children}
-  </View>
-)};
+    <View
+      style={[
+        getCardStyles({
+          borderColor,
+          height: height as DimensionValue,
+          width,
+          theme,
+        }),
+        style,
+      ]}
+    >
+      {children}
+    </View>
+  );
+};
 
 export default Card;

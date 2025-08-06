@@ -1,10 +1,19 @@
 import { ViewStyle } from 'react-native';
-import { LoadingDimensions, LoadingSizes } from '@a-little-world/little-world-design-system-core';
+import {
+  LoadingDimensions,
+  LoadingSizes,
+} from '@a-little-world/little-world-design-system-core';
 
 export const getLoadingContainerStyles = (
-  align?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly',
+  align?:
+    | 'center'
+    | 'flex-start'
+    | 'flex-end'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly',
   inline?: boolean,
-  size?: LoadingSizes
+  size?: LoadingSizes,
 ): ViewStyle => ({
   display: 'flex',
   flexDirection: 'row',
@@ -19,7 +28,7 @@ export const getLoadingContainerStyles = (
 export const getLoadingElementStyles = (
   color?: string,
   size?: LoadingSizes,
-  index?: number
+  index?: number,
 ): ViewStyle => ({
   position: 'absolute',
   width: LoadingDimensions[size || LoadingSizes.Small],

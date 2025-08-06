@@ -4,14 +4,14 @@ import React, {
   useCallback,
   useMemo,
   useState,
-} from "react";
+} from 'react';
 import {
   ThemeVariants,
   ThemeContextType,
   defaultThemeVariant,
   tokens,
-} from "@a-little-world/little-world-design-system-core";
-import { DefaultTheme, ThemeProvider } from "styled-components/native";
+} from '@a-little-world/little-world-design-system-core';
+import { DefaultTheme, ThemeProvider } from 'styled-components/native';
 
 export const lightTheme: DefaultTheme = {
   ...tokens,
@@ -52,7 +52,7 @@ export const CustomThemeProvider = ({
     setCurrentMode((currentMode: ThemeVariants) =>
       currentMode === ThemeVariants.light
         ? ThemeVariants.dark
-        : ThemeVariants.light
+        : ThemeVariants.light,
     );
   }, []);
 
@@ -61,7 +61,7 @@ export const CustomThemeProvider = ({
       currentMode,
       toggleMode,
     }),
-    [currentMode, toggleMode]
+    [currentMode, toggleMode],
   );
 
   return (

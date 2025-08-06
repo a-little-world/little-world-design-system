@@ -1,14 +1,14 @@
-import { ChevronDownIcon } from "../Icon";
-import Text from "../Text/Text";
-import { getAccordionStyles } from "./styles";
+import { ChevronDownIcon } from '../Icon';
+import Text from '../Text/Text';
+import { getAccordionStyles } from './styles';
 import {
   AccordionBaseProps,
   TextTypes,
-} from "@a-little-world/little-world-design-system-core";
-import * as AccordionPrimitive from "@rn-primitives/accordion";
-import React, { useMemo } from "react";
-import { ViewStyle } from "react-native";
-import { useTheme } from "styled-components/native";
+} from '@a-little-world/little-world-design-system-core';
+import * as AccordionPrimitive from '@rn-primitives/accordion';
+import React, { useMemo } from 'react';
+import { ViewStyle } from 'react-native';
+import { useTheme } from 'styled-components/native';
 
 interface AccordionProps extends AccordionBaseProps {
   style?: ViewStyle;

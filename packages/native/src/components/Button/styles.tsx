@@ -4,9 +4,9 @@ import {
   ButtonSizes,
   ButtonVariations,
   CIRCLE_DIMENSIONS,
-} from "@a-little-world/little-world-design-system-core";
-import { ViewStyle, TextStyle, StyleSheet } from "react-native";
-import { css } from "styled-components/native";
+} from '@a-little-world/little-world-design-system-core';
+import { ViewStyle, TextStyle, StyleSheet } from 'react-native';
+import { css } from 'styled-components/native';
 
 export const getButtonStyles = ({
   appearance,
@@ -26,18 +26,18 @@ export const getButtonStyles = ({
   theme: any;
 }): ViewStyle => {
   const baseStyles: ViewStyle = {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 90,
     ...(variation === ButtonVariations.Basic
       ? {
-        paddingHorizontal: theme.spacing.small,
-        // flex: 1,
-        height: BUTTON_DIMENSIONS[size].height,
-        minWidth: BUTTON_DIMENSIONS[size].minWidth,
-        // paddingVertical: BUTTON_DIMENSIONS[size].padding.vertical,
-      }
+          paddingHorizontal: theme.spacing.small,
+          // flex: 1,
+          height: BUTTON_DIMENSIONS[size].height,
+          minWidth: BUTTON_DIMENSIONS[size].minWidth,
+          // paddingVertical: BUTTON_DIMENSIONS[size].padding.vertical,
+        }
       : {}),
   };
 
@@ -48,14 +48,14 @@ export const getButtonStyles = ({
       borderRadius: theme.radius.half,
       borderWidth: 1,
       borderColor: borderColor || backgroundColor || theme.color.border.bold,
-      backgroundColor: backgroundColor || "transparent",
+      backgroundColor: backgroundColor || 'transparent',
     };
   }
 
   if (variation === ButtonVariations.Icon) {
     return {
       ...baseStyles,
-      backgroundColor: backgroundColor || "transparent",
+      backgroundColor: backgroundColor || 'transparent',
       padding: 0,
     };
   }
@@ -77,16 +77,16 @@ export const getButtonStyles = ({
   if (variation === ButtonVariations.Inline) {
     return {
       ...baseStyles,
-      display: "flex",
+      display: 'flex',
       borderWidth: 0,
       borderRadius: 0,
       borderBottomWidth: 1,
-      height: "auto",
-      width: "auto",
+      height: 'auto',
+      width: 'auto',
       paddingHorizontal: 0,
       paddingVertical: theme.spacing.xxxxsmall,
       gap: theme.spacing.xxxsmall,
-      backgroundColor: "transparent",
+      backgroundColor: 'transparent',
     };
   }
 
@@ -108,7 +108,7 @@ export const getButtonStyles = ({
 
 export const gradientStyles = StyleSheet.create({
   fullSize: {
-    position: "absolute",
+    position: 'absolute',
     left: 0,
     right: 0,
     top: 0,
@@ -129,15 +129,15 @@ export const getButtonTextStyles = ({
 }): TextStyle => {
   const baseStyles: TextStyle = {
     color: color || theme.color.text.primary,
-    fontWeight: "700",
-    textAlign: "center",
+    fontWeight: '700',
+    textAlign: 'center',
   };
 
   if (variation === ButtonVariations.Option) {
     return {
       ...baseStyles,
       color: color || theme.color.text.primary,
-      fontWeight: "normal",
+      fontWeight: 'normal',
     };
   }
 
@@ -159,9 +159,9 @@ export const OPTION_BUTTON_CSS = css<{
   $backgroundColor?: string;
   $color?: string;
 }>`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   background: ${({ $backgroundColor, theme }) =>
     $backgroundColor || theme.color.surface.secondary};
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
@@ -183,7 +183,8 @@ export const OPTION_BUTTON_CSS = css<{
   &:not(:disabled):hover {
     filter: brightness(95%);
     cursor: pointer;
-    box-shadow: 0 0 10px 1px rgb(0 0 0 / 11%),
+    box-shadow:
+      0 0 10px 1px rgb(0 0 0 / 11%),
       0 0 8px 3px rgb(255 255 255 / 15%);
   }
 

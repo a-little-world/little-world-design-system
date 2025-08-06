@@ -1,5 +1,5 @@
-import { TextStyle } from "react-native";
-import { DefaultTheme } from "styled-components/native";
+import { TextStyle } from 'react-native';
+import { DefaultTheme } from 'styled-components/native';
 
 export const getLabelStyles = ({
   theme,
@@ -14,12 +14,12 @@ export const getLabelStyles = ({
   marginBottom?: number;
 }): TextStyle => {
   const baseStyles: TextStyle = {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: theme.spacing.xxxsmall,
-    fontWeight: bold ? "bold" : "normal",
+    fontWeight: bold ? 'bold' : 'normal',
     flexShrink: inline ? 1 : 0,
     marginBottom: marginBottom ? marginBottom : 0,
   };

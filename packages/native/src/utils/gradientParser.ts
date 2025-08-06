@@ -29,6 +29,6 @@ export const parseGradientString = (gradientString: string): GradientInfo => {
   return {
     colors: colors as unknown as readonly [string, string, ...string[]],
     start,
-    end
+    end,
   };
 };

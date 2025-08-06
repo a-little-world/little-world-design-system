@@ -1,24 +1,24 @@
-import { ButtonVariations } from "../Button/Button";
-import Button from "../Button/Button";
-import { EyeClosedIcon, EyeOpenIcon } from "../Icon";
-import InputError from "../InputError/InputError";
-import Label from "../Label/Label";
+import { ButtonVariations } from '../Button/Button';
+import Button from '../Button/Button';
+import { EyeClosedIcon, EyeOpenIcon } from '../Icon';
+import InputError from '../InputError/InputError';
+import Label from '../Label/Label';
 import {
   Input,
   InputContainer,
   InputWrapper,
   ShowPasswordToggle,
-} from "./styles";
+} from './styles';
 import {
   InputWidth,
   TextInputBaseProps,
-} from "@a-little-world/little-world-design-system-core";
-import React from "react";
+} from '@a-little-world/little-world-design-system-core';
+import React from 'react';
 import {
   NativeSyntheticEvent,
   TextInput as RNTextInput,
   TextInputKeyPressEventData,
-} from "react-native";
+} from 'react-native';
 
 const PASSWORD_TOGGLE_ICON_SIZE = 20;
 
@@ -26,7 +26,7 @@ interface Props
   extends React.ComponentProps<typeof RNTextInput>,
     TextInputBaseProps {
   inputRef?: React.RefObject<RNTextInput>;
-  type?: "text" | "password" | "tel";
+  type?: 'text' | 'password' | 'tel';
 }
 
 const TextInput: React.FC<Props> = ({
@@ -39,7 +39,7 @@ const TextInput: React.FC<Props> = ({
   labelTooltip,
   onChange,
   onSubmit,
-  type = "text",
+  type = 'text',
   width = InputWidth.Large,
   ...inputProps
 }: Props) => {
@@ -47,22 +47,22 @@ const TextInput: React.FC<Props> = ({
   const [showPassword, setShowPassword] = React.useState(false);
   const { defaultValue, value, ...propsWithoutValues } = inputProps;
 
-  const errorProps = inline ? { bottom: "-16px", right: "0px" } : {};
+  const errorProps = inline ? { bottom: '-16px', right: '0px' } : {};
 
   const handlePasswordVisibilityToggle = () => {
-    if (inputType === "password") {
-      setInputType("text");
+    if (inputType === 'password') {
+      setInputType('text');
       setShowPassword(true);
     } else {
-      setInputType("password");
+      setInputType('password');
       setShowPassword(false);
     }
   };
 
   const handleKeyPress = async (
-    e: NativeSyntheticEvent<TextInputKeyPressEventData>
+    e: NativeSyntheticEvent<TextInputKeyPressEventData>,
   ) => {
-    if (onSubmit && e.nativeEvent.key === "Enter") {
+    if (onSubmit && e.nativeEvent.key === 'Enter') {
       const submitSuccessful = await onSubmit();
     }
   };
@@ -78,14 +78,14 @@ const TextInput: React.FC<Props> = ({
         <Input
           aria-labelledby={id}
           hasError={Boolean(error)}
-          secureTextEntry={inputType === "password"}
+          secureTextEntry={inputType === 'password'}
           id={id}
           onChange={onChange}
           onKeyPress={handleKeyPress}
           height={height}
           {...inputProps}
         />
-        {type === "password" && (
+        {type === 'password' && (
           <ShowPasswordToggle>
             <Button
               variation={ButtonVariations.Icon}
@@ -111,7 +111,7 @@ const TextInput: React.FC<Props> = ({
 
       <InputError
         visible={Boolean(error)}
-        textAlign={width === InputWidth.Large ? "right" : "left"}
+        textAlign={width === InputWidth.Large ? 'right' : 'left'}
         {...errorProps}
       >
         {error}

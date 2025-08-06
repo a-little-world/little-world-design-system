@@ -1,5 +1,8 @@
 import { ViewStyle, DimensionValue } from 'react-native';
-import { CardDimensions, CardSizes } from '@a-little-world/little-world-design-system-core';
+import {
+  CardDimensions,
+  CardSizes,
+} from '@a-little-world/little-world-design-system-core';
 import { FlexAlignType, FlexStyle } from 'react-native';
 
 export const getCardStyles = ({
@@ -8,10 +11,10 @@ export const getCardStyles = ({
   theme,
   width,
 }: {
-  borderColor?: string,
-  height?: DimensionValue,
-  theme: any,
-  width?: CardSizes
+  borderColor?: string;
+  height?: DimensionValue;
+  theme: any;
+  width?: CardSizes;
 }): ViewStyle => ({
   borderRadius: theme.radius.small,
   backgroundColor: theme.color.surface.primary,
@@ -41,10 +44,10 @@ export const getCardContentStyles = ({
   marginBottom,
   theme,
 }: {
-  align?: FlexAlignType,
-  gap?: number,
-  marginBottom?: number,
-  theme: any
+  align?: FlexAlignType;
+  gap?: number;
+  marginBottom?: number;
+  theme: any;
 }): ViewStyle => ({
   flexDirection: 'column',
   alignItems: align || 'center',
@@ -56,12 +59,12 @@ export const getCardFooterStyles = ({
   align,
   theme,
 }: {
-  align?: FlexStyle['justifyContent'],
-  theme: any
+  align?: FlexStyle['justifyContent'];
+  theme: any;
 }): ViewStyle => ({
   flexDirection: 'row',
   marginTop: 'auto',
   width: '100%',
   gap: theme.spacing.small,
   justifyContent: align || 'flex-start',
-}); 
+});
