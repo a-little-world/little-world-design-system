@@ -60,7 +60,7 @@ const MENU_ITEM_CSS = css`
   color: ${({ theme }) => theme.color.text.primary};
 
   &:focus {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.color.surface.tertiary};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.color.surface.secondary};
   }
 
   &:hover {
@@ -231,7 +231,7 @@ export const ListItemLink = styled(Link)`
     box-shadow: 0 0 0 2px ${({ theme }) => theme.color.surface.secondary};
   }
   &:hover {
-    background-color: ${({ theme }) => theme.color.surface.tertiary};
+    background-color: ${({ theme }) => theme.color.surface.secondary};
   }
 
   ${({ active, theme }) =>

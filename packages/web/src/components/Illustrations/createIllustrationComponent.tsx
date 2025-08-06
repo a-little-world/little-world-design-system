@@ -9,10 +9,11 @@ export const createIllustrationComponent = ({
   svgData,  
 }: SvgFactoryOptions) => {
   
-  const Component = ({ color, height, width, label, labelVisible }: SVGProps<SVGElement> & { label: string, labelVisible?: boolean, color?: string }) => {
+  const Component = ({ className, color, height, width, label, labelVisible }: SVGProps<SVGElement> & { label: string, labelVisible?: boolean, color?: string }) => {
     return (
       <Illustration label={label} labelVisible={labelVisible}>
         {createReactSvg(svgData, {
+          className,
           label,
           width,
           height,

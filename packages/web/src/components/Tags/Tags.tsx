@@ -1,13 +1,13 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { TextTypes } from '@a-little-world/little-world-design-system-core';
-import { StyledTag, TagAppearance, TagSizes, TagsContainer } from './styles';
+import { TagAppearance, TagSizes, TextTypes } from '@a-little-world/little-world-design-system-core';
+import { StyledTag, TagsContainer } from './styles';
 
 interface TagProps {
   bold?: boolean;
   className?: string;
-  appearance?: keyof typeof TagAppearance;
-  size?: keyof typeof TagSizes;
+  appearance?: TagAppearance;
+  size?: TagSizes;
   color?: string;
 }
 interface TagsProps extends TagProps {
@@ -61,5 +61,4 @@ function Tags({
   );
 }
 
-export { TagAppearance, TagSizes } from './styles';
 export default Tags;

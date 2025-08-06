@@ -5,8 +5,6 @@ declare module 'styled-components' {
   export interface DefaultTheme extends ThemeWeb {}
 }
 
-export type { ThemeWeb } from '@a-little-world/little-world-design-system-core';
-
 export { default as Accordion, AccordionContent } from "./components/Accordion/Accordion";
 export {
   default as Button,
@@ -61,8 +59,6 @@ export { default as Switch } from "./components/Switch/Switch";
 export {
   default as Tags,
   Tag,
-  TagSizes,
-  TagAppearance,
 } from "./components/Tags/Tags";
 export { default as Text } from "./components/Text/Text";
 
@@ -93,13 +89,15 @@ export { pixelate } from "./utils/styles";
 
 // types
 export type { TextStyle } from "./components/Text/types";
+export type { ThemeWeb, ToastBaseProps } from "@a-little-world/little-world-design-system-core";
 
 // export core elements
 export {
   Gradients,
   StatusTypes,
+  TagSizes,
+  TagAppearance,
   TextTypes,
-  ToastBaseProps,
   ThemeVariants,
   tokensPixelated as tokens,
 } from "@a-little-world/little-world-design-system-core";

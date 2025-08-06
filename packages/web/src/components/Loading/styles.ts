@@ -40,22 +40,11 @@ export const LoadingElement = styled.div<{
     width: ${({ $size }) => pixelate(LoadingDimensions[$size || LoadingSizes.Small])};
     height: ${({ $size }) => pixelate(LoadingDimensions[$size || LoadingSizes.Small])};
     border: 2px solid ${({ $color }) => $color || "currentColor"};
+    border-width: ${({ $size }) => $size === LoadingSizes.Large ? "4px" : "2px"};
     border-radius: 50%;
     animation: ${loading} 1.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: ${({ $color }) => $color || "currentColor"} transparent
     transparent transparent;
-
-    ${({ $size }) => {
-      if ($size === LoadingSizes.Medium)
-        return css`
-          border-width: 2px;
-        `;
-
-      if ($size === LoadingSizes.Large)
-        return css`
-          border-width: 4px;
-        `;
-    }}
 
     &:nth-child(1) {
         animation-delay: -0.45s;

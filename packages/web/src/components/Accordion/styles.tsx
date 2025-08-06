@@ -34,7 +34,7 @@ export const AccordionHeader = styled(Accordion.Header)`
 
 export const AccordionContent = styled(Accordion.Content)`
   width: 100%;
-  background: ${({ theme }) => theme.color.surface.tertiary};
+  background: ${({ theme }) => theme.color.surface.secondary};
   border-radius: 10px;
   gap: ${({ theme }) => theme.spacing.xxsmall};
   padding: ${({ theme }) => theme.spacing.small};

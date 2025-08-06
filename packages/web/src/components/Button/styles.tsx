@@ -16,7 +16,7 @@ export const OPTION_BUTTON_CSS = css<{
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   background: ${({ $backgroundColor, theme }) =>
-    $backgroundColor || theme.color.surface.tertiary};
+    $backgroundColor || theme.color.surface.secondary};
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
   color: ${({ $color, theme }) => $color || theme.color.text.primary};
   border-radius: 15px;

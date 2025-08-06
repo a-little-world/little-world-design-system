@@ -34,7 +34,7 @@ export const getTagStyles = ({
       size === TagSizes.small ? theme.spacing.xsmall : theme.spacing.xxsmall,
   };
 
-  if (appearance === TagAppearance.solid)
+  if (appearance === TagAppearance.filled)
     return {
       ...baseStyles,
       backgroundColor: theme.color.surface.accent,

@@ -1,8 +1,10 @@
 import { ReactNode } from 'react';
 
 export enum TagAppearance {
-  solid = 'solid',
+  filled = 'filled',
   outline = 'outline',
+  error = 'error',
+  success = 'success',
 }
 
 export enum TagSizes {

@@ -12,7 +12,11 @@
   "scripts": {
     "build": "rimraf dist && rollup -c --bundleConfigAsCjs && node prepare-package.js",
     "build:types": "tsc --emitDeclarationOnly",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write src",
+    "format:check": "prettier --check src"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.24.0",

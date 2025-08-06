@@ -14,7 +14,7 @@ export const getProgressBarStyles = ({ theme }: { theme: DefaultTheme }) => Styl
         position: 'relative',
         overflow: 'hidden',
         borderRadius: theme.radius.xsmall,
-        backgroundColor: theme.color.surface.tertiary,
+        backgroundColor: theme.color.surface.secondary,
         height: 8,
     },
     indicator: {

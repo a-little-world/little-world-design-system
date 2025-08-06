@@ -35,7 +35,7 @@ export const getAccordionStyles = ({ theme }: { theme: DefaultTheme }) =>
     },
     content: {
       width: 100,
-      backgroundColor: theme.color.surface.tertiary,
+      backgroundColor: theme.color.surface.secondary,
       borderRadius: theme.radius.xxsmall,
       padding: theme.spacing.small,
       marginBottom: theme.spacing.small,

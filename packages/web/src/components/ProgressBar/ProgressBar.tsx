@@ -9,7 +9,7 @@ const ProgressRoot = styled(Progress.Root)`
   position: relative;
   overflow: hidden;
   border-radius: 99999px;
-  background: ${({ theme }) => theme.color.surface.tertiary};
+  background: ${({ theme }) => theme.color.surface.secondary};
   width: 300px;
   height: 8px;
 

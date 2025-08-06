@@ -94,7 +94,7 @@ export const ToastCloseButton = styled(Button)<{ $visible?: boolean }>`
   top: -8px;
   right: -8px;
   border-radius: ${({ theme }) => theme.radius.half};
-  background-color: ${({ theme }) => theme.color.surface.tertiary};
+  background-color: ${({ theme }) => theme.color.surface.secondary};
   width: 16px;
   height: 16px;
   box-shadow: 0px 0px 1px 1px ${({ theme }) => theme.color.border.subtle};

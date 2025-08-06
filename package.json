@@ -2,11 +2,16 @@
   "name": "little-world-design-system",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "description": "Little World Design System Monorepo",
+  "prettier": "@a-little-world/little-world-prettier-config",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "turbo run test",
     "clean": "turbo run clean",
     "changeset": "changeset",
@@ -23,7 +28,19 @@
     "storybook:native": "pnpm native:setup && cd packages/native/testApp && npm run storybook"
   },
   "devDependencies": {
+    "@a-little-world/little-world-prettier-config": "^1.2.0",
     "@changesets/cli": "^2.27.1",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "prettier": "^3.0.0",
     "turbo": "^2.1.7"
   },
   "resolutions": {
@@ -40,4 +57,4 @@
   "workspaces": [
     "packages/*"
   ]
-} 
+}
