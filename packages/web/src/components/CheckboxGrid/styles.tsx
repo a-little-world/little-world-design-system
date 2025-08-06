@@ -113,11 +113,10 @@ export const Legend = styled.div`
 `;
 
 export const Square = styled.div`
-  ${({ theme }) =>
-    css`
-      width: 20px;
-      height: 16px;
-      background: ${theme.color.surface.accent};
-      border: 1px solid ${theme.color.border.contrast};
-    `};
+  ${({ theme }) => css`
+    width: 20px;
+    height: 16px;
+    background: ${theme.color.surface.accent};
+    border: 1px solid ${theme.color.border.contrast};
+  `};
 `;

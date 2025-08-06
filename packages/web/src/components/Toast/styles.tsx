@@ -1,17 +1,8 @@
-import * as RadixToast from "@radix-ui/react-toast";
-import styled, { keyframes } from "styled-components";
+import * as RadixToast from '@radix-ui/react-toast';
+import styled, { keyframes } from 'styled-components';
 
-import Button from "../Button/Button";
-import { CloseIcon } from "../Icon";
-
-const hide = keyframes`
-	from {
-		opacity: 1;
-	}
-	to {
-		opacity: 0;
-	}
-`;
+import Button from '../Button/Button';
+import { CloseIcon } from '../Icon';
 
 const slideIn = keyframes`
 	from {
@@ -64,27 +55,28 @@ export const ToastRoot = styled(RadixToast.Root)`
   --border-radius: ${({ theme }) => theme.radius.xxsmall};
   background-color: ${({ theme }) => theme.color.surface.primary};
   border-radius: var(--border-radius);
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+  box-shadow:
+    hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
     hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
 
-  &[data-state="open"] {
+  &[data-state='open'] {
     animation: ${slideIn} 150ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  &[data-state="closed"] {
+  &[data-state='closed'] {
     animation: ${slideOut} 150ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  &[data-swipe="move"] {
+  &[data-swipe='move'] {
     transform: translateX(var(--radix-toast-swipe-move-x));
   }
 
-  &[data-swipe="cancel"] {
+  &[data-swipe='cancel'] {
     transform: translateX(0);
     transition: transform 200ms ease-out;
   }
 
-  &[data-swipe="end"] {
+  &[data-swipe='end'] {
     animation: ${swipeOut} 100ms ease-out;
   }
 `;
@@ -107,7 +99,7 @@ export const ToastCloseIcon = styled(CloseIcon)`
 export const ToastContent = styled.div`
   padding: ${({ theme }) => theme.spacing.small};
   display: grid;
-  grid-template-areas: "headline headline" "title action" "description action";
+  grid-template-areas: 'headline headline' 'title action' 'description action';
   grid-template-columns: auto max-content;
   column-gap: ${({ theme }) => theme.spacing.small};
   align-items: center;

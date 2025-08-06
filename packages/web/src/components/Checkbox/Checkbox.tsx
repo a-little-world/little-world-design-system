@@ -29,16 +29,15 @@ export const CheckboxButton: React.FC<CheckboxProps> = ({
   className,
   color,
   error,
-  required = true,
   id,
   inputRef,
   label,
   onCheckedChange,
-  readOnly,
   value,
   ...rest
 }) => (
   <CheckboxButtonContainer
+    className={className}
     ref={inputRef}
     id={id}
     checked={checked}
@@ -48,9 +47,7 @@ export const CheckboxButton: React.FC<CheckboxProps> = ({
     {...rest}
   >
     <NonInteractiveCheckbox $color={color} checked={checked}>
-      {checked && (
-        <CheckIcon label="check icon" width={10} />
-      )}
+      {checked && <CheckIcon label="check icon" width={10} />}
     </NonInteractiveCheckbox>
     {label && (
       <StyledLabel htmlFor={id} inline>
@@ -79,9 +76,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       <CheckboxContainer>
         {readOnly ? (
           <NonInteractiveCheckbox $color={color} checked={checked}>
-            {checked && (
-              <CheckIcon label="check icon" width={10} />
-            )}
+            {checked && <CheckIcon label="check icon" width={10} />}
           </NonInteractiveCheckbox>
         ) : (
           <CheckboxRoot

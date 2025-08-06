@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 import {
   LoadingBaseProps,
   LoadingSizes,
-} from "@a-little-world/little-world-design-system-core";
-import { LoadingContainer, LoadingElement } from "./styles";
+} from '@a-little-world/little-world-design-system-core';
+import { LoadingContainer, LoadingElement } from './styles';
 
 // Re-export enum for easy access
 export { LoadingSizes };
 
-export const LOADING_RING_ID = "loadingRing";
+export const LOADING_RING_ID = 'loadingRing';
 
 interface LoadingProps extends LoadingBaseProps {
   className?: string;

@@ -1,5 +1,8 @@
 import styled, { css } from 'styled-components';
-import { TextTypes, getTextStyle } from '@a-little-world/little-world-design-system-core';
+import {
+  TextTypes,
+  getTextStyle,
+} from '@a-little-world/little-world-design-system-core';
 
 const BODY_SHARED_STYLES = css`
   font-family: 'Signika Negative', sans-serif;
@@ -58,8 +61,9 @@ export const StyledElement = styled.div<{
       ${style.styleType === 'body' ? BODY_SHARED_STYLES : HEADING_SHARED_STYLES}
       font-size: ${style.fontSize}rem;
       ${style.fontWeight ? `font-weight: ${style.fontWeight};` : ''}
-      
-      ${style.desktopFontSize && css`
+
+      ${style.desktopFontSize &&
+      css`
         @media (min-width: ${theme.breakpoints.small}) {
           font-size: ${style.desktopFontSize}rem;
         }

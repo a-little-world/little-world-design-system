@@ -1,7 +1,10 @@
 import React, { forwardRef } from 'react';
 import { LinkProps as RouterLinkProps } from 'react-router-dom';
 
-import { LinkBaseProps, TextTypes } from '@a-little-world/little-world-design-system-core';
+import {
+  LinkBaseProps,
+  TextTypes,
+} from '@a-little-world/little-world-design-system-core';
 import { Anchor, AnchorText, RouterLink } from './styles';
 
 export type LinkProps = Omit<RouterLinkProps, 'to'> & LinkBaseProps;

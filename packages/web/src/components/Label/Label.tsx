@@ -16,14 +16,13 @@ const StyledLabel = styled(RadixLabel.Root)<{
   ${BODY_5_CSS}
   width: fit-content;
 
-  ${({ $bold, $inline, $marginBottom, theme }) =>
-    css`
-      ${$bold && 'font-weight: bold;'}
-      display: ${$inline ? 'inline-flex' : 'block'};
-      margin-bottom: ${$marginBottom ?? theme.spacing.xxsmall};
-      gap: ${theme.spacing.xxxsmall};
-      align-items: center;
-    `}
+  ${({ $bold, $inline, $marginBottom, theme }) => css`
+    ${$bold && 'font-weight: bold;'}
+    display: ${$inline ? 'inline-flex' : 'block'};
+    margin-bottom: ${$marginBottom ?? theme.spacing.xxsmall};
+    gap: ${theme.spacing.xxxsmall};
+    align-items: center;
+  `}
 `;
 
 const ToolTipTrigger = styled(Button)`

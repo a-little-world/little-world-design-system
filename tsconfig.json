@@ -23,5 +23,12 @@
   ],
   "files": [],
   "include": [],
-  "exclude": ["node_modules", "dist", "build", "**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"]
-} 
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "**/*.config.js",
+    "**/*.config.ts",
+    "scripts/**/*"
+  ]
+}

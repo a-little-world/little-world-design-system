@@ -1,11 +1,14 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import React from 'react';
+import styled, { css } from 'styled-components';
 
-import { ValueOf } from "../../utils/types";
-import { TextTypes } from "@a-little-world/little-world-design-system-core";
-import { WidgetDimensions, WidgetSizes } from "@a-little-world/little-world-design-system-core";
+import { ValueOf } from '../../utils/types';
+import { TextTypes } from '@a-little-world/little-world-design-system-core';
+import {
+  WidgetDimensions,
+  WidgetSizes,
+} from '@a-little-world/little-world-design-system-core';
 
-export {WidgetSizes}
+export { WidgetSizes };
 
 const StyledWidget = styled.div<{
   $borderColor?: string;
@@ -19,8 +22,8 @@ const StyledWidget = styled.div<{
   background: rgba(0, 0, 0, 0.1);
   box-shadow: 0px 1px 15px 1px rgba(0, 0, 0, 0.05);
   width: 100%;
-  max-width: ${({ $width }) => $width ? WidgetDimensions[$width] : "100%"};
-  height: ${({ $height }) => $height || "auto"};
+  max-width: ${({ $width }) => ($width ? WidgetDimensions[$width] : '100%')};
+  height: ${({ $height }) => $height || 'auto'};
   padding: ${({ theme, $padding }) => $padding || theme.spacing.xxsmall};
 `;
 

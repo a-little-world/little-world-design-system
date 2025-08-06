@@ -7,15 +7,15 @@ const Item = styled.div`
   gap: ${({ theme }) => theme.spacing.xxxsmall};
   margin-bottom: ${({ theme }) => theme.spacing.small};
   color: ${({ theme }) => theme.color.text.primary};
-  
+
   > * {
     margin: 0px !important;
   }
 `;
 
 const Details = styled.div`
- font-family: SignikaNegative;
-   font-family: 'Signika Negative', sans-serif;
+  font-family: SignikaNegative;
+  font-family: 'Signika Negative', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;

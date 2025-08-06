@@ -71,11 +71,7 @@ const NavigationMenuLink = (
 const NavigationMenuTrigger = ({ children }: PropsWithChildren) => (
   <NavMenuTrigger>
     {children}
-    <MenuTriggerIcon
-      width={12}
-      height={12}
-      label="menu trigger icon"
-    />
+    <MenuTriggerIcon width={12} height={12} label="menu trigger icon" />
   </NavMenuTrigger>
 );
 
@@ -98,11 +94,7 @@ const NavigationMenuCallout = ({
     <RadixNavigationMenu.Link asChild>
       <Callout to={to} href={href}>
         {Icon ? (
-          <Icon
-            width="48px"
-            height="48px"
-            label="Callout Icon"
-          />
+          <Icon width="48px" height="48px" label="Callout Icon" />
         ) : (
           <Logo
             width="48px"

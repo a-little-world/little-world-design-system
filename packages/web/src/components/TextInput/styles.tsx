@@ -4,7 +4,10 @@ import styled, { css } from 'styled-components';
 
 import Button from '../Button/Button';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
-import { InputHeight, InputWidth } from '@a-little-world/little-world-design-system-core';
+import {
+  InputHeight,
+  InputWidth,
+} from '@a-little-world/little-world-design-system-core';
 import { pixelate } from '../../utils/styles';
 
 export const InputWrapper = styled.div<{ $width: InputWidth }>`
@@ -34,7 +37,10 @@ export const INPUT_CSS = css<{ $height?: InputHeight }>`
   line-height: 1.25;
 `;
 
-export const Input = styled.input<{ $hasError: boolean; $height?: InputHeight }>`
+export const Input = styled.input<{
+  $hasError: boolean;
+  $height?: InputHeight;
+}>`
   ${INPUT_CSS}
 `;
 

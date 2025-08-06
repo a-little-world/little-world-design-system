@@ -3,7 +3,6 @@ import React from 'react';
 import styled, { useTheme } from 'styled-components';
 
 import Text from '../components/Text/Text';
-import { tokensPixelated } from '@a-little-world/little-world-design-system-core';
 
 const Container = styled.div`
   display: flex;
@@ -54,16 +53,56 @@ const SpacingValue = styled.div`
 const SpacingSection = () => {
   const theme = useTheme();
   const spacingTokens = [
-    { key: 'xxxxsmall', value: theme.spacing.xxxxsmall, description: '2px - Minimal spacing' },
-    { key: 'xxxsmall', value: theme.spacing.xxxsmall, description: '4px - Tight spacing' },
-    { key: 'xxsmall', value: theme.spacing.xxsmall, description: '8px - Standard spacing' },
-    { key: 'xsmall', value: theme.spacing.xsmall, description: '12px - Comfortable spacing' },
-    { key: 'small', value: theme.spacing.small, description: '16px - Standard section spacing' },
-    { key: 'medium', value: theme.spacing.medium, description: '24px - Breathing room' },
-    { key: 'large', value: theme.spacing.large, description: '32px - Generous spacing' },
-    { key: 'xlarge', value: theme.spacing.xlarge, description: '40px - Substantial spacing' },
-    { key: 'xxlarge', value: theme.spacing.xxlarge, description: '64px - Maximum spacing' },
-    { key: 'massive', value: theme.spacing.massive, description: '120px - Dramatic spacing' },
+    {
+      key: 'xxxxsmall',
+      value: theme.spacing.xxxxsmall,
+      description: '2px - Minimal spacing',
+    },
+    {
+      key: 'xxxsmall',
+      value: theme.spacing.xxxsmall,
+      description: '4px - Tight spacing',
+    },
+    {
+      key: 'xxsmall',
+      value: theme.spacing.xxsmall,
+      description: '8px - Standard spacing',
+    },
+    {
+      key: 'xsmall',
+      value: theme.spacing.xsmall,
+      description: '12px - Comfortable spacing',
+    },
+    {
+      key: 'small',
+      value: theme.spacing.small,
+      description: '16px - Standard section spacing',
+    },
+    {
+      key: 'medium',
+      value: theme.spacing.medium,
+      description: '24px - Breathing room',
+    },
+    {
+      key: 'large',
+      value: theme.spacing.large,
+      description: '32px - Generous spacing',
+    },
+    {
+      key: 'xlarge',
+      value: theme.spacing.xlarge,
+      description: '40px - Substantial spacing',
+    },
+    {
+      key: 'xxlarge',
+      value: theme.spacing.xxlarge,
+      description: '64px - Maximum spacing',
+    },
+    {
+      key: 'massive',
+      value: theme.spacing.massive,
+      description: '120px - Dramatic spacing',
+    },
   ];
 
   return (
@@ -89,4 +128,4 @@ const SpacingSection = () => {
   );
 };
 
-export default SpacingSection; 
+export default SpacingSection;

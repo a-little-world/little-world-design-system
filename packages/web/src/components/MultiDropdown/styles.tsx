@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Button from "../Button/Button";
-import { DROPDOWN_MAX_WIDTH } from "../Dropdown/styles";
+import Button from '../Button/Button';
+import { DROPDOWN_MAX_WIDTH } from '../Dropdown/styles';
 
 export const MultiDropdownWrapper = styled.div``;
 
@@ -26,7 +26,7 @@ export const Segment = styled.section<{ $locked?: boolean }>`
   );
   grid-template-columns: ${({ $locked, theme }) =>
     $locked
-      ? "repeat(2, minmax(0, 1fr))"
+      ? 'repeat(2, minmax(0, 1fr))'
       : `repeat(2, minmax(0, 1fr)) minmax(
       ${theme.spacing.small},
       auto

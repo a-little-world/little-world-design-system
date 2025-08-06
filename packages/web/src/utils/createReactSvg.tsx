@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import {
   SvgTransformOptions,
   ParsedSvg,
   SvgElement,
   Gradients,
   GradientTypes,
-} from "@a-little-world/little-world-design-system-core";
-import IconGradient from "../components/Icon/IconGradient";
+} from '@a-little-world/little-world-design-system-core';
+import IconGradient from '../components/Icon/IconGradient';
 
 // Helper function to generate unique keys
 const generateUniqueKey = (element: SvgElement, index: string | number) => {
@@ -19,7 +19,7 @@ const generateUniqueKey = (element: SvgElement, index: string | number) => {
 const renderChildren = (
   children: SvgElement[],
   options: SvgTransformOptions,
-  parentIndex: string | number
+  parentIndex: string | number,
 ) => {
   return children
     .map((child, i) => renderSvgElement(child, options, `${parentIndex}-${i}`))
@@ -30,7 +30,7 @@ const renderChildren = (
 const renderSvgElement = (
   element: SvgElement,
   options: SvgTransformOptions,
-  index: string | number
+  index: string | number,
 ) => {
   const { gradient, gradientId, color } = options;
 
@@ -39,14 +39,14 @@ const renderSvgElement = (
 
   // Handle color attributes for SVG elements based on the colorAttribute property
   // If element has color set that isn't #000 - do not override
-  if (element.colorAttribute && element.colorAttribute !== "none") {
-    if (attrs[element.colorAttribute] === "#000") {
+  if (element.colorAttribute && element.colorAttribute !== 'none') {
+    if (attrs[element.colorAttribute] === '#000') {
       attrs[element.colorAttribute] = gradient
         ? `url(#${gradientId})`
-        : color || "currentColor";
+        : color || 'currentColor';
     } else {
       attrs[element.colorAttribute] =
-        attrs[element.colorAttribute] || color || "currentColor";
+        attrs[element.colorAttribute] || color || 'currentColor';
     }
   }
 
@@ -54,43 +54,43 @@ const renderSvgElement = (
   attrs.key = generateUniqueKey(element, index);
 
   switch (element.type) {
-    case "path":
+    case 'path':
       return <path {...attrs} />;
-    case "g":
+    case 'g':
       return (
         <g {...attrs}>{renderChildren(element.children, options, index)}</g>
       );
-    case "defs":
+    case 'defs':
       return (
         <defs {...attrs}>
           {renderChildren(element.children, options, index)}
         </defs>
       );
-    case "linearGradient":
+    case 'linearGradient':
       return (
         <linearGradient {...attrs}>
           {renderChildren(element.children, options, index)}
         </linearGradient>
       );
-    case "clipPath":
+    case 'clipPath':
       return (
         <clipPath {...attrs}>
           {renderChildren(element.children, options, index)}
         </clipPath>
       );
-    case "stop":
+    case 'stop':
       return <stop {...attrs} />;
-    case "circle":
+    case 'circle':
       return <circle {...attrs} />;
-    case "rect":
+    case 'rect':
       return <rect {...attrs} />;
-    case "line":
+    case 'line':
       return <line {...attrs} />;
-    case "polygon":
+    case 'polygon':
       return <polygon {...attrs} />;
-    case "polyline":
+    case 'polyline':
       return <polyline {...attrs} />;
-    case "ellipse":
+    case 'ellipse':
       return <ellipse {...attrs} />;
     default:
       console.warn(`Unsupported SVG element type: ${element.type}`);
@@ -100,7 +100,7 @@ const renderSvgElement = (
 
 export const createReactSvg = (
   svgData: ParsedSvg,
-  options: SvgTransformOptions
+  options: SvgTransformOptions,
 ) => {
   const {
     className,
@@ -124,7 +124,7 @@ export const createReactSvg = (
       viewBox={svgData.viewBox}
     >
       {svgData.elements.map((element, index) =>
-        renderSvgElement(element, options, index)
+        renderSvgElement(element, options, index),
       )}
       {gradient && (
         <IconGradient

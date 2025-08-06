@@ -6,4 +6,4 @@ export interface TextStyle {
   lineHeight?: number;
   fontWeight?: 'normal' | 'bold';
   styleType: TextStyleType;
-} 
+}

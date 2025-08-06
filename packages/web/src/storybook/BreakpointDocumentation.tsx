@@ -59,41 +59,41 @@ const BreakpointDescription = styled.div`
 const BreakpointSection = () => {
   const theme = useTheme();
   const breakpointTokens = [
-    { 
-      key: 'xsmall', 
-      value: theme.breakpoints.xsmall, 
+    {
+      key: 'xsmall',
+      value: theme.breakpoints.xsmall,
       description: '360px - Mobile devices in portrait mode',
-      useCase: 'Small mobile screens'
+      useCase: 'Small mobile screens',
     },
-    { 
-      key: 'small', 
-      value: theme.breakpoints.small, 
+    {
+      key: 'small',
+      value: theme.breakpoints.small,
       description: '500px - Small tablets and large mobile devices',
-      useCase: 'Large mobile and small tablets'
+      useCase: 'Large mobile and small tablets',
     },
-    { 
-      key: 'medium', 
-      value: theme.breakpoints.medium, 
+    {
+      key: 'medium',
+      value: theme.breakpoints.medium,
       description: '700px - Tablets and small laptops',
-      useCase: 'Tablets and small laptops'
+      useCase: 'Tablets and small laptops',
     },
-    { 
-      key: 'large', 
-      value: theme.breakpoints.large, 
+    {
+      key: 'large',
+      value: theme.breakpoints.large,
       description: '900px - Desktop screens and large tablets',
-      useCase: 'Desktop screens'
+      useCase: 'Desktop screens',
     },
-    { 
-      key: 'xlarge', 
-      value: theme.breakpoints.xlarge, 
+    {
+      key: 'xlarge',
+      value: theme.breakpoints.xlarge,
       description: '1200px - Large desktop screens',
-      useCase: 'Large desktop screens'
+      useCase: 'Large desktop screens',
     },
-    { 
-      key: 'xxlarge', 
-      value: theme.breakpoints.xxlarge, 
+    {
+      key: 'xxlarge',
+      value: theme.breakpoints.xxlarge,
       description: '1600px - Extra large screens and high-resolution displays',
-      useCase: 'Extra large screens'
+      useCase: 'Extra large screens',
     },
   ];
 
@@ -123,4 +123,4 @@ const BreakpointSection = () => {
   );
 };
 
-export default BreakpointSection; 
+export default BreakpointSection;

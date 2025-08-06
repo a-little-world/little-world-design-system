@@ -17,96 +17,96 @@ import {
   timeFlexibleIllustration,
   unmatchedIllustration,
   womanOnRocketIllustration,
-} from "@a-little-world/little-world-design-system-core";
+} from '@a-little-world/little-world-design-system-core';
 
-import { createIllustrationComponent } from "./createIllustrationComponent";
+import { createIllustrationComponent } from './createIllustrationComponent';
 
 export const BrokenChainImage = createIllustrationComponent({
-  name: "BrokenChain",
+  name: 'BrokenChain',
   svgData: brokenChainIllustration,
 });
 
 export const ConfettiImage = createIllustrationComponent({
-  name: "Confetti",
+  name: 'Confetti',
   svgData: confettiIllustration,
 });
 
 export const FriendshipImage = createIllustrationComponent({
-  name: "Friendship",
+  name: 'Friendship',
   svgData: friendshipIllustration,
 });
 
 export const GroupHandsImage = createIllustrationComponent({
-  name: "GroupHands",
+  name: 'GroupHands',
   svgData: groupHandsIllustration,
 });
 
 export const KeyImage = createIllustrationComponent({
-  name: "Key",
+  name: 'Key',
   svgData: keyIllustration,
 });
 
 export const LivingRoomImage = createIllustrationComponent({
-  name: "LivingRoom",
+  name: 'LivingRoom',
   svgData: livingRoomIllustration,
 });
 
 export const LaptopWithPhoneImage = createIllustrationComponent({
-  name: "LaptopWithPhone",
+  name: 'LaptopWithPhone',
   svgData: laptopWithPhoneIllustration,
 });
 
 export const ManOnRocketImage = createIllustrationComponent({
-  name: "ManOnRocket",
+  name: 'ManOnRocket',
   svgData: manOnRocketIllustration,
 });
 
 export const MatchSearchingImage = createIllustrationComponent({
-  name: "MatchSearching",
+  name: 'MatchSearching',
   svgData: matchSearchingIllustration,
 });
 
 export const PaperPlaneImage = createIllustrationComponent({
-  name: "PaperPlane",
+  name: 'PaperPlane',
   svgData: paperPlaneIllustration,
 });
 
 export const PeopleTogetherImage = createIllustrationComponent({
-  name: "PeopleTogether",
+  name: 'PeopleTogether',
   svgData: peopleTogetherIllustration,
 });
 
 export const QuestionMarksImage = createIllustrationComponent({
-  name: "QuestionMarks",
+  name: 'QuestionMarks',
   svgData: questionMarksIllustration,
 });
 
 export const RaisingMoneyImage = createIllustrationComponent({
-  name: "RaisingMoney",
+  name: 'RaisingMoney',
   svgData: raisingMoneyIllustration,
 });
 
 export const TeacherImage = createIllustrationComponent({
-  name: "Teacher",
+  name: 'Teacher',
   svgData: teacherIllustration,
 });
 
 export const TimeFlexibleImage = createIllustrationComponent({
-  name: "TimeFlexible",
+  name: 'TimeFlexible',
   svgData: timeFlexibleIllustration,
 });
 
 export const UnmatchedImage = createIllustrationComponent({
-  name: "Unmatched",
+  name: 'Unmatched',
   svgData: unmatchedIllustration,
 });
 
 export const WavyLinesImage = createIllustrationComponent({
-  name: "WavyLines",
+  name: 'WavyLines',
   svgData: wavyLinesIllustration,
 });
 
 export const WomanOnRocketImage = createIllustrationComponent({
-  name: "WomanOnRocket",
+  name: 'WomanOnRocket',
   svgData: womanOnRocketIllustration,
 });

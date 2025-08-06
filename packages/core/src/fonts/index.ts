@@ -25,7 +25,7 @@ try {
     SignikaNegativeBold,
     WorkSans,
   };
-} catch (error) {
+} catch {
   // In web environments, fontFiles will remain undefined
   // Native apps should check if fontFiles exists before using
 }

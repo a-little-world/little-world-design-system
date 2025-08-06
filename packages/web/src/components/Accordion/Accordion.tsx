@@ -12,7 +12,7 @@ import {
   TriggerIcon,
 } from './styles';
 
-export { AccordionContent }
+export { AccordionContent };
 interface AccordionProps extends AccordionBaseProps {
   className?: string;
   ContentWrapper?: React.ComponentType<{ children: React.ReactNode }>;

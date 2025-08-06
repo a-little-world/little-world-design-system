@@ -116,7 +116,7 @@ function isValidUrl(urlString: string | null | undefined): boolean {
     const tld = domainParts[domainParts.length - 1].toLowerCase();
     const isValid = Object.prototype.hasOwnProperty.call(validDomains, tld);
     return isValid;
-  } catch (error) {
+  } catch {
     return false;
   }
 }

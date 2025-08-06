@@ -1,6 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { TagAppearance, TagSizes, TextTypes } from '@a-little-world/little-world-design-system-core';
+import {
+  TagAppearance,
+  TagSizes,
+  TextTypes,
+} from '@a-little-world/little-world-design-system-core';
 import { StyledTag, TagsContainer } from './styles';
 
 interface TagProps {
