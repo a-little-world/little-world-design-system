@@ -6,11 +6,17 @@
 
 - Fix theme type declaration import in index file
 
+## 2.2.6
+
+### Patch Changes
+
+- Fix theme type declaration import in index file (Unsuccessful)
+
 ## 2.2.5
 
 ### Patch Changes
 
-- Fix theme type declaration import in theme file
+- Fix theme type declaration import in theme file (Unsuccessful)
 
 ## 2.2.4
 

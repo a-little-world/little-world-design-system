@@ -1,5 +1,4 @@
-// Import theme declarations to ensure styled-components types are available
-import './theme/theme.d.ts';
+import './theme/theme';
 
 export { default as Accordion, AccordionContent } from "./components/Accordion/Accordion";
 export {

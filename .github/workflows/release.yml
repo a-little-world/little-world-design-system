@@ -325,24 +325,24 @@ jobs:
             echo "### Publishing $package..." >> $GITHUB_STEP_SUMMARY
             
             if [ "$package" = "core" ]; then
-              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-core publish --access restricted" >> $GITHUB_STEP_SUMMARY
-              if pnpm --filter=@a-little-world/little-world-design-system-core publish --access restricted; then
+              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-core publish --access restricted --registry https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
+              if pnpm --filter=@a-little-world/little-world-design-system-core publish --access restricted --registry https://npm.pkg.github.com; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
                 exit 1
               fi
             elif [ "$package" = "native" ]; then
-              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-native publish --access restricted" >> $GITHUB_STEP_SUMMARY
-              if pnpm --filter=@a-little-world/little-world-design-system-native publish --access restricted; then
+              echo "Running: pnpm --filter=@a-little-world/little-world-design-system-native publish --access restricted --registry https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
+              if pnpm --filter=@a-little-world/little-world-design-system-native publish --access restricted --registry https://npm.pkg.github.com; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
                 exit 1
               fi
             elif [ "$package" = "web" ]; then
-              echo "Running: pnpm --filter=@a-little-world/little-world-design-system publish --access restricted" >> $GITHUB_STEP_SUMMARY
-              if pnpm --filter=@a-little-world/little-world-design-system publish --access restricted; then
+              echo "Running: pnpm --filter=@a-little-world/little-world-design-system publish --access restricted --registry https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
+              if pnpm --filter=@a-little-world/little-world-design-system publish --access restricted --registry https://npm.pkg.github.com; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
