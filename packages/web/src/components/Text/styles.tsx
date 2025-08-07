@@ -17,6 +17,7 @@ const HEADING_SHARED_STYLES = css<{ $color?: string }>`
   font-weight: bold;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.1;
 `;
 
 export const BODY_5_CSS = css`
@@ -61,6 +62,7 @@ export const StyledElement = styled.div<{
       ${style.styleType === 'body' ? BODY_SHARED_STYLES : HEADING_SHARED_STYLES}
       font-size: ${style.fontSize}rem;
       ${style.fontWeight ? `font-weight: ${style.fontWeight};` : ''}
+      ${style.lineHeight ? `line-height: ${style.lineHeight};` : ''}
 
       ${style.desktopFontSize &&
       css`

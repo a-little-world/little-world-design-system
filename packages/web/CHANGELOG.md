@@ -1,5 +1,15 @@
 # @a-little-world/little-world-design-system
 
+## 2.3.1
+
+### Patch Changes
+
+- **Fix issue with gradient label**
+- **Add line-height logic to Text**
+- **Add setMode to customThemeProvider**
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.3.1
+
 ## 2.3.0
 
 ### Minor Changes

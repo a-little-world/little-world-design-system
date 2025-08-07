@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 // import { INPUT_ERROR_CSS } from '../InputError/InputError';
 // import { BODY_5_CSS } from '../Text/styles';
 import { InputHeight } from '@a-little-world/little-world-design-system-core';
@@ -11,7 +9,7 @@ export const getDropdownStyles = ({
   theme,
   maxWidth,
   height,
-  hasError,
+  hasError, // eslint-disable-line @typescript-eslint/no-unused-vars
 }: {
   theme: DefaultTheme;
   maxWidth: number;

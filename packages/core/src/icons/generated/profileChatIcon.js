@@ -30,7 +30,7 @@ export const profileChatIcon = {
         "strokeMiterlimit": "10"
       },
       "children": [],
-      "colorAttribute": "fill"
+      "colorAttribute": "stroke"
     }
   ]
 };

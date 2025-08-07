@@ -40,6 +40,7 @@ export interface ThemeProviderProps {
 
 export const themeContext = createContext<ThemeContextType>({
   toggleMode: () => {},
+  setMode: (_mode: ThemeVariants) => {},
   currentMode: defaultThemeVariant,
 });
 
@@ -74,12 +75,17 @@ export const CustomThemeProvider = ({
     );
   }, []);
 
+  const setMode = useCallback((mode: ThemeVariants) => {
+    setCurrentMode(mode);
+  }, []);
+
   const contextValue = useMemo(
     () => ({
       currentMode,
       toggleMode,
+      setMode,
     }),
-    [currentMode, toggleMode],
+    [currentMode, toggleMode, setMode],
   );
 
   return (

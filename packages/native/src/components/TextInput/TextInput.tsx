@@ -45,7 +45,7 @@ const TextInput: React.FC<Props> = ({
 }: Props) => {
   const [inputType, setInputType] = React.useState(type);
   const [showPassword, setShowPassword] = React.useState(false);
-  const { defaultValue, value, ...propsWithoutValues } = inputProps;
+  // const { defaultValue, value, ...propsWithoutValues } = inputProps;
 
   const errorProps = inline ? { bottom: '-16px', right: '0px' } : {};
 
@@ -63,7 +63,7 @@ const TextInput: React.FC<Props> = ({
     e: NativeSyntheticEvent<TextInputKeyPressEventData>,
   ) => {
     if (onSubmit && e.nativeEvent.key === 'Enter') {
-      const submitSuccessful = await onSubmit();
+      await onSubmit();
     }
   };
 

@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.3.1
+
+### Patch Changes
+
+- **Improve Svg processing script**: Ensure that nodes with both stroke and fill are handled correctly
+- **Add setMode to ThemeContentType**
+- **Add lineHeight to certain Text types**
+
 ## 1.3.0
 
 ### Minor Changes

@@ -6,12 +6,7 @@ import {
 } from './styles';
 import * as CheckboxPrimitive from '@rn-primitives/checkbox';
 import React, { useMemo } from 'react';
-import {
-  GestureResponderEvent,
-  StyleProp,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { StyleProp, View, ViewStyle } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import Label from '../Label/Label';
 
@@ -30,7 +25,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   checked,
   color,
   error,
-  required = true,
+  required = true, // eslint-disable-line @typescript-eslint/no-unused-vars
   inputRef,
   id,
   label,
@@ -44,14 +39,17 @@ const Checkbox: React.FC<CheckboxProps> = ({
     () => getContainerStyles({ theme }),
     [theme],
   );
+
   const checkboxstyles = useMemo(
     () =>
       getCheckboxStyles({ theme, hasError: Boolean(error), color, checked }),
     [theme, error, color, checked],
   );
-  function handlePress(ev: GestureResponderEvent) {
+
+  function handlePress() {
     onCheckedChange(!checked);
   }
+
   const [checked1, setChecked] = React.useState(false);
   return (
     <View style={checkboxContainerStyle.container}>

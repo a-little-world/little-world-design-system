@@ -33,7 +33,7 @@ const parseAttributes = (string: string) => {
   try {
     const attrs = JSON.parse(string);
     return attrs;
-  } catch (e) {
+  } catch {
     return {};
   }
 };

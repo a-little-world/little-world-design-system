@@ -28,7 +28,6 @@ export const getLoadingContainerStyles = (
 export const getLoadingElementStyles = (
   color?: string,
   size?: LoadingSizes,
-  index?: number,
 ): ViewStyle => ({
   position: 'absolute',
   width: LoadingDimensions[size || LoadingSizes.Small],

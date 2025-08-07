@@ -7,12 +7,14 @@ export const getTextStyle = (type: keyof typeof TextTypes): TextStyle => {
         fontSize: 2,
         desktopFontSize: 2.5,
         styleType: 'body',
+        lineHeight: 1.2,
       };
     case TextTypes.Body2:
       return {
         fontSize: 1.75,
         desktopFontSize: 2,
         styleType: 'body',
+        lineHeight: 1.25,
       };
     case TextTypes.Body3:
       return {

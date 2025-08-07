@@ -25,7 +25,9 @@ export const createIconComponent = ({
     label,
     labelVisible,
   }: IconSvgProps & { style?: ViewStyle; color?: string }) => {
-    const gradientId = `gradient-${label.replace(/\s/g, '')}`;
+    const gradientId = label
+      ? `gradient-${label.replace(/\s/g, '')}`
+      : 'gradient-icon-needs-label';
     const svgOptions: SvgTransformOptions = {
       width,
       height,

@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.1.12
+
+### Patch Changes
+
+- **Fix linter issues**
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.3.1
+
 ## 0.1.11
 
 ### Patch Changes

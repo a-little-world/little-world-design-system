@@ -150,6 +150,7 @@ export enum ThemeVariants {
 
 export interface ThemeContextType {
   toggleMode: () => void;
+  setMode: (mode: ThemeVariants) => void;
   currentMode: ThemeVariants;
 }
 

@@ -19,7 +19,7 @@ export const Label: React.FC<LabelProps> = ({
   bold,
   inline,
   marginBottom,
-  nativeId,
+  nativeId, // eslint-disable-line @typescript-eslint/no-unused-vars
 }) => {
   const theme = useTheme();
   return (

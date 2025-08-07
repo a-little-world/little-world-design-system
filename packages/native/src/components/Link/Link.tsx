@@ -8,7 +8,7 @@ import {
   LinkBaseProps,
   TextTypes,
 } from '@a-little-world/little-world-design-system-core';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 import React, { forwardRef } from 'react';
 import {
   Pressable,
@@ -51,13 +51,8 @@ const Link = forwardRef<any, LinkProps>(
     ref,
   ) => {
     const theme = useTheme();
-    // Use try/catch to handle cases when NavigationContainer isn't available
-    let navigation: NavigationProp<any> | undefined;
-    try {
-      navigation = useNavigation();
-    } catch (error) {
-      // Navigation container not available, will handle in onPress
-    }
+    // Always call useNavigation, but handle the case where it's not available
+    const navigation = useNavigation<NavigationProp<any>>();
     const hasGradient = buttonAppearance === ButtonAppearance.Primary;
 
     const handlePress = () => {
@@ -70,13 +65,15 @@ const Link = forwardRef<any, LinkProps>(
         Linking.openURL(href).catch(err => {
           console.error('Failed to open URL:', err);
         });
-      } else if (to && navigation) {
-        // Handle internal navigation if navigation is available
-        navigation.navigate(to, params);
       } else if (to) {
-        console.warn(
-          'Navigation not available. Make sure your Link is inside NavigationContainer.',
-        );
+        // Handle internal navigation
+        try {
+          navigation.navigate(to, params);
+        } catch (_error) {
+          console.warn(
+            'Navigation not available. Make sure your Link is inside NavigationContainer.',
+          );
+        }
       }
     };
 
