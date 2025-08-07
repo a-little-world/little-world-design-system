@@ -37,6 +37,7 @@ const getStyles = ({
   color: color ?? theme.color.text.primary,
   fontSize: typeStyles.fontSize * 16, // Convert rem to pixels (1rem = 16px)
   fontWeight: typeStyles.fontWeight === 'bold' || bold ? 'bold' : 'normal',
+  lineHeight: typeStyles.lineHeight || 1.5,
   fontFamily:
     typeStyles.styleType === 'body'
       ? bold

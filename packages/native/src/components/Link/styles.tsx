@@ -1,12 +1,9 @@
-import {
-  ButtonAppearance,
-  ButtonSizes,
-} from '@a-little-world/little-world-design-system-core';
+import { ButtonAppearance } from '@a-little-world/little-world-design-system-core';
 import { DefaultTheme } from 'styled-components/native';
 import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
 
 export const getLinkStyles = ({
-  theme,
+  theme, // eslint-disable-line @typescript-eslint/no-unused-vars
 }: {
   theme: DefaultTheme;
 }): ViewStyle => {

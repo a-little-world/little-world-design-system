@@ -1,14 +1,14 @@
 import React from 'react';
 
-// Force hooks to be accessed through React
+// Force hooks to be accessed through React (Test if still needed)
 const {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useMemo,
-  createContext,
-  forwardRef,
+  useState, // eslint-disable-line @typescript-eslint/no-unused-vars
+  useEffect, // eslint-disable-line @typescript-eslint/no-unused-vars
+  useRef, // eslint-disable-line @typescript-eslint/no-unused-vars
+  useCallback, // eslint-disable-line @typescript-eslint/no-unused-vars
+  useMemo, // eslint-disable-line @typescript-eslint/no-unused-vars
+  createContext, // eslint-disable-line @typescript-eslint/no-unused-vars
+  forwardRef, // eslint-disable-line @typescript-eslint/no-unused-vars
 } = React;
 
 export { default as Accordion } from './components/Accordion/Accordion';

@@ -29,7 +29,7 @@ const Popover: React.FC<PopoverProps> = ({
   // open
 }) => {
   const theme = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
+  const [_isOpen, setIsOpen] = useState(false);
 
   const contentStyles = useMemo(
     () =>

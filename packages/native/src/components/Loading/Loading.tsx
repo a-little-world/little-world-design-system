@@ -58,7 +58,7 @@ const Loading: React.FC<LoadingProps> = ({
         <Animated.View
           key={index}
           style={[
-            getLoadingElementStyles(color, size, index),
+            getLoadingElementStyles(color, size),
             {
               transform: [{ rotate: spin }],
             },

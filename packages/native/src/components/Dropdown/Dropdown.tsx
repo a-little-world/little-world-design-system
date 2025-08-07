@@ -4,7 +4,7 @@ import Label from '../Label/Label';
 import Text from '../Text/Text';
 import { getDropdownStyles } from './styles';
 import {
-  Options,
+  // Options,
   InputHeight,
   DropdownBaseProps,
 } from '@a-little-world/little-world-design-system-core';
@@ -21,12 +21,12 @@ export type DropdownProps = DropdownBaseProps & {
 const ARROW_DOWN_WIDTH = 13;
 const ARROW_DOWN_HEIGHT = 8;
 
-const isValidValue = (value: string, options: Options) =>
-  options.some((option: any) => option.value === value);
+// const isValidValue = (value: string, options: Options) =>
+//   options.some((option: any) => option.value === value);
 
 const Option: React.FC<{ children: string; value: string }> = ({
   children,
-  value,
+  value, // eslint-disable-line @typescript-eslint/no-unused-vars
 }) => {
   return (
     <DropdownMenuPrimitive.Item
@@ -44,18 +44,18 @@ const Dropdown: React.FC<DropdownProps> = ({
   ariaLabel,
   error,
   cannotError,
-  disabled,
+  disabled, // eslint-disable-line @typescript-eslint/no-unused-vars
   height,
-  inputRef,
+  inputRef, // eslint-disable-line @typescript-eslint/no-unused-vars
   label,
-  labelTooltip,
+  labelTooltip, // eslint-disable-line @typescript-eslint/no-unused-vars
   lockedValue,
   maxWidth,
-  onValueChange,
+  onValueChange, // eslint-disable-line @typescript-eslint/no-unused-vars
   options,
-  placeholder,
-  required,
-  value,
+  placeholder, // eslint-disable-line @typescript-eslint/no-unused-vars
+  required, // eslint-disable-line @typescript-eslint/no-unused-vars
+  value, // eslint-disable-line @typescript-eslint/no-unused-vars
   style,
 }) => {
   const theme = useTheme();
@@ -65,8 +65,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     height: height as InputHeight,
     hasError: Boolean(error),
   });
-  const defaultValue =
-    lockedValue || (value && isValidValue(value, options) ? value : undefined);
+  // const defaultValue =
+  //   lockedValue || (value && isValidValue(value, options) ? value : undefined);
   const canError = !lockedValue && !cannotError;
 
   return (
