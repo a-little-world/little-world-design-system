@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.3.3
+
+### Patch Changes
+
+- Fix issue with publishing error
+
 ## 1.3.2
 
 ### Patch Changes
