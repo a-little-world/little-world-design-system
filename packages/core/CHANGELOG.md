@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.3.1
+
+### Patch Changes
+
+- **Link Component**: Fixed React Hook rules violation by removing conditional `useNavigation()` hook call and properly handling navigation errors at usage time
+
 ## 1.3.0
 
 ### Minor Changes
