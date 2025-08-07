@@ -26,6 +26,7 @@ export const InputContainer = styled.div`
 export const INPUT_CSS = css<{ $height?: InputHeight }>`
   width: 100%;
   border: 2px solid ${({ theme }) => theme.color.border.subtle};
+  background: ${({ theme }) => theme.color.surface.primary};
   border-radius: 6px;
   box-sizing: border-box;
   padding: ${({ theme, $height }) =>

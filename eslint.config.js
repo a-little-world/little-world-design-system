@@ -73,6 +73,9 @@ module.exports = [
       '**/*.test.ts',
       '**/testUtils.tsx',
       '**/setupTests.ts',
+
+      // Storybook configuration
+      '**/.storybook/',
     ],
   },
 

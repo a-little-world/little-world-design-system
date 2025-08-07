@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.3.2
+
+### Patch Changes
+
+- Fix some dark mode colors
+
 ## 1.3.1
 
 ### Patch Changes

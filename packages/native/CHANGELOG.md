@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.1.13
+
+### Patch Changes
+
+- Fix some dark mode colors
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.3.2
+
 ## 0.1.12
 
 ### Patch Changes
