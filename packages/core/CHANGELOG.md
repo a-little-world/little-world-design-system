@@ -4,7 +4,9 @@
 
 ### Patch Changes
 
-- **Link Component**: Fixed React Hook rules violation by removing conditional `useNavigation()` hook call and properly handling navigation errors at usage time
+- **Improve Svg processing script**: Ensure that nodes with both stroke and fill are handled correctly
+- **Add setMode to ThemeContentType**
+- **Add lineHeight to certain Text types**
 
 ## 1.3.0
 
