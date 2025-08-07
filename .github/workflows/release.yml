@@ -312,44 +312,24 @@ jobs:
           echo "## 📦 Publishing packages..." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          # Debug: Check npm configuration
+          # Debug: Check pnpm configuration
           echo "### 🔍 Debug Information:" >> $GITHUB_STEP_SUMMARY
-          echo "NPM Registry: $(npm config get registry)" >> $GITHUB_STEP_SUMMARY
-          echo "NPM Scope: $(npm config get scope)" >> $GITHUB_STEP_SUMMARY
-          echo "NPM Auth Token exists: $([ -n "$NODE_AUTH_TOKEN" ] && echo "Yes" || echo "No")" >> $GITHUB_STEP_SUMMARY
-          echo "NPM Auth Token length: ${#NODE_AUTH_TOKEN}" >> $GITHUB_STEP_SUMMARY
-          echo "NPM Auth Token prefix: ${NODE_AUTH_TOKEN:0:10}..." >> $GITHUB_STEP_SUMMARY
+          echo "PNPM Registry: $(pnpm config get registry)" >> $GITHUB_STEP_SUMMARY
+          echo "PNPM Auth Token exists: $([ -n "$NODE_AUTH_TOKEN" ] && echo "Yes" || echo "No")" >> $GITHUB_STEP_SUMMARY
+          echo "PNPM Auth Token length: ${#NODE_AUTH_TOKEN}" >> $GITHUB_STEP_SUMMARY
+          echo "PNPM Auth Token prefix: ${NODE_AUTH_TOKEN:0:10}..." >> $GITHUB_STEP_SUMMARY
           echo "Current directory: $(pwd)" >> $GITHUB_STEP_SUMMARY
           echo "GitHub repository: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
           echo "GitHub actor: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          # Additional debugging for npm configuration
-          echo "### 🔍 NPM Configuration Details:" >> $GITHUB_STEP_SUMMARY
-          echo "NPM Config List:" >> $GITHUB_STEP_SUMMARY
-          npm config list >> $GITHUB_STEP_SUMMARY 2>&1 || true
-          echo "" >> $GITHUB_STEP_SUMMARY
-
-          echo "NPM Config Get @a-little-world:registry: $(npm config get @a-little-world:registry)" >> $GITHUB_STEP_SUMMARY
-          echo "NPM Config Get //npm.pkg.github.com/:_authToken: $(npm config get //npm.pkg.github.com/:_authToken | head -c 10)..." >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-
-          # Test npm authentication
-          echo "### 🔐 Testing npm authentication..." >> $GITHUB_STEP_SUMMARY
-          if npm whoami --registry=https://npm.pkg.github.com; then
-            echo "✅ npm authentication successful for GitHub Package Registry" >> $GITHUB_STEP_SUMMARY
+          # Test pnpm authentication
+          echo "### 🔐 Testing pnpm authentication..." >> $GITHUB_STEP_SUMMARY
+          if pnpm whoami --registry=https://npm.pkg.github.com; then
+            echo "✅ pnpm authentication successful for GitHub Package Registry" >> $GITHUB_STEP_SUMMARY
           else
-            echo "❌ npm authentication failed for GitHub Package Registry" >> $GITHUB_STEP_SUMMARY
+            echo "❌ pnpm authentication failed for GitHub Package Registry" >> $GITHUB_STEP_SUMMARY
             exit 1
-          fi
-          echo "" >> $GITHUB_STEP_SUMMARY
-
-          # Test package access
-          echo "### 🔐 Testing package access..." >> $GITHUB_STEP_SUMMARY
-          if npm view @a-little-world/little-world-design-system-core --registry=https://npm.pkg.github.com; then
-            echo "✅ Package access successful" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "❌ Package access failed - this might indicate permission issues" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
 
@@ -360,19 +340,19 @@ jobs:
             
             if [ "$package" = "core" ]; then
               cd packages/core
-              echo "Running: npm publish --registry=https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
+              echo "Running: pnpm publish --registry=https://npm.pkg.github.com --no-git-checks" >> $GITHUB_STEP_SUMMARY
               
               # Check if version already exists
               PACKAGE_VERSION=$(node -e "console.log(require('./package.json').version)")
               echo "Checking if version $PACKAGE_VERSION already exists..." >> $GITHUB_STEP_SUMMARY
-              if npm view @a-little-world/little-world-design-system-core@$PACKAGE_VERSION --registry=https://npm.pkg.github.com &>/dev/null; then
+              if pnpm view @a-little-world/little-world-design-system-core@$PACKAGE_VERSION --registry=https://npm.pkg.github.com &>/dev/null; then
                 echo "❌ Version $PACKAGE_VERSION already exists in registry" >> $GITHUB_STEP_SUMMARY
                 exit 1
               else
                 echo "✅ Version $PACKAGE_VERSION does not exist, proceeding with publish" >> $GITHUB_STEP_SUMMARY
               fi
               
-              if npm publish --registry=https://npm.pkg.github.com; then
+              if pnpm publish --registry=https://npm.pkg.github.com --no-git-checks; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
@@ -381,8 +361,8 @@ jobs:
               cd ../..
             elif [ "$package" = "native" ]; then
               cd packages/native
-              echo "Running: npm publish --registry=https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
-              if npm publish --registry=https://npm.pkg.github.com; then
+              echo "Running: pnpm publish --registry=https://npm.pkg.github.com --no-git-checks" >> $GITHUB_STEP_SUMMARY
+              if pnpm publish --registry=https://npm.pkg.github.com --no-git-checks; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
@@ -391,8 +371,8 @@ jobs:
               cd ../..
             elif [ "$package" = "web" ]; then
               cd packages/web
-              echo "Running: npm publish --registry=https://npm.pkg.github.com" >> $GITHUB_STEP_SUMMARY
-              if npm publish --registry=https://npm.pkg.github.com; then
+              echo "Running: pnpm publish --registry=https://npm.pkg.github.com --no-git-checks" >> $GITHUB_STEP_SUMMARY
+              if pnpm publish --registry=https://npm.pkg.github.com --no-git-checks; then
                 echo "✅ Successfully published @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
               else
                 echo "❌ Failed to publish @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
@@ -409,7 +389,7 @@ jobs:
       - name: Create GitHub Release
         if: github.ref == 'refs/heads/main' && steps.version-check.outputs.has_changes == 'true'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PACKAGE_PUBLISH_TOKEN }}
         run: |
           echo "## 🏷️ Creating GitHub Release" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
