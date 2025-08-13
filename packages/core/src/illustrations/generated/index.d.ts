@@ -15,5 +15,6 @@ export { raisingMoneyIllustration } from './raisingMoneyIllustration';
 export { teacherIllustration } from './teacherIllustration';
 export { timeFlexibleIllustration } from './timeFlexibleIllustration';
 export { unmatchedIllustration } from './unmatchedIllustration';
+export { wavyBlockIllustration } from './wavyBlockIllustration';
 export { wavyLinesIllustration } from './wavyLinesIllustration';
 export { womanOnRocketIllustration } from './womanOnRocketIllustration';

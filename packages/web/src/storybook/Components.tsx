@@ -14,7 +14,6 @@ const Item = styled.div`
 `;
 
 const Details = styled.div`
-  font-family: SignikaNegative;
   font-family: 'Signika Negative', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

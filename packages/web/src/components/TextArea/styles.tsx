@@ -24,7 +24,7 @@ export const Area = styled.textarea<{
   width: 100%;
   font-family: 'Signika Negative', sans-serif;
   font-size: 1rem;
-  height: ${({ $size }) => $size};
+  height: ${({ $size }) => TextAreaDimensions[$size]};
   border: 1px solid ${({ theme }) => theme.color.border.moderate};
   border-radius: ${({ $size, theme }) =>
     $size === TextAreaSize.Xsmall ? theme.radius.large : theme.radius.xxsmall};

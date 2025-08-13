@@ -12,10 +12,11 @@ import {
   peopleTogetherIllustration,
   questionMarksIllustration,
   raisingMoneyIllustration,
-  wavyLinesIllustration,
   teacherIllustration,
   timeFlexibleIllustration,
   unmatchedIllustration,
+  wavyLinesIllustration,
+  wavyBlockIllustration,
   womanOnRocketIllustration,
 } from '@a-little-world/little-world-design-system-core';
 
@@ -99,6 +100,11 @@ export const TimeFlexibleImage = createIllustrationComponent({
 export const UnmatchedImage = createIllustrationComponent({
   name: 'Unmatched',
   svgData: unmatchedIllustration,
+});
+
+export const WavyBlockImage = createIllustrationComponent({
+  name: 'WavyBlock',
+  svgData: wavyBlockIllustration,
 });
 
 export const WavyLinesImage = createIllustrationComponent({
