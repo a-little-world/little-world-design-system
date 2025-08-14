@@ -17,7 +17,7 @@ import { PortalHost } from "@rn-primitives/portal";
 import { ButtonAppearance, TextTypes } from "@a-little-world/little-world-design-system-core";
 import { useTheme } from "styled-components/native";
 import TestPage from "./TestPage";
-import CheckboxStories from "./stories/Checkbox.stories";
+
 // import * as SplashScreen from 'expo-splash-screen';
 import { loadFonts } from "./utils/loadFonts";
 import { getAppStyles } from "./App.styles";
