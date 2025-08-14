@@ -60,7 +60,7 @@ function AppContent({ navigation }: { navigation: any }) {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Text type={TextTypes.Heading2}>Home Page</Text>
+      <Text type={TextTypes.Heading2} disableParser>Home Page</Text>
       <Text >{"<highlight>Passwort zurücksetzen</highlight> <bold>passwort zurücksetzen</bold>"}</Text>
       <Button onPress={() => console.log("presssing!!")}>
         Basic button test

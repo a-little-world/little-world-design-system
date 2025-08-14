@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system
 
+## 2.3.4
+
+### Patch Changes
+
+- Fix issue with TextArea size
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.3.4
+
 ## 2.3.3
 
 ### Patch Changes
