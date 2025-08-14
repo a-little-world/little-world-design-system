@@ -1,5 +1,12 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.3.4
+
+### Patch Changes
+
+- Ensure font-family naming is aligned across web & native
+- Add WavyBlock illustration
+
 ## 1.3.3
 
 ### Patch Changes

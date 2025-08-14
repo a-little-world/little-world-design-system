@@ -1,6 +1,6 @@
 // Auto-generated from icons/svgs/notes.svg
 export const notesIcon = {
-  "viewBox": "0 0 50 50",
+  "viewBox": "13.5 13.5 23 23",
   "elements": [
     {
       "type": "path",

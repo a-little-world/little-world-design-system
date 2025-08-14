@@ -32,12 +32,37 @@ jobs:
       # Set up Node
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@a-little-world'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_PUBLISH_TOKEN }}
 
       # Install pnpm
       - uses: pnpm/action-setup@v2
         with:
           version: 9.0.0
+
+      # Configure pnpm for GitHub Package Registry
+      - name: Configure pnpm for GitHub Package Registry
+        run: |
+          # Clear any existing config
+          rm -f ~/.npmrc
+
+          # Set up fresh config for GitHub Package Registry
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_PUBLISH_TOKEN }}" > ~/.npmrc
+          echo "@a-little-world:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "registry=https://registry.npmjs.org/" >> ~/.npmrc
+
+          # Configure pnpm to use the same registry settings
+          pnpm config set @a-little-world:registry https://npm.pkg.github.com
+          pnpm config set registry https://registry.npmjs.org/
+
+          # Verify configuration
+          echo "=== NPM Config ==="
+          cat ~/.npmrc
+          echo "=== PNPM Config ==="
+          pnpm config list
 
       # Install dependencies using pnpm
       - name: Install dependencies
@@ -54,7 +79,7 @@ jobs:
       # Deploy to GitHub Pages
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.PACKAGE_PUBLISH_TOKEN}}
         with:
           install_command: echo "Dependencies already installed"
           build_command: echo "Storybook already built"

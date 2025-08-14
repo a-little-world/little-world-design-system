@@ -21,9 +21,9 @@ try {
   const WorkSans = require('./WorkSans-Bold.ttf');
 
   fontFiles = {
-    SignikaNegative,
-    SignikaNegativeBold,
-    WorkSans,
+    [fontFamilies.SignikaNegative]: SignikaNegative,
+    [fontFamilies.SignikaNegativeBold]: SignikaNegativeBold,
+    [fontFamilies.WorkSans]: WorkSans,
   };
 } catch {
   // In web environments, fontFiles will remain undefined

@@ -10,6 +10,7 @@ import {
   TextStyle as CoreTextStyle,
   TextTypes,
   getTextStyle,
+  fontFamilies,
 } from '@a-little-world/little-world-design-system-core';
 import { DefaultTheme, useTheme } from 'styled-components/native';
 
@@ -37,13 +38,15 @@ const getStyles = ({
   color: color ?? theme.color.text.primary,
   fontSize: typeStyles.fontSize * 16, // Convert rem to pixels (1rem = 16px)
   fontWeight: typeStyles.fontWeight === 'bold' || bold ? 'bold' : 'normal',
-  lineHeight: typeStyles.lineHeight || 1.5,
+  lineHeight: typeStyles.lineHeight
+    ? typeStyles.lineHeight * typeStyles.fontSize * 16
+    : typeStyles.fontSize * 16 * 1.5,
   fontFamily:
     typeStyles.styleType === 'body'
       ? bold
-        ? 'SignikaNegativeBold'
-        : 'SignikaNegative'
-      : 'WorkSans',
+        ? fontFamilies.SignikaNegativeBold
+        : fontFamilies.SignikaNegative
+      : fontFamilies.WorkSans,
   ...(italic && { fontStyle: 'italic', transform: [{ skewX: '-12deg' }] }),
 });
 

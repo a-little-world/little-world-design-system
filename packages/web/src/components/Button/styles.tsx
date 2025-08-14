@@ -31,6 +31,7 @@ export const OPTION_BUTTON_CSS = css<{
   align-items: center;
   justify-content: center;
   font-weight: normal;
+  flex-shrink: 0;
   min-height: 69px;
 
   &:not(:disabled):hover {
