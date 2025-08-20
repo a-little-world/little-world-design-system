@@ -2,7 +2,7 @@ import * as Font from 'expo-font';
 import { fontFiles } from '@a-little-world/little-world-design-system-core';
 
 export const loadFonts = async (): Promise<void> => {
-  try {
+  try {    
     await Font.loadAsync(fontFiles);
     console.log('Fonts loaded successfully');
   } catch (error) {

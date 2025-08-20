@@ -1,6 +1,6 @@
 {
   "name": "@a-little-world/little-world-design-system-native",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "type": "commonjs",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

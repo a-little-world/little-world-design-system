@@ -17,7 +17,7 @@ import { PortalHost } from "@rn-primitives/portal";
 import { ButtonAppearance, TextTypes } from "@a-little-world/little-world-design-system-core";
 import { useTheme } from "styled-components/native";
 import TestPage from "./TestPage";
-import CheckboxStories from "./stories/Checkbox.stories";
+
 // import * as SplashScreen from 'expo-splash-screen';
 import { loadFonts } from "./utils/loadFonts";
 import { getAppStyles } from "./App.styles";
@@ -60,7 +60,7 @@ function AppContent({ navigation }: { navigation: any }) {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Text type={TextTypes.Heading2}>Home Page</Text>
+      <Text type={TextTypes.Heading2} disableParser>Home Page</Text>
       <Text >{"<highlight>Passwort zurücksetzen</highlight> <bold>passwort zurücksetzen</bold>"}</Text>
       <Button onPress={() => console.log("presssing!!")}>
         Basic button test
