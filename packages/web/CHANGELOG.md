@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 2.4.0
+
+### Minor Changes
+
+- Implement version 2 of text parser (non-regex based)
+
 ## 2.3.4
 
 ### Patch Changes
