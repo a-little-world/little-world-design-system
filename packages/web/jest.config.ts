@@ -19,6 +19,12 @@ const config = {
     '!src/**/*.d.ts',
     '!src/setupTests.ts',
   ],
+  extensionsToTreatAsEsm: ['.ts', '.tsx'],
+  globals: {
+    'ts-jest': {
+      useESM: true,
+    },
+  },
 } as const;
 
 export default config; 
