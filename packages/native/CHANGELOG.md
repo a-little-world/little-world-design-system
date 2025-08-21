@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.2.0
+
+### Minor Changes
+
+- Upgrade to React 19
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.4.0
+
 ## 0.1.16
 
 ### Patch Changes
