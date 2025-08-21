@@ -27,139 +27,302 @@ const ColorText = styled.Text<{ color: keyof typeof SupportedColorTags }>`
 const ANCHOR_TAG = 'a';
 const BUTTON_TAG = 'button';
 
-const regex = RegExp(/<(\w+)((?:\s+[^>]*)*)>(.*?)<\/\1>/, 'gim');
-
-const parseAttributes = (string: string) => {
-  try {
-    const attrs = JSON.parse(string);
-    return attrs;
-  } catch {
-    return {};
-  }
-};
-
 enum SupportedColorTags {
   highlight = 'highlight',
   bold = 'bold',
 }
 
-const textParser = (
-  text: string,
-  options: {
-    customElements?: {
-      Component: React.ElementType;
-      props?: { [key: string]: any };
-      tag: string;
-    }[];
-    onlyLinks?: boolean;
-  } = {},
-) => {
-  const components: React.ReactNode[] = [];
-  let match: RegExpExecArray | null;
-  let currentIndex = 0;
+interface TagInfo {
+  start: number;
+  end: number;
+  tagName: string;
+  attributes: Record<string, any>;
+  hasClosingTag: boolean;
+  contentStart: number;
+  contentEnd: number;
+}
 
-  // first convert html links to recognised anchor tag
-  const textWithParsedUrls = replaceUrlsWithAnchors(text);
+interface ParserOptions {
+  customElements?: {
+    Component: React.ElementType;
+    props?: Record<string, any>;
+    tag: string;
+  }[];
+  onlyLinks?: boolean;
+}
 
-  // utilises the exec function - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#return_value
-  while ((match = regex.exec(textWithParsedUrls)) !== null) {
-    const textBetweenMatches = textWithParsedUrls.substring(
-      currentIndex,
-      match.index,
-    );
+const findTags = (text: string): TagInfo[] => {
+  const tags: TagInfo[] = [];
+  const textLength = text.length;
+  let position = 0;
 
-    // Only add text if it's not empty
-    if (textBetweenMatches) {
-      components.push(textBetweenMatches);
-    }
+  while (position < textLength) {
+    const openBracket = text.indexOf('<', position);
+    if (openBracket === -1) break;
 
-    // update index to be last character of match
-    currentIndex = match.index + match[0].length;
+    const closeBracket = text.indexOf('>', openBracket);
+    if (closeBracket === -1) break;
 
-    const tag = match[1];
-    const attrs = parseAttributes(match[2]?.trim());
+    // Extract tag content
+    const tagContent = text.substring(openBracket + 1, closeBracket);
 
-    if (tag === ANCHOR_TAG) {
-      components.push(
-        attrs.href || attrs.to ? (
-          <Link key={tag + match[3]} to={attrs.href || attrs.to} {...attrs}>
-            {match[3]}
-          </Link>
-        ) : (
-          <Text key={tag + match[3]}>{match[3]}</Text>
-        ),
-      );
-      continue;
-    }
+    // Check if it's a valid opening tag (starts with letter)
+    if (/^[a-zA-Z]/.test(tagContent)) {
+      const firstSpace = tagContent.indexOf(' ');
+      const tagName =
+        firstSpace === -1 ? tagContent : tagContent.substring(0, firstSpace);
+      const attributesText =
+        firstSpace === -1 ? '' : tagContent.substring(firstSpace + 1);
 
-    // do not parse other tags if onlyLinks is true
-    if (options.onlyLinks) {
-      components.push(
-        <Text key={match.index}>
-          {textWithParsedUrls.substring(match.index, currentIndex)}
-        </Text>,
-      );
-      continue;
-    }
-
-    if (tag === BUTTON_TAG) {
-      components.push(
-        <Button key={tag + match[3]} {...attrs}>
-          {match[3]}
-        </Button>,
-      );
-      continue;
-    }
-
-    if (Object.values(SupportedColorTags).includes(tag as SupportedColorTags)) {
-      components.push(
-        <ColorText
-          key={tag + match[3]}
-          color={SupportedColorTags[tag as SupportedColorTags]}
-        >
-          {match[3]}
-        </ColorText>,
-      );
-      continue;
-    }
-
-    // allows for the text parser to be extended and include custom components
-    const customElementFound = options.customElements?.some(element => {
-      if (tag === element.tag) {
-        components.push(
-          <element.Component
-            key={tag + match?.[3]}
-            {...attrs}
-            {...element?.props}
-          >
-            {match?.[3] ?? null}
-          </element.Component>,
-        );
-        return true;
+      // Parse attributes safely
+      let attributes: Record<string, any> = {};
+      if (attributesText.trim()) {
+        try {
+          attributes = JSON.parse(attributesText);
+        } catch {
+          // Invalid JSON - treat as plain text
+          position = closeBracket + 1;
+          continue;
+        }
       }
-      return false;
-    });
-    if (customElementFound) continue;
 
-    // unrecognised tags are returned unprocessed
-    components.push(
-      <Text key={match.index}>
-        {textWithParsedUrls.substring(match.index, currentIndex)}
-      </Text>,
-    );
+      // Look for closing tag
+      const closingTag = `</${tagName}>`;
+      const closingTagIndex = text.indexOf(closingTag, closeBracket + 1);
+
+      if (closingTagIndex !== -1) {
+        // Found complete tag
+        tags.push({
+          start: openBracket,
+          end: closingTagIndex + closingTag.length,
+          tagName,
+          attributes,
+          hasClosingTag: true,
+          contentStart: closeBracket + 1,
+          contentEnd: closingTagIndex,
+        });
+        position = closingTagIndex + closingTag.length;
+      } else {
+        // No closing tag - treat as plain text
+        position = closeBracket + 1;
+      }
+    } else {
+      // Not a valid tag - move past it
+      position = closeBracket + 1;
+    }
   }
 
-  // reset regex index
-  regex.lastIndex = 0;
+  return tags;
+};
 
-  if (!components.length) return <Text>{textWithParsedUrls}</Text>;
+// Unified content parser that handles both onlyLinks and normal modes
+const parseContent = (
+  content: string,
+  options: ParserOptions,
+): Array<string | React.ReactElement> => {
+  const tags = findTags(content);
 
-  // ensure remaining string after last tag is included
-  if (currentIndex !== textWithParsedUrls.length) {
-    const remainingText = textWithParsedUrls.substring(currentIndex);
-    if (remainingText) {
-      components.push(remainingText);
+  if (tags.length === 0) {
+    return [content];
+  }
+
+  const components: Array<string | React.ReactElement> = [];
+  let currentIndex = 0;
+
+  for (const tag of tags) {
+    // Add text before this tag
+    if (tag.start > currentIndex) {
+      components.push(content.substring(currentIndex, tag.start));
     }
+
+    // Extract content between tags
+    const tagContent = content.substring(tag.contentStart, tag.contentEnd);
+
+    // Process the tag based on type and options
+    if (tag.tagName === ANCHOR_TAG) {
+      // Always process anchor tags
+      const nestedContent = parseContent(tagContent, options);
+      components.push(
+        tag.attributes.href || tag.attributes.to ? (
+          <Link
+            key={`${tag.tagName}-${tag.start}-${tag.end}`}
+            to={tag.attributes.href || tag.attributes.to}
+            {...tag.attributes}
+          >
+            {nestedContent}
+          </Link>
+        ) : (
+          <Text key={`${tag.tagName}-${tag.start}-${tag.end}`}>
+            {nestedContent}
+          </Text>
+        ),
+      );
+    } else if (options.onlyLinks) {
+      // In onlyLinks mode, treat all non-anchor tags as plain text
+      components.push(content.substring(tag.start, tag.end));
+    } else if (tag.tagName === BUTTON_TAG) {
+      const nestedContent = parseContent(tagContent, options);
+      components.push(
+        <Button
+          key={`${tag.tagName}-${tag.start}-${tag.end}`}
+          {...tag.attributes}
+        >
+          {nestedContent}
+        </Button>,
+      );
+    } else if (
+      Object.values(SupportedColorTags).includes(
+        tag.tagName as SupportedColorTags,
+      )
+    ) {
+      const nestedContent = parseContent(tagContent, options);
+      components.push(
+        <ColorText
+          key={`${tag.tagName}-${tag.start}-${tag.end}`}
+          color={SupportedColorTags[tag.tagName as SupportedColorTags]}
+        >
+          {nestedContent}
+        </ColorText>,
+      );
+    } else if (options.customElements) {
+      // Check for custom elements
+      const customElement = options.customElements.find(
+        element => element.tag === tag.tagName,
+      );
+      if (customElement) {
+        const nestedContent = parseContent(tagContent, options);
+        components.push(
+          <customElement.Component
+            key={`${tag.tagName}-${tag.start}-${tag.end}`}
+            {...tag.attributes}
+            {...customElement.props}
+          >
+            {nestedContent}
+          </customElement.Component>,
+        );
+      } else {
+        // Unrecognized tag, add as plain text
+        components.push(content.substring(tag.start, tag.end));
+      }
+    } else {
+      // Unrecognized tag, add as plain text
+      components.push(content.substring(tag.start, tag.end));
+    }
+
+    currentIndex = tag.end;
+  }
+
+  // Add remaining text after last tag
+  if (currentIndex < content.length) {
+    components.push(content.substring(currentIndex));
+  }
+
+  return components;
+};
+
+const textParser = (text: string, options: ParserOptions = {}) => {
+  // First convert HTML links to recognised anchor tags
+  const textWithParsedUrls = replaceUrlsWithAnchors(text);
+
+  // Find all complete tags
+  const tags = findTags(textWithParsedUrls);
+
+  if (tags.length === 0) {
+    return <Text>{textWithParsedUrls}</Text>;
+  }
+
+  const components: Array<string | React.ReactElement> = [];
+  let currentIndex = 0;
+
+  for (const tag of tags) {
+    // Add text before this tag
+    if (tag.start > currentIndex) {
+      components.push(textWithParsedUrls.substring(currentIndex, tag.start));
+    }
+
+    // Extract content between tags
+    const content = textWithParsedUrls.substring(
+      tag.contentStart,
+      tag.contentEnd,
+    );
+
+    // Process the tag based on type
+    if (tag.tagName === ANCHOR_TAG) {
+      // Always process anchor tags (even in onlyLinks mode)
+      const nestedContent = parseContent(content, options);
+      components.push(
+        tag.attributes.href || tag.attributes.to ? (
+          <Link
+            key={`${tag.tagName}-${tag.start}-${tag.end}`}
+            to={tag.attributes.href || tag.attributes.to}
+            {...tag.attributes}
+          >
+            {nestedContent}
+          </Link>
+        ) : (
+          <Text key={`${tag.tagName}-${tag.start}-${tag.end}`}>
+            {nestedContent}
+          </Text>
+        ),
+      );
+    } else if (options.onlyLinks) {
+      // In onlyLinks mode, treat all non-anchor tags as plain text
+      components.push(textWithParsedUrls.substring(tag.start, tag.end));
+    } else if (tag.tagName === BUTTON_TAG) {
+      const nestedContent = parseContent(content, options);
+      components.push(
+        <Button
+          key={`${tag.tagName}-${tag.start}-${tag.end}`}
+          {...tag.attributes}
+        >
+          {nestedContent}
+        </Button>,
+      );
+    } else if (
+      Object.values(SupportedColorTags).includes(
+        tag.tagName as SupportedColorTags,
+      )
+    ) {
+      const nestedContent = parseContent(content, options);
+      components.push(
+        <ColorText
+          key={`${tag.tagName}-${tag.start}-${tag.end}`}
+          color={SupportedColorTags[tag.tagName as SupportedColorTags]}
+        >
+          {nestedContent}
+        </ColorText>,
+      );
+    } else if (options.customElements) {
+      // Check for custom elements
+      const customElement = options.customElements.find(
+        element => element.tag === tag.tagName,
+      );
+      if (customElement) {
+        const nestedContent = parseContent(content, options);
+        components.push(
+          <customElement.Component
+            key={`${tag.tagName}-${tag.start}-${tag.end}`}
+            {...tag.attributes}
+            {...customElement.props}
+          >
+            {nestedContent}
+          </customElement.Component>,
+        );
+      } else {
+        // Unrecognized tag, add as plain text
+        components.push(textWithParsedUrls.substring(tag.start, tag.end));
+      }
+    } else {
+      // Unrecognized tag, add as plain text
+      components.push(textWithParsedUrls.substring(tag.start, tag.end));
+    }
+
+    currentIndex = tag.end;
+  }
+
+  // Add remaining text after last tag
+  if (currentIndex < textWithParsedUrls.length) {
+    components.push(textWithParsedUrls.substring(currentIndex));
   }
 
   return (

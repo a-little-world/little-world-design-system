@@ -5,7 +5,13 @@ import { render, screen } from '../testUtils';
 import textParser from './parser';
 
 // Mock AttachmentWidget component for testing
-const MockAttachmentWidget = ({ attachmentTitle, attachmentLink, imageSrc, caption, isPreview }: any) => (
+const MockAttachmentWidget = ({
+  attachmentTitle,
+  attachmentLink,
+  imageSrc,
+  caption,
+  isPreview,
+}: any) => (
   <div data-testid="attachment-widget">
     <div>Title: {attachmentTitle}</div>
     <div>Link: {attachmentLink}</div>
@@ -127,19 +133,22 @@ it('should not return parsed button if onlyLinks is true', () => {
 
 // Test for the failing AttachmentWidget case
 it('should handle AttachmentWidget with malformed JSON gracefully', () => {
-  const text = '<AttachmentWidget {"attachmentTitle": "Image", "attachmentLink": null, "imageSrc": "https://little-world-production-bucket.s3.eu-central-1.amazonaws.com/static/message_attachments/9cca2cd0-07f5-4727-a0ee-6012a34f98f6.png", "caption": "Hallo Hasan,\ndoch, hast Du :)\nNach dem Login bist Du automatisch auf \"Start", dann oben unter Gruppengespräche -> siehe Anhang\nGruß\nChris"} ></AttachmentWidget>';
-  
+  const text =
+    '<AttachmentWidget {"attachmentTitle": "Image", "attachmentLink": null, "imageSrc": "https://little-world-production-bucket.s3.eu-central-1.amazonaws.com/static/message_attachments/9cca2cd0-07f5-4727-a0ee-6012a34f98f6.png", "caption": "Hallo Hasan,\ndoch, hast Du :)\nNach dem Login bist Du automatisch auf \"Start", dann oben unter Gruppengespräche -> siehe Anhang\nGruß\nChris"} ></AttachmentWidget>';
+
   const options = {
-    customElements: [{
-      Component: MockAttachmentWidget,
-      tag: 'AttachmentWidget',
-      props: { isPreview: false }
-    }]
+    customElements: [
+      {
+        Component: MockAttachmentWidget,
+        tag: 'AttachmentWidget',
+        props: { isPreview: false },
+      },
+    ],
   };
 
   // This should not crash and should return the unparsed string
   render(textParser(text, options));
-  
+
   // Should render the unparsed string (HTML-encoded) instead of a component
   expect(screen.getByText(/AttachmentWidget/)).toBeInTheDocument();
   expect(screen.getByText(/attachmentTitle/)).toBeInTheDocument();
@@ -148,20 +157,294 @@ it('should handle AttachmentWidget with malformed JSON gracefully', () => {
 
 // Test for AttachmentWidget with valid JSON
 it('should handle AttachmentWidget with valid JSON correctly', () => {
-  const text = '<AttachmentWidget {"attachmentTitle": "Image", "attachmentLink": null, "imageSrc": "https://example.com/image.png", "caption": "Valid caption"} ></AttachmentWidget>';
-  
+  const text =
+    '<AttachmentWidget {"attachmentTitle": "Image", "attachmentLink": null, "imageSrc": "https://example.com/image.png", "caption": "Valid caption"} ></AttachmentWidget>';
+
   const options = {
-    customElements: [{
-      Component: MockAttachmentWidget,
-      tag: 'AttachmentWidget',
-      props: { isPreview: false }
-    }]
+    customElements: [
+      {
+        Component: MockAttachmentWidget,
+        tag: 'AttachmentWidget',
+        props: { isPreview: false },
+      },
+    ],
   };
 
   render(textParser(text, options));
-  
+
   const attachmentWidget = screen.getByTestId('attachment-widget');
   expect(attachmentWidget).toBeInTheDocument();
   expect(screen.getByText('Title: Image')).toBeInTheDocument();
   expect(screen.getByText('Caption: Valid caption')).toBeInTheDocument();
+});
+
+// Test for the problematic German text that was causing hanging
+it('should handle complex German text with incomplete tags without hanging', () => {
+  const problematicText = `Hallo Andreas,
+das kenne ich :)
+
+auch die anderen bekommen diese Email typischerweise innerhalb von <30min - in Ausnahmefällen auch mal in ein paar Stunden (Server-Verzögerungen).
+
+Bei manchen landen diese Systemnachrichten im Spam-Ordner und wenn der Nutzer dann den Absender nicht als "kein Spam" bzw "zulassen" markiert, passiert das immer wieder. Auch denke ich, das nicht jeder Nutzer regelmäßig in seine Email schaut - old school :) - oder eine Neben-Emailadresse benutzt - oder diese Nachricht ignoriert - oder ....
+
+Ich würde das bei den Betroffenen ganz einfach mal ansprechen. Oft klärt sich das dann recht schnell.
+
+Meldet sich jemand länger nicht, besteht ja die Möglichkeit, dass wir eine private Email an denjenigen schicken - das hilft in 50% der Fälle.
+
+Gruß
+Chris`;
+
+  const options = {
+    customElements: [
+      {
+        Component: MockAttachmentWidget,
+        tag: 'AttachmentWidget',
+        props: { isPreview: false },
+      },
+    ],
+  };
+
+  const result = textParser(problematicText, options);
+  expect(result).toBe(problematicText);
+});
+
+// Test for text with malformed HTML-like content
+it('should handle text with malformed HTML-like content gracefully', () => {
+  const malformedText =
+    'This text has <incomplete tags and <nested>content</nested> and <30min which looks like a tag but isnt';
+
+  const options = {
+    customElements: [
+      {
+        Component: MockAttachmentWidget,
+        tag: 'AttachmentWidget',
+        props: { isPreview: false },
+      },
+    ],
+  };
+
+  const result = textParser(malformedText, options);
+  expect(result).toBe(malformedText);
+});
+
+// Test for the specific problematic pattern step by step
+it('should handle the specific problematic pattern step by step', () => {
+  // Test 1: Just the <30min part
+  const test1 = 'Text with <30min in it';
+  const result1 = textParser(test1, {});
+  expect(result1).toBe(test1);
+
+  // Test 2: Text with quotes and newlines
+  const test2 = 'Text with "quotes" and\nnewlines';
+  const result2 = textParser(test2, {});
+  expect(result2).toBe(test2);
+
+  // Test 3: Text with incomplete tag-like content
+  const test3 = 'Text with <30min - incomplete tag';
+  const result3 = textParser(test3, {});
+  expect(result3).toBe(test3);
+});
+
+// Test for the exact problematic pattern that causes hanging
+it('should handle the exact problematic pattern that causes hanging', () => {
+  const problematicLine =
+    'auch die anderen bekommen diese Email typischerweise innerhalb von <30min - in Ausnahmefällen auch mal in ein paar Stunden (Server-Verzögerungen).';
+
+  const result = textParser(problematicLine, {});
+  expect(result).toBe(problematicLine);
+});
+
+// Test to identify the exact hanging combination
+it('should identify the exact hanging combination', () => {
+  const paragraph1 = 'Hallo Andreas,\ndas kenne ich :)';
+  const result1 = textParser(paragraph1, {});
+  expect(result1).toBe(paragraph1);
+
+  const paragraph2 =
+    'auch die anderen bekommen diese Email typischerweise innerhalb von <30min - in Ausnahmefällen auch mal in ein paar Stunden (Server-Verzögerungen).';
+  const result2 = textParser(paragraph2, {});
+  expect(result2).toBe(paragraph2);
+
+  const paragraph3 =
+    'Bei manchen landen diese Systemnachrichten im Spam-Ordner und wenn der Nutzer dann den Absender nicht als "kein Spam" bzw "zulassen" markiert, passiert das immer wieder.';
+  const result3 = textParser(paragraph3, {});
+  expect(result3).toBe(paragraph3);
+
+  // Test 4: The paragraph with multiple incomplete patterns
+  const paragraph4 =
+    'Auch denke ich, das nicht jeder Nutzer regelmäßig in seine Email schaut - old school :) - oder eine Neben-Emailadresse benutzt - oder diese Nachricht ignoriert - oder ....';
+  const result4 = textParser(paragraph4, {});
+  expect(result4).toBe(paragraph4);
+});
+
+// Test for the full problematic text to identify where it hangs
+it('should handle the full problematic text without hanging', () => {
+  const fullProblematicText = `Hallo Andreas,
+das kenne ich :)
+
+auch die anderen bekommen diese Email typischerweise innerhalb von <30min - in Ausnahmefällen auch mal in ein paar Stunden (Server-Verzögerungen).
+
+Bei manchen landen diese Systemnachrichten im Spam-Ordner und wenn der Nutzer dann den Absender nicht als "kein Spam" bzw "zulassen" markiert, passiert das immer wieder. Auch denke ich, das nicht jeder Nutzer regelmäßig in seine Email schaut - old school :) - oder eine Neben-Emailadresse benutzt - oder diese Nachricht ignoriert - oder ....
+
+Ich würde das bei den Betroffenen ganz einfach mal ansprechen. Oft klärt sich das dann recht schnell.
+
+Meldet sich jemand länger nicht, besteht ja die Möglichkeit, dass wir eine private Email an denjenigen schicken - das hilft in 50% der Fälle.
+
+Gruß
+Chris`;
+
+  const options = {
+    customElements: [
+      {
+        Component: MockAttachmentWidget,
+        tag: 'AttachmentWidget',
+        props: { isPreview: false },
+      },
+    ],
+  };
+
+  const result = textParser(fullProblematicText, options);
+  expect(result).toBe(fullProblematicText);
+});
+
+// Test for text with multiple < characters
+it('should handle text with multiple < characters without hanging', () => {
+  const textWithMultipleLessThan =
+    'Text with <30min and <another and <third and <fourth';
+
+  const result = textParser(textWithMultipleLessThan, {});
+  expect(result).toBe(textWithMultipleLessThan);
+});
+
+it('should handle multiple problematic patterns without hanging', () => {
+  // This combines multiple patterns that individually work but together caused hanging with regex
+  const multipleProblematicPatterns =
+    'Text with <30min and <nested>content</nested> and <another incomplete';
+
+  const result = textParser(multipleProblematicPatterns, {});
+  expect(result).toBe(multipleProblematicPatterns);
+});
+
+it('should handle component creation without hanging', () => {
+  const problematicComponentCreation = 'Text with <30min - incomplete tag';
+
+  const result = textParser(problematicComponentCreation, {});
+  expect(result).toBe(problematicComponentCreation);
+});
+
+it('should handle nested tags correctly', () => {
+  const text = `<highlight>This highlighted text contains a <a {"href": "/nested-link"}>nested link</a> inside it</highlight>`;
+
+  const result = textParser(text, {});
+
+  expect(result).toBeDefined();
+  // The result should be a React element, not the original string
+  expect(typeof result).not.toBe('string');
+});
+
+it('should handle button with ButtonAppearance.Secondary and onClick', () => {
+  const text = `<button {"appearance": "secondary", "onClick": "console.log('Button clicked!')"}>Click me!</button>`;
+
+  const result = textParser(text, {});
+
+  // Should render button component
+  expect(result).toBeDefined();
+  expect(typeof result).not.toBe('string');
+});
+
+it('should handle custom elements like CallWidget and AttachmentWidget', () => {
+  const MockCallWidget = ({
+    isMissed,
+    isPreview,
+    header,
+    description,
+    onReturnCall,
+    ...props
+  }) => (
+    <div data-testid="call-widget" {...props}>
+      <div>Header: {header}</div>
+      <div>Description: {description}</div>
+      <div>Missed: {isMissed ? 'Yes' : 'No'}</div>
+      <div>Preview: {isPreview ? 'Yes' : 'No'}</div>
+      {onReturnCall && <button onClick={onReturnCall}>Return Call</button>}
+    </div>
+  );
+
+  const MockAttachmentWidget = ({ isPreview, ...props }) => (
+    <div data-testid="attachment-widget" {...props}>
+      <div>Preview: {isPreview ? 'Yes' : 'No'}</div>
+    </div>
+  );
+
+  const customElements = [
+    {
+      Component: MockCallWidget,
+      tag: 'CallWidget',
+      props: { isPreview: false },
+    },
+    {
+      Component: MockAttachmentWidget,
+      tag: 'AttachmentWidget',
+      props: { isPreview: false },
+    },
+  ];
+
+  const text = `<CallWidget {"isMissed": false, "header": "Video Anruf", "isPreview": false}>Call content</CallWidget>
+<AttachmentWidget {"isPreview": false}>Attachment content</AttachmentWidget>`;
+
+  const result = textParser(text, { customElements });
+
+  // Should render custom components
+  expect(result).toBeDefined();
+  expect(typeof result).not.toBe('string');
+});
+
+it('should handle mixed content with custom elements and regular tags', () => {
+  const MockWidget = ({ title, children, ...props }) => (
+    <div data-testid="widget" {...props}>
+      <strong>{title}: </strong>
+      {children}
+    </div>
+  );
+
+  const customElements = [
+    {
+      Component: MockWidget,
+      tag: 'widget',
+      props: { className: 'custom-widget' },
+    },
+  ];
+
+  const text = `<highlight>Highlighted text with <widget {"title": "Custom Widget"}>widget content</widget> and <a {"href": "/link"}>a link</a></highlight>`;
+
+  const result = textParser(text, { customElements });
+
+  expect(result).toBeDefined();
+  expect(typeof result).not.toBe('string');
+});
+
+// Test 6: Edge case - custom elements with invalid JSON
+it('should handle custom elements with invalid JSON gracefully', () => {
+  const MockWidget = ({ title, children, ...props }) => (
+    <div data-testid="widget" {...props}>
+      <strong>{title}: </strong>
+      {children}
+    </div>
+  );
+
+  const customElements = [
+    {
+      Component: MockWidget,
+      tag: 'widget',
+      props: { className: 'custom-widget' },
+    },
+  ];
+
+  const text = `<widget {"title": "Valid Widget"}>Valid content</widget>
+<widget {"title": "Invalid Widget", "broken": json}>Invalid content</widget>`;
+
+  const result = textParser(text, { customElements });
+
+  // Should handle invalid JSON gracefully
+  expect(result).toBeDefined();
 });
