@@ -1,6 +1,6 @@
 // Auto-generated from icons/svgs/info.svg
 export const infoIcon = {
-  "viewBox": "0 0 14 15",
+  "viewBox": "4.14 1.75 5.68 12.41",
   "elements": [
     {
       "type": "path",

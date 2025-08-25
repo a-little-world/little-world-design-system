@@ -5,6 +5,7 @@
 ### Minor Changes
 
 - Upgrade to React 19
+- Improve StatusMessage component
 
 ### Patch Changes
 

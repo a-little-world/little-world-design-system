@@ -5,6 +5,8 @@
 ### Minor Changes
 
 - Upgrade to React 19
+- Add status related colors to tokens
+- Add yellow color range
 
 ## 1.3.4
 
