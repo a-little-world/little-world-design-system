@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export enum StatusTypes {
   Error = 'Error',
   Success = 'Success',
@@ -6,6 +8,8 @@ export enum StatusTypes {
 }
 
 export interface StatusBaseProps {
-  $visible?: boolean;
-  $type: keyof typeof StatusTypes;
+  children: ReactNode;
+  visible?: boolean;
+  type: StatusTypes;
+  withBorder?: boolean;
 }

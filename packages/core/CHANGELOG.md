@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.4.0
+
+### Minor Changes
+
+- Upgrade to React 19
+- Add status related colors to tokens
+- Add yellow color range
+
 ## 1.3.4
 
 ### Patch Changes

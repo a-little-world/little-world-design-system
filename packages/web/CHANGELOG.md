@@ -1,5 +1,17 @@
 # @a-little-world/little-world-design-system
 
+## 2.5.0
+
+### Minor Changes
+
+- Upgrade to React 19
+- Improve StatusMessage component
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.4.0
+
 ## 2.4.0
 
 ### Minor Changes

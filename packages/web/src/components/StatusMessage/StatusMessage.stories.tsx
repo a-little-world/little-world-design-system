@@ -14,16 +14,31 @@ type Story = StoryObj<typeof StatusMessage>;
 
 export const Error: Story = {
   args: {
-    $visible: true,
-    $type: StatusTypes.Error,
+    visible: true,
+    type: StatusTypes.Error,
     children: 'This is an error message to indicate something went wrong!',
   },
 };
 
 export const Success: Story = {
   args: {
-    ...Error.args,
-    $type: StatusTypes.Success,
+    visible: true,
+    type: StatusTypes.Success,
     children: 'This is a succes message to indicate something went right!',
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    visible: true,
+    type: StatusTypes.Warning,
+    children: 'This is a warning message to indicate something went awry!',
+  },
+};
+
+export const Info: Story = {
+  args: {
+    visible: true,
+    children: 'This is a info message to indicate some info',
   },
 };

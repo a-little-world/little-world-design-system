@@ -4,3 +4,13 @@ src
 __mocks__
 public
 tsconfig.json
+
+# Large files that should never be published
+*.tgz
+*.tar.gz
+*.zip
+
+# Build artifacts
+node_modules/
+.turbo/
+dist/
