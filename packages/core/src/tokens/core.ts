@@ -31,6 +31,11 @@ export const coreColors = {
   red20: '#e04d4d',
   red30: '#f91010',
   red40: '#4a191b',
+  yellow10: '#fef9d9',
+  yellow20: '#ffe766',
+  yellow30: '#f5c400',
+  yellow40: '#d4a000',
+  yellow50: '#4d2e00',
   white: '#FFFFFF',
 } as const;
 

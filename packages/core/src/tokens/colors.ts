@@ -14,6 +14,8 @@ export const colors = {
         reversed: coreColors.white,
         error: coreColors.red30,
         success: coreColors.green40,
+        warning: coreColors.yellow50,
+        info: coreColors.blue50,
         disabled: coreColors.gray20,
       },
       surface: {
@@ -33,6 +35,8 @@ export const colors = {
         disabled: coreColors.gray10,
         error: coreColors.red10,
         success: coreColors.green10,
+        warning: coreColors.yellow10,
+        info: coreColors.blue10,
         on: coreColors.green20,
       },
       text: {
@@ -47,6 +51,8 @@ export const colors = {
         control: coreColors.gray20,
         error: coreColors.red30,
         success: coreColors.green40,
+        warning: coreColors.yellow50,
+        info: coreColors.blue50,
         accent: coreColors.blue30,
         highlight: coreColors.orange30,
         bold: coreColors.black,
@@ -55,7 +61,7 @@ export const colors = {
       },
       status: {
         info: coreColors.blue40,
-        warning: coreColors.orange30,
+        warning: coreColors.yellow30,
         error: coreColors.red30,
         success: coreColors.green10,
       },
@@ -78,6 +84,8 @@ export const colors = {
         reversed: coreColors.black,
         error: coreColors.red20,
         success: coreColors.green30,
+        warning: coreColors.yellow50,
+        info: coreColors.blue50,
         disabled: coreColors.gray55,
       },
       surface: {
@@ -97,6 +105,8 @@ export const colors = {
         disabled: coreColors.gray60,
         error: coreColors.red40,
         success: coreColors.green40,
+        warning: coreColors.yellow10,
+        info: coreColors.blue50,
         on: coreColors.green40,
       },
       text: {
@@ -111,6 +121,8 @@ export const colors = {
         control: coreColors.gray55,
         error: coreColors.red20,
         success: coreColors.green30,
+        warning: coreColors.yellow50,
+        info: coreColors.blue50,
         accent: coreColors.green30,
         highlight: coreColors.orange25,
         bold: coreColors.white,

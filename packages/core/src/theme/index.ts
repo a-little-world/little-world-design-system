@@ -17,6 +17,8 @@ export interface Colors {
     reversed: string;
     error: string;
     success: string;
+    warning: string;
+    info: string;
     disabled: string;
   };
   surface: {
@@ -36,6 +38,8 @@ export interface Colors {
     disabled: string;
     error: string;
     success: string;
+    warning: string;
+    info: string;
     on: string;
   };
   text: {
@@ -50,6 +54,8 @@ export interface Colors {
     control: string;
     error: string;
     success: string;
+    warning: string;
+    info: string;
     accent: string;
     highlight: string;
     bold: string;

@@ -3,16 +3,18 @@
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
-    "lib": ["esnext", "DOM"],
+    "jsx": "react-jsx",
+    "lib": ["es2022", "DOM", "DOM.Iterable"],
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
-    "target": "ES2015",
-    "skipLibCheck": true
+    "target": "ES2022",
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": false,
+    "moduleDetection": "force"
   },
   "include": ["src"],
   "exclude": [
