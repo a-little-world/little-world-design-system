@@ -51,47 +51,49 @@ const renderSvgElement = (
   }
 
   // Add unique key attribute
-  attrs.key = generateUniqueKey(element, index);
+  const elementKey = generateUniqueKey(element, index);
 
   switch (element.type) {
     case 'path':
-      return <path {...attrs} />;
+      return <path key={elementKey} {...attrs} />;
     case 'g':
       return (
-        <g {...attrs}>{renderChildren(element.children, options, index)}</g>
+        <g key={elementKey} {...attrs}>
+          {renderChildren(element.children, options, index)}
+        </g>
       );
     case 'defs':
       return (
-        <defs {...attrs}>
+        <defs key={elementKey} {...attrs}>
           {renderChildren(element.children, options, index)}
         </defs>
       );
     case 'linearGradient':
       return (
-        <linearGradient {...attrs}>
+        <linearGradient key={elementKey} {...attrs}>
           {renderChildren(element.children, options, index)}
         </linearGradient>
       );
     case 'clipPath':
       return (
-        <clipPath {...attrs}>
+        <clipPath key={elementKey} {...attrs}>
           {renderChildren(element.children, options, index)}
         </clipPath>
       );
     case 'stop':
-      return <stop {...attrs} />;
+      return <stop key={elementKey} {...attrs} />;
     case 'circle':
-      return <circle {...attrs} />;
+      return <circle key={elementKey} {...attrs} />;
     case 'rect':
-      return <rect {...attrs} />;
+      return <rect key={elementKey} {...attrs} />;
     case 'line':
-      return <line {...attrs} />;
+      return <line key={elementKey} {...attrs} />;
     case 'polygon':
-      return <polygon {...attrs} />;
+      return <polygon key={elementKey} {...attrs} />;
     case 'polyline':
-      return <polyline {...attrs} />;
+      return <polyline key={elementKey} {...attrs} />;
     case 'ellipse':
-      return <ellipse {...attrs} />;
+      return <ellipse key={elementKey} {...attrs} />;
     default:
       console.warn(`Unsupported SVG element type: ${element.type}`);
       return null;

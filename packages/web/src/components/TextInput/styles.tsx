@@ -27,6 +27,7 @@ export const INPUT_CSS = css<{ $height?: InputHeight }>`
   width: 100%;
   border: 2px solid ${({ theme }) => theme.color.border.subtle};
   background: ${({ theme }) => theme.color.surface.primary};
+  color: ${({ theme }) => theme.color.text.primary};
   border-radius: 6px;
   box-sizing: border-box;
   padding: ${({ theme, $height }) =>
@@ -71,6 +72,12 @@ export const TelephoneInput = styled(PhoneInput)<{
   .flag-dropdown.open {
     background: none;
     border-radius: 6px 0 0 6px;
+  }
+
+  .react-tel-input .country-list {
+    background: ${({ theme }) => theme.color.surface.primary};
+    color: ${({ theme }) => theme.color.text.primary};
+    border-radius: ${({ theme }) => theme.radius.xxxsmall};
   }
 
   .react-tel-input .flag-dropdown.open .selected-flag {

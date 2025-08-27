@@ -3,7 +3,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "lib": ["es2022", "DOM", "DOM.Iterable"],
     "module": "esnext",
     "moduleResolution": "node",
