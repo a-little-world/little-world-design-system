@@ -83,6 +83,7 @@ const STATUS_ICONS = {
 };
 
 const StatusMessage = ({
+  className,
   type,
   visible,
   children,
@@ -92,6 +93,7 @@ const StatusMessage = ({
   const Icon = withBorder && icon?.Icon;
   return (
     <StatusMessageWrapper
+      className={className}
       $type={type}
       $visible={visible}
       $withBorder={withBorder}
