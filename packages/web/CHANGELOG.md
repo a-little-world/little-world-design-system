@@ -1,5 +1,14 @@
 # @a-little-world/little-world-design-system
 
+## 2.5.1
+
+### Patch Changes
+
+- Add className to StatusMessage
+- Do not spread key in attribute props for svg elements
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.4.1
+
 ## 2.5.0
 
 ### Minor Changes

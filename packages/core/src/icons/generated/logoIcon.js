@@ -102,15 +102,13 @@ export const logoIcon = {
     {
       "type": "g",
       "attributes": {
-        "id": "Ebene_2",
-        "dataName": "Ebene 2"
+        "id": "Ebene_2"
       },
       "children": [
         {
           "type": "g",
           "attributes": {
-            "id": "Ebene_1-2",
-            "dataName": "Ebene 1"
+            "id": "Ebene_1-2"
           },
           "children": [
             {

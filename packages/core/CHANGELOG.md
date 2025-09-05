@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.4.1
+
+### Patch Changes
+
+- Update dark mode palette
+
 ## 1.4.0
 
 ### Minor Changes

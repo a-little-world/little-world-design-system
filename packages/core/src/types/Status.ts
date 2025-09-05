@@ -8,6 +8,7 @@ export enum StatusTypes {
 }
 
 export interface StatusBaseProps {
+  className?: string;
   children: ReactNode;
   visible?: boolean;
   type: StatusTypes;
