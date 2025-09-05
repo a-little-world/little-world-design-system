@@ -49,6 +49,7 @@ interface ParserOptions {
     tag: string;
   }[];
   onlyLinks?: boolean;
+  nonInteractive?: boolean;
 }
 
 const findTags = (text: string): TagInfo[] => {
@@ -139,7 +140,10 @@ const parseContent = (
     const tagContent = content.substring(tag.contentStart, tag.contentEnd);
 
     // Process the tag based on type and options
-    if (tag.tagName === ANCHOR_TAG) {
+    if (options.nonInteractive) {
+      // In nonInteractive mode, render all tags as plain text
+      components.push(content.substring(tag.start, tag.end));
+    } else if (tag.tagName === ANCHOR_TAG) {
       // Always process anchor tags
       const nestedContent = parseContent(tagContent, options);
       components.push(
@@ -221,8 +225,10 @@ const parseContent = (
 };
 
 const textParser = (text: string, options: ParserOptions = {}) => {
-  // First convert HTML links to recognised anchor tags
-  const textWithParsedUrls = replaceUrlsWithAnchors(text);
+  // In nonInteractive mode, don't convert URLs to links
+  const textWithParsedUrls = options.nonInteractive
+    ? text
+    : replaceUrlsWithAnchors(text);
 
   // Find all complete tags
   const tags = findTags(textWithParsedUrls);
@@ -247,7 +253,10 @@ const textParser = (text: string, options: ParserOptions = {}) => {
     );
 
     // Process the tag based on type
-    if (tag.tagName === ANCHOR_TAG) {
+    if (options.nonInteractive) {
+      // In nonInteractive mode, render all tags as plain text
+      components.push(textWithParsedUrls.substring(tag.start, tag.end));
+    } else if (tag.tagName === ANCHOR_TAG) {
       // Always process anchor tags (even in onlyLinks mode)
       const nestedContent = parseContent(content, options);
       components.push(

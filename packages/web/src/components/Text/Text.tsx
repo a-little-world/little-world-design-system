@@ -24,7 +24,8 @@ type TextProps = TextBaseProps & {
     | 'li'
     | 'label'
     | 'span'
-    | 'strong';
+    | 'strong'
+    | 'div';
 };
 
 const Text = ({
@@ -50,8 +51,8 @@ const Text = ({
     as={tag}
   >
     {typeof children === 'string' && !disableParser
-      ? textParser(children)
-      : children}
+      ? (textParser(children) as React.ReactNode)
+      : (children as React.ReactNode)}
   </StyledElement>
 );
 

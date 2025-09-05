@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled, { css, useTheme } from 'styled-components';
 
 import { CallIncomingIcon, CallOutgoingIcon } from '../Icon';
 import Text from '../Text/Text';
@@ -23,6 +23,14 @@ const CallButton = styled.button`
   border: none;
   padding: 0;
   margin: 0;
+`;
+
+const CallInfo = styled.div<{ $isPreview?: boolean }>`
+  ${({ $isPreview }) =>
+    !$isPreview &&
+    css`
+      margin-right: ${({ theme }) => theme.spacing.xsmall};
+    `}
 `;
 
 const CallIcon = ({
@@ -90,14 +98,14 @@ const CallWidget = ({
     <Widget width={WidgetSizes.Medium} {...widgetProps}>
       <CallButton onClick={onReturnCall}>
         <CallIcon isMissed={isMissed} isOutgoing={isOutgoing} />
-        <div>
+        <CallInfo>
           <Text bold>{header}</Text>
           {!isPreview && (
             <CallDescription disableParser>
               {description || 'N/A'}
             </CallDescription>
           )}
-        </div>
+        </CallInfo>
       </CallButton>
     </Widget>
   );
