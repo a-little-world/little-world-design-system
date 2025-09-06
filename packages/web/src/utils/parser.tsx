@@ -37,6 +37,7 @@ interface ParserOptions {
     tag: string;
   }[];
   onlyLinks?: boolean;
+  nonInteractive?: boolean; // if true, will render clickable components as plain text
 }
 
 const findTags = (text: string): TagInfo[] => {
@@ -205,8 +206,11 @@ const parseContent = (
 };
 
 const textParser = (text: string, options: ParserOptions = {}) => {
+  const nonInteractive = options.nonInteractive || false;
   // First convert HTML links to recognised anchor tags
-  const textWithParsedUrls = replaceUrlsWithAnchors(text);
+  const textWithParsedUrls = nonInteractive
+    ? text
+    : replaceUrlsWithAnchors(text);
 
   // Find all complete tags
   const tags = findTags(textWithParsedUrls);
@@ -235,7 +239,7 @@ const textParser = (text: string, options: ParserOptions = {}) => {
       // Always process anchor tags (even in onlyLinks mode)
       const nestedContent = parseContent(content, options);
       components.push(
-        tag.attributes.href ? (
+        tag.attributes.href && !nonInteractive ? (
           <Link
             key={`${tag.tagName}-${tag.start}-${tag.end}`}
             to={tag.attributes.href}
@@ -253,12 +257,16 @@ const textParser = (text: string, options: ParserOptions = {}) => {
     } else if (tag.tagName === BUTTON_TAG) {
       const nestedContent = parseContent(content, options);
       components.push(
-        <Button
-          key={`${tag.tagName}-${tag.start}-${tag.end}`}
-          {...tag.attributes}
-        >
-          {nestedContent}
-        </Button>,
+        nonInteractive ? (
+          <>{nestedContent}</>
+        ) : (
+          <Button
+            key={`${tag.tagName}-${tag.start}-${tag.end}`}
+            {...tag.attributes}
+          >
+            {nestedContent}
+          </Button>
+        ),
       );
     } else if (
       Object.values(SupportedColorTags).includes(
@@ -267,12 +275,16 @@ const textParser = (text: string, options: ParserOptions = {}) => {
     ) {
       const nestedContent = parseContent(content, options);
       components.push(
-        <ColorText
-          key={`${tag.tagName}-${tag.start}-${tag.end}`}
-          color={SupportedColorTags[tag.tagName as SupportedColorTags]}
-        >
-          {nestedContent}
-        </ColorText>,
+        nonInteractive ? (
+          <>{nestedContent}</>
+        ) : (
+          <ColorText
+            key={`${tag.tagName}-${tag.start}-${tag.end}`}
+            color={SupportedColorTags[tag.tagName as SupportedColorTags]}
+          >
+            {nestedContent}
+          </ColorText>
+        ),
       );
     } else if (options.customElements) {
       // Check for custom elements
