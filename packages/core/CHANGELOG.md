@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.4.3
+
+### Patch Changes
+
+- Add onlyCountries prop to TextInput
+- Add color.surface.elavated to tokens
+- Tweak dark mode palette
+
 ## 1.4.2
 
 ### Patch Changes
