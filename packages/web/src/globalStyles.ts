@@ -59,6 +59,10 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeWeb }>`
   * {
     box-sizing: border-box;
   }
+
+  ::placeholder {
+    color: ${({ theme }) => theme.color.text.tertiary};
+  }
 `;
 
 export default GlobalStyle;
