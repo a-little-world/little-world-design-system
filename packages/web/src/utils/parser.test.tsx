@@ -448,3 +448,95 @@ it('should handle custom elements with invalid JSON gracefully', () => {
   // Should handle invalid JSON gracefully
   expect(result).toBeDefined();
 });
+
+// Test cases for nonInteractive option
+describe('nonInteractive option', () => {
+  it('should render plain URLs as text when nonInteractive is true', () => {
+    const text =
+      'Visit little-world.com and https://www.little-world.com for more info';
+
+    const { container } = render(textParser(text, { nonInteractive: true }));
+
+    // Should render URLs as plain text, not as links
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    expect(container.textContent).toContain('little-world.com');
+    expect(container.textContent).toContain('https://www.little-world.com');
+  });
+
+  it('should render anchor tags as plain text when nonInteractive is true', () => {
+    const text =
+      'Check out <a {"href": "little-world"}>this link</a> for more details';
+
+    const { container } = render(textParser(text, { nonInteractive: true }));
+
+    // Should render anchor content as plain text, not as a link
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    expect(container.textContent).toContain('this link');
+  });
+
+  it('should render button tags as plain text when nonInteractive is true', () => {
+    const text = 'Click <button>this button</button> to continue';
+
+    const { container } = render(textParser(text, { nonInteractive: true }));
+
+    // Should render button content as plain text, not as a button
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
+    expect(container.textContent).toContain('this button');
+  });
+
+  it('should render colored tags as plain text when nonInteractive is true', () => {
+    const text =
+      'This is <highlight>highlighted text</highlight> and <bold>bold text</bold>';
+
+    const { container } = render(textParser(text, { nonInteractive: true }));
+
+    // Should render colored content as plain text
+    expect(container.textContent).toContain('highlighted text');
+    expect(container.textContent).toContain('bold text');
+  });
+
+  it('should render mixed content as plain text when nonInteractive is true', () => {
+    const text =
+      'Visit <a {"href": "little-world"}>little-world.com</a> and click <button>Submit</button> for <highlight>highlighted action</highlight>';
+
+    const { container } = render(textParser(text, { nonInteractive: true }));
+
+    // Should render all content as plain text
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
+    expect(container.textContent).toContain('little-world.com');
+    expect(container.textContent).toContain('Submit');
+    expect(container.textContent).toContain('highlighted action');
+  });
+
+  it('should still render custom elements when nonInteractive is true', () => {
+    const MockWidget = ({ title, children }) => (
+      <div data-testid="widget">
+        <strong>{title}: </strong>
+        {children}
+      </div>
+    );
+
+    const customElements = [
+      {
+        Component: MockWidget,
+        tag: 'widget',
+        props: {},
+      },
+    ];
+
+    const text =
+      'Regular text with <widget {"title": "Custom Widget"}>widget content</widget> and <a {"href": "/link"}>link text</a>';
+
+    const { container } = render(
+      textParser(text, { nonInteractive: true, customElements }),
+    );
+
+    // Custom elements should still render, but interactive elements should be plain text
+    expect(screen.getByTestId('widget')).toBeInTheDocument();
+    expect(screen.getByText('Custom Widget:')).toBeInTheDocument();
+    expect(screen.getByText('widget content')).toBeInTheDocument();
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    expect(container.textContent).toContain('link text');
+  });
+});

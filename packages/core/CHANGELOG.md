@@ -1,10 +1,21 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.4.2
+
+### Patch Changes
+
+- Update color tokens for improved contrast and accessibility
+  - Update surface.contrast color from orange10 to white
+  - Update surface.accent color from orange50 to gray65
+  - Update text.link color from blue20 to blue10
+- Add additional spacing tokens (xxxlarge, xxxxlarge)
+
 ## 1.4.1
 
 ### Patch Changes
 
 - Update dark mode palette
+- Remove data-name from logo svg
 
 ## 1.4.0
 

@@ -107,15 +107,15 @@ export const SecondaryButtonCss = css`
 
   ${({ $color, $backgroundColor, theme }: any) => `
     border: 2px solid ${$color || theme.color.border.bold};
-    background-color: ${theme.color.surface.primary};
+    background-color: ${$backgroundColor || 'transparent'};
     color: ${$color || theme.color.text.heading};
     transition: background-color 0.5s ease, filter 0.5s ease,
     border-color 0.5s ease, color 0.5s ease, 0.4s;
 
     &:not(:disabled):hover {
-      background: ${$backgroundColor || theme.color.text.heading};
+      background: ${$color || theme.color.text.heading};
       color: ${theme.color.text.control};
-      border-color: ${$backgroundColor || theme.color.text.heading};
+      border-color: ${$color || theme.color.border.bold};
       transition: background-color 0.5s ease, filter 0.5s ease,
       border-color 0.5s ease, color 0.5s ease, 0.4s;
     }

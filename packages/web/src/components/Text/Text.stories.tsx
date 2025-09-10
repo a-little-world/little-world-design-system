@@ -110,7 +110,9 @@ This paragraph contains many elements: <bold>bold</bold>, <highlight>highlight</
 - ✓ Nested content support
 - ✓ Graceful handling of malformed content
 - ✓ No hanging on complex text
-- ✓ Performance with multiple elements`;
+- ✓ Performance with multiple elements
+- ✓ Non-interactive mode (buttons/links as plain text)
+- ✓ Only-links mode (only anchor tags processed)`;
 
   return (
     <div style={{ maxWidth: '800px', lineHeight: '1.6', padding: '20px' }}>
@@ -132,7 +134,7 @@ This paragraph contains many elements: <bold>bold</bold>, <highlight>highlight</
           <Text style={{ color: '#1565c0', fontSize: '14px' }}>
             💡 <strong>Visual Testing:</strong> This showcase demonstrates all
             parser features including custom widgets, styling tags, buttons, and
-            links. Test the onlyLinks functionality and parser disabled modes
+            links. Test the onlyLinks, nonInteractive, and parser disabled modes
             below.
           </Text>
         </div>
@@ -165,6 +167,48 @@ This paragraph contains many elements: <bold>bold</bold>, <highlight>highlight</
             {textParser(
               `This text has <highlight>highlighted content</highlight>, <button>a button</button>, and <a {"href": "/test"}>a link</a>.`,
               { onlyLinks: true },
+            )}
+          </Text>
+        </div>
+      </div>
+
+      {/* nonInteractive demonstration */}
+      <div
+        style={{
+          marginBottom: '40px',
+          padding: '24px',
+          backgroundColor: '#fff3cd',
+          borderRadius: '12px',
+          border: '1px solid #ffeaa7',
+        }}
+      >
+        <Text tag="h3" bold style={{ marginBottom: '16px', color: '#856404' }}>
+          🔒 Parser with nonInteractive Option
+        </Text>
+        <div style={{ marginTop: '24px' }}>
+          <Text
+            style={{ fontSize: '14px', color: '#856404', marginBottom: '16px' }}
+          >
+            💡 <strong>Test:</strong> Interactive elements (buttons, links) are
+            rendered as plain text, but styling tags (bold, highlight) are
+            preserved. URLs are not converted to clickable links.
+          </Text>
+          <Text disableParser>
+            {textParser(
+              `This text demonstrates nonInteractive mode:
+
+🔗 URLs stay as plain text: https://little-world.com and little-world.com
+
+🎨 Styling tags still work: <highlight>highlighted content</highlight> and <bold>bold text</bold>
+
+🔘 Buttons become plain text: <button {"appearance": "secondary"}>Click me!</button>
+
+🔗 Links become plain text: <a {"href": "https://example.com"}>External link</a>
+
+🧩 Custom widgets still render: <CallWidget {"isMissed": false, "header": "Non-Interactive Call", "isPreview": false}>Call content</CallWidget>
+
+📝 Mixed content: <highlight>Highlighted text</highlight> with <a {"href": "/test"}>plain link text</a> and <button>plain button text</button>.`,
+              { nonInteractive: true, customElements },
             )}
           </Text>
         </div>
@@ -217,6 +261,10 @@ ParserShowcase.parameters = {
 - \`<button {"appearance": "secondary"}\` - Creates interactive buttons with styling
 - \`<highlight>\` - Applies highlight styling
 - \`<bold>\` - Applies bold formatting
+
+**Parser Options:**
+- \`onlyLinks: true\` - Only processes anchor tags, treats other tags as plain text
+- \`nonInteractive: true\` - Renders interactive elements (buttons, links) as plain text while preserving styling
 
 **Custom Widget Components:**
 - \`<CallWidget>\` - Renders call widgets with missed/incoming call states

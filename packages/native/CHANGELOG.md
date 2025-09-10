@@ -1,5 +1,15 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.2.2
+
+### Patch Changes
+
+- Add nonInteractive option to text parser
+  - Renders interactive elements (buttons, links) as plain text
+  - Prevents URL auto-conversion to clickable links
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.4.2
+
 ## 0.2.1
 
 ### Patch Changes

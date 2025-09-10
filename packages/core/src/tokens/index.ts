@@ -34,6 +34,8 @@ const spacing = {
   large: coreSpacing.space40,
   xlarge: coreSpacing.space50,
   xxlarge: coreSpacing.space80,
+  xxxlarge: coreSpacing.space100,
+  xxxxlarge: coreSpacing.space125,
   massive: coreSpacing.space150,
 };
 
