@@ -38,6 +38,7 @@ const TextInput: React.FC<Props> = ({
   labelTooltip,
   onChange,
   onSubmit,
+  onlyCountries,
   type = 'text',
   width = InputWidth.Large,
   ...inputProps
@@ -87,6 +88,8 @@ const TextInput: React.FC<Props> = ({
         {type === 'tel' ? (
           <TelephoneInput
             country="de"
+            onlyCountries={onlyCountries}
+            disableDropdown={onlyCountries?.length === 1}
             onChange={handleTelephoneChange}
             inputProps={{ ...propsWithoutValues, ref: inputRef }}
             $hasError={!!error}

@@ -41,6 +41,7 @@ export interface Colors {
     warning: string;
     info: string;
     on: string;
+    elevated: string;
   };
   text: {
     primary: string;

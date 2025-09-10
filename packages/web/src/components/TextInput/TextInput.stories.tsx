@@ -16,6 +16,12 @@ export const TelephoneInput = args => {
   return (
     <>
       <TextInput label="Enter your number" type="tel" {...args} />
+      <TextInput
+        label="Only German numbers permitted"
+        type="tel"
+        {...args}
+        onlyCountries={['de']}
+      />
     </>
   );
 };

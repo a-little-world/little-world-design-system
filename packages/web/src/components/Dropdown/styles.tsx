@@ -73,7 +73,7 @@ export const SelectValue = styled(Select.Value)`
 
 export const SelectContent = styled(Select.Content)`
   overflow: hidden;
-  background-color: ${({ theme }) => theme.color.surface.primary};
+  background-color: ${({ theme }) => theme.color.surface.elevated};
   border-radius: 6px;
   box-shadow:
     0px 10px 38px -10px rgba(22, 23, 24, 0.35),
