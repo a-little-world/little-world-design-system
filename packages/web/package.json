@@ -89,8 +89,8 @@
     "react-phone-input-2": "^2.15.1"
   },
   "peerDependencies": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-router-dom": "^6.28.2",
     "styled-components": "^6.1.18"
   }
