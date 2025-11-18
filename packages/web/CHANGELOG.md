@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system
 
+## 2.5.3
+
+### Patch Changes
+
+- Add onlyCountries prop to TextInput (for phone numbers)
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.4.3
+
 ## 2.5.2
 
 ### Minor Changes

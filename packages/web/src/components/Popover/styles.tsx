@@ -17,9 +17,9 @@ import { PopoverSizes } from './Popover';
 export const PopoverRoot = styled(Root)``;
 
 export const POPOVER_CONTENT_CSS = css`
-  border-radius: 4px;
+  border-radius: ${({ theme }) => theme.radius.small};
   padding: ${({ theme }) => theme.spacing.small};
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
   box-shadow:
     hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
@@ -71,7 +71,7 @@ export const StyledPopoverContent = styled(PopoverContent)<{
   ${({ $asToolTip, theme }) => css`
     background-color: ${$asToolTip
       ? theme.color.surface.bold
-      : theme.color.surface.primary};
+      : theme.color.surface.elevated};
     color: ${$asToolTip ? theme.color.text.reversed : theme.color.text.primary};
     padding-right: ${$asToolTip ? theme.spacing.medium : theme.spacing.small};
   `}
@@ -107,5 +107,5 @@ export const StyledPopoverArrow = styled(PopoverArrow)<{
   $asToolTip?: boolean;
 }>`
   fill: ${({ $asToolTip, theme }) =>
-    $asToolTip ? theme.color.surface.bold : theme.color.surface.primary};
+    $asToolTip ? theme.color.surface.bold : theme.color.surface.elevated};
 `;

@@ -75,9 +75,14 @@ export const TelephoneInput = styled(PhoneInput)<{
   }
 
   .react-tel-input .country-list {
-    background: ${({ theme }) => theme.color.surface.primary};
+    background: ${({ theme }) => theme.color.surface.elevated};
+    background-color: ${({ theme }) => theme.color.surface.elevated};
     color: ${({ theme }) => theme.color.text.primary};
     border-radius: ${({ theme }) => theme.radius.xxxsmall};
+  }
+
+  .react-tel-input .country-list .country.highlight {
+    background-color: ${({ theme }) => theme.color.surface.quaternary};
   }
 
   .react-tel-input .flag-dropdown.open .selected-flag {

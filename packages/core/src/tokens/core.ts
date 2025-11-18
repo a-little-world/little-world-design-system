@@ -38,6 +38,7 @@ export const coreColors = {
   yellow40: '#d4a000',
   yellow50: '#4d2e00',
   white: '#FFFFFF',
+  white10: '#fbfbfb',
 } as const;
 
 const SPACING_BASE = 8; // px
