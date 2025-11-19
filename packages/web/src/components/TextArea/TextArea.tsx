@@ -45,6 +45,10 @@ const TextArea: React.FC<TextAreaProps> = ({
 }) => {
   const [internalValue, setInternalValue] = useState(value ?? '');
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
+  const isTouchDeviceRef = useRef(
+    typeof window !== 'undefined' &&
+      ('ontouchstart' in window || navigator.maxTouchPoints > 0),
+  );
   useAutosizeTextArea(textAreaRef.current, internalValue, expandable);
   const [textAreaCount, setTextAreaCount] = useState(0);
 
@@ -60,7 +64,12 @@ const TextArea: React.FC<TextAreaProps> = ({
   };
 
   const handleKeyDown = async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (onSubmit && e.key === 'Enter' && !e.shiftKey) {
+    if (
+      onSubmit &&
+      e.key === 'Enter' &&
+      !e.shiftKey &&
+      !isTouchDeviceRef.current
+    ) {
       e.preventDefault();
       const submitSuccessful = await onSubmit();
       if (submitSuccessful) setInternalValue('');
@@ -70,7 +79,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   return (
     <AreaWrapper $size={size}>
       {label && (
-        <Label bold htmlFor={id} toolTipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip}>
           {label}
         </Label>
       )}

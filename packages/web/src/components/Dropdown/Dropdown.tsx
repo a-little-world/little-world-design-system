@@ -83,7 +83,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   return (
     <DropdownWrapper $maxWidth={maxWidth}>
       {label && (
-        <Label bold htmlFor={ariaLabel} toolTipText={labelTooltip}>
+        <Label bold htmlFor={ariaLabel} tooltipText={labelTooltip}>
           {label}
         </Label>
       )}

@@ -50,6 +50,7 @@ export {
 } from './components/NavigationMenu/NavigationMenu';
 export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
 export { default as Popover } from './components/Popover/Popover';
+export { default as InfoPopover } from './components/Popover/InfoPopover';
 export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
 export { default as Separator } from './components/Separator/Separator';
 export { default as Slider } from './components/Slider/Slider';
@@ -77,7 +78,7 @@ export {
 } from './components/TextInput/TextInput';
 export { default as Toast } from './components/Toast/Toast';
 export { ToastProvider, ToastViewport } from './components/Toast/styles';
-export { default as ToolTip } from './components/ToolTip/ToolTip';
+export { default as Tooltip } from './components/Tooltip/Tooltip';
 export { default as CallWidget } from './components/Widget/CallWidget';
 export { default as Widget, WidgetSizes } from './components/Widget/Widget';
 export { default as AttachmentWidget } from './components/Widget/AttachmentWidget';

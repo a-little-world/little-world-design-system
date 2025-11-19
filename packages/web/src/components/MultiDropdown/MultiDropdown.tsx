@@ -153,7 +153,7 @@ const MultiDropdown: React.FC<Props> = ({
           bold
           htmlFor={firstDropdown.label}
           marginBottom={theme.spacing.xsmall}
-          toolTipText={labelTooltip}
+          tooltipText={labelTooltip}
         >
           {label}
         </Label>

@@ -37,7 +37,7 @@ const MultiSelection: React.FC<Props> = ({
   return (
     <MultiSelectionWrapper>
       {label && (
-        <Label bold htmlFor={id} toolTipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip}>
           {label}
         </Label>
       )}

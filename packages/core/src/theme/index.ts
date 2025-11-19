@@ -27,6 +27,7 @@ export interface Colors {
     secondary: string;
     tertiary: string;
     quaternary: string;
+    dim: string;
     contrast: string;
     bold: string;
     selected: string;

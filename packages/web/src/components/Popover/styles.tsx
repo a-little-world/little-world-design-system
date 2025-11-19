@@ -46,7 +46,7 @@ export const POPOVER_CONTENT_CSS = css`
 `;
 
 export const StyledPopoverContent = styled(PopoverContent)<{
-  $asToolTip?: boolean;
+  $asTooltip?: boolean;
   $extraPaddingTop: boolean;
   $width: PopoverSizes;
 }>`
@@ -68,12 +68,12 @@ export const StyledPopoverContent = styled(PopoverContent)<{
     padding-top: ${theme.spacing.medium};
   `}
 
-  ${({ $asToolTip, theme }) => css`
-    background-color: ${$asToolTip
+  ${({ $asTooltip, theme }) => css`
+    background-color: ${$asTooltip
       ? theme.color.surface.bold
       : theme.color.surface.elevated};
-    color: ${$asToolTip ? theme.color.text.reversed : theme.color.text.primary};
-    padding-right: ${$asToolTip ? theme.spacing.medium : theme.spacing.small};
+    color: ${$asTooltip ? theme.color.text.reversed : theme.color.text.primary};
+    padding-right: ${$asTooltip ? theme.spacing.medium : theme.spacing.small};
   `}
     
 
@@ -92,20 +92,20 @@ export const StyledPopoverContent = styled(PopoverContent)<{
 `;
 
 export const StyledPopoverClose = styled(PopoverClose)<{
-  $asToolTip?: boolean;
+  $asTooltip?: boolean;
 }>`
   position: absolute;
   top: ${({ theme }) => theme.spacing.xsmall};
   right: ${({ theme }) => theme.spacing.xsmall};
   width: 12px !important;
   height: 12px !important;
-  color: ${({ $asToolTip, theme }) =>
-    $asToolTip ? theme.color.text.reversed : theme.color.text.primary};
+  color: ${({ $asTooltip, theme }) =>
+    $asTooltip ? theme.color.text.reversed : theme.color.text.primary};
 `;
 
 export const StyledPopoverArrow = styled(PopoverArrow)<{
-  $asToolTip?: boolean;
+  $asTooltip?: boolean;
 }>`
-  fill: ${({ $asToolTip, theme }) =>
-    $asToolTip ? theme.color.surface.bold : theme.color.surface.elevated};
+  fill: ${({ $asTooltip, theme }) =>
+    $asTooltip ? theme.color.surface.bold : theme.color.surface.elevated};
 `;

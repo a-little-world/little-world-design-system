@@ -29,7 +29,7 @@ const RadioGroup: React.FC<Props> = ({
 }: Props) => (
   <RadioGroupWrapper>
     {label && (
-      <Label bold htmlFor={label} toolTipText={labelTooltip}>
+      <Label bold htmlFor={label} tooltipText={labelTooltip}>
         {label}
       </Label>
     )}

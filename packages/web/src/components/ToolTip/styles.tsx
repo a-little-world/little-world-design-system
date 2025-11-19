@@ -1,15 +1,21 @@
 import { TooltipArrow, TooltipContent } from '@radix-ui/react-tooltip';
 import styled from 'styled-components';
 
-import { POPOVER_CONTENT_CSS } from '../Popover/styles';
-
-export const StyledToolTipContent = styled(TooltipContent)`
-  ${POPOVER_CONTENT_CSS}
-  background-color: ${({ theme }) => theme.color.surface.bold};
+export const StyledTooltipContent = styled(TooltipContent)`
+  background: ${({ theme }) => theme.color.surface.dim};
+  background: #2d2e30;
+  border-radius: ${({ theme }) => theme.radius.xxxsmall};
   color: ${({ theme }) => theme.color.text.reversed};
-  font-weight: normal;
+  padding: ${({ theme }) => theme.spacing.xxsmall};
+  box-shadow:
+    hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  user-select: none;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 `;
 
 export const StyledTooltipArrow = styled(TooltipArrow)`
-  fill: ${({ theme }) => theme.color.surface.bold};
+  fill: ${({ theme }) => theme.color.surface.dim};
 `;

@@ -51,7 +51,7 @@ const Switch: React.FC<Props> = ({
           <Label
             bold={labelBold}
             htmlFor={label}
-            toolTipText={labelTooltip}
+            tooltipText={labelTooltip}
             marginBottom="0"
           >
             {label}
