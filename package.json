@@ -46,19 +46,7 @@
     "styled-components": "^6.1.18"
   },
   "pnpm": {
-    "overrides": {
-      "react-docgen-typescript": "2.2.2",
-      "@rn-primitives/hooks": "1.2.0",
-      "react": "^19.1.0",
-      "react-dom": "^19.1.0",
-      "@types/react": "^19.1.0",
-      "@types/react-dom": "^19.1.0"
-    },
     "peerDependencyRules": {
-      "ignoreMissing": [
-        "react",
-        "react-dom"
-      ],
       "allowedVersions": {
         "react": "19",
         "react-dom": "19"
