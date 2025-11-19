@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system
 
+## 2.6.0
+
+### Patch Changes
+
+- Fix TextArea component mobile keyboard behavior
+  - Added touch device detection to prevent Enter key from submitting form on mobile devices
+  - Enter key now correctly creates new lines on mobile while maintaining submit functionality on desktop
+  - Improved cross-platform compatibility for text input handling
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.4.4
+
 ## 2.5.3
 
 ### Patch Changes

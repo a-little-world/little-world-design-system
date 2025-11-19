@@ -40,34 +40,6 @@ pnpm --filter @a-little-world/little-world-design-system-core build
 pnpm test
 ```
 
-### ⚠️ Critical: Always Build and Publish from Root
-
-**IMPORTANT: Never build or publish from individual package directories!**
-
-This monorepo uses pnpm workspaces with `workspace:*` dependencies. If you build or publish from inside a package directory, the workspace dependencies won't be resolved properly, causing installation errors in consuming applications.
-
-✅ **Correct (from root of monorepo):**
-```bash
-# Build packages
-pnpm build:core
-pnpm build:web
-pnpm build:native
-
-# Publish packages (if needed manually)
-pnpm --filter=@a-little-world/little-world-design-system-core publish
-pnpm --filter=@a-little-world/little-world-design-system publish
-pnpm --filter=@a-little-world/little-world-design-system-native publish
-```
-
-❌ **Incorrect (from package directories):**
-```bash
-cd packages/web
-npm run build
-npm publish  # This will break workspace dependencies!
-```
-
-**The automated GitHub workflow handles publishing correctly from the root. Only use manual publishing as a last resort.**
-
 ### Running Storybook
 
 ```bash
@@ -133,7 +105,7 @@ This monorepo uses [Changesets](https://github.com/changesets/changesets) for ve
 
 ## Understanding Changesets
 
-Changesets work by creating a "changeset" file that describes what changes you've made and how they should be versioned. When you're ready to release, these changesets are consumed to automatically bump versions and create release notes.
+Changesets work by creating a "changeset" file that describes what changes you've made and how they should be versioned.
 
 ## Creating Changesets
 
@@ -146,6 +118,7 @@ pnpm changeset
 ```
 
 This will:
+
 - Show you which packages have been modified
 - Ask you to select which packages the changes affect
 - Ask you to choose the type of version bump (patch, minor, major)
@@ -162,18 +135,21 @@ Choose the appropriate version bump based on the [Semantic Versioning](https://s
 ### Examples of Changeset Types:
 
 **Patch (0.0.x):**
+
 - Bug fixes
 - Documentation updates
 - Performance improvements
 - Internal refactoring
 
 **Minor (0.x.0):**
+
 - New components added
 - New features to existing components
 - New utilities or helpers
 - New design tokens
 
 **Major (x.0.0):**
+
 - Breaking changes to component APIs
 - Removed components or features
 - Changes to design tokens that break existing implementations
@@ -190,6 +166,7 @@ pnpm version-packages
 ```
 
 This will:
+
 - Read all changeset files
 - Determine the new version for each package
 - Update package.json files
@@ -206,6 +183,7 @@ pnpm version-packages:preview
 ```
 
 This will show you:
+
 - Which packages will be versioned
 - What the new versions will be
 - What changes will be included
@@ -231,13 +209,15 @@ git push origin main
 ### 2. Review and Commit
 
 After running `version-packages`:
+
 1. Review the generated changes
 2. Commit the version bumps and changelog updates
-3. Push to your repository
+3. Push to your branch
 
 ### 3. Publish Packages
 
-The GitHub Action workflow automatically handles publishing when you push to the `main` branch with changesets. No manual publishing is required.
+The GitHub Action workflow automatically handles publishing when you merge your PR into the `main` branch with version updates.
+No manual publishing is required.
 
 ## Individual Package Releases
 
@@ -269,19 +249,53 @@ pnpm changeset
 pnpm version-packages
 ```
 
+## Manual Publishing (only use in last resort 🚨)
+
+### ⚠️ Critical: Always Build and Publish from Root
+
+**IMPORTANT: Never build or publish from individual package directories!**
+**The automated GitHub workflow handles publishing correctly from the root. Only use manual publishing as a last resort.**
+
+This monorepo uses pnpm workspaces with `workspace:*` dependencies. If you build or publish from inside a package directory, the workspace dependencies won't be resolved properly, causing installation errors in consuming applications.
+
+✅ **Correct (from root of monorepo):**
+
+```bash
+# Build packages
+pnpm build:core
+pnpm build:web
+pnpm build:native
+
+# Publish packages (if needed manually)
+pnpm --filter=@a-little-world/little-world-design-system-core publish
+pnpm --filter=@a-little-world/little-world-design-system publish
+pnpm --filter=@a-little-world/little-world-design-system-native publish
+```
+
+❌ **Incorrect (from package directories):**
+
+```bash
+cd packages/web
+npm run build
+npm publish  # This will break workspace dependencies!
+```
+
 ## Package Publishing Configuration
 
 ### Core Package
+
 - **Registry**: GitHub Packages (`@a-little-world/little-world-design-system-core`)
 - **Access**: Private
 - **Publish Config**: Configured in `packages/core/package.json`
 
 ### Web Package
+
 - **Registry**: GitHub Packages (`@a-little-world/little-world-design-system`)
 - **Access**: Private
 - **Publish Config**: Configured in `packages/web/package.json`
 
 ### Native Package
+
 - **Registry**: GitHub Packages (`@a-little-world/little-world-design-system-native`)
 - **Access**: Private
 - **Publish Config**: Configured in `packages/native/package.json`
@@ -354,19 +368,25 @@ git push origin main
 ## Troubleshooting
 
 ### Changeset Not Detecting Changes
+
 If changesets aren't detecting your changes:
+
 1. Make sure you've committed your changes to git
 2. Check that you're in the correct directory
 3. Verify the package.json files are properly configured
 
 ### Version Conflicts
+
 If you encounter version conflicts:
+
 1. Check for existing changeset files
 2. Ensure all changesets are committed
 3. Run `pnpm clean` and rebuild if necessary
 
 ### Publishing Issues
+
 If publishing fails:
+
 1. Check your npm authentication
 2. Verify package.json publishConfig settings
 3. Ensure you have the correct permissions for the registry
@@ -399,10 +419,11 @@ packages/
 When making changes to packages:
 
 1. Keep a terminal window running with the watch command:
+
    ```bash
    # For core
    pnpm --filter @a-little-world/little-world-design-system-core watch
-   
+
    # For web
    pnpm --filter @a-little-world/little-world-design-system watch
    ```
@@ -441,53 +462,3 @@ Ensure that you have the required fonts available by including them in your html
 ## Contributing
 
 Check [contribution guidelines](CONTRIBUTING.md).
-
-In order to release a new version of this package:
-
-1. Bump the version in the `package.json` and run `npm install` to update the package-lock.json in the relevant release branch.
-2. Ensure your release branch has been tested, approved and merged into `main`.
-3. Go to the "Draft a release" [section](https://github.com/a-little-world/little-world-design-system/releases/new) of the repo.
-4. Create a tag that relates to the new version.
-5. Include the release version in the title and give an appropriate description
-6. Hit the "publish release" button which will trigger a github action that will publish the new version to npm.
-
-
-## GitHub Releases Integration
-
-The monorepo includes automated GitHub releases through GitHub Actions. When you push changes to the `main` branch with changesets, the workflow will:
-
-1. **Build all packages**
-2. **Version packages** based on changesets
-3. **Publish to GitHub Packages** (npm)
-4. **Create GitHub releases** with detailed changelogs
-
-### Release Workflow Options
-
-**Option 1: Direct Release (Current)**
-- Push to main → Automatic versioning and publishing
-- Fastest workflow, good for frequent releases
-
-**Option 2: Release Pull Request (Alternative)**
-- Push to main → Creates PR with version changes
-- Review and approve PR → Automatic publishing
-- More control, good for critical releases
-
-To switch to Release PR workflow, the GitHub Action is already configured to create PRs when changesets are detected.
-
-### Setting up GitHub Actions
-
-1. **Add GitHub Secrets** in your repository settings:
-   - `NODE_AUTH_TOKEN`: Your GitHub Personal Access Token with `write:packages` scope
-
-2. **Enable GitHub Actions** for the repository
-
-3. **Push to main** with changesets to trigger releases
-
-### Release Structure
-
-Each release will show:
-- **Package versions** that were published
-- **Detailed changelogs** from each package's CHANGELOG.md
-- **Clear descriptions** of what changed in each package
-
-This gives you a clean, professional release history that clearly shows what changed in each package, even though they're all in one monorepo.

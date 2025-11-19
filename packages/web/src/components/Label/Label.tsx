@@ -6,7 +6,7 @@ import textParser from '../../utils/parser';
 import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
 import { QuestionIcon } from '../Icon';
 import { BODY_5_CSS } from '../Text/styles';
-import ToolTip from '../ToolTip/ToolTip';
+import InfoPopover from '../Popover/InfoPopover';
 
 const StyledLabel = styled(RadixLabel.Root)<{
   $bold?: boolean;
@@ -25,7 +25,7 @@ const StyledLabel = styled(RadixLabel.Root)<{
   `}
 `;
 
-const ToolTipTrigger = styled(Button)`
+const InfoPopoverTrigger = styled(Button)`
   color: ${({ theme }) => theme.color.surface.bold};
 `;
 
@@ -33,7 +33,7 @@ type LabelProps = RadixLabel.LabelProps & {
   bold?: boolean;
   inline?: boolean;
   marginBottom?: string | number;
-  toolTipText?: string;
+  tooltipText?: string;
 };
 
 const Label: React.FC<LabelProps> = ({
@@ -44,29 +44,29 @@ const Label: React.FC<LabelProps> = ({
   marginBottom,
   asChild,
   htmlFor,
-  toolTipText,
+  tooltipText,
 }) => {
   return (
     <StyledLabel
       $bold={bold}
-      $inline={Boolean(inline || toolTipText)}
+      $inline={Boolean(inline || tooltipText)}
       $marginBottom={inline ? '0px' : marginBottom}
       className={className}
       asChild={asChild}
       htmlFor={htmlFor}
     >
       {typeof children === 'string' ? textParser(children) : children}
-      {toolTipText && (
-        <ToolTip
+      {tooltipText && (
+        <InfoPopover
           trigger={
-            <ToolTipTrigger
+            <InfoPopoverTrigger
               variation={ButtonVariations.Icon}
               size={ButtonSizes.Small}
             >
               <QuestionIcon label="questionIcon" />
-            </ToolTipTrigger>
+            </InfoPopoverTrigger>
           }
-          text={toolTipText}
+          text={tooltipText}
         />
       )}
     </StyledLabel>
