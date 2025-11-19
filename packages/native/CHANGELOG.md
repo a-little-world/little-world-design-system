@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.3.0
+
+### Minor Changes
+
+- Add InfoPopover and update Tooltip plus add new icons
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.4.4
+
 ## 0.2.3
 
 ### Patch Changes
