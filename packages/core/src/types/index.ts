@@ -17,5 +17,5 @@ export * from './TextArea';
 export * from './TextContent';
 export * from './TextInput';
 export * from './Toast';
-export * from './ToolTip';
+export * from './Tooltip';
 export * from './Widget';

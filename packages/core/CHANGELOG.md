@@ -1,5 +1,15 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.4.4
+
+### Patch Changes
+
+- Add `dim` color to surface tokens
+- Added `surface.dim` color token for both light and dark themes
+- `dim` provides a theme-agnostic darker surface color (second darkest in light mode, second lightest in dark mode)
+- Updated type definitions to include `dim: string` in the surface interface
+- Add new icons
+
 ## 1.4.3
 
 ### Patch Changes

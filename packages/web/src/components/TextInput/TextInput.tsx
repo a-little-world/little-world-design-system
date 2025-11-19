@@ -80,7 +80,7 @@ const TextInput: React.FC<Props> = ({
   return (
     <InputWrapper $width={width}>
       {label && (
-        <Label bold htmlFor={id} toolTipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip}>
           {label}
         </Label>
       )}

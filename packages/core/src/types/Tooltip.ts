@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface ToolTipBaseProps {
+export interface TooltipBaseProps {
   text: string;
   trigger?: ReactNode;
   defaultOpen?: boolean;

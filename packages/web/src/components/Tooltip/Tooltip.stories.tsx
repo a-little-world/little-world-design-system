@@ -1,11 +1,11 @@
 import React from 'react';
-import ToolTip from './ToolTip';
+import Tooltip from './Tooltip';
 import Button, { ButtonVariations } from '../Button/Button';
 import { QuestionIcon } from '../Icon';
 
 export default {
-  component: ToolTip,
-  title: 'Components/ToolTip',
+  component: Tooltip,
+  title: 'Components/Tooltip',
   argTypes: {
     open: { control: 'boolean' },
     text: { control: 'text' },
@@ -15,7 +15,7 @@ export default {
 
 export const Default = args => {
   return (
-    <ToolTip
+    <Tooltip
       trigger={
         <Button variation={ButtonVariations.Icon}>
           <QuestionIcon label="questionIcon" />
@@ -27,5 +27,5 @@ export const Default = args => {
 };
 
 Default.args = {
-  text: 'Ein Avatar ist ein gezeichnetes Profilbild, das du an Stelle eines echten Fotos von dir verwenden kannst. Um den Avatar dir ähnlich aussehen zu lassen, kannst du Merkmale wie Geschlecht, Nase, Haare, Augen etc. anpassen. Probier es doch einfach mal aus! Deinen Avatar kannst du später jederzeit wieder ändern.',
+  text: 'this is a descriptor tooltip',
 };

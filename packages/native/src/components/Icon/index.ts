@@ -1,5 +1,6 @@
 import {
   accountIcon,
+  addToChatIcon,
   appointmentIcon,
   archiveIcon,
   arrowLeftIcon,
@@ -11,11 +12,15 @@ import {
   callOutgoingIcon,
   cameraIcon,
   checkIcon,
+  checkInChatIcon,
   chevronDownIcon,
   chevronLeftIcon,
   chevronRightIcon,
   clockIcon,
+  clockBackIcon,
+  clockDashedIcon,
   closeIcon,
+  copyIcon,
   dashboardIcon,
   dotsIcon,
   downloadIcon,
@@ -67,6 +72,8 @@ import {
   trashIcon,
   twitterIcon,
   uploadIcon,
+  userDisconnectedIcon,
+  userSearchIcon,
   videoIcon,
   webIcon,
   whatsappIcon,
@@ -78,6 +85,11 @@ import { createIconComponent } from './createIconComponent';
 export const AccountIcon = createIconComponent({
   name: 'Account',
   svgData: accountIcon,
+});
+
+export const AddToChatIcon = createIconComponent({
+  name: 'AddToChat',
+  svgData: addToChatIcon,
 });
 
 export const AppointmentIcon = createIconComponent({
@@ -138,6 +150,11 @@ export const CheckIcon = createIconComponent({
   gradientType: GradientTypes.v3,
 });
 
+export const CheckInChatIcon = createIconComponent({
+  name: 'CheckInChat',
+  svgData: checkInChatIcon,
+});
+
 export const ChevronDownIcon = createIconComponent({
   name: 'ChevronDown',
   svgData: chevronDownIcon,
@@ -161,10 +178,25 @@ export const ClockIcon = createIconComponent({
   svgData: clockIcon,
 });
 
+export const ClockBackIcon = createIconComponent({
+  name: 'ClockBack',
+  svgData: clockBackIcon,
+});
+
+export const ClockDashedIcon = createIconComponent({
+  name: 'ClockDashed',
+  svgData: clockDashedIcon,
+});
+
 export const CloseIcon = createIconComponent({
   name: 'Close',
   svgData: closeIcon,
   gradientType: GradientTypes.v2,
+});
+
+export const CopyIcon = createIconComponent({
+  name: 'Copy',
+  svgData: copyIcon,
 });
 
 export const DashboardIcon = createIconComponent({
@@ -430,6 +462,16 @@ export const UploadIcon = createIconComponent({
   name: 'Upload',
   svgData: uploadIcon,
   gradientType: GradientTypes.v2,
+});
+
+export const UserDisconnectedIcon = createIconComponent({
+  name: 'UserDisconnected',
+  svgData: userDisconnectedIcon,
+});
+
+export const UserSearchIcon = createIconComponent({
+  name: 'UserSearch',
+  svgData: userSearchIcon,
 });
 
 export const VideoIcon = createIconComponent({

@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Button, { ButtonVariations } from '../Button/Button';
-import { DotsIcon } from '../Icon';
+import { DotsIcon, QuestionIcon } from '../Icon';
 import Modal from '../Modal/Modal';
 import Popover from './Popover';
+import InfoPopover from './InfoPopover';
 
 const StyledOption = styled(Button)`
   font-size: 16px;
@@ -58,4 +59,27 @@ export const Default = ({ children, ...args }) => {
       </Modal>
     </>
   );
+};
+
+export const InfoPopoverComponent = args => {
+  return (
+    <InfoPopover
+      trigger={
+        <Button variation={ButtonVariations.Icon}>
+          <QuestionIcon label="questionIcon" />
+        </Button>
+      }
+      {...args}
+    />
+  );
+};
+
+InfoPopoverComponent.args = {
+  text: 'Ein Avatar ist ein gezeichnetes Profilbild, das du an Stelle eines echten Fotos von dir verwenden kannst. Um den Avatar dir ähnlich aussehen zu lassen, kannst du Merkmale wie Geschlecht, Nase, Haare, Augen etc. anpassen. Probier es doch einfach mal aus! Deinen Avatar kannst du später jederzeit wieder ändern.',
+};
+
+InfoPopoverComponent.argTypes = {
+  open: { control: 'boolean' },
+  text: { control: 'text' },
+  side: { control: 'select', options: ['top', 'left', 'right', 'bottom'] },
 };

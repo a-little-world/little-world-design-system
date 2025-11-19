@@ -33,7 +33,7 @@ const Slider = ({
 }: SliderProps) => (
   <SliderWrapper>
     {label && (
-      <Label bold htmlFor={label} toolTipText={labelTooltip}>
+      <Label bold htmlFor={label} tooltipText={labelTooltip}>
         {label}
       </Label>
     )}
