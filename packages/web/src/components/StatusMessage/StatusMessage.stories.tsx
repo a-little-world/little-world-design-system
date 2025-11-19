@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import StatusMessage from './StatusMessage';
 import { StatusTypes } from '@a-little-world/little-world-design-system-core';

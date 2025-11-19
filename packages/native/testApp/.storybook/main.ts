@@ -1,4 +1,8 @@
+import { createRequire } from "node:module";
+import { dirname, join } from "node:path";
 import { StorybookConfig } from "@storybook/react-native-web-vite";
+
+const require = createRequire(import.meta.url);
 
 const main: StorybookConfig = {
   stories: [
@@ -7,13 +11,13 @@ const main: StorybookConfig = {
   ],
 
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@chromatic-com/storybook"),
+    getAbsolutePath("@storybook/addon-docs")
   ],
 
   framework: {
-    name: "@storybook/react-native-web-vite",
+    name: getAbsolutePath("@storybook/react-native-web-vite"),
     options: {},
   },
 
@@ -25,3 +29,7 @@ const main: StorybookConfig = {
 };
 
 export default main;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, "package.json")));
+}
