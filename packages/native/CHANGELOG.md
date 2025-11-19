@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.2.4
+
+### Patch Changes
+
+- Updated dependencies
+  - Change versioning for react packages to allow minor update versions for React 19
+  - Align package versions with those in the frontend
+
 ## 0.2.3
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @a-little-world/little-world-design-system
 
+## 2.5.4
+
+### Patch Changes
+
+- Updated dependencies
+  - Change versioning for react packages to allow minor update versions for React 19
+
 ## 2.5.3
 
 ### Patch Changes
