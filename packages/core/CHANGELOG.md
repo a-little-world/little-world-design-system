@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.5.0
+
+### Minor Changes
+
+- Expo 54 upgrades
+
 ## 1.4.4
 
 ### Patch Changes

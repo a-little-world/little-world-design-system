@@ -1,6 +1,18 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.4.0
+
+### Minor Changes
+
+- Expo 54 upgrades
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.5.0
+
 ## 0.2.4
+
 ## 0.3.0
 
 ### Minor Changes
