@@ -21,7 +21,7 @@
     "build:core": "pnpm --filter=@a-little-world/little-world-design-system-core build",
     "build:native": "pnpm --filter=@a-little-world/little-world-design-system-native build",
     "build:web": "pnpm --filter=@a-little-world/little-world-design-system build",
-    "native:setup": "pnpm --filter='@a-little-world/little-world-design-system-core' build && pnpm --filter='@a-little-world/little-world-design-system-native' build && cd packages/core && pnpm pack && cd ../native && pnpm pack && cp *.tgz testApp/ && cp ../core/*.tgz testApp/ && cd testApp && rm -rf node_modules package-lock.json && npm install $(ls -t *core*.tgz | head -1) $(ls -t *native*.tgz | head -1)",
+    "native:setup": "pnpm --filter='@a-little-world/little-world-design-system-core' build && pnpm --filter='@a-little-world/little-world-design-system-native' build && cd packages/core && pnpm pack && cd ../native && pnpm pack && cp *.tgz testApp/ && cp ../core/*.tgz testApp/ && cd testApp && rm -rf node_modules package-lock.json pnpm-lock.yaml && npm install",
     "native:setup-and-start": "pnpm native:setup && cd packages/native/testApp && npx expo start -c",
     "native:start": "cd packages/native/testApp && npx expo start -c",
     "storybook:native": "pnpm native:setup && cd packages/native/testApp && npm run storybook"
