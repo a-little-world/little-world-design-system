@@ -38,6 +38,7 @@ export const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
   margin: ${({ theme }) => theme.spacing.xxxxsmall} 0;
+  cursor: pointer;
 `;
 
 const CHECKBOX_STYLES = css<{
@@ -46,6 +47,7 @@ const CHECKBOX_STYLES = css<{
   checked: Checkbox.CheckboxProps['checked'];
 }>`
   all: unset;
+  cursor: pointer;
   background: ${({ theme }) => theme.color.surface.primary};
   box-sizing: border-box;
   border: 1px solid ${({ theme }) => theme.color.border.contrast};
