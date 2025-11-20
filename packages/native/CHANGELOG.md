@@ -1,5 +1,18 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.4.0
+
+### Minor Changes
+
+- Expo 54 upgrades
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.5.0
+
+## 0.2.4
+
 ## 0.3.0
 
 ### Minor Changes
@@ -9,6 +22,8 @@
 ### Patch Changes
 
 - Updated dependencies
+  - Change versioning for react packages to allow minor update versions for React 19
+  - Align package versions with those in the frontend
   - @a-little-world/little-world-design-system-core@1.4.4
 
 ## 0.2.3
