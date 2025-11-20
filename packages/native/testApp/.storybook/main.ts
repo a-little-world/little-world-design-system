@@ -11,13 +11,13 @@ const main: StorybookConfig = {
   ],
 
   addons: [
-    getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@chromatic-com/storybook"),
-    getAbsolutePath("@storybook/addon-docs")
+    "@storybook/addon-links",
+    "@chromatic-com/storybook",
+    "@storybook/addon-docs"
   ],
 
   framework: {
-    name: getAbsolutePath("@storybook/react-native-web-vite"),
+    name: "@storybook/react-native-web-vite",
     options: {},
   },
 
@@ -29,7 +29,3 @@ const main: StorybookConfig = {
 };
 
 export default main;
-
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, "package.json")));
-}

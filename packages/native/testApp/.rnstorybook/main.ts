@@ -7,15 +7,11 @@ const require = createRequire(import.meta.url);
 const main: StorybookConfig = {
   stories: ["../stories/**/*.stories.?(ts|tsx|js|jsx)"],
   addons: [
-    getAbsolutePath("@storybook/addon-ondevice-notes"),
-    getAbsolutePath("@storybook/addon-ondevice-controls"),
-    getAbsolutePath("@storybook/addon-ondevice-backgrounds"),
-    getAbsolutePath("@storybook/addon-ondevice-actions"),
+    "@storybook/addon-ondevice-notes",
+    "@storybook/addon-ondevice-controls",
+    "@storybook/addon-ondevice-backgrounds",
+    "@storybook/addon-ondevice-actions",
   ],
 };
 
 export default main;
-
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, "package.json")));
-}

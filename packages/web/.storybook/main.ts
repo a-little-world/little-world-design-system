@@ -4,16 +4,16 @@ import { dirname, join } from "node:path";
 const require = createRequire(import.meta.url);
 export default {
   addons: [
-    getAbsolutePath("@storybook/addon-a11y"),
-    getAbsolutePath("@storybook/addon-themes"),
-    getAbsolutePath("@storybook/addon-webpack5-compiler-swc"),
-    getAbsolutePath("@chromatic-com/storybook"),
-    getAbsolutePath("storybook-addon-remix-react-router"),
-    getAbsolutePath("@storybook/addon-docs")
+    "@storybook/addon-a11y",
+    "@storybook/addon-themes",
+    "@storybook/addon-webpack5-compiler-swc",
+    "@chromatic-com/storybook",
+    "storybook-addon-remix-react-router",
+    "@storybook/addon-docs"
   ],
 
   framework: {
-    name: getAbsolutePath("@storybook/react-webpack5"),
+    name: "@storybook/react-webpack5",
     options: {},
   },
 
@@ -34,7 +34,3 @@ export default {
     reactDocgen: 'react-docgen-typescript',
   },
 };
-
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, "package.json")));
-}
