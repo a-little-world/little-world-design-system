@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 2.8.0
+
+### Minor Changes
+
+- Update styling of TextArea and Button Icon Type
+
 ## 2.7.0
 
 ### Minor Changes
