@@ -1,9 +1,8 @@
-import React from 'react';
-import { CSSProperties } from 'styled-components';
 import {
   TextBaseProps,
   TextTypes,
 } from '@a-little-world/little-world-design-system-core';
+import React, { CSSProperties } from 'react';
 
 import textParser from '../../utils/parser';
 import { StyledElement } from './styles';
