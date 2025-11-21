@@ -37,7 +37,8 @@ export const Area = styled.textarea<{
         ? '11px 14px'
         : theme.spacing.small};
   box-sizing: border-box;
-  margin-bottom: ${({ theme }) => theme.spacing.xxxxsmall};
+  margin-bottom: ${({ theme, readOnly }) =>
+    readOnly ? 0 : theme.spacing.xxxxsmall};
   resize: none;
 
   ${({ $expandable, $size }) =>

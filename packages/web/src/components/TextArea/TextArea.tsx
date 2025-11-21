@@ -105,9 +105,11 @@ const TextArea: React.FC<TextAreaProps> = ({
         value={value}
         {...areaProps}
       />
-      <InputError visible={Boolean(error)} textAlign="left">
-        {error}
-      </InputError>
+      {!readOnly && (
+        <InputError visible={Boolean(error)} textAlign="left">
+          {error}
+        </InputError>
+      )}
     </AreaWrapper>
   );
 };

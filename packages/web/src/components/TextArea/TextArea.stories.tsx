@@ -13,6 +13,7 @@ Default.args = {
   placeholder: 'Insert your text',
   id: 'text input id',
   label: 'Text Input',
+  readOnly: false,
 };
 
 export const MessageBox = (args: TextAreaProps) => <TextArea {...args} />;
