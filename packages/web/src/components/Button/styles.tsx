@@ -170,7 +170,14 @@ export const StyledButton = styled.button<{
     }
   }
 
-  ${({ $appearance, $backgroundColor, $borderColor, $size, $variation }) => {
+  ${({
+    $appearance,
+    $backgroundColor,
+    $borderColor,
+    $size,
+    $variation,
+    theme,
+  }) => {
     if ($variation === ButtonVariations.Basic) {
       if ($appearance === ButtonAppearance.Primary) return PrimaryButtonCss;
       if ($appearance === ButtonAppearance.Secondary) return SecondaryButtonCss;
@@ -244,17 +251,29 @@ export const StyledButton = styled.button<{
     if ($variation === ButtonVariations.Icon) {
       return css`
         background: ${$backgroundColor || 'transparent'};
+        border-radius: ${theme.radius.xxxsmall};
         width: auto;
         height: fit-content;
-        padding: 0;
-        transition: opacity 0.5s ease;
+        transition: background 0.5s ease;
+
+        &:has(> svg:first-child) {
+          padding: ${theme.spacing.xxsmall};
+        }
+
+        &:not(:disabled):has(> svg:first-child):hover {
+          transition: background 0.3s ease;
+          background: ${theme.color.surface.secondary};
+        }
 
         &:not(:disabled):hover {
-          transition: opacity 0.3s ease;
-          opacity: 0.6;
+          svg {
+            opacity: 0.5;
+            transition: opacity 0.5s ease;
+          }
         }
 
         svg {
+          transition: opacity 0.5s ease;
           ${ICON_DIMENSIONS}
         }
       `;

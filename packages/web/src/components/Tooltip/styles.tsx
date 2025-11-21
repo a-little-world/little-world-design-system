@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const StyledTooltipContent = styled(TooltipContent)`
   background: ${({ theme }) => theme.color.surface.dim};
-  background: #2d2e30;
   border-radius: ${({ theme }) => theme.radius.xxxsmall};
   color: ${({ theme }) => theme.color.text.reversed};
   padding: ${({ theme }) => theme.spacing.xxsmall};
