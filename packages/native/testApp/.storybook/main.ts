@@ -1,4 +1,8 @@
+import { createRequire } from "node:module";
+import { dirname, join } from "node:path";
 import { StorybookConfig } from "@storybook/react-native-web-vite";
+
+const require = createRequire(import.meta.url);
 
 const main: StorybookConfig = {
   stories: [
@@ -8,8 +12,8 @@ const main: StorybookConfig = {
 
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
     "@chromatic-com/storybook",
+    "@storybook/addon-docs"
   ],
 
   framework: {
