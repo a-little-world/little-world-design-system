@@ -253,11 +253,15 @@ export const StyledButton = styled.button<{
         background: ${$backgroundColor || 'transparent'};
         border-radius: ${theme.radius.xxxsmall};
         width: auto;
+        min-width: 0;
         height: fit-content;
         transition: background 0.5s ease;
 
         &:has(> svg:first-child) {
-          padding: ${theme.spacing.xxsmall};
+          width: fit-content;
+          padding: ${!$size || $size === ButtonSizes.Small
+            ? theme.spacing.xxxsmall
+            : theme.spacing.xxsmall};
         }
 
         &:not(:disabled):has(> svg:first-child):hover {

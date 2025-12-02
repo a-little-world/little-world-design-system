@@ -28,7 +28,7 @@ export const Segment = styled.section<{ $locked?: boolean }>`
     $locked
       ? 'repeat(2, minmax(0, 1fr))'
       : `repeat(2, minmax(0, 1fr)) minmax(
-      ${theme.spacing.small},
+      ${theme.spacing.medium},
       auto
     )`};
   align-items: start;
@@ -37,5 +37,9 @@ export const Segment = styled.section<{ $locked?: boolean }>`
 `;
 
 export const DeleteButton = styled(Button)`
-  top: ${({ theme }) => theme.spacing.xsmall};
+  top: ${({ theme }) => theme.spacing.xxsmall};
+  margin-left: calc(
+    ${({ theme }) => theme.spacing.xxsmall} -
+      ${({ theme }) => theme.spacing.small}
+  );
 `;

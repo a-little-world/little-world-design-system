@@ -17,8 +17,8 @@
     "storybook:android": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --android"
   },
   "dependencies": {
-    "@a-little-world/little-world-design-system-core": "file:a-little-world-little-world-design-system-core-1.4.3.tgz",
-    "@a-little-world/little-world-design-system-native": "file:a-little-world-little-world-design-system-native-0.2.4.tgz",
+    "@a-little-world/little-world-design-system-core": "file:a-little-world-little-world-design-system-core-1.5.0.tgz",
+    "@a-little-world/little-world-design-system-native": "file:a-little-world-little-world-design-system-native-0.4.0.tgz",
     "@babel/runtime": "^7.25.4",
     "@gorhom/bottom-sheet": "^5.1.1",
     "@react-native-async-storage/async-storage": "2.2.0",
@@ -50,6 +50,7 @@
     "@babel/preset-env": "^7.25.4",
     "@chromatic-com/storybook": "^2.0.2",
     "@expo/metro-runtime": "~6.1.2",
+    "@storybook/addon-docs": "9.1.16",
     "@storybook/addon-links": "9.1.16",
     "@storybook/addon-ondevice-actions": "^8.5.4",
     "@storybook/addon-ondevice-backgrounds": "^8.5.4",
@@ -62,12 +63,11 @@
     "babel-plugin-react-docgen-typescript": "^1.5.1",
     "babel-plugin-react-native-web": "^0.19.10",
     "cross-env": "^7.0.3",
+    "eslint-plugin-storybook": "9.1.16",
     "react-native-svg-transformer": "^1.5.1",
     "storybook": "9.1.16",
     "typescript": "~5.9.2",
-    "vite": "^6.0.11",
-    "eslint-plugin-storybook": "9.1.16",
-    "@storybook/addon-docs": "9.1.16"
+    "vite": "^6.0.11"
   },
   "resolutions": {
     "react-docgen-typescript": "2.2.2"

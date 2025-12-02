@@ -39,4 +39,5 @@ Default.args = {
   placeholder: 'Insert your text',
   id: 'text input id',
   label: 'Text Input',
+  type: 'text',
 };

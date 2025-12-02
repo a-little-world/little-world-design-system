@@ -168,6 +168,7 @@ const MultiDropdown: React.FC<Props> = ({
           const firstSegmentLockedVal2 = isFirstSegment
             ? secondDropdown.lockedValue
             : undefined;
+          const deletable = !!index && !locked;
 
           return (
             <Segment
@@ -208,7 +209,7 @@ const MultiDropdown: React.FC<Props> = ({
                 required={Boolean(values[0][index])}
                 error={secondDropdown.errors?.[index]}
               />
-              {!!index && !locked && (
+              {deletable && (
                 <DeleteButton
                   variation={ButtonVariations.Icon}
                   onClick={() => handleDelete(index)}
