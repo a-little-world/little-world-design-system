@@ -58,6 +58,7 @@ import {
   puzzleIcon,
   questionIcon,
   sendIcon,
+  shareScreenIcon,
   settingsIcon,
   speakerIcon,
   stackIcon,
@@ -390,6 +391,11 @@ export const QuestionIcon = createIconComponent({
 export const SendIcon = createIconComponent({
   name: 'Send',
   svgData: sendIcon,
+});
+
+export const ScreenShareIcon = createIconComponent({
+  name: 'ScreenShare',
+  svgData: shareScreenIcon,
 });
 
 export const SettingsIcon = createIconComponent({

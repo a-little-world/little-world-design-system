@@ -2,6 +2,7 @@ import { ViewStyle } from 'react-native';
 import {
   LoadingDimensions,
   LoadingSizes,
+  LoadingType,
 } from '@a-little-world/little-world-design-system-core';
 
 export const getLoadingContainerStyles = (
@@ -14,9 +15,10 @@ export const getLoadingContainerStyles = (
     | 'space-evenly',
   inline?: boolean,
   size?: LoadingSizes,
+  type?: LoadingType,
 ): ViewStyle => ({
   display: 'flex',
-  flexDirection: 'row',
+  flexDirection: type === LoadingType.Logo ? 'column' : 'row',
   alignItems: 'center',
   justifyContent: align || 'center',
   position: 'relative',
