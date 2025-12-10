@@ -1,5 +1,19 @@
 # @a-little-world/little-world-design-system
 
+## 2.9.0
+
+### Minor Changes
+
+- Add loading logo type
+- Improve Button Icon type styling
+- Add ShareScreen Icon
+- Improve Icon styling in MultiDropdown & TextInput components
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.6.0
+
 ## 2.8.0
 
 ### Minor Changes

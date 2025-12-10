@@ -8,4 +8,3 @@ export const getLoadingLogoStyles = (dimension: number) => {
     } as ViewStyle,
   });
 };
-

@@ -1,5 +1,12 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.6.0
+
+### Minor Changes
+
+- Add loading sizes and types
+- Add shareScreen Icon
+
 ## 1.5.0
 
 ### Minor Changes

@@ -29,7 +29,11 @@ export * from './components/Illustrations';
 export { default as Label } from './components/Label/Label';
 export type { LabelProps } from './components/Label/Label';
 export { default as Link } from './components/Link/Link';
-export { default as Loading, LoadingSizes, LoadingType } from './components/Loading/Loading';
+export {
+  default as Loading,
+  LoadingSizes,
+  LoadingType,
+} from './components/Loading/Loading';
 export { default as LoadingLogo } from './components/Loading/LoadingLogo';
 export type { LoadingLogoProps } from './components/Loading/LoadingLogo';
 export { default as Popover } from './components/Popover/Popover';
