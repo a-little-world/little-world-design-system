@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import {
   LoadingDimensions,
   LoadingSizes,
+  LoadingType,
 } from '@a-little-world/little-world-design-system-core';
 import { pixelate } from '../../utils/styles';
 
@@ -14,11 +15,21 @@ const loading = keyframes`
     }
 `;
 
+const logoPulse = keyframes`
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+`;
+
 export const LoadingContainer = styled.div<{
   $align?: string;
   $color?: string;
   $inline?: boolean;
   $size?: LoadingSizes;
+  $type?: LoadingType;
 }>`
   display: ${({ $inline }) => ($inline ? 'inline-flex' : 'flex')};
   align-items: center;
@@ -61,4 +72,24 @@ export const LoadingElement = styled.div<{
         animation-delay: -0.15s;
     }
 }
+`;
+
+export const LogoContainer = styled.div<{
+  $size?: LoadingSizes;
+}>`
+  position: relative;
+  width: ${({ $size }) =>
+    pixelate(LoadingDimensions[$size || LoadingSizes.Small])};
+  height: ${({ $size }) =>
+    pixelate(LoadingDimensions[$size || LoadingSizes.Small])};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ${logoPulse} 3s ease-in-out infinite;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+  }
 `;

@@ -11,7 +11,8 @@ module.exports = function (api) {
       ["@babel/plugin-transform-react-jsx", {
         runtime: "automatic",
         useBuiltIns: true
-      }]
+      }],
+      "react-native-reanimated/plugin"
     ],
     env: {
       production: {

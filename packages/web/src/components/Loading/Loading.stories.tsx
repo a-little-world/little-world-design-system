@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Loading from './Loading';
+import Loading, { LoadingSizes, LoadingType } from './Loading';
 
 export default {
   component: Loading,
@@ -18,3 +18,9 @@ export const Default = args => (
 Default.args = {
   href: 'www.little-world.com',
 };
+
+export const Logo = args => (
+  <div>
+    <Loading {...args} type={LoadingType.Logo} size={LoadingSizes.XXLarge} />
+  </div>
+);

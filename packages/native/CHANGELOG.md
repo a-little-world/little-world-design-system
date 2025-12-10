@@ -1,5 +1,17 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.5.0
+
+### Minor Changes
+
+- Add loading logo type
+- Fix testApp
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.6.0
+
 ## 0.4.0
 
 ### Minor Changes

@@ -7,20 +7,26 @@ import {
   Popover,
   Text,
   Checkbox,
-  ProgressBar
+  ProgressBar,
+  Loading,
+  LoadingType
 } from "@a-little-world/little-world-design-system-native";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { PortalHost } from "@rn-primitives/portal";
-import { ButtonAppearance, TextTypes } from "@a-little-world/little-world-design-system-core";
+import { ButtonAppearance, TextTypes, LoadingSizes } from "@a-little-world/little-world-design-system-core";
 import { useTheme } from "styled-components/native";
 import TestPage from "./TestPage";
 
 // import * as SplashScreen from 'expo-splash-screen';
 import { loadFonts } from "./utils/loadFonts";
 import { getAppStyles } from "./App.styles";
+import { enableScreens } from 'react-native-screens';
+
+// Enable screens for navigation
+enableScreens(true);
 
 const Stack = createNativeStackNavigator();
 
@@ -55,48 +61,59 @@ function AppContent({ navigation }: { navigation: any }) {
     }
   }, [fontsLoaded]);
 
-  if (!fontsLoaded) {
-    return null;
+  if (!fontsLoaded || true) {
+    return (
+      <View style={styles.splashContainer}>
+        <Loading type={LoadingType.Logo} size={LoadingSizes.Large} />
+      </View>
+    );
   }
+  
   return (
     <SafeAreaView style={styles.container}>
-      <Text type={TextTypes.Heading2} disableParser>Home Page</Text>
-      <Text >{"<highlight>Passwort zurücksetzen</highlight> <bold>passwort zurücksetzen</bold>"}</Text>
-      <Button onPress={() => console.log("presssing!!")}>
-        Basic button test
-      </Button>
-      <View>
-        <Logo label="Logo" />
-        <EyeOpenIcon label="EyeOpenIcon" />
-      </View>
-      <Popover
-        asToolTip
-        showCloseButton={false}
-        trigger={
-          <Button appearance={ButtonAppearance.Secondary}>
-            Open Popover
-          </Button>
-        }
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={true}
       >
-        <Text>This is tooltip text with tooltip styling</Text>
-      </Popover>
+        <Text type={TextTypes.Heading2} disableParser>Home Page</Text>
+        <Text >{"<highlight>Passwort zurücksetzen</highlight> <bold>passwort zurücksetzen</bold>"}</Text>
+        <Button onPress={() => console.log("presssing!!")}>
+          Basic button test
+        </Button>
+        <View>
+          <Logo label="Logo" />
+          <EyeOpenIcon label="EyeOpenIcon" />
+        </View>
+        <Popover
+          asToolTip
+          showCloseButton={false}
+          trigger={
+            <Button appearance={ButtonAppearance.Secondary}>
+              Open Popover
+            </Button>
+          }
+        >
+          <Text>This is tooltip text with tooltip styling</Text>
+        </Popover>
 
-      <View style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-        <Text>{textParser.bold}</Text>
-        <Text>{textParser.highlight}</Text>
-        <Text>{textParser.link}</Text>
-        <Text>{textParser.linkAsButton}</Text>
-        <Text>{textParser.button}</Text>
-        <Checkbox onCheckedChange={(value) => console.log({ checked: value })} label='Hallo ein <bold>guten</bold> Tag' checked={false}></Checkbox>
-        <Checkbox onCheckedChange={(value) => console.log({ checked: value })} label='Read only' readOnly checked />
-      </View>
-      <ProgressBar max={8} value={2}></ProgressBar>
-      <Button
-        appearance={ButtonAppearance.Primary}
-        onPress={() => navigation.navigate("TestPage")}
-      >
-        Go to Test Page
-      </Button>
+        <View style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <Text>{textParser.bold}</Text>
+          <Text>{textParser.highlight}</Text>
+          <Text>{textParser.link}</Text>
+          <Text>{textParser.linkAsButton}</Text>
+          <Text>{textParser.button}</Text>
+          <Checkbox onCheckedChange={(value) => console.log({ checked: value })} label='Hallo ein <bold>guten</bold> Tag' checked={false}></Checkbox>
+          <Checkbox onCheckedChange={(value) => console.log({ checked: value })} label='Read only' readOnly checked />
+        </View>
+        <ProgressBar max={8} value={2}></ProgressBar>
+        <Button
+          appearance={ButtonAppearance.Primary}
+          onPress={() => navigation.navigate("TestPage")}
+        >
+          Go to Test Page
+        </Button>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -106,8 +123,10 @@ function MainScreen({ navigation }: { navigation: any }) {
 }
 
 function App() {
-  const isStorybookEnabled =
-    process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === "true";
+  const isStorybookEnabled = process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === "true";
+
+  console.log("=== APP DEBUG ===");
+  console.log("isStorybookEnabled:", isStorybookEnabled);
 
   if (isStorybookEnabled) {
     const StorybookUIRoot = require("./.rnstorybook").default;

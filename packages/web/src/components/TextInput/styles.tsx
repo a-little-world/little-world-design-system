@@ -124,5 +124,6 @@ export const TelephoneInput = styled(PhoneInput)<{
 export const ShowPasswordToggle = styled(Button)`
   position: absolute;
   right: ${({ theme }) => theme.spacing.xxsmall};
-  top: ${({ theme }) => theme.spacing.xxsmall};
+  top: calc(50% - 1px);
+  transform: translateY(-50%);
 `;
