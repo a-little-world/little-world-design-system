@@ -1,7 +1,7 @@
 import * as RadixPopover from '@radix-ui/react-popover';
 import React from 'react';
 
-import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
+import Button, { ButtonVariations } from '../Button/Button';
 import { CloseIcon } from '../Icon';
 import {
   PopoverRoot,
