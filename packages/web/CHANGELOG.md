@@ -1,5 +1,18 @@
 # @a-little-world/little-world-design-system
 
+## 2.10.0
+
+### Minor Changes
+
+- Add new Radio Group type
+- Fix styling for Popover close button
+- Add withBackground prop to MultiSelection for styling variation
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.7.0
+
 ## 2.9.0
 
 ### Minor Changes

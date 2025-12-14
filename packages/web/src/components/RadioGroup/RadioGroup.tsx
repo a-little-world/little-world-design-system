@@ -1,10 +1,16 @@
 import * as RadixRadioGroup from '@radix-ui/react-radio-group';
 import React from 'react';
 
+import {
+  RadioGroupVariations,
+  RadioGroupBaseProps,
+} from '@a-little-world/little-world-design-system-core';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import {
   ItemContainer,
+  PillItem,
+  PillRoot,
   RadioGroupIndicator,
   RadioGroupItem,
   RadioGroupRoot,
@@ -17,7 +23,8 @@ type Props = {
   labelTooltip?: string;
   items: Array<{ id: string; label?: string; value: string }>;
   inputRef: React.RefObject<HTMLInputElement>;
-} & RadixRadioGroup.RadioGroupProps;
+} & RadixRadioGroup.RadioGroupProps &
+  RadioGroupBaseProps;
 
 const RadioGroup: React.FC<Props> = ({
   error,
@@ -25,30 +32,60 @@ const RadioGroup: React.FC<Props> = ({
   label,
   labelTooltip,
   inputRef,
+  type = RadioGroupVariations.Classic,
+  value,
   ...rest
-}: Props) => (
-  <RadioGroupWrapper>
-    {label && (
-      <Label bold htmlFor={label} tooltipText={labelTooltip}>
-        {label}
-      </Label>
-    )}
-    <RadioGroupRoot ref={inputRef} value={undefined} name={label} {...rest}>
-      {items?.map(item => (
-        <ItemContainer key={item.id}>
-          <RadioGroupItem value={item.value} id={item.id}>
-            <RadioGroupIndicator />
-          </RadioGroupItem>
-          {item.label && (
-            <Label htmlFor={item.id} inline>
-              {item.label}
-            </Label>
-          )}
-        </ItemContainer>
-      ))}
-      <InputError visible={Boolean(error)}>{error}</InputError>
-    </RadioGroupRoot>
-  </RadioGroupWrapper>
-);
+}: Props) => {
+  const isPill = type === RadioGroupVariations.Pill;
+
+  return (
+    <RadioGroupWrapper>
+      {label && (
+        <Label bold htmlFor={label} tooltipText={labelTooltip}>
+          {label}
+        </Label>
+      )}
+      {isPill ? (
+        <>
+          <PillRoot ref={inputRef} value={value} name={label} {...rest}>
+            {items?.map(item => (
+              <PillItem
+                key={item.id}
+                value={item.value}
+                id={item.id}
+                $hasError={Boolean(error)}
+              >
+                {item.label}
+              </PillItem>
+            ))}
+          </PillRoot>
+          <InputError visible={Boolean(error)} textAlign="left">
+            {error}
+          </InputError>
+        </>
+      ) : (
+        <RadioGroupRoot ref={inputRef} value={value} name={label} {...rest}>
+          {items?.map(item => (
+            <ItemContainer key={item.id}>
+              <RadioGroupItem
+                value={item.value}
+                id={item.id}
+                $hasError={Boolean(error)}
+              >
+                <RadioGroupIndicator />
+              </RadioGroupItem>
+              {item.label && (
+                <Label htmlFor={item.id} inline>
+                  {item.label}
+                </Label>
+              )}
+            </ItemContainer>
+          ))}
+          <InputError visible={Boolean(error)}>{error}</InputError>
+        </RadioGroupRoot>
+      )}
+    </RadioGroupWrapper>
+  );
+};
 
 export default RadioGroup;

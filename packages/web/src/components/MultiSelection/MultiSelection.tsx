@@ -12,6 +12,7 @@ type Props = {
   options: { tag: string; value: string }[];
   preSelected?: string[];
   onSelection: (selected: string[]) => void;
+  withBackground?: boolean;
 };
 
 const MultiSelection: React.FC<Props> = ({
@@ -22,6 +23,7 @@ const MultiSelection: React.FC<Props> = ({
   options,
   preSelected = [],
   onSelection,
+  withBackground = true,
 }: Props) => {
   const [selected, setSelected] = useState<string[]>([]);
 
@@ -41,7 +43,7 @@ const MultiSelection: React.FC<Props> = ({
           {label}
         </Label>
       )}
-      <Options $hasError={Boolean(error)}>
+      <Options $hasError={Boolean(error)} $withBackground={withBackground}>
         {options.map(option => {
           const isSelected = selected?.some(el => el === option.value);
 
@@ -49,6 +51,7 @@ const MultiSelection: React.FC<Props> = ({
             <Option
               key={option.value}
               $selected={isSelected}
+              $withBackground={withBackground}
               onClick={() =>
                 handleOnClick(
                   isSelected

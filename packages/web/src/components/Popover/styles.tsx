@@ -97,8 +97,6 @@ export const StyledPopoverClose = styled(PopoverClose)<{
   position: absolute;
   top: ${({ theme }) => theme.spacing.xsmall};
   right: ${({ theme }) => theme.spacing.xsmall};
-  width: 12px !important;
-  height: 12px !important;
   color: ${({ $asTooltip, theme }) =>
     $asTooltip ? theme.color.text.reversed : theme.color.text.primary};
 `;

@@ -11,6 +11,7 @@ export * from './ProgressBar';
 export * from './Separator';
 export * from './Status';
 export * from './Svg';
+export * from './RadioGroup';
 export * from './Tag';
 export * from './Text';
 export * from './TextArea';

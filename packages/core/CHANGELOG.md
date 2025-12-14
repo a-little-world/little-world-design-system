@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.7.0
+
+### Minor Changes
+
+- Add new Radio Group type
+
 ## 1.6.0
 
 ### Minor Changes
