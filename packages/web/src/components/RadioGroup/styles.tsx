@@ -1,5 +1,5 @@
 import * as RadioGroup from '@radix-ui/react-radio-group';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const ITEM_WIDTH = '13px';
 
@@ -10,9 +10,56 @@ export const RadioGroupRoot = styled(RadioGroup.Root)`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xxsmall};
   align-items: flex-start;
+  width: 100%;
 `;
 
-export const RadioGroupItem = styled(RadioGroup.Item)`
+export const PillRoot = styled(RadioGroup.Root)`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
+  align-items: center;
+  width: 100%;
+  margin-bottom: ${({ theme }) => theme.spacing.xxxsmall};
+`;
+
+export const PillItem = styled(RadioGroup.Item)<{ $hasError: boolean }>`
+  all: unset;
+  font-family: 'Signika Negative';
+  font-weight: 600;
+  background: ${({ theme }) => theme.color.surface.primary};
+  border-radius: ${({ theme }) => theme.radius.small};
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.03);
+  border: 2px solid ${({ theme }) => theme.color.border.subtle};
+  padding: ${({ theme }) => `${theme.spacing.xxsmall} ${theme.spacing.xsmall}`};
+  min-width: 60px;
+  width: 100%;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: filter 0.2s ease-in-out;
+
+  ${({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.small}) {
+      padding: ${theme.spacing.xsmall} ${theme.spacing.small};
+      min-width: 80px;
+    }
+  `}
+
+  &[data-state='checked'] {
+    border-color: ${({ $hasError, theme }) =>
+      $hasError ? theme.color.border.error : theme.color.border.selected};
+  }
+
+  &:hover {
+    filter: brightness(0.97);
+    transition: filter 0.2s ease-in-out;
+  }
+`;
+
+export const RadioGroupItem = styled(RadioGroup.Item)<{ $hasError: boolean }>`
   all: unset;
   background: ${({ theme }) => theme.color.surface.primary};
   box-sizing: border-box;
@@ -23,7 +70,9 @@ export const RadioGroupItem = styled(RadioGroup.Item)`
   margin-right: ${({ theme }) => theme.spacing.xxsmall};
 
   &:focus {
-    box-shadow: 0 0 0 2px #eeb612;
+    box-shadow: 0 0 0 2px
+      ${({ $hasError, theme }) =>
+        $hasError ? theme.color.border.error : '#eeb612'};
   }
 `;
 

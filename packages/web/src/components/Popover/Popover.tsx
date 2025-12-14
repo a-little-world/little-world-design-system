@@ -1,7 +1,7 @@
 import * as RadixPopover from '@radix-ui/react-popover';
 import React from 'react';
 
-import Button, { ButtonVariations } from '../Button/Button';
+import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
 import { CloseIcon } from '../Icon';
 import {
   PopoverRoot,
@@ -55,7 +55,7 @@ const Popover: React.FC<PopoverProps> = ({
         {showCloseButton && (
           <StyledPopoverClose asChild $asTooltip={asTooltip}>
             <Button variation={ButtonVariations.Icon}>
-              <CloseIcon label="popover close" />
+              <CloseIcon label="popover close" width={12} height={12} />
             </Button>
           </StyledPopoverClose>
         )}
