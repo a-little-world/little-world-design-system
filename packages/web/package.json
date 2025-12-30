@@ -24,7 +24,8 @@
     "url": "git+https://github.com/a-little-world/little-world-design-system.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   },
   "author": "",
   "license": "LGPL-3.0-only",
