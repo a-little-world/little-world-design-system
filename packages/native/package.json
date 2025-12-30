@@ -8,7 +8,7 @@
   "files": [
     "dist"
   ],
-  "license": "MIT",
+  "license": "LGPL-3.0-only",
   "scripts": {
     "build": "rimraf dist && rollup -c --bundleConfigAsCjs && node prepare-package.js",
     "build:types": "tsc --emitDeclarationOnly",
