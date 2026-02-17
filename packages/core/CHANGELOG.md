@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.9.0
+
+### Minor Changes
+
+- Add sizes to Checkbox props
+
 ## 1.8.0
 
 ### Minor Changes

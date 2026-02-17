@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system
 
+## 2.12.0
+
+### Minor Changes
+
+- Improve CheckboxGrid component: Allow for multi-selection, improve design, add scroll buttons
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.9.0
+
 ## 2.11.0
 
 ### Minor Changes
