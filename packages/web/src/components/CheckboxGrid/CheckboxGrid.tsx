@@ -2,10 +2,13 @@ import { CheckedState } from '@radix-ui/react-checkbox';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTheme } from 'styled-components';
 
+import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
+import { ChevronLeftIcon, ChevronRightIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import Text from '../Text/Text';
 import {
+  ArrowButtonsContainer,
   BelowGrid,
   CheckboxGridWrapper,
   ColumnHeaderCell,
@@ -51,15 +54,23 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
   const [selected, setSelected] = useState<SelectedType>(preSelected || {});
   const gridRef = useRef<HTMLDivElement>(null);
   const [showFade, setShowFade] = useState(false);
+  const [isScrollable, setIsScrollable] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
   useEffect(() => {
     const checkScrollable = () => {
       if (gridRef.current) {
         const { scrollWidth, clientWidth, scrollLeft } = gridRef.current;
-        const isScrollable = scrollWidth > clientWidth;
+        const canScroll = scrollWidth > clientWidth;
         const isScrolledToEnd =
           Math.abs(scrollWidth - clientWidth - scrollLeft) < 1;
-        setShowFade(isScrollable && !isScrolledToEnd);
+        const isScrolledToStart = scrollLeft < 1;
+
+        setIsScrollable(canScroll);
+        setCanScrollLeft(canScroll && !isScrolledToStart);
+        setCanScrollRight(canScroll && !isScrolledToEnd);
+        setShowFade(canScroll && !isScrolledToEnd);
       }
     };
 
@@ -145,6 +156,53 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
     });
   };
 
+  const getColumnWidth = (): number => {
+    if (!gridRef.current) return 0;
+    const grid = gridRef.current;
+
+    // Find the first scrollable column header cell (second column, index 1)
+    // ColumnHeaderCell components are children of the grid
+    const columnHeaders = Array.from(grid.children).filter(
+      (child): child is HTMLElement => {
+        const style = window.getComputedStyle(child);
+        return style.gridColumnStart === '2';
+      },
+    );
+
+    if (columnHeaders.length > 0 && columnHeaders[0]) {
+      return columnHeaders[0].offsetWidth;
+    }
+
+    // Fallback: calculate approximate column width
+    if (columnHeadings.length > 1) {
+      const scrollableColumns = columnHeadings.length - 1;
+      // Get the width of the scrollable area (excluding fixed first column)
+      const firstColumn = Array.from(grid.children).find(
+        (child): child is HTMLElement => {
+          const style = window.getComputedStyle(child);
+          return style.gridColumnStart === '1' && style.position === 'sticky';
+        },
+      );
+      const firstColumnWidth = firstColumn?.offsetWidth || 0;
+      const scrollableWidth = grid.scrollWidth - firstColumnWidth;
+      return scrollableWidth / scrollableColumns;
+    }
+
+    return 100; // Default fallback
+  };
+
+  const scrollLeft = () => {
+    if (!gridRef.current) return;
+    const columnWidth = getColumnWidth();
+    gridRef.current.scrollBy({ left: -columnWidth, behavior: 'smooth' });
+  };
+
+  const scrollRight = () => {
+    if (!gridRef.current) return;
+    const columnWidth = getColumnWidth();
+    gridRef.current.scrollBy({ left: columnWidth, behavior: 'smooth' });
+  };
+
   return (
     <CheckboxGridWrapper>
       <GridWrapper>
@@ -179,7 +237,11 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
             ))}
             <ScrollableWrapper>
               {columnHeadings.slice(1).map((column, index) => (
-                <ColumnHeaderCell key={column} index={index + 1}>
+                <ColumnHeaderCell
+                  key={column}
+                  index={index + 1}
+                  data-column-index={index + 1}
+                >
                   <>
                     {!readOnly && (
                       <Checkbox
@@ -223,14 +285,42 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
         <FadeOverlay $visible={showFade} />
       </GridWrapper>
       <BelowGrid>
-        {legendText && highlightCells && (
-          <Legend>
-            <Square />
-            <Text tag="span">=</Text>
-            <Text tag="span">{legendText}</Text>
-          </Legend>
+        <div>
+          {legendText && highlightCells && (
+            <Legend>
+              <Square />
+              <Text tag="span">=</Text>
+              <Text tag="span">{legendText}</Text>
+            </Legend>
+          )}
+          <InputError visible={Boolean(error)}>{error}</InputError>
+        </div>
+        {isScrollable && (
+          <ArrowButtonsContainer>
+            <Button
+              variation={ButtonVariations.Circle}
+              onClick={scrollLeft}
+              size={ButtonSizes.Medium}
+              aria-label="Scroll left"
+              borderColor={theme.color.border.moderate}
+              backgroundColor={theme.color.surface.secondary}
+              disabled={!canScrollLeft}
+            >
+              <ChevronLeftIcon label="Scroll left" width={16} height={16} />
+            </Button>
+            <Button
+              variation={ButtonVariations.Circle}
+              onClick={scrollRight}
+              size={ButtonSizes.Medium}
+              borderColor={theme.color.border.moderate}
+              backgroundColor={theme.color.surface.secondary}
+              aria-label="Scroll right"
+              disabled={!canScrollRight}
+            >
+              <ChevronRightIcon label="Scroll right" width={16} height={16} />
+            </Button>
+          </ArrowButtonsContainer>
         )}
-        <InputError visible={Boolean(error)}>{error}</InputError>
       </BelowGrid>
     </CheckboxGridWrapper>
   );

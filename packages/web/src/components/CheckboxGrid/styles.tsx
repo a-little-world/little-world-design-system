@@ -151,6 +151,13 @@ export const StyledCheckbox = styled(Checkbox)<{
 export const BelowGrid = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+`;
+
+export const ArrowButtonsContainer = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
+  align-items: center;
 `;
 
 export const Legend = styled.div`
