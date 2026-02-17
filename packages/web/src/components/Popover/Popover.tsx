@@ -14,11 +14,13 @@ export enum PopoverSizes {
   Small = '160px',
   Medium = '240px',
   Large = '360px',
+  Auto = 'auto',
 }
 
 type PopoverProps = {
   asTooltip?: boolean;
   children: React.ReactNode;
+  inModal?: boolean;
   showCloseButton?: boolean;
   trigger?: React.ReactNode;
   width?: PopoverSizes;
@@ -31,6 +33,7 @@ const Popover: React.FC<PopoverProps> = ({
   asTooltip,
   defaultOpen,
   children,
+  inModal,
   onFocusOutside,
   open,
   side,
@@ -39,7 +42,7 @@ const Popover: React.FC<PopoverProps> = ({
   trigger,
   width = PopoverSizes.Small,
 }) => (
-  <PopoverRoot defaultOpen={defaultOpen} open={open}>
+  <PopoverRoot defaultOpen={defaultOpen} open={open} modal={inModal}>
     {trigger && <RadixPopover.Trigger asChild>{trigger}</RadixPopover.Trigger>}
     <RadixPopover.Portal>
       <StyledPopoverContent
@@ -50,6 +53,7 @@ const Popover: React.FC<PopoverProps> = ({
         $extraPaddingTop={Boolean(!asTooltip && showCloseButton)}
         collisionPadding={DEFAULT_SIDE_OFFSET}
         onFocusOutside={onFocusOutside}
+        onOpenAutoFocus={inModal ? e => e.preventDefault() : undefined}
       >
         {children}
         {showCloseButton && (

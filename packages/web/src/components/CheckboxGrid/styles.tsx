@@ -7,6 +7,11 @@ export const CheckboxGridWrapper = styled.div`
   width: 100%;
 `;
 
+export const GridWrapper = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
 export const Grid = styled.div<{
   $columns: number;
   $rows: number;
@@ -14,21 +19,40 @@ export const Grid = styled.div<{
 }>`
   display: grid;
   width: 100%;
-  row-gap: ${({ theme }) => theme.spacing.xsmall};
-  column-gap: ${({ theme }) => theme.spacing.xxsmall};
+  row-gap: 0;
+  column-gap: 0;
   grid-template-columns: ${({ $columns }) =>
-    `repeat(${$columns}, minmax(max-content, 1fr))`};
-  grid-template-rows: ${({ $rows }) => `repeat(${$rows}, 1fr)`};
-  grid-auto-rows: 27.5px;
+    `minmax(max-content, 1fr) repeat(${$columns - 1}, minmax(80px, 1fr))`};
+  grid-template-rows: ${({ $rows }) => `72px repeat(${$rows}, 40px)`};
   margin-bottom: ${({ theme }) => theme.spacing.xxsmall};
   padding-bottom: ${({ theme }) => theme.spacing.xxsmall};
   overflow-x: scroll;
   background: ${({ theme }) => theme.color.surface.primary};
   color: ${({ theme }) => theme.color.text.primary};
   align-items: center;
+  border-radius: ${({ theme }) => theme.radius.xsmall};
   border-bottom: 1px solid
     ${({ $hasError, theme }) =>
       $hasError ? theme.color.border.error : theme.color.surface.primary};
+`;
+
+export const FadeOverlay = styled.div<{ $visible: boolean }>`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: ${({ theme }) => theme.spacing.xxsmall};
+  width: 40px;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    transparent,
+    ${({ theme }) => theme.color.surface.primary}
+  );
+  opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+  transition: opacity 0.2s ease-in-out;
+  z-index: 3;
+  border-radius: 0 ${({ theme }) => theme.radius.xsmall}
+    ${({ theme }) => theme.radius.xsmall} 0;
 `;
 
 export const ColumnHeading = styled(Text)<{ index: number }>`
@@ -38,11 +62,12 @@ export const ColumnHeading = styled(Text)<{ index: number }>`
   grid-row-end: 1;
   text-align: center;
   max-width: 100%;
-  padding: ${({ theme }) => theme.spacing.xxxsmall};
-  background: ${({ theme }) => theme.color.surface.primary};
+  padding: ${({ theme }) => theme.spacing.xxsmall};
+  background: ${({ theme }) => theme.color.surface.subtle};
+  border-right: 1px solid ${({ theme }) => theme.color.border.subtle};
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 
   ${({ index }) =>
@@ -53,23 +78,46 @@ export const ColumnHeading = styled(Text)<{ index: number }>`
   `}
 `;
 
-export const RowHeading = styled(Text)<{ index: number }>`
+export const RowHeading = styled.div<{ index: number }>`
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: ${({ index }) => index + 2};
   grid-row-end: ${({ index }) => index + 2};
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
   position: sticky;
   left: 0;
-  background: ${({ theme }) => theme.color.surface.primary};
+  background: ${({ theme }) => theme.color.surface.subtle};
+  padding: 0 ${({ theme }) => theme.spacing.xxsmall};
+  border-right: 1px solid ${({ theme }) => theme.color.border.subtle};
   height: 100%;
+  text-align: center;
+  z-index: 2;
+`;
+
+export const ColumnHeaderCell = styled.div<{ index: number }>`
+  grid-column-start: ${({ index }) => index + 1};
+  grid-column-end: ${({ index }) => index + 1};
+  grid-row-start: 1;
+  grid-row-end: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
+  padding: ${({ theme }) => theme.spacing.xxsmall};
+  background: ${({ theme }) => theme.color.surface.subtle};
+  border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
+  height: 100%;
+  min-width: 0;
+  text-align: center;
 `;
 
 export const ScrollableWrapper = styled.div`
-  overflow: scroll-x;
+  overflow-x: scroll;
   width: 100%;
   display: contents;
 `;

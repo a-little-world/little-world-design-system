@@ -21,7 +21,7 @@ type Props = {
   labelBold?: boolean;
   labelInline?: boolean;
   labelTooltip?: string;
-  inputRef: React.RefObject<HTMLButtonElement>;
+  inputRef?: React.RefObject<HTMLButtonElement>;
 } & RadixSwitch.SwitchProps;
 
 const Switch: React.FC<Props> = ({

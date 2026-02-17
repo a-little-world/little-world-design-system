@@ -1,3 +1,4 @@
+import { CheckboxSizes } from '@a-little-world/little-world-design-system-core';
 import { CheckedState } from '@radix-ui/react-checkbox';
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
@@ -60,6 +61,7 @@ const MultiCheckbox: React.FC<MultiCheckboxProps> = ({
             color={theme.color.surface.selected}
             value={value}
             readOnly={readOnly}
+            size={CheckboxSizes.Small}
           />
         ))}
       </MultiCheckboxWrapper>

@@ -23,6 +23,8 @@ export interface CardBaseProps {
 }
 
 export interface CardHeaderProps {
+  center?: boolean;
+  marginBottom?: string | number;
   align?: FlexAlignType;
   children: ReactNode;
   textColor?: string;
