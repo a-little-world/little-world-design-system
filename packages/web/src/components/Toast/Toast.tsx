@@ -1,9 +1,9 @@
+import {
+  TOAST_DEFAULT_DURATION,
+  ToastBaseProps,
+} from '@a-little-world/little-world-design-system-core';
 import { Close } from '@radix-ui/react-toast';
 import React, { useState } from 'react';
-import {
-  ToastBaseProps,
-  TOAST_DEFAULT_DURATION,
-} from '@a-little-world/little-world-design-system-core';
 
 import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
 import { InfoIcon } from '../Icon';
@@ -31,6 +31,7 @@ const Toast: React.FC<ToastBaseProps> = ({
   actionText,
   actionAltText,
   duration = TOAST_DEFAULT_DURATION,
+  showClose = true,
   onClose,
   onDismiss,
   onClick,
@@ -86,32 +87,36 @@ const Toast: React.FC<ToastBaseProps> = ({
         duration={duration}
         onClick={onClickInternal}
       >
-        <Close asChild>
-          <ToastCloseButton
-            variation={ButtonVariations.Icon}
-            size={ButtonSizes.Small}
-            onClick={onDismissClick}
-          >
-            <ToastCloseIcon
-              label={'ToastCloseIcon'}
-              width={TOAST_ICON_SIZE}
-              height={TOAST_ICON_SIZE}
-            ></ToastCloseIcon>
-          </ToastCloseButton>
-        </Close>
-        <ToastHeader>
-          <ToastHeadline>
-            {icon ?? (
-              <InfoIcon
-                label={'ToastInfoIcon'}
+        {showClose && (
+          <Close asChild>
+            <ToastCloseButton
+              variation={ButtonVariations.Icon}
+              size={ButtonSizes.Small}
+              onClick={onDismissClick}
+            >
+              <ToastCloseIcon
+                label={'ToastCloseIcon'}
                 width={TOAST_ICON_SIZE}
                 height={TOAST_ICON_SIZE}
-              />
-            )}
-            <span>{headline}</span>
-          </ToastHeadline>
-          <div>{timestamp}</div>
-        </ToastHeader>
+              ></ToastCloseIcon>
+            </ToastCloseButton>
+          </Close>
+        )}
+        {headline && (
+          <ToastHeader>
+            <ToastHeadline>
+              {icon ?? (
+                <InfoIcon
+                  label={'ToastInfoIcon'}
+                  width={TOAST_ICON_SIZE}
+                  height={TOAST_ICON_SIZE}
+                />
+              )}
+              <span>{headline}</span>
+            </ToastHeadline>
+            <div>{timestamp}</div>
+          </ToastHeader>
+        )}
         <ToastContent>
           {title && <ToastTitle className="ToastTitle">{title}</ToastTitle>}
           {description && <ToastDescription>{description}</ToastDescription>}
