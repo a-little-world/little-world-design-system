@@ -54,8 +54,9 @@ const StyledCard = styled.div<{
     `}
 `;
 
-const StyledCardHeader = styled(Text)`
-  margin-bottom: ${({ theme }) => theme.spacing.small};
+const StyledCardHeader = styled(Text)<{ $marginBottom?: string | number }>`
+  margin-bottom: ${({ $marginBottom, theme }) =>
+    $marginBottom || theme.spacing.small};
 `;
 
 export const CardContent = styled.div<CardContentProps>`
@@ -89,13 +90,16 @@ type CardProps = CardBaseProps & {
 
 export const CardHeader: React.FC<CardHeaderProps> = ({
   children,
+  center = true,
+  marginBottom,
   textColor,
   textType,
 }) => (
   <StyledCardHeader
     type={textType || TextTypes.Heading4}
-    center
+    center={center}
     color={textColor}
+    $marginBottom={marginBottom}
   >
     {children}
   </StyledCardHeader>

@@ -25,6 +25,11 @@ export {
   CardHeader,
 } from './components/Card/Card';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
+export {
+  CheckboxDimensions,
+  CheckboxIconDimensions,
+  CheckboxSizes,
+} from '@a-little-world/little-world-design-system-core';
 export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
 
@@ -49,7 +54,7 @@ export {
   MenuContentLayout,
 } from './components/NavigationMenu/NavigationMenu';
 export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
-export { default as Popover } from './components/Popover/Popover';
+export { default as Popover, PopoverSizes } from './components/Popover/Popover';
 export { default as InfoPopover } from './components/Popover/InfoPopover';
 export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
 export { default as Separator } from './components/Separator/Separator';

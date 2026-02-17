@@ -1,3 +1,7 @@
+import {
+  CheckboxIconDimensions,
+  CheckboxSizes,
+} from '@a-little-world/little-world-design-system-core';
 import { CheckboxProps as RadixCheckboxProps } from '@radix-ui/react-checkbox';
 import React from 'react';
 
@@ -22,6 +26,7 @@ type CheckboxProps = {
   label?: string;
   readOnly?: boolean;
   required?: boolean;
+  size?: CheckboxSizes;
 } & RadixCheckboxProps;
 
 export const CheckboxButton: React.FC<CheckboxProps> = ({
@@ -33,6 +38,7 @@ export const CheckboxButton: React.FC<CheckboxProps> = ({
   inputRef,
   label,
   onCheckedChange,
+  size = CheckboxSizes.Medium,
   value,
   ...rest
 }) => (
@@ -44,10 +50,13 @@ export const CheckboxButton: React.FC<CheckboxProps> = ({
     onCheckedChange={onCheckedChange}
     value={value}
     $hasError={Boolean(error)}
+    $size={size}
     {...rest}
   >
-    <NonInteractiveCheckbox $color={color} checked={checked}>
-      {checked && <CheckIcon label="check icon" width={10} />}
+    <NonInteractiveCheckbox $color={color} checked={checked} $size={size}>
+      {checked && (
+        <CheckIcon label="check icon" width={CheckboxIconDimensions[size]} />
+      )}
     </NonInteractiveCheckbox>
     {label && (
       <StyledLabel htmlFor={id} inline>
@@ -68,6 +77,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   label,
   onCheckedChange,
   readOnly,
+  size = CheckboxSizes.Medium,
   value,
   ...rest
 }) => {
@@ -75,8 +85,13 @@ const Checkbox: React.FC<CheckboxProps> = ({
     <CheckboxWrapper className={className}>
       <CheckboxContainer>
         {readOnly ? (
-          <NonInteractiveCheckbox $color={color} checked={checked}>
-            {checked && <CheckIcon label="check icon" width={10} />}
+          <NonInteractiveCheckbox $color={color} checked={checked} $size={size}>
+            {checked && (
+              <CheckIcon
+                label="check icon"
+                width={CheckboxIconDimensions[size]}
+              />
+            )}
           </NonInteractiveCheckbox>
         ) : (
           <CheckboxRoot
@@ -87,10 +102,14 @@ const Checkbox: React.FC<CheckboxProps> = ({
             value={value}
             $hasError={Boolean(error)}
             $color={color}
+            $size={size}
             {...rest}
           >
             <CheckboxIndicator>
-              <CheckIcon label="check icon" width={10} />
+              <CheckIcon
+                label="check icon"
+                width={CheckboxIconDimensions[size]}
+              />
             </CheckboxIndicator>
           </CheckboxRoot>
         )}

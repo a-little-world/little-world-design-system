@@ -49,6 +49,12 @@ export const AccordionContent = styled(Accordion.Content)`
   }
 `;
 
+export const TriggerIcon = styled(ChevronDownIcon)`
+  flex-shrink: 0;
+  margin-top: 6px;
+  transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
+`;
+
 export const AccordionTrigger = styled(Accordion.Trigger)`
   display: flex;
   align-items: flex-start;
@@ -60,9 +66,8 @@ export const AccordionTrigger = styled(Accordion.Trigger)`
   width: 100%;
   border: none;
   text-align: left;
-`;
 
-export const TriggerIcon = styled(ChevronDownIcon)`
-  flex-shrink: 0;
-  margin-top: 6px;
+  &[data-state='open'] ${TriggerIcon} {
+    transform: rotate(180deg);
+  }
 `;

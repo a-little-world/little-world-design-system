@@ -1,14 +1,30 @@
+import {
+  CheckboxDimensions,
+  CheckboxSizes,
+} from '@a-little-world/little-world-design-system-core';
 import * as Checkbox from '@radix-ui/react-checkbox';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import Label from '../Label/Label';
+import { pixelate } from '../../utils/styles';
 
-const ITEM_WIDTH = '16px';
+const checkmarkAnimation = keyframes`
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
 
 export const CheckboxWrapper = styled.div``;
 
 export const CheckboxButtonContainer = styled(Checkbox.Root)<{
   $hasError?: boolean;
+  $size?: CheckboxSizes;
 }>`
   cursor: pointer;
   padding: ${({ theme }) => theme.spacing.xxsmall};
@@ -44,6 +60,7 @@ export const CheckboxContainer = styled.div`
 const CHECKBOX_STYLES = css<{
   $hasError?: boolean;
   $color?: string;
+  $size: CheckboxSizes;
   checked: Checkbox.CheckboxProps['checked'];
 }>`
   all: unset;
@@ -51,9 +68,10 @@ const CHECKBOX_STYLES = css<{
   background: ${({ theme }) => theme.color.surface.primary};
   box-sizing: border-box;
   border: 1px solid ${({ theme }) => theme.color.border.contrast};
+  border-radius: ${({ theme }) => theme.radius.xxxsmall};
   color: ${({ theme }) => theme.color.text.primary};
-  width: ${ITEM_WIDTH};
-  height: ${ITEM_WIDTH};
+  width: ${({ $size }) => pixelate(CheckboxDimensions[$size])};
+  height: ${({ $size }) => pixelate(CheckboxDimensions[$size])};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,6 +91,7 @@ const CHECKBOX_STYLES = css<{
 export const CheckboxRoot = styled(Checkbox.Root)<{
   $hasError?: boolean;
   $color?: string;
+  $size: CheckboxSizes;
   checked: Checkbox.CheckboxProps['checked'];
 }>`
   ${CHECKBOX_STYLES}
@@ -80,6 +99,7 @@ export const CheckboxRoot = styled(Checkbox.Root)<{
 
 export const NonInteractiveCheckbox = styled.div<{
   $color?: string;
+  $size: CheckboxSizes;
   checked: Checkbox.CheckboxProps['checked'];
 }>`
   ${CHECKBOX_STYLES}
@@ -89,6 +109,7 @@ export const CheckboxIndicator = styled(Checkbox.Indicator)`
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: ${checkmarkAnimation} 0.25s ease-out;
 `;
 
 export const StyledLabel = styled(Label)`

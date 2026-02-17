@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.6.0
+
+### Minor Changes
+
+- Improve CheckboxGrid component
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.9.0
+
 ## 0.5.2
 
 ### Patch Changes

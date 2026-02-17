@@ -203,7 +203,7 @@ git diff
 # 4. Commit and push (triggers automated release)
 git add .
 git commit -m "chore: version packages"
-git push origin main
+git push origin branch-name
 ```
 
 ### 2. Review and Commit
