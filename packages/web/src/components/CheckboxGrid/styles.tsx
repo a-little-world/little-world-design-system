@@ -63,7 +63,7 @@ export const ColumnHeading = styled(Text)<{ index: number }>`
   text-align: center;
   max-width: 100%;
   padding: ${({ theme }) => theme.spacing.xxsmall};
-  background: ${({ theme }) => theme.color.surface.subtle};
+  background: ${({ theme }) => theme.color.surface.primary};
   border-right: 1px solid ${({ theme }) => theme.color.border.subtle};
   height: 100%;
   display: flex;
@@ -90,7 +90,7 @@ export const RowHeading = styled.div<{ index: number }>`
   gap: ${({ theme }) => theme.spacing.xxsmall};
   position: sticky;
   left: 0;
-  background: ${({ theme }) => theme.color.surface.subtle};
+  background: ${({ theme }) => theme.color.surface.primary};
   padding: 0 ${({ theme }) => theme.spacing.xxsmall};
   border-right: 1px solid ${({ theme }) => theme.color.border.subtle};
   height: 100%;
@@ -109,7 +109,7 @@ export const ColumnHeaderCell = styled.div<{ index: number }>`
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing.xxsmall};
   padding: ${({ theme }) => theme.spacing.xxsmall};
-  background: ${({ theme }) => theme.color.surface.subtle};
+  background: ${({ theme }) => theme.color.surface.primary};
   border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
   height: 100%;
   min-width: 0;
@@ -134,6 +134,7 @@ export const StyledCheckbox = styled(Checkbox)<{
   grid-row-start: ${({ $row }) => $row};
   grid-column-start: ${({ $column }) => $column};
   height: 100%;
+  background: ${({ theme }) => theme.color.surface.subtle};
 
   ${({ checked, theme }) =>
     checked &&
