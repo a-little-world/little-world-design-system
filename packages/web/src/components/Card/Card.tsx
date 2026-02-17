@@ -54,7 +54,7 @@ const StyledCard = styled.div<{
     `}
 `;
 
-const StyledCardHeader = styled(Text)<{ $marginBottom?: string }>`
+const StyledCardHeader = styled(Text)<{ $marginBottom?: string | number }>`
   margin-bottom: ${({ $marginBottom, theme }) =>
     $marginBottom || theme.spacing.small};
 `;
