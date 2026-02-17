@@ -1,5 +1,5 @@
-import React from 'react';
 import { ToastBaseProps } from '@a-little-world/little-world-design-system-core';
+import React from 'react';
 import Button from '../Button/Button';
 import { Logo } from '../Icon';
 import Toast from './Toast';
@@ -8,21 +8,31 @@ import { ToastProvider, ToastViewport } from './styles';
 export default {
   component: Toast,
   title: 'Components/Toast',
+  argTypes: {
+    headline: { control: 'text' },
+    title: { control: 'text' },
+    description: { control: 'text' },
+    actionText: { control: 'text' },
+    duration: { control: 'number' },
+    showClose: { control: 'boolean' },
+  },
 };
 
 export const Default = args => {
   const [open, setOpen] = React.useState(false);
+
   const timerRef = React.useRef(0);
 
   const props: ToastBaseProps = {
     icon: <Logo label={'ToastLogoIcon'} />,
-    headline: 'This is the headline',
-    title: `This is the title`,
-    description: 'This is the description',
+    headline: args.headline,
+    title: args.title,
+    description: args.description,
     timestamp: new Date().toLocaleTimeString(),
-    actionText: 'Click me',
-    actionAltText: 'Click me',
-    duration: 3000,
+    actionText: args.actionText,
+    actionAltText: args.actionText,
+    duration: args.duration,
+    showClose: args.showClose,
     onClose: () => console.log('toast onClose'),
     onDismiss: () => console.log('toast onDismiss'),
     onClick: () => console.log('toast onClick'),
@@ -51,5 +61,10 @@ export const Default = args => {
 };
 
 Default.args = {
-  href: 'www.little-world.com',
+  headline: 'This is the headline',
+  title: 'This is the title',
+  description: 'This is the description',
+  actionText: 'Click me',
+  duration: 3000,
+  showClose: true,
 };

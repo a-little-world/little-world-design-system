@@ -3,13 +3,14 @@ import { ReactNode } from 'react';
 export interface ToastBaseProps {
   className?: string;
   icon?: ReactNode;
-  headline: string;
+  headline?: string;
   title?: string;
   description?: string;
   timestamp?: string;
   actionText?: string;
   actionAltText?: string;
   duration?: number;
+  showClose?: boolean;
   onClose?: () => void;
   onDismiss?: () => void;
   onClick?: () => void;

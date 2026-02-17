@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.8.0
+
+### Minor Changes
+
+- Toast api updates
+  - Header bar will now be hidden when no headline is supplied
+  - The close icon can now be hidden
+
 ## 1.7.0
 
 ### Minor Changes
