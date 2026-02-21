@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 2.12.1
+
+### Patch Changes
+
+- Improve Checkbox animation
+
 ## 2.12.0
 
 ### Minor Changes

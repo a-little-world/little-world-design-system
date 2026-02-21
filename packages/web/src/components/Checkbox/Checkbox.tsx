@@ -3,7 +3,7 @@ import {
   CheckboxSizes,
 } from '@a-little-world/little-world-design-system-core';
 import { CheckboxProps as RadixCheckboxProps } from '@radix-ui/react-checkbox';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { CheckIcon } from '../Icon';
 import InputError from '../InputError/InputError';
@@ -81,6 +81,13 @@ const Checkbox: React.FC<CheckboxProps> = ({
   value,
   ...rest
 }) => {
+  const prevCheckedRef = useRef(checked);
+  const shouldAnimate = Boolean(checked && !prevCheckedRef.current);
+
+  useEffect(() => {
+    prevCheckedRef.current = checked;
+  }, [checked]);
+
   return (
     <CheckboxWrapper className={className}>
       <CheckboxContainer>
@@ -105,7 +112,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
             $size={size}
             {...rest}
           >
-            <CheckboxIndicator>
+            <CheckboxIndicator $animate={shouldAnimate}>
               <CheckIcon
                 label="check icon"
                 width={CheckboxIconDimensions[size]}
