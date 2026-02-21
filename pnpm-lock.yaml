@@ -375,7 +375,7 @@ packages:
         optional: true
 
   '@a-little-world/little-world-prettier-config@1.2.0':
-    resolution: {integrity: sha512-PgIp1LoZ0lcr/YJ0PP5kF21ybwYvHAKt5Wbwa465JHHkWh+2I3X2TOFuy1zkfQIMnap2KdLd6fBZh5pRM/yseQ==, tarball: https://registry.npmjs.org/@a-little-world/little-world-prettier-config/-/little-world-prettier-config-1.2.0.tgz}
+    resolution: {integrity: sha512-RSYiiHU0uQv1IhoZIV9RALXj6QTL4k0w8iJ1hDDZmM7RLfozRkKKd2sUOZkggMcw4Xpznhf86LfudW2A6mM0Ng==, tarball: https://registry.npmjs.org/@a-little-world/little-world-prettier-config/-/little-world-prettier-config-1.2.0.tgz}
 
   '@adobe/css-tools@4.4.4':
     resolution: {integrity: sha512-Elp+iwUx5rN5+Y8xLt5/GRoG20WGoDCQ/1Fb+1LiGtvwbDavuSk0jhD/eZdckHAuzcDzccnkv+rEjyWfRx18gg==}
