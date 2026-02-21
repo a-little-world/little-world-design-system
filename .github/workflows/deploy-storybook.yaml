@@ -33,7 +33,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://npm.pkg.github.com'
+          registry-url: 'https://registry.npmjs.org'
           scope: '@a-little-world'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_PUBLISH_TOKEN }}
@@ -43,19 +43,19 @@ jobs:
         with:
           version: 9.0.0
 
-      # Configure pnpm for GitHub Package Registry
-      - name: Configure pnpm for GitHub Package Registry
+      # Configure pnpm for npm Registry
+      - name: Configure pnpm for npm Registry
         run: |
           # Clear any existing config
           rm -f ~/.npmrc
 
-          # Set up fresh config for GitHub Package Registry
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_PUBLISH_TOKEN }}" > ~/.npmrc
-          echo "@a-little-world:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          # Set up fresh config for npm Registry
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.PACKAGE_PUBLISH_TOKEN }}" > ~/.npmrc
+          echo "@a-little-world:registry=https://registry.npmjs.org" >> ~/.npmrc
           echo "registry=https://registry.npmjs.org/" >> ~/.npmrc
 
           # Configure pnpm to use the same registry settings
-          pnpm config set @a-little-world:registry https://npm.pkg.github.com
+          pnpm config set @a-little-world:registry https://registry.npmjs.org
           pnpm config set registry https://registry.npmjs.org/
 
           # Verify configuration

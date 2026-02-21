@@ -10,9 +10,9 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-# Add permissions for package publishing
+# Add permissions for package publishing and GitHub releases
 permissions:
-  contents: read
+  contents: write
   packages: write
   id-token: write
   pull-requests: write
@@ -389,7 +389,7 @@ jobs:
       - name: Create GitHub Release
         if: github.ref == 'refs/heads/main' && steps.version-check.outputs.has_changes == 'true'
         env:
-          GH_TOKEN: ${{ secrets.PACKAGE_PUBLISH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "## 🏷️ Creating GitHub Release" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -420,12 +420,12 @@ jobs:
             echo "**Version:** $PACKAGE_VERSION" >> release_notes.md
             echo "" >> release_notes.md
 
-            # Get changelog content for this package
+            # Get changelog content for this package (format: ## 1.2.3)
             if [ -f "$PACKAGE_PATH/CHANGELOG.md" ]; then
               echo "**Changes:**" >> release_notes.md
               echo "" >> release_notes.md
               # Extract the latest version section from changelog
-              sed -n "/^## \[$PACKAGE_VERSION\]/,/^## /p" "$PACKAGE_PATH/CHANGELOG.md" | head -n -1 >> release_notes.md
+              sed -n "/^## $PACKAGE_VERSION$/,/^## /p" "$PACKAGE_PATH/CHANGELOG.md" | sed '$d' >> release_notes.md
               echo "" >> release_notes.md
             fi
           done
