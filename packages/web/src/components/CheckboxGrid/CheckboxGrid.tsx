@@ -214,11 +214,11 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
         >
           <>
             {/* on mobile, first column is fixed */}
-            <ColumnHeading tag="span" bold index={0}>
+            <ColumnHeading tag="span" bold $index={0}>
               {columnHeadings[0]}
             </ColumnHeading>
             {rowHeadings.map((row, index) => (
-              <RowHeading key={row} index={index}>
+              <RowHeading key={row} $index={index}>
                 <>
                   <Text tag="span">{row}</Text>
                   {!readOnly && (
@@ -239,7 +239,7 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
               {columnHeadings.slice(1).map((column, index) => (
                 <ColumnHeaderCell
                   key={column}
-                  index={index + 1}
+                  $index={index + 1}
                   data-column-index={index + 1}
                 >
                   <>
@@ -266,7 +266,7 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
                   return (
                     <StyledCheckbox
                       key={`${key}-${value}-${rowHeadings[rowIndex]}`}
-                      checked={selected[key]?.includes(value)}
+                      checked={!!selected[key]?.includes(value)}
                       name={name}
                       onCheckedChange={state => onSelect({ value, key, state })}
                       value={value}

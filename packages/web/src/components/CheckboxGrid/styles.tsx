@@ -55,9 +55,9 @@ export const FadeOverlay = styled.div<{ $visible: boolean }>`
     ${({ theme }) => theme.radius.xsmall} 0;
 `;
 
-export const ColumnHeading = styled(Text)<{ index: number }>`
-  grid-column-start: ${({ index }) => index + 1};
-  grid-column-end: ${({ index }) => index + 1};
+export const ColumnHeading = styled(Text)<{ $index: number }>`
+  grid-column-start: ${({ $index }) => $index + 1};
+  grid-column-end: ${({ $index }) => $index + 1};
   grid-row-start: 1;
   grid-row-end: 1;
   text-align: center;
@@ -70,19 +70,19 @@ export const ColumnHeading = styled(Text)<{ index: number }>`
   align-items: flex-end;
   justify-content: center;
 
-  ${({ index }) =>
-    !index &&
+  ${({ $index }) =>
+    !$index &&
     `
     position: sticky;
     left: 0;
   `}
 `;
 
-export const RowHeading = styled.div<{ index: number }>`
+export const RowHeading = styled.div<{ $index: number }>`
   grid-column-start: 1;
   grid-column-end: 1;
-  grid-row-start: ${({ index }) => index + 2};
-  grid-row-end: ${({ index }) => index + 2};
+  grid-row-start: ${({ $index }) => $index + 2};
+  grid-row-end: ${({ $index }) => $index + 2};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -98,9 +98,9 @@ export const RowHeading = styled.div<{ index: number }>`
   z-index: 2;
 `;
 
-export const ColumnHeaderCell = styled.div<{ index: number }>`
-  grid-column-start: ${({ index }) => index + 1};
-  grid-column-end: ${({ index }) => index + 1};
+export const ColumnHeaderCell = styled.div<{ $index: number }>`
+  grid-column-start: ${({ $index }) => $index + 1};
+  grid-column-end: ${({ $index }) => $index + 1};
   grid-row-start: 1;
   grid-row-end: 1;
   display: flex;

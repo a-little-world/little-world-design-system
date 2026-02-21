@@ -105,11 +105,17 @@ export const NonInteractiveCheckbox = styled.div<{
   ${CHECKBOX_STYLES}
 `;
 
-export const CheckboxIndicator = styled(Checkbox.Indicator)`
+export const CheckboxIndicator = styled(Checkbox.Indicator)<{
+  $animate?: boolean;
+}>`
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${checkmarkAnimation} 0.25s ease-out;
+  ${({ $animate }) =>
+    $animate &&
+    css`
+      animation: ${checkmarkAnimation} 0.25s ease-out;
+    `}
 `;
 
 export const StyledLabel = styled(Label)`
