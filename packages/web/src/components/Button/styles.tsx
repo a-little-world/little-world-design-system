@@ -72,7 +72,10 @@ const StandardButtonCss = css<{ $size?: string }>`
     }
 
     if ($size === ButtonSizes.Stretch) {
-      return `width: 100%;`;
+      return `
+       width: 100%;
+       max-width: 100%;
+      `;
     }
   }}
 `;

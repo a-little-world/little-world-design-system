@@ -34,7 +34,7 @@ const ProgressBarWrapper = styled.div`
 `;
 
 type ProgressBarProps = {
-  className: string;
+  className?: string;
   max: number;
   value: number;
 };

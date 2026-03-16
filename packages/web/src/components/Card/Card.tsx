@@ -8,6 +8,7 @@ import {
   CardFooterProps,
   CardHeaderProps,
   CardSizes,
+  FlexAlignType,
 } from '@a-little-world/little-world-design-system-core';
 import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
@@ -59,14 +60,19 @@ const StyledCardHeader = styled(Text)<{ $marginBottom?: string | number }>`
     $marginBottom || theme.spacing.small};
 `;
 
-export const CardContent = styled.div<CardContentProps>`
+export const StyledCardContent = styled.div<{
+  $align?: FlexAlignType;
+  $textAlign?: string;
+  $gap?: string | number;
+  $marginBottom?: string | number;
+}>`
   display: flex;
   flex-direction: column;
-  align-items: ${({ align }) => align || 'center'};
-  gap: ${({ gap, theme }) => gap || theme.spacing.small};
-  text-align: ${({ textAlign }) => textAlign || 'left'};
-  margin-bottom: ${({ marginBottom, theme }) =>
-    marginBottom || theme.spacing.small};
+  align-items: ${({ $align }) => $align || 'center'};
+  gap: ${({ $gap, theme }) => $gap || theme.spacing.small};
+  text-align: ${({ $textAlign }) => $textAlign || 'left'};
+  margin-bottom: ${({ $marginBottom, theme }) =>
+    $marginBottom || theme.spacing.small};
   overflow: scroll;
 `;
 
@@ -103,6 +109,23 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
   >
     {children}
   </StyledCardHeader>
+);
+
+export const CardContent: React.FC<CardContentProps> = ({
+  children,
+  align,
+  textAlign,
+  gap,
+  marginBottom,
+}) => (
+  <StyledCardContent
+    $align={align}
+    $textAlign={textAlign}
+    $gap={gap}
+    $marginBottom={marginBottom}
+  >
+    {children}
+  </StyledCardContent>
 );
 
 export const CardFooter: React.FC<CardFooterProps> = ({ children, align }) => (

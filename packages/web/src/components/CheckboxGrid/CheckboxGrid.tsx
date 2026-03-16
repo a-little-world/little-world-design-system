@@ -265,6 +265,7 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
                 column.map(({ value, key }, rowIndex) => {
                   return (
                     <StyledCheckbox
+                      aria-label={`Select ${value} in ${rowHeadings[rowIndex]}`}
                       key={`${key}-${value}-${rowHeadings[rowIndex]}`}
                       checked={!!selected[key]?.includes(value)}
                       name={name}

@@ -19,14 +19,27 @@ import React, { ChangeEvent } from 'react';
 const PASSWORD_TOGGLE_ICON_SIZE = 20;
 
 export { InputWidth, InputHeight };
-export interface Props
-  extends Omit<
-      React.ComponentPropsWithoutRef<'input'>,
-      'height' | 'onSubmit' | 'width'
-    >,
-    TextInputBaseProps {
-  inputRef?: React.RefObject<HTMLInputElement>;
-}
+
+type TextInputHTMLProps = Omit<
+  React.ComponentPropsWithoutRef<'input'>,
+  'height' | 'onSubmit' | 'width' | 'id'
+>;
+
+type TextInputCommonProps = TextInputHTMLProps &
+  Omit<TextInputBaseProps, 'label'> & {
+    inputRef?: React.RefObject<HTMLInputElement>;
+    label?: string;
+  };
+
+export type Props =
+  | (TextInputCommonProps & {
+      label?: undefined;
+      id?: string;
+    })
+  | (TextInputCommonProps & {
+      label: string;
+      id: string;
+    });
 
 const TextInput: React.FC<Props> = ({
   error,

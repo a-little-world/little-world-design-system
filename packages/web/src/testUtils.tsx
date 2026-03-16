@@ -1,16 +1,16 @@
 // @ts-nocheck
-import React, { ReactNode } from "react";
-import "@testing-library/jest-dom/extend-expect";
+import React, { ReactNode } from 'react';
+import '@testing-library/jest-dom';
 import {
   render as defaultRender,
   RenderOptions,
   RenderResult,
-} from "@testing-library/react";
-import userEvent, { UserEvent } from "@testing-library/user-event";
-import { ThemeProvider } from "styled-components";
-import { themes } from "./theme";
+} from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
+import { ThemeProvider } from 'styled-components';
+import { themes } from './theme';
 
-interface CustomRenderOptions extends Omit<RenderOptions, "wrapper"> {
+interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   wrapper?: React.ComponentType<{ children: ReactNode }>;
   router?: unknown;
   mocks?: unknown[];
@@ -23,7 +23,7 @@ function render(
     router,
     mocks = [],
     ...options
-  }: CustomRenderOptions = {}
+  }: CustomRenderOptions = {},
 ): RenderResult {
   const Wrapper =
     CustomWrapper ||
@@ -36,7 +36,7 @@ function render(
 
 function renderWithUser(
   ui: ReactNode,
-  options?: CustomRenderOptions
+  options?: CustomRenderOptions,
 ): RenderResult & { user: UserEvent } {
   return {
     user: userEvent.setup(),
@@ -45,5 +45,5 @@ function renderWithUser(
 }
 
 // Re-export everything
-export * from "@testing-library/react";
+export * from '@testing-library/react';
 export { render, renderWithUser };

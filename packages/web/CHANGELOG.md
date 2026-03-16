@@ -1,5 +1,15 @@
 # @a-little-world/little-world-design-system
 
+## 2.12.2
+
+### Patch Changes
+
+- Improve accessibility of input labels
+- Fix type issue with AccordionContent
+- Fix Checkbox issues
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.9.1
+
 ## 2.12.1
 
 ### Patch Changes
