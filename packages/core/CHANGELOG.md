@@ -1,5 +1,12 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.9.1
+
+### Patch Changes
+
+- Expose Style Types
+- Add more color tokens
+
 ## 1.9.0
 
 ### Minor Changes
