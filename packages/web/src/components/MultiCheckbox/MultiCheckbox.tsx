@@ -52,6 +52,7 @@ const MultiCheckbox: React.FC<MultiCheckboxProps> = ({
       <MultiCheckboxWrapper>
         {options.map(({ value, label }) => (
           <CheckboxButton
+            id={label}
             key={label}
             error={error}
             label={label}

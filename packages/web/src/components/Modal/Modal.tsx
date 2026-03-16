@@ -1,12 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { lock, unlock } from 'tua-body-scroll-lock';
 
 import { ButtonVariations } from '../Button/Button';
 import { CloseIcon } from '../Icon';
 import { BackdropContainer, CloseButton } from './styles';
 
 export const BACKDROP_LABEL = 'dialog backdrop';
-const ROOT_LABEL = '#root';
 const CLOSE_BUTTON_LABEL = 'dialog close button';
 
 type BaseModalProps = {
@@ -70,25 +70,22 @@ const Modal = ({
 
     if (open) {
       openTimeout = window.setTimeout(() => {
+        lock();
         (document?.activeElement as HTMLElement).blur();
         setActive(open);
-        document.body.style.overflow = 'hidden';
-        document.querySelector(ROOT_LABEL)?.setAttribute('inert', 'true');
         current?.focus();
       }, 10);
     }
 
     return () => {
+      clearTimeout(openTimeout);
+      unlock();
+
+      window.removeEventListener('keyup', keyHandler);
       if (current) {
         current.removeEventListener('transitionend', transitionEnd);
         current.removeEventListener('click', clickHandler);
       }
-
-      clearTimeout(openTimeout);
-      document.querySelector(ROOT_LABEL)?.removeAttribute('inert');
-      document.body.style.overflow = 'unset';
-
-      window.removeEventListener('keyup', keyHandler);
     };
   }, [open, locked, onClose]);
 

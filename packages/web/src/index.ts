@@ -9,6 +9,7 @@ export {
   default as Accordion,
   AccordionContent,
 } from './components/Accordion/Accordion';
+export type { AccordionContentProps } from './components/Accordion/Accordion';
 export {
   default as Button,
   ButtonAppearance,

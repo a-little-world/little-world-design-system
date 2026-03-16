@@ -13,23 +13,30 @@ import {
 } from './styles';
 
 export { AccordionContent };
+export type { AccordionContentProps } from './styles';
 export interface AccordionProps extends AccordionBaseProps {
   children?: React.ReactNode;
   className?: string;
   ContentWrapper?: React.ComponentType<{ children: React.ReactNode }>;
-  defaultOpen?: boolean;
+  defaultValue?: string;
   onToggle?: (isOpen: boolean) => void;
 }
 
 const Accordion: React.FC<AccordionProps> = ({
   className,
   ContentWrapper,
+  defaultValue,
   headerType,
   headerColor,
   items,
 }) => {
   return (
-    <AccordionRoot className={className} type="single" collapsible>
+    <AccordionRoot
+      className={className}
+      type="single"
+      collapsible
+      defaultValue={defaultValue}
+    >
       {items.map(({ content, header }) => (
         <AccordionItem value={header} key={header}>
           <AccordionHeader id={header}>

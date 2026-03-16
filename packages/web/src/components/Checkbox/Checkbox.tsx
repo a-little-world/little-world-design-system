@@ -17,7 +17,7 @@ import {
   StyledLabel,
 } from './styles';
 
-type CheckboxProps = {
+type CheckboxBaseProps = {
   className?: string;
   color?: string;
   error?: string;
@@ -29,6 +29,16 @@ type CheckboxProps = {
   size?: CheckboxSizes;
 } & RadixCheckboxProps;
 
+type CheckboxProps =
+  | (CheckboxBaseProps & {
+      label?: undefined;
+      id?: string;
+    })
+  | (CheckboxBaseProps & {
+      label: string;
+      id: string;
+    });
+
 export const CheckboxButton: React.FC<CheckboxProps> = ({
   checked,
   className,
@@ -38,6 +48,7 @@ export const CheckboxButton: React.FC<CheckboxProps> = ({
   inputRef,
   label,
   onCheckedChange,
+  readOnly,
   size = CheckboxSizes.Medium,
   value,
   ...rest
@@ -51,6 +62,7 @@ export const CheckboxButton: React.FC<CheckboxProps> = ({
     value={value}
     $hasError={Boolean(error)}
     $size={size}
+    $readOnly={readOnly}
     {...rest}
   >
     <NonInteractiveCheckbox $color={color} checked={checked} $size={size}>
@@ -90,7 +102,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   return (
     <CheckboxWrapper className={className}>
-      <CheckboxContainer>
+      <CheckboxContainer $readOnly={readOnly}>
         {readOnly ? (
           <NonInteractiveCheckbox $color={color} checked={checked} $size={size}>
             {checked && (

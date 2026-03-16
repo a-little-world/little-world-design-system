@@ -24,9 +24,10 @@ export const CheckboxWrapper = styled.div``;
 
 export const CheckboxButtonContainer = styled(Checkbox.Root)<{
   $hasError?: boolean;
+  $readOnly?: boolean;
   $size?: CheckboxSizes;
 }>`
-  cursor: pointer;
+  cursor: ${({ $readOnly }) => ($readOnly ? 'default' : 'pointer')};
   padding: ${({ theme }) => theme.spacing.xxsmall};
   display: flex;
   align-items: center;
@@ -50,11 +51,11 @@ export const CheckboxButtonContainer = styled(Checkbox.Root)<{
   }
 `;
 
-export const CheckboxContainer = styled.div`
+export const CheckboxContainer = styled.div<{ $readOnly?: boolean }>`
   display: flex;
   align-items: center;
   margin: ${({ theme }) => theme.spacing.xxxxsmall} 0;
-  cursor: pointer;
+  cursor: ${({ $readOnly }) => ($readOnly ? 'default' : 'pointer')};
 `;
 
 const CHECKBOX_STYLES = css<{
@@ -64,7 +65,6 @@ const CHECKBOX_STYLES = css<{
   checked: Checkbox.CheckboxProps['checked'];
 }>`
   all: unset;
-  cursor: pointer;
   background: ${({ theme }) => theme.color.surface.primary};
   box-sizing: border-box;
   border: 1px solid ${({ theme }) => theme.color.border.contrast};
@@ -94,6 +94,7 @@ export const CheckboxRoot = styled(Checkbox.Root)<{
   $size: CheckboxSizes;
   checked: Checkbox.CheckboxProps['checked'];
 }>`
+  cursor: pointer;
   ${CHECKBOX_STYLES}
 `;
 
@@ -102,6 +103,7 @@ export const NonInteractiveCheckbox = styled.div<{
   $size: CheckboxSizes;
   checked: Checkbox.CheckboxProps['checked'];
 }>`
+  cursor: default;
   ${CHECKBOX_STYLES}
 `;
 

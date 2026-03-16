@@ -19,23 +19,34 @@ import {
 
 type Options = { value: string; label: string }[];
 
-export type DropdownProps = {
+type DropdownBaseProps = {
   ariaLabel?: string;
   cannotError?: boolean;
+  disabled?: boolean;
   error?: string;
   height?: InputHeight;
+  id?: string;
+  inputRef?: React.RefObject<HTMLButtonElement>;
   label?: string;
   labelTooltip?: string;
   lockedValue?: string;
   maxWidth?: string;
-  options: Options;
   onValueChange: (value: string) => void;
+  options: Options;
   placeholder: string;
-  value?: string;
-  disabled?: boolean;
   required?: boolean;
-  inputRef?: React.RefObject<HTMLButtonElement>;
+  value?: string;
 };
+
+export type DropdownProps =
+  | (DropdownBaseProps & {
+      label?: undefined;
+      id?: string;
+    })
+  | (DropdownBaseProps & {
+      label: string;
+      id: string;
+    });
 
 const ARROW_DOWN_WIDTH = 13;
 const ARROW_DOWN_HEIGHT = 8;
@@ -64,6 +75,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   error,
   cannotError,
   disabled,
+  id,
   height,
   inputRef,
   label,
@@ -83,7 +95,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   return (
     <DropdownWrapper $maxWidth={maxWidth}>
       {label && (
-        <Label bold htmlFor={ariaLabel} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip}>
           {label}
         </Label>
       )}
@@ -94,7 +106,8 @@ const Dropdown: React.FC<DropdownProps> = ({
         defaultValue={defaultValue}
       >
         <SelectTrigger
-          aria-label={ariaLabel || label}
+          aria-label={ariaLabel}
+          id={id}
           ref={inputRef}
           $hasError={Boolean(error)}
           $height={height}

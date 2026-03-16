@@ -11,12 +11,10 @@ import { Area, AreaWrapper, Counter } from './styles';
 
 export { TextAreaSize };
 
-export interface TextAreaProps
-  extends React.ComponentPropsWithoutRef<'textarea'> {
+type TextAreaBaseProps = React.ComponentPropsWithoutRef<'textarea'> & {
   displayCount?: boolean;
   error?: string;
   expandable?: boolean;
-  id?: string;
   inputRef?: Ref<HTMLFormElement>;
   label?: string;
   labelTooltip?: string;
@@ -25,7 +23,16 @@ export interface TextAreaProps
   onSubmit?: () => boolean;
   size?: TextAreaSize;
   value?: string;
-}
+};
+
+export type TextAreaProps =
+  | (TextAreaBaseProps & {
+      label?: undefined;
+    })
+  | (TextAreaBaseProps & {
+      label: string;
+      id: string;
+    });
 
 const TextArea: React.FC<TextAreaProps> = ({
   displayCount = true,

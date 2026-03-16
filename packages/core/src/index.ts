@@ -16,6 +16,7 @@ export * from './types';
 export * from './fonts';
 export * from './icons';
 export * from './illustrations';
+export * from './types/styles';
 
 // Export SVG types
 export type {

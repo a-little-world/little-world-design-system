@@ -1,7 +1,11 @@
 import * as Accordion from '@radix-ui/react-accordion';
+import React from 'react';
 import styled from 'styled-components';
 
 import { ChevronDownIcon } from '../Icon';
+
+export interface AccordionContentProps
+  extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const AccordionRoot = styled(Accordion.Root)`
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
@@ -33,7 +37,7 @@ export const AccordionHeader = styled(Accordion.Header)`
   width: 100%;
 `;
 
-export const AccordionContent = styled(Accordion.Content)`
+const AccordionContentStyled = styled(Accordion.Content)`
   width: 100%;
   background: ${({ theme }) => theme.color.surface.secondary};
   border-radius: 10px;
@@ -48,6 +52,10 @@ export const AccordionContent = styled(Accordion.Content)`
     display: none;
   }
 `;
+
+/** Explicit type so consumers can use without Radix type references */
+export const AccordionContent: React.ComponentType<AccordionContentProps> =
+  AccordionContentStyled as React.ComponentType<AccordionContentProps>;
 
 export const TriggerIcon = styled(ChevronDownIcon)`
   flex-shrink: 0;
