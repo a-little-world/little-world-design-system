@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.9.2
+
+### Patch Changes
+
+- Add z-index tokens
+
 ## 1.9.1
 
 ### Patch Changes
