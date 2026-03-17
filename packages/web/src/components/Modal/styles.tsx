@@ -21,7 +21,7 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: ${({ theme }) => theme.zIndex.modal};
   overflow: auto;
   overscroll-behavior: contain;
 
@@ -55,10 +55,9 @@ export const CloseButton = styled(Button)`
   position: absolute;
   top: ${({ theme }) => theme.spacing.xsmall};
   right: ${({ theme }) => theme.spacing.xsmall};
-  z-index: 2;
-  padding: 7px;
+  z-index: ${({ theme }) => theme.zIndex.control};
   background: ${({ theme }) => theme.color.surface.secondary};
-  border-radius: ${({ theme }) => theme.radius.full};
+  border: none;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     top: ${({ theme }) => theme.spacing.medium};

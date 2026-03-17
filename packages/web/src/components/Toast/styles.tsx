@@ -46,7 +46,7 @@ export const ToastViewport = styled(RadixToast.Viewport)`
   max-width: 100vw;
   margin: 0;
   list-style: none;
-  z-index: 1000;
+  z-index: ${({ theme }) => theme.zIndex.toast};
   outline: none;
 `;
 
