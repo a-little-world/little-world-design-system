@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { lock, unlock } from 'tua-body-scroll-lock';
 
-import { ButtonVariations } from '../Button/Button';
+import { ButtonSizes, ButtonVariations } from '../Button/Button';
 import { CloseIcon } from '../Icon';
 import { BackdropContainer, CloseButton } from './styles';
 
@@ -97,8 +97,12 @@ const Modal = ({
       $active={active && open}
     >
       {!locked && (
-        <CloseButton variation={ButtonVariations.Icon} onClick={onClose}>
-          <CloseIcon label={CLOSE_BUTTON_LABEL} height="24" width="24" />
+        <CloseButton
+          variation={ButtonVariations.Circle}
+          onClick={onClose}
+          size={ButtonSizes.Medium}
+        >
+          <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
         </CloseButton>
       )}
       {children}

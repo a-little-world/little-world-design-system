@@ -24,7 +24,7 @@ export const NavMenuRoot = styled(RadixNavigationMenu.Root)`
   position: relative;
   display: flex;
   align-items: center;
-  z-index: 1000;
+  z-index: ${({ theme }) => theme.zIndex.sticky};
 
   &[data-state='open'] > ${MenuTriggerIcon} {
     transform: rotate(-180deg);
@@ -94,7 +94,7 @@ export const NavMenuContent = styled(RadixNavigationMenu.Content)`
   width: 100%;
   animation-duration: 250ms;
   animation-timing-function: ease;
-  z-index: 200;
+  z-index: ${({ theme }) => theme.zIndex.sticky};
 
   &[data-motion='from-start'] {
     animation-name: ${enterFromLeft};
@@ -118,7 +118,7 @@ export const NavMenuIndicator = styled(RadixNavigationMenu.Indicator)`
   height: 10px;
   top: 100%;
   overflow: hidden;
-  z-index: 1;
+  z-index: ${({ theme }) => theme.zIndex.above};
   transition:
     width,
     transform 250ms ease;

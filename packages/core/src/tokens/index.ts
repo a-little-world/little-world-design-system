@@ -39,11 +39,23 @@ const spacing = {
   massive: coreSpacing.space150,
 };
 
+/** Layering scale: one place to see and adjust stacking order. Toast > Modal > overlay UI > dropdown. */
+const zIndex = {
+  above: 1,
+  control: 2,
+  controlRaised: 3,
+  dropdown: 100,
+  sticky: 200,
+  modal: 1000,
+  toast: 1100,
+} as const;
+
 export const tokensPixelated = {
   breakpoints: pixelateObjValues(breakpoints),
   radius: pixelateObjValues(radius),
   spacing: pixelateObjValues(spacing),
   color: colors,
+  zIndex,
 };
 
 export const tokens = {
@@ -51,4 +63,5 @@ export const tokens = {
   radius,
   spacing,
   color: colors,
+  zIndex,
 };

@@ -50,7 +50,7 @@ export const FadeOverlay = styled.div<{ $visible: boolean }>`
   );
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   transition: opacity 0.2s ease-in-out;
-  z-index: 3;
+  z-index: ${({ theme }) => theme.zIndex.controlRaised};
   border-radius: 0 ${({ theme }) => theme.radius.xsmall}
     ${({ theme }) => theme.radius.xsmall} 0;
 `;
@@ -95,7 +95,7 @@ export const RowHeading = styled.div<{ $index: number }>`
   border-right: 1px solid ${({ theme }) => theme.color.border.subtle};
   height: 100%;
   text-align: center;
-  z-index: 2;
+  z-index: ${({ theme }) => theme.zIndex.control};
 `;
 
 export const ColumnHeaderCell = styled.div<{ $index: number }>`

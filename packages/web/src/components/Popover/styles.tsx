@@ -54,7 +54,7 @@ export const StyledPopoverContent = styled(PopoverContent)<{
 
   display: flex;
   flex-direction: column;
-  z-index: 1000;
+  z-index: ${({ theme }) => theme.zIndex.sticky};
 
   ${({ $width }) =>
     $width &&

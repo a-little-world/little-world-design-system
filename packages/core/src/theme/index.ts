@@ -85,6 +85,22 @@ export interface Colors {
   };
 }
 
+/** Layering scale for overlay/stacking. Use these so stacking order is visible in one place. */
+export interface ThemeZIndex {
+  /** In-component stacking (e.g. icon over input) */
+  above: number;
+  control: number;
+  controlRaised: number;
+  /** Dropdowns, selects */
+  dropdown: number;
+  /** Sticky nav, popovers, menu content */
+  sticky: number;
+  /** Modal backdrop and dialog */
+  modal: number;
+  /** Toasts (above modals so notifications show on top) */
+  toast: number;
+}
+
 export interface ThemeWeb {
   breakpoints: {
     xsmall: string;
@@ -120,6 +136,7 @@ export interface ThemeWeb {
     massive: string;
   };
   color: Colors;
+  zIndex: ThemeZIndex;
 }
 
 export interface ThemeNative {
@@ -157,6 +174,7 @@ export interface ThemeNative {
     massive: number;
   };
   color: Colors;
+  zIndex: ThemeZIndex;
 }
 
 export enum ThemeVariants {
