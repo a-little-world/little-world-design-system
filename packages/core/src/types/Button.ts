@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 export enum ButtonVariations {
   Basic = 'basic',
   Option = 'option',
+  Stacked = 'stacked',
   Circle = 'circle',
   Icon = 'icon',
   Inline = 'inline',

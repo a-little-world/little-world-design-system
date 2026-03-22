@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system
 
+## 2.13.0
+
+### Minor Changes
+
+- Add Tabs feature and new Option Button
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.10.0
+
 ## 2.12.3
 
 ### Patch Changes

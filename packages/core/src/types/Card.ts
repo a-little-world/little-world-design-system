@@ -7,6 +7,7 @@ export enum CardSizes {
   Small = 'small',
   Medium = 'medium',
   Large = 'large',
+  FullWidth = 'fullWidth',
 }
 
 export const CardDimensions = {
@@ -24,6 +25,11 @@ export interface CardBaseProps {
 
 export interface CardHeaderProps {
   center?: boolean;
+  /**
+   * When true, `CardHeader` renders a container (div) instead of a `Text` element.
+   */
+  asContainer?: boolean;
+  className?: string;
   marginBottom?: string | number;
   align?: FlexAlignType;
   children: ReactNode;
@@ -34,6 +40,7 @@ export interface CardHeaderProps {
 export interface CardFooterProps {
   align?: JustifyContentType;
   children: ReactNode;
+  className?: string;
 }
 
 export interface CardContentProps {

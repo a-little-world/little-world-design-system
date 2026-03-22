@@ -14,6 +14,7 @@ export * from './Status';
 export * from './Svg';
 export * from './RadioGroup';
 export * from './Tag';
+export * from './Tabs';
 export * from './Text';
 export * from './TextArea';
 export * from './TextContent';

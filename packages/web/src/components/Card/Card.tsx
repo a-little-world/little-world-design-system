@@ -44,7 +44,9 @@ const StyledCard = styled.div<{
     ${({ $width }) =>
       $width &&
       css`
-        width: ${pixelate(CardDimensions[$width])};
+        width: ${$width === CardSizes.FullWidth
+          ? '100%'
+          : pixelate(CardDimensions[$width])};
       `}
   }
 
@@ -58,6 +60,19 @@ const StyledCard = styled.div<{
 const StyledCardHeader = styled(Text)<{ $marginBottom?: string | number }>`
   margin-bottom: ${({ $marginBottom, theme }) =>
     $marginBottom || theme.spacing.small};
+`;
+
+const StyledCardHeaderContainer = styled.div<{
+  $align?: FlexAlignType;
+  $marginBottom?: string | number;
+}>`
+  display: flex;
+  flex-direction: column;
+  align-items: ${({ $align }) => $align || 'center'};
+  justify-content: center;
+  margin-bottom: ${({ $marginBottom, theme }) =>
+    $marginBottom || theme.spacing.small};
+  width: 100%;
 `;
 
 export const StyledCardContent = styled.div<{
@@ -95,21 +110,39 @@ type CardProps = CardBaseProps & {
 };
 
 export const CardHeader: React.FC<CardHeaderProps> = ({
-  children,
   center = true,
+  asContainer,
+  className,
+  children,
   marginBottom,
   textColor,
   textType,
-}) => (
-  <StyledCardHeader
-    type={textType || TextTypes.Heading4}
-    center={center}
-    color={textColor}
-    $marginBottom={marginBottom}
-  >
-    {children}
-  </StyledCardHeader>
-);
+  align,
+}) => {
+  if (asContainer) {
+    return (
+      <StyledCardHeaderContainer
+        className={className}
+        $align={align || (center ? 'center' : 'flex-start')}
+        $marginBottom={marginBottom}
+      >
+        {children}
+      </StyledCardHeaderContainer>
+    );
+  }
+
+  return (
+    <StyledCardHeader
+      className={className}
+      type={textType || TextTypes.Heading4}
+      center={center}
+      color={textColor}
+      $marginBottom={marginBottom}
+    >
+      {children}
+    </StyledCardHeader>
+  );
+};
 
 export const CardContent: React.FC<CardContentProps> = ({
   children,
@@ -128,8 +161,14 @@ export const CardContent: React.FC<CardContentProps> = ({
   </StyledCardContent>
 );
 
-export const CardFooter: React.FC<CardFooterProps> = ({ children, align }) => (
-  <Footer $align={align}>{children}</Footer>
+export const CardFooter: React.FC<CardFooterProps> = ({
+  children,
+  className,
+  align,
+}) => (
+  <Footer className={className} $align={align}>
+    {children}
+  </Footer>
 );
 
 const Card: React.FC<CardProps> = ({

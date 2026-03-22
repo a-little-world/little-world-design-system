@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.7.0
+
+### Minor Changes
+
+- Add new stacked Button variation
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.10.0
+
 ## 0.6.2
 
 ### Patch Changes
