@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { tokensPixelated } from '@a-little-world/little-world-design-system-core'
+import { tokensPixelated } from '@a-little-world/little-world-design-system-core';
 import { InfoIcon, PhoneIcon } from '../Icon';
 import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
@@ -16,14 +16,20 @@ export const Default = args => (
   <div style={{ display: 'flex', gap: tokensPixelated.spacing.large }}>
     <Button {...args}>Blah Blah</Button>
     <Button {...args}>
-      Blah Blah{' '}
-      <InfoIcon label="info" width={16} height={16} />
+      Blah Blah <InfoIcon label="info" width={16} height={16} />
     </Button>
   </div>
 );
 
 export const ButtonOption = args => (
   <Button variation={ButtonVariations.Option} {...args}>
+    Option
+    <InfoIcon label="info" width={16} height={16} />
+  </Button>
+);
+
+export const ButtonStacked = args => (
+  <Button variation={ButtonVariations.Stacked} {...args}>
     <PhoneIcon label="phone icon" />
     Call partner
   </Button>
@@ -87,7 +93,7 @@ export const ButtonIcon = args => (
   </div>
 );
 
-ButtonIcon.args = { color: '#000'};
+ButtonIcon.args = { color: '#000' };
 
 const StyledSpan = styled(Text)`
   margin-right: ${tokensPixelated.spacing.xxsmall};

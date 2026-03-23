@@ -1,16 +1,16 @@
 import * as Progress from '@radix-ui/react-progress';
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
 
-const ProgressRoot = styled(Progress.Root)`
+const ProgressRoot = styled(Progress.Root)<{ $fullWidth?: boolean }>`
   position: relative;
   overflow: hidden;
   border-radius: 99999px;
   background: ${({ theme }) => theme.color.surface.secondary};
-  width: 300px;
+  width: ${({ $fullWidth }) => ($fullWidth ? '100%' : '300px')};
   height: 8px;
 
   /* Fix overflow clipping in Safari */
@@ -25,16 +25,22 @@ const ProgressIndicator = styled(Progress.Indicator)`
   transition: transform 660ms cubic-bezier(0.65, 0, 0.35, 1);
 `;
 
-const ProgressBarWrapper = styled.div`
+const ProgressBarWrapper = styled.div<{ $fullWidth?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.small};
   font-family: 'Work Sans';
+  ${({ $fullWidth }) =>
+    $fullWidth &&
+    css`
+      width: 100%;
+    `}
 `;
 
 type ProgressBarProps = {
   className?: string;
+  fullWidth?: boolean;
   max: number;
   value: number;
 };
@@ -45,6 +51,7 @@ const calculateProgress = (max: number, value: number) => {
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
+  fullWidth,
   max,
   value = 0,
 }) => {
@@ -55,14 +62,17 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   }, [max, value]);
 
   return (
-    <ProgressBarWrapper className={className}>
-      <Text id="progressBarIndicator" tag="span" type={TextTypes.Body6}>
-        {value}/{max}
-      </Text>
+    <ProgressBarWrapper className={className} $fullWidth={fullWidth}>
+      {!fullWidth && (
+        <Text id="progressBarIndicator" tag="span" type={TextTypes.Body6}>
+          {value}/{max}
+        </Text>
+      )}
       <ProgressRoot
         aria-labelledby="progressBarIndicator"
         value={value}
         max={max}
+        $fullWidth={fullWidth}
       >
         <ProgressIndicator
           className="ProgressIndicator"

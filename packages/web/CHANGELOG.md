@@ -1,5 +1,21 @@
 # @a-little-world/little-world-design-system
 
+## 2.13.0
+
+### Minor Changes
+
+- Add Tabs component
+- Add Stepper component
+- Allow ProgressBar to be full width (fullWidth)
+- Extend CardHeader props to include asContainer, align
+- Add Stacked Button Variation
+- Update styles of Option Button variation
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.10.0
+
 ## 2.12.3
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.10.0
+
+### Minor Changes
+
+- Add Tabs prop types
+- Add Stepper prop types and variables
+- Add FullWidth to CardSizes
+- Extend CardHeader props
+- Add Stacked type to ButtonVariations
+
 ## 1.9.2
 
 ### Patch Changes

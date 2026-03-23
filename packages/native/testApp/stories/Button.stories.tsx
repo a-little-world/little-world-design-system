@@ -38,14 +38,14 @@ export const Default = args => (
   </View>
 );
 
-export const ButtonOption = args => (
-  <Button variation={ButtonVariations.Option} {...args}>
+export const ButtonStacked = args => (
+  <Button variation={ButtonVariations.Stacked} {...args}>
     <PhoneIcon label="phone icon" />
     Call partner
   </Button>
 );
 
-ButtonOption.args = {
+ButtonStacked.args = {
   size: ButtonSizes.Medium,  
 };
 

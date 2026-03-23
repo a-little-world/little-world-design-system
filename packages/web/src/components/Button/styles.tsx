@@ -7,7 +7,7 @@ import {
 } from '@a-little-world/little-world-design-system-core';
 import { LINK_HOVER_CSS } from '../Link/styles';
 
-export const OPTION_BUTTON_CSS = css<{
+export const STACKED_BUTTON_CSS = css<{
   $appearance?: ButtonAppearance;
   $backgroundColor?: string;
   $color?: string;
@@ -50,7 +50,76 @@ export const OPTION_BUTTON_CSS = css<{
     `}
 `;
 
-const StandardButtonCss = css<{ $size?: string }>`
+const OptionButtonCss = css<{
+  $borderColor?: string;
+  $backgroundColor?: string;
+  $color?: string;
+  $size?: ButtonSizes;
+}>`
+  min-height: 49px;
+  padding: ${({ theme }) => theme.spacing.small};
+  border-radius: ${({ theme }) => theme.radius.small};
+  border: 2px solid
+    ${({ theme, $borderColor }) => {
+      return $borderColor || theme.color.border.subtle;
+    }};
+
+  background: ${({ theme, $backgroundColor }) => {
+    return $backgroundColor || theme.color.surface.secondary;
+  }};
+
+  color: ${({ theme, $color }) => $color || theme.color.text.primary};
+  transition: all 160ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: ${({ theme }) => theme.spacing.medium};
+  text-align: left;
+  max-width: 480px;
+
+  &:hover:not(:disabled) {
+    border-color: ${({ theme }) => {
+      return theme.color.border.selected;
+    }};
+    transform: translateY(-2px);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  ${({ $size, theme }) => {
+    if ($size === ButtonSizes.Small || !$size) {
+      return `
+        min-width: 110px;
+      `;
+    }
+
+    if ($size === ButtonSizes.Medium) {
+      return `min-width: 160px;`;
+    }
+
+    if ($size === ButtonSizes.Large) {
+      return `
+        font-size: 1.125rem;
+        width: 100%;
+        max-width: 100%;
+        padding: ${theme.spacing.medium} ${theme.spacing.large};
+      `;
+    }
+
+    if ($size === ButtonSizes.Stretch) {
+      return `
+        width: 100%;
+        max-width: 100%;
+        padding: ${theme.spacing.small} ${theme.spacing.medium};
+      `;
+    }
+  }}
+`;
+
+const StandardButtonCss = css<{ $size?: ButtonSizes }>`
   font-weight: 700;
   border-radius: 90px;
   padding: ${({ theme }) => `${theme.spacing.xsmall} ${theme.spacing.small}`};
@@ -80,12 +149,15 @@ const StandardButtonCss = css<{ $size?: string }>`
   }}
 `;
 
-export const PrimaryButtonCss = css`
+export const PrimaryButtonCss = css<{
+  $backgroundColor?: string;
+  $size?: ButtonSizes;
+}>`
   ${StandardButtonCss}
 
   color: ${({ theme }) => theme.color.text.button};
   border: none;
-  background: ${({ theme, $backgroundColor }: any) =>
+  background: ${({ theme, $backgroundColor }) =>
     $backgroundColor || theme.color.gradient.orange10};
   transition:
     background-color 0.5s ease,
@@ -186,7 +258,9 @@ export const StyledButton = styled.button<{
       if ($appearance === ButtonAppearance.Secondary) return SecondaryButtonCss;
     }
 
-    if ($variation === ButtonVariations.Option) return OPTION_BUTTON_CSS;
+    if ($variation === ButtonVariations.Option) return OptionButtonCss;
+
+    if ($variation === ButtonVariations.Stacked) return STACKED_BUTTON_CSS;
 
     let CIRCLE_DIMENSIONS;
     switch ($size) {

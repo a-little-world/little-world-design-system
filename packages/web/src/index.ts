@@ -16,7 +16,7 @@ export {
   ButtonSizes,
   ButtonVariations,
 } from './components/Button/Button';
-export { OPTION_BUTTON_CSS } from './components/Button/styles';
+export { STACKED_BUTTON_CSS } from './components/Button/styles';
 export {
   default as Card,
   CardContent,
@@ -66,6 +66,11 @@ export {
 } from './components/StarRating/StarRating';
 export { default as StatusMessage } from './components/StatusMessage/StatusMessage';
 export { default as Switch } from './components/Switch/Switch';
+export {
+  default as Tabs,
+  TabsContent,
+  TabsVariations,
+} from './components/Tabs/Tabs';
 export { default as Tags, Tag } from './components/Tags/Tags';
 export { default as Text } from './components/Text/Text';
 
@@ -97,6 +102,8 @@ export { pixelate } from './utils/styles';
 // types
 export type { TextStyle } from './components/Text/types';
 export type {
+  TabItem,
+  TabsProps,
   ThemeWeb,
   ToastBaseProps,
 } from '@a-little-world/little-world-design-system-core';

@@ -60,7 +60,7 @@ export const getButtonStyles = ({
     };
   }
 
-  if (variation === ButtonVariations.Option) {
+  if (variation === ButtonVariations.Stacked) {
     return {
       ...baseStyles,
       backgroundColor: backgroundColor || theme.color.surface.secondary,
@@ -133,7 +133,7 @@ export const getButtonTextStyles = ({
     textAlign: 'center',
   };
 
-  if (variation === ButtonVariations.Option) {
+  if (variation === ButtonVariations.Stacked) {
     return {
       ...baseStyles,
       color: color || theme.color.text.primary,
@@ -154,7 +154,7 @@ export const getButtonTextStyles = ({
   return baseStyles;
 };
 
-export const OPTION_BUTTON_CSS = css<{
+export const STACKED_BUTTON_CSS = css<{
   $appearance?: ButtonAppearance;
   $backgroundColor?: string;
   $color?: string;

@@ -30,7 +30,8 @@ export const getCardStyles = ({
   maxHeight: '100%',
   flexDirection: 'column',
   padding: theme.spacing.small,
-  ...(width && { width: CardDimensions[width] }),
+  ...(width &&
+    width !== CardSizes.FullWidth && { width: CardDimensions[width] }),
   ...(height && { height }),
 });
 
