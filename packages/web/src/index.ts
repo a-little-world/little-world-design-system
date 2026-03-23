@@ -66,7 +66,11 @@ export {
 } from './components/StarRating/StarRating';
 export { default as StatusMessage } from './components/StatusMessage/StatusMessage';
 export { default as Switch } from './components/Switch/Switch';
-export { default as Tabs, TabsContent } from './components/Tabs/Tabs';
+export {
+  default as Tabs,
+  TabsContent,
+  TabsVariations,
+} from './components/Tabs/Tabs';
 export { default as Tags, Tag } from './components/Tags/Tags';
 export { default as Text } from './components/Text/Text';
 

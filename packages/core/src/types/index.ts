@@ -13,6 +13,7 @@ export * from './Separator';
 export * from './Status';
 export * from './Svg';
 export * from './RadioGroup';
+export * from './Stepper';
 export * from './Tag';
 export * from './Tabs';
 export * from './Text';

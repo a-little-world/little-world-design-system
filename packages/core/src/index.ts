@@ -12,6 +12,7 @@ export type { ValueOf } from './utils/types';
 
 // Export component types
 export * from './types';
+export { StepperDimensions } from './types/Stepper';
 
 export * from './fonts';
 export * from './icons';

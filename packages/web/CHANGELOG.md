@@ -4,7 +4,12 @@
 
 ### Minor Changes
 
-- Add Tabs feature and new Option Button
+- Add Tabs component
+- Add Stepper component
+- Allow ProgressBar to be full width (fullWidth)
+- Extend CardHeader props to include asContainer, align
+- Add Stacked Button Variation
+- Update styles of Option Button variation
 
 ### Patch Changes
 

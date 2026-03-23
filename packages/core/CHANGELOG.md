@@ -5,6 +5,7 @@
 ### Minor Changes
 
 - Add Tabs prop types
+- Add Stepper prop types and variables
 - Add FullWidth to CardSizes
 - Extend CardHeader props
 - Add Stacked type to ButtonVariations

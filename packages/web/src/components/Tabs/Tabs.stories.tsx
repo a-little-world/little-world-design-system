@@ -1,4 +1,8 @@
-import { TextTypes } from '@a-little-world/little-world-design-system-core';
+import type { TabsProps } from '@a-little-world/little-world-design-system-core';
+import {
+  TabsVariations,
+  TextTypes,
+} from '@a-little-world/little-world-design-system-core';
 import React, { useState } from 'react';
 
 import Text from '../Text/Text';
@@ -42,12 +46,32 @@ export default {
   },
 };
 
-export const Default = {
+export const Pill = {
   args: {
     ariaLabel: 'Account settings sections',
     defaultValue: 'account',
     items: [...sampleItems],
+    variation: TabsVariations.Pill,
   },
+};
+
+/** Traditional full-width tab row with underline active state and card chrome. */
+export const Underline = {
+  render: (args: TabsProps) => (
+    <div style={{ maxWidth: 420 }}>
+      <Tabs {...args} />
+    </div>
+  ),
+  args: {
+    ariaLabel: 'Account settings sections',
+    defaultValue: 'account',
+    items: [...sampleItems],
+    variation: TabsVariations.Underline,
+  },
+};
+
+export const Default = {
+  ...Underline,
 };
 
 export const Controlled = () => {
@@ -59,6 +83,7 @@ export const Controlled = () => {
       items={[...sampleItems]}
       onValueChange={setValue}
       value={value}
+      variation={TabsVariations.Pill}
     />
   );
 };
@@ -77,6 +102,7 @@ export const LabelledByHeading = () => (
       ariaLabelledBy="settings-tabs-heading"
       defaultValue="account"
       items={[...sampleItems]}
+      variation={TabsVariations.Underline}
     />
   </div>
 );
