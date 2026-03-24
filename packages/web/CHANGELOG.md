@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 2.13.1
+
+### Patch Changes
+
+- Add missing Stepper exports and LoadingType
+
 ## 2.13.0
 
 ### Minor Changes

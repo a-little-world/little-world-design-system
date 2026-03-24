@@ -40,7 +40,11 @@ export * from './components/Illustrations';
 export { default as InputError } from './components/InputError/InputError';
 export { default as Label } from './components/Label/Label';
 export { default as Link } from './components/Link/Link';
-export { default as Loading, LoadingSizes } from './components/Loading/Loading';
+export {
+  default as Loading,
+  LoadingSizes,
+  LoadingType,
+} from './components/Loading/Loading';
 export { default as Modal } from './components/Modal/Modal';
 export { default as MultiCheckbox } from './components/MultiCheckbox/MultiCheckbox';
 export { default as MultiSelection } from './components/MultiSelection/MultiSelection';
@@ -65,6 +69,11 @@ export {
   StarRatingSizes,
 } from './components/StarRating/StarRating';
 export { default as StatusMessage } from './components/StatusMessage/StatusMessage';
+export {
+  default as Stepper,
+  StepperOrientations,
+  StepperSizes,
+} from './components/Stepper/Stepper';
 export { default as Switch } from './components/Switch/Switch';
 export {
   default as Tabs,
