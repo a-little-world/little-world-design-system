@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   TextTypes,
   type StepperProps,
@@ -19,6 +18,11 @@ import {
   StepperContainer,
 } from './Stepper.styles';
 import Text from '../Text/Text';
+
+export {
+  StepperOrientations,
+  StepperSizes,
+} from '@a-little-world/little-world-design-system-core';
 
 const Stepper: React.FC<StepperProps> = ({
   onSelectStep,
