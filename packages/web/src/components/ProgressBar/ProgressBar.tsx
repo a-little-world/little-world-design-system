@@ -29,18 +29,27 @@ const ProgressBarWrapper = styled.div<{ $fullWidth?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: ${({ theme }) => theme.spacing.small};
+  gap: ${({ theme }) => theme.spacing.xsmall};
   font-family: 'Work Sans';
+
   ${({ $fullWidth }) =>
     $fullWidth &&
     css`
       width: 100%;
     `}
+
+  ${({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.medium}) {
+      gap: ${theme.spacing.small};
+    }
+  `}
 `;
 
 type ProgressBarProps = {
   className?: string;
+  customLabel?: string;
   fullWidth?: boolean;
+  hideLabel?: boolean;
   max: number;
   value: number;
 };
@@ -52,6 +61,8 @@ const calculateProgress = (max: number, value: number) => {
 const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
   fullWidth,
+  customLabel,
+  hideLabel,
   max,
   value = 0,
 }) => {
@@ -63,9 +74,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 
   return (
     <ProgressBarWrapper className={className} $fullWidth={fullWidth}>
-      {!fullWidth && (
+      {!fullWidth && !hideLabel && (
         <Text id="progressBarIndicator" tag="span" type={TextTypes.Body6}>
-          {value}/{max}
+          {customLabel || `${value}/${max}`}
         </Text>
       )}
       <ProgressRoot
@@ -79,6 +90,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
           style={{ transform: `translateX(-${100 - progress}%)` }}
         />
       </ProgressRoot>
+      {fullWidth && hideLabel && (
+        <Text id="progressBarIndicator" tag="span" type={TextTypes.Body6}>
+          {customLabel || `${value}/${max}`}
+        </Text>
+      )}
     </ProgressBarWrapper>
   );
 };

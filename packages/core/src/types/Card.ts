@@ -45,8 +45,10 @@ export interface CardFooterProps {
 
 export interface CardContentProps {
   align?: FlexAlignType;
+  className?: string;
   textAlign?: string;
   gap?: string | number;
   marginBottom?: string | number;
   children: ReactNode;
+  scrollable?: boolean;
 }

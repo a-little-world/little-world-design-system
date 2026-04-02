@@ -1,5 +1,15 @@
 # @a-little-world/little-world-design-system
 
+## 2.13.2
+
+### Patch Changes
+
+- New ProgressBar props: hideLabel & customLabel
+- New CardContent props: className & scrollable
+- Styling tweaks to Option Button and Stepper
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.10.1
+
 ## 2.13.1
 
 ### Patch Changes
