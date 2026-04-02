@@ -113,7 +113,11 @@ const OptionButtonCss = css<{
       return `
         width: 100%;
         max-width: 100%;
-        padding: ${theme.spacing.small} ${theme.spacing.medium};
+        padding: ${theme.spacing.small};
+    
+        @media (min-width: ${theme.breakpoints.medium}) {
+          padding: ${theme.spacing.medium};
+        }
       `;
     }
   }}

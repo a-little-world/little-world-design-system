@@ -80,6 +80,7 @@ export const StyledCardContent = styled.div<{
   $textAlign?: string;
   $gap?: string | number;
   $marginBottom?: string | number;
+  $scrollable?: boolean;
 }>`
   display: flex;
   flex-direction: column;
@@ -88,7 +89,12 @@ export const StyledCardContent = styled.div<{
   text-align: ${({ $textAlign }) => $textAlign || 'left'};
   margin-bottom: ${({ $marginBottom, theme }) =>
     $marginBottom || theme.spacing.small};
-  overflow: scroll;
+
+  ${({ $scrollable }) =>
+    $scrollable &&
+    css`
+      overflow: scroll;
+    `}
 `;
 
 const Footer = styled.div<{ $align?: string }>`
@@ -146,16 +152,20 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
 
 export const CardContent: React.FC<CardContentProps> = ({
   children,
+  className,
   align,
   textAlign,
   gap,
   marginBottom,
+  scrollable = true,
 }) => (
   <StyledCardContent
+    className={className}
     $align={align}
     $textAlign={textAlign}
     $gap={gap}
     $marginBottom={marginBottom}
+    $scrollable={scrollable}
   >
     {children}
   </StyledCardContent>

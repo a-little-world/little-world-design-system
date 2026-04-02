@@ -4,7 +4,7 @@ import {
   StepperOrientations,
   StepperSize,
 } from '@a-little-world/little-world-design-system-core';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { pixelate } from '../../utils/styles';
 import Text from '../Text/Text';
 
@@ -31,7 +31,7 @@ export const StepItem = styled.div<{
   flex: ${({ $orientation }) =>
     $orientation === StepperOrientations.Vertical ? 'none' : '1'};
   position: relative;
-  gap: ${({ theme }) => theme.spacing.small};
+  gap: ${({ theme }) => theme.spacing.xxsmall};
   text-align: ${({ $orientation }) =>
     $orientation === StepperOrientations.Horizontal ? 'center' : 'left'};
 
@@ -42,6 +42,12 @@ export const StepItem = styled.div<{
         min-height: ${$orientation === StepperOrientations.Vertical ? 'auto' : pixelate(currentSize.stepCircleSize)};
       `;
   }}
+
+  ${({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.medium}) {
+      gap: ${theme.spacing.small};
+    }
+  `}
 `;
 
 export const StepCircleContainer = styled.div<{

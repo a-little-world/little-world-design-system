@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.10.1
+
+### Patch Changes
+
+- New CardContent props: className & scrollable
+
 ## 1.10.0
 
 ### Minor Changes
