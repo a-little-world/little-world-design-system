@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 2.13.3
+
+### Patch Changes
+
+- Fix issue with Popover in modal
+
 ## 2.13.2
 
 ### Patch Changes
