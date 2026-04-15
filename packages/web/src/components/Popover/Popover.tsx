@@ -41,32 +41,39 @@ const Popover: React.FC<PopoverProps> = ({
   showCloseButton,
   trigger,
   width = PopoverSizes.Small,
-}) => (
-  <PopoverRoot defaultOpen={defaultOpen} open={open} modal={inModal}>
-    {trigger && <RadixPopover.Trigger asChild>{trigger}</RadixPopover.Trigger>}
-    <RadixPopover.Portal>
-      <StyledPopoverContent
-        side={side}
-        sideOffset={sideOffset}
-        $asTooltip={asTooltip}
-        $width={width}
-        $extraPaddingTop={Boolean(!asTooltip && showCloseButton)}
-        collisionPadding={DEFAULT_SIDE_OFFSET}
-        onFocusOutside={onFocusOutside}
-        onOpenAutoFocus={inModal ? e => e.preventDefault() : undefined}
-      >
-        {children}
-        {showCloseButton && (
-          <StyledPopoverClose asChild $asTooltip={asTooltip}>
-            <Button variation={ButtonVariations.Icon}>
-              <CloseIcon label="popover close" width={12} height={12} />
-            </Button>
-          </StyledPopoverClose>
-        )}
-        <StyledPopoverArrow $asTooltip={asTooltip} />
-      </StyledPopoverContent>
-    </RadixPopover.Portal>
-  </PopoverRoot>
-);
+}) => {
+  const content = (
+    <StyledPopoverContent
+      side={side}
+      sideOffset={sideOffset}
+      $asTooltip={asTooltip}
+      $inModal={inModal}
+      $width={width}
+      $extraPaddingTop={Boolean(!asTooltip && showCloseButton)}
+      collisionPadding={DEFAULT_SIDE_OFFSET}
+      onFocusOutside={onFocusOutside}
+      onOpenAutoFocus={inModal ? e => e.preventDefault() : undefined}
+    >
+      {children}
+      {showCloseButton && (
+        <StyledPopoverClose asChild $asTooltip={asTooltip}>
+          <Button variation={ButtonVariations.Icon}>
+            <CloseIcon label="popover close" width={12} height={12} />
+          </Button>
+        </StyledPopoverClose>
+      )}
+      <StyledPopoverArrow $asTooltip={asTooltip} />
+    </StyledPopoverContent>
+  );
+
+  return (
+    <PopoverRoot defaultOpen={defaultOpen} open={open} modal={inModal}>
+      {trigger && (
+        <RadixPopover.Trigger asChild>{trigger}</RadixPopover.Trigger>
+      )}
+      {inModal ? content : <RadixPopover.Portal>{content}</RadixPopover.Portal>}
+    </PopoverRoot>
+  );
+};
 
 export default Popover;

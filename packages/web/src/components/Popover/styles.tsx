@@ -7,6 +7,7 @@ import {
 import styled, { css } from 'styled-components';
 
 import {
+  appear,
   slideDownAndFade,
   slideLeftAndFade,
   slideRightAndFade,
@@ -48,6 +49,7 @@ export const POPOVER_CONTENT_CSS = css`
 export const StyledPopoverContent = styled(PopoverContent)<{
   $asTooltip?: boolean;
   $extraPaddingTop: boolean;
+  $inModal?: boolean;
   $width: PopoverSizes;
 }>`
   ${POPOVER_CONTENT_CSS}
@@ -76,19 +78,27 @@ export const StyledPopoverContent = styled(PopoverContent)<{
     padding-right: ${$asTooltip ? theme.spacing.medium : theme.spacing.small};
   `}
     
-
-  &[data-state='open'][data-side='top'] {
-    animation-name: ${slideDownAndFade};
-  }
-  &[data-state='open'][data-side='right'] {
-    animation-name: ${slideLeftAndFade};
-  }
-  &[data-state='open'][data-side='bottom'] {
-    animation-name: ${slideUpAndFade};
-  }
-  &[data-state='open'][data-side='left'] {
-    animation-name: ${slideRightAndFade};
-  }
+${({ $inModal }) =>
+    $inModal
+      ? css`
+          &[data-state='open'] {
+            animation-name: ${appear};
+          }
+        `
+      : css`
+          &[data-state='open'][data-side='top'] {
+            animation-name: ${slideDownAndFade};
+          }
+          &[data-state='open'][data-side='right'] {
+            animation-name: ${slideLeftAndFade};
+          }
+          &[data-state='open'][data-side='bottom'] {
+            animation-name: ${slideUpAndFade};
+          }
+          &[data-state='open'][data-side='left'] {
+            animation-name: ${slideRightAndFade};
+          }
+        `}
 `;
 
 export const StyledPopoverClose = styled(PopoverClose)<{

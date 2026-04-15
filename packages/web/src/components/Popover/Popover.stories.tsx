@@ -43,12 +43,12 @@ export const Default = ({ children, ...args }) => {
         {children || (
           <>
             <StyledOption
-              variation={ButtonVariations.Inline}
+              variation={ButtonVariations.Option}
               onClick={() => setOpen(true)}
             >
               Open Modal
             </StyledOption>
-            <StyledOption variation={ButtonVariations.Inline}>
+            <StyledOption variation={ButtonVariations.Option}>
               Unmatch
             </StyledOption>
           </>
@@ -71,6 +71,39 @@ export const InfoPopoverComponent = args => {
       }
       {...args}
     />
+  );
+};
+
+export const InModal = ({ children, ...args }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <Popover
+          inModal
+          showCloseButton={false}
+          trigger={
+            <Button variation={ButtonVariations.Circle}>
+              <DotsIcon label="dotsIcon" />
+            </Button>
+          }
+          {...args}
+        >
+          {children || (
+            <>
+              <StyledOption variation={ButtonVariations.Option}>
+                Modal Popover Option
+              </StyledOption>
+              <StyledOption variation={ButtonVariations.Option}>
+                Another Option
+              </StyledOption>
+            </>
+          )}
+        </Popover>
+      </Modal>
+    </>
   );
 };
 
