@@ -3,27 +3,38 @@ import styled, { css } from 'styled-components';
 
 const ITEM_WIDTH = '13px';
 
-export const RadioGroupWrapper = styled.div``;
-
-export const RadioGroupRoot = styled(RadioGroup.Root)`
+export const RadioGroupWrapper = styled.div<{ $inline?: boolean }>`
   display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.xxsmall};
-  align-items: flex-start;
-  width: 100%;
+  flex-direction: ${({ $inline }) => ($inline ? 'row' : 'column')};
+  align-items: ${({ $inline }) => ($inline ? 'center' : 'flex-start')};
+  gap: ${({ theme, $inline }) =>
+    $inline ? theme.spacing.medium : theme.spacing.xxsmall};
 `;
 
-export const PillRoot = styled(RadioGroup.Root)`
+export const RadioGroupRoot = styled(RadioGroup.Root)<{ $inline?: boolean }>`
+  display: flex;
+  flex-direction: ${({ $inline }) => ($inline ? 'row' : 'column')};
+  gap: ${({ theme, $inline }) =>
+    $inline ? theme.spacing.small : theme.spacing.xxsmall};
+  align-items: flex-start;
+  width: ${({ $inline }) => ($inline ? 'auto' : '100%')};
+`;
+
+export const PillRoot = styled(RadioGroup.Root)<{ $inline?: boolean }>`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: ${({ theme }) => theme.spacing.xxsmall};
   align-items: center;
-  width: 100%;
-  margin-bottom: ${({ theme }) => theme.spacing.xxxsmall};
+  width: ${({ $inline }) => ($inline ? 'auto' : '100%')};
+  margin-bottom: ${({ theme, $inline }) =>
+    $inline ? '0' : theme.spacing.xxxsmall};
 `;
 
-export const PillItem = styled(RadioGroup.Item)<{ $hasError: boolean }>`
+export const PillItem = styled(RadioGroup.Item)<{
+  $hasError: boolean;
+  $inline?: boolean;
+}>`
   all: unset;
   font-family: 'Signika Negative';
   font-weight: 600;
@@ -32,7 +43,7 @@ export const PillItem = styled(RadioGroup.Item)<{ $hasError: boolean }>`
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.03);
   border: 2px solid ${({ theme }) => theme.color.border.subtle};
   padding: ${({ theme }) => `${theme.spacing.xxsmall} ${theme.spacing.xsmall}`};
-  min-width: 60px;
+  min-width: 64px;
   width: 100%;
   display: flex;
   flex: 1;
@@ -41,12 +52,18 @@ export const PillItem = styled(RadioGroup.Item)<{ $hasError: boolean }>`
   cursor: pointer;
   transition: filter 0.2s ease-in-out;
 
-  ${({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.small}) {
-      padding: ${theme.spacing.xsmall} ${theme.spacing.small};
-      min-width: 80px;
-    }
-  `}
+  ${({ theme, $inline }) =>
+    $inline
+      ? css`
+          font-weight: normal;
+          padding: ${theme.spacing.xxxsmall} ${theme.spacing.xsmall};
+        `
+      : css`
+          @media (min-width: ${theme.breakpoints.small}) {
+            padding: ${theme.spacing.xsmall} ${theme.spacing.small};
+            min-width: 80px;
+          }
+        `}
 
   &[data-state='checked'] {
     border-color: ${({ $hasError, theme }) =>

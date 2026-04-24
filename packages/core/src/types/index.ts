@@ -1,6 +1,7 @@
 export * from './Accessibility';
 export * from './Accordion';
 export * from './Button';
+export * from './Banner';
 export * from './Card';
 export * from './Checkbox';
 export * from './Dropdown';
