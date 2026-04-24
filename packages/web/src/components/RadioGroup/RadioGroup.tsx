@@ -28,6 +28,7 @@ type Props = {
 
 const RadioGroup: React.FC<Props> = ({
   error,
+  inline = false,
   items,
   label,
   labelTooltip,
@@ -39,21 +40,33 @@ const RadioGroup: React.FC<Props> = ({
   const isPill = type === RadioGroupVariations.Pill;
 
   return (
-    <RadioGroupWrapper>
+    <RadioGroupWrapper $inline={inline}>
       {label && (
-        <Label bold htmlFor={label} tooltipText={labelTooltip}>
+        <Label
+          bold
+          htmlFor={label}
+          tooltipText={labelTooltip}
+          marginBottom={inline ? '0' : undefined}
+        >
           {label}
         </Label>
       )}
       {isPill ? (
         <>
-          <PillRoot ref={inputRef} value={value} name={label} {...rest}>
+          <PillRoot
+            ref={inputRef}
+            value={value}
+            name={label}
+            $inline={inline}
+            {...rest}
+          >
             {items?.map(item => (
               <PillItem
                 key={item.id}
                 value={item.value}
                 id={item.id}
                 $hasError={Boolean(error)}
+                $inline={inline}
               >
                 {item.label}
               </PillItem>
@@ -64,7 +77,13 @@ const RadioGroup: React.FC<Props> = ({
           </InputError>
         </>
       ) : (
-        <RadioGroupRoot ref={inputRef} value={value} name={label} {...rest}>
+        <RadioGroupRoot
+          ref={inputRef}
+          value={value}
+          name={label}
+          $inline={inline}
+          {...rest}
+        >
           {items?.map(item => (
             <ItemContainer key={item.id}>
               <RadioGroupItem

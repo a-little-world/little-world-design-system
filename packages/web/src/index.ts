@@ -16,6 +16,7 @@ export {
   ButtonSizes,
   ButtonVariations,
 } from './components/Button/Button';
+export { default as Banner, BannerTypes } from './components/Banner/Banner';
 export { STACKED_BUTTON_CSS } from './components/Button/styles';
 export {
   default as Card,
@@ -111,6 +112,7 @@ export { pixelate } from './utils/styles';
 // types
 export type { TextStyle } from './components/Text/types';
 export type {
+  BannerBaseProps,
   TabItem,
   TabsProps,
   ThemeWeb,

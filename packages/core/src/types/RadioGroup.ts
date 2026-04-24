@@ -4,5 +4,6 @@ export enum RadioGroupVariations {
 }
 
 export interface RadioGroupBaseProps {
+  inline?: boolean;
   type?: RadioGroupVariations;
 }

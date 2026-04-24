@@ -40,3 +40,23 @@ export const Pill = args => {
     />
   );
 };
+
+export const Inline = args => {
+  const [value, setValue] = useState('love');
+  const items = [
+    { value: 'love', id: 'love-inline', label: 'Love' },
+    { value: 'dreams', id: 'dreams-inline', label: 'Dreams' },
+    { value: 'hope', id: 'hope-inline', label: 'Hope' },
+  ];
+
+  return (
+    <RadioGroup
+      items={items}
+      value={value}
+      onValueChange={setValue}
+      label="Mood"
+      inline
+      {...args}
+    />
+  );
+};

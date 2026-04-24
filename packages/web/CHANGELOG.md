@@ -1,5 +1,17 @@
 # @a-little-world/little-world-design-system
 
+## 2.14.0
+
+### Minor Changes
+
+- Add Banner component
+- Add inline prop to RadioGroup
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.10.2
+
 ## 2.13.3
 
 ### Patch Changes
