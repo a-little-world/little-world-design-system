@@ -5,6 +5,10 @@
 ### Minor Changes
 
 - Add Commbobox
+- Fix theme switch in Storybook
+- Update Button Circle variation styling
+- Add cannotError to TextInput & Switch
+- Add disabled styles to Dropdown
 
 ### Patch Changes
 
