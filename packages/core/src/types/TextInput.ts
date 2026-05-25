@@ -1,4 +1,5 @@
 export enum InputWidth {
+  XSmall = 104,
   Small = 136,
   Medium = 240,
   Large = 480,
@@ -11,6 +12,7 @@ export enum InputHeight {
 }
 
 export interface TextInputBaseProps {
+  cannotError?: boolean;
   error?: string;
   height?: InputHeight;
   inline?: boolean;

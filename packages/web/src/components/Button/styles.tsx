@@ -153,12 +153,7 @@ const StandardButtonCss = css<{ $size?: ButtonSizes }>`
   }}
 `;
 
-export const PrimaryButtonCss = css<{
-  $backgroundColor?: string;
-  $size?: ButtonSizes;
-}>`
-  ${StandardButtonCss}
-
+const PrimaryButtonColorsCss = css<{ $backgroundColor?: string }>`
   color: ${({ theme }) => theme.color.text.button};
   border: none;
   background: ${({ theme, $backgroundColor }) =>
@@ -181,10 +176,11 @@ export const PrimaryButtonCss = css<{
   }
 `;
 
-export const SecondaryButtonCss = css`
-  ${StandardButtonCss}
-
-  ${({ $color, $backgroundColor, theme }: any) => `
+const SecondaryButtonColorsCss = css<{
+  $color?: string;
+  $backgroundColor?: string;
+}>`
+  ${({ $color, $backgroundColor, theme }) => `
     border: 2px solid ${$color || theme.color.border.bold};
     background-color: ${$backgroundColor || 'transparent'};
     color: ${$color || theme.color.text.heading};
@@ -199,6 +195,19 @@ export const SecondaryButtonCss = css`
       border-color 0.5s ease, color 0.5s ease, 0.4s;
     }
   `}
+`;
+
+export const PrimaryButtonCss = css<{
+  $backgroundColor?: string;
+  $size?: ButtonSizes;
+}>`
+  ${StandardButtonCss}
+  ${PrimaryButtonColorsCss}
+`;
+
+export const SecondaryButtonCss = css`
+  ${StandardButtonCss}
+  ${SecondaryButtonColorsCss}
 `;
 
 export const StyledButton = styled.button<{
@@ -249,14 +258,7 @@ export const StyledButton = styled.button<{
     }
   }
 
-  ${({
-    $appearance,
-    $backgroundColor,
-    $borderColor,
-    $size,
-    $variation,
-    theme,
-  }) => {
+  ${({ $appearance, $backgroundColor, $size, $variation, theme }) => {
     if ($variation === ButtonVariations.Basic) {
       if ($appearance === ButtonAppearance.Primary) return PrimaryButtonCss;
       if ($appearance === ButtonAppearance.Secondary) return SecondaryButtonCss;
@@ -291,17 +293,18 @@ export const StyledButton = styled.button<{
 
     if ($variation === ButtonVariations.Circle)
       return css`
-        border: 1px solid ${$borderColor || $backgroundColor || 'currentColor'};
-        background: ${$backgroundColor || 'transparent'};
         border-radius: 50%;
         padding: 0;
         transition: opacity 0.5s ease;
-        ${CIRCLE_DIMENSIONS}
 
         &:not(:disabled):hover {
           transition: opacity 0.3s ease;
           opacity: 0.6;
         }
+
+        ${$appearance === ButtonAppearance.Primary
+          ? PrimaryButtonColorsCss
+          : SecondaryButtonColorsCss};
 
         ${CIRCLE_DIMENSIONS}
       `;
@@ -329,6 +332,7 @@ export const StyledButton = styled.button<{
       default:
         break;
     }
+
     if ($variation === ButtonVariations.Icon) {
       return css`
         background: ${$backgroundColor || 'transparent'};

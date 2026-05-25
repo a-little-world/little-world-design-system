@@ -20,12 +20,18 @@ export const SwitchWrapper = styled.div<{
     `}
 `;
 
-export const LabelContainer = styled.div<{ $inline?: boolean }>`
+export const LabelContainer = styled.div<{
+  $inline?: boolean;
+  $cannotError?: boolean;
+}>`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xxsmall};
-  margin-bottom: ${({ theme, $inline }) =>
-    $inline ? '20px' : theme.spacing.xxsmall};
+  margin-bottom: ${({ theme, $inline, $cannotError }) => {
+    if ($cannotError && $inline) return '0px';
+    if ($inline) return theme.spacing.medium;
+    return theme.spacing.xxsmall;
+  }};
 `;
 
 export const SwitchRoot = styled(Switch.Root)<{ $hasError?: boolean }>`
@@ -56,7 +62,11 @@ export const SwitchRoot = styled(Switch.Root)<{ $hasError?: boolean }>`
   }
 `;
 
-export const SwitchContainer = styled.div``;
+export const SwitchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.xxsmall};
+`;
 
 export const SwitchThumb = styled(Switch.Thumb)`
   display: block;

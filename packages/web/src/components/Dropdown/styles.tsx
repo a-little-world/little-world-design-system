@@ -1,5 +1,5 @@
 import * as Select from '@radix-ui/react-select';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 import { BODY_5_CSS } from '../Text/styles';
@@ -14,6 +14,7 @@ export const DropdownWrapper = styled.div<{ $maxWidth?: string }>`
 `;
 
 export const SelectTrigger = styled(Select.Trigger)<{
+  $disabled?: boolean;
   $hasError: boolean;
   $height?: string;
 }>`
@@ -45,7 +46,7 @@ export const SelectTrigger = styled(Select.Trigger)<{
     text-overflow: ellipsis;
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     opacity: 80%;
   }
 
@@ -62,6 +63,15 @@ export const SelectTrigger = styled(Select.Trigger)<{
     }
   }
 
+  ${({ $disabled }) =>
+    $disabled &&
+    css`
+      &:disabled {
+        background-color: ${({ theme }) => theme.color.surface.disabled};
+        color: ${({ theme }) => theme.color.text.disabled};
+        cursor: not-allowed;
+      }
+    `}
   ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
 `;
 

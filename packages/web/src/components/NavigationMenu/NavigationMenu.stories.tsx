@@ -1,6 +1,5 @@
 import { Meta } from '@storybook/react-webpack5';
 import React from 'react';
-import { withRouter } from 'storybook-addon-remix-react-router';
 
 import {
   MenuContentLayout,
@@ -12,11 +11,12 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from './NavigationMenu';
+import { withMemoryRouter } from '../../storybook/helpers';
 
 const meta: Meta<typeof NavigationMenu> = {
   component: NavigationMenu,
   title: 'Components/NavigationMenu',
-  decorators: [withRouter],
+  decorators: [withMemoryRouter],
 };
 
 export default meta;

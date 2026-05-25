@@ -13,6 +13,7 @@ import {
 } from './styles';
 
 type Props = {
+  cannotError?: boolean;
   className?: string;
   description?: string;
   error?: string;
@@ -25,6 +26,7 @@ type Props = {
 } & RadixSwitch.SwitchProps;
 
 const Switch: React.FC<Props> = ({
+  cannotError = false,
   className,
   description,
   error,
@@ -46,7 +48,7 @@ const Switch: React.FC<Props> = ({
     $labelAndDescription={Boolean(label && description)}
   >
     {(label || description) && (
-      <LabelContainer $inline={labelInline}>
+      <LabelContainer $inline={labelInline} $cannotError={cannotError}>
         {label && (
           <Label
             bold={labelBold}
@@ -73,9 +75,11 @@ const Switch: React.FC<Props> = ({
       >
         <SwitchThumb />
       </SwitchRoot>
-      <InputError visible={Boolean(error)} textAlign="left">
-        {error}
-      </InputError>
+      {!cannotError && (
+        <InputError visible={Boolean(error)} textAlign="left">
+          {error}
+        </InputError>
+      )}
     </SwitchContainer>
   </SwitchWrapper>
 );
