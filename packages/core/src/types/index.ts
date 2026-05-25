@@ -4,6 +4,7 @@ export * from './Button';
 export * from './Banner';
 export * from './Card';
 export * from './Checkbox';
+export * from './Combobox';
 export * from './Dropdown';
 export * from './InputError';
 export * from './Link';

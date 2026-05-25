@@ -1,16 +1,7 @@
 import React from 'react';
 import { BannerTypes } from '@a-little-world/little-world-design-system-core';
-import { MemoryRouter } from 'react-router-dom';
-
+import { withMemoryRouter } from '../../storybook/helpers';
 import Banner from './Banner';
-
-// `Link` with `to` needs a router. Avoid `withRouter` from storybook-addon-remix-react-router:
-// it pulls `useSearchParams` from `react-router`, which does not export that hook in RR v6.
-const withMemoryRouter = (Story: React.FC) => (
-  <MemoryRouter initialEntries={['/']}>
-    <Story />
-  </MemoryRouter>
-);
 
 export default {
   title: 'Components/Banner',

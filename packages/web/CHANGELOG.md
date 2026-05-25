@@ -1,5 +1,20 @@
 # @a-little-world/little-world-design-system
 
+## 2.15.0
+
+### Minor Changes
+
+- Add Commbobox
+- Fix theme switch in Storybook
+- Update Button Circle variation styling
+- Add cannotError to TextInput & Switch
+- Add disabled styles to Dropdown
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.11.0
+
 ## 2.14.0
 
 ### Minor Changes

@@ -1,7 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
-import { tokensPixelated } from '@a-little-world/little-world-design-system-core';
+import {
+  Gradients,
+  tokensPixelated,
+} from '@a-little-world/little-world-design-system-core';
 import { InfoIcon, PhoneIcon } from '../Icon';
 import Text from '../Text/Text';
 import { TextTypes } from '@a-little-world/little-world-design-system-core';
@@ -35,34 +38,44 @@ export const ButtonStacked = args => (
   </Button>
 );
 
-export const ButtonCircle = args => (
-  <div style={{ display: 'flex', gap: tokensPixelated.spacing.large }}>
-    <Button variation={ButtonVariations.Circle} color={args.color}>
-      <InfoIcon label="info" width={20} height={20} />
-    </Button>
-    <Button
-      variation={ButtonVariations.Circle}
-      color={args.color}
-      size={ButtonSizes.Small}
-    >
-      <InfoIcon label="info small" />
-    </Button>
-    <Button
-      variation={ButtonVariations.Circle}
-      color={args.color}
-      size={ButtonSizes.Medium}
-    >
-      <InfoIcon label="info medium" />
-    </Button>
-    <Button
-      variation={ButtonVariations.Circle}
-      color={args.color}
-      size={ButtonSizes.Large}
-    >
-      <InfoIcon label="info large" />
-    </Button>
-  </div>
-);
+export const ButtonCircle = args => {
+  const theme = useTheme();
+  return (
+    <div style={{ display: 'flex', gap: tokensPixelated.spacing.large }}>
+      <Button variation={ButtonVariations.Circle} color={args.color} {...args}>
+        <InfoIcon label="info" width={20} height={20} />
+      </Button>
+      <Button
+        variation={ButtonVariations.Circle}
+        color={args.color}
+        backgroundColor={theme.color.gradient.blue10}
+      >
+        <InfoIcon label="info" width={20} height={20} />
+      </Button>
+      <Button
+        variation={ButtonVariations.Circle}
+        color={args.color}
+        size={ButtonSizes.Small}
+      >
+        <InfoIcon label="info small" />
+      </Button>
+      <Button
+        variation={ButtonVariations.Circle}
+        color={args.color}
+        size={ButtonSizes.Medium}
+      >
+        <InfoIcon label="info medium" />
+      </Button>
+      <Button
+        variation={ButtonVariations.Circle}
+        color={args.color}
+        size={ButtonSizes.Large}
+      >
+        <InfoIcon label="info large" />
+      </Button>
+    </div>
+  );
+};
 
 export const ButtonIcon = args => (
   <div style={{ display: 'flex', gap: tokensPixelated.spacing.large }}>

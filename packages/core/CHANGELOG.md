@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.11.0
+
+### Minor Changes
+
+- Add Commbobox
+- Add cannotError prop to TextInput
+- Add Xsmall input width
+
 ## 1.10.2
 
 ### Patch Changes

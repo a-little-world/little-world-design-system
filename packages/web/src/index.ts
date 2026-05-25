@@ -33,6 +33,7 @@ export {
   CheckboxSizes,
 } from '@a-little-world/little-world-design-system-core';
 export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid';
+export { default as Combobox } from './components/Combobox/Combobox';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
 
 export { default as MultiDropdown } from './components/MultiDropdown/MultiDropdown';

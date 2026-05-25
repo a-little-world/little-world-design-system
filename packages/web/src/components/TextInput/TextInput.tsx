@@ -42,6 +42,7 @@ export type Props =
     });
 
 const TextInput: React.FC<Props> = ({
+  cannotError,
   error,
   height,
   id,
@@ -145,13 +146,15 @@ const TextInput: React.FC<Props> = ({
         )}
       </InputContainer>
 
-      <InputError
-        visible={Boolean(error)}
-        textAlign={width === InputWidth.Large ? 'right' : 'left'}
-        {...errorProps}
-      >
-        {error}
-      </InputError>
+      {!cannotError && (
+        <InputError
+          visible={Boolean(error)}
+          textAlign={width === InputWidth.Large ? 'right' : 'left'}
+          {...errorProps}
+        >
+          {error}
+        </InputError>
+      )}
     </InputWrapper>
   );
 };

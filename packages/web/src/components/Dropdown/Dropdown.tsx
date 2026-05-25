@@ -1,11 +1,12 @@
 import * as Select from '@radix-ui/react-select';
 import React from 'react';
+import { DropdownBaseProps } from '@a-little-world/little-world-design-system-core';
 
 import { CheckIcon, ChevronDownIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
-import { InputHeight } from '../TextInput/TextInput';
+
 import {
   DropdownWrapper,
   SelectContent,
@@ -19,31 +20,16 @@ import {
 
 type Options = { value: string; label: string }[];
 
-type DropdownBaseProps = {
-  ariaLabel?: string;
-  cannotError?: boolean;
-  disabled?: boolean;
-  error?: string;
-  height?: InputHeight;
-  id?: string;
+type DropdownCoreProps = DropdownBaseProps & {
   inputRef?: React.RefObject<HTMLButtonElement>;
-  label?: string;
-  labelTooltip?: string;
-  lockedValue?: string;
-  maxWidth?: string;
-  onValueChange: (value: string) => void;
-  options: Options;
-  placeholder: string;
-  required?: boolean;
-  value?: string;
 };
 
 export type DropdownProps =
-  | (DropdownBaseProps & {
+  | (DropdownCoreProps & {
       label?: undefined;
       id?: string;
     })
-  | (DropdownBaseProps & {
+  | (DropdownCoreProps & {
       label: string;
       id: string;
     });
@@ -93,7 +79,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   const canError = !lockedValue && !cannotError;
 
   return (
-    <DropdownWrapper $maxWidth={maxWidth}>
+    <DropdownWrapper $maxWidth={maxWidth as string}>
       {label && (
         <Label bold htmlFor={id} tooltipText={labelTooltip}>
           {label}
@@ -109,6 +95,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           aria-label={ariaLabel}
           id={id}
           ref={inputRef}
+          $disabled={disabled}
           $hasError={Boolean(error)}
           $height={height}
         >
