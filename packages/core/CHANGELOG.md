@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.11.0
+
+### Minor Changes
+
+- Add Commbobox
+
 ## 1.10.2
 
 ### Patch Changes
