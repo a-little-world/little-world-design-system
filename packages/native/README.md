@@ -91,7 +91,7 @@ If you prefer to work directly in the testApp directory:
 ```bash
 cd packages/native/testApp
 pnpm install
-pnpm start  # Start Expo app
+pnpm run start  # Start Expo app
 pnpm run storybook  # Start Storybook
 ```
 
