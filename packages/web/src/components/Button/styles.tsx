@@ -293,9 +293,10 @@ export const StyledButton = styled.button<{
 
     if ($variation === ButtonVariations.Circle)
       return css`
-        border-radius: 50%;
+        border-radius: ${theme.radius.half};
         padding: 0;
         transition: opacity 0.5s ease;
+        flex-shrink: 0;
 
         &:not(:disabled):hover {
           transition: opacity 0.3s ease;

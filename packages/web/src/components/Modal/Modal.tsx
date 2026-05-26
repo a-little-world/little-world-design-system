@@ -2,9 +2,14 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { lock, unlock } from 'tua-body-scroll-lock';
 
-import { ButtonSizes, ButtonVariations } from '../Button/Button';
+import {
+  ButtonAppearance,
+  ButtonSizes,
+  ButtonVariations,
+} from '../Button/Button';
 import { CloseIcon } from '../Icon';
 import { BackdropContainer, CloseButton } from './styles';
+import { useTheme } from 'styled-components';
 
 export const BACKDROP_LABEL = 'dialog backdrop';
 const CLOSE_BUTTON_LABEL = 'dialog close button';
@@ -12,6 +17,7 @@ const CLOSE_BUTTON_LABEL = 'dialog close button';
 type BaseModalProps = {
   children: any;
   className?: string;
+  closeOnBackdropClick?: boolean;
   createInPortal?: boolean;
   open: boolean;
   parent?: any;
@@ -23,6 +29,7 @@ type UnlockedModalProps = BaseModalProps & {
 };
 
 type LockedModalProps = BaseModalProps & {
+  closeOnBackdropClick?: never;
   locked: true;
   onClose?: () => void;
 };
@@ -31,6 +38,7 @@ type ModalProps = UnlockedModalProps | LockedModalProps;
 
 const Modal = ({
   children,
+  closeOnBackdropClick = true,
   createInPortal = true,
   open,
   onClose,
@@ -39,6 +47,7 @@ const Modal = ({
   className,
 }: ModalProps) => {
   const [active, setActive] = useState(false);
+  const theme = useTheme();
 
   const backdrop = useRef<HTMLDialogElement>(null);
   const el = useMemo(() => document.createElement('div'), []);
@@ -54,11 +63,12 @@ const Modal = ({
 
   useEffect(() => {
     const { current } = backdrop;
+    const canDismissOnBackdrop = !locked && closeOnBackdropClick;
     const transitionEnd = () => setActive(open);
     const keyHandler = (e: KeyboardEvent) =>
       !locked && e.key === 'Escape' && onClose();
     const clickHandler = (e: Event) =>
-      !locked && e.target === current && onClose();
+      canDismissOnBackdrop && e.target === current && onClose();
 
     let openTimeout: number;
 
@@ -87,7 +97,7 @@ const Modal = ({
         current.removeEventListener('click', clickHandler);
       }
     };
-  }, [open, locked, onClose]);
+  }, [closeOnBackdropClick, open, locked, onClose]);
 
   const Backdrop = (
     <BackdropContainer
@@ -99,6 +109,9 @@ const Modal = ({
       {!locked && (
         <CloseButton
           variation={ButtonVariations.Circle}
+          appearance={ButtonAppearance.Secondary}
+          backgroundColor={theme.color.surface.secondary}
+          color={theme.color.text.primary}
           onClick={onClose}
           size={ButtonSizes.Medium}
         >

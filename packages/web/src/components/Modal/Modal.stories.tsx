@@ -50,3 +50,13 @@ const Template = args => {
 
 export const Default = Template.bind({});
 Default.args = {};
+
+export const CloseButtonOnly = Template.bind({});
+CloseButtonOnly.args = {
+  closeOnBackdropClick: false,
+};
+
+export const Locked = Template.bind({});
+Locked.args = {
+  locked: true,
+};

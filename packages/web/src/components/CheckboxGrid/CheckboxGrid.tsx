@@ -2,7 +2,11 @@ import { CheckedState } from '@radix-ui/react-checkbox';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTheme } from 'styled-components';
 
-import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
+import Button, {
+  ButtonAppearance,
+  ButtonSizes,
+  ButtonVariations,
+} from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 import { ChevronLeftIcon, ChevronRightIcon } from '../Icon';
 import InputError from '../InputError/InputError';
@@ -300,21 +304,21 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
           <ArrowButtonsContainer>
             <Button
               variation={ButtonVariations.Circle}
+              appearance={ButtonAppearance.Secondary}
               onClick={scrollLeft}
               size={ButtonSizes.Medium}
               aria-label="Scroll left"
-              borderColor={theme.color.border.moderate}
-              backgroundColor={theme.color.surface.secondary}
+              color={theme.color.text.highlight}
               disabled={!canScrollLeft}
             >
               <ChevronLeftIcon label="Scroll left" width={16} height={16} />
             </Button>
             <Button
               variation={ButtonVariations.Circle}
+              appearance={ButtonAppearance.Secondary}
               onClick={scrollRight}
               size={ButtonSizes.Medium}
-              borderColor={theme.color.border.moderate}
-              backgroundColor={theme.color.surface.secondary}
+              color={theme.color.text.highlight}
               aria-label="Scroll right"
               disabled={!canScrollRight}
             >
