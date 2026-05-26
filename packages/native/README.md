@@ -5,13 +5,16 @@ React Native components for the Little World Design System.
 ## Installation
 
 ```bash
-npm install @a-little-world/little-world-design-system-native
+pnpm install @a-little-world/little-world-design-system-native
 ```
 
 ## Usage
 
 ```tsx
-import { Button, Text } from '@a-little-world/little-world-design-system-native';
+import {
+  Button,
+  Text,
+} from '@a-little-world/little-world-design-system-native';
 
 export default function App() {
   return (
@@ -31,16 +34,18 @@ The native package includes a test app for local development and testing of comp
 **Always build and publish from the root of the monorepo, never from individual package directories.**
 
 ✅ **Correct (from root):**
+
 ```bash
 pnpm build:native
 pnpm --filter=@a-little-world/little-world-design-system-native publish
 ```
 
 ❌ **Incorrect (from package directory):**
+
 ```bash
 cd packages/native
-npm run build
-npm publish  # This will break workspace dependencies!
+pnpm run build
+pnpm publish  # This will break workspace dependencies!
 ```
 
 ### Prerequisites
@@ -67,7 +72,7 @@ pnpm storybook:native
 ### What the setup script does:
 
 1. **Builds core package** - Compiles design tokens and utilities
-2. **Builds native package** - Compiles React Native components  
+2. **Builds native package** - Compiles React Native components
 3. **Creates tarballs** - Packages both libraries for local installation
 4. **Installs in testApp** - Installs the local packages in the Expo test app
 
@@ -85,9 +90,9 @@ If you prefer to work directly in the testApp directory:
 
 ```bash
 cd packages/native/testApp
-npm install
-npm start  # Start Expo app
-npm run storybook  # Start Storybook
+pnpm install
+pnpm start  # Start Expo app
+pnpm run storybook  # Start Storybook
 ```
 
 ### Troubleshooting
@@ -106,7 +111,7 @@ pnpm storybook:native
 
 # Or from testApp directory
 cd packages/native/testApp
-npm run storybook
+pnpm run storybook
 ```
 
 ## Building
@@ -117,18 +122,19 @@ pnpm build:native
 
 # Or from the native package directory
 cd packages/native
-npm run build
+pnpm run build
 ```
 
 ## Publishing
 
 ### Automated Releases (Recommended)
 
-**Releases should ideally be automated and handled via merging into the main branch of the repo.** 
+**Releases should ideally be automated and handled via merging into the main branch of the repo.**
 
 See the [Versioning and Releases section in the root README](../../README.md#versioning-and-releases) for detailed information about the automated release process using Changesets.
 
 The automated workflow will:
+
 - Detect version changes in package.json
 - Publish to GitHub Packages registry
 - Create GitHub releases with changelog information
@@ -140,14 +146,14 @@ If you need to publish manually (not recommended):
 
 ```bash
 # Ensure you're authenticated to GitHub Packages
-npm login --registry=https://npm.pkg.github.com
+pnpm login --registry=https://npm.pkg.github.com
 
 # Build the package
 pnpm build:native
 
 # Publish from the native package directory
 cd packages/native
-npm publish --access restricted
+pnpm publish --access restricted
 ```
 
 **Note**: Manual publishing bypasses the automated changelog generation and release management. Use the automated process whenever possible.
@@ -155,6 +161,7 @@ npm publish --access restricted
 ## Dependencies
 
 This package depends on:
+
 - `@a-little-world/little-world-design-system-core` - Core design tokens and utilities
 - `react-native` - React Native framework
 - `styled-components` - Styling library

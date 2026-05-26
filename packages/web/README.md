@@ -7,7 +7,7 @@ This system utilises [Radix Primitives](https://github.com/radix-ui/primitives) 
 ## Installation
 
 ```bash
-npm install @a-little-world/little-world-design-system
+pnpm install @a-little-world/little-world-design-system
 ```
 
 ## Usage
@@ -44,16 +44,18 @@ Ensure that you have the required fonts available by including them in your HTML
 **Always build and publish from the root of the monorepo, never from individual package directories.**
 
 ✅ **Correct (from root):**
+
 ```bash
 pnpm build:web
 pnpm --filter=@a-little-world/little-world-design-system publish
 ```
 
 ❌ **Incorrect (from package directory):**
+
 ```bash
 cd packages/web
-npm run build
-npm publish  # This will break workspace dependencies!
+pnpm run build
+pnpm publish  # This will break workspace dependencies!
 ```
 
 ### Quick Start
@@ -84,9 +86,9 @@ If you prefer to work directly in the web package directory:
 
 ```bash
 cd packages/web
-npm install
-npm run build
-npm run storybook
+pnpm install
+pnpm run build
+pnpm run storybook
 ```
 
 ## Storybook
@@ -99,7 +101,7 @@ pnpm storybook:web
 
 # Or from web package directory
 cd packages/web
-npm run storybook
+pnpm run storybook
 ```
 
 ## Building
@@ -110,18 +112,19 @@ pnpm build:web
 
 # Or from the web package directory
 cd packages/web
-npm run build
+pnpm run build
 ```
 
 ## Publishing
 
 ### Automated Releases (Recommended)
 
-**Releases should ideally be automated and handled via merging into the main branch of the repo.** 
+**Releases should ideally be automated and handled via merging into the main branch of the repo.**
 
 See the [Versioning and Releases section in the root README](../../README.md#versioning-and-releases) for detailed information about the automated release process using Changesets.
 
 The automated workflow will:
+
 - Detect version changes in package.json
 - Publish to GitHub Packages registry
 - Create GitHub releases with changelog information
@@ -133,7 +136,7 @@ If you need to publish manually (not recommended):
 
 ```bash
 # Ensure you're authenticated to GitHub Packages
-npm login --registry=https://npm.pkg.github.com
+pnpm login --registry=https://npm.pkg.github.com
 
 pnpm build:web
 pnpm --filter=@a-little-world/little-world-design-system publish
@@ -144,6 +147,7 @@ pnpm --filter=@a-little-world/little-world-design-system publish
 ## Dependencies
 
 This package depends on:
+
 - `@a-little-world/little-world-design-system-core` - Core design tokens and utilities
 - `react` - React framework
 - `styled-components` - Styling library
@@ -154,6 +158,7 @@ This package depends on:
 In React Native, when you set `minWidth` on a component, it doesn't automatically expand beyond that width based on content like it would on the web. The flexbox implementation in React Native is more strict about respecting explicit dimensions.
 
 **Recommendation**: For most cases:
+
 - Use `flex: 1` when you want a component to fill its parent
 - Use `max-width` to limit the size
 - Otherwise use an explicit `width` and manage the content
@@ -172,7 +177,7 @@ This package uses [Changesets](https://github.com/changesets/changesets) for ver
 
 ~~In order to release a new version of this package:~~
 
-1. ~~Bump the version in the `package.json` and run `npm install` to update the package-lock.json in the relevant release branch.~~
+1. ~~Bump the version in the `package.json` and run `pnpm install` to update the package-lock.json in the relevant release branch.~~
 2. ~~Ensure your release branch has been tested, approved and merged into `main`.~~
 3. ~~Go to the "Draft a release" [section](https://github.com/a-little-world/little-world-design-system/releases/new) of the repo.~~
 4. ~~Create a tag that relates to the new version.~~

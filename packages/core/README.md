@@ -5,13 +5,17 @@ Core design tokens, utilities, and shared types for the Little World Design Syst
 ## Installation
 
 ```bash
-npm install @a-little-world/little-world-design-system-core
+pnpm install @a-little-world/little-world-design-system-core
 ```
 
 ## Usage
 
 ```tsx
-import { colors, spacing, typography } from '@a-little-world/little-world-design-system-core';
+import {
+  colors,
+  spacing,
+  typography,
+} from '@a-little-world/little-world-design-system-core';
 
 // Use design tokens
 const styles = {
@@ -39,16 +43,18 @@ The core package provides:
 **Always build and publish from the root of the monorepo, never from individual package directories.**
 
 ✅ **Correct (from root):**
+
 ```bash
 pnpm build:core
 pnpm --filter=@a-little-world/little-world-design-system-core publish
 ```
 
 ❌ **Incorrect (from package directory):**
+
 ```bash
 cd packages/core
-npm run build
-npm publish  # This will break workspace dependencies!
+pnpm run build
+pnpm publish  # This will break workspace dependencies!
 ```
 
 ### Building
@@ -59,7 +65,7 @@ pnpm build:core
 
 # Or from the core package directory
 cd packages/core
-npm run build
+pnpm run build
 ```
 
 ### Testing with Native Package
@@ -82,11 +88,12 @@ pnpm native:setup
 
 ### Automated Releases (Recommended)
 
-**Releases should ideally be automated and handled via merging into the main branch of the repo.** 
+**Releases should ideally be automated and handled via merging into the main branch of the repo.**
 
 See the [Versioning and Releases section in the root README](../../README.md#versioning-and-releases) for detailed information about the automated release process using Changesets.
 
 The automated workflow will:
+
 - Detect version changes in package.json
 - Publish to GitHub Packages registry
 - Create GitHub releases with changelog information
@@ -105,7 +112,7 @@ pnpm build:core
 
 # Publish from the core package directory
 cd packages/core
-npm publish --access restricted
+pnpm publish --access restricted
 ```
 
 **Note**: Manual publishing bypasses the automated changelog generation and release management. Use the automated process whenever possible.
@@ -115,7 +122,10 @@ npm publish --access restricted
 The package includes TypeScript definitions for all design tokens and utilities:
 
 ```tsx
-import type { ColorToken, SpacingToken } from '@a-little-world/little-world-design-system-core';
+import type {
+  ColorToken,
+  SpacingToken,
+} from '@a-little-world/little-world-design-system-core';
 
 // Type-safe usage
 const color: ColorToken = 'primary'; // ✅ Valid
@@ -125,5 +135,6 @@ const invalidColor: ColorToken = 'invalid'; // ❌ TypeScript error
 ## Dependencies
 
 This package has minimal dependencies to avoid conflicts:
+
 - `typescript` - For type definitions
-- No runtime dependencies (pure design tokens and utilities) 
+- No runtime dependencies (pure design tokens and utilities)
