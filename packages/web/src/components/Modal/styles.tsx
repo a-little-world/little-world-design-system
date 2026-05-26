@@ -56,7 +56,6 @@ export const CloseButton = styled(Button)`
   top: ${({ theme }) => theme.spacing.xsmall};
   right: ${({ theme }) => theme.spacing.xsmall};
   z-index: ${({ theme }) => theme.zIndex.control};
-  background: ${({ theme }) => theme.color.surface.secondary};
   border: none;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {

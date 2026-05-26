@@ -96,3 +96,23 @@ test('Modal cannot be closed by clicking on backdrop when locked', async () => {
   await user.click(backdrop);
   expect(onCloseMock).not.toHaveBeenCalled();
 });
+
+test('Modal can only be closed by the close button when closeOnBackdropClick is false', async () => {
+  const onCloseMock = jest.fn();
+  const { user } = renderWithUser(
+    <Modal closeOnBackdropClick={false} open onClose={onCloseMock}>
+      <div data-testid={CHILDREN_TEST_ID} />
+    </Modal>,
+  );
+
+  const backdrop = screen.getByLabelText(BACKDROP_LABEL);
+  await user.click(backdrop);
+  expect(onCloseMock).not.toHaveBeenCalled();
+
+  await user.keyboard('{Escape}');
+  expect(onCloseMock).not.toHaveBeenCalled();
+
+  const closeBtn = screen.getByRole('button');
+  await user.click(closeBtn);
+  expect(onCloseMock).toHaveBeenCalled();
+});
