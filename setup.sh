@@ -8,8 +8,8 @@ echo "📦 Setting up Little World Design System..."
 # Install and build core
 echo "🔧 Setting up core package..."
 cd packages/core
-npm install
-npm run build
+pnpm install
+pnpm run build
 cd ../..
 
 echo "✅ Core tokens package built successfully"
@@ -17,8 +17,8 @@ echo "✅ Core tokens package built successfully"
 # Install and build core
 echo "🔧 Setting up core package..."
 cd packages/web
-npm install
-npm run build
+pnpm install
+pnpm run build
 cd ../..
 
 echo "✅ Core package built successfully"
@@ -26,7 +26,7 @@ echo "✅ Core package built successfully"
 # Install native
 echo "🔧 Setting up native package..."
 cd packages/native
-npm install
+pnpm install
 cd ../..
 
 echo "✅ Native package installed successfully"
