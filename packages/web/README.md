@@ -7,7 +7,7 @@ This system utilises [Radix Primitives](https://github.com/radix-ui/primitives) 
 ## Installation
 
 ```bash
-npm install @a-little-world/little-world-design-system
+pnpm add @a-little-world/little-world-design-system
 ```
 
 ## Usage
@@ -52,8 +52,8 @@ pnpm --filter=@a-little-world/little-world-design-system publish
 ❌ **Incorrect (from package directory):**
 ```bash
 cd packages/web
-npm run build
-npm publish  # This will break workspace dependencies!
+pnpm run build
+pnpm publish  # This will break workspace dependencies!
 ```
 
 ### Quick Start
@@ -84,9 +84,9 @@ If you prefer to work directly in the web package directory:
 
 ```bash
 cd packages/web
-npm install
-npm run build
-npm run storybook
+pnpm install
+pnpm run build
+pnpm run storybook
 ```
 
 ## Storybook
@@ -99,7 +99,7 @@ pnpm storybook:web
 
 # Or from web package directory
 cd packages/web
-npm run storybook
+pnpm run storybook
 ```
 
 ## Building
@@ -110,7 +110,7 @@ pnpm build:web
 
 # Or from the web package directory
 cd packages/web
-npm run build
+pnpm run build
 ```
 
 ## Publishing
@@ -133,7 +133,7 @@ If you need to publish manually (not recommended):
 
 ```bash
 # Ensure you're authenticated to GitHub Packages
-npm login --registry=https://npm.pkg.github.com
+pnpm login --registry=https://npm.pkg.github.com
 
 pnpm build:web
 pnpm --filter=@a-little-world/little-world-design-system publish
@@ -172,7 +172,7 @@ This package uses [Changesets](https://github.com/changesets/changesets) for ver
 
 ~~In order to release a new version of this package:~~
 
-1. ~~Bump the version in the `package.json` and run `npm install` to update the package-lock.json in the relevant release branch.~~
+1. ~~Bump the version in the `package.json` and run `pnpm install` to update the pnpm-lock.yaml in the relevant release branch.~~
 2. ~~Ensure your release branch has been tested, approved and merged into `main`.~~
 3. ~~Go to the "Draft a release" [section](https://github.com/a-little-world/little-world-design-system/releases/new) of the repo.~~
 4. ~~Create a tag that relates to the new version.~~

@@ -10,7 +10,7 @@
     "test-watch": "jest --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "rimraf dist && npm run build:esm && npm run build:cjs",
+    "build": "rimraf dist && pnpm run build:esm && pnpm run build:cjs",
     "build:esm": "tsc --outDir dist/esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "watch": "tsc --watch",
