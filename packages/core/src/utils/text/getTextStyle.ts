@@ -46,40 +46,46 @@ export const getTextStyle = (type: keyof typeof TextTypes): TextStyle => {
       return {
         fontSize: 4,
         desktopFontSize: 5,
-        fontWeight: 'bold',
+        fontWeight: '600',
         styleType: 'heading',
       };
     case TextTypes.Heading2:
       return {
         fontSize: 3.5,
         desktopFontSize: 4,
-        fontWeight: 'bold',
+        fontWeight: '600',
         styleType: 'heading',
       };
     case TextTypes.Heading3:
       return {
         fontSize: 2.5,
         desktopFontSize: 3,
-        fontWeight: 'bold',
+        fontWeight: '600',
         styleType: 'heading',
       };
     case TextTypes.Heading4:
       return {
         fontSize: 2,
         desktopFontSize: 2,
-        fontWeight: 'bold',
+        fontWeight: '600',
         styleType: 'heading',
       };
     case TextTypes.Heading5:
       return {
         fontSize: 1.5,
-        fontWeight: 'bold',
+        fontWeight: '600',
         styleType: 'heading',
       };
     case TextTypes.Heading6:
       return {
+        fontSize: 1.25,
+        fontWeight: '600',
+        styleType: 'heading',
+      };
+    case TextTypes.Heading7:
+      return {
         fontSize: 1,
-        fontWeight: 'bold',
+        fontWeight: '600',
         styleType: 'heading',
       };
     default:

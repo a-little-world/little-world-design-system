@@ -9,6 +9,7 @@ export * from './Dropdown';
 export * from './InputError';
 export * from './Link';
 export * from './Loading';
+export * from './MultiDropdown';
 export * from './Popover';
 export * from './ProgressBar';
 export * from './Separator';

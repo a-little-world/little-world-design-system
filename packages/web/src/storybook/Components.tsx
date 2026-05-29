@@ -14,7 +14,7 @@ const Item = styled.div`
 `;
 
 const Details = styled.div`
-  font-family: 'Signika Negative', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;

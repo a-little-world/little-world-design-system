@@ -33,6 +33,7 @@ export const Headings: Story = {
       <Text type={TextTypes.Heading4}>Heading 4</Text>
       <Text type={TextTypes.Heading5}>Heading 5</Text>
       <Text type={TextTypes.Heading6}>Heading 6</Text>
+      <Text type={TextTypes.Heading7}>Heading 7</Text>
     </View>
   ),
   args: {}

@@ -5,7 +5,7 @@ import {
 } from '@a-little-world/little-world-design-system-core';
 
 const BODY_SHARED_STYLES = css`
-  font-family: 'Signika Negative', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
@@ -13,8 +13,7 @@ const BODY_SHARED_STYLES = css`
 `;
 
 const HEADING_SHARED_STYLES = css<{ $color?: string }>`
-  font-family: 'Work Sans', sans-serif;
-  font-weight: bold;
+  font-family: 'Signika Negative', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.1;
@@ -36,6 +35,7 @@ const styles = {
   [TextTypes.Heading4]: getTextStyle(TextTypes.Heading4),
   [TextTypes.Heading5]: getTextStyle(TextTypes.Heading5),
   [TextTypes.Heading6]: getTextStyle(TextTypes.Heading6),
+  [TextTypes.Heading7]: getTextStyle(TextTypes.Heading7),
   [TextTypes.Body1]: getTextStyle(TextTypes.Body1),
   [TextTypes.Body2]: getTextStyle(TextTypes.Body2),
   [TextTypes.Body3]: getTextStyle(TextTypes.Body3),

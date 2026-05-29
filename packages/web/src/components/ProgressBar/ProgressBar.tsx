@@ -30,7 +30,6 @@ const ProgressBarWrapper = styled.div<{ $fullWidth?: boolean }>`
   align-items: center;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.xsmall};
-  font-family: 'Work Sans';
 
   ${({ $fullWidth }) =>
     $fullWidth &&

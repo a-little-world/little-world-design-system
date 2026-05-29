@@ -10,10 +10,9 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-# Add permissions for package publishing and GitHub releases
+# id-token: write is required for npm Trusted Publishing (OIDC)
 permissions:
   contents: write
-  packages: write
   id-token: write
   pull-requests: write
 
@@ -23,43 +22,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@a-little-world'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_PUBLISH_TOKEN }}
-
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 9.0.0
 
-      - name: Configure pnpm for npm Registry
-        run: |
-          # Clear any existing config
-          rm -f ~/.npmrc
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@a-little-world'
+          package-manager-cache: false
 
-          # Set up fresh config for npm Registry
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.PACKAGE_PUBLISH_TOKEN }}" > ~/.npmrc
-          echo "@a-little-world:registry=https://registry.npmjs.org" >> ~/.npmrc
-          echo "registry=https://registry.npmjs.org/" >> ~/.npmrc
-
-          # Configure pnpm to use the same registry settings
-          pnpm config set @a-little-world:registry https://registry.npmjs.org
-          pnpm config set registry https://registry.npmjs.org/
-
-          # Verify configuration
-          echo "=== NPM Config ==="
-          cat ~/.npmrc
-          echo "=== PNPM Config ==="
-          pnpm config list
+      - name: Ensure npm supports Trusted Publishing
+        run: npm install -g npm@latest
 
       - name: Get pnpm store directory
         shell: bash
@@ -306,29 +287,21 @@ jobs:
 
       - name: Publish Packages
         if: github.ref == 'refs/heads/main' && steps.version-check.outputs.has_changes == 'true'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_PUBLISH_TOKEN }}
         run: |
           echo "## 📦 Publishing packages..." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          # Debug: Check pnpm configuration
-          echo "### 🔍 Debug Information:" >> $GITHUB_STEP_SUMMARY
-          echo "PNPM Registry: $(pnpm config get registry)" >> $GITHUB_STEP_SUMMARY
-          echo "PNPM Auth Token exists: $([ -n "$NODE_AUTH_TOKEN" ] && echo "Yes" || echo "No")" >> $GITHUB_STEP_SUMMARY
-          echo "PNPM Auth Token length: ${#NODE_AUTH_TOKEN}" >> $GITHUB_STEP_SUMMARY
-          echo "PNPM Auth Token prefix: ${NODE_AUTH_TOKEN:0:10}..." >> $GITHUB_STEP_SUMMARY
-          echo "Current directory: $(pwd)" >> $GITHUB_STEP_SUMMARY
-          echo "GitHub repository: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
-          echo "GitHub actor: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔐 Verifying npm Trusted Publishing (OIDC)..." >> $GITHUB_STEP_SUMMARY
+          echo "Node: $(node --version)" >> $GITHUB_STEP_SUMMARY
+          echo "npm: $(npm --version)" >> $GITHUB_STEP_SUMMARY
+          echo "Repository: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
+          echo "Workflow: ${{ github.workflow }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          # Test pnpm authentication
-          echo "### 🔐 Testing pnpm authentication..." >> $GITHUB_STEP_SUMMARY
-          if pnpm whoami --registry=https://registry.npmjs.org; then
-            echo "✅ pnpm authentication successful for npm Registry" >> $GITHUB_STEP_SUMMARY
+          if npm whoami --registry=https://registry.npmjs.org; then
+            echo "✅ npm OIDC authentication successful" >> $GITHUB_STEP_SUMMARY
           else
-            echo "❌ pnpm authentication failed for npm Registry" >> $GITHUB_STEP_SUMMARY
+            echo "❌ npm authentication failed — check Trusted Publisher settings on npmjs.com for this repo and workflow file (release.yml)" >> $GITHUB_STEP_SUMMARY
             exit 1
           fi
           echo "" >> $GITHUB_STEP_SUMMARY

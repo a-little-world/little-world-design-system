@@ -36,7 +36,10 @@ export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid'
 export { default as Combobox } from './components/Combobox/Combobox';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
 
-export { default as MultiDropdown } from './components/MultiDropdown/MultiDropdown';
+export {
+  default as MultiDropdown,
+  MultiDropdownVariants,
+} from './components/MultiDropdown/MultiDropdown';
 export * from './components/Icon';
 export * from './components/Illustrations';
 export { default as InputError } from './components/InputError/InputError';
@@ -111,13 +114,15 @@ export { default as textParser } from './utils/parser';
 export { pixelate } from './utils/styles';
 
 // types
-export type { TextStyle } from './components/Text/types';
 export type {
   BannerBaseProps,
+  MultiDropdownFieldProps,
+  MultiDropdownProps,
   TabItem,
   TabsProps,
   ThemeWeb,
   ToastBaseProps,
+  TextStyle,
 } from '@a-little-world/little-world-design-system-core';
 
 // export core elements

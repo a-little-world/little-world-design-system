@@ -32,6 +32,54 @@ The core package provides:
 - **Shadows** - Elevation and shadow definitions
 - **Border Radius** - Consistent border radius values
 
+## Fonts
+
+Font binaries live in `src/fonts/` and are exported from `src/fonts/index.ts`. TypeScript compilation does **not** copy `.ttf` files into `dist/`; a separate copy step runs at the end of the build so published packages include the font files next to the compiled JS.
+
+### Build pipeline
+
+The `build` script runs, in order:
+
+1. `clean` — removes `dist/` and generated `.d.ts` files under `src/`
+2. `preprocess-svgs` — processes SVG assets (unrelated to fonts)
+3. `build:esm` / `build:cjs` — compiles TypeScript to `dist/esm` and `dist/cjs` (including `fonts/index.js`, but not the `.ttf` binaries)
+4. `copy-fonts` — copies font files into both output trees
+
+`copy-fonts` uses [`cpy-cli`](https://github.com/sindresorhus/cpy-cli) with `--flat`, so each file lands directly in `dist/esm/fonts/` and `dist/cjs/fonts/` (no nested source paths):
+
+```bash
+copy-fonts:esm  → dist/esm/fonts/
+copy-fonts:cjs  → dist/cjs/fonts/
+```
+
+Copied files (must match filenames in `src/fonts/`):
+
+- `SignikaNegative-Variable.ttf`
+- `SignikaNegative-Bold.ttf`
+- `DMSans-Variable.ttf`
+
+If you add or rename a font file, update `copy-fonts:esm` and `copy-fonts:cjs` in `package.json` and the paths in `src/fonts/index.ts`.
+
+### Runtime exports (`src/fonts/index.ts`)
+
+The fonts module is re-exported from the package entry (`export * from './fonts'`).
+
+| Export | Purpose |
+|--------|---------|
+| `fontPaths` | Relative paths to `.ttf` files under `./fonts/` — for web consumers that load fonts from the published package (e.g. `@font-face` `url()`). |
+| `fontFamilies` | CSS / React Native font family names (`Signika Negative`, `DM Sans`, etc.). |
+| `fontFiles` | Map of family name → asset from `require('./….ttf')` for React Native (`expo-font` / `Font.loadAsync`). Built inside a `try`/`catch` so web bundlers that cannot `require` binaries do not fail; on web, `fontFiles` stays `undefined`. |
+
+Native apps should guard usage:
+
+```tsx
+import { fontFiles } from '@a-little-world/little-world-design-system-core';
+
+if (fontFiles) {
+  await Font.loadAsync(fontFiles);
+}
+```
+
 ## Local Development
 
 ### ⚠️ Important: Build from Root
