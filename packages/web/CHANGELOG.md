@@ -1,5 +1,18 @@
 # @a-little-world/little-world-design-system
 
+## 2.16.0
+
+### Minor Changes
+
+- Remove Work Sans font & Add DM Sans font
+- Use Signika Negative exclusively for headings
+- Add variant prop to Multidropdown
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.12.0
+
 ## 2.15.1
 
 ### Patch Changes

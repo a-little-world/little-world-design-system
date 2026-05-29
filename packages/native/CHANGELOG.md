@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.8.0
+
+### Minor Changes
+
+- Remove Work Sans font & Add DM Sans font
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.12.0
+
 ## 0.7.3
 
 ### Patch Changes
