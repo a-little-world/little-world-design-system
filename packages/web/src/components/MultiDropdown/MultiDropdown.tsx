@@ -1,8 +1,14 @@
+import {
+  MultiDropdownFieldProps,
+  MultiDropdownProps,
+  MultiDropdownVariants,
+} from '@a-little-world/little-world-design-system-core';
 import { isEmpty } from 'lodash';
 import React, { useEffect, useState } from 'react';
 
 import Button, { ButtonSizes, ButtonVariations } from '../Button/Button';
-import Dropdown, { DropdownProps } from '../Dropdown/Dropdown';
+import Combobox from '../Combobox/Combobox';
+import Dropdown from '../Dropdown/Dropdown';
 import { PlusIcon, TrashIcon } from '../Icon';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
@@ -17,27 +23,10 @@ import { useTheme } from 'styled-components';
 
 const DELETE_SEGMENT = 'delete segment';
 
-interface DropdownInstanceProps extends Omit<DropdownProps, 'onValueChange'> {
-  lockedValue?: string;
-  dataField: string;
-  values: string[];
-  ariaLabel: string;
-  errors: string[];
-}
-
-type Props = {
-  addMoreLabel: string;
-  error?: string;
-  label?: string;
-  labelTooltip?: string;
-  locked?: boolean;
-  defaultSegments?: number;
-  maxSegments?: number;
-  onValueChange: (value: { [x: string]: string }[]) => void;
-  firstDropdown: DropdownInstanceProps;
-  secondDropdown: DropdownInstanceProps;
-  restrictions?: { [key: string]: string[] };
-};
+const SELECT_FIELD_COMPONENTS = {
+  [MultiDropdownVariants.Dropdown]: Dropdown,
+  [MultiDropdownVariants.Combobox]: Combobox,
+} as const;
 
 const formatValues = (
   values: string[][],
@@ -56,8 +45,8 @@ const formatValues = (
   }, []);
 
 const setDropdownValues = (
-  firstDropdown: DropdownInstanceProps,
-  secondDropdown: DropdownInstanceProps,
+  firstDropdown: MultiDropdownFieldProps,
+  secondDropdown: MultiDropdownFieldProps,
 ) => {
   const first =
     (firstDropdown.lockedValue
@@ -71,7 +60,7 @@ const setDropdownValues = (
   return [first, second];
 };
 
-const MultiDropdown: React.FC<Props> = ({
+const MultiDropdown: React.FC<MultiDropdownProps> = ({
   addMoreLabel = 'Add more rows',
   label,
   labelTooltip,
@@ -82,7 +71,9 @@ const MultiDropdown: React.FC<Props> = ({
   defaultSegments = 1,
   maxSegments = 4,
   restrictions,
+  variant = MultiDropdownVariants.Dropdown,
 }) => {
+  const SelectField = SELECT_FIELD_COMPONENTS[variant];
   const [segments, setSegments] = useState(
     Math.max(
       firstDropdown?.values?.length ?? 0,
@@ -175,10 +166,12 @@ const MultiDropdown: React.FC<Props> = ({
               $locked={locked}
               key={`MultiDropdown Segment ${index}${values[0][index]}${values[1][index]}`}
             >
-              <Dropdown
+              <SelectField
                 ariaLabel={firstDropdown.ariaLabel + index}
                 placeholder={firstDropdown.placeholder}
-                onValueChange={val => handleValueChange(val, 0, index)}
+                onValueChange={(val: string) =>
+                  handleValueChange(val, 0, index)
+                }
                 options={firstDropdown.options}
                 value={values[0][index]}
                 lockedValue={
@@ -188,10 +181,12 @@ const MultiDropdown: React.FC<Props> = ({
                 required={Boolean(values[1][index])}
                 error={firstDropdown.errors?.[index]}
               />
-              <Dropdown
+              <SelectField
                 ariaLabel={secondDropdown.ariaLabel + index}
                 placeholder={secondDropdown.placeholder}
-                onValueChange={val => handleValueChange(val, 1, index)}
+                onValueChange={(val: string) =>
+                  handleValueChange(val, 1, index)
+                }
                 options={
                   isEmpty(restrictions?.[values[0][index]])
                     ? secondDropdown.options
@@ -244,4 +239,6 @@ const MultiDropdown: React.FC<Props> = ({
   );
 };
 
+export { MultiDropdownVariants };
+export type { MultiDropdownFieldProps, MultiDropdownProps };
 export default MultiDropdown;

@@ -22,7 +22,7 @@ export const Area = styled.textarea<{
   $size: TextAreaSize;
 }>`
   width: 100%;
-  font-family: 'Signika Negative', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   height: ${({ $size }) => TextAreaDimensions[$size]};
   border: 1px solid ${({ theme }) => theme.color.border.moderate};

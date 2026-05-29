@@ -12,9 +12,7 @@ export const STACKED_BUTTON_CSS = css<{
   $backgroundColor?: string;
   $color?: string;
 }>`
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   background: ${({ $backgroundColor, theme }) =>
     $backgroundColor || theme.color.surface.secondary};
   border: 1px solid ${({ theme }) => theme.color.border.subtle};
@@ -124,6 +122,7 @@ const OptionButtonCss = css<{
 `;
 
 const StandardButtonCss = css<{ $size?: ButtonSizes }>`
+  font-family: 'Signika Negative';
   font-weight: 700;
   border-radius: 90px;
   padding: ${({ theme }) => `${theme.spacing.xsmall} ${theme.spacing.small}`};

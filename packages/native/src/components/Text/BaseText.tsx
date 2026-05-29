@@ -44,9 +44,9 @@ const getStyles = ({
   fontFamily:
     typeStyles.styleType === 'body'
       ? bold
-        ? fontFamilies.SignikaNegativeBold
-        : fontFamilies.SignikaNegative
-      : fontFamilies.WorkSans,
+        ? fontFamilies.DMSans
+        : fontFamilies.DMSans
+      : fontFamilies.SignikaNegative,
   ...(italic && { fontStyle: 'italic', transform: [{ skewX: '-12deg' }] }),
 });
 

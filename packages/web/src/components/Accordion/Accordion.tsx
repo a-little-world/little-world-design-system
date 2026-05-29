@@ -41,7 +41,7 @@ const Accordion: React.FC<AccordionProps> = ({
         <AccordionItem value={header} key={header}>
           <AccordionHeader id={header}>
             <AccordionTrigger>
-              <Text type={headerType || TextTypes.Body4} color={headerColor}>
+              <Text type={headerType || TextTypes.Heading6} color={headerColor}>
                 {header}
               </Text>
               <TriggerIcon

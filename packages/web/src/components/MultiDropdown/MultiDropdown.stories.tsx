@@ -1,3 +1,4 @@
+import { MultiDropdownVariants } from '@a-little-world/little-world-design-system-core';
 import React from 'react';
 
 import MultiDropdown from './MultiDropdown';
@@ -102,4 +103,10 @@ RestrictedOptions.args = {
     ...DEFAULT_ARGS.secondDropdown,
     values: ['A1', 'A2'],
   },
+};
+
+export const WithCombobox = args => <MultiDropdown {...args} />;
+WithCombobox.args = {
+  ...DEFAULT_ARGS,
+  variant: MultiDropdownVariants.Combobox,
 };

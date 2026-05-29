@@ -1,5 +1,12 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.12.0
+
+### Minor Changes
+
+- Remove Work Sans font & Add DM Sans font
+- Add MultiDropdown types
+
 ## 1.11.0
 
 ### Minor Changes

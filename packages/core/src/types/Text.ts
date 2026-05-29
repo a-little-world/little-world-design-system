@@ -6,7 +6,7 @@ export interface TextStyle {
   fontSize: number;
   desktopFontSize?: number;
   lineHeight?: number;
-  fontWeight?: 'normal' | 'bold';
+  fontWeight?: 'normal' | 'bold' | '600';
   styleType: TextStyleType;
 }
 
@@ -26,6 +26,7 @@ export enum TextTypes {
   Heading4 = 'Heading4',
   Heading5 = 'Heading5',
   Heading6 = 'Heading6',
+  Heading7 = 'Heading7',
   Body1 = 'Body1',
   Body2 = 'Body2',
   Body3 = 'Body3',

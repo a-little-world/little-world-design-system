@@ -70,7 +70,7 @@ const Banner = ({
           <TitleDescriptionStack $isLarge={isLarge}>
             <Text
               tag="h3"
-              type={isLarge ? TextTypes.Body2 : TextTypes.Body3}
+              type={isLarge ? TextTypes.Heading3 : TextTypes.Heading4}
               bold
               color={textColor}
             >
