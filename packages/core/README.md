@@ -5,7 +5,7 @@ Core design tokens, utilities, and shared types for the Little World Design Syst
 ## Installation
 
 ```bash
-npm install @a-little-world/little-world-design-system-core
+pnpm add @a-little-world/little-world-design-system-core
 ```
 
 ## Usage
@@ -47,8 +47,8 @@ pnpm --filter=@a-little-world/little-world-design-system-core publish
 ❌ **Incorrect (from package directory):**
 ```bash
 cd packages/core
-npm run build
-npm publish  # This will break workspace dependencies!
+pnpm run build
+pnpm publish  # This will break workspace dependencies!
 ```
 
 ### Building
@@ -59,7 +59,7 @@ pnpm build:core
 
 # Or from the core package directory
 cd packages/core
-npm run build
+pnpm run build
 ```
 
 ### Testing with Native Package
@@ -98,14 +98,14 @@ If you need to publish manually (not recommended):
 
 ```bash
 # Ensure you're authenticated to GitHub Packages
-npm login --registry=https://npm.pkg.github.com
+pnpm login --registry=https://npm.pkg.github.com
 
 # Build the package
 pnpm build:core
 
 # Publish from the core package directory
 cd packages/core
-npm publish --access restricted
+pnpm publish --access restricted
 ```
 
 **Note**: Manual publishing bypasses the automated changelog generation and release management. Use the automated process whenever possible.

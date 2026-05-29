@@ -95,7 +95,7 @@ pnpm storybook:native
 
 #### Troubleshooting
 
-- **Clear cache**: Use `npx expo start -c` to clear Expo cache
+- **Clear cache**: Use `pnpm exec expo start -c` to clear Expo cache
 - **Reset testApp**: Delete `packages/native/testApp/node_modules` and run setup again
 - **Version conflicts**: The setup script uses wildcards to automatically find the latest tarball versions
 
@@ -276,8 +276,8 @@ pnpm --filter=@a-little-world/little-world-design-system-native publish
 
 ```bash
 cd packages/web
-npm run build
-npm publish  # This will break workspace dependencies!
+pnpm run build
+pnpm publish  # This will break workspace dependencies!
 ```
 
 ## Package Publishing Configuration
@@ -387,7 +387,7 @@ If you encounter version conflicts:
 
 If publishing fails:
 
-1. Check your npm authentication
+1. Check your pnpm authentication
 2. Verify package.json publishConfig settings
 3. Ensure you have the correct permissions for the registry
 
@@ -442,7 +442,7 @@ When you make changes to the core package, dependent packages will automatically
 
 The design system is currently private to Little World. Make sure to be able to authenticate to Github via SSH and have access to "@a-little-world/little-world-design-system".
 
-`npm i "@a-little-world/little-world-design-system"`
+`pnpm add "@a-little-world/little-world-design-system"`
 
 ### 2. Using components
 
