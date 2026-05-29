@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -32,12 +32,12 @@ jobs:
           version: 9.0.0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          # npm Trusted Publishing requires Node >= 22.14 and npm >= 11.5.1
+          node-version: '22'
           registry-url: 'https://registry.npmjs.org'
           scope: '@a-little-world'
-          package-manager-cache: false
 
       - name: Ensure npm supports Trusted Publishing
         run: npm install -g npm@latest
@@ -261,17 +261,17 @@ jobs:
             VERSION_CHANGES=""
 
             if [ "$CORE_VERSION" != "$PREV_CORE_VERSION" ]; then
-              VERSION_CHANGES="$VERSION_CHANGES core"
+              VERSION_CHANGES="${VERSION_CHANGES:+$VERSION_CHANGES }core"
               echo "✅ Core version changed: $PREV_CORE_VERSION → $CORE_VERSION" >> $GITHUB_STEP_SUMMARY
             fi
 
             if [ "$WEB_VERSION" != "$PREV_WEB_VERSION" ]; then
-              VERSION_CHANGES="$VERSION_CHANGES web"
+              VERSION_CHANGES="${VERSION_CHANGES:+$VERSION_CHANGES }web"
               echo "✅ Web version changed: $PREV_WEB_VERSION → $WEB_VERSION" >> $GITHUB_STEP_SUMMARY
             fi
 
             if [ "$NATIVE_VERSION" != "$PREV_NATIVE_VERSION" ]; then
-              VERSION_CHANGES="$VERSION_CHANGES native"
+              VERSION_CHANGES="${VERSION_CHANGES:+$VERSION_CHANGES }native"
               echo "✅ Native version changed: $PREV_NATIVE_VERSION → $NATIVE_VERSION" >> $GITHUB_STEP_SUMMARY
             fi
 
@@ -288,73 +288,68 @@ jobs:
       - name: Publish Packages
         if: github.ref == 'refs/heads/main' && steps.version-check.outputs.has_changes == 'true'
         run: |
-          echo "## 📦 Publishing packages..." >> $GITHUB_STEP_SUMMARY
+          echo "## 📦 Publishing packages (npm Trusted Publishing / OIDC)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-
-          echo "### 🔐 Verifying npm Trusted Publishing (OIDC)..." >> $GITHUB_STEP_SUMMARY
           echo "Node: $(node --version)" >> $GITHUB_STEP_SUMMARY
           echo "npm: $(npm --version)" >> $GITHUB_STEP_SUMMARY
           echo "Repository: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
-          echo "Workflow: ${{ github.workflow }}" >> $GITHUB_STEP_SUMMARY
+          echo "Workflow file: release.yml" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "OIDC auth is validated during \`npm publish\` (not \`npm whoami\`)." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          if npm whoami --registry=https://registry.npmjs.org; then
-            echo "✅ npm OIDC authentication successful" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "❌ npm authentication failed — check Trusted Publisher settings on npmjs.com for this repo and workflow file (release.yml)" >> $GITHUB_STEP_SUMMARY
-            exit 1
-          fi
-          echo "" >> $GITHUB_STEP_SUMMARY
+          publish_package() {
+            local dir=$1
+            local npm_name=$2
+            local label=$3
+
+            echo "### Publishing $label..." >> $GITHUB_STEP_SUMMARY
+            cd "$dir"
+
+            PACKAGE_VERSION=$(node -e "console.log(require('./package.json').version)")
+            echo "Checking if $npm_name@$PACKAGE_VERSION already exists..." >> $GITHUB_STEP_SUMMARY
+            if npm view "$npm_name@$PACKAGE_VERSION" &>/dev/null; then
+              echo "❌ Version $PACKAGE_VERSION already exists in registry" >> $GITHUB_STEP_SUMMARY
+              exit 1
+            fi
+            echo "✅ Version $PACKAGE_VERSION does not exist, proceeding with publish" >> $GITHUB_STEP_SUMMARY
+
+            echo "Running: npm publish --access public" >> $GITHUB_STEP_SUMMARY
+            if npm publish --access public; then
+              echo "✅ Successfully published $npm_name@$PACKAGE_VERSION" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "❌ Failed to publish $npm_name — verify Trusted Publisher on npmjs.com:" >> $GITHUB_STEP_SUMMARY
+              echo "- Provider: GitHub Actions" >> $GITHUB_STEP_SUMMARY
+              echo "- Repository: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
+              echo "- Workflow filename: \`release.yml\` (exact, case-sensitive)" >> $GITHUB_STEP_SUMMARY
+              echo "- Environment: leave blank unless this job uses a GitHub Environment" >> $GITHUB_STEP_SUMMARY
+              echo "- Configure separately for core, web, and native packages" >> $GITHUB_STEP_SUMMARY
+              exit 1
+            fi
+            cd - > /dev/null
+            echo "" >> $GITHUB_STEP_SUMMARY
+          }
 
           CHANGED_PACKAGES="${{ steps.version-check.outputs.changed_packages }}"
 
-          for package in $CHANGED_PACKAGES; do
-            echo "### Publishing $package..." >> $GITHUB_STEP_SUMMARY
-            
-            if [ "$package" = "core" ]; then
-              cd packages/core
-              echo "Running: pnpm publish --registry=https://registry.npmjs.org --no-git-checks" >> $GITHUB_STEP_SUMMARY
-              
-              # Check if version already exists
-              PACKAGE_VERSION=$(node -e "console.log(require('./package.json').version)")
-              echo "Checking if version $PACKAGE_VERSION already exists..." >> $GITHUB_STEP_SUMMARY
-              if pnpm view @a-little-world/little-world-design-system-core@$PACKAGE_VERSION --registry=https://registry.npmjs.org &>/dev/null; then
-                echo "❌ Version $PACKAGE_VERSION already exists in registry" >> $GITHUB_STEP_SUMMARY
-                exit 1
-              else
-                echo "✅ Version $PACKAGE_VERSION does not exist, proceeding with publish" >> $GITHUB_STEP_SUMMARY
-              fi
-              
-              if pnpm publish --registry=https://registry.npmjs.org --no-git-checks; then
-                echo "✅ Successfully published @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
-              else
-                echo "❌ Failed to publish @a-little-world/little-world-design-system-core" >> $GITHUB_STEP_SUMMARY
-                exit 1
-              fi
-              cd ../..
-            elif [ "$package" = "native" ]; then
-              cd packages/native
-              echo "Running: pnpm publish --registry=https://registry.npmjs.org --no-git-checks" >> $GITHUB_STEP_SUMMARY
-              if pnpm publish --registry=https://registry.npmjs.org --no-git-checks; then
-                echo "✅ Successfully published @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
-              else
-                echo "❌ Failed to publish @a-little-world/little-world-design-system-native" >> $GITHUB_STEP_SUMMARY
-                exit 1
-              fi
-              cd ../..
-            elif [ "$package" = "web" ]; then
-              cd packages/web
-              echo "Running: pnpm publish --registry=https://registry.npmjs.org --no-git-checks" >> $GITHUB_STEP_SUMMARY
-              if pnpm publish --registry=https://registry.npmjs.org --no-git-checks; then
-                echo "✅ Successfully published @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
-              else
-                echo "❌ Failed to publish @a-little-world/little-world-design-system" >> $GITHUB_STEP_SUMMARY
-                exit 1
-              fi
-              cd ../..
-            fi
-            
-            echo "" >> $GITHUB_STEP_SUMMARY
+          # Publish core before dependents when multiple packages changed
+          for package in core web native; do
+            case " $CHANGED_PACKAGES " in
+              *" $package "*) ;;
+              *) continue ;;
+            esac
+
+            case "$package" in
+              core)
+                publish_package packages/core @a-little-world/little-world-design-system-core core
+                ;;
+              web)
+                publish_package packages/web @a-little-world/little-world-design-system web
+                ;;
+              native)
+                publish_package packages/native @a-little-world/little-world-design-system-native native
+                ;;
+            esac
           done
 
           echo "🎉 All packages published successfully!" >> $GITHUB_STEP_SUMMARY
