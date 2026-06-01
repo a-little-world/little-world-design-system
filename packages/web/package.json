@@ -17,10 +17,6 @@
     "build:esm": "tsc --outDir dist/esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "build:types": "api-extractor run --local && node scripts/finalize-declarations.mjs",
-<<<<<<< HEAD
-    "verify:consumer-types": "node scripts/verify-consumer-types.mjs",
-=======
->>>>>>> 1124c00093d41c3d53336a5d9430f4cc8238df7b
     "watch": "tsc --watch",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
