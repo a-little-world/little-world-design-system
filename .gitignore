@@ -114,6 +114,7 @@ dist
 dist/
 build/
 out/
+local-packages/*.tgz
 
 # Package manager files
 .pnpm-store/

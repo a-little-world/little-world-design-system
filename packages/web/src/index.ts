@@ -87,6 +87,7 @@ export {
 } from './components/Tabs/Tabs';
 export { default as Tags, Tag } from './components/Tags/Tags';
 export { default as Text } from './components/Text/Text';
+export type { TextProps } from './components/Text/Text';
 
 export {
   default as TextArea,

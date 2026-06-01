@@ -66,7 +66,7 @@ const TextPage = ({ content, marginBottom }: Props) => {
                 style={style}
                 key={text}
                 tag="h3"
-                type={TextTypes.Body2}
+                type={TextTypes.Heading4}
                 bold
                 color={color}
                 center={center}
@@ -81,7 +81,7 @@ const TextPage = ({ content, marginBottom }: Props) => {
                 style={style}
                 key={text}
                 tag="h4"
-                type={TextTypes.Body3}
+                type={TextTypes.Heading5}
                 bold
                 color={color}
                 center={center}

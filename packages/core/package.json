@@ -5,6 +5,9 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "preprocess-svgs": "node scripts/processSvgs.js",
     "clean": "rimraf dist && rimraf src/**/*.d.ts && rimraf src/**/*.d.ts.map",

@@ -430,11 +430,168 @@ When making changes to packages:
 
 2. Restart the Storybook server after making significant changes to ensure they're picked up.
 
-### Local Development
+### Local Development (inside this monorepo)
 
-The monorepo uses pnpm workspaces with `workspace:*` references, which automatically handles local package dependencies. No manual linking or file references are needed.
+The monorepo uses pnpm workspaces with `workspace:*` references, which automatically handles local package dependencies. No manual linking or file references are needed between `packages/core`, `packages/web`, and `packages/native`.
 
 When you make changes to the core package, dependent packages will automatically use the updated version after rebuilding.
+
+### Linking to external consuming apps
+
+External apps (for example `little-world-frontend`) cannot use `workspace:*`. Instead, install a **packed tarball** from `prebuild/` — the same approach used for LiveKit in that repo.
+
+Expected folder layout:
+
+```
+LittleWorld/
+├── little-world-design-system/    ← this repo
+└── little-world-frontend/         ← consuming app
+    └── prebuild/                  ← local .tgz files live here
+```
+
+---
+
+#### Link `little-world-frontend` (web)
+
+**Step 1 — build and copy tarball** (run in `little-world-design-system`):
+
+```bash
+pnpm link:pack:frontend
+```
+
+This single command:
+- builds core + web
+- creates tarballs in `local-packages/`
+- **copies** `a-little-world-little-world-design-system.tgz` into `../little-world-frontend/prebuild/`
+
+You do **not** copy files manually when using `link:pack:frontend`.
+
+**Step 2 — set dependency** (in `little-world-frontend/package.json`):
+
+```json
+"@a-little-world/little-world-design-system": "file:prebuild/a-little-world-little-world-design-system.tgz"
+```
+
+**Step 3 — install** (run in `little-world-frontend`):
+
+```bash
+pnpm install
+```
+
+**When you change the design system**, repeat all three steps (or at minimum steps 1 and 3).
+
+---
+
+#### `pnpm link:pack` vs `pnpm link:pack:frontend`
+
+| Command | What it does |
+|---------|----------------|
+| `pnpm link:pack:frontend` | Build + pack + **copy to `little-world-frontend/prebuild/`** ← use this |
+| `pnpm link:pack` | Build + pack into `local-packages/` only — **does not copy to prebuild** |
+
+If you ran `pnpm link:pack` and saw a `file:../little-world-design-system/local-packages/...` path, that is the low-level output. For frontend, use `link:pack:frontend` instead.
+
+---
+
+#### Manual copy (other consuming apps)
+
+If your app is not `little-world-frontend`, or it lives elsewhere:
+
+```bash
+# In little-world-design-system
+pnpm link:pack
+
+# Copy the web tarball into your app's prebuild/ folder
+cp local-packages/a-little-world-little-world-design-system.tgz /path/to/your-app/prebuild/
+```
+
+Then in your app's `package.json`:
+
+```json
+"@a-little-world/little-world-design-system": "file:prebuild/a-little-world-little-world-design-system.tgz"
+```
+
+And run `pnpm install` from your app root.
+
+Custom consumer path (from `little-world-design-system`):
+
+```bash
+node scripts/link-pack.mjs web --consumer-dir ../your-other-app
+```
+
+---
+
+#### Native / Expo consumer
+
+```bash
+pnpm native:setup
+```
+
+Builds core + native, copies tarballs into `packages/native/testApp`, and runs `pnpm install` there.
+
+For an external native app, use `pnpm link:pack:native` and copy both tarballs from `local-packages/` into that app's `prebuild/`:
+
+```json
+"@a-little-world/little-world-design-system-core": "file:prebuild/a-little-world-little-world-design-system-core.tgz",
+"@a-little-world/little-world-design-system-native": "file:prebuild/a-little-world-little-world-design-system-native.tgz"
+```
+
+---
+
+#### Available scripts
+
+| Script | What it packs |
+|--------|----------------|
+| `pnpm link:pack:frontend` | core + web → copies **web** tarball to `../little-world-frontend/prebuild/` |
+| `pnpm link:pack` | core + web → `local-packages/` only |
+| `pnpm link:pack:native` | core + native → `local-packages/` |
+| `pnpm link:pack:all` | core + web + native → `local-packages/` |
+| `pnpm native:setup` | core + native → `packages/native/testApp` + install |
+
+---
+
+#### Iteration workflow
+
+1. Make changes in the design system
+2. `pnpm link:pack:frontend` (from design system repo)
+3. `pnpm install` (from consuming app)
+4. Restart the consuming app's dev server if needed
+
+Optional — keep watch running in the design system while developing:
+
+```bash
+pnpm --filter @a-little-world/little-world-design-system-core watch
+pnpm --filter @a-little-world/little-world-design-system watch
+```
+
+Repack when you want the consumer to pick up changes.
+
+---
+
+#### Alternative: add the consumer to this workspace
+
+If the consuming app can live in the same pnpm workspace, add it to `pnpm-workspace.yaml`:
+
+```yaml
+packages:
+  - 'packages/*'
+  - '!packages/*/testApp'
+  - '../little-world-frontend'
+```
+
+Then use `"@a-little-world/little-world-design-system": "workspace:*"` in the consumer. This gives the best day-to-day DX but requires a shared repo layout.
+
+---
+
+#### Troubleshooting
+
+- **Install errors mentioning `workspace:*`** — use packed tarballs, not a symlink to source
+- **Stale types or components** — re-run `link:pack:frontend` and `pnpm install` in the consumer
+- **`tarball data ... (null) seems to be corrupted`** — the path in `package.json` does not point to a file that exists. Use `file:prebuild/...` and run `link:pack:frontend` first
+- **Native module resolution issues** — prefer tarballs over `link:` symlinks
+- **Duplicate React** — align React/styled-components versions with the design system's peer dependencies
+
+Tarballs in `local-packages/*.tgz` are gitignored. The `prebuild/` tarball in the consumer can be committed (same as LiveKit tarballs there).
 
 ## Getting started
 

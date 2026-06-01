@@ -7,7 +7,7 @@ import React, { CSSProperties } from 'react';
 import textParser from '../../utils/parser';
 import { StyledElement } from './styles';
 
-type TextProps = TextBaseProps & {
+export type TextProps = TextBaseProps & {
   className?: string;
   disableParser?: boolean;
   id?: string;
@@ -27,7 +27,7 @@ type TextProps = TextBaseProps & {
     | 'div';
 };
 
-const Text = ({
+const Text: React.FC<TextProps> = ({
   bold = false,
   center = false,
   children,
