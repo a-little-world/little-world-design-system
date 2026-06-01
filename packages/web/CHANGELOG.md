@@ -1,5 +1,22 @@
 # @a-little-world/little-world-design-system
 
+## 2.17.1
+
+### Patch Changes
+
+- Fix workspace issue in published package
+
+## 2.17.0
+
+### Minor Changes
+
+- Fix core types leaking
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.13.0
+
 ## 2.16.0
 
 ### Minor Changes

@@ -288,37 +288,37 @@ jobs:
       - name: Publish Packages
         if: github.ref == 'refs/heads/main' && steps.version-check.outputs.has_changes == 'true'
         run: |
-          echo "## 📦 Publishing packages (npm Trusted Publishing / OIDC)" >> $GITHUB_STEP_SUMMARY
+          echo "## 📦 Publishing packages (pnpm publish / npm Trusted Publishing)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Node: $(node --version)" >> $GITHUB_STEP_SUMMARY
+          echo "pnpm: $(pnpm --version)" >> $GITHUB_STEP_SUMMARY
           echo "npm: $(npm --version)" >> $GITHUB_STEP_SUMMARY
           echo "Repository: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
           echo "Workflow file: release.yml" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "OIDC auth is validated during \`npm publish\` (not \`npm whoami\`)." >> $GITHUB_STEP_SUMMARY
+          echo "OIDC auth is handled by \`pnpm publish\` (via npm registry integration)." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
           publish_package() {
-            local dir=$1
-            local npm_name=$2
+            local package_dir=$1
+            local filter=$2
             local label=$3
 
             echo "### Publishing $label..." >> $GITHUB_STEP_SUMMARY
-            cd "$dir"
 
-            PACKAGE_VERSION=$(node -e "console.log(require('./package.json').version)")
-            echo "Checking if $npm_name@$PACKAGE_VERSION already exists..." >> $GITHUB_STEP_SUMMARY
-            if npm view "$npm_name@$PACKAGE_VERSION" &>/dev/null; then
+            PACKAGE_VERSION=$(node -e "console.log(require('./${package_dir}/package.json').version)")
+            echo "Checking if $filter@$PACKAGE_VERSION already exists..." >> $GITHUB_STEP_SUMMARY
+            if npm view "$filter@$PACKAGE_VERSION" &>/dev/null; then
               echo "❌ Version $PACKAGE_VERSION already exists in registry" >> $GITHUB_STEP_SUMMARY
               exit 1
             fi
             echo "✅ Version $PACKAGE_VERSION does not exist, proceeding with publish" >> $GITHUB_STEP_SUMMARY
 
-            echo "Running: npm publish --access public" >> $GITHUB_STEP_SUMMARY
-            if npm publish --access public; then
-              echo "✅ Successfully published $npm_name@$PACKAGE_VERSION" >> $GITHUB_STEP_SUMMARY
+            echo "Running: pnpm publish --filter=${filter} --access public --no-git-checks" >> $GITHUB_STEP_SUMMARY
+            if pnpm publish --filter="${filter}" --access public --no-git-checks; then
+              echo "✅ Successfully published $filter@$PACKAGE_VERSION" >> $GITHUB_STEP_SUMMARY
             else
-              echo "❌ Failed to publish $npm_name — verify Trusted Publisher on npmjs.com:" >> $GITHUB_STEP_SUMMARY
+              echo "❌ Failed to publish $filter — verify Trusted Publisher on npmjs.com:" >> $GITHUB_STEP_SUMMARY
               echo "- Provider: GitHub Actions" >> $GITHUB_STEP_SUMMARY
               echo "- Repository: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
               echo "- Workflow filename: \`release.yml\` (exact, case-sensitive)" >> $GITHUB_STEP_SUMMARY
@@ -326,7 +326,6 @@ jobs:
               echo "- Configure separately for core, web, and native packages" >> $GITHUB_STEP_SUMMARY
               exit 1
             fi
-            cd - > /dev/null
             echo "" >> $GITHUB_STEP_SUMMARY
           }
 
