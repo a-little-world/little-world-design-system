@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.9.0
+
+### Minor Changes
+
+- Fix core types leaking
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.13.0
+
 ## 0.8.0
 
 ### Minor Changes

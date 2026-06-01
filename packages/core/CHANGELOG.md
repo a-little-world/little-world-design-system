@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.13.0
+
+### Minor Changes
+
+- Fix core types leaking
+
 ## 1.12.0
 
 ### Minor Changes
