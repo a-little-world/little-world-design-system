@@ -139,9 +139,9 @@ jobs:
             NATIVE_VERSION=$(node -e "console.log(require('./packages/native/package.json').version)")
 
             # Get previous versions
-            PREV_CORE_VERSION=$(node -e "console.log(require('/tmp/prev_core.json').version)")
-            PREV_WEB_VERSION=$(node -e "console.log(require('/tmp/prev_web.json').version)")
-            PREV_NATIVE_VERSION=$(node -e "console.log(require('/tmp/prev_native.json').version)")
+            PREV_CORE_VERSION=$(node scripts/read-package-version.mjs /tmp/prev_core.json)
+            PREV_WEB_VERSION=$(node scripts/read-package-version.mjs /tmp/prev_web.json)
+            PREV_NATIVE_VERSION=$(node scripts/read-package-version.mjs /tmp/prev_native.json)
 
             # Create the comment content
             COMMENT_BODY="## 📦 Package Version Analysis
@@ -253,9 +253,9 @@ jobs:
             NATIVE_VERSION=$(node -e "console.log(require('./packages/native/package.json').version)")
 
             # Get previous versions
-            PREV_CORE_VERSION=$(node -e "console.log(require('/tmp/prev_core.json').version)")
-            PREV_WEB_VERSION=$(node -e "console.log(require('/tmp/prev_web.json').version)")
-            PREV_NATIVE_VERSION=$(node -e "console.log(require('/tmp/prev_native.json').version)")
+            PREV_CORE_VERSION=$(node scripts/read-package-version.mjs /tmp/prev_core.json)
+            PREV_WEB_VERSION=$(node scripts/read-package-version.mjs /tmp/prev_web.json)
+            PREV_NATIVE_VERSION=$(node scripts/read-package-version.mjs /tmp/prev_native.json)
 
             # Check if versions changed
             VERSION_CHANGES=""
