@@ -1,8 +1,8 @@
 import { InputHeight } from './TextInput';
 
-export type Options = { value: string; label: string }[];
+export type SearchableSelectOptions = { value: string; label: string }[];
 
-export type DropdownBaseProps = {
+export type SearchableSelectBaseProps = {
   ariaLabel?: string;
   cannotError?: boolean;
   disabled?: boolean;
@@ -11,15 +11,13 @@ export type DropdownBaseProps = {
   id?: string;
   label?: string;
   labelTooltip?: string;
-  lockedValue?: string;
   maxWidth?: string | number;
   onValueChange: (value: string) => void;
-  options: Options;
+  onSearch?: (searchTerm: string) => void;
+  options: SearchableSelectOptions;
   placeholder: string;
   required?: boolean;
   value?: string;
+  searchPlaceholder?: string;
+  clearable?: boolean;
 };
-
-// Import Select types for re-export
-export type { SelectBaseProps } from './Select';
-

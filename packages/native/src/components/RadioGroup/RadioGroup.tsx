@@ -12,6 +12,7 @@ type Props = {
   labelTooltip?: string;
   items: Array<{ id: string; label?: string; value: string }>;
   inputRef: React.RefObject<HTMLInputElement>;
+  orientation?: 'vertical' | 'horizontal';
 } & RadioGroupPrimitive.RootProps;
 
 const RadioGroup: React.FC<Props> = ({
@@ -20,6 +21,7 @@ const RadioGroup: React.FC<Props> = ({
   label,
   labelTooltip,
   inputRef,
+  orientation = 'vertical',
   ...rest
 }: Props) => {
   const theme = useTheme();
@@ -27,32 +29,36 @@ const RadioGroup: React.FC<Props> = ({
 
   return (
     <View>
-      {label && (
-        <Label
-          bold
-          // toolTipText={labelTooltip}
-        >
+      {Boolean(label) && (
+        <Label bold>
           {label}
         </Label>
       )}
       <RadioGroupPrimitive.Root
-        // ref={inputRef}
-        // value={undefined}
-        // name={label}
         {...rest}
       >
-        {items?.map(item => (
-          <View key={item.id} style={styles.itemContainer}>
-            <RadioGroupPrimitive.Item value={item.value} id={item.id}>
-              <RadioGroupPrimitive.Indicator style={styles.indicator} />
-            </RadioGroupPrimitive.Item>
-            {item.label && <Label inline>{item.label}</Label>}
-          </View>
-        ))}
-        <InputError visible={Boolean(error)}>{error}</InputError>
+        <View
+          style={{
+            flexDirection: orientation === 'horizontal' ? 'row' : 'column',
+            gap: 12,
+          }}
+        >
+          {items?.map((item) => (
+            <View key={item.id} style={styles.itemContainer}>
+              <RadioGroupPrimitive.Item value={item.value} id={item.id}>
+                <RadioGroupPrimitive.Indicator style={styles.indicator} />
+              </RadioGroupPrimitive.Item>
+              {item.label && <Label inline>{item.label}</Label>}
+            </View>
+          ))}
+        </View>
+        {Boolean(error) && (
+          <InputError visible={Boolean(error)}>{error}</InputError>
+        )}
       </RadioGroupPrimitive.Root>
     </View>
   );
 };
 
 export default RadioGroup;
+

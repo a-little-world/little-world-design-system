@@ -14,3 +14,8 @@ export interface StatusBaseProps {
   type: StatusTypes;
   withBorder?: boolean;
 }
+
+// Aliases for better semantic use
+export type AlertBaseProps = StatusBaseProps;
+export type FormMessageBaseProps = StatusBaseProps;
+export type StatusMessageBaseProps = StatusBaseProps;

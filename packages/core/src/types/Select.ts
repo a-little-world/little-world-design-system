@@ -2,7 +2,7 @@ import { InputHeight } from './TextInput';
 
 export type Options = { value: string; label: string }[];
 
-export type DropdownBaseProps = {
+export type SelectBaseProps = {
   ariaLabel?: string;
   cannotError?: boolean;
   disabled?: boolean;
@@ -20,6 +20,5 @@ export type DropdownBaseProps = {
   value?: string;
 };
 
-// Import Select types for re-export
-export type { SelectBaseProps } from './Select';
-
+// Keep Dropdown as an alias for backward compatibility
+export type DropdownBaseProps = SelectBaseProps;

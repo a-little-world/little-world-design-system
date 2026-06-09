@@ -5,14 +5,14 @@ import Text from '../Text/Text';
 import { getDropdownStyles } from './styles';
 import {
   InputHeight,
-  DropdownBaseProps,
+  SelectBaseProps,
 } from '@a-little-world/little-world-design-system-core';
 import * as DropdownMenuPrimitive from '@rn-primitives/dropdown-menu';
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { useTheme } from 'styled-components/native';
 
-export type DropdownProps = DropdownBaseProps & {
+export type SelectProps = SelectBaseProps & {
   style?: StyleProp<ViewStyle>;
   inputRef?: React.RefObject<HTMLButtonElement>;
 };
@@ -34,7 +34,7 @@ const Option: React.FC<{ children: string; value: string }> = ({
   );
 };
 
-const Dropdown: React.FC<DropdownProps> = ({
+const Select: React.FC<SelectProps> = ({
   ariaLabel,
   error,
   cannotError,
@@ -76,7 +76,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             <ChevronDownIcon
               width={ARROW_DOWN_WIDTH}
               height={ARROW_DOWN_HEIGHT}
-              label="dropdown icon"
+              label="select icon"
             />
           )}
         </DropdownMenuPrimitive.Trigger>
@@ -93,6 +93,4 @@ const Dropdown: React.FC<DropdownProps> = ({
   );
 };
 
-// Deprecated: Use Select component instead
-export default Dropdown;
-
+export default Select;
