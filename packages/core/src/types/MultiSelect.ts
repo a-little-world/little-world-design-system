@@ -22,6 +22,7 @@ type MultiSelectBaseProps = {
   error?: string;
   label?: string;
   labelTooltip?: string;
+  inModal?: boolean;
   locked?: boolean;
   defaultSegments?: number;
   maxSegments?: number;

@@ -9,6 +9,7 @@ export type SelectBaseProps = {
   error?: string;
   height?: InputHeight;
   id?: string;
+  inModal?: boolean;
   label?: string;
   labelTooltip?: string;
   lockedValue?: string;

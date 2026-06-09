@@ -2,7 +2,7 @@ import {
   MultiSelectFieldProps,
   MultiSelectProps,
   MultiSelectVariants,
-} from '@a-little-world/little-world-design-system-core';
+} from '@a-little-world/little-world-design-system-core/dist/esm/types/MultiSelect';
 import { isEmpty } from 'lodash';
 import React, { useEffect, useState } from 'react';
 
@@ -64,6 +64,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   addMoreLabel = 'Add more rows',
   label,
   labelTooltip,
+  inModal,
   locked,
   firstSelect,
   secondSelect,
@@ -87,7 +88,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
 
   const [values, setValues] = useState(setSelectValues(first, second));
 
-  const theme = useTheme();
+  const theme = useTheme() as { spacing: { xsmall: string } };
 
   useEffect(() => {
     setValues(setSelectValues(first, second));
@@ -161,6 +162,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
             >
               <SelectField
                 ariaLabel={first.ariaLabel + index}
+                inModal={inModal}
                 placeholder={first.placeholder}
                 onValueChange={(val: string) =>
                   handleValueChange(val, 0, index)
@@ -176,6 +178,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
               />
               <SelectField
                 ariaLabel={second.ariaLabel + index}
+                inModal={inModal}
                 placeholder={second.placeholder}
                 onValueChange={(val: string) =>
                   handleValueChange(val, 1, index)

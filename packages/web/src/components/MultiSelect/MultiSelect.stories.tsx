@@ -1,4 +1,4 @@
-import { MultiSelectVariants } from '@a-little-world/little-world-design-system-core';
+import { MultiSelectVariants } from '@a-little-world/little-world-design-system-core/dist/esm/types/MultiSelect';
 import React from 'react';
 
 import MultiSelect from './MultiSelect';
@@ -43,11 +43,15 @@ const DEFAULT_ARGS = {
   },
 };
 
-export const Default = args => <MultiSelect {...args} />;
+export const Default = (args: React.ComponentProps<typeof MultiSelect>) => (
+  <MultiSelect {...args} />
+);
 
 Default.args = DEFAULT_ARGS;
 
-export const WithValues = args => <MultiSelect {...args} />;
+export const WithValues = (args: React.ComponentProps<typeof MultiSelect>) => (
+  <MultiSelect {...args} />
+);
 WithValues.args = {
   ...DEFAULT_ARGS,
   firstSelect: {
@@ -77,7 +81,9 @@ export const LockedValue = () => (
   />
 );
 
-export const AllLocked = args => <MultiSelect {...args} />;
+export const AllLocked = (args: React.ComponentProps<typeof MultiSelect>) => (
+  <MultiSelect {...args} />
+);
 AllLocked.args = {
   ...DEFAULT_ARGS,
   firstSelect: {
@@ -91,7 +97,9 @@ AllLocked.args = {
   locked: true,
 };
 
-export const RestrictedOptions = args => <MultiSelect {...args} />;
+export const RestrictedOptions = (
+  args: React.ComponentProps<typeof MultiSelect>,
+) => <MultiSelect {...args} />;
 RestrictedOptions.args = {
   ...DEFAULT_ARGS,
   restrictions: { german: ['B1', 'B2'], french: ['B1'] },
@@ -105,8 +113,18 @@ RestrictedOptions.args = {
   },
 };
 
-export const WithCombobox = args => <MultiSelect {...args} />;
+export const WithCombobox = (args: React.ComponentProps<typeof MultiSelect>) => (
+  <MultiSelect {...args} />
+);
 WithCombobox.args = {
   ...DEFAULT_ARGS,
   variant: MultiSelectVariants.Combobox,
+};
+
+export const InModal = (args: React.ComponentProps<typeof MultiSelect>) => (
+  <MultiSelect {...args} />
+);
+InModal.args = {
+  ...DEFAULT_ARGS,
+  inModal: true,
 };
