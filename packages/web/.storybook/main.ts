@@ -1,7 +1,10 @@
 // This file has been automatically migrated to valid ESM format by Storybook.
 import { createRequire } from 'node:module';
+import type { StorybookConfig } from '@storybook/react-webpack5';
+
 const require = createRequire(import.meta.url);
-export default {
+
+const config: StorybookConfig = {
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-themes',
@@ -23,10 +26,6 @@ export default {
     '../src/storybook/*.mdx',
   ],
 
-  features: {
-    interactionsDebugger: true,
-  },
-
   docs: {},
 
   typescript: {
@@ -43,3 +42,5 @@ export default {
     return config;
   },
 };
+
+export default config;

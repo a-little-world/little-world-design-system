@@ -34,12 +34,17 @@ export {
 } from '@a-little-world/little-world-design-system-core';
 export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid';
 export { default as Combobox } from './components/Combobox/Combobox';
-export { default as Dropdown } from './components/Dropdown/Dropdown';
+export { default as Select } from './components/Select/Select';
+export type { SelectProps } from './components/Select/Select';
 
 export {
-  default as MultiDropdown,
-  MultiDropdownVariants,
-} from './components/MultiDropdown/MultiDropdown';
+  default as MultiSelect,
+  MultiSelectVariants,
+} from './components/MultiSelect/MultiSelect';
+export type {
+  MultiSelectProps,
+  MultiSelectFieldProps,
+} from './components/MultiSelect/MultiSelect';
 export * from './components/Icon';
 export * from './components/Illustrations';
 export { default as InputError } from './components/InputError/InputError';
@@ -51,7 +56,25 @@ export {
   LoadingType,
 } from './components/Loading/Loading';
 export { default as Modal } from './components/Modal/Modal';
-export { default as MultiCheckbox } from './components/MultiCheckbox/MultiCheckbox';
+export {
+  default as CheckboxGroup,
+  type CheckboxGroupProps,
+  type MultiCheckboxProps,
+} from './components/CheckboxGroup/CheckboxGroup';
+/**
+ * @deprecated Use CheckboxGroup instead. This export is kept for backward compatibility only.
+ * MultiCheckbox will be removed in a future major version.
+ *
+ * Migration guide:
+ * ```tsx
+ * // Before (deprecated)
+ * import { MultiCheckbox } from '@a-little-world/little-world-design-system';
+ *
+ * // After (recommended)
+ * import { CheckboxGroup } from '@a-little-world/little-world-design-system';
+ * ```
+ */
+export { default as MultiCheckbox } from './components/CheckboxGroup/CheckboxGroup';
 export { default as MultiSelection } from './components/MultiSelection/MultiSelection';
 export {
   NavigationMenu,
@@ -74,6 +97,11 @@ export {
   StarRatingSizes,
 } from './components/StarRating/StarRating';
 export { default as StatusMessage } from './components/StatusMessage/StatusMessage';
+export { Alert, FormMessage } from './components/StatusMessage/StatusMessage';
+export type {
+  AlertProps,
+  FormMessageProps,
+} from './components/StatusMessage/StatusMessage';
 export {
   default as Stepper,
   StepperOrientations,
@@ -105,6 +133,7 @@ export {
 export { default as Toast } from './components/Toast/Toast';
 export { ToastProvider, ToastViewport } from './components/Toast/styles';
 export { default as Tooltip } from './components/Tooltip/Tooltip';
+export { default as FieldHint } from './components/Tooltip/FieldHint';
 export { default as CallWidget } from './components/Widget/CallWidget';
 export { default as Widget, WidgetSizes } from './components/Widget/Widget';
 export { default as AttachmentWidget } from './components/Widget/AttachmentWidget';
@@ -117,8 +146,6 @@ export { pixelate } from './utils/styles';
 // types
 export type {
   BannerBaseProps,
-  MultiDropdownFieldProps,
-  MultiDropdownProps,
   TabItem,
   TabsProps,
   ThemeWeb,

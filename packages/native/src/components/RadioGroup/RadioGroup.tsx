@@ -1,6 +1,6 @@
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
-import { getRadioGroupStyles } from './styles';
+import { getRadioGroupStyles, RadioGroupOrientation } from './styles';
 import * as RadioGroupPrimitive from '@rn-primitives/radio-group';
 import React from 'react';
 import { View } from 'react-native';
@@ -12,6 +12,13 @@ type Props = {
   labelTooltip?: string;
   items: Array<{ id: string; label?: string; value: string }>;
   inputRef: React.RefObject<HTMLInputElement>;
+  /**
+   * Layout orientation for the radio group.
+   * @default 'horizontal'
+   * - 'horizontal': Radio buttons arranged in rows
+   * - 'vertical': Radio buttons stacked vertically
+   */
+  orientation?: RadioGroupOrientation;
 } & RadioGroupPrimitive.RootProps;
 
 const RadioGroup: React.FC<Props> = ({
@@ -20,10 +27,11 @@ const RadioGroup: React.FC<Props> = ({
   label,
   labelTooltip,
   inputRef,
+  orientation = 'horizontal',
   ...rest
 }: Props) => {
   const theme = useTheme();
-  const styles = getRadioGroupStyles({ theme });
+  const styles = getRadioGroupStyles({ theme, orientation });
 
   return (
     <View>
@@ -35,12 +43,7 @@ const RadioGroup: React.FC<Props> = ({
           {label}
         </Label>
       )}
-      <RadioGroupPrimitive.Root
-        // ref={inputRef}
-        // value={undefined}
-        // name={label}
-        {...rest}
-      >
+      <RadioGroupPrimitive.Root style={styles.root} {...rest}>
         {items?.map(item => (
           <View key={item.id} style={styles.itemContainer}>
             <RadioGroupPrimitive.Item value={item.value} id={item.id}>

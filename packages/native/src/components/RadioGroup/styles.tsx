@@ -3,11 +3,19 @@ import { DefaultTheme } from 'styled-components/native';
 
 const ITEM_WIDTH = 13;
 
-export const getRadioGroupStyles = ({ theme }: { theme: DefaultTheme }) =>
+export type RadioGroupOrientation = 'vertical' | 'horizontal';
+
+export const getRadioGroupStyles = ({
+  theme,
+  orientation = 'horizontal',
+}: {
+  theme: DefaultTheme;
+  orientation?: RadioGroupOrientation;
+}) =>
   StyleSheet.create({
     root: {
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: orientation === 'vertical' ? 'column' : 'row',
       gap: theme.spacing.xxsmall,
       alignItems: 'flex-start',
     },
@@ -34,14 +42,3 @@ export const getRadioGroupStyles = ({ theme }: { theme: DefaultTheme }) =>
       height: '100%',
     },
   });
-
-// export const RadioGroupIndicator = styled(RadioGroup.Indicator)`
-//   &::after {
-//     content: '';
-//     display: block;
-//     width: 9px;
-//     height: 9px;
-//     border-radius: 50%;
-//     background-color: ${({ theme }) => theme.color.text.primary};
-//   }
-// `;

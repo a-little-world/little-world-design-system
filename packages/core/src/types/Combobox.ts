@@ -1,5 +1,6 @@
 import { InputHeight } from './TextInput';
-import { Options } from './Dropdown';
+
+import { SelectOptions as Options } from './Select';
 
 type ComboboxSharedProps = {
   ariaLabel?: string;
