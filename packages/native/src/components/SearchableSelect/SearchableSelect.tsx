@@ -7,7 +7,6 @@ export interface SearchableSelectProps {
   error?: string;
   label?: string;
   options: Array<{ value: string; label: string }>;
-  placeholder?: string;
   searchPlaceholder?: string;
   onSearch?: (searchTerm: string) => void;
   style?: StyleProp<ViewStyle>;
@@ -16,7 +15,6 @@ export interface SearchableSelectProps {
 const SearchableSelect: React.FC<SearchableSelectProps> = ({
   label,
   options,
-  placeholder,
   searchPlaceholder,
   error,
   style,
@@ -30,7 +28,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
       <TextInput
         placeholder={searchPlaceholder || 'Search...'}
         value={searchTerm}
-        onChangeText={(text) => {
+        onChangeText={text => {
           setSearchTerm(text);
           onSearch?.(text);
         }}
@@ -43,10 +41,10 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
       />
       <View style={{ marginTop: 8 }}>
         {options
-          .filter((opt) =>
-            opt.label.toLowerCase().includes(searchTerm.toLowerCase())
+          .filter(opt =>
+            opt.label.toLowerCase().includes(searchTerm.toLowerCase()),
           )
-          .map((option) => (
+          .map(option => (
             <Text key={option.value}>{option.label}</Text>
           ))}
       </View>

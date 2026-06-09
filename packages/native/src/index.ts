@@ -25,7 +25,10 @@ export type { CheckboxGroupProps } from './components/CheckboxGroup/CheckboxGrou
 export { default as ChartLibrary } from './components/ChartLibrary/ChartLibrary';
 export type { ChartLibraryProps } from './components/ChartLibrary/ChartLibrary';
 export { default as DataGrid } from './components/DataGrid/DataGrid';
-export type { DataGridProps, DataGridColumn } from './components/DataGrid/DataGrid';
+export type {
+  DataGridProps,
+  DataGridColumn,
+} from './components/DataGrid/DataGrid';
 export { default as DatePicker } from './components/DatePicker/DatePicker';
 export type { DatePickerProps } from './components/DatePicker/DatePicker';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
@@ -76,4 +79,3 @@ export { default as ToolTip } from './components/ToolTip/ToolTip';
 
 export * from './theme';
 export * from './types';
-

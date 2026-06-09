@@ -17,11 +17,7 @@ export type PDFViewerProps = {
   style?: StyleProp<ViewStyle>;
 };
 
-const PDFViewer: React.FC<PDFViewerProps> = ({
-  loading,
-  error,
-  style,
-}) => {
+const PDFViewer: React.FC<PDFViewerProps> = ({ loading, error, style }) => {
   return (
     <View style={[{ flex: 1 }, style]}>
       {loading || <Text>Loading PDF...</Text>}

@@ -22,7 +22,7 @@ const ARROW_DOWN_HEIGHT = 8;
 
 const Option: React.FC<{ children: string; value: string }> = ({
   children,
-  value,
+  ..._ // unused value prop
 }) => {
   return (
     <DropdownMenuPrimitive.Item>
@@ -38,20 +38,14 @@ const Dropdown: React.FC<DropdownProps> = ({
   ariaLabel,
   error,
   cannotError,
-  disabled,
   height,
-  inputRef,
   label,
-  labelTooltip,
   lockedValue,
   maxWidth,
-  onValueChange,
   options,
-  placeholder,
-  required,
-  value,
   style,
-}) => {
+  ..._
+}: DropdownProps) => {
   const theme = useTheme();
   const styles = getDropdownStyles({
     theme,
@@ -63,15 +57,9 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <View style={[styles.wrapper, style]}>
-      {label && (
-        <Label bold>
-          {label}
-        </Label>
-      )}
+      {label && <Label bold>{label}</Label>}
       <DropdownMenuPrimitive.Root>
-        <DropdownMenuPrimitive.Trigger
-          aria-label={ariaLabel || label}
-        >
+        <DropdownMenuPrimitive.Trigger aria-label={ariaLabel || label}>
           {!lockedValue && (
             <ChevronDownIcon
               width={ARROW_DOWN_WIDTH}
@@ -95,4 +83,3 @@ const Dropdown: React.FC<DropdownProps> = ({
 
 // Deprecated: Use Select component instead
 export default Dropdown;
-

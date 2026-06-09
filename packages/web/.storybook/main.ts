@@ -40,6 +40,13 @@ export default {
       'styled-components': require.resolve('styled-components'),
     };
 
+    // Add module resolution for monorepo packages
+    config.resolve.modules = [
+      require.resolve('../../../node_modules'),
+      require.resolve('../node_modules'),
+      ...(config.resolve.modules || []),
+    ];
+
     return config;
   },
 };

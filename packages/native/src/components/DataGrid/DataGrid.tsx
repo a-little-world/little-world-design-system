@@ -37,7 +37,7 @@ const DataGrid: React.FC<DataGridProps> = ({
   return (
     <View style={style}>
       <View style={{ flexDirection: 'row', borderBottomWidth: 1 }}>
-        {columns.map((col) => (
+        {columns.map(col => (
           <Text
             key={col.key}
             style={{ flex: 1, padding: 8, fontWeight: 'bold' }}
@@ -47,12 +47,12 @@ const DataGrid: React.FC<DataGridProps> = ({
         ))}
       </View>
       {data.map((row, rowIdx) => (
-        <View key={rowIdx} style={{ flexDirection: 'row', borderBottomWidth: 1 }}>
-          {columns.map((col) => (
-            <Text
-              key={`${rowIdx}-${col.key}`}
-              style={{ flex: 1, padding: 8 }}
-            >
+        <View
+          key={rowIdx}
+          style={{ flexDirection: 'row', borderBottomWidth: 1 }}
+        >
+          {columns.map(col => (
+            <Text key={`${rowIdx}-${col.key}`} style={{ flex: 1, padding: 8 }}>
               {col.render
                 ? col.render(row[col.key], row, rowIdx)
                 : (row[col.key] as any)}

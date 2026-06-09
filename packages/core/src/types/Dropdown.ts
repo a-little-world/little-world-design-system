@@ -22,4 +22,3 @@ export type DropdownBaseProps = {
 
 // Import Select types for re-export
 export type { SelectBaseProps } from './Select';
-

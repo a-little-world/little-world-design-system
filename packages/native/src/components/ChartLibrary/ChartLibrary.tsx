@@ -7,10 +7,7 @@ export interface ChartLibraryProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const ChartLibrary: React.FC<ChartLibraryProps> = ({
-  title,
-  style,
-}) => {
+const ChartLibrary: React.FC<ChartLibraryProps> = ({ title, style }) => {
   return (
     <View style={[{ flex: 1 }, style]}>
       {Boolean(title) && <Text style={{ fontWeight: 'bold' }}>{title}</Text>}

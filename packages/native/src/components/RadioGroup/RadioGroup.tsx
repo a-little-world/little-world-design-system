@@ -29,21 +29,15 @@ const RadioGroup: React.FC<Props> = ({
 
   return (
     <View>
-      {Boolean(label) && (
-        <Label bold>
-          {label}
-        </Label>
-      )}
-      <RadioGroupPrimitive.Root
-        {...rest}
-      >
+      {Boolean(label) && <Label bold>{label}</Label>}
+      <RadioGroupPrimitive.Root {...rest}>
         <View
           style={{
             flexDirection: orientation === 'horizontal' ? 'row' : 'column',
             gap: 12,
           }}
         >
-          {items?.map((item) => (
+          {items?.map(item => (
             <View key={item.id} style={styles.itemContainer}>
               <RadioGroupPrimitive.Item value={item.value} id={item.id}>
                 <RadioGroupPrimitive.Indicator style={styles.indicator} />
@@ -61,4 +55,3 @@ const RadioGroup: React.FC<Props> = ({
 };
 
 export default RadioGroup;
-

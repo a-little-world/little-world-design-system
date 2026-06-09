@@ -8,12 +8,12 @@ export const getSelectStyles = ({
   theme,
   maxWidth,
   height,
-  hasError,
+  _hasError,
 }: {
   theme: DefaultTheme;
   maxWidth: number;
   height: InputHeight;
-  hasError: boolean;
+  _hasError: boolean;
 }) =>
   StyleSheet.create({
     wrapper: {
