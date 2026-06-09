@@ -8,12 +8,13 @@ export const getSelectStyles = ({
   theme,
   maxWidth,
   height,
-  _hasError,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  hasError,
 }: {
   theme: DefaultTheme;
   maxWidth: number;
   height: InputHeight;
-  _hasError: boolean;
+  hasError: boolean;
 }) =>
   StyleSheet.create({
     wrapper: {
