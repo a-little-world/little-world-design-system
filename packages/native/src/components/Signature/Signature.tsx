@@ -1,24 +1,19 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { StyleProp, ViewStyle, View, Pressable } from 'react-native';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
 
-export type SignatureProps = {
+export interface SignatureProps {
   onSignatureSave: (signatureDataUrl: string) => void;
   onCancel?: () => void;
   width?: string | number;
   height?: string | number;
-  penColor?: string;
-  penSize?: number;
-  backgroundColor?: string;
   label?: string;
   clearButtonLabel?: string;
   saveButtonLabel?: string;
   cancelButtonLabel?: string;
-  className?: string;
-  disabled?: boolean;
   style?: StyleProp<ViewStyle>;
-};
+}
 
 const Signature: React.FC<SignatureProps> = ({
   label,

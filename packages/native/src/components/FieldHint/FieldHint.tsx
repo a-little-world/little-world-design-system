@@ -11,18 +11,20 @@ const FieldHint: React.FC<FieldHintProps> = ({
   text,
   trigger,
   icon,
-  open,
+  open: _open,
   side = 'top',
   sideOffset = 8,
   style,
 }) => {
+  // Map all sides to top or bottom for React Native tooltip compatibility
+  const mappedSide = side === 'bottom' ? 'bottom' : 'top';
+
   return (
     <View style={style}>
       <ToolTip
         text={text}
         trigger={trigger || icon}
-        open={open}
-        side={side}
+        side={mappedSide}
         sideOffset={sideOffset}
       />
     </View>

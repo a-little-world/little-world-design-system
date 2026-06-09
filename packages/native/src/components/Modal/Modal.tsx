@@ -1,8 +1,14 @@
 import React from 'react';
-import { StyleProp, ViewStyle, View, Modal as RNModal, Pressable } from 'react-native';
+import {
+  StyleProp,
+  ViewStyle,
+  View,
+  Modal as RNModal,
+  Pressable,
+} from 'react-native';
 import Text from '../Text/Text';
 
-export type ModalProps = {
+export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title?: React.ReactNode;
@@ -12,9 +18,8 @@ export type ModalProps = {
   closeButton?: boolean;
   backdrop?: boolean;
   onBackdropClick?: () => void;
-  className?: string;
   style?: StyleProp<ViewStyle>;
-};
+}
 
 const sizeStyles: Record<string, { width: string }> = {
   small: { width: '60%' },
@@ -65,7 +70,9 @@ const Modal: React.FC<ModalProps> = ({
         >
           {title && (
             <View style={{ marginBottom: 16 }}>
-              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{title as any}</Text>
+              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
+                {title as React.ReactNode}
+              </Text>
             </View>
           )}
           {closeButton && (
@@ -77,11 +84,7 @@ const Modal: React.FC<ModalProps> = ({
             </Pressable>
           )}
           {children}
-          {footer && (
-            <View style={{ marginTop: 24 }}>
-              {footer}
-            </View>
-          )}
+          {footer && <View style={{ marginTop: 24 }}>{footer}</View>}
         </View>
       </Pressable>
     </RNModal>

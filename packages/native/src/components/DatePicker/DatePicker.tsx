@@ -3,23 +3,13 @@ import { StyleProp, ViewStyle, View } from 'react-native';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
 
-export type DatePickerProps = {
-  ariaLabel?: string;
-  disabled?: boolean;
+export interface DatePickerProps {
   error?: string;
-  format?: string;
-  id?: string;
   label?: string;
-  labelTooltip?: string;
-  maxDate?: Date;
-  minDate?: Date;
-  onChange: (date: Date | null) => void;
   placeholder?: string;
-  required?: boolean;
   value?: Date | null;
-  className?: string;
   style?: StyleProp<ViewStyle>;
-};
+}
 
 const DatePicker: React.FC<DatePickerProps> = ({
   label,
@@ -27,7 +17,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
   value,
   error,
   style,
-}) => {
+}: DatePickerProps) => {
   return (
     <View style={style}>
       {Boolean(label) && <Label bold>{label}</Label>}
@@ -39,7 +29,9 @@ const DatePicker: React.FC<DatePickerProps> = ({
           borderColor: '#ccc',
         }}
       >
-        <Text>{value ? value.toLocaleDateString() : placeholder || 'Select date'}</Text>
+        <Text>
+          {value ? value.toLocaleDateString() : placeholder || 'Select date'}
+        </Text>
       </View>
       {Boolean(error) && <Text>{error}</Text>}
     </View>

@@ -1,14 +1,11 @@
 import React from 'react';
 import { StyleProp, ViewStyle, View } from 'react-native';
-import Text from '../Text/Text';
 
-export type FormRowProps = {
+export interface FormRowProps {
   children: React.ReactNode;
   gap?: 'small' | 'medium' | 'large';
-  columns?: number;
-  className?: string;
   style?: StyleProp<ViewStyle>;
-};
+}
 
 const gapValues = {
   small: 8,
@@ -19,7 +16,6 @@ const gapValues = {
 const FormRow: React.FC<FormRowProps> = ({
   children,
   gap = 'medium',
-  columns,
   style,
 }) => {
   return (

@@ -3,20 +3,13 @@ import { StyleProp, ViewStyle, View, Pressable } from 'react-native';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
 
-export type FileUploaderProps = {
-  onFilesSelected: (files: File[]) => void;
-  accept?: string;
-  multiple?: boolean;
-  disabled?: boolean;
+export interface FileUploaderProps {
   label?: string;
   error?: string;
-  maxFileSize?: number;
-  maxFiles?: number;
-  className?: string;
+  disabled?: boolean;
   icon?: React.ReactNode;
-  dragAndDrop?: boolean;
   style?: StyleProp<ViewStyle>;
-};
+}
 
 const FileUploader: React.FC<FileUploaderProps> = ({
   label,

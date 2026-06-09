@@ -3,22 +3,13 @@ import { StyleProp, ViewStyle, View } from 'react-native';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
 
-export type TimePickerProps = {
-  ariaLabel?: string;
-  disabled?: boolean;
+export interface TimePickerProps {
   error?: string;
-  format?: '12' | '24';
-  id?: string;
   label?: string;
-  labelTooltip?: string;
-  onChange: (time: string | null) => void;
   placeholder?: string;
-  required?: boolean;
   value?: string | null;
-  step?: number;
-  className?: string;
   style?: StyleProp<ViewStyle>;
-};
+}
 
 const TimePicker: React.FC<TimePickerProps> = ({
   label,

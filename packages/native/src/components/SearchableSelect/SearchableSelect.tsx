@@ -3,25 +3,15 @@ import { StyleProp, ViewStyle, View, TextInput } from 'react-native';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
 
-export type SearchableSelectProps = {
-  ariaLabel?: string;
-  cannotError?: boolean;
-  disabled?: boolean;
+export interface SearchableSelectProps {
   error?: string;
-  id?: string;
   label?: string;
-  labelTooltip?: string;
-  maxWidth?: string | number;
-  onValueChange: (value: string) => void;
-  onSearch?: (searchTerm: string) => void;
   options: Array<{ value: string; label: string }>;
   placeholder?: string;
-  required?: boolean;
-  value?: string;
   searchPlaceholder?: string;
-  clearable?: boolean;
+  onSearch?: (searchTerm: string) => void;
   style?: StyleProp<ViewStyle>;
-};
+}
 
 const SearchableSelect: React.FC<SearchableSelectProps> = ({
   label,

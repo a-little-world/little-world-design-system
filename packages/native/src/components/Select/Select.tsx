@@ -2,8 +2,8 @@ import { CheckIcon, ChevronDownIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
-import { getDropdownStyles } from './styles';
-import {
+import { getSelectStyles } from './styles';
+import type {
   InputHeight,
   SelectBaseProps,
 } from '@a-little-world/little-world-design-system-core';
@@ -14,7 +14,6 @@ import { useTheme } from 'styled-components/native';
 
 export type SelectProps = SelectBaseProps & {
   style?: StyleProp<ViewStyle>;
-  inputRef?: React.RefObject<HTMLButtonElement>;
 };
 
 const ARROW_DOWN_WIDTH = 13;
@@ -22,7 +21,7 @@ const ARROW_DOWN_HEIGHT = 8;
 
 const Option: React.FC<{ children: string; value: string }> = ({
   children,
-  value,
+  ..._ // unused value prop
 }) => {
   return (
     <DropdownMenuPrimitive.Item>
@@ -38,22 +37,16 @@ const Select: React.FC<SelectProps> = ({
   ariaLabel,
   error,
   cannotError,
-  disabled,
   height,
-  inputRef,
   label,
-  labelTooltip,
   lockedValue,
   maxWidth,
-  onValueChange,
   options,
-  placeholder,
-  required,
-  value,
   style,
-}) => {
+  ..._
+}: SelectProps) => {
   const theme = useTheme();
-  const styles = getDropdownStyles({
+  const styles = getSelectStyles({
     theme,
     maxWidth: maxWidth as number,
     height: height as InputHeight,
@@ -63,15 +56,9 @@ const Select: React.FC<SelectProps> = ({
 
   return (
     <View style={[styles.wrapper, style]}>
-      {label && (
-        <Label bold>
-          {label}
-        </Label>
-      )}
+      {label && <Label bold>{label}</Label>}
       <DropdownMenuPrimitive.Root>
-        <DropdownMenuPrimitive.Trigger
-          aria-label={ariaLabel || label}
-        >
+        <DropdownMenuPrimitive.Trigger aria-label={ariaLabel || label}>
           {!lockedValue && (
             <ChevronDownIcon
               width={ARROW_DOWN_WIDTH}
@@ -81,7 +68,7 @@ const Select: React.FC<SelectProps> = ({
           )}
         </DropdownMenuPrimitive.Trigger>
         <DropdownMenuPrimitive.Content>
-          {options.map(option => (
+          {options.map((option: (typeof options)[0]) => (
             <Option key={option.label} value={option.value}>
               {option.label}
             </Option>

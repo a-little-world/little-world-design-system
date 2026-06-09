@@ -1,24 +1,7 @@
-import { InputHeight } from './TextInput';
+// Select types - new preferred names
+// Re-export from Dropdown for shared implementation
+export type { Options, DropdownBaseProps } from './Dropdown';
 
-export type Options = { value: string; label: string }[];
-
-export type SelectBaseProps = {
-  ariaLabel?: string;
-  cannotError?: boolean;
-  disabled?: boolean;
-  error?: string;
-  height?: InputHeight;
-  id?: string;
-  label?: string;
-  labelTooltip?: string;
-  lockedValue?: string;
-  maxWidth?: string | number;
-  onValueChange: (value: string) => void;
-  options: Options;
-  placeholder: string;
-  required?: boolean;
-  value?: string;
-};
-
-// Keep Dropdown as an alias for backward compatibility
-export type DropdownBaseProps = SelectBaseProps;
+// Create SelectBaseProps as the primary export (same as DropdownBaseProps for now)
+import type { DropdownBaseProps } from './Dropdown';
+export type SelectBaseProps = DropdownBaseProps;

@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 export type ChartType = 'line' | 'bar' | 'pie' | 'area' | 'scatter' | 'radar';
 
 export interface ChartDataPoint {
