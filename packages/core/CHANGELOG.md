@@ -1,5 +1,12 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.14.0
+
+### Minor Changes
+
+- Add inModal prop to Dropdown and Combobox
+- add shareScreenStop Icon
+
 ## 1.13.0
 
 ### Minor Changes
