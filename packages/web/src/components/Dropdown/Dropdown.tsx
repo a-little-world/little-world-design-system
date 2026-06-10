@@ -5,6 +5,7 @@ import { DropdownBaseProps } from '@a-little-world/little-world-design-system-co
 import { CheckIcon, ChevronDownIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
+import { useModalPortalContainer } from '../Modal/ModalPortalContext';
 import Text from '../Text/Text';
 
 import {
@@ -21,6 +22,7 @@ import {
 type Options = { value: string; label: string }[];
 
 type DropdownCoreProps = DropdownBaseProps & {
+  inModal?: boolean;
   inputRef?: React.RefObject<HTMLButtonElement>;
 };
 
@@ -63,6 +65,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   disabled,
   id,
   height,
+  inModal,
   inputRef,
   label,
   labelTooltip,
@@ -77,6 +80,19 @@ const Dropdown: React.FC<DropdownProps> = ({
   const defaultValue =
     lockedValue || (value && isValidValue(value, options) ? value : undefined);
   const canError = !lockedValue && !cannotError;
+  const modalContainerRef = useModalPortalContainer();
+
+  const selectContent = (
+    <SelectContent position="popper">
+      <SelectViewport>
+        {options.map(option => (
+          <Option key={option.label} value={option.value}>
+            {option.label}
+          </Option>
+        ))}
+      </SelectViewport>
+    </SelectContent>
+  );
 
   return (
     <DropdownWrapper $maxWidth={maxWidth as string}>
@@ -110,15 +126,13 @@ const Dropdown: React.FC<DropdownProps> = ({
             </SelectIcon>
           )}
         </SelectTrigger>
-        <SelectContent position="popper">
-          <SelectViewport>
-            {options.map(option => (
-              <Option key={option.label} value={option.value}>
-                {option.label}
-              </Option>
-            ))}
-          </SelectViewport>
-        </SelectContent>
+        <Select.Portal
+          container={
+            inModal ? (modalContainerRef?.current ?? undefined) : undefined
+          }
+        >
+          {selectContent}
+        </Select.Portal>
       </Select.Root>
       {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
     </DropdownWrapper>

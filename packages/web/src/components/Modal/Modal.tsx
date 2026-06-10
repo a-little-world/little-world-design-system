@@ -9,6 +9,7 @@ import {
 } from '../Button/Button';
 import { CloseIcon } from '../Icon';
 import { BackdropContainer, CloseButton } from './styles';
+import { ModalPortalContext } from './ModalPortalContext';
 import { useTheme } from 'styled-components';
 
 export const BACKDROP_LABEL = 'dialog backdrop';
@@ -100,26 +101,28 @@ const Modal = ({
   }, [closeOnBackdropClick, open, locked, onClose]);
 
   const Backdrop = (
-    <BackdropContainer
-      aria-modal={true}
-      aria-label={BACKDROP_LABEL}
-      ref={backdrop}
-      $active={active && open}
-    >
-      {!locked && (
-        <CloseButton
-          variation={ButtonVariations.Circle}
-          appearance={ButtonAppearance.Secondary}
-          backgroundColor={theme.color.surface.secondary}
-          color={theme.color.text.primary}
-          onClick={onClose}
-          size={ButtonSizes.Medium}
-        >
-          <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
-        </CloseButton>
-      )}
-      {children}
-    </BackdropContainer>
+    <ModalPortalContext.Provider value={backdrop}>
+      <BackdropContainer
+        aria-modal={true}
+        aria-label={BACKDROP_LABEL}
+        ref={backdrop}
+        $active={active && open}
+      >
+        {!locked && (
+          <CloseButton
+            variation={ButtonVariations.Circle}
+            appearance={ButtonAppearance.Secondary}
+            backgroundColor={theme.color.surface.secondary}
+            color={theme.color.text.primary}
+            onClick={onClose}
+            size={ButtonSizes.Medium}
+          >
+            <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
+          </CloseButton>
+        )}
+        {children}
+      </BackdropContainer>
+    </ModalPortalContext.Provider>
   );
 
   if (open) return createInPortal ? createPortal(Backdrop, el) : Backdrop;

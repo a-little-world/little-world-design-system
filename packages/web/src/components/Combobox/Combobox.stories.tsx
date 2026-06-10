@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { InputHeight } from '@a-little-world/little-world-design-system-core';
 
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 import Combobox from './Combobox';
 
 const languageOptions = [
@@ -143,4 +145,23 @@ MultipleWithChipLimit.args = {
   id: 'combobox-multiple-chip-limit',
   chipLimit: 2,
   value: ['english', 'german', 'spanish', 'french'],
+};
+
+export const InModal = args => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [value, setValue] = useState<string | undefined>(args.value);
+
+  return (
+    <>
+      <Button onClick={() => setModalOpen(true)}>Open Modal</Button>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        <Combobox {...args} inModal onValueChange={setValue} value={value} />
+      </Modal>
+    </>
+  );
+};
+
+InModal.args = {
+  ...Default.args,
+  id: 'combobox-in-modal',
 };
