@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 import Dropdown from './Dropdown';
 
 export default {
@@ -56,4 +58,22 @@ Default.args = {
     { label: 'Afrikaans', value: 'afrikaans' },
     { label: 'Swahili', value: 'swahili' },
   ],
+};
+
+export const InModal = args => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setModalOpen(true)}>Open Modal</Button>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        <Dropdown {...args} inModal />
+      </Modal>
+    </>
+  );
+};
+
+InModal.args = {
+  ...Default.args,
+  id: 'dropdown-in-modal',
 };

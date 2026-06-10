@@ -60,6 +60,7 @@ export { questionIcon } from './questionIcon';
 export { sendIcon } from './sendIcon';
 export { settingsIcon } from './settingsIcon';
 export { shareScreenIcon } from './shareScreenIcon';
+export { shareScreenStopIcon } from './shareScreenStopIcon';
 export { speakerIcon } from './speakerIcon';
 export { stackIcon } from './stackIcon';
 export { starIcon } from './starIcon';

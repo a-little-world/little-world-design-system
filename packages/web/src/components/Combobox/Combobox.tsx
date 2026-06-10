@@ -10,6 +10,7 @@ import {
 import { CheckIcon, ChevronDownIcon, CloseIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
+import { useModalPortalContainer } from '../Modal/ModalPortalContext';
 import Text from '../Text/Text';
 
 import {
@@ -34,6 +35,7 @@ import {
 type ComboboxOption = Options[number];
 
 type ComboboxCoreProps = {
+  inModal?: boolean;
   inputRef?: React.RefObject<HTMLInputElement | null>;
 };
 
@@ -110,27 +112,33 @@ type SharedLayoutProps = {
   required?: boolean;
 };
 
-const ComboboxOptionsList = () => (
-  <BaseCombobox.Portal>
-    <ComboboxPositioner sideOffset={4}>
-      <ComboboxPopup>
-        <BaseCombobox.Empty>
-          <ComboboxEmpty>No results found.</ComboboxEmpty>
-        </BaseCombobox.Empty>
-        <ComboboxList>
-          {(item: ComboboxOption) => (
-            <ComboboxItem key={item.value} value={item}>
-              <ComboboxItemIndicator>
-                <CheckIcon label="selected item" width="10px" />
-              </ComboboxItemIndicator>
-              <Text>{item.label}</Text>
-            </ComboboxItem>
-          )}
-        </ComboboxList>
-      </ComboboxPopup>
-    </ComboboxPositioner>
-  </BaseCombobox.Portal>
-);
+const ComboboxOptionsList = ({ inModal }: { inModal?: boolean }) => {
+  const modalContainerRef = useModalPortalContainer();
+
+  return (
+    <BaseCombobox.Portal
+      container={inModal ? (modalContainerRef ?? undefined) : undefined}
+    >
+      <ComboboxPositioner sideOffset={4}>
+        <ComboboxPopup>
+          <BaseCombobox.Empty>
+            <ComboboxEmpty>No results found.</ComboboxEmpty>
+          </BaseCombobox.Empty>
+          <ComboboxList>
+            {(item: ComboboxOption) => (
+              <ComboboxItem key={item.value} value={item}>
+                <ComboboxItemIndicator>
+                  <CheckIcon label="selected item" width="10px" />
+                </ComboboxItemIndicator>
+                <Text>{item.label}</Text>
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxPopup>
+      </ComboboxPositioner>
+    </BaseCombobox.Portal>
+  );
+};
 
 const ComboboxActionControls = () => (
   <ComboboxActionButtons>
@@ -173,6 +181,7 @@ const ComboboxFieldLayout = ({
 
 const SingleCombobox: React.FC<
   ComboboxSingleBaseProps & {
+    inModal?: boolean;
     inputRef?: React.RefObject<HTMLInputElement | null>;
     label?: string;
     id?: string;
@@ -184,6 +193,7 @@ const SingleCombobox: React.FC<
   error,
   id,
   height,
+  inModal,
   inputRef,
   label,
   labelTooltip,
@@ -250,7 +260,7 @@ const SingleCombobox: React.FC<
           />
           {!lockedValue && <ComboboxActionControls />}
         </ComboboxInputGroup>
-        <ComboboxOptionsList />
+        <ComboboxOptionsList inModal={inModal} />
       </BaseCombobox.Root>
     </ComboboxFieldLayout>
   );
@@ -258,6 +268,7 @@ const SingleCombobox: React.FC<
 
 const MultipleCombobox: React.FC<
   ComboboxMultipleBaseProps & {
+    inModal?: boolean;
     inputRef?: React.RefObject<HTMLInputElement | null>;
     label?: string;
     id?: string;
@@ -270,6 +281,7 @@ const MultipleCombobox: React.FC<
   error,
   id,
   height,
+  inModal,
   inputRef,
   label,
   labelTooltip,
@@ -394,7 +406,7 @@ const MultipleCombobox: React.FC<
             </ComboboxActionButtons>
           )}
         </ComboboxInputGroup>
-        <ComboboxOptionsList />
+        <ComboboxOptionsList inModal={inModal} />
       </BaseCombobox.Root>
     </ComboboxFieldLayout>
   );
