@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.10.0
+
+### Minor Changes
+
+- Add inModal prop to Dropdown and Combobox
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.14.0
+
 ## 0.9.0
 
 ### Minor Changes
