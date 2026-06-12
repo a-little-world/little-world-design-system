@@ -20,15 +20,3 @@ export type SelectBaseProps = {
   required?: boolean;
   value?: string;
 };
-
-/**
- * @deprecated Use {@link SelectOptions} instead. Kept for backward
- * compatibility only; will be removed in a future major version.
- */
-export type Options = SelectOptions;
-
-/**
- * @deprecated Use {@link SelectBaseProps} instead. Kept for backward
- * compatibility only; will be removed in a future major version.
- */
-export type DropdownBaseProps = SelectBaseProps;

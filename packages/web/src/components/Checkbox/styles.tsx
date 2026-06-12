@@ -29,7 +29,16 @@ const getCheckboxBorderColor = ({
 }: {
   checked: Checkbox.CheckboxProps['checked'];
   $hasError?: boolean;
-  theme: { color: { border: { error: string; selected: string; subtle: string; contrast: string } } };
+  theme: {
+    color: {
+      border: {
+        error: string;
+        selected: string;
+        subtle: string;
+        contrast: string;
+      };
+    };
+  };
 }) => {
   if (checked) {
     return $hasError ? theme.color.border.error : theme.color.border.selected;
@@ -65,9 +74,12 @@ export const CheckboxButtonContainer = styled(Checkbox.Root)<{
   padding: ${({ theme }) => theme.spacing.xxsmall};
   display: flex;
   align-items: center;
-  border: 1px solid ${({ theme, checked, $hasError }) => getCheckboxBorderColor({ checked, $hasError, theme })};
+  border: 1px solid
+    ${({ theme, checked, $hasError }) =>
+      getCheckboxBorderColor({ checked, $hasError, theme })};
   border-radius: ${({ theme }) => theme.radius.xxsmall};
-  background: ${({ checked, $hasError, theme }) => getCheckboxBackground({ checked, $hasError, theme })};
+  background: ${({ checked, $hasError, theme }) =>
+    getCheckboxBackground({ checked, $hasError, theme })};
 
   label {
     cursor: pointer;
