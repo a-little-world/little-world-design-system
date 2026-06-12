@@ -99,7 +99,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         defaultSegments,
       ),
     );
-  }, [first?.values, second?.values]);
+  }, [defaultSegments, first, first?.values, second, second?.values]);
 
   const handleValueChange = (
     value: string,
@@ -143,75 +143,67 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
           {label}
         </Label>
       )}
-      {new Array(segments)
-        .fill('')
-        .map((_, index) => {
-          const isFirstSegment = index === 0;
-          const firstSegmentLockedVal1 = isFirstSegment
-            ? first.lockedValue
-            : undefined;
-          const firstSegmentLockedVal2 = isFirstSegment
-            ? second.lockedValue
-            : undefined;
-          const deletable = !!index && !locked;
+      {new Array(segments).fill('').map((_, index) => {
+        const isFirstSegment = index === 0;
+        const firstSegmentLockedVal1 = isFirstSegment
+          ? first.lockedValue
+          : undefined;
+        const firstSegmentLockedVal2 = isFirstSegment
+          ? second.lockedValue
+          : undefined;
+        const deletable = !!index && !locked;
 
-          return (
-            <Segment
-              $locked={locked}
-              key={`MultiSelect Segment ${index}${values[0][index]}${values[1][index]}`}
-            >
-              <SelectField
-                ariaLabel={first.ariaLabel + index}
-                inModal={inModal}
-                placeholder={first.placeholder}
-                onValueChange={(val: string) =>
-                  handleValueChange(val, 0, index)
-                }
-                options={first.options}
-                value={values[0][index]}
-                lockedValue={
-                  firstSegmentLockedVal1 ||
-                  (locked ? values[0][index] : undefined)
-                }
-                required={Boolean(values[1][index])}
-                error={first.errors?.[index]}
-              />
-              <SelectField
-                ariaLabel={second.ariaLabel + index}
-                inModal={inModal}
-                placeholder={second.placeholder}
-                onValueChange={(val: string) =>
-                  handleValueChange(val, 1, index)
-                }
-                options={
-                  isEmpty(restrictions?.[values[0][index]])
-                    ? second.options
-                    : second.options.filter(option =>
-                        restrictions?.[values[0][index]]?.includes(
-                          option.value,
-                        ),
-                      )
-                }
-                value={values[1][index]}
-                lockedValue={
-                  firstSegmentLockedVal2 ||
-                  (locked ? values[1][index] : undefined)
-                }
-                required={Boolean(values[0][index])}
-                error={second.errors?.[index]}
-              />
-              {deletable && (
-                <DeleteButton
-                  variation={ButtonVariations.Icon}
-                  onClick={() => handleDelete(index)}
-                  size={ButtonSizes.Small}
-                >
-                  <TrashIcon label={DELETE_SEGMENT} color="orange" />
-                </DeleteButton>
-              )}
-            </Segment>
-          );
-        })}
+        return (
+          <Segment
+            $locked={locked}
+            key={`MultiSelect Segment ${index}${values[0][index]}${values[1][index]}`}
+          >
+            <SelectField
+              ariaLabel={first.ariaLabel + index}
+              inModal={inModal}
+              placeholder={first.placeholder}
+              onValueChange={(val: string) => handleValueChange(val, 0, index)}
+              options={first.options}
+              value={values[0][index]}
+              lockedValue={
+                firstSegmentLockedVal1 ||
+                (locked ? values[0][index] : undefined)
+              }
+              required={Boolean(values[1][index])}
+              error={first.errors?.[index]}
+            />
+            <SelectField
+              ariaLabel={second.ariaLabel + index}
+              inModal={inModal}
+              placeholder={second.placeholder}
+              onValueChange={(val: string) => handleValueChange(val, 1, index)}
+              options={
+                isEmpty(restrictions?.[values[0][index]])
+                  ? second.options
+                  : second.options.filter(option =>
+                      restrictions?.[values[0][index]]?.includes(option.value),
+                    )
+              }
+              value={values[1][index]}
+              lockedValue={
+                firstSegmentLockedVal2 ||
+                (locked ? values[1][index] : undefined)
+              }
+              required={Boolean(values[0][index])}
+              error={second.errors?.[index]}
+            />
+            {deletable && (
+              <DeleteButton
+                variation={ButtonVariations.Icon}
+                onClick={() => handleDelete(index)}
+                size={ButtonSizes.Small}
+              >
+                <TrashIcon label={DELETE_SEGMENT} color="orange" />
+              </DeleteButton>
+            )}
+          </Segment>
+        );
+      })}
       {!locked && (
         <AddMore>
           <AddMoreButton

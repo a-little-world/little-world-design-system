@@ -36,6 +36,21 @@ export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid'
 export { default as Combobox } from './components/Combobox/Combobox';
 export { default as Select } from './components/Select/Select';
 export type { SelectProps } from './components/Select/Select';
+/**
+ * @deprecated Use `Select` instead. This export is kept for backward
+ * compatibility only and will be removed in a future major version.
+ *
+ * Migration:
+ * ```tsx
+ * // Before (deprecated)
+ * import { Dropdown } from '@a-little-world/little-world-design-system';
+ * // After (recommended)
+ * import { Select } from '@a-little-world/little-world-design-system';
+ * ```
+ */
+export { default as Dropdown } from './components/Select/Select';
+/** @deprecated Use `SelectProps` instead. */
+export type { SelectProps as DropdownProps } from './components/Select/Select';
 
 export {
   default as MultiSelect,
@@ -44,6 +59,21 @@ export {
 export type {
   MultiSelectProps,
   MultiSelectFieldProps,
+} from './components/MultiSelect/MultiSelect';
+/**
+ * @deprecated Use `MultiSelect` instead. Kept for backward compatibility only;
+ * will be removed in a future major version. Note: alongside the rename, the
+ * field props were renamed `firstDropdown`/`secondDropdown` →
+ * `firstSelect`/`secondSelect`, so call sites still need updating.
+ */
+export {
+  default as MultiDropdown,
+  MultiSelectVariants as MultiDropdownVariants,
+} from './components/MultiSelect/MultiSelect';
+/** @deprecated Use `MultiSelectProps` / `MultiSelectFieldProps` instead. */
+export type {
+  MultiSelectProps as MultiDropdownProps,
+  MultiSelectFieldProps as MultiDropdownFieldProps,
 } from './components/MultiSelect/MultiSelect';
 export * from './components/Icon';
 export * from './components/Illustrations';
