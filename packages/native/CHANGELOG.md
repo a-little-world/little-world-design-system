@@ -1,5 +1,12 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.10.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.14.1
+
 ## 0.10.0
 
 ### Minor Changes
