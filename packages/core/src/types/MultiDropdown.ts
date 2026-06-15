@@ -20,6 +20,7 @@ export type MultiDropdownFieldProps = Omit<
 export type MultiDropdownProps = {
   addMoreLabel: string;
   error?: string;
+  inModal?: boolean;
   label?: string;
   labelTooltip?: string;
   locked?: boolean;

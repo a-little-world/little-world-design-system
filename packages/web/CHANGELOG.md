@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system
 
+## 2.18.1
+
+### Patch Changes
+
+- Add inModal to Multicombobox
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.14.1
+
 ## 2.18.0
 
 ### Minor Changes

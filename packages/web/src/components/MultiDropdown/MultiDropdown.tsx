@@ -67,6 +67,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   locked,
   firstDropdown,
   secondDropdown,
+  inModal,
   onValueChange,
   defaultSegments = 1,
   maxSegments = 4,
@@ -169,6 +170,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
               <SelectField
                 ariaLabel={firstDropdown.ariaLabel + index}
                 placeholder={firstDropdown.placeholder}
+                inModal={inModal}
                 onValueChange={(val: string) =>
                   handleValueChange(val, 0, index)
                 }
@@ -184,6 +186,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
               <SelectField
                 ariaLabel={secondDropdown.ariaLabel + index}
                 placeholder={secondDropdown.placeholder}
+                inModal={inModal}
                 onValueChange={(val: string) =>
                   handleValueChange(val, 1, index)
                 }
