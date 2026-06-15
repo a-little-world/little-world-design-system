@@ -1,7 +1,9 @@
 import { MultiDropdownVariants } from '@a-little-world/little-world-design-system-core';
-import React from 'react';
+import React, { useState } from 'react';
 
 import MultiDropdown from './MultiDropdown';
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 
 export default {
   component: MultiDropdown,
@@ -109,4 +111,22 @@ export const WithCombobox = args => <MultiDropdown {...args} />;
 WithCombobox.args = {
   ...DEFAULT_ARGS,
   variant: MultiDropdownVariants.Combobox,
+};
+
+export const InModal = args => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setModalOpen(true)}>Open Modal</Button>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        <MultiDropdown {...args} inModal />
+      </Modal>
+    </>
+  );
+};
+
+InModal.args = {
+  ...Default.args,
+  id: 'multi-dropdown-in-modal',
 };
