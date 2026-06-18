@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 import Select from './Select';
 
 export default {
@@ -7,7 +9,9 @@ export default {
   title: 'Components/Select',
 };
 
-export const Default = args => <Select {...args} />;
+export const Default = (args: React.ComponentProps<typeof Select>) => (
+  <Select {...args} />
+);
 
 Default.args = {
   label: 'Demo select',
@@ -56,4 +60,22 @@ Default.args = {
     { label: 'Afrikaans', value: 'afrikaans' },
     { label: 'Swahili', value: 'swahili' },
   ],
+};
+
+export const InModal = (args: React.ComponentProps<typeof Select>) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setModalOpen(true)}>Open Modal</Button>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        <Select {...args} inModal />
+      </Modal>
+    </>
+  );
+};
+
+InModal.args = {
+  ...Default.args,
+  id: 'select-in-modal',
 };

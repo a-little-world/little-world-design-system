@@ -31,8 +31,8 @@ export const SelectTrigger = styled(Select.Trigger)<{
   height: ${({ $height }) => ($height === InputHeight.Small ? '34px' : '40px')};
   gap: ${({ theme }) => theme.spacing.xsmall};
   background-color: ${({ theme }) => theme.color.surface.primary};
-  border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.color.border.subtle};
+  border-radius: 5px;
+  border: 2px solid ${({ theme }) => theme.color.border.subtle};
   width: 100%;
   color: ${({ theme }) => theme.color.text.secondary};
   margin-bottom: ${({ theme }) => theme.spacing.xxxxsmall};
@@ -60,12 +60,12 @@ export const SelectTrigger = styled(Select.Trigger)<{
 
   &:focus-visible {
     outline: none;
-    border-color: #1976d2;
+    border-color: ${({ theme }) => theme.color.border.subtle};
     box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.18);
   }
 
   &[data-state='open'] {
-    border-color: #1976d2;
+    border-color: ${({ theme }) => theme.color.border.subtle};
   }
 
   &[data-placeholder] {
@@ -97,28 +97,20 @@ export const SelectValue = styled(Select.Value)`
 `;
 
 export const SelectContent = styled(Select.Content)`
-  box-sizing: border-box;
   overflow: hidden;
   background-color: ${({ theme }) => theme.color.surface.elevated};
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
-  width: var(--radix-select-trigger-width);
-  min-width: var(--radix-select-trigger-width);
-  max-width: var(--radix-select-trigger-width);
-  max-height: var(--radix-select-content-available-height);
+  border-radius: 6px;
   box-shadow:
-    0px 5px 5px -3px rgba(0, 0, 0, 0.2),
-    0px 8px 10px 1px rgba(0, 0, 0, 0.14),
-    0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+    0px 10px 20px -15px rgba(22, 23, 24, 0.2);
   z-index: ${({ theme }) => theme.zIndex.dropdown};
 `;
 
 export const SelectViewport = styled(Select.Viewport)`
-  box-sizing: border-box;
-  padding: 8px 0;
-  max-height: inherit;
-  overflow-y: auto;
-  overflow-x: hidden;
+  padding: ${({ theme }) => theme.spacing.xxsmall}
+    ${({ theme }) => theme.spacing.xxxsmall};
+  max-height: 200px;
+  overflow: scroll;
 `;
 
 export const SelectIcon = styled(Select.Icon)`
@@ -126,36 +118,26 @@ export const SelectIcon = styled(Select.Icon)`
 `;
 
 export const SelectItem = styled(Select.Item)`
-  font-size: 14px;
-  line-height: 1.5;
-  border-radius: 0;
+  font-size: 13px;
+  line-height: 1;
+  border-radius: 3px;
   display: flex;
   align-items: center;
-  min-height: 48px;
-  padding: 0 16px 0 16px;
+  height: 25px;
+  padding: 0 ${({ theme }) => theme.spacing.large} 0
+    ${({ theme }) => theme.spacing.medium};
   position: relative;
   user-select: none;
-  box-sizing: border-box;
-
-  &[data-highlighted] {
-    outline: none;
-    background-color: rgba(0, 0, 0, 0.04);
-  }
-
-  &[data-state='checked'] {
-    background-color: rgba(25, 118, 210, 0.08);
-  }
 
   &:disabled {
     color: gray;
     pointer-events: none;
   }
 `;
-
 export const SelectItemIndicator = styled(Select.ItemIndicator)`
   position: absolute;
-  right: 12px;
-  width: 18px;
+  left: 0;
+  width: 25px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
