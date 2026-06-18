@@ -2,7 +2,7 @@ import {
   MultiSelectFieldProps,
   MultiSelectProps,
   MultiSelectVariants,
-} from '@a-little-world/little-world-design-system-core/dist/esm/types/MultiSelect';
+} from '@a-little-world/little-world-design-system-core';
 import { isEmpty } from 'lodash';
 import React, { useEffect, useState } from 'react';
 

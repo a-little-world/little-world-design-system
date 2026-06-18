@@ -1,6 +1,6 @@
 import * as RadixSelect from '@radix-ui/react-select';
 import React from 'react';
-import { SelectBaseProps } from '@a-little-world/little-world-design-system-core/dist/esm/types/Select';
+import { SelectBaseProps } from '@a-little-world/little-world-design-system-core';
 
 import { CheckIcon, ChevronDownIcon } from '../Icon';
 import InputError from '../InputError/InputError';
