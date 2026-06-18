@@ -5,7 +5,6 @@ import { DropdownBaseProps } from '@a-little-world/little-world-design-system-co
 import { CheckIcon, ChevronDownIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
-import { useModalPortalContainer } from '../Modal/ModalPortalContext';
 import Text from '../Text/Text';
 
 import {
@@ -80,7 +79,6 @@ const Dropdown: React.FC<DropdownProps> = ({
   const defaultValue =
     lockedValue || (value && isValidValue(value, options) ? value : undefined);
   const canError = !lockedValue && !cannotError;
-  const modalContainerRef = useModalPortalContainer();
 
   const selectContent = (
     <SelectContent position="popper">
@@ -126,13 +124,11 @@ const Dropdown: React.FC<DropdownProps> = ({
             </SelectIcon>
           )}
         </SelectTrigger>
-        <Select.Portal
-          container={
-            inModal ? (modalContainerRef?.current ?? undefined) : undefined
-          }
-        >
-          {selectContent}
-        </Select.Portal>
+        {inModal ? (
+          selectContent
+        ) : (
+          <Select.Portal>{selectContent}</Select.Portal>
+        )}
       </Select.Root>
       {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
     </DropdownWrapper>

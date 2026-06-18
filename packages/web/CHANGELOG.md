@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 2.18.2
+
+### Patch Changes
+
+- Fix Dropdown in modal
+
 ## 2.18.1
 
 ### Patch Changes
