@@ -2,7 +2,6 @@ import * as RadioGroup from '@radix-ui/react-radio-group';
 import styled, { css } from 'styled-components';
 
 const ITEM_WIDTH = '13px';
-const HOVER_TINT = 'rgba(0, 0, 0, 0.04)';
 
 export type RadioGroupOrientation = 'vertical' | 'horizontal';
 
@@ -97,53 +96,17 @@ export const PillItem = styled(RadioGroup.Item)<{
 export const RadioGroupItem = styled(RadioGroup.Item)<{ $hasError: boolean }>`
   all: unset;
   background: ${({ theme }) => theme.color.surface.primary};
-  position: relative;
   box-sizing: border-box;
   border: 1px solid ${({ theme }) => theme.color.surface.contrast};
   width: ${ITEM_WIDTH};
   height: ${ITEM_WIDTH};
   border-radius: 100%;
   margin-right: ${({ theme }) => theme.spacing.xxsmall};
-  border: 1px solid ${({ theme }) => theme.color.border.subtle};
-  border-radius: 50%;
-  color: ${({ theme }) => theme.color.border.selected};
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease,
-    background-color 0.15s ease;
 
-  &:hover {
-    background-color: ${HOVER_TINT};
-  }
-
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 3px
-      ${({ $hasError }) =>
-        $hasError ? 'rgba(211, 47, 47, 0.18)' : 'rgba(25, 118, 210, 0.18)'};
-  }
-
-  &[data-state='checked'] {
-    border-color: ${({ $hasError, theme }) =>
-      $hasError ? theme.color.border.error : '#1976d2'};
-    background-color: ${HOVER_TINT};
-  }
-
-  &[data-disabled] {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-
-  &[data-state='checked']::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    display: block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: currentColor;
+  &:focus {
+    box-shadow: 0 0 0 2px
+      ${({ $hasError, theme }) =>
+        $hasError ? theme.color.border.error : '#eeb612'};
   }
 `;
 

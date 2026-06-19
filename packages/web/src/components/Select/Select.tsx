@@ -91,7 +91,6 @@ const Select: React.FC<SelectProps> = ({
     </SelectContent>
   );
 
-
   return (
     <SelectWrapper $maxWidth={maxWidth as string}>
       {label && (
