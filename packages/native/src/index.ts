@@ -20,7 +20,15 @@ export {
   CardFooter,
 } from './components/Card/Card';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
-export { default as Dropdown } from './components/Dropdown/Dropdown';
+export { default as Select } from './components/Select/Select';
+export type { SelectProps } from './components/Select/Select';
+/**
+ * @deprecated Use `Select` instead. Kept for backward compatibility only and
+ * will be removed in a future major version.
+ */
+export { default as Dropdown } from './components/Select/Select';
+/** @deprecated Use `SelectProps` instead. */
+export type { SelectProps as DropdownProps } from './components/Select/Select';
 export { default as Gradient } from './components/Gradient/Gradient';
 
 export * from './components/Icon';

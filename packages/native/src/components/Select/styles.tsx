@@ -3,9 +3,9 @@
 import { InputHeight } from '@a-little-world/little-world-design-system-core';
 import { StyleSheet } from 'react-native';
 import { DefaultTheme } from 'styled-components/native';
-export const DROPDOWN_MAX_WIDTH = 300;
+export const SELECT_MAX_WIDTH = 300;
 
-export const getDropdownStyles = ({
+export const getSelectStyles = ({
   theme,
   maxWidth,
   height,
@@ -19,7 +19,7 @@ export const getDropdownStyles = ({
   StyleSheet.create({
     wrapper: {
       position: 'relative',
-      maxWidth: maxWidth || DROPDOWN_MAX_WIDTH,
+      maxWidth: maxWidth || SELECT_MAX_WIDTH,
       width: '100%',
     },
     trigger: {

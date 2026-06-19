@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import Button from '../Button/Button';
-import Modal from '../Modal/Modal';
-import Dropdown from './Dropdown';
+import { Select } from '@a-little-world/little-world-design-system-native';
 
 export default {
-  component: Dropdown,
-  title: 'Components/Dropdown',
+  component: Select,
+  title: 'Components/Select',
 };
 
-export const Default = args => <Dropdown {...args} />;
+export const Default = args => <Select {...args} />;
 
 Default.args = {
-  label: 'Demo dropdown',
+  label: 'Demo select',
   id: 'multi selector id',
   onValueChange: () => null,
   placeholder: 'out of town',
@@ -58,22 +56,4 @@ Default.args = {
     { label: 'Afrikaans', value: 'afrikaans' },
     { label: 'Swahili', value: 'swahili' },
   ],
-};
-
-export const InModal = args => {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  return (
-    <>
-      <Button onClick={() => setModalOpen(true)}>Open Modal</Button>
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <Dropdown {...args} inModal />
-      </Modal>
-    </>
-  );
-};
-
-InModal.args = {
-  ...Default.args,
-  id: 'dropdown-in-modal',
 };

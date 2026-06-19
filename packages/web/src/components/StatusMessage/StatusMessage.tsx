@@ -108,3 +108,15 @@ const StatusMessage = ({
 };
 
 export default StatusMessage;
+
+/**
+ * Semantic aliases for `StatusMessage`. Same component, clearer intent at the
+ * call site:
+ * - `Alert` — standalone / banner-style status notifications.
+ * - `FormMessage` — inline form validation feedback.
+ */
+export { StatusMessage as Alert, StatusMessage as FormMessage };
+export type {
+  StatusBaseProps as AlertProps,
+  StatusBaseProps as FormMessageProps,
+};

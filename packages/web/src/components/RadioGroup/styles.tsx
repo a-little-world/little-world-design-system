@@ -4,7 +4,19 @@ import styled, { css } from 'styled-components';
 const ITEM_WIDTH = '13px';
 const HOVER_TINT = 'rgba(0, 0, 0, 0.04)';
 
-export const RadioGroupWrapper = styled.div<{ $inline?: boolean }>`
+export type RadioGroupOrientation = 'vertical' | 'horizontal';
+
+interface RadioGroupWrapperProps {
+  $inline?: boolean;
+  $orientation?: RadioGroupOrientation;
+}
+
+interface RadioGroupRootProps {
+  $inline?: boolean;
+  $orientation?: RadioGroupOrientation;
+}
+
+export const RadioGroupWrapper = styled.div<RadioGroupWrapperProps>`
   display: flex;
   flex-direction: ${({ $inline }) => ($inline ? 'row' : 'column')};
   align-items: ${({ $inline }) => ($inline ? 'center' : 'flex-start')};
@@ -12,21 +24,26 @@ export const RadioGroupWrapper = styled.div<{ $inline?: boolean }>`
     $inline ? theme.spacing.medium : theme.spacing.xxsmall};
 `;
 
-export const RadioGroupRoot = styled(RadioGroup.Root)<{ $inline?: boolean }>`
+export const RadioGroupRoot = styled(RadioGroup.Root)<RadioGroupRootProps>`
   display: flex;
-  flex-direction: ${({ $inline }) => ($inline ? 'row' : 'column')};
-  gap: ${({ theme, $inline }) =>
-    $inline ? theme.spacing.small : theme.spacing.xxsmall};
-  align-items: flex-start;
+  flex-direction: ${({ $orientation }) =>
+    $orientation === 'vertical' ? 'column' : 'row'};
+  gap: ${({ theme, $orientation }) =>
+    $orientation === 'vertical' ? theme.spacing.xxsmall : theme.spacing.small};
+  align-items: ${({ $orientation }) =>
+    $orientation === 'vertical' ? 'flex-start' : 'center'};
   width: ${({ $inline }) => ($inline ? 'auto' : '100%')};
 `;
 
-export const PillRoot = styled(RadioGroup.Root)<{ $inline?: boolean }>`
+export const PillRoot = styled(RadioGroup.Root)<RadioGroupRootProps>`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: ${({ $orientation }) =>
+    $orientation === 'vertical' ? 'column' : 'row'};
+  flex-wrap: ${({ $orientation }) =>
+    $orientation === 'vertical' ? 'nowrap' : 'wrap'};
   gap: ${({ theme }) => theme.spacing.xxsmall};
-  align-items: center;
+  align-items: ${({ $orientation }) =>
+    $orientation === 'vertical' ? 'flex-start' : 'center'};
   width: ${({ $inline }) => ($inline ? 'auto' : '100%')};
   margin-bottom: ${({ theme, $inline }) =>
     $inline ? '0' : theme.spacing.xxxsmall};

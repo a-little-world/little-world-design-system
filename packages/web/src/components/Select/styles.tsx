@@ -5,11 +5,11 @@ import { INPUT_ERROR_CSS } from '../InputError/InputError';
 import { BODY_5_CSS } from '../Text/styles';
 import { InputHeight } from '../TextInput/TextInput';
 
-export const DROPDOWN_MAX_WIDTH = '300px';
+export const SELECT_MAX_WIDTH = '300px';
 
-export const DropdownWrapper = styled.div<{ $maxWidth?: string }>`
+export const SelectWrapper = styled.div<{ $maxWidth?: string }>`
   position: relative;
-  max-width: ${({ $maxWidth }) => $maxWidth || DROPDOWN_MAX_WIDTH};
+  max-width: ${({ $maxWidth }) => $maxWidth || SELECT_MAX_WIDTH};
   width: 100%;
 `;
 

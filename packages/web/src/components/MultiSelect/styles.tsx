@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 import Button from '../Button/Button';
-import { DROPDOWN_MAX_WIDTH } from '../Dropdown/styles';
+import { SELECT_MAX_WIDTH } from '../Select/styles';
 
-export const MultiDropdownWrapper = styled.div``;
+export const MultiSelectWrapper = styled.div``;
 
 export const AddMore = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ export const AddMoreButton = styled(Button)`
 export const Segment = styled.section<{ $locked?: boolean }>`
   display: grid;
   max-width: calc(
-    ${DROPDOWN_MAX_WIDTH} * 2 + ${({ theme }) => theme.spacing.small}
+    ${SELECT_MAX_WIDTH} * 2 + ${({ theme }) => theme.spacing.small}
   );
   grid-template-columns: ${({ $locked, theme }) =>
     $locked
