@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Select from '../Select/Select';
+import Dropdown from '../Dropdown/Dropdown';
 import TextInput from '../TextInput/TextInput';
 import FieldGrid, { FieldGridColumns } from './FieldGrid';
 
@@ -34,7 +34,7 @@ export const FourColumns = () => (
     <TextInput label="Day" />
     <TextInput label="Month" />
     <TextInput label="Year" />
-    <Select
+    <Dropdown
       label="Country"
       onValueChange={() => null}
       placeholder="Select country"

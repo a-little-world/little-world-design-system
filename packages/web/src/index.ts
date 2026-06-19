@@ -35,6 +35,7 @@ export {
 export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid';
 export { default as Combobox } from './components/Combobox/Combobox';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
+export { default as FieldGrid, FieldGridColumns } from './components/FieldGrid/FieldGrid';
 
 export {
   default as MultiDropdown,
