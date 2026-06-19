@@ -8,8 +8,6 @@ import styled, { css, keyframes } from 'styled-components';
 import Label from '../Label/Label';
 import { pixelate } from '../../utils/styles';
 
-const HOVER_TINT = 'rgba(0, 0, 0, 0.04)';
-
 const checkmarkAnimation = keyframes`
   0% {
     transform: translateY(5px);
@@ -21,47 +19,6 @@ const checkmarkAnimation = keyframes`
     transform: translateY(0);
   }
 `;
-
-const getCheckboxBorderColor = ({
-  checked,
-  $hasError,
-  theme,
-}: {
-  checked: Checkbox.CheckboxProps['checked'];
-  $hasError?: boolean;
-  theme: {
-    color: {
-      border: {
-        error: string;
-        selected: string;
-        subtle: string;
-        contrast: string;
-      };
-    };
-  };
-}) => {
-  if (checked) {
-    return $hasError ? theme.color.border.error : theme.color.border.selected;
-  }
-
-  return theme.color.border.subtle;
-};
-
-const getCheckboxBackground = ({
-  checked,
-  $hasError,
-  theme,
-}: {
-  checked: Checkbox.CheckboxProps['checked'];
-  $hasError?: boolean;
-  theme: { color: { surface: { error: string; secondary: string } } };
-}) => {
-  if (checked) {
-    return $hasError ? theme.color.surface.error : HOVER_TINT;
-  }
-
-  return theme.color.surface.secondary;
-};
 
 export const CheckboxWrapper = styled.div``;
 
@@ -76,10 +33,18 @@ export const CheckboxButtonContainer = styled(Checkbox.Root)<{
   align-items: center;
   border: 1px solid
     ${({ theme, checked, $hasError }) =>
-      getCheckboxBorderColor({ checked, $hasError, theme })};
+      checked
+        ? $hasError
+          ? theme.color.border.error
+          : theme.color.border.selected
+        : theme.color.border.subtle};
   border-radius: ${({ theme }) => theme.radius.xxsmall};
   background: ${({ checked, $hasError, theme }) =>
-    getCheckboxBackground({ checked, $hasError, theme })};
+    checked
+      ? $hasError
+        ? theme.color.surface.error
+        : theme.color.surface.accent
+      : theme.color.surface.secondary};
 
   label {
     cursor: pointer;
@@ -117,7 +82,7 @@ const CHECKBOX_STYLES = css<{
     $color &&
     checked &&
     css`
-      background: ${HOVER_TINT};
+      background: ${$color};
       border-color: ${$color};
       color: ${theme.color.text.reversed};
     `}

@@ -36,10 +36,6 @@ export const SelectTrigger = styled(Select.Trigger)<{
   width: 100%;
   color: ${({ theme }) => theme.color.text.secondary};
   margin-bottom: ${({ theme }) => theme.spacing.xxxxsmall};
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease,
-    background-color 0.15s ease;
 
   > span:first-child,
   > span:first-child p {
@@ -50,22 +46,12 @@ export const SelectTrigger = styled(Select.Trigger)<{
     text-overflow: ellipsis;
   }
 
+  &:hover:not(:disabled) {
+    opacity: 80%;
+  }
+
   svg {
     color: ${({ theme }) => theme.color.text.secondary};
-  }
-
-  &:hover:not(:disabled) {
-    border-color: ${({ theme }) => theme.color.border.minimal};
-  }
-
-  &:focus-visible {
-    outline: none;
-    border-color: ${({ theme }) => theme.color.border.subtle};
-    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.18);
-  }
-
-  &[data-state='open'] {
-    border-color: ${({ theme }) => theme.color.border.subtle};
   }
 
   &[data-placeholder] {
@@ -83,7 +69,6 @@ export const SelectTrigger = styled(Select.Trigger)<{
       &:disabled {
         background-color: ${({ theme }) => theme.color.surface.disabled};
         color: ${({ theme }) => theme.color.text.disabled};
-        border-color: ${({ theme }) => theme.color.border.subtle};
         cursor: not-allowed;
       }
     `}
@@ -134,6 +119,7 @@ export const SelectItem = styled(Select.Item)`
     pointer-events: none;
   }
 `;
+
 export const SelectItemIndicator = styled(Select.ItemIndicator)`
   position: absolute;
   left: 0;

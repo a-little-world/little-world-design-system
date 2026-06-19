@@ -118,7 +118,7 @@ const Select: React.FC<SelectProps> = ({
             inModal ? (modalContainerRef?.current ?? undefined) : undefined
           }
         >
-          <SelectContent position="popper" align="start" sideOffset={4}>
+          <SelectContent position="popper">
             <SelectViewport>
               {options.map((option: Options[number]) => (
                 <Option key={option.label} value={option.value}>
