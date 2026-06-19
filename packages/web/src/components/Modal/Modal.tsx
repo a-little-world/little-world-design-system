@@ -8,7 +8,7 @@ import {
   ButtonVariations,
 } from '../Button/Button';
 import { CloseIcon } from '../Icon';
-import { BackdropContainer, CloseButton } from './styles';
+import { BackdropContainer, CloseButton, ModalContent } from './styles';
 import { ModalPortalContext } from './ModalPortalContext';
 import { useTheme } from 'styled-components';
 
@@ -120,7 +120,7 @@ const Modal = ({
             <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
           </CloseButton>
         )}
-        {children}
+        <ModalContent>{children}</ModalContent>
       </BackdropContainer>
     </ModalPortalContext.Provider>
   );

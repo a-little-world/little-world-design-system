@@ -5,7 +5,6 @@ import { SelectBaseProps } from '@a-little-world/little-world-design-system-core
 import { CheckIcon, ChevronDownIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
-import { useModalPortalContainer } from '../Modal/ModalPortalContext';
 import Text from '../Text/Text';
 
 import {
@@ -79,7 +78,18 @@ const Select: React.FC<SelectProps> = ({
   const defaultValue =
     lockedValue || (value && isValidValue(value, options) ? value : undefined);
   const canError = !lockedValue && !cannotError;
-  const modalContainerRef = useModalPortalContainer();
+
+  const selectContent = (
+    <SelectContent position="popper">
+      <SelectViewport>
+        {options.map((option: Options[number]) => (
+          <Option key={option.label} value={option.value}>
+            {option.label}
+          </Option>
+        ))}
+      </SelectViewport>
+    </SelectContent>
+  );
 
   return (
     <SelectWrapper $maxWidth={maxWidth as string}>
@@ -113,21 +123,11 @@ const Select: React.FC<SelectProps> = ({
             </SelectIcon>
           )}
         </SelectTrigger>
-        <RadixSelect.Portal
-          container={
-            inModal ? (modalContainerRef?.current ?? undefined) : undefined
-          }
-        >
-          <SelectContent position="popper">
-            <SelectViewport>
-              {options.map((option: Options[number]) => (
-                <Option key={option.label} value={option.value}>
-                  {option.label}
-                </Option>
-              ))}
-            </SelectViewport>
-          </SelectContent>
-        </RadixSelect.Portal>
+        {inModal ? (
+          selectContent
+        ) : (
+          <RadixSelect.Portal>{selectContent}</RadixSelect.Portal>
+        )}
       </RadixSelect.Root>
       {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
     </SelectWrapper>

@@ -17,6 +17,13 @@ Default.args = {
   withIcon: true,
 };
 
+export const Neutral = args => <FieldHint {...args} />;
+
+Neutral.args = {
+  text: 'We use this to personalise your experience.',
+  withIcon: true,
+};
+
 export const WithoutIcon = args => <FieldHint {...args} />;
 
 WithoutIcon.args = {

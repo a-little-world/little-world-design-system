@@ -2,6 +2,12 @@ import styled, { css } from 'styled-components';
 
 import Button from '../Button/Button';
 
+export const ModalContent = styled.div`
+  transform: translateY(100px);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+`;
+
 export const BackdropContainer = styled.dialog<{ $active: boolean }>`
   position: fixed;
   top: 0;
@@ -25,12 +31,6 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
   overflow: auto;
   overscroll-behavior: contain;
 
-  > div {
-    transform: translateY(100px);
-    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-  }
-
   ${({ $active }) =>
     $active &&
     css`
@@ -38,7 +38,7 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
       transition-delay: 0ms;
       opacity: 1;
 
-      > div {
+      ${ModalContent} {
         transform: translateY(0);
         opacity: 1;
         transition-delay: 150ms;
