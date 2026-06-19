@@ -81,14 +81,15 @@ export const SelectValue = styled(Select.Value)`
   }
 `;
 
-export const SelectContent = styled(Select.Content)`
+export const SelectContent = styled(Select.Content)<{ $inModal?: boolean }>`
   overflow: hidden;
   background-color: ${({ theme }) => theme.color.surface.elevated};
   border-radius: 6px;
   box-shadow:
     0px 10px 38px -10px rgba(22, 23, 24, 0.35),
     0px 10px 20px -15px rgba(22, 23, 24, 0.2);
-  z-index: ${({ theme }) => theme.zIndex.dropdown};
+  z-index: ${({ theme, $inModal }) =>
+    $inModal ? theme.zIndex.modal + 50 : theme.zIndex.dropdown};
 `;
 
 export const SelectViewport = styled(Select.Viewport)`

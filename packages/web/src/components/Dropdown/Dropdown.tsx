@@ -1,6 +1,6 @@
 import * as Select from '@radix-ui/react-select';
 import React from 'react';
-import { DropdownBaseProps } from '@a-little-world/little-world-design-system-core';
+import { SelectBaseProps } from '@a-little-world/little-world-design-system-core';
 
 import { CheckIcon, ChevronDownIcon } from '../Icon';
 import InputError from '../InputError/InputError';
@@ -20,14 +20,14 @@ import {
 
 type Options = { value: string; label: string }[];
 
-type DropdownCoreProps = DropdownBaseProps & {
+type DropdownCoreProps = SelectBaseProps & {
   inModal?: boolean;
   inputRef?: React.RefObject<HTMLButtonElement>;
 };
 
 export type DropdownProps =
   | (DropdownCoreProps & {
-      label?: undefined;
+      label?: string;
       id?: string;
     })
   | (DropdownCoreProps & {
@@ -80,18 +80,6 @@ const Dropdown: React.FC<DropdownProps> = ({
     lockedValue || (value && isValidValue(value, options) ? value : undefined);
   const canError = !lockedValue && !cannotError;
 
-  const selectContent = (
-    <SelectContent position="popper">
-      <SelectViewport>
-        {options.map(option => (
-          <Option key={option.label} value={option.value}>
-            {option.label}
-          </Option>
-        ))}
-      </SelectViewport>
-    </SelectContent>
-  );
-
   return (
     <DropdownWrapper $maxWidth={maxWidth as string}>
       {label && (
@@ -124,11 +112,22 @@ const Dropdown: React.FC<DropdownProps> = ({
             </SelectIcon>
           )}
         </SelectTrigger>
-        {inModal ? (
-          selectContent
-        ) : (
-          <Select.Portal>{selectContent}</Select.Portal>
-        )}
+        <Select.Portal>
+            <SelectContent
+              position="popper"
+              align="start"
+              sideOffset={4}
+              $inModal={inModal}
+            >
+            <SelectViewport>
+              {options.map((option: Options[number]) => (
+                <Option key={option.label} value={option.value}>
+                  {option.label}
+                </Option>
+              ))}
+            </SelectViewport>
+          </SelectContent>
+        </Select.Portal>
       </Select.Root>
       {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
     </DropdownWrapper>
