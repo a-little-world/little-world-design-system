@@ -9,6 +9,7 @@
 - Add alias Alert and FormMessage for StatusMessage
 - Add orientation prop to RadioGroup
 - Add FieldHint component
+- Add FieldGrid component
 
 ### Patch Changes
 

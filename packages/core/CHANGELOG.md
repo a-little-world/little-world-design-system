@@ -8,6 +8,7 @@
 - Rename MultiCheckbox to CheckboxGroup
 - Add orientation prop to RadioGroup
 - Add FieldHint component
+- Add FieldGrid component
 
 ## 1.14.1
 
