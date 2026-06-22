@@ -51,6 +51,7 @@ export type { SelectProps } from './components/Select/Select';
 export { default as Dropdown } from './components/Select/Select';
 /** @deprecated Use `SelectProps` instead. */
 export type { SelectProps as DropdownProps } from './components/Select/Select';
+export { default as FieldGrid, FieldGridColumns } from './components/FieldGrid/FieldGrid';
 
 export {
   default as MultiSelect,
