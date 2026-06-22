@@ -1,4 +1,5 @@
 export * from './Accessibility';
+export * from './DatePicker';
 export * from './Accordion';
 export * from './Button';
 export * from './Banner';
