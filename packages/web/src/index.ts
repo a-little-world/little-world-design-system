@@ -153,6 +153,7 @@ export { default as Toast } from './components/Toast/Toast';
 export { ToastProvider, ToastViewport } from './components/Toast/styles';
 export { default as Tooltip } from './components/Tooltip/Tooltip';
 export { default as FieldHint } from './components/FieldHint/FieldHint';
+export { default as FieldError } from './components/FieldError/FieldError';
 export { default as CallWidget } from './components/Widget/CallWidget';
 export { default as Widget, WidgetSizes } from './components/Widget/Widget';
 export { default as AttachmentWidget } from './components/Widget/AttachmentWidget';

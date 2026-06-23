@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.16.0
+
+### Minor Changes
+
+- Add FieldError types
+
 ## 1.15.0
 
 ### Minor Changes
