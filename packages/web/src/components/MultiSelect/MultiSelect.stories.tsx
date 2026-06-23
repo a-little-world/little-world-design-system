@@ -1,4 +1,4 @@
-import { MultiSelectVariants } from '@a-little-world/little-world-design-system-core/dist/esm/types/MultiSelect';
+import { MultiSelectVariants } from '@a-little-world/little-world-design-system-core';
 import React from 'react';
 
 import MultiSelect from './MultiSelect';

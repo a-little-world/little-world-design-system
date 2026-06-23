@@ -61,21 +61,6 @@ export type {
   MultiSelectProps,
   MultiSelectFieldProps,
 } from './components/MultiSelect/MultiSelect';
-/**
- * @deprecated Use `MultiSelect` instead. Kept for backward compatibility only;
- * will be removed in a future major version. Note: alongside the rename, the
- * field props were renamed `firstDropdown`/`secondDropdown` →
- * `firstSelect`/`secondSelect`, so call sites still need updating.
- */
-export {
-  default as MultiDropdown,
-  MultiSelectVariants as MultiDropdownVariants,
-} from './components/MultiSelect/MultiSelect';
-/** @deprecated Use `MultiSelectProps` / `MultiSelectFieldProps` instead. */
-export type {
-  MultiSelectProps as MultiDropdownProps,
-  MultiSelectFieldProps as MultiDropdownFieldProps,
-} from './components/MultiSelect/MultiSelect';
 export * from './components/Icon';
 export * from './components/Illustrations';
 export { default as InputError } from './components/InputError/InputError';
@@ -164,7 +149,7 @@ export {
 export { default as Toast } from './components/Toast/Toast';
 export { ToastProvider, ToastViewport } from './components/Toast/styles';
 export { default as Tooltip } from './components/Tooltip/Tooltip';
-export { default as FieldHint } from './components/Tooltip/FieldHint';
+export { default as FieldHint } from './components/FieldHint/FieldHint';
 export { default as CallWidget } from './components/Widget/CallWidget';
 export { default as Widget, WidgetSizes } from './components/Widget/Widget';
 export { default as AttachmentWidget } from './components/Widget/AttachmentWidget';
