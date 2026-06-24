@@ -8,6 +8,7 @@ export * from './Checkbox';
 export * from './Combobox';
 export * from './Select';
 export * from './FieldError';
+export * from './SearchableSelect';
 export * from './InputError';
 export * from './Link';
 export * from './Loading';
