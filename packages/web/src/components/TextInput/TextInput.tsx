@@ -1,6 +1,6 @@
 import { ButtonVariations } from '../Button/Button';
 import { EyeClosedIcon, EyeOpenIcon } from '../Icon';
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 import Label from '../Label/Label';
 import {
   Input,
@@ -33,7 +33,7 @@ type TextInputCommonProps = TextInputHTMLProps &
 
 export type Props =
   | (TextInputCommonProps & {
-      label?: undefined;
+      label?: never;
       id?: string;
     })
   | (TextInputCommonProps & {
@@ -71,7 +71,11 @@ const TextInput: React.FC<Props> = ({
   const activeError =
     Boolean(error) && !(isControlled ? false : hasInternalValue);
 
-  const errorProps = inline ? { bottom: '-16px', right: '0px' } : {};
+  const updateInternalValue = (nextValue: string) => {
+    if (!isControlled) {
+      setHasInternalValue(nextValue.length > 0);
+    }
+  };
 
   const handlePasswordVisibilityToggle = () => {
     if (inputType === 'password') {
@@ -84,9 +88,7 @@ const TextInput: React.FC<Props> = ({
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isControlled) {
-      setHasInternalValue(e.target.value.length > 0);
-    }
+    updateInternalValue(e.target.value);
     onChange?.(e);
   };
 
@@ -95,16 +97,14 @@ const TextInput: React.FC<Props> = ({
     _country: string,
     e: ChangeEvent<HTMLInputElement>,
   ) => {
-    if (!isControlled) {
-      setHasInternalValue(e.target.value.length > 0);
-    }
+    updateInternalValue(e.target.value);
     onChange?.(e);
   };
 
-  const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (onSubmit && e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      await onSubmit();
+      onSubmit();
     }
   };
 
@@ -163,15 +163,7 @@ const TextInput: React.FC<Props> = ({
         )}
       </InputContainer>
 
-      {!cannotError && (
-        <InputError
-          visible={activeError}
-          textAlign={width === InputWidth.Large ? 'right' : 'left'}
-          {...errorProps}
-        >
-          {error}
-        </InputError>
-      )}
+      {!cannotError && activeError && <FieldError text={error} />}
     </InputWrapper>
   );
 };

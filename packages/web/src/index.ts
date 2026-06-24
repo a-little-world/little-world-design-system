@@ -70,7 +70,6 @@ export type {
 } from './components/MultiSelect/MultiSelect';
 export * from './components/Icon';
 export * from './components/Illustrations';
-export { default as InputError } from './components/InputError/InputError';
 export { default as Label } from './components/Label/Label';
 export { default as Link } from './components/Link/Link';
 export {

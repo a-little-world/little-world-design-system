@@ -8,7 +8,7 @@ import {
 } from '@a-little-world/little-world-design-system-core';
 
 import { CheckIcon, ChevronDownIcon, CloseIcon } from '../Icon';
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 import Label from '../Label/Label';
 import { useModalPortalContainer } from '../Modal/ModalPortalContext';
 import Text from '../Text/Text';
@@ -177,9 +177,7 @@ const ComboboxFieldLayout = ({
       </Label>
     )}
     {children}
-    {canError && (
-      <InputError visible={activeError ?? Boolean(error)}>{error}</InputError>
-    )}
+    {canError && error && <FieldError text={error} />}
   </ComboboxWrapper>
 );
 

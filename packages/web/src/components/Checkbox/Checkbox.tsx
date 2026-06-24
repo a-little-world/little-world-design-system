@@ -6,7 +6,7 @@ import { CheckboxProps as RadixCheckboxProps } from '@radix-ui/react-checkbox';
 import React, { useEffect, useRef } from 'react';
 
 import { CheckIcon } from '../Icon';
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 import {
   CheckboxButtonContainer,
   CheckboxContainer,
@@ -138,11 +138,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
           </StyledLabel>
         )}
       </CheckboxContainer>
-      {required && (
-        <InputError visible={Boolean(error)} textAlign="left">
-          {error}
-        </InputError>
-      )}
+      {required && error && <FieldError text={error} />}
     </CheckboxWrapper>
   );
 };

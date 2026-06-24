@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MultiSelectionWrapper, Options, Option } from './styles';
 
 import Label from '../Label/Label';
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 
 type Props = {
   error?: string;
@@ -66,7 +66,7 @@ const MultiSelection: React.FC<Props> = ({
           );
         })}
       </Options>
-      <InputError visible={Boolean(error)}>{error}</InputError>
+      {error && <FieldError text={error} />}
     </MultiSelectionWrapper>
   );
 };

@@ -9,7 +9,7 @@ import Button, {
 } from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 import { ChevronLeftIcon, ChevronRightIcon } from '../Icon';
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 import Text from '../Text/Text';
 import {
   ArrowButtonsContainer,
@@ -298,7 +298,7 @@ const CheckboxGrid: React.FC<CheckboxGridProps> = ({
               <Text tag="span">{legendText}</Text>
             </Legend>
           )}
-          <InputError visible={Boolean(error)}>{error}</InputError>
+          {error && <FieldError text={error} />}
         </div>
         {isScrollable && (
           <ArrowButtonsContainer>

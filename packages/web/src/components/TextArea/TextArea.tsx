@@ -1,7 +1,7 @@
 import React, { Ref, useEffect, useRef, useState } from 'react';
 
 import useAutosizeTextArea from '../../hooks/useAutosizeTextArea';
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 import Label from '../Label/Label';
 import {
   TextAreaSize,
@@ -27,7 +27,7 @@ type TextAreaBaseProps = React.ComponentPropsWithoutRef<'textarea'> & {
 
 export type TextAreaProps =
   | (TextAreaBaseProps & {
-      label?: undefined;
+      label?: never;
     })
   | (TextAreaBaseProps & {
       label: string;
@@ -56,8 +56,8 @@ const TextArea: React.FC<TextAreaProps> = ({
     Boolean(error) && !(isControlled ? false : Boolean(internalValue));
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const isTouchDeviceRef = useRef(
-    typeof window !== 'undefined' &&
-      ('ontouchstart' in window || navigator.maxTouchPoints > 0),
+    typeof globalThis.window !== 'undefined' &&
+      ('ontouchstart' in globalThis.window || navigator.maxTouchPoints > 0),
   );
   useAutosizeTextArea(textAreaRef.current, internalValue, expandable);
   const [textAreaCount, setTextAreaCount] = useState(0);
@@ -73,7 +73,7 @@ const TextArea: React.FC<TextAreaProps> = ({
     setInternalValue(e.target.value);
   };
 
-  const handleKeyDown = async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (
       onSubmit &&
       e.key === 'Enter' &&
@@ -81,7 +81,7 @@ const TextArea: React.FC<TextAreaProps> = ({
       !isTouchDeviceRef.current
     ) {
       e.preventDefault();
-      const submitSuccessful = await onSubmit();
+      const submitSuccessful = onSubmit();
       if (submitSuccessful) setInternalValue('');
     }
   };
@@ -115,11 +115,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         value={value}
         {...areaProps}
       />
-      {!readOnly && (
-        <InputError visible={activeError} textAlign="left">
-          {error}
-        </InputError>
-      )}
+      {!readOnly && activeError && <FieldError text={error} />}
     </AreaWrapper>
   );
 };

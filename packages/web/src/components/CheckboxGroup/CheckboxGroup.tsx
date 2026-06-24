@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { CheckboxButton } from '../Checkbox/Checkbox';
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 import Label from '../Label/Label';
 import { CheckboxGroupWrapper } from './styles';
 
@@ -105,9 +105,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           />
         ))}
       </CheckboxGroupWrapper>
-      <InputError visible={activeError} textAlign="left">
-        {error}
-      </InputError>
+      {activeError && <FieldError text={error} />}
     </div>
   );
 };
