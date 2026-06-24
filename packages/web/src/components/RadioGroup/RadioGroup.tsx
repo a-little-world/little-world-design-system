@@ -5,7 +5,7 @@ import {
   RadioGroupVariations,
   RadioGroupBaseProps,
 } from '@a-little-world/little-world-design-system-core';
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 import Label from '../Label/Label';
 import {
   ItemContainer,
@@ -91,9 +91,7 @@ const RadioGroup: React.FC<Props> = ({
               </PillItem>
             ))}
           </PillRoot>
-          <InputError visible={activeError} textAlign="left">
-            {error}
-          </InputError>
+          {error && <FieldError text={error} />}
         </>
       ) : (
         <RadioGroupRoot
@@ -121,7 +119,7 @@ const RadioGroup: React.FC<Props> = ({
               )}
             </ItemContainer>
           ))}
-          <InputError visible={activeError}>{error}</InputError>
+          {error && <FieldError text={error} />}
         </RadioGroupRoot>
       )}
     </RadioGroupWrapper>

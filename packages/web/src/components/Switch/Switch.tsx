@@ -1,7 +1,7 @@
 import * as RadixSwitch from '@radix-ui/react-switch';
 import React from 'react';
 
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
 import {
@@ -75,11 +75,7 @@ const Switch: React.FC<Props> = ({
       >
         <SwitchThumb />
       </SwitchRoot>
-      {!cannotError && (
-        <InputError visible={Boolean(error)} textAlign="left">
-          {error}
-        </InputError>
-      )}
+      {!cannotError && error && <FieldError text={error} />}
     </SwitchContainer>
   </SwitchWrapper>
 );

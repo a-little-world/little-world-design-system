@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { SelectBaseProps } from '@a-little-world/little-world-design-system-core';
 
 import { CheckIcon, ChevronDownIcon } from '../Icon';
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
 
@@ -79,9 +79,7 @@ const Select: React.FC<SelectProps> = ({
     lockedValue || (value && isValidValue(value, options) ? value : undefined);
   const canError = !lockedValue && !cannotError;
   const isControlled = value !== undefined;
-  const [internalValue, setInternalValue] = useState<string | undefined>(
-    !isControlled ? undefined : undefined,
-  );
+  const [internalValue, setInternalValue] = useState<string | undefined>();
   const activeError =
     Boolean(error) && !(isControlled ? false : Boolean(internalValue));
 
@@ -142,7 +140,7 @@ const Select: React.FC<SelectProps> = ({
           <RadixSelect.Portal>{selectContent}</RadixSelect.Portal>
         )}
       </RadixSelect.Root>
-      {canError && <InputError visible={activeError}>{error}</InputError>}
+      {canError && error && <FieldError text={error} />}
     </SelectWrapper>
   );
 };

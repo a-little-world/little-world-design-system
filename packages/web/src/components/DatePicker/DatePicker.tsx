@@ -6,7 +6,7 @@ import {
   InputHeight,
   InputWidth,
 } from '@a-little-world/little-world-design-system-core';
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 import Label from '../Label/Label';
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from '../Icon';
 import {
@@ -288,7 +288,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
           <RadixPopover.Portal>{calendar}</RadixPopover.Portal>
         )}
       </RadixPopover.Root>
-      {!cannotError && <InputError visible={activeError}>{error}</InputError>}
+      {!cannotError && error && <FieldError text={error} />}
     </DatePickerWrapper>
   );
 };
