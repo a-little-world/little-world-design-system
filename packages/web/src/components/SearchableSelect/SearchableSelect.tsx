@@ -3,7 +3,7 @@ import React, { useState, useMemo, useRef } from 'react';
 import { SearchableSelectBaseProps } from '@a-little-world/little-world-design-system-core';
 
 import { CheckIcon, ChevronDownIcon } from '../Icon';
-import InputError from '../InputError/InputError';
+import FieldError from '../FieldError/FieldError';
 import Label from '../Label/Label';
 import { useModalPortalContainer } from '../Modal/ModalPortalContext';
 import Text from '../Text/Text';
@@ -99,6 +99,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
     }
     onValueChange(optionValue);
     setOpen(false);
+    setSearchQuery('');
   };
 
   const portalContainer =
@@ -182,7 +183,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
         </SearchableSelectTrigger>
         <Popover.Portal container={portalContainer}>{content}</Popover.Portal>
       </Popover.Root>
-      {canError && <InputError visible={activeError}>{error}</InputError>}
+      {canError && error && <FieldError text={error} />}
     </SearchableSelectWrapper>
   );
 };
