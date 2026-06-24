@@ -91,7 +91,7 @@ const RadioGroup: React.FC<Props> = ({
               </PillItem>
             ))}
           </PillRoot>
-          {error && <FieldError text={error} />}
+          {activeError && <FieldError text={error} />}
         </>
       ) : (
         <RadioGroupRoot
@@ -119,7 +119,7 @@ const RadioGroup: React.FC<Props> = ({
               )}
             </ItemContainer>
           ))}
-          {error && <FieldError text={error} />}
+          {activeError && <FieldError text={error} />}
         </RadioGroupRoot>
       )}
     </RadioGroupWrapper>

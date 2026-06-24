@@ -288,7 +288,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
           <RadixPopover.Portal>{calendar}</RadixPopover.Portal>
         )}
       </RadixPopover.Root>
-      {!cannotError && error && <FieldError text={error} />}
+      {!cannotError && activeError && <FieldError text={error} />}
     </DatePickerWrapper>
   );
 };
