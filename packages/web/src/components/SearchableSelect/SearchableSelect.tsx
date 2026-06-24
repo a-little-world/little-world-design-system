@@ -69,6 +69,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
   const canError = !lockedValue && !cannotError;
   const isControlled = value !== undefined;
   const currentValue = lockedValue || (isControlled ? value : internalValue);
+  const activeError = Boolean(error) && !(isControlled ? false : Boolean(internalValue));
 
   const selectedOption = useMemo(
     () => options.find(opt => opt.value === currentValue) ?? null,
@@ -158,7 +159,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
           id={id}
           ref={inputRef}
           $disabled={isDisabled}
-          $hasError={Boolean(error)}
+          $hasError={activeError}
           $height={height}
         >
           <SearchableSelectValueText $isPlaceholder={!selectedOption}>
@@ -178,7 +179,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
           {content}
         </Popover.Portal>
       </Popover.Root>
-      {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
+      {canError && <InputError visible={activeError}>{error}</InputError>}
     </SearchableSelectWrapper>
   );
 };
