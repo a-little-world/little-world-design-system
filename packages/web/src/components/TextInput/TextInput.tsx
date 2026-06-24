@@ -163,7 +163,7 @@ const TextInput: React.FC<Props> = ({
         )}
       </InputContainer>
 
-      {!cannotError && error && <FieldError text={error} />}
+      {!cannotError && activeError && <FieldError text={error} />}
     </InputWrapper>
   );
 };
