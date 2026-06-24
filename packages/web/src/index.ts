@@ -34,6 +34,8 @@ export {
 } from '@a-little-world/little-world-design-system-core';
 export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid';
 export { default as Combobox } from './components/Combobox/Combobox';
+export { default as DatePicker } from './components/DatePicker/DatePicker';
+export type { DatePickerProps } from './components/DatePicker/DatePicker';
 export { default as Select } from './components/Select/Select';
 export type { SelectProps } from './components/Select/Select';
 /**
