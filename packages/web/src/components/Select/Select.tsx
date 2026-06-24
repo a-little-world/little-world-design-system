@@ -140,7 +140,7 @@ const Select: React.FC<SelectProps> = ({
           <RadixSelect.Portal>{selectContent}</RadixSelect.Portal>
         )}
       </RadixSelect.Root>
-      {canError && activeError && <FieldError text={error} />}
+      {canError && activeError && error && <FieldError text={error} />}
     </SelectWrapper>
   );
 };

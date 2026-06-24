@@ -115,7 +115,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         value={value}
         {...areaProps}
       />
-      {!readOnly && activeError && <FieldError text={error} />}
+      {!readOnly && activeError && error && <FieldError text={error} />}
     </AreaWrapper>
   );
 };

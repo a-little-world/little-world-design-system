@@ -105,7 +105,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           />
         ))}
       </CheckboxGroupWrapper>
-      {activeError && <FieldError text={error} />}
+      {activeError && error && <FieldError text={error} />}
     </div>
   );
 };

@@ -183,7 +183,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
         </SearchableSelectTrigger>
         <Popover.Portal container={portalContainer}>{content}</Popover.Portal>
       </Popover.Root>
-      {canError && activeError && <FieldError text={error} />}
+      {canError && activeError && error && <FieldError text={error} />}
     </SearchableSelectWrapper>
   );
 };
