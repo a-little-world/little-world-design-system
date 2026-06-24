@@ -118,6 +118,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
     defaultValue,
   );
   const [isOpen, setIsOpen] = useState(false);
+  const activeError =
+    Boolean(error) && !(isControlled ? false : Boolean(internalDate));
 
   const selectedDate = isControlled ? value : internalDate;
 
@@ -182,7 +184,11 @@ const DatePicker: React.FC<DatePickerProps> = ({
           disabled={prevMonthDisabled}
           aria-label="Previous month"
         >
-          <ChevronLeftIcon label="" width={NAV_ICON_SIZE} height={NAV_ICON_SIZE} />
+          <ChevronLeftIcon
+            label=""
+            width={NAV_ICON_SIZE}
+            height={NAV_ICON_SIZE}
+          />
         </CalendarNavButton>
         <CalendarMonthYear>
           {MONTHS[viewMonth]} {viewYear}
@@ -193,7 +199,11 @@ const DatePicker: React.FC<DatePickerProps> = ({
           disabled={nextMonthDisabled}
           aria-label="Next month"
         >
-          <ChevronRightIcon label="" width={NAV_ICON_SIZE} height={NAV_ICON_SIZE} />
+          <ChevronRightIcon
+            label=""
+            width={NAV_ICON_SIZE}
+            height={NAV_ICON_SIZE}
+          />
         </CalendarNavButton>
       </CalendarHeader>
 
@@ -205,9 +215,16 @@ const DatePicker: React.FC<DatePickerProps> = ({
         ))}
         {calendarDays.map((date, index) => {
           const isCurrentMonth = date.getMonth() === viewMonth;
-          const isSelected = selectedDate ? isSameDay(date, selectedDate) : false;
+          const isSelected = selectedDate
+            ? isSameDay(date, selectedDate)
+            : false;
           const isToday = isSameDay(date, today);
-          const isDayDisabled = isDateDisabled(date, minDate, maxDate, disabledDates);
+          const isDayDisabled = isDateDisabled(
+            date,
+            minDate,
+            maxDate,
+            disabledDates,
+          );
 
           return (
             <CalendarDay
@@ -239,12 +256,15 @@ const DatePicker: React.FC<DatePickerProps> = ({
           {label}
         </Label>
       )}
-      <RadixPopover.Root open={isOpen} onOpenChange={disabled ? undefined : setIsOpen}>
+      <RadixPopover.Root
+        open={isOpen}
+        onOpenChange={disabled ? undefined : setIsOpen}
+      >
         <RadixPopover.Trigger asChild>
           <DatePickerTrigger
             id={id}
             type="button"
-            $hasError={Boolean(error)}
+            $hasError={activeError}
             $height={height}
             $disabled={disabled}
             $hasValue={Boolean(selectedDate)}
@@ -262,11 +282,13 @@ const DatePicker: React.FC<DatePickerProps> = ({
             </TriggerIconWrapper>
           </DatePickerTrigger>
         </RadixPopover.Trigger>
-        {inModal ? calendar : <RadixPopover.Portal>{calendar}</RadixPopover.Portal>}
+        {inModal ? (
+          calendar
+        ) : (
+          <RadixPopover.Portal>{calendar}</RadixPopover.Portal>
+        )}
       </RadixPopover.Root>
-      {!cannotError && (
-        <InputError visible={Boolean(error)}>{error}</InputError>
-      )}
+      {!cannotError && <InputError visible={activeError}>{error}</InputError>}
     </DatePickerWrapper>
   );
 };

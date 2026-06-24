@@ -67,6 +67,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 }) => {
   const theme = useTheme();
   const [selected, setSelected] = useState(preSelected || []);
+  const activeError = Boolean(error) && selected.length === 0;
 
   const onSelect = ({
     state,
@@ -92,7 +93,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           <CheckboxButton
             id={label}
             key={label}
-            error={error}
+            error={activeError ? error : undefined}
             label={label}
             name={name}
             checked={selected.includes(value)}
@@ -104,7 +105,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           />
         ))}
       </CheckboxGroupWrapper>
-      <InputError visible={Boolean(error)} textAlign="left">
+      <InputError visible={activeError} textAlign="left">
         {error}
       </InputError>
     </div>

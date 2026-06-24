@@ -9,6 +9,10 @@
 - Add alias Alert and FormMessage for StatusMessage
 - Add orientation prop to RadioGroup
 - Add FieldHint component
+- Add FieldGrid component
+- Add DatePicker types
+- Add SearchableSelect types
+- Add FieldError types
 
 ### Patch Changes
 

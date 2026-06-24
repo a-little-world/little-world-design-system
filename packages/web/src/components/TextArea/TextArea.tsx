@@ -50,7 +50,10 @@ const TextArea: React.FC<TextAreaProps> = ({
   value,
   ...areaProps
 }) => {
+  const isControlled = value !== undefined;
   const [internalValue, setInternalValue] = useState(value ?? '');
+  const activeError =
+    Boolean(error) && !(isControlled ? false : Boolean(internalValue));
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const isTouchDeviceRef = useRef(
     typeof window !== 'undefined' &&
@@ -102,7 +105,7 @@ const TextArea: React.FC<TextAreaProps> = ({
           textAreaRef.current = e;
         }}
         id={id}
-        $hasError={Boolean(error)}
+        $hasError={activeError}
         $size={size}
         $expandable={Boolean(expandable)}
         maxLength={maxLength}
@@ -113,7 +116,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         {...areaProps}
       />
       {!readOnly && (
-        <InputError visible={Boolean(error)} textAlign="left">
+        <InputError visible={activeError} textAlign="left">
           {error}
         </InputError>
       )}

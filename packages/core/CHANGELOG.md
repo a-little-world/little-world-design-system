@@ -1,11 +1,5 @@
 # @a-little-world/little-world-design-system-core
 
-## 1.16.0
-
-### Minor Changes
-
-- Add FieldError types
-
 ## 1.15.0
 
 ### Minor Changes
@@ -15,6 +9,9 @@
 - Add orientation prop to RadioGroup
 - Add FieldHint component
 - Add FieldGrid component
+- Add DatePicker types
+- Add SearchableSelect types
+- Add FieldError types
 
 ## 1.14.1
 
