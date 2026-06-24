@@ -61,12 +61,14 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [internalValue, setInternalValue] = useState<string | undefined>(undefined);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const modalContainerRef = useModalPortalContainer();
 
   const isDisabled = disabled || Boolean(lockedValue);
   const canError = !lockedValue && !cannotError;
-  const currentValue = lockedValue || value;
+  const isControlled = value !== undefined;
+  const currentValue = lockedValue || (isControlled ? value : internalValue);
 
   const selectedOption = useMemo(
     () => options.find(opt => opt.value === currentValue) ?? null,
@@ -88,6 +90,9 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
   };
 
   const handleSelect = (optionValue: string) => {
+    if (!isControlled) {
+      setInternalValue(optionValue);
+    }
     onValueChange(optionValue);
     setOpen(false);
   };
