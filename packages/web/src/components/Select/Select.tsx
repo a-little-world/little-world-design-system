@@ -82,7 +82,8 @@ const Select: React.FC<SelectProps> = ({
   const [internalValue, setInternalValue] = useState<string | undefined>(
     !isControlled ? undefined : undefined,
   );
-  const activeError = Boolean(error) && !(isControlled ? false : Boolean(internalValue));
+  const activeError =
+    Boolean(error) && !(isControlled ? false : Boolean(internalValue));
 
   const handleValueChange = (newValue: string) => {
     if (!isControlled) {

@@ -40,10 +40,14 @@ const RadioGroup: React.FC<Props> = ({
 }: Props) => {
   const isPill = type === RadioGroupVariations.Pill;
   const isControlled = value !== undefined;
-  const [internalValue, setInternalValue] = useState<string | undefined>(undefined);
-  const activeError = Boolean(error) && !(isControlled ? false : Boolean(internalValue));
+  const [internalValue, setInternalValue] = useState<string | undefined>(
+    undefined,
+  );
+  const activeError =
+    Boolean(error) && !(isControlled ? false : Boolean(internalValue));
 
-  const { onValueChange: externalOnValueChange, ...restWithoutOnValueChange } = rest;
+  const { onValueChange: externalOnValueChange, ...restWithoutOnValueChange } =
+    rest;
 
   const handleValueChange = (newValue: string) => {
     if (!isControlled) {

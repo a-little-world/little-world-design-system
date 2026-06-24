@@ -52,7 +52,8 @@ const TextArea: React.FC<TextAreaProps> = ({
 }) => {
   const isControlled = value !== undefined;
   const [internalValue, setInternalValue] = useState(value ?? '');
-  const activeError = Boolean(error) && !(isControlled ? false : Boolean(internalValue));
+  const activeError =
+    Boolean(error) && !(isControlled ? false : Boolean(internalValue));
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const isTouchDeviceRef = useRef(
     typeof window !== 'undefined' &&

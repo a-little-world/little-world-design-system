@@ -68,7 +68,8 @@ const TextInput: React.FC<Props> = ({
   const [hasInternalValue, setHasInternalValue] = React.useState(
     Boolean(defaultValue),
   );
-  const activeError = Boolean(error) && !(isControlled ? false : hasInternalValue);
+  const activeError =
+    Boolean(error) && !(isControlled ? false : hasInternalValue);
 
   const errorProps = inline ? { bottom: '-16px', right: '0px' } : {};
 

@@ -61,7 +61,9 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [internalValue, setInternalValue] = useState<string | undefined>(undefined);
+  const [internalValue, setInternalValue] = useState<string | undefined>(
+    undefined,
+  );
   const searchInputRef = useRef<HTMLInputElement>(null);
   const modalContainerRef = useModalPortalContainer();
 
@@ -69,7 +71,8 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
   const canError = !lockedValue && !cannotError;
   const isControlled = value !== undefined;
   const currentValue = lockedValue || (isControlled ? value : internalValue);
-  const activeError = Boolean(error) && !(isControlled ? false : Boolean(internalValue));
+  const activeError =
+    Boolean(error) && !(isControlled ? false : Boolean(internalValue));
 
   const selectedOption = useMemo(
     () => options.find(opt => opt.value === currentValue) ?? null,
@@ -99,7 +102,9 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
   };
 
   const portalContainer =
-    inModal && modalContainerRef ? (modalContainerRef.current ?? undefined) : undefined;
+    inModal && modalContainerRef
+      ? (modalContainerRef.current ?? undefined)
+      : undefined;
 
   const content = (
     <SearchableSelectContent
@@ -175,9 +180,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
             </SearchableSelectIcon>
           )}
         </SearchableSelectTrigger>
-        <Popover.Portal container={portalContainer}>
-          {content}
-        </Popover.Portal>
+        <Popover.Portal container={portalContainer}>{content}</Popover.Portal>
       </Popover.Root>
       {canError && <InputError visible={activeError}>{error}</InputError>}
     </SearchableSelectWrapper>

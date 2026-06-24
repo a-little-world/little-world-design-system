@@ -59,7 +59,9 @@ export const SearchableSelectTrigger = styled(Popover.Trigger)<{
   ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
 `;
 
-export const SearchableSelectValueText = styled.span<{ $isPlaceholder: boolean }>`
+export const SearchableSelectValueText = styled.span<{
+  $isPlaceholder: boolean;
+}>`
   ${BODY_5_CSS}
   white-space: nowrap;
   overflow: hidden;
@@ -99,7 +101,8 @@ export const SearchableSelectSearchInput = styled.input`
   width: 100%;
   border: 2px solid ${({ theme }) => theme.color.border.subtle};
   border-radius: 5px;
-  padding: ${({ theme }) => `${theme.spacing.xxxsmall} ${theme.spacing.xxsmall}`};
+  padding: ${({ theme }) =>
+    `${theme.spacing.xxxsmall} ${theme.spacing.xxsmall}`};
   background-color: ${({ theme }) => theme.color.surface.primary};
   color: ${({ theme }) => theme.color.text.secondary};
   ${BODY_5_CSS}

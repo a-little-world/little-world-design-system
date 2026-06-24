@@ -217,7 +217,8 @@ const SingleCombobox: React.FC<
   const isDisabled = disabled || Boolean(lockedValue);
   const isControlled = value !== undefined;
   const [hasInternalSelection, setHasInternalSelection] = useState(false);
-  const activeError = Boolean(error) && !(isControlled ? false : hasInternalSelection);
+  const activeError =
+    Boolean(error) && !(isControlled ? false : hasInternalSelection);
 
   const handleValueChange = (newValue: ComboboxOption | null) => {
     if (!isControlled) {
@@ -312,7 +313,8 @@ const MultipleCombobox: React.FC<
   const isControlled = value !== undefined;
   const isLocked = Boolean(lockedValue?.length);
   const [hasInternalSelection, setHasInternalSelection] = useState(false);
-  const activeError = Boolean(error) && !(isControlled ? false : hasInternalSelection);
+  const activeError =
+    Boolean(error) && !(isControlled ? false : hasInternalSelection);
 
   const handleValueChange = (newValue: ComboboxOption[]) => {
     if (!isControlled) {
