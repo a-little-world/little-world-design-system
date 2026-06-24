@@ -64,6 +64,12 @@ const TextInput: React.FC<Props> = ({
     | string
     | undefined;
 
+  const isControlled = value !== undefined;
+  const [hasInternalValue, setHasInternalValue] = React.useState(
+    Boolean(defaultValue),
+  );
+  const activeError = Boolean(error) && !(isControlled ? false : hasInternalValue);
+
   const errorProps = inline ? { bottom: '-16px', right: '0px' } : {};
 
   const handlePasswordVisibilityToggle = () => {
@@ -76,11 +82,21 @@ const TextInput: React.FC<Props> = ({
     }
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isControlled) {
+      setHasInternalValue(e.target.value.length > 0);
+    }
+    onChange?.(e);
+  };
+
   const handleTelephoneChange = (
-    value: string,
-    country: string,
+    _value: string,
+    _country: string,
     e: ChangeEvent<HTMLInputElement>,
   ) => {
+    if (!isControlled) {
+      setHasInternalValue(e.target.value.length > 0);
+    }
     onChange?.(e);
   };
 
@@ -106,7 +122,7 @@ const TextInput: React.FC<Props> = ({
             disableDropdown={onlyCountries?.length === 1}
             onChange={handleTelephoneChange}
             inputProps={{ ...propsWithoutValues, ref: inputRef }}
-            $hasError={!!error}
+            $hasError={activeError}
             value={defaultTelephoneVal}
             countryCodeEditable={false}
             $height={height}
@@ -114,10 +130,10 @@ const TextInput: React.FC<Props> = ({
         ) : (
           <Input
             ref={inputRef}
-            $hasError={Boolean(error)}
+            $hasError={activeError}
             type={inputType}
             id={id}
-            onChange={onChange}
+            onChange={handleChange}
             onKeyDown={handleKeyDown}
             $height={height}
             {...inputProps}
@@ -148,7 +164,7 @@ const TextInput: React.FC<Props> = ({
 
       {!cannotError && (
         <InputError
-          visible={Boolean(error)}
+          visible={activeError}
           textAlign={width === InputWidth.Large ? 'right' : 'left'}
           {...errorProps}
         >

@@ -1,5 +1,5 @@
 import { Combobox as BaseCombobox } from '@base-ui/react/combobox';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import {
   ComboboxMultipleBaseProps,
@@ -97,6 +97,7 @@ const getSelectedOptions = (
 
 type SharedLayoutProps = {
   ariaLabel?: string;
+  activeError?: boolean;
   canError: boolean;
   error?: string;
   height?: ComboboxSingleBaseProps['height'];
@@ -160,6 +161,7 @@ const ComboboxActionControls = () => (
 );
 
 const ComboboxFieldLayout = ({
+  activeError,
   children,
   error,
   label,
@@ -175,7 +177,9 @@ const ComboboxFieldLayout = ({
       </Label>
     )}
     {children}
-    {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
+    {canError && (
+      <InputError visible={activeError ?? Boolean(error)}>{error}</InputError>
+    )}
   </ComboboxWrapper>
 );
 
@@ -212,12 +216,18 @@ const SingleCombobox: React.FC<
   const canError = !lockedValue && !cannotError;
   const isDisabled = disabled || Boolean(lockedValue);
   const isControlled = value !== undefined;
+  const [hasInternalSelection, setHasInternalSelection] = useState(false);
+  const activeError = Boolean(error) && !(isControlled ? false : hasInternalSelection);
 
   const handleValueChange = (newValue: ComboboxOption | null) => {
+    if (!isControlled) {
+      setHasInternalSelection(Boolean(newValue));
+    }
     onValueChange(newValue?.value ?? '');
   };
 
   const layoutProps: SharedLayoutProps = {
+    activeError,
     ariaLabel,
     canError,
     error,
@@ -247,7 +257,7 @@ const SingleCombobox: React.FC<
       >
         <ComboboxInputGroup
           $disabled={isDisabled}
-          $hasError={Boolean(error)}
+          $hasError={activeError}
           $height={height}
         >
           <ComboboxInput
@@ -255,7 +265,7 @@ const SingleCombobox: React.FC<
             id={id}
             placeholder={placeholder}
             ref={inputRef}
-            $hasError={Boolean(error)}
+            $hasError={activeError}
             $height={height}
           />
           {!lockedValue && <ComboboxActionControls />}
@@ -301,12 +311,18 @@ const MultipleCombobox: React.FC<
   const isDisabled = disabled || Boolean(lockedValue?.length);
   const isControlled = value !== undefined;
   const isLocked = Boolean(lockedValue?.length);
+  const [hasInternalSelection, setHasInternalSelection] = useState(false);
+  const activeError = Boolean(error) && !(isControlled ? false : hasInternalSelection);
 
   const handleValueChange = (newValue: ComboboxOption[]) => {
+    if (!isControlled) {
+      setHasInternalSelection(newValue.length > 0);
+    }
     onValueChange(newValue.map(option => option.value));
   };
 
   const layoutProps: SharedLayoutProps = {
+    activeError,
     ariaLabel,
     canError,
     error,
@@ -337,7 +353,7 @@ const MultipleCombobox: React.FC<
       >
         <ComboboxInputGroup
           $disabled={isDisabled}
-          $hasError={Boolean(error)}
+          $hasError={activeError}
           $height={height}
           $multiple
         >
@@ -382,7 +398,7 @@ const MultipleCombobox: React.FC<
                       id={id}
                       placeholder={selected.length > 0 ? '' : placeholder}
                       ref={inputRef}
-                      $hasError={Boolean(error)}
+                      $hasError={activeError}
                       $height={height}
                       $multiple
                     />

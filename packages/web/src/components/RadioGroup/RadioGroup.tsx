@@ -1,5 +1,5 @@
 import * as RadixRadioGroup from '@radix-ui/react-radio-group';
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   RadioGroupVariations,
@@ -39,6 +39,18 @@ const RadioGroup: React.FC<Props> = ({
   ...rest
 }: Props) => {
   const isPill = type === RadioGroupVariations.Pill;
+  const isControlled = value !== undefined;
+  const [internalValue, setInternalValue] = useState<string | undefined>(undefined);
+  const activeError = Boolean(error) && !(isControlled ? false : Boolean(internalValue));
+
+  const { onValueChange: externalOnValueChange, ...restWithoutOnValueChange } = rest;
+
+  const handleValueChange = (newValue: string) => {
+    if (!isControlled) {
+      setInternalValue(newValue);
+    }
+    externalOnValueChange?.(newValue);
+  };
 
   return (
     <RadioGroupWrapper $inline={inline}>
@@ -60,21 +72,22 @@ const RadioGroup: React.FC<Props> = ({
             name={label}
             $inline={inline}
             $orientation={orientation}
-            {...rest}
+            onValueChange={handleValueChange}
+            {...restWithoutOnValueChange}
           >
             {items?.map(item => (
               <PillItem
                 key={item.id}
                 value={item.value}
                 id={item.id}
-                $hasError={Boolean(error)}
+                $hasError={activeError}
                 $inline={inline}
               >
                 {item.label}
               </PillItem>
             ))}
           </PillRoot>
-          <InputError visible={Boolean(error)} textAlign="left">
+          <InputError visible={activeError} textAlign="left">
             {error}
           </InputError>
         </>
@@ -85,14 +98,15 @@ const RadioGroup: React.FC<Props> = ({
           name={label}
           $inline={inline}
           $orientation={orientation}
-          {...rest}
+          onValueChange={handleValueChange}
+          {...restWithoutOnValueChange}
         >
           {items?.map(item => (
             <ItemContainer key={item.id}>
               <RadioGroupItem
                 value={item.value}
                 id={item.id}
-                $hasError={Boolean(error)}
+                $hasError={activeError}
               >
                 <RadioGroupIndicator />
               </RadioGroupItem>
@@ -103,7 +117,7 @@ const RadioGroup: React.FC<Props> = ({
               )}
             </ItemContainer>
           ))}
-          <InputError visible={Boolean(error)}>{error}</InputError>
+          <InputError visible={activeError}>{error}</InputError>
         </RadioGroupRoot>
       )}
     </RadioGroupWrapper>

@@ -118,6 +118,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
     defaultValue,
   );
   const [isOpen, setIsOpen] = useState(false);
+  const activeError = Boolean(error) && !(isControlled ? false : Boolean(internalDate));
 
   const selectedDate = isControlled ? value : internalDate;
 
@@ -244,7 +245,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
           <DatePickerTrigger
             id={id}
             type="button"
-            $hasError={Boolean(error)}
+            $hasError={activeError}
             $height={height}
             $disabled={disabled}
             $hasValue={Boolean(selectedDate)}
@@ -265,7 +266,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
         {inModal ? calendar : <RadixPopover.Portal>{calendar}</RadixPopover.Portal>}
       </RadixPopover.Root>
       {!cannotError && (
-        <InputError visible={Boolean(error)}>{error}</InputError>
+        <InputError visible={activeError}>{error}</InputError>
       )}
     </DatePickerWrapper>
   );

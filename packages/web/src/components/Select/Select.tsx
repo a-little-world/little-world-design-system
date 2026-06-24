@@ -1,5 +1,5 @@
 import * as RadixSelect from '@radix-ui/react-select';
-import React from 'react';
+import React, { useState } from 'react';
 import { SelectBaseProps } from '@a-little-world/little-world-design-system-core';
 
 import { CheckIcon, ChevronDownIcon } from '../Icon';
@@ -78,6 +78,18 @@ const Select: React.FC<SelectProps> = ({
   const defaultValue =
     lockedValue || (value && isValidValue(value, options) ? value : undefined);
   const canError = !lockedValue && !cannotError;
+  const isControlled = value !== undefined;
+  const [internalValue, setInternalValue] = useState<string | undefined>(
+    !isControlled ? undefined : undefined,
+  );
+  const activeError = Boolean(error) && !(isControlled ? false : Boolean(internalValue));
+
+  const handleValueChange = (newValue: string) => {
+    if (!isControlled) {
+      setInternalValue(newValue);
+    }
+    onValueChange(newValue);
+  };
 
   const selectContent = (
     <SelectContent position="popper">
@@ -100,7 +112,7 @@ const Select: React.FC<SelectProps> = ({
       )}
       <RadixSelect.Root
         disabled={disabled || !!lockedValue}
-        onValueChange={onValueChange}
+        onValueChange={handleValueChange}
         required={required}
         defaultValue={defaultValue}
       >
@@ -109,7 +121,7 @@ const Select: React.FC<SelectProps> = ({
           id={id}
           ref={inputRef}
           $disabled={disabled}
-          $hasError={Boolean(error)}
+          $hasError={activeError}
           $height={height}
         >
           <SelectValue placeholder={placeholder} />
@@ -129,7 +141,7 @@ const Select: React.FC<SelectProps> = ({
           <RadixSelect.Portal>{selectContent}</RadixSelect.Portal>
         )}
       </RadixSelect.Root>
-      {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
+      {canError && <InputError visible={activeError}>{error}</InputError>}
     </SelectWrapper>
   );
 };
