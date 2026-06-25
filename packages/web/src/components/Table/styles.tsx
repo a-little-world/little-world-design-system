@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TableWrapper = styled.div`
   width: 100%;
   overflow-x: auto;
-  border: 1px solid ${({ theme }) => theme.color?.border?.default ?? '#E5E7EB'};
+  border: 1px solid ${({ theme }) => theme.color.border.subtle};
   border-radius: 8px;
 `;
 
@@ -11,19 +11,19 @@ export const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
-  color: ${({ theme }) => theme.color?.text?.primary ?? '#111827'};
+  color: ${({ theme }) => theme.color.text.primary};
 
   caption {
     caption-side: top;
     padding: 8px 16px;
     text-align: left;
     font-weight: 600;
-    color: ${({ theme }) => theme.color?.text?.secondary ?? '#374151'};
+    color: ${({ theme }) => theme.color.text.secondary};
   }
 `;
 
 export const TableHead = styled.thead`
-  background: ${({ theme }) => theme.color?.surface?.secondary ?? '#F9FAFB'};
+  background: ${({ theme }) => theme.color.surface.secondary};
 
   th {
     padding: 12px 16px;
@@ -32,8 +32,8 @@ export const TableHead = styled.thead`
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: ${({ theme }) => theme.color?.text?.secondary ?? '#6B7280'};
-    border-bottom: 1px solid ${({ theme }) => theme.color?.border?.default ?? '#E5E7EB'};
+    color: ${({ theme }) => theme.color.text.secondary};
+    border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
     white-space: nowrap;
 
     button {
@@ -48,7 +48,7 @@ export const TableHead = styled.thead`
       padding: 0;
 
       &:hover {
-        color: ${({ theme }) => theme.color?.text?.primary ?? '#111827'};
+        color: ${({ theme }) => theme.color.text.primary};
       }
     }
   }
@@ -56,7 +56,7 @@ export const TableHead = styled.thead`
 
 export const TableBody = styled.tbody`
   tr {
-    border-bottom: 1px solid ${({ theme }) => theme.color?.border?.default ?? '#F3F4F6'};
+    border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
     transition: background 0.15s;
 
     &:last-child {
@@ -64,7 +64,7 @@ export const TableBody = styled.tbody`
     }
 
     &:hover {
-      background: ${({ theme }) => theme.color?.surface?.hover ?? '#F9FAFB'};
+      background: ${({ theme }) => theme.color.surface.secondary};
     }
   }
 
@@ -76,6 +76,6 @@ export const TableBody = styled.tbody`
 
 export const EmptyCell = styled.td`
   text-align: center;
-  color: ${({ theme }) => theme.color?.text?.hint ?? '#9CA3AF'};
+  color: ${({ theme }) => theme.color.text.tertiary};
   padding: 32px 16px !important;
 `;

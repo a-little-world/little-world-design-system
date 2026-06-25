@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { TableWrapper, StyledTable, TableHead, TableBody, EmptyCell } from './styles';
 
 export type SortDirection = 'asc' | 'desc' | null;
 
@@ -18,7 +19,6 @@ export interface TableProps<T = Record<string, unknown>> {
   loading?: boolean;
   onRowClick?: (row: T, index: number) => void;
   rowKey: (row: T) => string | number;
-  stickyHeader?: boolean;
 }
 
 function Table<T = Record<string, unknown>>({
@@ -29,7 +29,6 @@ function Table<T = Record<string, unknown>>({
   loading = false,
   onRowClick,
   rowKey,
-  stickyHeader = false,
 }: TableProps<T>) {
   const [sortKey, setSortKey] = useState<string | null>(null);
   const [sortDir, setSortDir] = useState<SortDirection>(null);
@@ -53,19 +52,17 @@ function Table<T = Record<string, unknown>>({
     return [...data].sort((a, b) => {
       const av = col.accessor(a);
       const bv = col.accessor(b);
-      const aStr = String(av ?? '');
-      const bStr = String(bv ?? '');
-      return sortDir === 'asc'
-        ? aStr.localeCompare(bStr)
-        : bStr.localeCompare(aStr);
+      const aStr = typeof av === 'string' || typeof av === 'number' ? String(av) : '';
+      const bStr = typeof bv === 'string' || typeof bv === 'number' ? String(bv) : '';
+      return sortDir === 'asc' ? aStr.localeCompare(bStr) : bStr.localeCompare(aStr);
     });
   }, [data, sortKey, sortDir, columns]);
 
   return (
-    <div role="region" aria-label={caption ?? 'Data table'} style={{ overflowX: 'auto' }}>
-      <table aria-label={caption}>
+    <TableWrapper role="region" aria-label={caption ?? 'Data table'}>
+      <StyledTable aria-label={caption}>
         {caption && <caption>{caption}</caption>}
-        <thead>
+        <TableHead>
           <tr>
             {columns.map((col) => (
               <th
@@ -94,17 +91,17 @@ function Table<T = Record<string, unknown>>({
               </th>
             ))}
           </tr>
-        </thead>
-        <tbody>
+        </TableHead>
+        <TableBody>
           {loading ? (
             <tr>
-              <td colSpan={columns.length} aria-live="polite">
+              <EmptyCell colSpan={columns.length} aria-live="polite">
                 Loading…
-              </td>
+              </EmptyCell>
             </tr>
           ) : sortedData.length === 0 ? (
             <tr>
-              <td colSpan={columns.length}>{emptyMessage}</td>
+              <EmptyCell colSpan={columns.length}>{emptyMessage}</EmptyCell>
             </tr>
           ) : (
             sortedData.map((row, i) => (
@@ -125,9 +122,9 @@ function Table<T = Record<string, unknown>>({
               </tr>
             ))
           )}
-        </tbody>
-      </table>
-    </div>
+        </TableBody>
+      </StyledTable>
+    </TableWrapper>
   );
 }
 
