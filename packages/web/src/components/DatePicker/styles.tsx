@@ -1,7 +1,10 @@
 import * as RadixPopover from '@radix-ui/react-popover';
 import styled, { css } from 'styled-components';
 
-import { InputHeight, InputWidth } from '@a-little-world/little-world-design-system-core';
+import {
+  InputHeight,
+  InputWidth,
+} from '@a-little-world/little-world-design-system-core';
 import { INPUT_ERROR_CSS } from '../InputError/InputError';
 import { INPUT_CSS } from '../TextInput/styles';
 import { POPOVER_CONTENT_CSS } from '../Popover/styles';
