@@ -35,6 +35,7 @@ const RadioGroup: React.FC<Props> = ({
   inputRef,
   type = RadioGroupVariations.Classic,
   value,
+  orientation = 'horizontal',
   ...rest
 }: Props) => {
   const isPill = type === RadioGroupVariations.Pill;
@@ -58,6 +59,7 @@ const RadioGroup: React.FC<Props> = ({
             value={value}
             name={label}
             $inline={inline}
+            $orientation={orientation}
             {...rest}
           >
             {items?.map(item => (
@@ -82,6 +84,7 @@ const RadioGroup: React.FC<Props> = ({
           value={value}
           name={label}
           $inline={inline}
+          $orientation={orientation}
           {...rest}
         >
           {items?.map(item => (

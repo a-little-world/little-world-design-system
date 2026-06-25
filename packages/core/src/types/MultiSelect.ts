@@ -1,14 +1,14 @@
-import { DropdownBaseProps } from './Dropdown';
+import { SelectBaseProps } from './Select';
 
-export enum MultiDropdownVariants {
+export enum MultiSelectVariants {
   /** Radix select field (default). */
-  Dropdown = 'dropdown',
+  Select = 'select',
   /** Searchable combobox field. */
   Combobox = 'combobox',
 }
 
-export type MultiDropdownFieldProps = Omit<
-  DropdownBaseProps,
+export type MultiSelectFieldProps = Omit<
+  SelectBaseProps,
   'onValueChange' | 'error' | 'ariaLabel'
 > & {
   ariaLabel: string;
@@ -17,19 +17,22 @@ export type MultiDropdownFieldProps = Omit<
   errors: string[];
 };
 
-export type MultiDropdownProps = {
+type MultiSelectBaseProps = {
   addMoreLabel: string;
   error?: string;
-  inModal?: boolean;
   label?: string;
   labelTooltip?: string;
+  inModal?: boolean;
   locked?: boolean;
   defaultSegments?: number;
   maxSegments?: number;
   onValueChange: (value: Record<string, string>[]) => void;
-  firstDropdown: MultiDropdownFieldProps;
-  secondDropdown: MultiDropdownFieldProps;
   restrictions?: Record<string, string[]>;
-  /** Underlying select field per row. Defaults to {@link MultiDropdownVariants.Dropdown}. */
-  variant?: MultiDropdownVariants;
+  /** Underlying select field per row. Defaults to {@link MultiSelectVariants.Select}. */
+  variant?: MultiSelectVariants;
+};
+
+export type MultiSelectProps = MultiSelectBaseProps & {
+  firstSelect: MultiSelectFieldProps;
+  secondSelect: MultiSelectFieldProps;
 };

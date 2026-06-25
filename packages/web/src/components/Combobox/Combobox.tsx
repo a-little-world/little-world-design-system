@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import {
   ComboboxMultipleBaseProps,
   ComboboxSingleBaseProps,
-  Options,
+  SelectOptions as Options,
 } from '@a-little-world/little-world-design-system-core';
 
 import { CheckIcon, ChevronDownIcon, CloseIcon } from '../Icon';

@@ -2,18 +2,18 @@ import { CheckIcon, ChevronDownIcon } from '../Icon';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
-import { getDropdownStyles } from './styles';
+import { getSelectStyles } from './styles';
 import {
   // Options,
   InputHeight,
-  DropdownBaseProps,
+  SelectBaseProps,
 } from '@a-little-world/little-world-design-system-core';
 import * as DropdownMenuPrimitive from '@rn-primitives/dropdown-menu';
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { useTheme } from 'styled-components/native';
 
-export type DropdownProps = DropdownBaseProps & {
+export type SelectProps = SelectBaseProps & {
   style?: StyleProp<ViewStyle>;
   inputRef?: React.RefObject<HTMLButtonElement>;
 };
@@ -21,17 +21,12 @@ export type DropdownProps = DropdownBaseProps & {
 const ARROW_DOWN_WIDTH = 13;
 const ARROW_DOWN_HEIGHT = 8;
 
-// const isValidValue = (value: string, options: Options) =>
-//   options.some((option: any) => option.value === value);
-
 const Option: React.FC<{ children: string; value: string }> = ({
   children,
   value, // eslint-disable-line @typescript-eslint/no-unused-vars
 }) => {
   return (
-    <DropdownMenuPrimitive.Item
-    // value={value}
-    >
+    <DropdownMenuPrimitive.Item>
       <Text>{children}</Text>
       <DropdownMenuPrimitive.ItemIndicator>
         <CheckIcon label="selected item" width={10} />
@@ -40,7 +35,7 @@ const Option: React.FC<{ children: string; value: string }> = ({
   );
 };
 
-const Dropdown: React.FC<DropdownProps> = ({
+const Select: React.FC<SelectProps> = ({
   ariaLabel,
   error,
   cannotError,
@@ -59,39 +54,19 @@ const Dropdown: React.FC<DropdownProps> = ({
   style,
 }) => {
   const theme = useTheme();
-  const styles = getDropdownStyles({
+  const styles = getSelectStyles({
     theme,
     maxWidth: maxWidth as number,
     height: height as InputHeight,
     hasError: Boolean(error),
   });
-  // const defaultValue =
-  //   lockedValue || (value && isValidValue(value, options) ? value : undefined);
   const canError = !lockedValue && !cannotError;
 
   return (
     <View style={[styles.wrapper, style]}>
-      {label && (
-        <Label
-          bold
-          // toolTipText={labelTooltip}
-        >
-          {label}
-        </Label>
-      )}
-      <DropdownMenuPrimitive.Root
-      // disabled={disabled || !!lockedValue}
-      // onValueChange={onValueChange}
-      // required={required}
-      // defaultValue={defaultValue}
-      >
-        <DropdownMenuPrimitive.Trigger
-          aria-label={ariaLabel || label}
-          // ref={inputRef}
-          // $hasError={Boolean(error)}
-          // $height={height}
-        >
-          {/* <DropdownMenuPrimitive.Value placeholder={placeholder} /> */}
+      {label && <Label bold>{label}</Label>}
+      <DropdownMenuPrimitive.Root>
+        <DropdownMenuPrimitive.Trigger aria-label={ariaLabel || label}>
           {!lockedValue && (
             <ChevronDownIcon
               width={ARROW_DOWN_WIDTH}
@@ -101,13 +76,11 @@ const Dropdown: React.FC<DropdownProps> = ({
           )}
         </DropdownMenuPrimitive.Trigger>
         <DropdownMenuPrimitive.Content>
-          {/* <DropdownMenuPrimitive.Viewport> */}
           {options.map(option => (
             <Option key={option.label} value={option.value}>
               {option.label}
             </Option>
           ))}
-          {/* </DropdownMenuPrimitive.Viewport> */}
         </DropdownMenuPrimitive.Content>
       </DropdownMenuPrimitive.Root>
       {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
@@ -115,4 +88,4 @@ const Dropdown: React.FC<DropdownProps> = ({
   );
 };
 
-export default Dropdown;
+export default Select;

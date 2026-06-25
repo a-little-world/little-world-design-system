@@ -1,21 +1,28 @@
 import { InputHeight } from './TextInput';
 
-export type Options = { value: string; label: string }[];
+export type SelectOptions = { value: string; label: string }[];
 
-export type DropdownBaseProps = {
+export type SelectBaseProps = {
   ariaLabel?: string;
   cannotError?: boolean;
   disabled?: boolean;
   error?: string;
   height?: InputHeight;
   id?: string;
+  inModal?: boolean;
   label?: string;
   labelTooltip?: string;
   lockedValue?: string;
   maxWidth?: string | number;
   onValueChange: (value: string) => void;
-  options: Options;
+  options: SelectOptions;
   placeholder: string;
   required?: boolean;
   value?: string;
 };
+
+/**
+ * @deprecated Use {@link SelectOptions} instead. Kept for backward
+ * compatibility only; will be removed in a future major version.
+ */
+export type Options = SelectOptions;

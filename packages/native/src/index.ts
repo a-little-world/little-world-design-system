@@ -20,7 +20,16 @@ export {
   CardFooter,
 } from './components/Card/Card';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
-export { default as Dropdown } from './components/Dropdown/Dropdown';
+export {
+  default as CheckboxGroup,
+  MultiCheckbox,
+} from './components/CheckboxGroup/CheckboxGroup';
+export type {
+  CheckboxGroupProps,
+  MultiCheckboxProps,
+} from './components/CheckboxGroup/CheckboxGroup';
+export { default as Select } from './components/Select/Select';
+export type { SelectProps } from './components/Select/Select';
 export { default as Gradient } from './components/Gradient/Gradient';
 
 export * from './components/Icon';
@@ -40,10 +49,20 @@ export { default as Popover } from './components/Popover/Popover';
 export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
 export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
 export { default as Separator } from './components/Separator/Separator';
+export {
+  default as StatusMessage,
+  Alert,
+  FormMessage,
+} from './components/StatusMessage/StatusMessage';
+export type {
+  AlertProps,
+  FormMessageProps,
+} from './components/StatusMessage/StatusMessage';
 export { default as Tags, Tag } from './components/Tags/Tags';
 export type { TagProps, TagsProps } from './components/Tags/Tags';
 export { default as Text } from './components/Text/Text';
 export { default as TextInput } from './components/TextInput/TextInput';
+export { default as TimePicker } from './components/TimePicker/TimePicker';
 export { default as ToolTip } from './components/ToolTip/ToolTip';
 
 export * from './theme';

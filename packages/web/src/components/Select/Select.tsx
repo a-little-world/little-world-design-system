@@ -1,6 +1,6 @@
-import * as Select from '@radix-ui/react-select';
+import * as RadixSelect from '@radix-ui/react-select';
 import React from 'react';
-import { DropdownBaseProps } from '@a-little-world/little-world-design-system-core';
+import { SelectBaseProps } from '@a-little-world/little-world-design-system-core';
 
 import { CheckIcon, ChevronDownIcon } from '../Icon';
 import InputError from '../InputError/InputError';
@@ -8,7 +8,7 @@ import Label from '../Label/Label';
 import Text from '../Text/Text';
 
 import {
-  DropdownWrapper,
+  SelectWrapper,
   SelectContent,
   SelectIcon,
   SelectItem,
@@ -20,17 +20,16 @@ import {
 
 type Options = { value: string; label: string }[];
 
-type DropdownCoreProps = DropdownBaseProps & {
-  inModal?: boolean;
+type SelectCoreProps = SelectBaseProps & {
   inputRef?: React.RefObject<HTMLButtonElement>;
 };
 
-export type DropdownProps =
-  | (DropdownCoreProps & {
-      label?: undefined;
+export type SelectProps =
+  | (SelectCoreProps & {
+      label?: string;
       id?: string;
     })
-  | (DropdownCoreProps & {
+  | (SelectCoreProps & {
       label: string;
       id: string;
     });
@@ -47,9 +46,9 @@ const Option: React.FC<{ children: string; value: string }> = ({
 }) => {
   return (
     <SelectItem value={value}>
-      <Select.SelectItemText>
+      <RadixSelect.SelectItemText>
         <Text>{children}</Text>
-      </Select.SelectItemText>
+      </RadixSelect.SelectItemText>
       <SelectItemIndicator>
         <CheckIcon label="selected item" width="10px" />
       </SelectItemIndicator>
@@ -57,7 +56,7 @@ const Option: React.FC<{ children: string; value: string }> = ({
   );
 };
 
-const Dropdown: React.FC<DropdownProps> = ({
+const Select: React.FC<SelectProps> = ({
   ariaLabel,
   error,
   cannotError,
@@ -83,7 +82,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   const selectContent = (
     <SelectContent position="popper">
       <SelectViewport>
-        {options.map(option => (
+        {options.map((option: Options[number]) => (
           <Option key={option.label} value={option.value}>
             {option.label}
           </Option>
@@ -93,13 +92,13 @@ const Dropdown: React.FC<DropdownProps> = ({
   );
 
   return (
-    <DropdownWrapper $maxWidth={maxWidth as string}>
+    <SelectWrapper $maxWidth={maxWidth as string}>
       {label && (
         <Label bold htmlFor={id} tooltipText={labelTooltip}>
           {label}
         </Label>
       )}
-      <Select.Root
+      <RadixSelect.Root
         disabled={disabled || !!lockedValue}
         onValueChange={onValueChange}
         required={required}
@@ -127,12 +126,12 @@ const Dropdown: React.FC<DropdownProps> = ({
         {inModal ? (
           selectContent
         ) : (
-          <Select.Portal>{selectContent}</Select.Portal>
+          <RadixSelect.Portal>{selectContent}</RadixSelect.Portal>
         )}
-      </Select.Root>
+      </RadixSelect.Root>
       {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
-    </DropdownWrapper>
+    </SelectWrapper>
   );
 };
 
-export default Dropdown;
+export default Select;

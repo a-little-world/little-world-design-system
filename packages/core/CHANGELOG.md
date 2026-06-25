@@ -1,5 +1,15 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.15.0
+
+### Minor Changes
+
+- Rename Dropdown to Select
+- Rename MultiCheckbox to CheckboxGroup
+- Add orientation prop to RadioGroup
+- Add FieldHint component
+- Add FieldGrid component
+
 ## 1.14.1
 
 ### Patch Changes

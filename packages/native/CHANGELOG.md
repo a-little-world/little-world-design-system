@@ -1,5 +1,20 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.11.0
+
+### Minor Changes
+
+- Rename Dropdown to Select
+- Rename MultiCheckbox to CheckboxGroup
+- Add alias Alert and FormMessage for StatusMessage
+- Add orientation prop to RadioGroup
+- Add FieldHint component
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.15.0
+
 ## 0.10.1
 
 ### Patch Changes

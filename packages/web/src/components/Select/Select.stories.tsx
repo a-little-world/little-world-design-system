@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { Dropdown }from '@a-little-world/little-world-design-system-native';
+import Select from './Select';
 
 export default {
-  component: Dropdown,
-  title: 'Components/Dropdown',
+  component: Select,
+  title: 'Components/Select',
 };
 
-export const Default = args => <Dropdown {...args} />;
+export const Default = args => <Select {...args} />;
 
 Default.args = {
-  label: 'Demo dropdown',
+  label: 'Demo select',
   id: 'multi selector id',
   onValueChange: () => null,
   placeholder: 'out of town',
