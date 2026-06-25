@@ -2,6 +2,57 @@ import styled, { css } from 'styled-components';
 
 import Button from '../Button/Button';
 
+export type ModalSize = 'sm' | 'md' | 'lg' | 'fullscreen';
+
+const modalWidths: Record<ModalSize, string> = {
+  sm: '400px',
+  md: '600px',
+  lg: '900px',
+  fullscreen: '100%',
+};
+
+export const ModalDialog = styled.div<{ $size: ModalSize }>`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: ${({ theme }) => theme.color?.surface?.primary ?? '#fff'};
+  border-radius: ${({ $size }) => ($size === 'fullscreen' ? '0' : '8px')};
+  width: 100%;
+  max-width: ${({ $size }) => modalWidths[$size]};
+  max-height: ${({ $size }) => ($size === 'fullscreen' ? '100vh' : '90vh')};
+  overflow: hidden;
+`;
+
+export const ModalHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: ${({ theme }) => theme.spacing?.medium ?? '16px'};
+  border-bottom: 1px solid ${({ theme }) => theme.color?.border?.default ?? '#E5E7EB'};
+`;
+
+export const ModalTitle = styled.h2`
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.color?.text?.primary ?? '#111827'};
+`;
+
+export const ModalBody = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  padding: ${({ theme }) => theme.spacing?.medium ?? '16px'};
+`;
+
+export const ModalFooter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: ${({ theme }) => theme.spacing?.small ?? '8px'};
+  padding: ${({ theme }) => theme.spacing?.medium ?? '16px'};
+  border-top: 1px solid ${({ theme }) => theme.color?.border?.default ?? '#E5E7EB'};
+`;
+
 export const ModalContent = styled.div`
   transform: translateY(100px);
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);

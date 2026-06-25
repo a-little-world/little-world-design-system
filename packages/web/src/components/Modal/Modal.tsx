@@ -8,7 +8,17 @@ import {
   ButtonVariations,
 } from '../Button/Button';
 import { CloseIcon } from '../Icon';
-import { BackdropContainer, CloseButton, ModalContent } from './styles';
+import {
+  BackdropContainer,
+  CloseButton,
+  ModalContent,
+  ModalDialog,
+  ModalHeader,
+  ModalTitle,
+  ModalBody,
+  ModalFooter,
+} from './styles';
+import type { ModalSize } from './styles';
 import { ModalPortalContext } from './ModalPortalContext';
 import { useTheme } from 'styled-components';
 
@@ -20,8 +30,11 @@ type BaseModalProps = {
   className?: string;
   closeOnBackdropClick?: boolean;
   createInPortal?: boolean;
+  footer?: React.ReactNode;
   open: boolean;
   parent?: any;
+  size?: ModalSize;
+  title?: string;
 };
 
 type UnlockedModalProps = BaseModalProps & {
@@ -41,10 +54,13 @@ const Modal = ({
   children,
   closeOnBackdropClick = true,
   createInPortal = true,
+  footer,
   open,
   onClose,
   locked,
   parent,
+  size = 'md',
+  title,
   className,
 }: ModalProps) => {
   const [active, setActive] = useState(false);
@@ -108,19 +124,29 @@ const Modal = ({
         ref={backdrop}
         $active={active && open}
       >
-        {!locked && (
-          <CloseButton
-            variation={ButtonVariations.Circle}
-            appearance={ButtonAppearance.Secondary}
-            backgroundColor={theme.color.surface.secondary}
-            color={theme.color.text.primary}
-            onClick={onClose}
-            size={ButtonSizes.Medium}
-          >
-            <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
-          </CloseButton>
-        )}
-        <ModalContent>{children}</ModalContent>
+        <ModalDialog $size={size}>
+          {(title || !locked) && (
+            <ModalHeader>
+              {title && <ModalTitle>{title}</ModalTitle>}
+              {!locked && (
+                <CloseButton
+                  variation={ButtonVariations.Circle}
+                  appearance={ButtonAppearance.Secondary}
+                  backgroundColor={theme.color.surface.secondary}
+                  color={theme.color.text.primary}
+                  onClick={onClose}
+                  size={ButtonSizes.Medium}
+                >
+                  <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
+                </CloseButton>
+              )}
+            </ModalHeader>
+          )}
+          <ModalBody>
+            <ModalContent>{children}</ModalContent>
+          </ModalBody>
+          {footer && <ModalFooter>{footer}</ModalFooter>}
+        </ModalDialog>
       </BackdropContainer>
     </ModalPortalContext.Provider>
   );
