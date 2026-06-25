@@ -112,9 +112,7 @@ export const TimeOption = styled.button<{ $isSelected: boolean }>`
 
   &:hover {
     background-color: ${({ theme, $isSelected }) =>
-      $isSelected
-        ? theme.color.surface.accent
-        : theme.color.surface.secondary};
+      $isSelected ? theme.color.surface.accent : theme.color.surface.secondary};
   }
 
   &:focus-visible {
@@ -162,9 +160,7 @@ export const AMPMButton = styled.button<{ $isSelected: boolean }>`
 
   &:hover {
     background-color: ${({ theme, $isSelected }) =>
-      $isSelected
-        ? theme.color.surface.accent
-        : theme.color.surface.tertiary};
+      $isSelected ? theme.color.surface.accent : theme.color.surface.tertiary};
   }
 
   &:focus-visible {

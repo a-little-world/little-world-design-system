@@ -100,7 +100,9 @@ const TimePicker: React.FC<TimePickerProps> = ({
 
   const scrollToSelected = useCallback(() => {
     [hourRef, minuteRef].forEach(ref => {
-      const el = ref.current?.querySelector<HTMLElement>('[data-selected="true"]');
+      const el = ref.current?.querySelector<HTMLElement>(
+        '[data-selected="true"]',
+      );
       el?.scrollIntoView({ block: 'center', behavior: 'instant' });
     });
   }, []);
@@ -229,7 +231,9 @@ const TimePicker: React.FC<TimePickerProps> = ({
             aria-expanded={isOpen}
           >
             <span>
-              {selectedTime ? formatDisplay(selectedTime, use12Hour) : placeholder}
+              {selectedTime
+                ? formatDisplay(selectedTime, use12Hour)
+                : placeholder}
             </span>
             <TriggerIconWrapper>
               <ClockIcon
@@ -240,11 +244,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
             </TriggerIconWrapper>
           </TimePickerTrigger>
         </RadixPopover.Trigger>
-        {inModal ? (
-          picker
-        ) : (
-          <RadixPopover.Portal>{picker}</RadixPopover.Portal>
-        )}
+        {inModal ? picker : <RadixPopover.Portal>{picker}</RadixPopover.Portal>}
       </RadixPopover.Root>
       {!cannotError && (
         <InputError visible={Boolean(error)}>{error}</InputError>
