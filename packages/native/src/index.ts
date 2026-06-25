@@ -41,6 +41,15 @@ export { default as Popover } from './components/Popover/Popover';
 export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
 export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
 export { default as Separator } from './components/Separator/Separator';
+export {
+  default as StatusMessage,
+  Alert,
+  FormMessage,
+} from './components/StatusMessage/StatusMessage';
+export type {
+  AlertProps,
+  FormMessageProps,
+} from './components/StatusMessage/StatusMessage';
 export { default as Tags, Tag } from './components/Tags/Tags';
 export type { TagProps, TagsProps } from './components/Tags/Tags';
 export { default as Text } from './components/Text/Text';
