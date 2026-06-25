@@ -64,6 +64,8 @@ export {
   LoadingType,
 } from './components/Loading/Loading';
 export { default as Modal } from './components/Modal/Modal';
+export { default as Signature } from './components/Signature/Signature';
+export type { SignatureProps } from './components/Signature/Signature';
 export {
   default as CheckboxGroup,
   type CheckboxGroupProps,
