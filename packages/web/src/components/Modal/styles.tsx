@@ -15,7 +15,7 @@ export const ModalDialog = styled.div<{ $size: ModalSize }>`
   position: relative;
   display: flex;
   flex-direction: column;
-  background: ${({ theme }) => theme.color?.surface?.primary ?? '#fff'};
+  background: ${({ theme }) => theme.color.surface.primary};
   border-radius: ${({ $size }) => ($size === 'fullscreen' ? '0' : '8px')};
   width: 100%;
   max-width: ${({ $size }) => modalWidths[$size]};
@@ -27,30 +27,30 @@ export const ModalHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${({ theme }) => theme.spacing?.medium ?? '16px'};
-  border-bottom: 1px solid ${({ theme }) => theme.color?.border?.default ?? '#E5E7EB'};
+  padding: ${({ theme }) => theme.spacing.medium};
+  border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
 `;
 
 export const ModalTitle = styled.h2`
   margin: 0;
   font-size: 18px;
   font-weight: 600;
-  color: ${({ theme }) => theme.color?.text?.primary ?? '#111827'};
+  color: ${({ theme }) => theme.color.text.primary};
 `;
 
 export const ModalBody = styled.div`
   flex: 1;
   overflow-y: auto;
-  padding: ${({ theme }) => theme.spacing?.medium ?? '16px'};
+  padding: ${({ theme }) => theme.spacing.medium};
 `;
 
 export const ModalFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: ${({ theme }) => theme.spacing?.small ?? '8px'};
-  padding: ${({ theme }) => theme.spacing?.medium ?? '16px'};
-  border-top: 1px solid ${({ theme }) => theme.color?.border?.default ?? '#E5E7EB'};
+  gap: ${({ theme }) => theme.spacing.small};
+  padding: ${({ theme }) => theme.spacing.medium};
+  border-top: 1px solid ${({ theme }) => theme.color.border.subtle};
 `;
 
 export const ModalContent = styled.div`
