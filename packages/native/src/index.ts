@@ -60,6 +60,15 @@ export type {
 } from './components/StatusMessage/StatusMessage';
 export { default as Tags, Tag } from './components/Tags/Tags';
 export type { TagProps, TagsProps } from './components/Tags/Tags';
+export {
+  default as Table,
+  DataGrid,
+} from './components/Table/Table';
+export type {
+  TableColumn,
+  TableProps,
+  DataGridProps,
+} from './components/Table/Table';
 export { default as Text } from './components/Text/Text';
 export { default as TextInput } from './components/TextInput/TextInput';
 export { default as TimePicker } from './components/TimePicker/TimePicker';
