@@ -36,6 +36,8 @@ export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid'
 export { default as Combobox } from './components/Combobox/Combobox';
 export { default as DatePicker } from './components/DatePicker/DatePicker';
 export type { DatePickerProps } from './components/DatePicker/DatePicker';
+export { default as TimePicker } from './components/TimePicker/TimePicker';
+export type { TimePickerProps } from './components/TimePicker/TimePicker';
 export { default as Select } from './components/Select/Select';
 export type { SelectProps } from './components/Select/Select';
 /**
