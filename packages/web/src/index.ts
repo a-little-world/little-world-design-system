@@ -36,23 +36,10 @@ export { default as CheckboxGrid } from './components/CheckboxGrid/CheckboxGrid'
 export { default as Combobox } from './components/Combobox/Combobox';
 export { default as DatePicker } from './components/DatePicker/DatePicker';
 export type { DatePickerProps } from './components/DatePicker/DatePicker';
+export { default as TimePicker } from './components/TimePicker/TimePicker';
+export type { TimePickerProps } from './components/TimePicker/TimePicker';
 export { default as Select } from './components/Select/Select';
 export type { SelectProps } from './components/Select/Select';
-/**
- * @deprecated Use `Select` instead. This export is kept for backward
- * compatibility only and will be removed in a future major version.
- *
- * Migration:
- * ```tsx
- * // Before (deprecated)
- * import { Dropdown } from '@a-little-world/little-world-design-system';
- * // After (recommended)
- * import { Select } from '@a-little-world/little-world-design-system';
- * ```
- */
-export { default as Dropdown } from './components/Select/Select';
-/** @deprecated Use `SelectProps` instead. */
-export type { SelectProps as DropdownProps } from './components/Select/Select';
 export {
   default as FieldGrid,
   FieldGridColumns,
