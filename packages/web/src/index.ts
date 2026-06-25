@@ -64,6 +64,8 @@ export {
   LoadingType,
 } from './components/Loading/Loading';
 export { default as Modal } from './components/Modal/Modal';
+export { default as PDFViewer } from './components/PDFViewer/PDFViewer';
+export type { PDFViewerProps } from './components/PDFViewer/PDFViewer';
 export {
   default as CheckboxGroup,
   type CheckboxGroupProps,
