@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-
-export type PDFViewerFit = 'width' | 'height' | 'contain';
+import { ViewerWrapper, StatusOverlay, DownloadLink, StyledIframe } from './styles';
 
 export interface PDFViewerProps {
   src: string;
   title?: string;
   height?: string | number;
   width?: string | number;
-  fit?: PDFViewerFit;
   showToolbar?: boolean;
   className?: string;
   onLoad?: () => void;
   onError?: () => void;
 }
+
+const toCSSValue = (v: string | number): string =>
+  typeof v === 'number' ? `${v}px` : v;
 
 const PDFViewer: React.FC<PDFViewerProps> = ({
   src,
@@ -24,53 +25,35 @@ const PDFViewer: React.FC<PDFViewerProps> = ({
   onLoad,
   onError,
 }) => {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('loading');
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
 
   const iframeSrc = showToolbar ? src : `${src}#toolbar=0`;
 
   return (
-    <div
+    <ViewerWrapper
+      $width={toCSSValue(width)}
+      $height={toCSSValue(height)}
       className={className}
-      style={{ width, height, position: 'relative' }}
       role="region"
       aria-label={title}
     >
       {status === 'loading' && (
-        <div
-          aria-live="polite"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          Loading PDF…
-        </div>
+        <StatusOverlay aria-live="polite">Loading PDF…</StatusOverlay>
       )}
       {status === 'error' && (
-        <div
-          role="alert"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          Failed to load PDF. <a href={src} download>Download instead</a>
-        </div>
+        <StatusOverlay role="alert">
+          Failed to load PDF.{' '}
+          <DownloadLink href={src} download>
+            Download instead
+          </DownloadLink>
+        </StatusOverlay>
       )}
-      <iframe
+      <StyledIframe
         src={iframeSrc}
         title={title}
-        width="100%"
-        height="100%"
-        style={{ border: 'none', display: status === 'error' ? 'none' : 'block' }}
+        style={{ display: status === 'error' ? 'none' : 'block' }}
         onLoad={() => {
-          setStatus('idle');
+          setStatus('ready');
           onLoad?.();
         }}
         onError={() => {
@@ -78,7 +61,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({
           onError?.();
         }}
       />
-    </div>
+    </ViewerWrapper>
   );
 };
 
