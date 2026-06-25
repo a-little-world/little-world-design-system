@@ -26,9 +26,3 @@ export type SelectBaseProps = {
  * compatibility only; will be removed in a future major version.
  */
 export type Options = SelectOptions;
-
-/**
- * @deprecated Use {@link SelectBaseProps} instead. Kept for backward
- * compatibility only; will be removed in a future major version.
- */
-export type DropdownBaseProps = SelectBaseProps;
