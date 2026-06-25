@@ -1,14 +1,29 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { Modal, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { useTheme } from 'styled-components/native';
+import { Modal, ScrollView, View } from 'react-native';
 
 import { TimePickerBaseProps } from '@a-little-world/little-world-design-system-core';
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import { ClockIcon } from '../Icon';
-import { getTimePickerStyles } from './styles';
+import {
+  AMPMButton,
+  AMPMContainer,
+  COLUMN_HEIGHT,
+  ColumnDivider,
+  ColumnsContainer,
+  DoneButtonText,
+  OverlayView,
+  SheetHeader,
+  SheetTitle,
+  SheetView,
+  TimeColumn,
+  TimeOption,
+  TimePickerTrigger,
+  TriggerText,
+} from './styles';
 
 const CLOCK_ICON_SIZE = 18;
+const ITEM_HEIGHT = COLUMN_HEIGHT / 5;
 
 function padTwo(n: number): string {
   return String(n).padStart(2, '0');
@@ -40,8 +55,6 @@ interface TimePickerProps extends TimePickerBaseProps {
   id?: string;
 }
 
-const ITEM_HEIGHT = 44;
-
 const TimePicker: React.FC<TimePickerProps> = ({
   cannotError,
   defaultValue,
@@ -54,9 +67,6 @@ const TimePicker: React.FC<TimePickerProps> = ({
   use12Hour = false,
   value,
 }) => {
-  const theme = useTheme();
-  const styles = useMemo(() => getTimePickerStyles({ theme }), [theme]);
-
   const isControlled = value !== undefined;
   const [internalTime, setInternalTime] = useState<string | undefined>(
     defaultValue,
@@ -129,9 +139,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
   );
 
   const handleMinutePress = useCallback(
-    (m: number) => {
-      commit(hour24, m);
-    },
+    (m: number) => commit(hour24, m),
     [commit, hour24],
   );
 
@@ -148,29 +156,20 @@ const TimePicker: React.FC<TimePickerProps> = ({
   return (
     <View>
       {label ? <Label>{label}</Label> : null}
-      <TouchableOpacity
-        style={[
-          styles.trigger,
-          disabled && styles.triggerDisabled,
-          Boolean(error) && styles.triggerError,
-        ]}
-        onPress={() => !disabled && setIsOpen(true)}
+      <TimePickerTrigger
         disabled={disabled}
-        accessibilityRole="button"
-        accessibilityLabel={label ?? placeholder}
-        accessibilityState={{ expanded: isOpen, disabled }}
+        hasError={Boolean(error)}
+        onPress={() => setIsOpen(true)}
       >
-        <Text
-          style={selectedTime ? styles.triggerText : styles.triggerPlaceholder}
-        >
+        <TriggerText hasValue={Boolean(selectedTime)}>
           {selectedTime ? formatDisplay(selectedTime, use12Hour) : placeholder}
-        </Text>
+        </TriggerText>
         <ClockIcon
           label="open time picker"
           width={CLOCK_ICON_SIZE}
           height={CLOCK_ICON_SIZE}
         />
-      </TouchableOpacity>
+      </TimePickerTrigger>
       {!cannotError && (
         <InputError visible={Boolean(error)}>{error}</InputError>
       )}
@@ -182,113 +181,66 @@ const TimePicker: React.FC<TimePickerProps> = ({
         onRequestClose={() => setIsOpen(false)}
         onShow={scrollToInitial}
       >
-        <View style={styles.overlay}>
-          <View style={styles.sheet}>
-            <View style={styles.sheetHeader}>
-              <Text style={styles.sheetTitle}>Select time</Text>
-              <TouchableOpacity onPress={() => setIsOpen(false)}>
-                <Text style={styles.doneButton}>Done</Text>
-              </TouchableOpacity>
-            </View>
+        <OverlayView>
+          <SheetView>
+            <SheetHeader>
+              <SheetTitle>Select time</SheetTitle>
+              <DoneButtonText onPress={() => setIsOpen(false)}>
+                Done
+              </DoneButtonText>
+            </SheetHeader>
 
-            <View style={styles.columnsContainer}>
-              <ScrollView
-                ref={hourScrollRef}
-                style={styles.column}
-                showsVerticalScrollIndicator={false}
-              >
+            <ColumnsContainer>
+              <TimeColumn ref={hourScrollRef}>
                 {displayHours.map(h => {
                   const isSelected = use12Hour
                     ? h === displayHour12
                     : h === hour24;
                   return (
-                    <TouchableOpacity
+                    <TimeOption
                       key={h}
-                      style={[
-                        styles.option,
-                        isSelected && styles.optionSelected,
-                      ]}
+                      isSelected={isSelected}
                       onPress={() => handleHourPress(h)}
                     >
-                      <Text
-                        style={
-                          isSelected
-                            ? styles.optionTextSelected
-                            : styles.optionText
-                        }
-                      >
-                        {use12Hour ? h : padTwo(h)}
-                      </Text>
-                    </TouchableOpacity>
+                      {use12Hour ? String(h) : padTwo(h)}
+                    </TimeOption>
                   );
                 })}
-              </ScrollView>
+              </TimeColumn>
 
-              <Text style={styles.columnDivider}>:</Text>
+              <ColumnDivider />
 
-              <ScrollView
-                ref={minuteScrollRef}
-                style={styles.column}
-                showsVerticalScrollIndicator={false}
-              >
-                {minutes.map(m => {
-                  const isSelected = m === minute;
-                  return (
-                    <TouchableOpacity
-                      key={m}
-                      style={[
-                        styles.option,
-                        isSelected && styles.optionSelected,
-                      ]}
-                      onPress={() => handleMinutePress(m)}
-                    >
-                      <Text
-                        style={
-                          isSelected
-                            ? styles.optionTextSelected
-                            : styles.optionText
-                        }
-                      >
-                        {padTwo(m)}
-                      </Text>
-                    </TouchableOpacity>
-                  );
-                })}
-              </ScrollView>
+              <TimeColumn ref={minuteScrollRef}>
+                {minutes.map(m => (
+                  <TimeOption
+                    key={m}
+                    isSelected={m === minute}
+                    onPress={() => handleMinutePress(m)}
+                  >
+                    {padTwo(m)}
+                  </TimeOption>
+                ))}
+              </TimeColumn>
 
               {use12Hour && (
-                <View style={styles.ampmContainer}>
-                  <TouchableOpacity
-                    style={[
-                      styles.ampmButton,
-                      !isPM && styles.ampmButtonSelected,
-                    ]}
+                <AMPMContainer>
+                  <AMPMButton
+                    isSelected={!isPM}
                     onPress={() => handleAMPM(false)}
                   >
-                    <Text
-                      style={!isPM ? styles.ampmTextSelected : styles.ampmText}
-                    >
-                      AM
-                    </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={[
-                      styles.ampmButton,
-                      isPM && styles.ampmButtonSelected,
-                    ]}
+                    AM
+                  </AMPMButton>
+                  <AMPMButton
+                    isSelected={isPM}
                     onPress={() => handleAMPM(true)}
                   >
-                    <Text
-                      style={isPM ? styles.ampmTextSelected : styles.ampmText}
-                    >
-                      PM
-                    </Text>
-                  </TouchableOpacity>
-                </View>
+                    PM
+                  </AMPMButton>
+                </AMPMContainer>
               )}
-            </View>
-          </View>
-        </View>
+            </ColumnsContainer>
+          </SheetView>
+        </OverlayView>
       </Modal>
     </View>
   );
