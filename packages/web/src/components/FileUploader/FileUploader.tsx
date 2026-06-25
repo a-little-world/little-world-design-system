@@ -1,4 +1,12 @@
 import React, { useCallback, useRef, useState } from 'react';
+import {
+  DropZone,
+  DropZoneLabel,
+  HintText,
+  FileList,
+  FileListItem,
+  RemoveButton,
+} from './styles';
 
 export interface FileUploaderProps {
   accept?: string;
@@ -36,8 +44,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
           return [];
         }
       }
-      const next = [...files, ...incoming].slice(0, maxFiles);
-      return next;
+      return [...files, ...incoming].slice(0, maxFiles);
     },
     [files, maxFiles, maxSizeBytes, onError],
   );
@@ -67,8 +74,6 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     if (!disabled) setIsDragging(true);
   };
 
-  const onDragLeave = () => setIsDragging(false);
-
   const removeFile = (index: number) => {
     const next = files.filter((_, i) => i !== index);
     setFiles(next);
@@ -77,15 +82,16 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 
   return (
     <div>
-      <div
+      <DropZone
+        $dragging={isDragging}
+        $disabled={disabled}
         onClick={() => !disabled && inputRef.current?.click()}
         onDrop={onDrop}
         onDragOver={onDragOver}
-        onDragLeave={onDragLeave}
+        onDragLeave={() => setIsDragging(false)}
         aria-disabled={disabled}
         role="button"
         tabIndex={disabled ? -1 : 0}
-        data-dragging={isDragging}
       >
         <input
           ref={inputRef}
@@ -95,20 +101,20 @@ const FileUploader: React.FC<FileUploaderProps> = ({
           hidden
           onChange={(e) => handleFiles(e.target.files)}
         />
-        <span>{label}</span>
-        {hint && <span>{hint}</span>}
-      </div>
+        <DropZoneLabel>{label}</DropZoneLabel>
+        {hint && <HintText>{hint}</HintText>}
+      </DropZone>
       {files.length > 0 && (
-        <ul>
+        <FileList>
           {files.map((file, i) => (
-            <li key={`${file.name}-${i}`}>
+            <FileListItem key={`${file.name}-${i}`}>
               <span>{file.name}</span>
-              <button type="button" onClick={() => removeFile(i)}>
+              <RemoveButton type="button" onClick={() => removeFile(i)}>
                 Remove
-              </button>
-            </li>
+              </RemoveButton>
+            </FileListItem>
           ))}
-        </ul>
+        </FileList>
       )}
     </div>
   );
