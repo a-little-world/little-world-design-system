@@ -20,6 +20,14 @@ export {
   CardFooter,
 } from './components/Card/Card';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
+export {
+  default as CheckboxGroup,
+  MultiCheckbox,
+} from './components/CheckboxGroup/CheckboxGroup';
+export type {
+  CheckboxGroupProps,
+  MultiCheckboxProps,
+} from './components/CheckboxGroup/CheckboxGroup';
 export { default as Select } from './components/Select/Select';
 export type { SelectProps } from './components/Select/Select';
 export { default as Gradient } from './components/Gradient/Gradient';
