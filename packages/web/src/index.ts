@@ -63,6 +63,8 @@ export {
   LoadingSizes,
   LoadingType,
 } from './components/Loading/Loading';
+export { default as FileUploader } from './components/FileUploader/FileUploader';
+export type { FileUploaderProps } from './components/FileUploader/FileUploader';
 export { default as Modal } from './components/Modal/Modal';
 export {
   default as CheckboxGroup,
