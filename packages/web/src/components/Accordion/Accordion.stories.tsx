@@ -3,6 +3,7 @@ import React from 'react';
 import Text from '../Text/Text';
 import Accordion, { AccordionContent } from './Accordion';
 import FieldGrid, { FieldGridColumns } from '../FieldGrid/FieldGrid';
+import DatePicker from '../DatePicker/DatePicker';
 import Select from '../Select/Select';
 import TextInput from '../TextInput/TextInput';
 import styled from 'styled-components';
@@ -30,7 +31,7 @@ export const LongFormSectionGrouping = () => (
           <FieldGrid columns={FieldGridColumns.Two}>
             <TextInput label="First name" id="first-name" />
             <TextInput label="Last name" id="last-name" />
-            <TextInput label="Date of birth" id="dob" placeholder="DD/MM/YYYY" />
+            <DatePicker label="Date of birth" id="dob" maxDate={new Date()} />
             <Select
               label="Gender"
               onValueChange={() => null}
