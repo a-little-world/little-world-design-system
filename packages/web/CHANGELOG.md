@@ -1,16 +1,5 @@
 # @a-little-world/little-world-design-system
 
-## 2.20.0
-
-### Minor Changes
-
-- Add FieldError component
-
-### Patch Changes
-
-- Updated dependencies
-  - @a-little-world/little-world-design-system-core@1.16.0
-
 ## 2.19.0
 
 ### Minor Changes

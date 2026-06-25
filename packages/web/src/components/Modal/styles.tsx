@@ -6,6 +6,7 @@ export const ModalContent = styled.div`
   transform: translateY(100px);
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
+  height: 100%;
 `;
 
 export const BackdropContainer = styled.dialog<{ $active: boolean }>`
