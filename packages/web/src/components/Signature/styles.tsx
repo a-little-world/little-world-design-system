@@ -14,7 +14,7 @@ export const SignatureLabel = styled.p`
 
 export const SignatureCanvas = styled.canvas<{ $disabled: boolean }>`
   display: block;
-  border: 1px solid ${({ theme }) => theme.color?.border?.default ?? '#D1D5DB'};
+  border: 1px solid ${({ theme }) => theme.color.border.subtle};
   border-radius: 6px;
   cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'crosshair')};
   touch-action: none;
@@ -25,7 +25,7 @@ export const SignatureCanvas = styled.canvas<{ $disabled: boolean }>`
 export const ClearButton = styled.button`
   align-self: flex-end;
   background: none;
-  border: 1px solid ${({ theme }) => theme.color?.border?.default ?? '#D1D5DB'};
+  border: 1px solid ${({ theme }) => theme.color.border.subtle};
   border-radius: 6px;
   padding: 4px 12px;
   font-size: 13px;
@@ -34,7 +34,7 @@ export const ClearButton = styled.button`
   transition: background 0.15s;
 
   &:hover:not(:disabled) {
-    background: ${({ theme }) => theme.color?.surface?.hover ?? '#F9FAFB'};
+    background: ${({ theme }) => theme.color.surface.secondary};
   }
 
   &:disabled {
