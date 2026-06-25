@@ -7,7 +7,6 @@ export * from './Card';
 export * from './Checkbox';
 export * from './Combobox';
 export * from './Select';
-export * from './FieldError';
 export * from './InputError';
 export * from './Link';
 export * from './Loading';
