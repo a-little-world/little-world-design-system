@@ -1,13 +1,20 @@
 import { StyleSheet } from 'react-native';
 import { DefaultTheme } from 'styled-components/native';
 
-const TRIGGER_MIN_HEIGHT = 44;
+import {
+  TextTypes,
+  getTextStyle,
+} from '@a-little-world/little-world-design-system-core';
+
+const REM_TO_PX = 16;
 const COLUMN_HEIGHT = 200;
 const OVERLAY_COLOR = 'rgba(0,0,0,0.4)';
-const FONT_SIZE_BODY = 16;
-const FONT_SIZE_DIVIDER = 18;
-const FONT_SIZE_OPTION = 15;
-const FONT_SIZE_AMPM = 13;
+
+// Font sizes derived from the design system text scale (same as BaseText)
+const bodyFontSize = getTextStyle(TextTypes.Body5).fontSize * REM_TO_PX; // 16px
+const dividerFontSize = getTextStyle(TextTypes.Body4).fontSize * REM_TO_PX; // 20px
+const optionFontSize = getTextStyle(TextTypes.Body5).fontSize * REM_TO_PX; // 16px
+const ampmFontSize = getTextStyle(TextTypes.Body6).fontSize * REM_TO_PX; // ~14px
 
 export const getTimePickerStyles = ({ theme }: { theme: DefaultTheme }) =>
   StyleSheet.create({
@@ -21,7 +28,7 @@ export const getTimePickerStyles = ({ theme }: { theme: DefaultTheme }) =>
       backgroundColor: theme.color.surface.primary,
       paddingVertical: theme.spacing.xxsmall,
       paddingHorizontal: theme.spacing.xsmall,
-      minHeight: TRIGGER_MIN_HEIGHT,
+      minHeight: theme.spacing.xlarge,
     },
     triggerDisabled: {
       backgroundColor: theme.color.surface.disabled,
@@ -32,12 +39,12 @@ export const getTimePickerStyles = ({ theme }: { theme: DefaultTheme }) =>
     triggerText: {
       flex: 1,
       color: theme.color.text.primary,
-      fontSize: FONT_SIZE_BODY,
+      fontSize: bodyFontSize,
     },
     triggerPlaceholder: {
       flex: 1,
       color: theme.color.text.tertiary,
-      fontSize: FONT_SIZE_BODY,
+      fontSize: bodyFontSize,
     },
     overlay: {
       flex: 1,
@@ -58,13 +65,13 @@ export const getTimePickerStyles = ({ theme }: { theme: DefaultTheme }) =>
       marginBottom: theme.spacing.small,
     },
     sheetTitle: {
-      fontSize: FONT_SIZE_BODY,
+      fontSize: bodyFontSize,
       fontWeight: '600',
       color: theme.color.text.primary,
     },
     doneButton: {
       color: theme.color.text.accent,
-      fontSize: FONT_SIZE_BODY,
+      fontSize: bodyFontSize,
       fontWeight: '600',
     },
     columnsContainer: {
@@ -78,7 +85,7 @@ export const getTimePickerStyles = ({ theme }: { theme: DefaultTheme }) =>
       height: COLUMN_HEIGHT,
     },
     columnDivider: {
-      fontSize: FONT_SIZE_DIVIDER,
+      fontSize: dividerFontSize,
       fontWeight: '600',
       color: theme.color.text.secondary,
       paddingHorizontal: theme.spacing.xxxsmall,
@@ -93,11 +100,11 @@ export const getTimePickerStyles = ({ theme }: { theme: DefaultTheme }) =>
       backgroundColor: theme.color.surface.accent,
     },
     optionText: {
-      fontSize: FONT_SIZE_OPTION,
+      fontSize: optionFontSize,
       color: theme.color.text.primary,
     },
     optionTextSelected: {
-      fontSize: FONT_SIZE_OPTION,
+      fontSize: optionFontSize,
       fontWeight: '600',
       color: theme.color.text.button,
     },
@@ -118,12 +125,12 @@ export const getTimePickerStyles = ({ theme }: { theme: DefaultTheme }) =>
       backgroundColor: theme.color.surface.accent,
     },
     ampmText: {
-      fontSize: FONT_SIZE_AMPM,
+      fontSize: ampmFontSize,
       fontWeight: '600',
       color: theme.color.text.secondary,
     },
     ampmTextSelected: {
-      fontSize: FONT_SIZE_AMPM,
+      fontSize: ampmFontSize,
       fontWeight: '600',
       color: theme.color.text.button,
     },
