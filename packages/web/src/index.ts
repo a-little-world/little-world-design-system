@@ -64,6 +64,7 @@ export {
   LoadingType,
 } from './components/Loading/Loading';
 export { default as Modal } from './components/Modal/Modal';
+export type { ModalSize } from './components/Modal/styles';
 export {
   default as CheckboxGroup,
   type CheckboxGroupProps,
