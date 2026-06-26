@@ -26,7 +26,6 @@ export const ModalDialog = styled.div<{ $size: ModalSize }>`
 export const ModalHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: ${({ theme }) => theme.spacing.medium};
   border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
 `;
@@ -60,6 +59,15 @@ export const ModalContent = styled.div`
   height: 100%;
 `;
 
+export const DialogContent = styled.div`
+  transform: translateY(100px);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 export const BackdropContainer = styled.dialog<{ $active: boolean }>`
   position: fixed;
   top: 0;
@@ -90,7 +98,7 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
       transition-delay: 0ms;
       opacity: 1;
 
-      ${ModalContent} {
+      ${ModalContent}, ${DialogContent} {
         transform: translateY(0);
         opacity: 1;
         transition-delay: 150ms;
@@ -114,4 +122,10 @@ export const CloseButton = styled(Button)`
     top: ${({ theme }) => theme.spacing.medium};
     right: ${({ theme }) => theme.spacing.medium};
   }
+`;
+
+export const DialogCloseButton = styled(Button)`
+  flex-shrink: 0;
+  margin-left: auto;
+  border: none;
 `;

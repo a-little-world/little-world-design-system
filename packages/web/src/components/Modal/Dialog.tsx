@@ -8,45 +8,61 @@ import {
   ButtonVariations,
 } from '../Button/Button';
 import { CloseIcon } from '../Icon';
-import { BackdropContainer, CloseButton, ModalContent } from './styles';
+import {
+  BackdropContainer,
+  DialogCloseButton,
+  DialogContent,
+  ModalDialog,
+  ModalHeader,
+  ModalTitle,
+  ModalBody,
+  ModalFooter,
+} from './styles';
+import type { ModalSize } from './styles';
 import { ModalPortalContext } from './ModalPortalContext';
 import { useTheme } from 'styled-components';
 
-export const BACKDROP_LABEL = 'dialog backdrop';
+export const DIALOG_BACKDROP_LABEL = 'dialog backdrop';
 const CLOSE_BUTTON_LABEL = 'dialog close button';
 
-type BaseModalProps = {
-  children: any;
+type BaseDialogProps = {
+  children: React.ReactNode;
   className?: string;
   closeOnBackdropClick?: boolean;
   createInPortal?: boolean;
+  footer?: React.ReactNode;
   open: boolean;
   parent?: any;
+  size?: ModalSize;
+  title?: string;
 };
 
-type UnlockedModalProps = BaseModalProps & {
+type UnlockedDialogProps = BaseDialogProps & {
   locked?: false;
   onClose: () => void;
 };
 
-type LockedModalProps = BaseModalProps & {
+type LockedDialogProps = BaseDialogProps & {
   closeOnBackdropClick?: never;
   locked: true;
   onClose?: () => void;
 };
 
-type ModalProps = UnlockedModalProps | LockedModalProps;
+type DialogProps = UnlockedDialogProps | LockedDialogProps;
 
-const Modal = ({
+const Dialog = ({
   children,
   closeOnBackdropClick = true,
   createInPortal = true,
+  footer,
   open,
   onClose,
   locked,
   parent,
+  size = 'md',
+  title,
   className,
-}: ModalProps) => {
+}: DialogProps) => {
   const [active, setActive] = useState(false);
   const theme = useTheme();
 
@@ -104,23 +120,33 @@ const Modal = ({
     <ModalPortalContext.Provider value={backdrop}>
       <BackdropContainer
         aria-modal={true}
-        aria-label={BACKDROP_LABEL}
+        aria-label={DIALOG_BACKDROP_LABEL}
         ref={backdrop}
         $active={active && open}
       >
-        {!locked && (
-          <CloseButton
-            variation={ButtonVariations.Circle}
-            appearance={ButtonAppearance.Secondary}
-            backgroundColor={theme.color.surface.secondary}
-            color={theme.color.text.primary}
-            onClick={onClose}
-            size={ButtonSizes.Medium}
-          >
-            <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
-          </CloseButton>
-        )}
-        <ModalContent>{children}</ModalContent>
+        <DialogContent>
+          <ModalDialog $size={size}>
+            {(title || !locked) && (
+              <ModalHeader>
+                {title && <ModalTitle>{title}</ModalTitle>}
+                {!locked && (
+                  <DialogCloseButton
+                    variation={ButtonVariations.Circle}
+                    appearance={ButtonAppearance.Secondary}
+                    backgroundColor={theme.color.surface.secondary}
+                    color={theme.color.text.primary}
+                    onClick={onClose}
+                    size={ButtonSizes.Medium}
+                  >
+                    <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
+                  </DialogCloseButton>
+                )}
+              </ModalHeader>
+            )}
+            <ModalBody>{children}</ModalBody>
+            {footer && <ModalFooter>{footer}</ModalFooter>}
+          </ModalDialog>
+        </DialogContent>
       </BackdropContainer>
     </ModalPortalContext.Provider>
   );
@@ -129,4 +155,4 @@ const Modal = ({
   return null;
 };
 
-export default Modal;
+export default Dialog;
