@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
-import { ViewerWrapper, StatusOverlay, DownloadLink, StyledIframe } from './styles';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  ViewerWrapper,
+  StatusOverlay,
+  DownloadLink,
+  StyledIframe,
+} from './styles';
 
 export interface PDFViewerProps {
   src: string;
@@ -15,6 +20,12 @@ export interface PDFViewerProps {
 const toCSSValue = (v: string | number): string =>
   typeof v === 'number' ? `${v}px` : v;
 
+const buildSrc = (src: string, showToolbar: boolean): string => {
+  if (showToolbar) return src;
+  const [base] = src.split('#');
+  return `${base}#toolbar=0`;
+};
+
 const PDFViewer: React.FC<PDFViewerProps> = ({
   src,
   title = 'PDF document',
@@ -25,9 +36,34 @@ const PDFViewer: React.FC<PDFViewerProps> = ({
   onLoad,
   onError,
 }) => {
-  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
+  const iframeSrc = buildSrc(src, showToolbar);
 
-  const iframeSrc = showToolbar ? src : `${src}#toolbar=0`;
+  const [prevSrc, setPrevSrc] = useState(iframeSrc);
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>(
+    'loading',
+  );
+
+  if (prevSrc !== iframeSrc) {
+    setPrevSrc(iframeSrc);
+    setStatus('loading');
+  }
+
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const onErrorRef = useRef(onError);
+  onErrorRef.current = onError;
+
+  // React delegates 'error' events via root capture, which is unreliable for
+  // iframes in jsdom. Attach the listener directly to the DOM element instead.
+  useEffect(() => {
+    const el = iframeRef.current;
+    if (!el) return;
+    const handleError = () => {
+      setStatus('error');
+      onErrorRef.current?.();
+    };
+    el.addEventListener('error', handleError);
+    return () => el.removeEventListener('error', handleError);
+  }, []);
 
   return (
     <ViewerWrapper
@@ -49,16 +85,13 @@ const PDFViewer: React.FC<PDFViewerProps> = ({
         </StatusOverlay>
       )}
       <StyledIframe
+        ref={iframeRef}
         src={iframeSrc}
         title={title}
         style={{ display: status === 'error' ? 'none' : 'block' }}
         onLoad={() => {
           setStatus('ready');
           onLoad?.();
-        }}
-        onError={() => {
-          setStatus('error');
-          onError?.();
         }}
       />
     </ViewerWrapper>

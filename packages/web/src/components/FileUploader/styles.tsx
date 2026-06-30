@@ -9,16 +9,14 @@ export const DropZone = styled.div<{ $dragging: boolean; $disabled: boolean }>`
   padding: 32px;
   border: 2px dashed
     ${({ theme, $dragging }) =>
-      $dragging
-        ? theme.color.border.accent
-        : theme.color.border.subtle};
+      $dragging ? theme.color.border.accent : theme.color.border.subtle};
   border-radius: 8px;
   background: ${({ theme, $dragging }) =>
-    $dragging
-      ? theme.color.surface.subtle
-      : theme.color.surface.primary};
+    $dragging ? theme.color.surface.subtle : theme.color.surface.primary};
   cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
   outline: none;
 
   ${({ $disabled }) =>

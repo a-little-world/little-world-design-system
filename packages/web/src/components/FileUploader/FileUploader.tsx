@@ -35,28 +35,37 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   const [files, setFiles] = useState<File[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const validate = useCallback(
-    (incoming: File[]): File[] => {
-      if (maxSizeBytes) {
-        const oversized = incoming.find((f) => f.size > maxSizeBytes);
-        if (oversized) {
-          onError?.(`File "${oversized.name}" exceeds the size limit.`);
-          return [];
-        }
-      }
-      return [...files, ...incoming].slice(0, maxFiles);
-    },
-    [files, maxFiles, maxSizeBytes, onError],
-  );
-
   const handleFiles = useCallback(
     (incoming: FileList | null) => {
       if (!incoming) return;
-      const validated = validate(Array.from(incoming));
-      setFiles(validated);
-      onFilesChange?.(validated);
+      const incomingArr = Array.from(incoming);
+
+      const oversized = maxSizeBytes
+        ? incomingArr.filter(f => f.size > maxSizeBytes)
+        : [];
+      if (oversized.length > 0) {
+        oversized.forEach(f =>
+          onError?.(`File "${f.name}" exceeds the size limit.`),
+        );
+      }
+
+      const valid = maxSizeBytes
+        ? incomingArr.filter(f => f.size <= maxSizeBytes)
+        : incomingArr;
+
+      setFiles(prev => {
+        const merged = [...prev, ...valid];
+        if (merged.length > maxFiles) {
+          onError?.(
+            `Only ${maxFiles} file${maxFiles !== 1 ? 's' : ''} can be uploaded at a time.`,
+          );
+        }
+        const next = merged.slice(0, maxFiles);
+        onFilesChange?.(next);
+        return next;
+      });
     },
-    [validate, onFilesChange],
+    [maxFiles, maxSizeBytes, onError, onFilesChange],
   );
 
   const onDrop = useCallback(
@@ -74,10 +83,18 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     if (!disabled) setIsDragging(true);
   };
 
+  const onDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setIsDragging(false);
+    }
+  };
+
   const removeFile = (index: number) => {
-    const next = files.filter((_, i) => i !== index);
-    setFiles(next);
-    onFilesChange?.(next);
+    setFiles(prev => {
+      const next = prev.filter((_, i) => i !== index);
+      onFilesChange?.(next);
+      return next;
+    });
   };
 
   return (
@@ -88,7 +105,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
         onClick={() => !disabled && inputRef.current?.click()}
         onDrop={onDrop}
         onDragOver={onDragOver}
-        onDragLeave={() => setIsDragging(false)}
+        onDragLeave={onDragLeave}
         aria-disabled={disabled}
         role="button"
         tabIndex={disabled ? -1 : 0}
@@ -99,7 +116,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
           accept={accept}
           multiple={multiple}
           hidden
-          onChange={(e) => handleFiles(e.target.files)}
+          onChange={e => handleFiles(e.target.files)}
         />
         <DropZoneLabel>{label}</DropZoneLabel>
         {hint && <HintText>{hint}</HintText>}
@@ -107,7 +124,9 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       {files.length > 0 && (
         <FileList>
           {files.map((file, i) => (
-            <FileListItem key={`${file.name}-${i}`}>
+            <FileListItem
+              key={`${file.name}-${file.size}-${file.lastModified}`}
+            >
               <span>{file.name}</span>
               <RemoveButton type="button" onClick={() => removeFile(i)}>
                 Remove

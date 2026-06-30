@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useId, useRef, useState } from 'react';
+import {
+  SignatureWrapper,
+  SignatureLabel,
+  SignatureCanvas,
+  ClearButton,
+} from './styles';
 
 export interface SignatureProps {
   width?: number;
@@ -26,66 +32,79 @@ const Signature: React.FC<SignatureProps> = ({
   clearLabel = 'Clear',
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);
+  const labelId = useId();
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    ctxRef.current = ctx;
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, width, height);
   }, [width, height, backgroundColor]);
 
-  const getPos = (e: React.MouseEvent | React.TouchEvent) => {
-    const canvas = canvasRef.current!;
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = width / rect.width;
-    const scaleY = height / rect.height;
-    if ('touches' in e) {
-      return {
-        x: (e.touches[0].clientX - rect.left) * scaleX,
-        y: (e.touches[0].clientY - rect.top) * scaleY,
-      };
-    }
-    return {
-      x: (e.clientX - rect.left) * scaleX,
-      y: (e.clientY - rect.top) * scaleY,
-    };
-  };
+  useEffect(() => {
+    const ctx = ctxRef.current;
+    if (!ctx) return;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+  }, []);
+
+  const getPos = useCallback(
+    (e: React.MouseEvent | React.TouchEvent) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return { x: 0, y: 0 };
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = width / rect.width;
+      const scaleY = height / rect.height;
+      if ('touches' in e && e.touches.length > 0) {
+        return {
+          x: (e.touches[0].clientX - rect.left) * scaleX,
+          y: (e.touches[0].clientY - rect.top) * scaleY,
+        };
+      }
+      if ('clientX' in e) {
+        return {
+          x: (e.clientX - rect.left) * scaleX,
+          y: (e.clientY - rect.top) * scaleY,
+        };
+      }
+      return { x: 0, y: 0 };
+    },
+    [width, height],
+  );
 
   const startDraw = useCallback(
     (e: React.MouseEvent | React.TouchEvent) => {
       if (disabled) return;
       e.preventDefault();
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d')!;
+      const ctx = ctxRef.current;
+      if (!ctx) return;
       const { x, y } = getPos(e);
       ctx.beginPath();
       ctx.moveTo(x, y);
       setIsDrawing(true);
     },
-    [disabled],
+    [disabled, getPos],
   );
 
   const draw = useCallback(
     (e: React.MouseEvent | React.TouchEvent) => {
       if (!isDrawing || disabled) return;
       e.preventDefault();
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d')!;
+      const ctx = ctxRef.current;
+      if (!ctx) return;
       ctx.strokeStyle = strokeColor;
       ctx.lineWidth = strokeWidth;
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
       const { x, y } = getPos(e);
       ctx.lineTo(x, y);
       ctx.stroke();
     },
-    [isDrawing, disabled, strokeColor, strokeWidth],
+    [isDrawing, disabled, strokeColor, strokeWidth, getPos],
   );
 
   const stopDraw = useCallback(() => {
@@ -99,8 +118,8 @@ const Signature: React.FC<SignatureProps> = ({
 
   const clear = () => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d')!;
+    const ctx = ctxRef.current;
+    if (!canvas || !ctx) return;
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, width, height);
     setIsEmpty(true);
@@ -109,24 +128,15 @@ const Signature: React.FC<SignatureProps> = ({
   };
 
   return (
-    <div>
-      <p id="signature-label" style={{ margin: '0 0 4px', fontSize: 13 }}>
-        {label}
-      </p>
-      <canvas
+    <SignatureWrapper>
+      <SignatureLabel id={labelId}>{label}</SignatureLabel>
+      <SignatureCanvas
         ref={canvasRef}
         width={width}
         height={height}
-        aria-labelledby="signature-label"
+        aria-labelledby={labelId}
         role="img"
-        style={{
-          display: 'block',
-          border: '1px solid #D1D5DB',
-          borderRadius: 6,
-          cursor: disabled ? 'not-allowed' : 'crosshair',
-          touchAction: 'none',
-          opacity: disabled ? 0.5 : 1,
-        }}
+        $disabled={disabled}
         onMouseDown={startDraw}
         onMouseMove={draw}
         onMouseUp={stopDraw}
@@ -135,15 +145,10 @@ const Signature: React.FC<SignatureProps> = ({
         onTouchMove={draw}
         onTouchEnd={stopDraw}
       />
-      <button
-        type="button"
-        onClick={clear}
-        disabled={disabled || isEmpty}
-        style={{ marginTop: 8, fontSize: 13 }}
-      >
+      <ClearButton type="button" onClick={clear} disabled={disabled || isEmpty}>
         {clearLabel}
-      </button>
-    </div>
+      </ClearButton>
+    </SignatureWrapper>
   );
 };
 

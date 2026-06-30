@@ -11,7 +11,7 @@ const LineChart: React.FC<ChartBaseProps> = ({
   showValues = false,
   className,
 }) => {
-  const max = Math.max(...data.map((d) => d.value), 1);
+  const max = data.reduce((m, d) => Math.max(m, d.value), 1);
   const padX = 30;
   const padY = 20;
   const innerW = width - padX * 2;
@@ -24,11 +24,15 @@ const LineChart: React.FC<ChartBaseProps> = ({
     value: d.value,
   }));
 
-  const polyline = points.map((p) => `${p.x},${p.y}`).join(' ');
+  const polyline = points.map(p => `${p.x},${p.y}`).join(' ');
 
   return (
     <figure className={className} aria-label={title} style={{ margin: 0 }}>
-      {title && <figcaption style={{ textAlign: 'center', marginBottom: 8 }}>{title}</figcaption>}
+      {title && (
+        <figcaption style={{ textAlign: 'center', marginBottom: 8 }}>
+          {title}
+        </figcaption>
+      )}
       <svg width={width} height={height} role="img" aria-label={title}>
         <polyline
           points={polyline}
@@ -38,14 +42,26 @@ const LineChart: React.FC<ChartBaseProps> = ({
           strokeLinejoin="round"
           strokeLinecap="round"
         />
-        {points.map((p) => (
+        {points.map(p => (
           <g key={p.label}>
             <circle cx={p.x} cy={p.y} r={4} fill={DEFAULT_COLOR} />
-            <text x={p.x} y={height - 6} textAnchor="middle" fontSize={11} fill="#6B7280">
+            <text
+              x={p.x}
+              y={height - 6}
+              textAnchor="middle"
+              fontSize={11}
+              fill="#6B7280"
+            >
               {p.label}
             </text>
             {showValues && (
-              <text x={p.x} y={p.y - 8} textAnchor="middle" fontSize={11} fill="#374151">
+              <text
+                x={p.x}
+                y={p.y - 8}
+                textAnchor="middle"
+                fontSize={11}
+                fill="#374151"
+              >
                 {p.value}
               </text>
             )}

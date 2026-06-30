@@ -1,5 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { TableWrapper, StyledTable, TableHead, TableBody, EmptyCell } from './styles';
+import {
+  TableWrapper,
+  StyledTable,
+  TableHead,
+  TableBody,
+  EmptyCell,
+} from './styles';
 
 export type SortDirection = 'asc' | 'desc' | null;
 
@@ -19,6 +25,15 @@ export interface TableProps<T = Record<string, unknown>> {
   loading?: boolean;
   onRowClick?: (row: T, index: number) => void;
   rowKey: (row: T) => string | number;
+}
+
+function getAriaSortDir(
+  sortKey: string | null,
+  sortDir: SortDirection,
+  colKey: string,
+): 'ascending' | 'descending' | undefined {
+  if (sortKey !== colKey) return undefined;
+  return sortDir === 'asc' ? 'ascending' : 'descending';
 }
 
 function Table<T = Record<string, unknown>>({
@@ -47,16 +62,59 @@ function Table<T = Record<string, unknown>>({
 
   const sortedData = useMemo(() => {
     if (!sortKey || !sortDir) return data;
-    const col = columns.find((c) => c.key === sortKey);
+    const col = columns.find(c => c.key === sortKey);
     if (!col) return data;
     return [...data].sort((a, b) => {
       const av = col.accessor(a);
       const bv = col.accessor(b);
-      const aStr = typeof av === 'string' || typeof av === 'number' ? String(av) : '';
-      const bStr = typeof bv === 'string' || typeof bv === 'number' ? String(bv) : '';
-      return sortDir === 'asc' ? aStr.localeCompare(bStr) : bStr.localeCompare(aStr);
+      if (typeof av === 'number' && typeof bv === 'number') {
+        return sortDir === 'asc' ? av - bv : bv - av;
+      }
+      const aStr =
+        typeof av === 'string' || typeof av === 'number' ? String(av) : '';
+      const bStr =
+        typeof bv === 'string' || typeof bv === 'number' ? String(bv) : '';
+      return sortDir === 'asc'
+        ? aStr.localeCompare(bStr)
+        : bStr.localeCompare(aStr);
     });
   }, [data, sortKey, sortDir, columns]);
+
+  const renderBody = () => {
+    if (loading) {
+      return (
+        <tr>
+          <EmptyCell colSpan={columns.length} aria-live="polite">
+            Loading…
+          </EmptyCell>
+        </tr>
+      );
+    }
+    if (sortedData.length === 0) {
+      return (
+        <tr>
+          <EmptyCell colSpan={columns.length}>{emptyMessage}</EmptyCell>
+        </tr>
+      );
+    }
+    return sortedData.map((row, i) => (
+      <tr
+        key={rowKey(row)}
+        onClick={() => onRowClick?.(row, i)}
+        style={{ cursor: onRowClick ? 'pointer' : undefined }}
+        tabIndex={onRowClick ? 0 : undefined}
+        onKeyDown={e => {
+          if (onRowClick && (e.key === 'Enter' || e.key === ' ')) {
+            onRowClick(row, i);
+          }
+        }}
+      >
+        {columns.map(col => (
+          <td key={col.key}>{col.accessor(row)}</td>
+        ))}
+      </tr>
+    ));
+  };
 
   return (
     <TableWrapper role="region" aria-label={caption ?? 'Data table'}>
@@ -64,17 +122,11 @@ function Table<T = Record<string, unknown>>({
         {caption && <caption>{caption}</caption>}
         <TableHead>
           <tr>
-            {columns.map((col) => (
+            {columns.map(col => (
               <th
                 key={col.key}
                 style={{ width: col.width }}
-                aria-sort={
-                  sortKey === col.key
-                    ? sortDir === 'asc'
-                      ? 'ascending'
-                      : 'descending'
-                    : undefined
-                }
+                aria-sort={getAriaSortDir(sortKey, sortDir, col.key)}
               >
                 {col.sortable ? (
                   <button
@@ -92,37 +144,7 @@ function Table<T = Record<string, unknown>>({
             ))}
           </tr>
         </TableHead>
-        <TableBody>
-          {loading ? (
-            <tr>
-              <EmptyCell colSpan={columns.length} aria-live="polite">
-                Loading…
-              </EmptyCell>
-            </tr>
-          ) : sortedData.length === 0 ? (
-            <tr>
-              <EmptyCell colSpan={columns.length}>{emptyMessage}</EmptyCell>
-            </tr>
-          ) : (
-            sortedData.map((row, i) => (
-              <tr
-                key={rowKey(row)}
-                onClick={() => onRowClick?.(row, i)}
-                style={{ cursor: onRowClick ? 'pointer' : undefined }}
-                tabIndex={onRowClick ? 0 : undefined}
-                onKeyDown={(e) => {
-                  if (onRowClick && (e.key === 'Enter' || e.key === ' ')) {
-                    onRowClick(row, i);
-                  }
-                }}
-              >
-                {columns.map((col) => (
-                  <td key={col.key}>{col.accessor(row)}</td>
-                ))}
-              </tr>
-            ))
-          )}
-        </TableBody>
+        <TableBody>{renderBody()}</TableBody>
       </StyledTable>
     </TableWrapper>
   );
