@@ -64,6 +64,8 @@ export {
   LoadingType,
 } from './components/Loading/Loading';
 export { default as Modal } from './components/Modal/Modal';
+export { default as Table } from './components/Table/Table';
+export type { TableProps, Column, SortDirection } from './components/Table/Table';
 export {
   default as CheckboxGroup,
   type CheckboxGroupProps,
