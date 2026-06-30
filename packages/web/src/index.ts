@@ -63,9 +63,11 @@ export {
   LoadingSizes,
   LoadingType,
 } from './components/Loading/Loading';
+export { default as FileUploader } from './components/FileUploader/FileUploader';
+export type { FileUploaderProps } from './components/FileUploader/FileUploader';
 export { default as Modal } from './components/Modal/Modal';
-export { default as Signature } from './components/Signature/Signature';
-export type { SignatureProps } from './components/Signature/Signature';
+export { default as PDFViewer } from './components/PDFViewer/PDFViewer';
+export type { PDFViewerProps } from './components/PDFViewer/PDFViewer';
 export {
   default as CheckboxGroup,
   type CheckboxGroupProps,
