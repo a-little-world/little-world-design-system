@@ -1,5 +1,15 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.16.0
+
+### Minor Changes
+
+- Add PDFViewer component types and props
+- Add ChartLibrary types (BarChart, LineChart, PieChart) with chart-specific props
+- Add FileUploader component types and props
+- Add Table/DataGrid component types with column and sorting definitions
+- Add Signature component types for canvas capture
+
 ## 1.15.0
 
 ### Minor Changes

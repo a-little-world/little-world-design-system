@@ -1,5 +1,20 @@
 # @a-little-world/little-world-design-system
 
+## 2.20.0
+
+### Minor Changes
+
+- Add PDFViewer component for embedded PDF preview
+- Add ChartLibrary with BarChart, LineChart, and PieChart components
+- Add FileUploader component with drag-and-drop support
+- Add Table/DataGrid component for data display
+- Add Signature component for canvas-based signature capture
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.16.0
+
 ## 2.19.0
 
 ### Minor Changes
