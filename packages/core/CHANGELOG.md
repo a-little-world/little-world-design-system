@@ -1,24 +1,19 @@
 # @a-little-world/little-world-design-system-core
 
-## 1.16.0
-
-### Minor Changes
-
-- Add PDFViewer component types and props
-- Add ChartLibrary types (BarChart, LineChart, PieChart) with chart-specific props
-- Add FileUploader component types and props
-- Add Table/DataGrid component types with column and sorting definitions
-- Add Signature component types for canvas capture
-
 ## 1.15.0
 
 ### Minor Changes
 
-- Rename Dropdown to Select
+- Create FileUploader component types and props with drag-and-drop support
+- Create Table/DataGrid component types with column and sorting definitions
+- Create PDFViewer component types and props for embedded PDF preview
+- Create ChartLibrary types (BarChart, LineChart, PieChart) with chart-specific props
+- Create Signature component types for canvas capture
+- Create FieldHint component types for always-visible helper text
+- Create FieldGrid component types for responsive field layout
+- Rename Dropdown to Select for standardized naming
 - Rename MultiCheckbox to CheckboxGroup
-- Add orientation prop to RadioGroup
-- Add FieldHint component
-- Add FieldGrid component
+- Add orientation prop to RadioGroup for layout support
 
 ## 1.14.1
 

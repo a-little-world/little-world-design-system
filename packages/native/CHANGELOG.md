@@ -1,29 +1,19 @@
 # @a-little-world/little-world-design-system-native
 
-## 0.12.0
-
-### Minor Changes
-
-- Add PDFViewer component for embedded PDF preview
-- Add ChartLibrary with BarChart, LineChart, and PieChart components
-- Add FileUploader component with drag-and-drop support
-- Add Table/DataGrid component for data display
-- Add Signature component for canvas-based signature capture
-
-### Patch Changes
-
-- Updated dependencies
-  - @a-little-world/little-world-design-system-core@1.16.0
-
 ## 0.11.0
 
 ### Minor Changes
 
-- Rename Dropdown to Select
+- Create FileUploader component with drag-and-drop file upload support
+- Create Table/DataGrid component for tabular data display
+- Create PDFViewer component for embedded PDF preview
+- Create ChartLibrary with BarChart, LineChart, and PieChart components for reporting views
+- Create Signature component for canvas-based signature capture
+- Create FieldHint component for always-visible helper text on fields
+- Rename Dropdown to Select for standardized naming
 - Rename MultiCheckbox to CheckboxGroup
 - Add alias Alert and FormMessage for StatusMessage
-- Add orientation prop to RadioGroup
-- Add FieldHint component
+- Add orientation prop to RadioGroup for vertical/horizontal layout support
 
 ### Patch Changes
 
