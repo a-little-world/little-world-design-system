@@ -1,6 +1,6 @@
 # @a-little-world/little-world-design-system
 
-## 2.19.0
+## 2.19.1
 
 ### Minor Changes
 
@@ -11,6 +11,16 @@
 - Create Signature component for canvas-based signature capture
 - Create FieldHint component for always-visible helper text on fields
 - Create FieldGrid component for responsive horizontal field layout
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.15.0
+
+## 2.19.0
+
+### Minor Changes
+
 - Rename Dropdown to Select for standardized naming
 - Rename MultiCheckbox to CheckboxGroup
 - Add orientation prop to RadioGroup for vertical/horizontal layout support

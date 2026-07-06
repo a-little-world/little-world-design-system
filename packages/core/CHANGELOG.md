@@ -1,6 +1,6 @@
 # @a-little-world/little-world-design-system-core
 
-## 1.15.0
+## 1.15.1
 
 ### Minor Changes
 
@@ -11,6 +11,11 @@
 - Create Signature component types for canvas capture
 - Create FieldHint component types for always-visible helper text
 - Create FieldGrid component types for responsive field layout
+
+## 1.15.0
+
+### Minor Changes
+
 - Rename Dropdown to Select for standardized naming
 - Rename MultiCheckbox to CheckboxGroup
 - Add orientation prop to RadioGroup for layout support

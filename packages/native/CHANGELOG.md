@@ -1,6 +1,6 @@
 # @a-little-world/little-world-design-system-native
 
-## 0.11.0
+## 0.11.1
 
 ### Minor Changes
 
@@ -10,6 +10,16 @@
 - Create ChartLibrary with BarChart, LineChart, and PieChart components for reporting views
 - Create Signature component for canvas-based signature capture
 - Create FieldHint component for always-visible helper text on fields
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.15.0
+
+## 0.11.0
+
+### Minor Changes
+
 - Rename Dropdown to Select for standardized naming
 - Rename MultiCheckbox to CheckboxGroup
 - Add alias Alert and FormMessage for StatusMessage
