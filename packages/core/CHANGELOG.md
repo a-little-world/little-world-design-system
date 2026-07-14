@@ -4,6 +4,11 @@
 
 ### Minor Changes
 
+**Created:**
+- Create DatePicker component types with calendar, min/max date bounds, and disabled date props
+- Create TimePicker component types with 12/24-hour format, minuteStep, and time value props
+- Create MultiSelect component types for dual-field interdependent selection
+- Create CheckboxGroup component types for multi-checkbox selection with orientation support
 - Create FileUploader component types and props with drag-and-drop support
 - Create Table/DataGrid component types with column and sorting definitions
 - Create PDFViewer component types and props for embedded PDF preview
@@ -16,9 +21,13 @@
 
 ### Minor Changes
 
+**Updated / Adjusted:**
+- Add orientation prop to RadioGroup for vertical/horizontal layout support
+
+**Renamed / Aliased:**
 - Rename Dropdown to Select for standardized naming
 - Rename MultiCheckbox to CheckboxGroup
-- Add orientation prop to RadioGroup for layout support
+- Add Alert and FormMessage as semantic aliases for StatusMessage
 
 ## 1.14.1
 

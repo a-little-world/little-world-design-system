@@ -4,13 +4,19 @@
 
 ### Minor Changes
 
+**Created:**
+- Create Select single-select component for backend-driven option fields
+- Create DatePicker component with calendar UI and min/max date validation constraints
+- Create TimePicker time selection component with 12/24-hour format and minuteStep support
+- Create MultiSelect component for dual-field interdependent selection
+- Create CheckboxGroup component with horizontal/vertical orientation and multi-selection support
+- Create FieldHint component for always-visible helper text on fields
+- Create FieldGrid component for responsive horizontal field layout
 - Create FileUploader component with drag-and-drop file upload support
 - Create Table/DataGrid component for tabular data display
 - Create PDFViewer component for embedded PDF preview
 - Create ChartLibrary with BarChart, LineChart, and PieChart components for reporting views
 - Create Signature component for canvas-based signature capture
-- Create FieldHint component for always-visible helper text on fields
-- Create FieldGrid component for responsive horizontal field layout
 
 ### Patch Changes
 
@@ -21,10 +27,14 @@
 
 ### Minor Changes
 
+**Updated / Adjusted:**
+- RadioGroup: add orientation prop for vertical/horizontal layout support
+- Accordion: integrate for long-form section grouping
+
+**Renamed / Aliased:**
 - Rename Dropdown to Select for standardized naming
 - Rename MultiCheckbox to CheckboxGroup
-- Add orientation prop to RadioGroup for vertical/horizontal layout support
-- Add alias Alert and FormMessage for StatusMessage
+- Add Alert and FormMessage as semantic aliases for StatusMessage
 
 ### Patch Changes
 
