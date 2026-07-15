@@ -42,6 +42,7 @@ export { linkedinIcon } from './linkedinIcon';
 export { logoIcon } from './logoIcon';
 export { logoutIcon } from './logoutIcon';
 export { mailIcon } from './mailIcon';
+export { mapPinIcon } from './mapPinIcon';
 export { menuIcon } from './menuIcon';
 export { messageIcon } from './messageIcon';
 export { messageWithQuestionIcon } from './messageWithQuestionIcon';

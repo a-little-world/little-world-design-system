@@ -42,6 +42,7 @@ import {
   logoIcon,
   logoutIcon,
   mailIcon,
+  mapPinIcon,
   menuIcon,
   messageIcon,
   messageWithQuestionIcon,
@@ -308,6 +309,11 @@ export const LogoutIcon = createIconComponent({
 export const MailIcon = createIconComponent({
   name: 'Mail',
   svgData: mailIcon,
+});
+
+export const MapPinIcon = createIconComponent({
+  name: 'MapPin',
+  svgData: mapPinIcon,
 });
 
 export const MenuIcon = createIconComponent({

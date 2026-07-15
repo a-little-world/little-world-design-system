@@ -14,6 +14,7 @@ const StatusMessageWrapper = styled.div<{
   $withIcon?: boolean;
 }>`
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.xxsmall};
   width: 100%;
