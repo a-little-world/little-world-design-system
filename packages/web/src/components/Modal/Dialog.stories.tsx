@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { DialogSize } from '@a-little-world/little-world-design-system-core';
 import Button, { ButtonAppearance } from '../Button/Button';
 import Dialog from './Dialog';
 
@@ -47,19 +48,19 @@ WithFooter.args = {
 export const Small = Template.bind({});
 Small.args = {
   title: 'Small Dialog',
-  size: 'sm',
+  size: DialogSize.Small,
 };
 
 export const Large = Template.bind({});
 Large.args = {
   title: 'Large Dialog',
-  size: 'lg',
+  size: DialogSize.Large,
 };
 
 export const Fullscreen = Template.bind({});
 Fullscreen.args = {
   title: 'Fullscreen Dialog',
-  size: 'fullscreen',
+  size: DialogSize.Fullscreen,
 };
 
 export const Locked = Template.bind({});

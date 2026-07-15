@@ -1,31 +1,29 @@
 import styled, { css } from 'styled-components';
 
+import {
+  DialogSize,
+  DialogWidths,
+} from '@a-little-world/little-world-design-system-core';
 import Button from '../Button/Button';
+import Card, { CardContent, CardFooter, CardHeader } from '../Card/Card';
 
-export type ModalSize = 'sm' | 'md' | 'lg' | 'fullscreen';
-
-const modalWidths: Record<ModalSize, string> = {
-  sm: '400px',
-  md: '600px',
-  lg: '900px',
-  fullscreen: '100%',
-};
-
-export const ModalDialog = styled.div<{ $size: ModalSize }>`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background: ${({ theme }) => theme.color.surface.primary};
-  border-radius: ${({ $size }) => ($size === 'fullscreen' ? '0' : '8px')};
-  width: 100%;
-  max-width: ${({ $size }) => modalWidths[$size]};
-  max-height: ${({ $size }) => ($size === 'fullscreen' ? '100vh' : '90vh')};
+export const ModalDialog = styled(Card)<{ $size: DialogSize }>`
+  padding: 0;
+  max-width: ${({ $size }) => DialogWidths[$size]};
+  max-height: ${({ $size }) =>
+    $size === DialogSize.Fullscreen ? '100vh' : '90vh'};
   overflow: hidden;
+  ${({ $size }) =>
+    $size === DialogSize.Fullscreen &&
+    css`
+      border-radius: 0;
+      border: none;
+    `}
 `;
 
-export const ModalHeader = styled.div`
-  display: flex;
-  align-items: center;
+export const ModalHeader = styled(CardHeader).attrs({ asContainer: true })`
+  flex-direction: row;
+  margin-bottom: 0;
   padding: ${({ theme }) => theme.spacing.medium};
   border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
 `;
@@ -37,17 +35,17 @@ export const ModalTitle = styled.h2`
   color: ${({ theme }) => theme.color.text.primary};
 `;
 
-export const ModalBody = styled.div`
+export const ModalBody = styled(CardContent).attrs({ scrollable: false })`
   flex: 1;
   overflow-y: auto;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 0;
   padding: ${({ theme }) => theme.spacing.medium};
 `;
 
-export const ModalFooter = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: ${({ theme }) => theme.spacing.small};
+export const ModalFooter = styled(CardFooter).attrs({ align: 'flex-end' })`
+  margin-top: 0;
   padding: ${({ theme }) => theme.spacing.medium};
   border-top: 1px solid ${({ theme }) => theme.color.border.subtle};
 `;
