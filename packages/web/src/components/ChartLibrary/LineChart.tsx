@@ -120,11 +120,23 @@ const LineChart: React.FC<ChartBaseProps> = ({
         ))}
       </svg>
       {showLegend && (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 8 }}>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 8,
+            marginTop: 8,
+          }}
+        >
           {data.map(d => (
             <span
               key={d.label}
-              style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12 }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 4,
+                fontSize: 12,
+              }}
             >
               <span
                 style={{
