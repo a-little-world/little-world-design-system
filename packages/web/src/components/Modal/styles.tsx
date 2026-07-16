@@ -3,9 +3,11 @@ import styled, { css } from 'styled-components';
 import {
   DialogSize,
   DialogWidths,
+  TextTypes,
 } from '@a-little-world/little-world-design-system-core';
 import Button from '../Button/Button';
 import Card, { CardContent, CardFooter, CardHeader } from '../Card/Card';
+import Text from '../Text/Text';
 
 export const ModalDialog = styled(Card)<{ $size: DialogSize }>`
   padding: 0;
@@ -28,12 +30,7 @@ export const ModalHeader = styled(CardHeader).attrs({ asContainer: true })`
   border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
 `;
 
-export const ModalTitle = styled.h2`
-  margin: 0;
-  font-size: 18px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.color.text.primary};
-`;
+export const ModalTitle = styled(Text).attrs({ tag: 'h2', type: TextTypes.Heading5 })``;
 
 export const ModalBody = styled(CardContent).attrs({ scrollable: false })`
   flex: 1;
