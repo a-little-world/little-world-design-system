@@ -1,12 +1,66 @@
 import styled, { css } from 'styled-components';
 
+import {
+  DialogSize,
+  DialogWidths,
+  TextTypes,
+} from '@a-little-world/little-world-design-system-core';
 import Button from '../Button/Button';
+import Card, { CardContent, CardFooter, CardHeader } from '../Card/Card';
+import Text from '../Text/Text';
+
+export const ModalDialog = styled(Card)<{ $size: DialogSize }>`
+  padding: 0;
+  max-width: ${({ $size }) => DialogWidths[$size]};
+  max-height: ${({ $size }) =>
+    $size === DialogSize.Fullscreen ? '100vh' : '90vh'};
+  overflow: hidden;
+  ${({ $size }) =>
+    $size === DialogSize.Fullscreen &&
+    css`
+      border-radius: 0;
+      border: none;
+    `}
+`;
+
+export const ModalHeader = styled(CardHeader).attrs({ asContainer: true })`
+  flex-direction: row;
+  margin-bottom: 0;
+  padding: ${({ theme }) => theme.spacing.medium};
+  border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
+`;
+
+export const ModalTitle = styled(Text).attrs({ tag: 'h2', type: TextTypes.Heading5 })``;
+
+export const ModalBody = styled(CardContent).attrs({ scrollable: false })`
+  flex: 1;
+  overflow-y: auto;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 0;
+  padding: ${({ theme }) => theme.spacing.medium};
+`;
+
+export const ModalFooter = styled(CardFooter).attrs({ align: 'flex-end' })`
+  margin-top: 0;
+  padding: ${({ theme }) => theme.spacing.medium};
+  border-top: 1px solid ${({ theme }) => theme.color.border.subtle};
+`;
 
 export const ModalContent = styled.div`
   transform: translateY(100px);
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   height: 100%;
+`;
+
+export const DialogContent = styled.div`
+  transform: translateY(100px);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const BackdropContainer = styled.dialog<{ $active: boolean }>`
@@ -39,7 +93,7 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
       transition-delay: 0ms;
       opacity: 1;
 
-      ${ModalContent} {
+      ${ModalContent}, ${DialogContent} {
         transform: translateY(0);
         opacity: 1;
         transition-delay: 150ms;
@@ -63,4 +117,10 @@ export const CloseButton = styled(Button)`
     top: ${({ theme }) => theme.spacing.medium};
     right: ${({ theme }) => theme.spacing.medium};
   }
+`;
+
+export const DialogCloseButton = styled(Button)`
+  flex-shrink: 0;
+  margin-left: auto;
+  border: none;
 `;
