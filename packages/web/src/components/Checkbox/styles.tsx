@@ -32,19 +32,21 @@ export const CheckboxButtonContainer = styled(Checkbox.Root)<{
   display: flex;
   align-items: center;
   border: 1px solid
-    ${({ theme, checked, $hasError }) =>
-      checked
-        ? $hasError
+    ${({ theme, checked, $hasError }) => {
+      if (checked) {
+        return $hasError
           ? theme.color.border.error
-          : theme.color.border.selected
-        : theme.color.border.subtle};
+          : theme.color.border.selected;
+      }
+      return theme.color.border.subtle;
+    }};
   border-radius: ${({ theme }) => theme.radius.xxsmall};
-  background: ${({ checked, $hasError, theme }) =>
-    checked
-      ? $hasError
-        ? theme.color.surface.error
-        : theme.color.surface.accent
-      : theme.color.surface.secondary};
+  background: ${({ checked, $hasError, theme }) => {
+    if (checked) {
+      return $hasError ? theme.color.surface.error : theme.color.surface.accent;
+    }
+    return theme.color.surface.secondary;
+  }};
 
   label {
     cursor: pointer;

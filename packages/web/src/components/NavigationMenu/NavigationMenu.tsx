@@ -79,7 +79,7 @@ interface CalloutProps {
   heading: string;
   description: string;
   link: string;
-  Icon?: any;
+  Icon?: React.ElementType;
   to?: string;
   href?: string;
 }

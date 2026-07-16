@@ -27,6 +27,15 @@ export interface TableProps<T = Record<string, unknown>> {
   rowKey: (row: T) => string | number;
 }
 
+function getSortIcon(
+  sortKey: string | null,
+  sortDir: SortDirection,
+  colKey: string,
+): string {
+  if (sortKey !== colKey) return ' ↕';
+  return sortDir === 'asc' ? ' ▲' : ' ▼';
+}
+
 function getAriaSortDir(
   sortKey: string | null,
   sortDir: SortDirection,
@@ -136,11 +145,7 @@ function Table<T = Record<string, unknown>>({
                   >
                     {col.header}
                     <span aria-hidden="true">
-                      {sortKey === col.key
-                        ? sortDir === 'asc'
-                          ? ' ▲'
-                          : ' ▼'
-                        : ' ↕'}
+                      {getSortIcon(sortKey, sortDir, col.key)}
                     </span>
                   </button>
                 ) : (

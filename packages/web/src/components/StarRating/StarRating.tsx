@@ -82,7 +82,7 @@ const StarRating = ({
       setRating(roundedRating);
       onChange?.(roundedRating);
     },
-    [onChange],
+    [onChange, enableHalfRatings],
   );
 
   const calculateRating = (starNumber: number) => {
@@ -159,7 +159,7 @@ const StarRating = ({
           };
           return (
             <StarContainer
-              key={index}
+              key={starNumber}
               onClick={handleClick}
               onMouseMove={e => handleMouseMove(e, index)}
               onMouseLeave={handleMouseLeave}

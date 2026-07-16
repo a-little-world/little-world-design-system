@@ -24,7 +24,7 @@ interface TagInfo {
   start: number;
   end: number;
   tagName: string;
-  attributes: Record<string, any>;
+  attributes: Record<string, unknown>;
   hasClosingTag: boolean;
   contentStart: number;
   contentEnd: number;
@@ -33,7 +33,7 @@ interface TagInfo {
 interface ParserOptions {
   customElements?: {
     Component: React.ElementType;
-    props?: Record<string, any>;
+    props?: Record<string, unknown>;
     tag: string;
   }[];
   onlyLinks?: boolean;
@@ -63,7 +63,7 @@ const findTags = (text: string): TagInfo[] => {
         firstSpace === -1 ? '' : tagContent.substring(firstSpace + 1);
 
       // Parse attributes safely
-      let attributes: Record<string, any> = {};
+      let attributes: Record<string, unknown> = {};
       if (attributesText.trim()) {
         try {
           attributes = JSON.parse(attributesText);
@@ -324,7 +324,8 @@ const textParser = (text: string, options: ParserOptions = {}) => {
       {components.map((section, index) =>
         typeof section === 'string'
           ? section
-          : React.cloneElement(section, { key: index }),
+          : // eslint-disable-next-line react/no-array-index-key
+            React.cloneElement(section, { key: index }),
       )}
     </span>
   );

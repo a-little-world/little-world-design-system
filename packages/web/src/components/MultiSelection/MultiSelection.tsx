@@ -29,7 +29,7 @@ const MultiSelection: React.FC<Props> = ({
 
   useEffect(() => {
     setSelected(preSelected);
-  }, [JSON.stringify([preSelected])]);
+  }, [preSelected]);
 
   const handleOnClick = (newSelection: string[]) => {
     setSelected(newSelection);

@@ -21,7 +21,13 @@ const Details = styled.div`
   line-height: 1.5;
 `;
 
-export const TypographyItem = ({ item, details }: any) => (
+export const TypographyItem = ({
+  item,
+  details,
+}: {
+  item: React.ReactNode;
+  details: React.ReactNode;
+}) => (
   <Item>
     {item}
     <Details>{details}</Details>

@@ -211,7 +211,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
             {day}
           </CalendarDayLabel>
         ))}
-        {calendarDays.map((date, index) => {
+        {calendarDays.map(date => {
           const isCurrentMonth = date.getMonth() === viewMonth;
           const isSelected = selectedDate
             ? isSameDay(date, selectedDate)
@@ -226,7 +226,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
 
           return (
             <CalendarDay
-              key={index}
+              key={date.toISOString()}
               role="gridcell"
               type="button"
               $isCurrentMonth={isCurrentMonth}

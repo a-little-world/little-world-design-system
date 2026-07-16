@@ -16,12 +16,12 @@ export const BACKDROP_LABEL = 'dialog backdrop';
 const CLOSE_BUTTON_LABEL = 'dialog close button';
 
 type BaseModalProps = {
-  children: any;
+  children: React.ReactNode;
   className?: string;
   closeOnBackdropClick?: boolean;
   createInPortal?: boolean;
   open: boolean;
-  parent?: any;
+  parent?: Element | null;
 };
 
 type UnlockedModalProps = BaseModalProps & {
