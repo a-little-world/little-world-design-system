@@ -80,7 +80,7 @@ export { BarChart, LineChart, PieChart } from './components/ChartLibrary/index';
 export type {
   ChartBaseProps,
   DataPoint,
-} from './components/ChartLibrary/types';
+} from './components/ChartLibrary/index';
 export {
   default as CheckboxGroup,
   type CheckboxGroupProps,

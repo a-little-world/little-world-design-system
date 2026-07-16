@@ -135,7 +135,13 @@ function Table<T = Record<string, unknown>>({
                     aria-label={`Sort by ${col.key}`}
                   >
                     {col.header}
-                    {sortKey === col.key && (sortDir === 'asc' ? ' ▲' : ' ▼')}
+                    <span aria-hidden="true">
+                      {sortKey === col.key
+                        ? sortDir === 'asc'
+                          ? ' ▲'
+                          : ' ▼'
+                        : ' ↕'}
+                    </span>
                   </button>
                 ) : (
                   col.header

@@ -15,22 +15,31 @@ interface User {
 }
 
 const USERS: User[] = [
-  { id: 1, name: 'Alice Martin', email: 'alice@example.com', role: 'Admin', status: 'active' },
-  { id: 2, name: 'Bob Chen', email: 'bob@example.com', role: 'Editor', status: 'active' },
-  { id: 3, name: 'Carol White', email: 'carol@example.com', role: 'Viewer', status: 'inactive' },
-  { id: 4, name: 'Dan Garcia', email: 'dan@example.com', role: 'Editor', status: 'active' },
+  { id: 1, name: 'Alice Martin',  email: 'alice@example.com',  role: 'Admin',  status: 'active'   },
+  { id: 2, name: 'Bob Chen',      email: 'bob@example.com',    role: 'Editor', status: 'active'   },
+  { id: 3, name: 'Carol White',   email: 'carol@example.com',  role: 'Viewer', status: 'inactive' },
+  { id: 4, name: 'Dan Garcia',    email: 'dan@example.com',    role: 'Editor', status: 'active'   },
+  { id: 5, name: 'Eva Müller',    email: 'eva@example.com',    role: 'Admin',  status: 'active'   },
+  { id: 6, name: 'Frank Okafor',  email: 'frank@example.com',  role: 'Viewer', status: 'inactive' },
 ];
 
 const USER_COLUMNS: Column<User>[] = [
-  { key: 'name', header: 'Name', accessor: (u) => u.name, sortable: true },
-  { key: 'email', header: 'Email', accessor: (u) => u.email, sortable: true },
-  { key: 'role', header: 'Role', accessor: (u) => u.role, sortable: true },
+  { key: 'name',   header: 'Name',   accessor: (u) => u.name,   sortable: true },
+  { key: 'email',  header: 'Email',  accessor: (u) => u.email,  sortable: true },
+  { key: 'role',   header: 'Role',   accessor: (u) => u.role,   sortable: true },
+  { key: 'status', header: 'Status', accessor: (u) => u.status },
+];
+
+const NO_SORT_COLUMNS: Column<User>[] = [
+  { key: 'name',   header: 'Name',   accessor: (u) => u.name   },
+  { key: 'email',  header: 'Email',  accessor: (u) => u.email  },
+  { key: 'role',   header: 'Role',   accessor: (u) => u.role   },
   { key: 'status', header: 'Status', accessor: (u) => u.status },
 ];
 
 export const Default = () => (
   <Table
-    columns={USER_COLUMNS}
+    columns={NO_SORT_COLUMNS}
     data={USERS}
     rowKey={(u) => u.id}
     caption="User list"
@@ -42,7 +51,7 @@ export const Sortable = () => (
     columns={USER_COLUMNS}
     data={USERS}
     rowKey={(u) => u.id}
-    caption="Sortable user list"
+    caption="Click Name, Email or Role headers to sort"
   />
 );
 

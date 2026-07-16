@@ -1,5 +1,6 @@
 import React from 'react';
-import type { ChartBaseProps } from './types';
+import type { ChartBaseProps } from '@a-little-world/little-world-design-system-core';
+import { useChartWidth } from './useChartWidth';
 
 const DEFAULT_COLORS = [
   '#6366F1',
@@ -36,11 +37,12 @@ const slicePath = (
 const PieChart: React.FC<ChartBaseProps> = ({
   data,
   title,
-  width = 260,
+  width: propWidth,
   height = 260,
   showLegend = true,
   className,
 }) => {
+  const { ref, width } = useChartWidth(propWidth);
   const rawTotal = data.reduce((s, d) => s + d.value, 0);
   const total = rawTotal || 1;
   const cx = width / 2;
@@ -62,7 +64,12 @@ const PieChart: React.FC<ChartBaseProps> = ({
   });
 
   return (
-    <figure className={className} aria-label={title} style={{ margin: 0 }}>
+    <figure
+      ref={ref}
+      className={className}
+      aria-label={title}
+      style={{ margin: 0, width: propWidth ?? '100%' }}
+    >
       {title && (
         <figcaption style={{ textAlign: 'center', marginBottom: 8 }}>
           {title}

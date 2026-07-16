@@ -1,11 +1,27 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTheme } from 'styled-components';
+import {
+  ButtonAppearance,
+  ButtonSizes,
+} from '@a-little-world/little-world-design-system-core';
+import Button from '../Button/Button';
+import { CloseIcon, UploadIcon } from '../Icon';
 import {
   DropZone,
-  DropZoneLabel,
+  DropZoneIcon,
+  EmptyState,
+  EmptyTitle,
   HintText,
-  FileList,
-  FileListItem,
-  RemoveButton,
+  InlineFileItem,
+  InlineFileList,
+  InlineFooter,
+  PreviewArea,
+  PreviewCaption,
+  PreviewColumn,
+  PreviewFooter,
+  PreviewImage,
+  RemoveFileButton,
+  RemoveImageButton,
 } from './styles';
 
 export interface FileUploaderProps {
@@ -31,9 +47,24 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   label = 'Drag & drop files here, or click to browse',
   hint,
 }) => {
+  const theme = useTheme();
   const [isDragging, setIsDragging] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const isSingleImagePreview =
+    files.length === 1 && files[0].type.startsWith('image/');
+
+  useEffect(() => {
+    if (!isSingleImagePreview) {
+      setPreviewUrl(null);
+      return;
+    }
+    const url = URL.createObjectURL(files[0]);
+    setPreviewUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [files, isSingleImagePreview]);
 
   const handleFiles = useCallback(
     (incoming: FileList | null) => {
@@ -68,6 +99,18 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     [maxFiles, maxSizeBytes, onError, onFilesChange],
   );
 
+  const removeFile = (index: number) => {
+    setFiles(prev => {
+      const next = prev.filter((_, i) => i !== index);
+      onFilesChange?.(next);
+      return next;
+    });
+  };
+
+  const openPicker = () => {
+    if (!disabled) inputRef.current?.click();
+  };
+
   const onDrop = useCallback(
     (e: React.DragEvent<HTMLDivElement>) => {
       e.preventDefault();
@@ -89,53 +132,126 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     }
   };
 
-  const removeFile = (index: number) => {
-    setFiles(prev => {
-      const next = prev.filter((_, i) => i !== index);
-      onFilesChange?.(next);
-      return next;
-    });
-  };
+  const renderContent = () => {
+    if (files.length === 0) {
+      return (
+        <EmptyState>
+          <DropZoneIcon>
+            <UploadIcon
+              label=""
+              height="40"
+              width="40"
+              color={theme.color.border.accent}
+            />
+          </DropZoneIcon>
+          <EmptyTitle>{label}</EmptyTitle>
+          {hint && <HintText>{hint}</HintText>}
+        </EmptyState>
+      );
+    }
 
-  return (
-    <div>
-      <DropZone
-        $dragging={isDragging}
-        $disabled={disabled}
-        onClick={() => !disabled && inputRef.current?.click()}
-        onDrop={onDrop}
-        onDragOver={onDragOver}
-        onDragLeave={onDragLeave}
-        aria-disabled={disabled}
-        role="button"
-        tabIndex={disabled ? -1 : 0}
-      >
-        <input
-          ref={inputRef}
-          type="file"
-          accept={accept}
-          multiple={multiple}
-          hidden
-          onChange={e => handleFiles(e.target.files)}
-        />
-        <DropZoneLabel>{label}</DropZoneLabel>
-        {hint && <HintText>{hint}</HintText>}
-      </DropZone>
-      {files.length > 0 && (
-        <FileList>
+    if (isSingleImagePreview) {
+      return (
+        <PreviewColumn>
+          <PreviewArea onClick={openPicker}>
+            <PreviewImage src={previewUrl ?? ''} alt={files[0].name} />
+            <RemoveImageButton
+              type="button"
+              aria-label="Remove image"
+              onClick={e => {
+                e.stopPropagation();
+                removeFile(0);
+              }}
+            >
+              <CloseIcon label="Remove" height="16" width="16" color="white" />
+            </RemoveImageButton>
+          </PreviewArea>
+          <PreviewFooter>
+            <PreviewCaption title={files[0].name}>
+              {files[0].name}
+            </PreviewCaption>
+            <Button
+              appearance={ButtonAppearance.Secondary}
+              size={ButtonSizes.Small}
+              onClick={e => {
+                e.stopPropagation();
+                openPicker();
+              }}
+            >
+              Choose file
+            </Button>
+          </PreviewFooter>
+        </PreviewColumn>
+      );
+    }
+
+    return (
+      <>
+        <InlineFileList>
           {files.map((file, i) => (
-            <FileListItem
+            <InlineFileItem
               key={`${file.name}-${file.size}-${file.lastModified}`}
             >
               <span>{file.name}</span>
-              <RemoveButton type="button" onClick={() => removeFile(i)}>
-                Remove
-              </RemoveButton>
-            </FileListItem>
+              <RemoveFileButton
+                type="button"
+                aria-label={`Remove ${file.name}`}
+                onClick={e => {
+                  e.stopPropagation();
+                  removeFile(i);
+                }}
+              >
+                <CloseIcon
+                  label="Remove"
+                  height="12"
+                  width="12"
+                  color={theme.color.text.error}
+                />
+              </RemoveFileButton>
+            </InlineFileItem>
           ))}
-        </FileList>
-      )}
-    </div>
+        </InlineFileList>
+        <InlineFooter>
+          <Button
+            appearance={ButtonAppearance.Secondary}
+            size={ButtonSizes.Small}
+            onClick={e => {
+              e.stopPropagation();
+              openPicker();
+            }}
+          >
+            Add more files
+          </Button>
+        </InlineFooter>
+      </>
+    );
+  };
+
+  return (
+    <DropZone
+      $dragging={isDragging}
+      $disabled={disabled}
+      onClick={() => files.length === 0 && openPicker()}
+      onDrop={onDrop}
+      onDragOver={onDragOver}
+      onDragLeave={onDragLeave}
+      aria-disabled={disabled}
+      role="button"
+      tabIndex={disabled ? -1 : 0}
+    >
+      <input
+        ref={inputRef}
+        type="file"
+        accept={accept}
+        multiple={multiple}
+        hidden
+        onChange={e => {
+          handleFiles(e.target.files);
+          e.target.value = '';
+        }}
+      />
+      {renderContent()}
+    </DropZone>
   );
 };
 
