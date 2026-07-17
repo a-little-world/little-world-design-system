@@ -30,7 +30,10 @@ export const ModalHeader = styled(CardHeader).attrs({ asContainer: true })`
   border-bottom: 1px solid ${({ theme }) => theme.color.border.subtle};
 `;
 
-export const ModalTitle = styled(Text).attrs({ tag: 'h2', type: TextTypes.Heading5 })``;
+export const ModalTitle = styled(Text).attrs({
+  tag: 'h2',
+  type: TextTypes.Heading5,
+})``;
 
 export const ModalBody = styled(CardContent).attrs({ scrollable: false })`
   flex: 1;
