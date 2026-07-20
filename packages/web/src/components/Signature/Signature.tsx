@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { SignatureProps } from '@a-little-world/little-world-design-system-core';
 import {
   SignatureWrapper,
   SignatureLabel,
@@ -6,18 +7,7 @@ import {
   ClearButton,
 } from './styles';
 
-export interface SignatureProps {
-  width?: number;
-  height?: number;
-  strokeColor?: string;
-  strokeWidth?: number;
-  backgroundColor?: string;
-  disabled?: boolean;
-  onChange?: (dataUrl: string | null) => void;
-  onClear?: () => void;
-  label?: string;
-  clearLabel?: string;
-}
+export { SignatureProps };
 
 const Signature: React.FC<SignatureProps> = ({
   width = 400,

@@ -1,5 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import {
+  SortDirection,
+  Column,
+  TableProps,
+} from '@a-little-world/little-world-design-system-core';
+import {
   TableWrapper,
   StyledTable,
   TableHead,
@@ -7,25 +12,7 @@ import {
   EmptyCell,
 } from './styles';
 
-export type SortDirection = 'asc' | 'desc' | null;
-
-export interface Column<T = Record<string, unknown>> {
-  key: string;
-  header: React.ReactNode;
-  accessor: (row: T) => React.ReactNode;
-  sortable?: boolean;
-  width?: string;
-}
-
-export interface TableProps<T = Record<string, unknown>> {
-  columns: Column<T>[];
-  data: T[];
-  caption?: string;
-  emptyMessage?: string;
-  loading?: boolean;
-  onRowClick?: (row: T, index: number) => void;
-  rowKey: (row: T) => string | number;
-}
+export { SortDirection, Column, TableProps };
 
 function getSortIcon(
   sortKey: string | null,

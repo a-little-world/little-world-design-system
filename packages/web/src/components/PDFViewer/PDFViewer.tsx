@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { PDFViewerProps } from '@a-little-world/little-world-design-system-core';
 import {
   ViewerWrapper,
   StatusOverlay,
@@ -6,16 +7,7 @@ import {
   StyledIframe,
 } from './styles';
 
-export interface PDFViewerProps {
-  src: string;
-  title?: string;
-  height?: string | number;
-  width?: string | number;
-  showToolbar?: boolean;
-  className?: string;
-  onLoad?: () => void;
-  onError?: () => void;
-}
+export { PDFViewerProps };
 
 const toCSSValue = (v: string | number): string =>
   typeof v === 'number' ? `${v}px` : v;

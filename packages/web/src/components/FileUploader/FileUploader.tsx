@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components';
 import {
   ButtonAppearance,
   ButtonSizes,
+  FileUploaderProps,
 } from '@a-little-world/little-world-design-system-core';
 import Button from '../Button/Button';
 import { CloseIcon, UploadIcon } from '../Icon';
@@ -24,17 +25,7 @@ import {
   RemoveImageButton,
 } from './styles';
 
-export interface FileUploaderProps {
-  accept?: string;
-  disabled?: boolean;
-  maxFiles?: number;
-  maxSizeBytes?: number;
-  multiple?: boolean;
-  onFilesChange?: (files: File[]) => void;
-  onError?: (error: string) => void;
-  label?: string;
-  hint?: string;
-}
+export { FileUploaderProps };
 
 const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
@@ -141,7 +132,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
               label=""
               height="40"
               width="40"
-              color={theme.color.border.accent}
+              color={theme.color.surface.bold}
             />
           </DropZoneIcon>
           <EmptyTitle>{label}</EmptyTitle>
