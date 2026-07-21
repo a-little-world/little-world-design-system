@@ -31,7 +31,8 @@ function matchesAccept(file: File, accept?: string): boolean {
   if (!accept) return true;
   return accept.split(',').some(token => {
     const t = token.trim();
-    if (t.startsWith('.')) return file.name.toLowerCase().endsWith(t.toLowerCase());
+    if (t.startsWith('.'))
+      return file.name.toLowerCase().endsWith(t.toLowerCase());
     if (t.endsWith('/*')) return file.type.startsWith(t.slice(0, -1));
     return file.type === t;
   });
@@ -71,7 +72,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     const url = URL.createObjectURL(files[0]);
     setPreviewUrl(url);
     return () => URL.revokeObjectURL(url);
-  }, [files]);
+  }, [files, isSingleImagePreview]);
 
   const handleFiles = useCallback(
     (incoming: FileList | null) => {

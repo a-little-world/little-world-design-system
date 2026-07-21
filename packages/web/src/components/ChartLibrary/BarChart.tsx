@@ -87,7 +87,10 @@ const BarChart: React.FC<ChartBaseProps> = ({
 
         {/* bars */}
         {data.map((d, i) => {
-          const barHeight = Math.max(0, Math.round((d.value / niceMax) * plotH));
+          const barHeight = Math.max(
+            0,
+            Math.round((d.value / niceMax) * plotH),
+          );
           const x = PAD_LEFT + i * slotW + (slotW - barWidth) / 2;
           const y = padTop + plotH - barHeight;
           const color = d.color ?? DEFAULT_COLORS[i % DEFAULT_COLORS.length];
