@@ -26,6 +26,9 @@ const Signature: React.FC<SignatureProps> = ({
   const [isDrawing, setIsDrawing] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);
   const labelId = useId();
+  const mountedRef = useRef(false);
+  const onChangeRef = useRef(onChange);
+  onChangeRef.current = onChange;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -35,14 +38,14 @@ const Signature: React.FC<SignatureProps> = ({
     ctxRef.current = ctx;
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, width, height);
-  }, [width, height, backgroundColor]);
-
-  useEffect(() => {
-    const ctx = ctxRef.current;
-    if (!ctx) return;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-  }, []);
+    if (mountedRef.current) {
+      setIsEmpty(true);
+      onChangeRef.current?.(null);
+    }
+    mountedRef.current = true;
+  }, [width, height, backgroundColor]);
 
   const getPos = useCallback(
     (e: React.MouseEvent | React.TouchEvent) => {

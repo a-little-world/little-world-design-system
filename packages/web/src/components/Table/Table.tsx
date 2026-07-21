@@ -61,8 +61,8 @@ function Table<T = Record<string, unknown>>({
     const col = columns.find(c => c.key === sortKey);
     if (!col) return data;
     return [...data].sort((a, b) => {
-      const av = col.accessor(a);
-      const bv = col.accessor(b);
+      const av = col.sortValue ? col.sortValue(a) : col.accessor(a);
+      const bv = col.sortValue ? col.sortValue(b) : col.accessor(b);
       if (typeof av === 'number' && typeof bv === 'number') {
         return sortDir === 'asc' ? av - bv : bv - av;
       }

@@ -6,6 +6,7 @@ export interface Column<T = Record<string, unknown>> {
   key: string;
   header: ReactNode;
   accessor: (row: T) => ReactNode;
+  sortValue?: (row: T) => string | number;
   sortable?: boolean;
   width?: string;
 }

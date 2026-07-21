@@ -27,6 +27,16 @@ import {
 
 export { FileUploaderProps };
 
+function matchesAccept(file: File, accept?: string): boolean {
+  if (!accept) return true;
+  return accept.split(',').some(token => {
+    const t = token.trim();
+    if (t.startsWith('.')) return file.name.toLowerCase().endsWith(t.toLowerCase());
+    if (t.endsWith('/*')) return file.type.startsWith(t.slice(0, -1));
+    return file.type === t;
+  });
+}
+
 const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
   disabled = false,
@@ -40,9 +50,15 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 }) => {
   const theme = useTheme();
   const [isDragging, setIsDragging] = useState(false);
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFilesState] = useState<File[]>([]);
+  const filesRef = useRef<File[]>([]);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const setFiles = useCallback((next: File[]) => {
+    filesRef.current = next;
+    setFilesState(next);
+  }, []);
 
   const isSingleImagePreview =
     files.length === 1 && files[0].type.startsWith('image/');
@@ -55,47 +71,48 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     const url = URL.createObjectURL(files[0]);
     setPreviewUrl(url);
     return () => URL.revokeObjectURL(url);
-  }, [files, isSingleImagePreview]);
+  }, [files]);
 
   const handleFiles = useCallback(
     (incoming: FileList | null) => {
       if (!incoming) return;
       const incomingArr = Array.from(incoming);
 
+      const wrongType = incomingArr.filter(f => !matchesAccept(f, accept));
+      wrongType.forEach(f =>
+        onError?.(`File "${f.name}" is not an accepted file type.`),
+      );
+
+      const typeFiltered = incomingArr.filter(f => matchesAccept(f, accept));
+
       const oversized = maxSizeBytes
-        ? incomingArr.filter(f => f.size > maxSizeBytes)
+        ? typeFiltered.filter(f => f.size > maxSizeBytes)
         : [];
-      if (oversized.length > 0) {
-        oversized.forEach(f =>
-          onError?.(`File "${f.name}" exceeds the size limit.`),
-        );
-      }
+      oversized.forEach(f =>
+        onError?.(`File "${f.name}" exceeds the size limit.`),
+      );
 
       const valid = maxSizeBytes
-        ? incomingArr.filter(f => f.size <= maxSizeBytes)
-        : incomingArr;
+        ? typeFiltered.filter(f => f.size <= maxSizeBytes)
+        : typeFiltered;
 
-      setFiles(prev => {
-        const merged = [...prev, ...valid];
-        if (merged.length > maxFiles) {
-          onError?.(
-            `Only ${maxFiles} file${maxFiles !== 1 ? 's' : ''} can be uploaded at a time.`,
-          );
-        }
-        const next = merged.slice(0, maxFiles);
-        onFilesChange?.(next);
-        return next;
-      });
+      const merged = [...filesRef.current, ...valid];
+      if (merged.length > maxFiles) {
+        onError?.(
+          `Only ${maxFiles} file${maxFiles !== 1 ? 's' : ''} can be uploaded at a time.`,
+        );
+      }
+      const next = merged.slice(0, maxFiles);
+      setFiles(next);
+      onFilesChange?.(next);
     },
-    [maxFiles, maxSizeBytes, onError, onFilesChange],
+    [accept, maxFiles, maxSizeBytes, onError, onFilesChange, setFiles],
   );
 
   const removeFile = (index: number) => {
-    setFiles(prev => {
-      const next = prev.filter((_, i) => i !== index);
-      onFilesChange?.(next);
-      return next;
-    });
+    const next = filesRef.current.filter((_, i) => i !== index);
+    setFiles(next);
+    onFilesChange?.(next);
   };
 
   const openPicker = () => {

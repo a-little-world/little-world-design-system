@@ -2,7 +2,7 @@ export function yAxisTicks(
   maxVal: number,
   tickCount = 4,
 ): { niceMax: number; ticks: number[] } {
-  if (maxVal === 0) {
+  if (maxVal <= 0) {
     return {
       niceMax: tickCount,
       ticks: Array.from({ length: tickCount + 1 }, (_, i) => i),

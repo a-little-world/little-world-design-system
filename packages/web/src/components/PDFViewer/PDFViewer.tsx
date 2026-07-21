@@ -14,8 +14,10 @@ const toCSSValue = (v: string | number): string =>
 
 const buildSrc = (src: string, showToolbar: boolean): string => {
   if (showToolbar) return src;
-  const [base] = src.split('#');
-  return `${base}#toolbar=0`;
+  const [base, fragment] = src.split('#');
+  const params = new URLSearchParams(fragment ?? '');
+  params.set('toolbar', '0');
+  return `${base}#${params.toString()}`;
 };
 
 const PDFViewer: React.FC<PDFViewerProps> = ({
@@ -76,6 +78,10 @@ const PDFViewer: React.FC<PDFViewerProps> = ({
           </DownloadLink>
         </StatusOverlay>
       )}
+      {/* Browsers fire 'load' on any completed navigation (including auth-
+          redirects or 404 HTML pages). Cross-origin restrictions prevent
+          inspecting the iframe document, so a successful HTTP redirect to
+          an error page will still reach the ready state. */}
       <StyledIframe
         ref={iframeRef}
         src={iframeSrc}

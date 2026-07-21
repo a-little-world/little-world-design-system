@@ -27,7 +27,7 @@ const BarChart: React.FC<ChartBaseProps> = ({
   className,
 }) => {
   const { ref, width } = useChartWidth(propWidth);
-  const max = data.reduce((m, d) => Math.max(m, d.value), 1);
+  const max = data.reduce((m, d) => Math.max(m, d.value), 0);
   const { niceMax, ticks } = yAxisTicks(max);
 
   const padTop = showValues ? 22 : PAD_TOP;
@@ -87,7 +87,7 @@ const BarChart: React.FC<ChartBaseProps> = ({
 
         {/* bars */}
         {data.map((d, i) => {
-          const barHeight = Math.round((d.value / niceMax) * plotH);
+          const barHeight = Math.max(0, Math.round((d.value / niceMax) * plotH));
           const x = PAD_LEFT + i * slotW + (slotW - barWidth) / 2;
           const y = padTop + plotH - barHeight;
           const color = d.color ?? DEFAULT_COLORS[i % DEFAULT_COLORS.length];

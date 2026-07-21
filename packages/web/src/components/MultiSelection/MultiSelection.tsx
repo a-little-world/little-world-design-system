@@ -27,9 +27,10 @@ const MultiSelection: React.FC<Props> = ({
 }: Props) => {
   const [selected, setSelected] = useState<string[]>([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setSelected(preSelected);
-  }, [preSelected]);
+  }, [JSON.stringify(preSelected)]);
 
   const handleOnClick = (newSelection: string[]) => {
     setSelected(newSelection);
@@ -45,7 +46,7 @@ const MultiSelection: React.FC<Props> = ({
       )}
       <Options $hasError={Boolean(error)} $withBackground={withBackground}>
         {options.map(option => {
-          const isSelected = selected?.some(el => el === option.value);
+          const isSelected = selected.includes(option.value);
 
           return (
             <Option
