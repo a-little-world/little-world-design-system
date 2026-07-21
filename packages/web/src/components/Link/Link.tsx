@@ -27,7 +27,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       onClick,
       state,
       style,
-      target,
+      target = '_blank',
       to,
       textType,
       textDecoration = true,
