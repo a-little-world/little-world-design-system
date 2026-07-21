@@ -16,12 +16,14 @@ export const BACKDROP_LABEL = 'dialog backdrop';
 const CLOSE_BUTTON_LABEL = 'dialog close button';
 
 type BaseModalProps = {
-  children: any;
+  children: React.ReactNode;
   className?: string;
   closeOnBackdropClick?: boolean;
   createInPortal?: boolean;
+  hideCloseButton?: boolean;
+  noContentWrapper?: boolean;
   open: boolean;
-  parent?: any;
+  parent?: Element | null;
 };
 
 type UnlockedModalProps = BaseModalProps & {
@@ -41,6 +43,8 @@ const Modal = ({
   children,
   closeOnBackdropClick = true,
   createInPortal = true,
+  hideCloseButton = false,
+  noContentWrapper = false,
   open,
   onClose,
   locked,
@@ -108,7 +112,7 @@ const Modal = ({
         ref={backdrop}
         $active={active && open}
       >
-        {!locked && (
+        {!locked && !hideCloseButton && (
           <CloseButton
             variation={ButtonVariations.Circle}
             appearance={ButtonAppearance.Secondary}
@@ -120,7 +124,7 @@ const Modal = ({
             <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
           </CloseButton>
         )}
-        <ModalContent>{children}</ModalContent>
+        {noContentWrapper ? children : <ModalContent>{children}</ModalContent>}
       </BackdropContainer>
     </ModalPortalContext.Provider>
   );

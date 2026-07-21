@@ -30,12 +30,11 @@ export const Area = styled.textarea<{
     $size === TextAreaSize.Xsmall ? theme.radius.large : theme.radius.xxsmall};
   background: ${({ theme }) => theme.color.surface.primary};
   color: ${({ theme }) => theme.color.text.primary};
-  padding: ${({ $size, theme }) =>
-    $size === TextAreaSize.Small
-      ? theme.spacing.xxsmall
-      : $size === TextAreaSize.Xsmall
-        ? '11px 14px'
-        : theme.spacing.small};
+  padding: ${({ $size, theme }) => {
+    if ($size === TextAreaSize.Small) return theme.spacing.xxsmall;
+    if ($size === TextAreaSize.Xsmall) return '11px 14px';
+    return theme.spacing.small;
+  }};
   box-sizing: border-box;
   margin-bottom: ${({ theme, readOnly }) =>
     readOnly ? 0 : theme.spacing.xxxxsmall};

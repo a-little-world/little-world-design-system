@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { MultiSelectionWrapper, Options, Option } from './styles';
 
 import Label from '../Label/Label';
@@ -26,10 +26,15 @@ const MultiSelection: React.FC<Props> = ({
   withBackground = true,
 }: Props) => {
   const [selected, setSelected] = useState<string[]>([]);
+  const prevKeyRef = useRef('');
 
   useEffect(() => {
-    setSelected(preSelected);
-  }, [JSON.stringify([preSelected])]);
+    const key = preSelected.join(',');
+    if (prevKeyRef.current !== key) {
+      prevKeyRef.current = key;
+      setSelected(preSelected);
+    }
+  }, [preSelected]);
 
   const handleOnClick = (newSelection: string[]) => {
     setSelected(newSelection);
@@ -45,7 +50,7 @@ const MultiSelection: React.FC<Props> = ({
       )}
       <Options $hasError={Boolean(error)} $withBackground={withBackground}>
         {options.map(option => {
-          const isSelected = selected?.some(el => el === option.value);
+          const isSelected = selected.includes(option.value);
 
           return (
             <Option

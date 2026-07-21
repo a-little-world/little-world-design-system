@@ -156,6 +156,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         return (
           <Segment
             $locked={locked}
+            // eslint-disable-next-line react/no-array-index-key
             key={`MultiSelect Segment ${index}${values[0][index]}${values[1][index]}`}
           >
             <SelectField

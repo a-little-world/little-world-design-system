@@ -1,15 +1,40 @@
 # @a-little-world/little-world-design-system
 
+## 2.19.1
+
+### Minor Changes
+
+**Created:**
+- Create Select single-select component for backend-driven option fields
+- Create DatePicker component with calendar UI and min/max date validation constraints
+- Create TimePicker time selection component with 12/24-hour format and minuteStep support
+- Create MultiSelect component for dual-field interdependent selection
+- Create CheckboxGroup component with horizontal/vertical orientation and multi-selection support
+- Create FieldHint component for always-visible helper text on fields
+- Create FieldGrid component for responsive horizontal field layout
+- Create FileUploader component with drag-and-drop file upload support
+- Create Table/DataGrid component for tabular data display
+- Create PDFViewer component for embedded PDF preview
+- Create ChartLibrary with BarChart, LineChart, and PieChart components for reporting views
+- Create Signature component for canvas-based signature capture
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.15.0
+
 ## 2.19.0
 
 ### Minor Changes
 
-- Rename Dropdown to Select
+**Updated / Adjusted:**
+- RadioGroup: add orientation prop for vertical/horizontal layout support
+- Accordion: integrate for long-form section grouping
+
+**Renamed / Aliased:**
+- Rename Dropdown to Select for standardized naming
 - Rename MultiCheckbox to CheckboxGroup
-- Add alias Alert and FormMessage for StatusMessage
-- Add orientation prop to RadioGroup
-- Add FieldHint component
-- Add FieldGrid component
+- Add Alert and FormMessage as semantic aliases for StatusMessage
 
 ### Patch Changes
 

@@ -139,21 +139,18 @@ export const CalendarDay = styled.button<{
   pointer-events: ${({ $isDisabled }) => ($isDisabled ? 'none' : 'auto')};
   transition: background-color 0.1s;
 
-  color: ${({ theme, $isCurrentMonth, $isDisabled, $isSelected }) =>
-    $isDisabled
-      ? theme.color.text.disabled
-      : $isSelected
-        ? theme.color.text.button
-        : $isCurrentMonth
-          ? theme.color.text.primary
-          : theme.color.text.quaternary};
+  color: ${({ theme, $isCurrentMonth, $isDisabled, $isSelected }) => {
+    if ($isDisabled) return theme.color.text.disabled;
+    if ($isSelected) return theme.color.text.button;
+    if ($isCurrentMonth) return theme.color.text.primary;
+    return theme.color.text.quaternary;
+  }};
 
-  background-color: ${({ theme, $isSelected, $isToday }) =>
-    $isSelected
-      ? theme.color.surface.accent
-      : $isToday
-        ? theme.color.surface.secondary
-        : 'transparent'};
+  background-color: ${({ theme, $isSelected, $isToday }) => {
+    if ($isSelected) return theme.color.surface.accent;
+    if ($isToday) return theme.color.surface.secondary;
+    return 'transparent';
+  }};
 
   font-weight: ${({ $isSelected, $isToday }) =>
     $isSelected || $isToday ? '600' : '400'};

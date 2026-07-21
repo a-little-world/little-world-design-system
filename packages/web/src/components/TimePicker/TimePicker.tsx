@@ -126,7 +126,12 @@ const TimePicker: React.FC<TimePickerProps> = ({
   const handleHourClick = useCallback(
     (h: number) => {
       if (use12Hour) {
-        const newHour24 = isPM ? (h === 12 ? 12 : h + 12) : h === 12 ? 0 : h;
+        let newHour24: number;
+        if (isPM) {
+          newHour24 = h === 12 ? 12 : h + 12;
+        } else {
+          newHour24 = h === 12 ? 0 : h;
+        }
         commit(newHour24, minute);
       } else {
         commit(h, minute);
