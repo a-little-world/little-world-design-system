@@ -6,7 +6,8 @@ import {
   ButtonAppearance,
   ButtonSizes,
   ButtonVariations,
-} from '../Button/Button';
+  FlexAlignType,
+} from '@a-little-world/little-world-design-system-core';
 import { CloseIcon } from '../Icon';
 import { BackdropContainer, CloseButton, ModalContent } from './styles';
 import { ModalPortalContext } from './ModalPortalContext';
@@ -19,6 +20,7 @@ type BaseModalProps = {
   children: React.ReactNode;
   className?: string;
   closeOnBackdropClick?: boolean;
+  contentAlign?: FlexAlignType;
   createInPortal?: boolean;
   hideCloseButton?: boolean;
   noContentWrapper?: boolean;
@@ -42,6 +44,7 @@ type ModalProps = UnlockedModalProps | LockedModalProps;
 const Modal = ({
   children,
   closeOnBackdropClick = true,
+  contentAlign,
   createInPortal = true,
   hideCloseButton = false,
   noContentWrapper = false,
@@ -124,7 +127,11 @@ const Modal = ({
             <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
           </CloseButton>
         )}
-        {noContentWrapper ? children : <ModalContent>{children}</ModalContent>}
+        {noContentWrapper ? (
+          children
+        ) : (
+          <ModalContent $alignItems={contentAlign}>{children}</ModalContent>
+        )}
       </BackdropContainer>
     </ModalPortalContext.Provider>
   );
