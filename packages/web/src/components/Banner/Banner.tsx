@@ -86,6 +86,7 @@ const Banner = ({
                   to={secondaryCtaUrl}
                   buttonAppearance={ButtonAppearance.Secondary}
                   buttonSize={ButtonSizes.Medium}
+                  target="_blank"
                 >
                   {secondaryCtaText}
                 </Cta>
@@ -96,6 +97,7 @@ const Banner = ({
                   buttonAppearance={ButtonAppearance.Primary}
                   buttonSize={ButtonSizes.Medium}
                   $hasBorder={primaryCtaHasBorder}
+                  target="_blank"
                 >
                   {primaryCtaText}
                 </PrimaryCta>
@@ -116,6 +118,7 @@ const Banner = ({
                   to={secondaryCtaUrl}
                   buttonAppearance={ButtonAppearance.Secondary}
                   buttonSize={ButtonSizes.Medium}
+                  target="_blank"
                 >
                   {secondaryCtaText}
                 </Cta>
@@ -126,6 +129,7 @@ const Banner = ({
                   buttonAppearance={ButtonAppearance.Primary}
                   buttonSize={ButtonSizes.Medium}
                   $hasBorder={primaryCtaHasBorder}
+                  target="_blank"
                 >
                   {primaryCtaText}
                 </PrimaryCta>

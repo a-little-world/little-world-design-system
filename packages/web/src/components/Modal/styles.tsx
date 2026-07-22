@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import {
   DialogSize,
   DialogWidths,
+  FlexAlignType,
   TextTypes,
 } from '@a-little-world/little-world-design-system-core';
 import Button from '../Button/Button';
@@ -50,21 +51,23 @@ export const ModalFooter = styled(CardFooter).attrs({ align: 'flex-end' })`
   border-top: 1px solid ${({ theme }) => theme.color.border.subtle};
 `;
 
-export const ModalContent = styled.div`
+export const ModalContent = styled.div<{ $alignItems?: FlexAlignType }>`
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: ${({ $alignItems }) => $alignItems || 'center'};
+  justify-content: center;
+  pointer-events: none;
   transform: translateY(100px);
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
-  height: 100%;
+
+  & > * {
+    pointer-events: auto;
+  }
 `;
 
-export const DialogContent = styled.div`
-  transform: translateY(100px);
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
+export const DialogContent = styled(ModalContent)``;
 
 export const BackdropContainer = styled.dialog<{ $active: boolean }>`
   position: fixed;
@@ -83,8 +86,7 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
   transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
   transition-delay: 200ms;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   z-index: ${({ theme }) => theme.zIndex.modal};
   overflow: auto;
   overscroll-behavior: contain;

@@ -6,6 +6,7 @@ import {
   ButtonSizes,
   ButtonVariations,
   DialogSize,
+  FlexAlignType,
 } from '@a-little-world/little-world-design-system-core';
 import { CloseIcon } from '../Icon';
 import {
@@ -25,6 +26,7 @@ type BaseDialogProps = {
   children: React.ReactNode;
   className?: string;
   closeOnBackdropClick?: boolean;
+  contentAlign?: FlexAlignType;
   createInPortal?: boolean;
   footer?: React.ReactNode;
   open: boolean;
@@ -50,6 +52,7 @@ const Dialog = ({
   children,
   className,
   closeOnBackdropClick,
+  contentAlign,
   createInPortal,
   footer,
   locked,
@@ -62,7 +65,7 @@ const Dialog = ({
   const theme = useTheme();
 
   const dialogContent = (
-    <DialogContent>
+    <DialogContent $alignItems={contentAlign}>
       <ModalDialog $size={size}>
         {(title || !locked) && (
           <ModalHeader>

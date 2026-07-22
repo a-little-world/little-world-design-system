@@ -6,6 +6,13 @@ import {
   ButtonVariations,
 } from '@a-little-world/little-world-design-system-core';
 import { LINK_HOVER_CSS } from '../Link/styles';
+import {
+  FORCED_COLORS_BUTTON_CSS,
+  FORCED_COLORS_BUTTON_RESET_CSS,
+  FORCED_COLORS_ICON_BUTTON_CSS,
+  FORCED_COLORS_LINK_BUTTON_CSS,
+  FORCED_COLORS_OUTLINED_BUTTON_CSS,
+} from '../../utils/styles';
 
 export const STACKED_BUTTON_CSS = css<{
   $appearance?: ButtonAppearance;
@@ -46,6 +53,11 @@ export const STACKED_BUTTON_CSS = css<{
       color: ${$color || theme.color.text.button};
       background: ${$backgroundColor || theme.color.gradient.blue10};
     `}
+
+  ${({ $appearance }) =>
+    $appearance === ButtonAppearance.Secondary
+      ? FORCED_COLORS_BUTTON_CSS
+      : FORCED_COLORS_OUTLINED_BUTTON_CSS}
 `;
 
 const OptionButtonCss = css<{
@@ -119,6 +131,8 @@ const OptionButtonCss = css<{
       `;
     }
   }}
+
+  ${FORCED_COLORS_OUTLINED_BUTTON_CSS}
 `;
 
 const StandardButtonCss = css<{ $size?: ButtonSizes }>`
@@ -173,6 +187,8 @@ const PrimaryButtonColorsCss = css<{ $backgroundColor?: string }>`
       color 0.5s ease,
       0.4s;
   }
+
+  ${FORCED_COLORS_BUTTON_CSS}
 `;
 
 const SecondaryButtonColorsCss = css<{
@@ -194,6 +210,8 @@ const SecondaryButtonColorsCss = css<{
       border-color 0.5s ease, color 0.5s ease, 0.4s;
     }
   `}
+
+  ${FORCED_COLORS_OUTLINED_BUTTON_CSS}
 `;
 
 export const PrimaryButtonCss = css<{
@@ -245,6 +263,8 @@ export const StyledButton = styled.button<{
   & > * {
     cursor: pointer;
   }
+
+  ${FORCED_COLORS_BUTTON_RESET_CSS}
 
   &:disabled {
     background: ${({ theme }) => theme.color.surface.disabled};
@@ -365,6 +385,8 @@ export const StyledButton = styled.button<{
           transition: opacity 0.5s ease;
           ${ICON_DIMENSIONS}
         }
+
+        ${FORCED_COLORS_ICON_BUTTON_CSS}
       `;
     }
 
@@ -393,6 +415,8 @@ export const StyledButton = styled.button<{
             width: 100%;
           }
         }
+
+        ${FORCED_COLORS_LINK_BUTTON_CSS}
       `;
   }}
 `;

@@ -4,7 +4,6 @@
 
 ### Minor Changes
 
-**Created:**
 - Create TimePicker time selection component with 12/24-hour format and minuteStep support
 - Create CheckboxGroup component with horizontal/vertical orientation support
 - Create StatusMessage component with Alert and FormMessage semantic re-exports
@@ -12,16 +11,18 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @a-little-world/little-world-design-system-core@1.15.0
+  - @a-little-world/little-world-design-system-core@1.16.0
 
 ## 0.11.0
 
 ### Minor Changes
 
 **Updated / Adjusted:**
+
 - RadioGroup: add orientation prop for vertical/horizontal layout support
 
 **Renamed / Aliased:**
+
 - Rename Dropdown to Select for standardized naming
 - Rename MultiCheckbox to CheckboxGroup
 - Add Alert and FormMessage as semantic aliases for StatusMessage
