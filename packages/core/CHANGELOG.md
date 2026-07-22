@@ -4,8 +4,6 @@
 
 ### Minor Changes
 
-**Created:**
-
 - Create DatePicker component types with calendar, min/max date bounds, and disabled date props
 - Create TimePicker component types with 12/24-hour format, minuteStep, and time value props
 - Create MultiSelect component types for dual-field interdependent selection
@@ -22,12 +20,7 @@
 
 ### Minor Changes
 
-**Updated / Adjusted:**
-
 - Add orientation prop to RadioGroup for vertical/horizontal layout support
-
-**Renamed / Aliased:**
-
 - Rename Dropdown to Select for standardized naming
 - Rename MultiCheckbox to CheckboxGroup
 - Add Alert and FormMessage as semantic aliases for StatusMessage

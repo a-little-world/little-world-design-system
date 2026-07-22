@@ -1,8 +1,8 @@
+# @a-little-world/little-world-design-system-native
+
 ## 0.11.1
 
 ### Minor Changes
-
-**Created:**
 
 - Create TimePicker time selection component with 12/24-hour format and minuteStep support
 - Create CheckboxGroup component with horizontal/vertical orientation support

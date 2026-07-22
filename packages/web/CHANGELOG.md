@@ -4,8 +4,6 @@
 
 ### Major Changes
 
-**Created:**
-
 - Create DatePicker component with calendar UI and min/max date validation constraints
 - Create TimePicker time selection component with 12/24-hour format and minuteStep support
 - Create MultiSelect component for dual-field interdependent selection
@@ -19,9 +17,7 @@
 
 ### Minor Changes
 
-**Created:**
-
-- Add contentAlignment prop to Modal & Dialog
+- Add contentAlign prop to Modal & Dialog
 - Ensure Banner links have target "\_blank" set
 - Add force-color mode styles for our buttons and links
 
@@ -34,13 +30,8 @@
 
 ### Minor Changes
 
-**Updated / Adjusted:**
-
 - RadioGroup: add orientation prop for vertical/horizontal layout support
 - Accordion: integrate for long-form section grouping
-
-**Renamed / Aliased:**
-
 - Rename Dropdown to Select for standardized naming
 - Rename MultiCheckbox to CheckboxGroup
 - Add Alert and FormMessage as semantic aliases for StatusMessage
