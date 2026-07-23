@@ -64,7 +64,7 @@ const StatusMessageWrapper = styled.div<{
       color: ${theme.color.text.info};
       border: ${$withBorder ? `1px solid ${theme.color.border.info}` : 'none'};
     `;
-  }})
+  }}
 `;
 
 const StyledIcon = styled.svg`
