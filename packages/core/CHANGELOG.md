@@ -1,5 +1,12 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.16.1
+
+### Patch Changes
+
+- Add Cta Color props to Banner
+- Add color and backgroundColor props to Link
+
 ## 1.16.0
 
 ### Minor Changes
