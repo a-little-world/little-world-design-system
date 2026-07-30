@@ -18,11 +18,13 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   (
     {
       active,
+      backgroundColor,
       bold,
       buttonAppearance,
       buttonSize,
       children,
       className,
+      color,
       href,
       onClick,
       state,
@@ -43,6 +45,8 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         className={className}
         ref={ref}
         $active={active}
+        $backgroundColor={backgroundColor}
+        $color={color}
         onClick={onClick}
         $buttonAppearance={buttonAppearance}
         $size={buttonSize}

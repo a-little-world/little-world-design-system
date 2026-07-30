@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import {
   BannerBaseProps,
   BannerTypes,
@@ -24,15 +23,6 @@ import {
 export { BannerTypes };
 
 const Cta = Link;
-const PrimaryCta = styled(Cta)<{ $hasBorder: boolean }>`
-  ${({ $hasBorder, theme }) =>
-    $hasBorder &&
-    `
-color: ${theme.color.text.title};
-border: 2px solid ${theme.color.text.title};
-background: ${theme.color.surface.primary};
-`}
-`;
 
 const Banner = ({
   background,
@@ -40,9 +30,10 @@ const Banner = ({
   description,
   image,
   imageAlt = 'Banner image',
-  primaryCtaHasBorder = false,
+  primaryCtaColor,
   primaryCtaText,
   primaryCtaUrl,
+  secondaryCtaColor,
   secondaryCtaText,
   secondaryCtaUrl,
   textColor,
@@ -86,21 +77,22 @@ const Banner = ({
                   to={secondaryCtaUrl}
                   buttonAppearance={ButtonAppearance.Secondary}
                   buttonSize={ButtonSizes.Medium}
+                  color={secondaryCtaColor}
                   target="_blank"
                 >
                   {secondaryCtaText}
                 </Cta>
               )}
               {showPrimaryCta && (
-                <PrimaryCta
+                <Cta
                   to={primaryCtaUrl}
                   buttonAppearance={ButtonAppearance.Primary}
                   buttonSize={ButtonSizes.Medium}
-                  $hasBorder={primaryCtaHasBorder}
+                  backgroundColor={primaryCtaColor}
                   target="_blank"
                 >
                   {primaryCtaText}
-                </PrimaryCta>
+                </Cta>
               )}
             </Ctas>
           )}
@@ -118,21 +110,22 @@ const Banner = ({
                   to={secondaryCtaUrl}
                   buttonAppearance={ButtonAppearance.Secondary}
                   buttonSize={ButtonSizes.Medium}
+                  color={secondaryCtaColor}
                   target="_blank"
                 >
                   {secondaryCtaText}
                 </Cta>
               )}
               {showPrimaryCta && (
-                <PrimaryCta
+                <Cta
                   to={primaryCtaUrl}
                   buttonAppearance={ButtonAppearance.Primary}
                   buttonSize={ButtonSizes.Medium}
-                  $hasBorder={primaryCtaHasBorder}
+                  backgroundColor={primaryCtaColor}
                   target="_blank"
                 >
                   {primaryCtaText}
-                </PrimaryCta>
+                </Cta>
               )}
             </Ctas>
           )}
