@@ -24,6 +24,7 @@ export const LINK_HOVER_CSS = css`
 `;
 
 const LINK_CSS = css<{
+  $backgroundColor?: string;
   $color?: string;
   $buttonAppearance?: ButtonAppearance;
   $textDecoration: boolean;
@@ -65,6 +66,7 @@ const LINK_CSS = css<{
 
 export const RouterLink = styled(Link)<{
   $active?: boolean;
+  $backgroundColor?: string;
   $color?: string;
   $buttonAppearance?: ButtonAppearance;
   $size?: keyof typeof ButtonSizes;
@@ -75,6 +77,7 @@ export const RouterLink = styled(Link)<{
 
 export const Anchor = styled.a<{
   $active?: boolean;
+  $backgroundColor?: string;
   $color?: string;
   $buttonAppearance?: ButtonAppearance;
   $size?: keyof typeof ButtonSizes;

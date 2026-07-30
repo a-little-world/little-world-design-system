@@ -9,9 +9,10 @@ export interface BannerBaseProps {
   description: string;
   image?: string;
   imageAlt?: string;
-  primaryCtaHasBorder?: boolean;
+  primaryCtaColor?: string;
   primaryCtaText?: string;
   primaryCtaUrl?: string;
+  secondaryCtaColor?: string;
   secondaryCtaText?: string;
   secondaryCtaUrl?: string;
   textColor?: string;
