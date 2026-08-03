@@ -120,8 +120,10 @@ const TextInput: React.FC<Props> = ({
             inputProps={{
               ...propsWithoutValues,
               ref: inputRef,
+              required,
               'aria-invalid': Boolean(displayError) || undefined,
-              'aria-describedby': displayError && id ? `${id}-error` : undefined,
+              'aria-describedby':
+                displayError && id ? `${id}-error` : undefined,
             }}
             $hasError={!!displayError}
             value={defaultTelephoneVal}
@@ -134,6 +136,7 @@ const TextInput: React.FC<Props> = ({
             $hasError={Boolean(displayError)}
             type={inputType}
             id={id}
+            required={required}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             $height={height}

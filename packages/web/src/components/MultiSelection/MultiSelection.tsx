@@ -56,10 +56,20 @@ const MultiSelection: React.FC<Props> = ({
           {label}
         </Label>
       )}
+      <input
+        type="text"
+        required={required}
+        value={selected.length > 0 ? selected.join(',') : ''}
+        readOnly
+        tabIndex={-1}
+        aria-hidden="true"
+        style={{ display: 'block', width: 0, height: 0, padding: 0, border: 0, overflow: 'hidden' }}
+      />
       <Options
         $hasError={Boolean(displayError)}
         $withBackground={withBackground}
         aria-invalid={Boolean(displayError) || undefined}
+        aria-required={required || undefined}
         aria-describedby={displayError ? `${id}-error` : undefined}
       >
         {options.map(option => {

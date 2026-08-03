@@ -53,9 +53,19 @@ const Slider = ({
           {label}
         </Label>
       )}
+      <input
+        type="text"
+        required={required}
+        value={(value ?? defaultValue ?? [])[0] !== undefined ? String((value ?? defaultValue ?? [])[0]) : ''}
+        readOnly
+        tabIndex={-1}
+        aria-hidden="true"
+        style={{ display: 'block', width: 0, height: 0, padding: 0, border: 0, overflow: 'hidden' }}
+      />
       <SliderRoot
         aria-label={ariaLabel}
         aria-invalid={Boolean(displayError) || undefined}
+        aria-required={required || undefined}
         ref={inputRef}
         defaultValue={defaultValue}
         max={steps.length - 1}

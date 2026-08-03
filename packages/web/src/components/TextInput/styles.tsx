@@ -44,6 +44,7 @@ export const Input = styled.input<{
   $height?: InputHeight;
 }>`
   ${INPUT_CSS}
+  ${({ $hasError }) => $hasError && INPUT_ERROR_CSS}
 `;
 
 export const TelephoneInput = styled(PhoneInput)<{

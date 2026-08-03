@@ -226,6 +226,15 @@ const TimePicker: React.FC<TimePickerProps> = ({
           {label}
         </Label>
       )}
+      <input
+        type="text"
+        required={required}
+        value={selectedTime ?? ''}
+        readOnly
+        tabIndex={-1}
+        aria-hidden="true"
+        style={{ display: 'block', width: 0, height: 0, padding: 0, border: 0, overflow: 'hidden' }}
+      />
       <RadixPopover.Root
         open={isOpen}
         onOpenChange={disabled ? undefined : setIsOpen}

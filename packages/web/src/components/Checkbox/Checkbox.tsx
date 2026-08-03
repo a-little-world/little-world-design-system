@@ -67,6 +67,7 @@ export const CheckboxButton: React.FC<CheckboxProps> = ({
     checked={checked}
     onCheckedChange={onCheckedChange}
     value={value}
+    required={required}
     $hasError={Boolean(error)}
     $size={size}
     $readOnly={readOnly}

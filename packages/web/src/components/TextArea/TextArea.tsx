@@ -113,6 +113,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         $size={size}
         $expandable={Boolean(expandable)}
         maxLength={maxLength}
+        required={required}
         onChange={handleOnChange}
         onKeyDown={handleKeyDown}
         readOnly={readOnly}
