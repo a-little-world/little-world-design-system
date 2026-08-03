@@ -80,6 +80,11 @@ const TimePicker: React.FC<TimePickerProps> = ({
     defaultValue,
   );
   const [isOpen, setIsOpen] = useState(false);
+  const [displayError, setDisplayError] = useState(error);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
 
   const selectedTime = isControlled ? value : internalTime;
   const parsed = selectedTime ? parseTime(selectedTime) : null;
@@ -120,6 +125,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
       const timeString = `${padTwo(newHour24)}:${padTwo(newMinute)}`;
       if (!isControlled) setInternalTime(timeString);
       onChange?.(timeString);
+      setDisplayError(undefined);
     },
     [isControlled, onChange],
   );
@@ -228,7 +234,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
           <TimePickerTrigger
             id={id}
             type="button"
-            $hasError={Boolean(error)}
+            $hasError={Boolean(displayError)}
             $height={height}
             $disabled={disabled}
             $hasValue={Boolean(selectedTime)}
@@ -236,8 +242,8 @@ const TimePicker: React.FC<TimePickerProps> = ({
             aria-haspopup="listbox"
             aria-expanded={isOpen}
             aria-required={required || undefined}
-            aria-invalid={Boolean(error) || undefined}
-            aria-describedby={error && id ? `${id}-error` : undefined}
+            aria-invalid={Boolean(displayError) || undefined}
+            aria-describedby={displayError && id ? `${id}-error` : undefined}
           >
             <span>
               {selectedTime
@@ -256,8 +262,11 @@ const TimePicker: React.FC<TimePickerProps> = ({
         {inModal ? picker : <RadixPopover.Portal>{picker}</RadixPopover.Portal>}
       </RadixPopover.Root>
       {!cannotError && (
-        <InputError id={id ? `${id}-error` : undefined} visible={Boolean(error)}>
-          {error}
+        <InputError
+          id={id ? `${id}-error` : undefined}
+          visible={Boolean(displayError)}
+        >
+          {displayError}
         </InputError>
       )}
     </TimePickerWrapper>

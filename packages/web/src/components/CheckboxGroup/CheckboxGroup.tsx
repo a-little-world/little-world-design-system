@@ -1,6 +1,6 @@
 import { CheckboxSizes } from '@a-little-world/little-world-design-system-core';
 import { CheckedState } from '@radix-ui/react-checkbox';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { CheckboxButton } from '../Checkbox/Checkbox';
@@ -70,6 +70,11 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   const headingId = heading ? `${name}-heading` : undefined;
   const theme = useTheme();
   const [selected, setSelected] = useState(preSelected || []);
+  const [displayError, setDisplayError] = useState(error);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
 
   const onSelect = ({
     state,
@@ -85,6 +90,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 
     setSelected(newValues);
     onSelection(newValues);
+    setDisplayError(newValues.length > 0 ? undefined : error);
   };
 
   return (
@@ -92,7 +98,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
       role="group"
       aria-labelledby={headingId}
       aria-required={required || undefined}
-      aria-invalid={Boolean(error) || undefined}
+      aria-invalid={Boolean(displayError) || undefined}
     >
       {heading && <Label id={headingId} bold>{heading}</Label>}
       <CheckboxGroupWrapper $orientation={orientation}>
@@ -100,7 +106,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           <CheckboxButton
             id={label}
             key={label}
-            error={error}
+            error={displayError}
             label={label}
             name={name}
             checked={selected.includes(value)}
@@ -112,8 +118,8 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           />
         ))}
       </CheckboxGroupWrapper>
-      <InputError visible={Boolean(error)} textAlign="left">
-        {error}
+      <InputError visible={Boolean(displayError)} textAlign="left">
+        {displayError}
       </InputError>
     </div>
   );

@@ -14,7 +14,7 @@ import {
   InputWidth,
   TextInputBaseProps,
 } from '@a-little-world/little-world-design-system-core';
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 
 const PASSWORD_TOGGLE_ICON_SIZE = 20;
 
@@ -59,10 +59,15 @@ const TextInput: React.FC<Props> = ({
 }: Props) => {
   const [inputType, setInputType] = React.useState(type); // ['text', 'password'
   const [showPassword, setShowPassword] = React.useState(false);
+  const [displayError, setDisplayError] = useState(error);
   const { defaultValue, value, ...propsWithoutValues } = inputProps;
   const defaultTelephoneVal = (value ?? defaultValue)?.toString() as
     | string
     | undefined;
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
 
   const errorProps = inline ? { bottom: '-16px', right: '0px' } : {};
 
@@ -82,6 +87,12 @@ const TextInput: React.FC<Props> = ({
     e: ChangeEvent<HTMLInputElement>,
   ) => {
     onChange?.(e);
+    setDisplayError(e.target.value.trim() ? undefined : error);
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e);
+    setDisplayError(e.target.value.trim() ? undefined : error);
   };
 
   const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -108,11 +119,10 @@ const TextInput: React.FC<Props> = ({
             inputProps={{
               ...propsWithoutValues,
               ref: inputRef,
-              'aria-invalid': Boolean(error) || undefined,
-              'aria-describedby':
-                error && id ? `${id}-error` : undefined,
+              'aria-invalid': Boolean(displayError) || undefined,
+              'aria-describedby': displayError && id ? `${id}-error` : undefined,
             }}
-            $hasError={!!error}
+            $hasError={!!displayError}
             value={defaultTelephoneVal}
             countryCodeEditable={false}
             $height={height}
@@ -120,14 +130,14 @@ const TextInput: React.FC<Props> = ({
         ) : (
           <Input
             ref={inputRef}
-            $hasError={Boolean(error)}
+            $hasError={Boolean(displayError)}
             type={inputType}
             id={id}
-            onChange={onChange}
+            onChange={handleChange}
             onKeyDown={handleKeyDown}
             $height={height}
-            aria-invalid={Boolean(error) || undefined}
-            aria-describedby={error && id ? `${id}-error` : undefined}
+            aria-invalid={Boolean(displayError) || undefined}
+            aria-describedby={displayError && id ? `${id}-error` : undefined}
             {...inputProps}
           />
         )}
@@ -157,11 +167,11 @@ const TextInput: React.FC<Props> = ({
       {!cannotError && (
         <InputError
           id={id ? `${id}-error` : undefined}
-          visible={Boolean(error)}
+          visible={Boolean(displayError)}
           textAlign={width === InputWidth.Large ? 'right' : 'left'}
           {...errorProps}
         >
-          {error}
+          {displayError}
         </InputError>
       )}
     </InputWrapper>

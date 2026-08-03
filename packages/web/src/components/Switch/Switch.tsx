@@ -1,5 +1,5 @@
 import * as RadixSwitch from '@radix-ui/react-switch';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
@@ -41,7 +41,19 @@ const Switch: React.FC<Props> = ({
   onCheckedChange,
   value,
   ...rest
-}: Props) => (
+}: Props) => {
+  const [displayError, setDisplayError] = useState(error);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
+
+  const handleCheckedChange = (state: boolean) => {
+    onCheckedChange?.(state);
+    setDisplayError(undefined);
+  };
+
+  return (
   <SwitchWrapper
     className={className}
     $fullWidth={fullWidth}
@@ -71,10 +83,10 @@ const Switch: React.FC<Props> = ({
         checked={checked}
         value={value}
         name={label}
-        onCheckedChange={onCheckedChange}
-        $hasError={Boolean(error)}
-        aria-invalid={Boolean(error) || undefined}
-        aria-describedby={error && id ? `${id}-error` : undefined}
+        onCheckedChange={handleCheckedChange}
+        $hasError={Boolean(displayError)}
+        aria-invalid={Boolean(displayError) || undefined}
+        aria-describedby={displayError && id ? `${id}-error` : undefined}
         {...rest}
       >
         <SwitchThumb />
@@ -82,14 +94,15 @@ const Switch: React.FC<Props> = ({
       {!cannotError && (
         <InputError
           id={id ? `${id}-error` : undefined}
-          visible={Boolean(error)}
+          visible={Boolean(displayError)}
           textAlign="left"
         >
-          {error}
+          {displayError}
         </InputError>
       )}
     </SwitchContainer>
   </SwitchWrapper>
-);
+  );
+};
 
 export default Switch;

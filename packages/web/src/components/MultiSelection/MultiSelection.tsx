@@ -26,7 +26,12 @@ const MultiSelection: React.FC<Props> = ({
   withBackground = true,
 }: Props) => {
   const [selected, setSelected] = useState<string[]>([]);
+  const [displayError, setDisplayError] = useState(error);
   const prevKeyRef = useRef('');
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
 
   useEffect(() => {
     const key = preSelected.join(',');
@@ -39,6 +44,7 @@ const MultiSelection: React.FC<Props> = ({
   const handleOnClick = (newSelection: string[]) => {
     setSelected(newSelection);
     onSelection(newSelection);
+    setDisplayError(newSelection.length > 0 ? undefined : error);
   };
 
   return (
@@ -49,10 +55,10 @@ const MultiSelection: React.FC<Props> = ({
         </Label>
       )}
       <Options
-        $hasError={Boolean(error)}
+        $hasError={Boolean(displayError)}
         $withBackground={withBackground}
-        aria-invalid={Boolean(error) || undefined}
-        aria-describedby={error ? `${id}-error` : undefined}
+        aria-invalid={Boolean(displayError) || undefined}
+        aria-describedby={displayError ? `${id}-error` : undefined}
       >
         {options.map(option => {
           const isSelected = selected.includes(option.value);
@@ -76,8 +82,8 @@ const MultiSelection: React.FC<Props> = ({
           );
         })}
       </Options>
-      <InputError id={`${id}-error`} visible={Boolean(error)}>
-        {error}
+      <InputError id={`${id}-error`} visible={Boolean(displayError)}>
+        {displayError}
       </InputError>
     </MultiSelectionWrapper>
   );

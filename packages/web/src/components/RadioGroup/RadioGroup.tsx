@@ -1,5 +1,5 @@
 import * as RadixRadioGroup from '@radix-ui/react-radio-group';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   RadioGroupVariations,
@@ -33,12 +33,24 @@ const RadioGroup: React.FC<Props> = ({
   label,
   labelTooltip,
   inputRef,
+  onValueChange,
   required,
   type = RadioGroupVariations.Classic,
   value,
   orientation = 'horizontal',
   ...rest
 }: Props) => {
+  const [displayError, setDisplayError] = useState(error);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
+
+  const handleValueChange = (val: string) => {
+    onValueChange?.(val);
+    setDisplayError(undefined);
+  };
+
   const isPill = type === RadioGroupVariations.Pill;
 
   return (
@@ -60,8 +72,9 @@ const RadioGroup: React.FC<Props> = ({
             value={value}
             name={label}
             required={required}
-            aria-invalid={Boolean(error) || undefined}
+            aria-invalid={Boolean(displayError) || undefined}
             aria-required={required || undefined}
+            onValueChange={handleValueChange}
             $inline={inline}
             $orientation={orientation}
             {...rest}
@@ -71,15 +84,15 @@ const RadioGroup: React.FC<Props> = ({
                 key={item.id}
                 value={item.value}
                 id={item.id}
-                $hasError={Boolean(error)}
+                $hasError={Boolean(displayError)}
                 $inline={inline}
               >
                 {item.label}
               </PillItem>
             ))}
           </PillRoot>
-          <InputError visible={Boolean(error)} textAlign="left">
-            {error}
+          <InputError visible={Boolean(displayError)} textAlign="left">
+            {displayError}
           </InputError>
         </>
       ) : (
@@ -88,8 +101,9 @@ const RadioGroup: React.FC<Props> = ({
           value={value}
           name={label}
           required={required}
-          aria-invalid={Boolean(error) || undefined}
+          aria-invalid={Boolean(displayError) || undefined}
           aria-required={required || undefined}
+          onValueChange={handleValueChange}
           $inline={inline}
           $orientation={orientation}
           {...rest}
@@ -99,7 +113,7 @@ const RadioGroup: React.FC<Props> = ({
               <RadioGroupItem
                 value={item.value}
                 id={item.id}
-                $hasError={Boolean(error)}
+                $hasError={Boolean(displayError)}
               >
                 <RadioGroupIndicator />
               </RadioGroupItem>
@@ -110,7 +124,7 @@ const RadioGroup: React.FC<Props> = ({
               )}
             </ItemContainer>
           ))}
-          <InputError visible={Boolean(error)}>{error}</InputError>
+          <InputError visible={Boolean(displayError)}>{displayError}</InputError>
         </RadioGroupRoot>
       )}
     </RadioGroupWrapper>

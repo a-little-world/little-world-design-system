@@ -3,7 +3,7 @@ import {
   CheckboxSizes,
 } from '@a-little-world/little-world-design-system-core';
 import { CheckboxProps as RadixCheckboxProps } from '@radix-ui/react-checkbox';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { CheckIcon } from '../Icon';
 import InputError from '../InputError/InputError';
@@ -93,12 +93,22 @@ const Checkbox: React.FC<CheckboxProps> = ({
   value,
   ...rest
 }) => {
+  const [displayError, setDisplayError] = useState(error);
   const prevCheckedRef = useRef(checked);
   const shouldAnimate = Boolean(checked && !prevCheckedRef.current);
 
   useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
+
+  useEffect(() => {
     prevCheckedRef.current = checked;
   }, [checked]);
+
+  const handleCheckedChange: RadixCheckboxProps['onCheckedChange'] = state => {
+    onCheckedChange?.(state);
+    setDisplayError(state ? undefined : error);
+  };
 
   return (
     <CheckboxWrapper className={className}>
@@ -117,14 +127,14 @@ const Checkbox: React.FC<CheckboxProps> = ({
             ref={inputRef}
             id={id}
             checked={checked}
-            onCheckedChange={onCheckedChange}
+            onCheckedChange={handleCheckedChange}
             value={value}
             required={required}
-            $hasError={Boolean(error)}
+            $hasError={Boolean(displayError)}
             $color={color}
             $size={size}
-            aria-invalid={Boolean(error) || undefined}
-            aria-describedby={error && id ? `${id}-error` : undefined}
+            aria-invalid={Boolean(displayError) || undefined}
+            aria-describedby={displayError && id ? `${id}-error` : undefined}
             {...rest}
           >
             <CheckboxIndicator $animate={shouldAnimate}>
@@ -144,10 +154,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
       {required && (
         <InputError
           id={id ? `${id}-error` : undefined}
-          visible={Boolean(error)}
+          visible={Boolean(displayError)}
           textAlign="left"
         >
-          {error}
+          {displayError}
         </InputError>
       )}
     </CheckboxWrapper>

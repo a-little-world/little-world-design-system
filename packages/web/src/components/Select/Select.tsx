@@ -1,5 +1,5 @@
 import * as RadixSelect from '@radix-ui/react-select';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SelectBaseProps } from '@a-little-world/little-world-design-system-core';
 
 import { CheckIcon, ChevronDownIcon } from '../Icon';
@@ -75,6 +75,17 @@ const Select: React.FC<SelectProps> = ({
   required,
   value,
 }) => {
+  const [displayError, setDisplayError] = useState(error);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
+
+  const handleValueChange = (val: string) => {
+    onValueChange(val);
+    setDisplayError(undefined);
+  };
+
   const defaultValue =
     lockedValue || (value && isValidValue(value, options) ? value : undefined);
   const canError = !lockedValue && !cannotError;
@@ -100,19 +111,19 @@ const Select: React.FC<SelectProps> = ({
       )}
       <RadixSelect.Root
         disabled={disabled || !!lockedValue}
-        onValueChange={onValueChange}
+        onValueChange={handleValueChange}
         required={required}
         defaultValue={defaultValue}
       >
         <SelectTrigger
           aria-label={ariaLabel}
-          aria-invalid={Boolean(error) || undefined}
+          aria-invalid={Boolean(displayError) || undefined}
           aria-required={required || undefined}
-          aria-describedby={error && id ? `${id}-error` : undefined}
+          aria-describedby={displayError && id ? `${id}-error` : undefined}
           id={id}
           ref={inputRef}
           $disabled={disabled}
-          $hasError={Boolean(error)}
+          $hasError={Boolean(displayError)}
           $height={height}
         >
           <SelectValue placeholder={placeholder} />
@@ -133,8 +144,11 @@ const Select: React.FC<SelectProps> = ({
         )}
       </RadixSelect.Root>
       {canError && (
-        <InputError id={id ? `${id}-error` : undefined} visible={Boolean(error)}>
-          {error}
+        <InputError
+          id={id ? `${id}-error` : undefined}
+          visible={Boolean(displayError)}
+        >
+          {displayError}
         </InputError>
       )}
     </SelectWrapper>

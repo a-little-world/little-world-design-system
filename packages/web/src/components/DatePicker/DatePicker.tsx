@@ -1,5 +1,5 @@
 import * as RadixPopover from '@radix-ui/react-popover';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import {
   DatePickerBaseProps,
@@ -119,6 +119,11 @@ const DatePicker: React.FC<DatePickerProps> = ({
     defaultValue,
   );
   const [isOpen, setIsOpen] = useState(false);
+  const [displayError, setDisplayError] = useState(error);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
 
   const selectedDate = isControlled ? value : internalDate;
 
@@ -139,6 +144,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
       }
       onChange?.(date);
       setIsOpen(false);
+      setDisplayError(undefined);
     },
     [isControlled, onChange],
   );
@@ -263,7 +269,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
           <DatePickerTrigger
             id={id}
             type="button"
-            $hasError={Boolean(error)}
+            $hasError={Boolean(displayError)}
             $height={height}
             $disabled={disabled}
             $hasValue={Boolean(selectedDate)}
@@ -271,8 +277,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
             aria-haspopup="dialog"
             aria-expanded={isOpen}
             aria-required={required || undefined}
-            aria-invalid={Boolean(error) || undefined}
-            aria-describedby={error && id ? `${id}-error` : undefined}
+            aria-invalid={Boolean(displayError) || undefined}
+            aria-describedby={displayError && id ? `${id}-error` : undefined}
           >
             <span>{selectedDate ? formatDate(selectedDate) : placeholder}</span>
             <TriggerIconWrapper>
@@ -291,8 +297,11 @@ const DatePicker: React.FC<DatePickerProps> = ({
         )}
       </RadixPopover.Root>
       {!cannotError && (
-        <InputError id={id ? `${id}-error` : undefined} visible={Boolean(error)}>
-          {error}
+        <InputError
+          id={id ? `${id}-error` : undefined}
+          visible={Boolean(displayError)}
+        >
+          {displayError}
         </InputError>
       )}
     </DatePickerWrapper>

@@ -58,11 +58,17 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   const [files, setFilesState] = useState<File[]>([]);
   const filesRef = useRef<File[]>([]);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [displayError, setDisplayError] = useState(error);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
 
   const setFiles = useCallback((next: File[]) => {
     filesRef.current = next;
     setFilesState(next);
+    if (next.length > 0) setDisplayError(undefined);
   }, []);
 
   const isSingleImagePreview =
@@ -251,7 +257,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
         onDragLeave={onDragLeave}
         aria-disabled={disabled}
         aria-required={required || undefined}
-        aria-invalid={Boolean(error) || undefined}
+        aria-invalid={Boolean(displayError) || undefined}
         role="button"
         tabIndex={disabled ? -1 : 0}
       >
@@ -270,8 +276,8 @@ const FileUploader: React.FC<FileUploaderProps> = ({
         />
         {renderContent()}
       </DropZone>
-      <InputError visible={Boolean(error)} textAlign="left">
-        {error}
+      <InputError visible={Boolean(displayError)} textAlign="left">
+        {displayError}
       </InputError>
     </div>
   );

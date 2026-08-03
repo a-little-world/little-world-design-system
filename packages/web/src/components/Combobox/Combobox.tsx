@@ -1,5 +1,5 @@
 import { Combobox as BaseCombobox } from '@base-ui/react/combobox';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import {
   ComboboxMultipleBaseProps,
@@ -209,6 +209,12 @@ const SingleCombobox: React.FC<
   required,
   value,
 }) => {
+  const [displayError, setDisplayError] = useState(error);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
+
   const selectedOption = useMemo(
     () => getSelectedOption(lockedValue || value, options),
     [lockedValue, options, value],
@@ -219,12 +225,13 @@ const SingleCombobox: React.FC<
 
   const handleValueChange = (newValue: ComboboxOption | null) => {
     onValueChange(newValue?.value ?? '');
+    setDisplayError(undefined);
   };
 
   const layoutProps: SharedLayoutProps = {
     ariaLabel,
     canError,
-    error,
+    error: displayError,
     height,
     id,
     inputRef,
@@ -251,18 +258,18 @@ const SingleCombobox: React.FC<
       >
         <ComboboxInputGroup
           $disabled={isDisabled}
-          $hasError={Boolean(error)}
+          $hasError={Boolean(displayError)}
           $height={height}
         >
           <ComboboxInput
             aria-label={ariaLabel}
-            aria-invalid={Boolean(error) || undefined}
+            aria-invalid={Boolean(displayError) || undefined}
             aria-required={required || undefined}
-            aria-describedby={error && id ? `${id}-error` : undefined}
+            aria-describedby={displayError && id ? `${id}-error` : undefined}
             id={id}
             placeholder={placeholder}
             ref={inputRef}
-            $hasError={Boolean(error)}
+            $hasError={Boolean(displayError)}
             $height={height}
           />
           {!lockedValue && <ComboboxActionControls />}
@@ -300,6 +307,12 @@ const MultipleCombobox: React.FC<
   required,
   value,
 }) => {
+  const [displayError, setDisplayError] = useState(error);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
+
   const selectedOptions = useMemo(
     () => getSelectedOptions(lockedValue || value, options),
     [lockedValue, options, value],
@@ -311,12 +324,13 @@ const MultipleCombobox: React.FC<
 
   const handleValueChange = (newValue: ComboboxOption[]) => {
     onValueChange(newValue.map(option => option.value));
+    if (newValue.length > 0) setDisplayError(undefined);
   };
 
   const layoutProps: SharedLayoutProps = {
     ariaLabel,
     canError,
-    error,
+    error: displayError,
     height,
     id,
     inputRef,
@@ -344,7 +358,7 @@ const MultipleCombobox: React.FC<
       >
         <ComboboxInputGroup
           $disabled={isDisabled}
-          $hasError={Boolean(error)}
+          $hasError={Boolean(displayError)}
           $height={height}
           $multiple
         >
@@ -386,13 +400,15 @@ const MultipleCombobox: React.FC<
                     )}
                     <ComboboxInput
                       aria-label={ariaLabel}
-                      aria-invalid={Boolean(error) || undefined}
+                      aria-invalid={Boolean(displayError) || undefined}
                       aria-required={required || undefined}
-                      aria-describedby={error && id ? `${id}-error` : undefined}
+                      aria-describedby={
+                        displayError && id ? `${id}-error` : undefined
+                      }
                       id={id}
                       placeholder={selected.length > 0 ? '' : placeholder}
                       ref={inputRef}
-                      $hasError={Boolean(error)}
+                      $hasError={Boolean(displayError)}
                       $height={height}
                       $multiple
                     />

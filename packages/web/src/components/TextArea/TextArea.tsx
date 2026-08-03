@@ -51,6 +51,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   ...areaProps
 }) => {
   const [internalValue, setInternalValue] = useState(value ?? '');
+  const [displayError, setDisplayError] = useState(error);
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const isTouchDeviceRef = useRef(
     typeof window !== 'undefined' &&
@@ -64,10 +65,15 @@ const TextArea: React.FC<TextAreaProps> = ({
     setInternalValue(value || '');
   }, [value]);
 
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
+
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange?.(e);
     setTextAreaCount(e.target.value.length);
     setInternalValue(e.target.value);
+    setDisplayError(e.target.value.trim() ? undefined : error);
   };
 
   const handleKeyDown = async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -102,7 +108,7 @@ const TextArea: React.FC<TextAreaProps> = ({
           textAreaRef.current = e;
         }}
         id={id}
-        $hasError={Boolean(error)}
+        $hasError={Boolean(displayError)}
         $size={size}
         $expandable={Boolean(expandable)}
         maxLength={maxLength}
@@ -110,17 +116,17 @@ const TextArea: React.FC<TextAreaProps> = ({
         onKeyDown={handleKeyDown}
         readOnly={readOnly}
         value={value}
-        aria-invalid={Boolean(error) || undefined}
-        aria-describedby={error && id ? `${id}-error` : undefined}
+        aria-invalid={Boolean(displayError) || undefined}
+        aria-describedby={displayError && id ? `${id}-error` : undefined}
         {...areaProps}
       />
       {!readOnly && (
         <InputError
           id={id ? `${id}-error` : undefined}
-          visible={Boolean(error)}
+          visible={Boolean(displayError)}
           textAlign="left"
         >
-          {error}
+          {displayError}
         </InputError>
       )}
     </AreaWrapper>
