@@ -7,6 +7,7 @@ import {
 } from '@a-little-world/little-world-design-system-core';
 import Button from '../Button/Button';
 import { CloseIcon, UploadIcon } from '../Icon';
+import InputError from '../InputError/InputError';
 import {
   DropZone,
   DropZoneIcon,
@@ -41,13 +42,16 @@ function matchesAccept(file: File, accept?: string): boolean {
 const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
   disabled = false,
+  error,
   maxFiles = 10,
   maxSizeBytes,
   multiple = true,
+  name,
   onFilesChange,
   onError,
   label = 'Drag & drop files here, or click to browse',
   hint,
+  required,
 }) => {
   const theme = useTheme();
   const [isDragging, setIsDragging] = useState(false);
@@ -237,30 +241,39 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   };
 
   return (
-    <DropZone
-      $dragging={isDragging}
-      $disabled={disabled}
-      onClick={() => files.length === 0 && openPicker()}
-      onDrop={onDrop}
-      onDragOver={onDragOver}
-      onDragLeave={onDragLeave}
-      aria-disabled={disabled}
-      role="button"
-      tabIndex={disabled ? -1 : 0}
-    >
-      <input
-        ref={inputRef}
-        type="file"
-        accept={accept}
-        multiple={multiple}
-        hidden
-        onChange={e => {
-          handleFiles(e.target.files);
-          e.target.value = '';
-        }}
-      />
-      {renderContent()}
-    </DropZone>
+    <div>
+      <DropZone
+        $dragging={isDragging}
+        $disabled={disabled}
+        onClick={() => files.length === 0 && openPicker()}
+        onDrop={onDrop}
+        onDragOver={onDragOver}
+        onDragLeave={onDragLeave}
+        aria-disabled={disabled}
+        aria-required={required || undefined}
+        aria-invalid={Boolean(error) || undefined}
+        role="button"
+        tabIndex={disabled ? -1 : 0}
+      >
+        <input
+          ref={inputRef}
+          type="file"
+          accept={accept}
+          multiple={multiple}
+          name={name}
+          required={required}
+          hidden
+          onChange={e => {
+            handleFiles(e.target.files);
+            e.target.value = '';
+          }}
+        />
+        {renderContent()}
+      </DropZone>
+      <InputError visible={Boolean(error)} textAlign="left">
+        {error}
+      </InputError>
+    </div>
   );
 };
 

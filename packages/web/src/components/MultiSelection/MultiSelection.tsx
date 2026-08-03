@@ -48,7 +48,12 @@ const MultiSelection: React.FC<Props> = ({
           {label}
         </Label>
       )}
-      <Options $hasError={Boolean(error)} $withBackground={withBackground}>
+      <Options
+        $hasError={Boolean(error)}
+        $withBackground={withBackground}
+        aria-invalid={Boolean(error) || undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
+      >
         {options.map(option => {
           const isSelected = selected.includes(option.value);
 
@@ -71,7 +76,9 @@ const MultiSelection: React.FC<Props> = ({
           );
         })}
       </Options>
-      <InputError visible={Boolean(error)}>{error}</InputError>
+      <InputError id={`${id}-error`} visible={Boolean(error)}>
+        {error}
+      </InputError>
     </MultiSelectionWrapper>
   );
 };

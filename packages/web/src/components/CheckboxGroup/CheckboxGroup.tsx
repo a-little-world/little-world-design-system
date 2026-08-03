@@ -27,6 +27,7 @@ type CheckboxGroupProps = {
   error?: string;
   name: string;
   readOnly?: boolean;
+  required?: boolean;
   /**
    * Layout orientation for the checkbox group.
    * @default 'horizontal'
@@ -63,8 +64,10 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   options,
   name,
   readOnly,
+  required,
   orientation = 'horizontal',
 }) => {
+  const headingId = heading ? `${name}-heading` : undefined;
   const theme = useTheme();
   const [selected, setSelected] = useState(preSelected || []);
 
@@ -85,8 +88,13 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   };
 
   return (
-    <div>
-      {heading && <Label bold>{heading}</Label>}
+    <div
+      role="group"
+      aria-labelledby={headingId}
+      aria-required={required || undefined}
+      aria-invalid={Boolean(error) || undefined}
+    >
+      {heading && <Label id={headingId} bold>{heading}</Label>}
       <CheckboxGroupWrapper $orientation={orientation}>
         {options.map(({ value, label }) => (
           <CheckboxButton

@@ -119,9 +119,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
             checked={checked}
             onCheckedChange={onCheckedChange}
             value={value}
+            required={required}
             $hasError={Boolean(error)}
             $color={color}
             $size={size}
+            aria-invalid={Boolean(error) || undefined}
+            aria-describedby={error && id ? `${id}-error` : undefined}
             {...rest}
           >
             <CheckboxIndicator $animate={shouldAnimate}>
@@ -139,7 +142,11 @@ const Checkbox: React.FC<CheckboxProps> = ({
         )}
       </CheckboxContainer>
       {required && (
-        <InputError visible={Boolean(error)} textAlign="left">
+        <InputError
+          id={id ? `${id}-error` : undefined}
+          visible={Boolean(error)}
+          textAlign="left"
+        >
           {error}
         </InputError>
       )}

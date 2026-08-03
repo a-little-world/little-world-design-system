@@ -110,10 +110,16 @@ const TextArea: React.FC<TextAreaProps> = ({
         onKeyDown={handleKeyDown}
         readOnly={readOnly}
         value={value}
+        aria-invalid={Boolean(error) || undefined}
+        aria-describedby={error && id ? `${id}-error` : undefined}
         {...areaProps}
       />
       {!readOnly && (
-        <InputError visible={Boolean(error)} textAlign="left">
+        <InputError
+          id={id ? `${id}-error` : undefined}
+          visible={Boolean(error)}
+          textAlign="left"
+        >
           {error}
         </InputError>
       )}

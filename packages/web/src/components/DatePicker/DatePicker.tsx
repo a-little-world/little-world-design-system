@@ -110,6 +110,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
   minDate,
   onChange,
   placeholder = 'Select a date',
+  required,
   value,
   width = InputWidth.Large,
 }) => {
@@ -269,6 +270,9 @@ const DatePicker: React.FC<DatePickerProps> = ({
             disabled={disabled}
             aria-haspopup="dialog"
             aria-expanded={isOpen}
+            aria-required={required || undefined}
+            aria-invalid={Boolean(error) || undefined}
+            aria-describedby={error && id ? `${id}-error` : undefined}
           >
             <span>{selectedDate ? formatDate(selectedDate) : placeholder}</span>
             <TriggerIconWrapper>
@@ -287,7 +291,9 @@ const DatePicker: React.FC<DatePickerProps> = ({
         )}
       </RadixPopover.Root>
       {!cannotError && (
-        <InputError visible={Boolean(error)}>{error}</InputError>
+        <InputError id={id ? `${id}-error` : undefined} visible={Boolean(error)}>
+          {error}
+        </InputError>
       )}
     </DatePickerWrapper>
   );

@@ -106,6 +106,9 @@ const Select: React.FC<SelectProps> = ({
       >
         <SelectTrigger
           aria-label={ariaLabel}
+          aria-invalid={Boolean(error) || undefined}
+          aria-required={required || undefined}
+          aria-describedby={error && id ? `${id}-error` : undefined}
           id={id}
           ref={inputRef}
           $disabled={disabled}
@@ -129,7 +132,11 @@ const Select: React.FC<SelectProps> = ({
           <RadixSelect.Portal>{selectContent}</RadixSelect.Portal>
         )}
       </RadixSelect.Root>
-      {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
+      {canError && (
+        <InputError id={id ? `${id}-error` : undefined} visible={Boolean(error)}>
+          {error}
+        </InputError>
+      )}
     </SelectWrapper>
   );
 };

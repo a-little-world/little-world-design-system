@@ -51,6 +51,7 @@ const ErrorText = styled(Text)<{
 
 type Props = {
   children: React.ReactNode;
+  id?: string;
   top?: string;
   bottom?: string;
   right?: string;
@@ -62,6 +63,7 @@ type Props = {
 
 const InputError: React.FC<Props> = ({
   children,
+  id,
   top,
   bottom,
   right,
@@ -71,6 +73,7 @@ const InputError: React.FC<Props> = ({
   visible,
 }) => (
   <ErrorText
+    id={id}
     type={textType}
     $visible={visible}
     $top={top}

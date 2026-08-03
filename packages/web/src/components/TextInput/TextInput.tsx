@@ -105,7 +105,13 @@ const TextInput: React.FC<Props> = ({
             onlyCountries={onlyCountries}
             disableDropdown={onlyCountries?.length === 1}
             onChange={handleTelephoneChange}
-            inputProps={{ ...propsWithoutValues, ref: inputRef }}
+            inputProps={{
+              ...propsWithoutValues,
+              ref: inputRef,
+              'aria-invalid': Boolean(error) || undefined,
+              'aria-describedby':
+                error && id ? `${id}-error` : undefined,
+            }}
             $hasError={!!error}
             value={defaultTelephoneVal}
             countryCodeEditable={false}
@@ -120,6 +126,8 @@ const TextInput: React.FC<Props> = ({
             onChange={onChange}
             onKeyDown={handleKeyDown}
             $height={height}
+            aria-invalid={Boolean(error) || undefined}
+            aria-describedby={error && id ? `${id}-error` : undefined}
             {...inputProps}
           />
         )}
@@ -148,6 +156,7 @@ const TextInput: React.FC<Props> = ({
 
       {!cannotError && (
         <InputError
+          id={id ? `${id}-error` : undefined}
           visible={Boolean(error)}
           textAlign={width === InputWidth.Large ? 'right' : 'left'}
           {...errorProps}

@@ -175,7 +175,11 @@ const ComboboxFieldLayout = ({
       </Label>
     )}
     {children}
-    {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
+    {canError && (
+      <InputError id={id ? `${id}-error` : undefined} visible={Boolean(error)}>
+        {error}
+      </InputError>
+    )}
   </ComboboxWrapper>
 );
 
@@ -252,6 +256,9 @@ const SingleCombobox: React.FC<
         >
           <ComboboxInput
             aria-label={ariaLabel}
+            aria-invalid={Boolean(error) || undefined}
+            aria-required={required || undefined}
+            aria-describedby={error && id ? `${id}-error` : undefined}
             id={id}
             placeholder={placeholder}
             ref={inputRef}
@@ -379,6 +386,9 @@ const MultipleCombobox: React.FC<
                     )}
                     <ComboboxInput
                       aria-label={ariaLabel}
+                      aria-invalid={Boolean(error) || undefined}
+                      aria-required={required || undefined}
+                      aria-describedby={error && id ? `${id}-error` : undefined}
                       id={id}
                       placeholder={selected.length > 0 ? '' : placeholder}
                       ref={inputRef}

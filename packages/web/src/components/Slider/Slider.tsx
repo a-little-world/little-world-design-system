@@ -1,6 +1,7 @@
 import * as RadixSlider from '@radix-ui/react-slider';
 import React from 'react';
 
+import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
 import Text from '../Text/Text';
 import {
@@ -24,6 +25,7 @@ type SliderProps = {
 const Slider = ({
   ariaLabel,
   defaultValue,
+  error,
   inputRef,
   label,
   labelTooltip,
@@ -39,6 +41,7 @@ const Slider = ({
     )}
     <SliderRoot
       aria-label={ariaLabel}
+      aria-invalid={Boolean(error) || undefined}
       ref={inputRef}
       defaultValue={defaultValue}
       max={steps.length - 1}
@@ -55,6 +58,9 @@ const Slider = ({
         <Text key={step}>{step}</Text>
       ))}
     </Steps>
+    <InputError visible={Boolean(error)} textAlign="left">
+      {error}
+    </InputError>
   </SliderWrapper>
 );
 

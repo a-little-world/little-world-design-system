@@ -70,6 +70,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
   minuteStep = 5,
   onChange,
   placeholder = 'Select a time',
+  required,
   use12Hour = false,
   value,
   width = InputWidth.Large,
@@ -234,6 +235,9 @@ const TimePicker: React.FC<TimePickerProps> = ({
             disabled={disabled}
             aria-haspopup="listbox"
             aria-expanded={isOpen}
+            aria-required={required || undefined}
+            aria-invalid={Boolean(error) || undefined}
+            aria-describedby={error && id ? `${id}-error` : undefined}
           >
             <span>
               {selectedTime
@@ -252,7 +256,9 @@ const TimePicker: React.FC<TimePickerProps> = ({
         {inModal ? picker : <RadixPopover.Portal>{picker}</RadixPopover.Portal>}
       </RadixPopover.Root>
       {!cannotError && (
-        <InputError visible={Boolean(error)}>{error}</InputError>
+        <InputError id={id ? `${id}-error` : undefined} visible={Boolean(error)}>
+          {error}
+        </InputError>
       )}
     </TimePickerWrapper>
   );
