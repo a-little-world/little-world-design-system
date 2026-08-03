@@ -257,7 +257,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
   return (
     <DatePickerWrapper $width={width}>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}

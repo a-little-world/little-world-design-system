@@ -53,6 +53,7 @@ const TextInput: React.FC<Props> = ({
   onChange,
   onSubmit,
   onlyCountries,
+  required,
   type = 'text',
   width = InputWidth.Large,
   ...inputProps
@@ -105,7 +106,7 @@ const TextInput: React.FC<Props> = ({
   return (
     <InputWrapper $width={width}>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}

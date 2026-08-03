@@ -39,6 +39,7 @@ const Switch: React.FC<Props> = ({
   inputRef,
   checked,
   onCheckedChange,
+  required,
   value,
   ...rest
 }: Props) => {
@@ -68,6 +69,7 @@ const Switch: React.FC<Props> = ({
             htmlFor={label}
             tooltipText={labelTooltip}
             marginBottom="0"
+            required={required}
           >
             {label}
           </Label>
@@ -83,6 +85,7 @@ const Switch: React.FC<Props> = ({
         checked={checked}
         value={value}
         name={label}
+        required={required}
         onCheckedChange={handleCheckedChange}
         $hasError={Boolean(displayError)}
         aria-invalid={Boolean(displayError) || undefined}

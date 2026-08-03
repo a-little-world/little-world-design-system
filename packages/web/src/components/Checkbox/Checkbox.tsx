@@ -4,6 +4,7 @@ import {
 } from '@a-little-world/little-world-design-system-core';
 import { CheckboxProps as RadixCheckboxProps } from '@radix-ui/react-checkbox';
 import React, { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
 
 import { CheckIcon } from '../Icon';
 import InputError from '../InputError/InputError';
@@ -16,6 +17,11 @@ import {
   NonInteractiveCheckbox,
   StyledLabel,
 } from './styles';
+
+const RequiredIndicator = styled.span`
+  color: ${({ theme }) => theme.color.text.error};
+  margin-left: 2px;
+`;
 
 type CheckboxBaseProps = {
   className?: string;
@@ -49,6 +55,7 @@ export const CheckboxButton: React.FC<CheckboxProps> = ({
   label,
   onCheckedChange,
   readOnly,
+  required,
   size = CheckboxSizes.Medium,
   value,
   ...rest
@@ -73,6 +80,7 @@ export const CheckboxButton: React.FC<CheckboxProps> = ({
     {label && (
       <StyledLabel htmlFor={id} inline>
         {label}
+        {required && <RequiredIndicator aria-hidden="true">*</RequiredIndicator>}
       </StyledLabel>
     )}
   </CheckboxButtonContainer>
@@ -148,6 +156,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         {label && (
           <StyledLabel htmlFor={id} inline>
             {label}
+            {required && <RequiredIndicator aria-hidden="true">*</RequiredIndicator>}
           </StyledLabel>
         )}
       </CheckboxContainer>

@@ -11,6 +11,7 @@ type Props = {
   labelTooltip?: string;
   options: { tag: string; value: string }[];
   preSelected?: string[];
+  required?: boolean;
   onSelection: (selected: string[]) => void;
   withBackground?: boolean;
 };
@@ -22,6 +23,7 @@ const MultiSelection: React.FC<Props> = ({
   id,
   options,
   preSelected = [],
+  required,
   onSelection,
   withBackground = true,
 }: Props) => {
@@ -50,7 +52,7 @@ const MultiSelection: React.FC<Props> = ({
   return (
     <MultiSelectionWrapper>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}

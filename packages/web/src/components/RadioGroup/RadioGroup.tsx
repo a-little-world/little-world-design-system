@@ -61,6 +61,7 @@ const RadioGroup: React.FC<Props> = ({
           htmlFor={label}
           tooltipText={labelTooltip}
           marginBottom={inline ? '0' : undefined}
+          required={required}
         >
           {label}
         </Label>

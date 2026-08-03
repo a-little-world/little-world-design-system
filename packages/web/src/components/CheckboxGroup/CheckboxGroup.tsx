@@ -100,7 +100,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
       aria-required={required || undefined}
       aria-invalid={Boolean(displayError) || undefined}
     >
-      {heading && <Label id={headingId} bold>{heading}</Label>}
+      {heading && <Label id={headingId} bold required={required}>{heading}</Label>}
       <CheckboxGroupWrapper $orientation={orientation}>
         {options.map(({ value, label }) => (
           <CheckboxButton

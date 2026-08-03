@@ -8,6 +8,7 @@ import {
 import Button from '../Button/Button';
 import { CloseIcon, UploadIcon } from '../Icon';
 import InputError from '../InputError/InputError';
+import Label from '../Label/Label';
 import {
   DropZone,
   DropZoneIcon,
@@ -43,6 +44,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
   disabled = false,
   error,
+  fieldLabel,
   maxFiles = 10,
   maxSizeBytes,
   multiple = true,
@@ -248,6 +250,11 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 
   return (
     <div>
+      {fieldLabel && (
+        <Label bold required={required}>
+          {fieldLabel}
+        </Label>
+      )}
       <DropZone
         $dragging={isDragging}
         $disabled={disabled}

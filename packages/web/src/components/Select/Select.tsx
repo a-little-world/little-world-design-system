@@ -105,7 +105,7 @@ const Select: React.FC<SelectProps> = ({
   return (
     <SelectWrapper $maxWidth={maxWidth as string}>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}

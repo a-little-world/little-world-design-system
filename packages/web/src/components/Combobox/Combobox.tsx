@@ -167,10 +167,11 @@ const ComboboxFieldLayout = ({
   id,
   canError,
   maxWidth,
+  required,
 }: SharedLayoutProps & { children: React.ReactNode }) => (
   <ComboboxWrapper $maxWidth={maxWidth as string}>
     {label && (
-      <Label bold htmlFor={id} tooltipText={labelTooltip}>
+      <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
         {label}
       </Label>
     )}

@@ -222,7 +222,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
   return (
     <TimePickerWrapper $width={width}>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}

@@ -2,6 +2,7 @@ export interface FileUploaderProps {
   accept?: string;
   disabled?: boolean;
   error?: string;
+  fieldLabel?: string;
   maxFiles?: number;
   maxSizeBytes?: number;
   multiple?: boolean;

@@ -46,6 +46,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   onChange,
   onSubmit,
   readOnly,
+  required,
   size = TextAreaSize.Small,
   value,
   ...areaProps
@@ -92,7 +93,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   return (
     <AreaWrapper $size={size}>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}

@@ -19,6 +19,7 @@ type SliderProps = {
   label?: string;
   labelTooltip?: string;
   inputRef: React.RefObject<HTMLInputElement>;
+  required?: boolean;
   steps: string[];
 } & RadixSlider.SliderProps;
 
@@ -30,6 +31,7 @@ const Slider = ({
   label,
   labelTooltip,
   onValueChange,
+  required,
   value,
   steps,
 }: SliderProps) => {
@@ -47,7 +49,7 @@ const Slider = ({
   return (
     <SliderWrapper>
       {label && (
-        <Label bold htmlFor={label} tooltipText={labelTooltip}>
+        <Label bold htmlFor={label} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}
