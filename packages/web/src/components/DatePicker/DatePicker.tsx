@@ -65,7 +65,7 @@ function isDateDisabled(
   const d = startOfDay(date);
   if (minDate && d < startOfDay(minDate)) return true;
   if (maxDate && d > startOfDay(maxDate)) return true;
-  if (disabledDates?.some(dd => isSameDay(d, dd))) return true;
+  if (disabledDates?.some((dd) => isSameDay(d, dd))) return true;
   return false;
 }
 
@@ -152,18 +152,18 @@ const DatePicker: React.FC<DatePickerProps> = ({
   const handlePrevMonth = () => {
     if (viewMonth === 0) {
       setViewMonth(11);
-      setViewYear(y => y - 1);
+      setViewYear((y) => y - 1);
     } else {
-      setViewMonth(m => m - 1);
+      setViewMonth((m) => m - 1);
     }
   };
 
   const handleNextMonth = () => {
     if (viewMonth === 11) {
       setViewMonth(0);
-      setViewYear(y => y + 1);
+      setViewYear((y) => y + 1);
     } else {
-      setViewMonth(m => m + 1);
+      setViewMonth((m) => m + 1);
     }
   };
 
@@ -180,7 +180,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
       sideOffset={4}
       align="start"
       collisionPadding={8}
-      onOpenAutoFocus={inModal ? e => e.preventDefault() : undefined}
+      onOpenAutoFocus={inModal ? (e) => e.preventDefault() : undefined}
     >
       <CalendarHeader>
         <CalendarNavButton
@@ -213,12 +213,12 @@ const DatePicker: React.FC<DatePickerProps> = ({
       </CalendarHeader>
 
       <CalendarGrid role="grid" aria-label={`${MONTHS[viewMonth]} ${viewYear}`}>
-        {DAY_LABELS.map(day => (
+        {DAY_LABELS.map((day) => (
           <CalendarDayLabel key={day} role="columnheader" aria-label={day}>
             {day}
           </CalendarDayLabel>
         ))}
-        {calendarDays.map(date => {
+        {calendarDays.map((date) => {
           const isCurrentMonth = date.getMonth() === viewMonth;
           const isSelected = selectedDate
             ? isSameDay(date, selectedDate)
@@ -268,7 +268,14 @@ const DatePicker: React.FC<DatePickerProps> = ({
         readOnly
         tabIndex={-1}
         aria-hidden="true"
-        style={{ display: 'block', width: 0, height: 0, padding: 0, border: 0, overflow: 'hidden' }}
+        style={{
+          display: 'block',
+          width: 0,
+          height: 0,
+          padding: 0,
+          border: 0,
+          overflow: 'hidden',
+        }}
       />
       <RadixPopover.Root
         open={isOpen}

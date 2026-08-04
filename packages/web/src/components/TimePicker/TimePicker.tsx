@@ -105,7 +105,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
   );
 
   const scrollToSelected = useCallback(() => {
-    [hourRef, minuteRef].forEach(ref => {
+    [hourRef, minuteRef].forEach((ref) => {
       const el = ref.current?.querySelector<HTMLElement>(
         '[data-selected="true"]',
       );
@@ -167,11 +167,11 @@ const TimePicker: React.FC<TimePickerProps> = ({
       side="bottom"
       align="start"
       sideOffset={4}
-      onOpenAutoFocus={e => e.preventDefault()}
+      onOpenAutoFocus={(e) => e.preventDefault()}
     >
       <TimeColumnsContainer>
         <TimeColumn ref={hourRef} role="listbox" aria-label="Hours">
-          {(use12Hour ? hours12 : hours24).map(h => {
+          {(use12Hour ? hours12 : hours24).map((h) => {
             const isSelected = use12Hour ? h === displayHour12 : h === hour24;
             return (
               <TimeOption
@@ -189,7 +189,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
         </TimeColumn>
         <ColumnDivider>:</ColumnDivider>
         <TimeColumn ref={minuteRef} role="listbox" aria-label="Minutes">
-          {minutes.map(m => {
+          {minutes.map((m) => {
             const isSelected = m === minute;
             return (
               <TimeOption
@@ -233,7 +233,14 @@ const TimePicker: React.FC<TimePickerProps> = ({
         readOnly
         tabIndex={-1}
         aria-hidden="true"
-        style={{ display: 'block', width: 0, height: 0, padding: 0, border: 0, overflow: 'hidden' }}
+        style={{
+          display: 'block',
+          width: 0,
+          height: 0,
+          padding: 0,
+          border: 0,
+          overflow: 'hidden',
+        }}
       />
       <RadixPopover.Root
         open={isOpen}
@@ -255,9 +262,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
             aria-describedby={displayError && id ? `${id}-error` : undefined}
           >
             <span>
-              {selectedTime
-                ? formatDisplay(selectedTime, use12Hour)
-                : placeholder}
+              {selectedTime ? formatDisplay(selectedTime, use12Hour) : placeholder}
             </span>
             <TriggerIconWrapper>
               <ClockIcon

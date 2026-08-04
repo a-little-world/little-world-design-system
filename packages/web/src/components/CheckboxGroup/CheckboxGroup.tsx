@@ -86,7 +86,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     const oldValues = selected || [];
     const newValues = state
       ? [...oldValues, value]
-      : oldValues.filter(el => el !== value);
+      : oldValues.filter((el) => el !== value);
 
     setSelected(newValues);
     onSelection(newValues);
@@ -107,9 +107,20 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
         readOnly
         tabIndex={-1}
         aria-hidden="true"
-        style={{ display: 'block', width: 0, height: 0, padding: 0, border: 0, overflow: 'hidden' }}
+        style={{
+          display: 'block',
+          width: 0,
+          height: 0,
+          padding: 0,
+          border: 0,
+          overflow: 'hidden',
+        }}
       />
-      {heading && <Label id={headingId} bold required={required}>{heading}</Label>}
+      {heading && (
+        <Label id={headingId} bold required={required}>
+          {heading}
+        </Label>
+      )}
       <CheckboxGroupWrapper $orientation={orientation}>
         {options.map(({ value, label }) => (
           <CheckboxButton
@@ -119,7 +130,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
             label={label}
             name={name}
             checked={selected.includes(value)}
-            onCheckedChange={state => onSelect({ value, state })}
+            onCheckedChange={(state) => onSelect({ value, state })}
             color={theme.color.surface.selected}
             value={value}
             readOnly={readOnly}

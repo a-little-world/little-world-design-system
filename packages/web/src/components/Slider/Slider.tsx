@@ -49,18 +49,34 @@ const Slider = ({
   return (
     <SliderWrapper>
       {label && (
-        <Label bold htmlFor={label} tooltipText={labelTooltip} required={required}>
+        <Label
+          bold
+          htmlFor={label}
+          tooltipText={labelTooltip}
+          required={required}
+        >
           {label}
         </Label>
       )}
       <input
         type="text"
         required={required}
-        value={(value ?? defaultValue ?? [])[0] !== undefined ? String((value ?? defaultValue ?? [])[0]) : ''}
+        value={
+          (value ?? defaultValue ?? [])[0] !== undefined
+            ? String((value ?? defaultValue ?? [])[0])
+            : ''
+        }
         readOnly
         tabIndex={-1}
         aria-hidden="true"
-        style={{ display: 'block', width: 0, height: 0, padding: 0, border: 0, overflow: 'hidden' }}
+        style={{
+          display: 'block',
+          width: 0,
+          height: 0,
+          padding: 0,
+          border: 0,
+          overflow: 'hidden',
+        }}
       />
       <SliderRoot
         aria-label={ariaLabel}
@@ -78,7 +94,7 @@ const Slider = ({
         <SliderThumb aria-label={ariaLabel} />
       </SliderRoot>
       <Steps>
-        {steps.map(step => (
+        {steps.map((step) => (
           <Text key={step}>{step}</Text>
         ))}
       </Steps>

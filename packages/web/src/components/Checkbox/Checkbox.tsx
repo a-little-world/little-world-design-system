@@ -81,7 +81,9 @@ export const CheckboxButton: React.FC<CheckboxProps> = ({
     {label && (
       <StyledLabel htmlFor={id} inline>
         {label}
-        {required && <RequiredIndicator aria-hidden="true">*</RequiredIndicator>}
+        {required && (
+          <RequiredIndicator aria-hidden="true">*</RequiredIndicator>
+        )}
       </StyledLabel>
     )}
   </CheckboxButtonContainer>
@@ -114,7 +116,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
     prevCheckedRef.current = checked;
   }, [checked]);
 
-  const handleCheckedChange: RadixCheckboxProps['onCheckedChange'] = state => {
+  const handleCheckedChange: RadixCheckboxProps['onCheckedChange'] = (state) => {
     onCheckedChange?.(state);
     setDisplayError(state ? undefined : error);
   };
@@ -157,7 +159,9 @@ const Checkbox: React.FC<CheckboxProps> = ({
         {label && (
           <StyledLabel htmlFor={id} inline>
             {label}
-            {required && <RequiredIndicator aria-hidden="true">*</RequiredIndicator>}
+            {required && (
+              <RequiredIndicator aria-hidden="true">*</RequiredIndicator>
+            )}
           </StyledLabel>
         )}
       </CheckboxContainer>

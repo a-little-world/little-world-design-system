@@ -55,56 +55,56 @@ const Switch: React.FC<Props> = ({
   };
 
   return (
-  <SwitchWrapper
-    className={className}
-    $fullWidth={fullWidth}
-    $labelInline={labelInline}
-    $labelAndDescription={Boolean(label && description)}
-  >
-    {(label || description) && (
-      <LabelContainer $inline={labelInline} $cannotError={cannotError}>
-        {label && (
-          <Label
-            bold={labelBold}
-            htmlFor={label}
-            tooltipText={labelTooltip}
-            marginBottom="0"
-            required={required}
-          >
-            {label}
-          </Label>
-        )}
-        {description && <Text>{description}</Text>}
-      </LabelContainer>
-    )}
-
-    <SwitchContainer>
-      <SwitchRoot
-        ref={inputRef}
-        id={id}
-        checked={checked}
-        value={value}
-        name={label}
-        required={required}
-        onCheckedChange={handleCheckedChange}
-        $hasError={Boolean(displayError)}
-        aria-invalid={Boolean(displayError) || undefined}
-        aria-describedby={displayError && id ? `${id}-error` : undefined}
-        {...rest}
-      >
-        <SwitchThumb />
-      </SwitchRoot>
-      {!cannotError && (
-        <InputError
-          id={id ? `${id}-error` : undefined}
-          visible={Boolean(displayError)}
-          textAlign="left"
-        >
-          {displayError}
-        </InputError>
+    <SwitchWrapper
+      className={className}
+      $fullWidth={fullWidth}
+      $labelInline={labelInline}
+      $labelAndDescription={Boolean(label && description)}
+    >
+      {(label || description) && (
+        <LabelContainer $inline={labelInline} $cannotError={cannotError}>
+          {label && (
+            <Label
+              bold={labelBold}
+              htmlFor={label}
+              tooltipText={labelTooltip}
+              marginBottom="0"
+              required={required}
+            >
+              {label}
+            </Label>
+          )}
+          {description && <Text>{description}</Text>}
+        </LabelContainer>
       )}
-    </SwitchContainer>
-  </SwitchWrapper>
+
+      <SwitchContainer>
+        <SwitchRoot
+          ref={inputRef}
+          id={id}
+          checked={checked}
+          value={value}
+          name={label}
+          required={required}
+          onCheckedChange={handleCheckedChange}
+          $hasError={Boolean(displayError)}
+          aria-invalid={Boolean(displayError) || undefined}
+          aria-describedby={displayError && id ? `${id}-error` : undefined}
+          {...rest}
+        >
+          <SwitchThumb />
+        </SwitchRoot>
+        {!cannotError && (
+          <InputError
+            id={id ? `${id}-error` : undefined}
+            visible={Boolean(displayError)}
+            textAlign="left"
+          >
+            {displayError}
+          </InputError>
+        )}
+      </SwitchContainer>
+    </SwitchWrapper>
   );
 };
 

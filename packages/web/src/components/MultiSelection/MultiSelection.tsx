@@ -63,7 +63,14 @@ const MultiSelection: React.FC<Props> = ({
         readOnly
         tabIndex={-1}
         aria-hidden="true"
-        style={{ display: 'block', width: 0, height: 0, padding: 0, border: 0, overflow: 'hidden' }}
+        style={{
+          display: 'block',
+          width: 0,
+          height: 0,
+          padding: 0,
+          border: 0,
+          overflow: 'hidden',
+        }}
       />
       <Options
         $hasError={Boolean(displayError)}
@@ -72,7 +79,7 @@ const MultiSelection: React.FC<Props> = ({
         aria-required={required || undefined}
         aria-describedby={displayError ? `${id}-error` : undefined}
       >
-        {options.map(option => {
+        {options.map((option) => {
           const isSelected = selected.includes(option.value);
 
           return (
@@ -83,7 +90,7 @@ const MultiSelection: React.FC<Props> = ({
               onClick={() =>
                 handleOnClick(
                   isSelected
-                    ? selected.filter(el => el !== option.value)
+                    ? selected.filter((el) => el !== option.value)
                     : [...selected, option.value],
                 )
               }

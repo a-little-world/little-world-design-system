@@ -80,7 +80,7 @@ const RadioGroup: React.FC<Props> = ({
             $orientation={orientation}
             {...rest}
           >
-            {items?.map(item => (
+            {items?.map((item) => (
               <PillItem
                 key={item.id}
                 value={item.value}
@@ -109,7 +109,7 @@ const RadioGroup: React.FC<Props> = ({
           $orientation={orientation}
           {...rest}
         >
-          {items?.map(item => (
+          {items?.map((item) => (
             <ItemContainer key={item.id}>
               <RadioGroupItem
                 value={item.value}
@@ -125,7 +125,9 @@ const RadioGroup: React.FC<Props> = ({
               )}
             </ItemContainer>
           ))}
-          <InputError visible={Boolean(displayError)}>{displayError}</InputError>
+          <InputError visible={Boolean(displayError)}>
+            {displayError}
+          </InputError>
         </RadioGroupRoot>
       )}
     </RadioGroupWrapper>
