@@ -31,7 +31,11 @@ const swipeOut = keyframes`
 	}
 `;
 
-export const ToastProvider = styled(RadixToast.ToastProvider)``;
+export const ToastProvider = styled(
+  RadixToast.ToastProvider,
+).attrs<RadixToast.ToastProviderProps>(({ swipeThreshold }) => ({
+  swipeThreshold: swipeThreshold ?? 100,
+}))``;
 
 export const ToastViewport = styled(RadixToast.Viewport)`
   --viewport-padding: ${({ theme }) => theme.spacing.medium};

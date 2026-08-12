@@ -56,7 +56,7 @@ export const Default = args => {
   return (
     <div style={{ width: '100%', minHeight: '500px' }}>
       <Button onClick={() => showToast()}>Show Toast</Button>
-      <ToastProvider swipeDirection="right">
+      <ToastProvider>
         <ToastViewport />
         {open && <Toast {...props}></Toast>}
       </ToastProvider>
