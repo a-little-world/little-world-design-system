@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system
 
+## 3.1.0
+
+### Minor Changes
+
+- Add new ProgressRing component
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.17.0
+
 ## 3.0.1
 
 ### Patch Changes

@@ -16,6 +16,7 @@ export * from './Loading';
 export * from './MultiSelect';
 export * from './Popover';
 export * from './ProgressBar';
+export * from './ProgressRing';
 export * from './Separator';
 export * from './Status';
 export * from './Svg';
