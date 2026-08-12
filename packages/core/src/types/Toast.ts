@@ -12,6 +12,7 @@ export interface ToastBaseProps {
   width?: string;
   duration?: number;
   showClose?: boolean;
+  closeOnClick?: boolean;
   onClose?: () => void;
   onDismiss?: () => void;
   onClick?: () => void;

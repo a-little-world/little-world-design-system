@@ -33,6 +33,7 @@ const Toast: React.FC<ToastBaseProps> = ({
   width,
   duration = TOAST_DEFAULT_DURATION,
   showClose = true,
+  closeOnClick = true,
   onClose,
   onDismiss,
   onClick,
@@ -57,7 +58,9 @@ const Toast: React.FC<ToastBaseProps> = ({
   ): void {
     event.stopPropagation();
     onClick?.();
-    closeToast();
+    if (closeOnClick) {
+      closeToast();
+    }
   }
 
   function onDismissClick(event: React.MouseEvent<HTMLButtonElement>) {

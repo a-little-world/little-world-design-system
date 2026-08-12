@@ -16,6 +16,7 @@ export default {
     duration: { control: 'number' },
     showClose: { control: 'boolean' },
     width: { control: 'text' },
+    closeOnClick: { control: 'boolean' },
   },
 };
 
@@ -35,6 +36,7 @@ export const Default = args => {
     duration: args.duration,
     showClose: args.showClose,
     width: args.width,
+    closeOnClick: args.closeOnClick,
     onClose: () => console.log('toast onClose'),
     onDismiss: () => console.log('toast onDismiss'),
     onClick: () => console.log('toast onClick'),
@@ -69,4 +71,5 @@ Default.args = {
   actionText: 'Click me',
   duration: 3000,
   showClose: true,
+  closeOnClick: true,
 };
