@@ -15,6 +15,7 @@ export default {
     actionText: { control: 'text' },
     duration: { control: 'number' },
     showClose: { control: 'boolean' },
+    width: { control: 'text' },
   },
 };
 
@@ -33,6 +34,7 @@ export const Default = args => {
     actionAltText: args.actionText,
     duration: args.duration,
     showClose: args.showClose,
+    width: args.width,
     onClose: () => console.log('toast onClose'),
     onDismiss: () => console.log('toast onDismiss'),
     onClick: () => console.log('toast onClick'),
@@ -50,13 +52,13 @@ export const Default = args => {
   };
 
   return (
-    <>
+    <div style={{ width: '100%', minHeight: '500px' }}>
       <Button onClick={() => showToast()}>Show Toast</Button>
       <ToastProvider swipeDirection="right">
         <ToastViewport />
         {open && <Toast {...props}></Toast>}
       </ToastProvider>
-    </>
+    </div>
   );
 };
 

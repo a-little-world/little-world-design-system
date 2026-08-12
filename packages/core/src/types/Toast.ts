@@ -9,6 +9,7 @@ export interface ToastBaseProps {
   timestamp?: string;
   actionText?: string;
   actionAltText?: string;
+  width?: string;
   duration?: number;
   showClose?: boolean;
   onClose?: () => void;

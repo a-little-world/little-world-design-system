@@ -42,7 +42,6 @@ export const ToastViewport = styled(RadixToast.Viewport)`
   flex-direction: column;
   padding: var(--viewport-padding);
   gap: ${({ theme }) => theme.spacing.xxsmall};
-  width: 390px;
   max-width: 100vw;
   margin: 0;
   list-style: none;
@@ -50,8 +49,9 @@ export const ToastViewport = styled(RadixToast.Viewport)`
   outline: none;
 `;
 
-export const ToastRoot = styled(RadixToast.Root)`
+export const ToastRoot = styled(RadixToast.Root)<{ $width?: string }>`
   position: relative;
+  width: ${({ $width }) => $width || '390px'};
   --border-radius: ${({ theme }) => theme.radius.xxsmall};
   background-color: ${({ theme }) => theme.color.surface.primary};
   border-radius: var(--border-radius);
