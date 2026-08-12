@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.17.0
+
+### Minor Changes
+
+- Add new ProgressRing component
+
 ## 1.16.1
 
 ### Patch Changes

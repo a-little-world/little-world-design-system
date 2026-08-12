@@ -133,6 +133,8 @@ export interface ThemeWeb {
     large: string;
     xlarge: string;
     xxlarge: string;
+    xxxlarge: string;
+    xxxxlarge: string;
     massive: string;
   };
   color: Colors;
@@ -171,6 +173,8 @@ export interface ThemeNative {
     large: number;
     xlarge: number;
     xxlarge: number;
+    xxxlarge: number;
+    xxxxlarge: number;
     massive: number;
   };
   color: Colors;
