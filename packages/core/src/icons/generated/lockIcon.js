@@ -1,0 +1,26 @@
+// Auto-generated from icons/svgs/lock.svg
+export const lockIcon = {
+  "viewBox": "14 15 57 63",
+  "elements": [
+    {
+      "type": "path",
+      "attributes": {
+        "d": "M23.52 36V34A19 19 0 0 1 61.52 34V36H54.02V34A11.5 11.5 0 0 0 31.02 34V36Z",
+        "fill": "#000"
+      },
+      "children": [],
+      "colorAttribute": "fill"
+    },
+    {
+      "type": "path",
+      "attributes": {
+        "fillRule": "evenodd",
+        "clipRule": "evenodd",
+        "d": "M28 34H57A14 14 0 0 1 71 48V64A14 14 0 0 1 57 78H28A14 14 0 0 1 14 64V48A14 14 0 0 1 28 34ZM42.52 42A7 7 0 0 0 38.6 54.9L36.5 64.2A2.6 2.6 0 0 0 39.06 67.3H45.98A2.6 2.6 0 0 0 48.54 64.2L46.44 54.9A7 7 0 0 0 42.52 42Z",
+        "fill": "#000"
+      },
+      "children": [],
+      "colorAttribute": "fill"
+    }
+  ]
+};
