@@ -80,6 +80,10 @@ import {
   webIcon,
   whatsappIcon,
   GradientTypes,
+  lockOpenIcon,
+  lockIcon,
+  flameOutlineIcon,
+  flameIcon,
 } from '@a-little-world/little-world-design-system-core';
 
 import { createIconComponent } from './createIconComponent';
@@ -238,6 +242,16 @@ export const FacebookIcon = createIconComponent({
   svgData: facebookIcon,
 });
 
+export const FlameIcon = createIconComponent({
+  name: 'Flame',
+  svgData: flameIcon,
+});
+
+export const FlameOutlineIcon = createIconComponent({
+  name: 'FlameOutline',
+  svgData: flameOutlineIcon,
+});
+
 export const FullScreenExitIcon = createIconComponent({
   name: 'FullScreenExit',
   svgData: fullScreenExitIcon,
@@ -292,6 +306,16 @@ export const InstagramIcon = createIconComponent({
 export const LinkedInIcon = createIconComponent({
   name: 'LinkedIn',
   svgData: linkedinIcon,
+});
+
+export const LockIcon = createIconComponent({
+  name: 'Lock',
+  svgData: lockIcon,
+});
+
+export const LockOpenIcon = createIconComponent({
+  name: 'LockOpen',
+  svgData: lockOpenIcon,
 });
 
 export const LogoutIcon = createIconComponent({

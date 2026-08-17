@@ -1,5 +1,14 @@
 # @a-little-world/little-world-design-system
 
+## 3.1.1
+
+### Patch Changes
+
+- Add FlameIcon, FlameOutlineIcon, LockIcon & LockOpenIcon
+- Add width and closeOnClick props to Toast
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.17.1
+
 ## 3.1.0
 
 ### Minor Changes
