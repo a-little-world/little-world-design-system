@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 3.1.2
+
+### Patch Changes
+
+- Fix: provide target for modal locking to fix scrolling on native
+
 ## 3.1.1
 
 ### Patch Changes
