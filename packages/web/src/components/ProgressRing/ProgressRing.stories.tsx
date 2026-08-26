@@ -137,6 +137,22 @@ export const BadgeComplete = args => {
 BadgeComplete.args = {
   label: 'Badge earned',
   size: ProgressRingSizes.Medium,
+  tone: ProgressRingTones.Accent,
+  appearance: ProgressRingAppearances.Complete,
+};
+
+export const BadgeCompleteSuccess = args => {
+  return (
+    <ProgressRing {...args}>
+      <HeartIcon label="Heart" />
+    </ProgressRing>
+  );
+};
+
+BadgeCompleteSuccess.args = {
+  label: 'Badge earned',
+  size: ProgressRingSizes.Medium,
+  tone: ProgressRingTones.Success,
   appearance: ProgressRingAppearances.Complete,
 };
 

@@ -76,7 +76,8 @@ const ProgressRing: React.FC<ProgressRingProps> = ({
   const showRing = isProgress || isComplete;
 
   const safeMax = max > 0 ? max : 1;
-  const clamped = Math.min(Math.max(value, 0), safeMax);
+  const displayValue = Math.max(value, 0);
+  const clamped = Math.min(displayValue, safeMax);
   const progress = isComplete ? 1 : clamped / safeMax;
 
   const { stroke } = ProgressRingStrokeWidths[size];
@@ -87,15 +88,16 @@ const ProgressRing: React.FC<ProgressRingProps> = ({
   const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference * (1 - progress);
 
+  const isSuccess = tone === ProgressRingTones.Success;
   const trackColor = theme.color.border.subtle;
-  const progressColor =
-    tone === ProgressRingTones.Success
-      ? theme.color.border.success
-      : theme.color.border.selected;
+  const progressColor = isSuccess
+    ? theme.color.border.success
+    : theme.color.border.selected;
 
-  const strokeColor = isComplete ? theme.color.border.selected : progressColor;
   const discColor = isComplete
-    ? theme.color.surface.accent
+    ? isSuccess
+      ? theme.color.surface.success
+      : theme.color.surface.accent
     : theme.color.surface.primary;
 
   const showLabelContent = isProgress && LABEL_CONTENT_SIZES.includes(size);
@@ -135,7 +137,7 @@ const ProgressRing: React.FC<ProgressRingProps> = ({
             cy={VIEW_CENTER}
             r={radius}
             fill="none"
-            stroke={strokeColor}
+            stroke={progressColor}
             strokeWidth={stroke}
             strokeLinecap="butt"
             strokeDasharray={circumference}
@@ -148,7 +150,9 @@ const ProgressRing: React.FC<ProgressRingProps> = ({
           (showLabelContent ? (
             <>
               <Fraction>
-                <FractionValue type={textTypes.value}>{clamped}</FractionValue>
+                <FractionValue type={textTypes.value}>
+                  {displayValue}
+                </FractionValue>
                 <FractionRest type={textTypes.rest}>/</FractionRest>
                 <FractionRest type={textTypes.rest}>{safeMax}</FractionRest>
               </Fraction>
