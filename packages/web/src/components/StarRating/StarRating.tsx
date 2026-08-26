@@ -12,9 +12,9 @@ import {
   VisuallyHidden,
 } from './styles';
 
-const roundToHalf = (value: number): number => {
+const roundToHalf = (value: number, maxRating: number): number => {
   const rounded = Math.round(value * 2) / 2;
-  return Math.max(0, Math.min(rounded, 5));
+  return Math.max(0, Math.min(rounded, maxRating));
 };
 
 const DEFAULT_RATINGS = ['Poor', 'Fair', 'Average', 'Good', 'Excellent'];
@@ -67,7 +67,7 @@ const StarRating = ({
     const percent = (e.clientX - left) / width;
     const newRating =
       enableHalfRatings && percent <= 0.5 ? starIndex + 0.5 : starIndex + 1;
-    setHoverRating(roundToHalf(newRating));
+    setHoverRating(roundToHalf(newRating, maxRating));
   };
 
   const handleMouseLeave = () => {
@@ -77,12 +77,12 @@ const StarRating = ({
   const updateRating = useCallback(
     (newRating: number) => {
       const roundedRating = enableHalfRatings
-        ? roundToHalf(newRating)
+        ? roundToHalf(newRating, maxRating)
         : newRating;
       setRating(roundedRating);
       onChange?.(roundedRating);
     },
-    [onChange, enableHalfRatings],
+    [onChange, enableHalfRatings, maxRating],
   );
 
   const calculateRating = (starNumber: number) => {
