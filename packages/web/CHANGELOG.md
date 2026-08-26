@@ -4,6 +4,7 @@
 
 ### Patch Changes
 
+- Fix: provide target for modal locking to fix scrolling on native
 - Fix scale issue with StarRating
 - Update styles for ProgressRing
 
