@@ -1,5 +1,12 @@
 # @a-little-world/little-world-design-system
 
+## 3.1.2
+
+### Patch Changes
+
+- Fix scale issue with StarRating
+- Update styles for ProgressRing
+
 ## 3.1.1
 
 ### Patch Changes
