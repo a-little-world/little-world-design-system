@@ -19,10 +19,14 @@ export const createIconComponent = ({
     circular,
     className,
     color,
+    displayNumber,
+    displayNumberRight,
+    displayNumberTop,
     gradient,
     height = 24,
     label,
     labelVisible,
+    size,
     style,
     width = 24,
   }: IconSvgProps & { style?: CSSProperties; color?: string }) => {
@@ -49,6 +53,12 @@ export const createIconComponent = ({
         className={className}
         style={style}
         color={color}
+        displayNumber={displayNumber}
+        displayNumberRight={displayNumberRight}
+        displayNumberTop={displayNumberTop}
+        height={height}
+        size={size}
+        width={width}
         label={label}
         labelVisible={labelVisible}
       >

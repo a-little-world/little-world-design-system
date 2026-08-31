@@ -24,6 +24,12 @@ export interface IconBaseProps {
   circular?: boolean;
   className?: string;
   color?: string;
+  /** Integer rendered in the center of the icon. */
+  displayNumber?: number;
+  /** Offset the display number from the top of the icon. Defaults to vertical center. */
+  displayNumberTop?: number | string;
+  /** Offset the display number from the right of the icon. Defaults to horizontal center. */
+  displayNumberRight?: number | string;
   gradient?: Gradients;
   height?: number | string;
   label: string;

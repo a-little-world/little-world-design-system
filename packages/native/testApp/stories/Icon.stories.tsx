@@ -77,51 +77,57 @@ export const AllIcons: Story = {
             </View>
           );
         })}
-
-        {/* <Text style={styles.sectionTitle}>Icon Sizes</Text>
-        <View style={styles.container}>
-          <View style={styles.iconContainer}>
-            <Text style={styles.sizeLabel}>Small (16x16)</Text>
-            <Icons.AccountIcon width={16} height={16} color="#0063AF" />
-          </View>
-          <View style={styles.iconContainer}>
-            <Text style={styles.sizeLabel}>Medium (24x24)</Text>
-            <Icons.AccountIcon width={24} height={24} color="#0063AF" />
-          </View>
-          <View style={styles.iconContainer}>
-            <Text style={styles.sizeLabel}>Large (32x32)</Text>
-            <Icons.AccountIcon width={32} height={32} color="#0063AF" />
-          </View>
-          <View style={styles.iconContainer}>
-            <Text style={styles.sizeLabel}>XLarge (40x40)</Text>
-            <Icons.AccountIcon width={40} height={40} color="#0063AF" />
-          </View>
-        </View>
-
-        <Text style={styles.sectionTitle}>Icon Colors</Text>
-        <View style={styles.container}>
-          <View style={styles.iconContainer}>
-            <Icons.AccountIcon width={32} height={32} color="#0063AF" />
-            <Text style={styles.iconLabel}>Blue</Text>
-          </View>
-          <View style={styles.iconContainer}>
-            <Icons.AccountIcon width={32} height={32} color="#F39224" />
-            <Text style={styles.iconLabel}>Orange</Text>
-          </View>
-          <View style={styles.iconContainer}>
-            <Icons.AccountIcon width={32} height={32} color="#92D050" />
-            <Text style={styles.iconLabel}>Green</Text>
-          </View>
-          <View style={styles.iconContainer}>
-            <Icons.AccountIcon width={32} height={32} color="#f91010" />
-            <Text style={styles.iconLabel}>Red</Text>
-          </View>
-          <View style={styles.iconContainer}>
-            <Icons.AccountIcon width={32} height={32} color="#000000" />
-            <Text style={styles.iconLabel}>Black</Text>
-          </View>
-        </View> */}
       </View>
     );
   }
+};
+
+export const WithDisplayNumber: Story = {
+  render: () => (
+    <View style={styles.container}>
+      <Text style={styles.sectionTitle}>Display Number</Text>
+      <View style={styles.iconContainer}>
+        <AllExports.CalendarIcon
+          label="Calendar day"
+          color="#0063AF"
+          width={24}
+          height={24}
+          displayNumber={8}
+        />
+        <Text style={styles.iconLabel}>24px</Text>
+      </View>
+      <View style={styles.iconContainer}>
+        <AllExports.CalendarIcon
+          label="Calendar day"
+          color="#0063AF"
+          width={32}
+          height={32}
+          displayNumber={8}
+        />
+        <Text style={styles.iconLabel}>32px</Text>
+      </View>
+      <View style={styles.iconContainer}>
+        <AllExports.CalendarIcon
+          label="Calendar day"
+          color="#0063AF"
+          width={48}
+          height={48}
+          displayNumber={15}
+        />
+        <Text style={styles.iconLabel}>48px</Text>
+      </View>
+      <View style={styles.iconContainer}>
+        <AllExports.StackIcon
+          label="Stack count"
+          color="#0063AF"
+          width={32}
+          height={32}
+          displayNumber={3}
+          displayNumberTop={2}
+          displayNumberRight={4}
+        />
+        <Text style={styles.iconLabel}>Stack offset</Text>
+      </View>
+    </View>
+  ),
 }; 

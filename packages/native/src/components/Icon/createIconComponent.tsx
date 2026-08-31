@@ -19,11 +19,15 @@ export const createIconComponent = ({
     style,
     color,
     backgroundColor,
+    displayNumber,
+    displayNumberRight,
+    displayNumberTop,
     gradient,
     borderColor,
     circular,
     label,
     labelVisible,
+    size,
   }: IconSvgProps & { style?: ViewStyle; color?: string }) => {
     const gradientId = label
       ? `gradient-${label.replace(/\s/g, '')}`
@@ -46,6 +50,12 @@ export const createIconComponent = ({
         circular={circular}
         style={style}
         color={color}
+        displayNumber={displayNumber}
+        displayNumberRight={displayNumberRight}
+        displayNumberTop={displayNumberTop}
+        height={height}
+        size={size}
+        width={width}
         label={label}
         labelVisible={labelVisible}
       >
