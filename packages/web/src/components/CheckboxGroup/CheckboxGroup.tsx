@@ -1,6 +1,6 @@
 import { CheckboxSizes } from '@a-little-world/little-world-design-system-core';
 import { CheckedState } from '@radix-ui/react-checkbox';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { CheckboxButton } from '../Checkbox/Checkbox';
@@ -27,6 +27,7 @@ type CheckboxGroupProps = {
   error?: string;
   name: string;
   readOnly?: boolean;
+  required?: boolean;
   /**
    * Layout orientation for the checkbox group.
    * @default 'horizontal'
@@ -63,10 +64,17 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   options,
   name,
   readOnly,
+  required,
   orientation = 'horizontal',
 }) => {
+  const headingId = heading ? `${name}-heading` : undefined;
   const theme = useTheme();
   const [selected, setSelected] = useState(preSelected || []);
+  const [displayError, setDisplayError] = useState(error);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
 
   const onSelect = ({
     state,
@@ -78,25 +86,51 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     const oldValues = selected || [];
     const newValues = state
       ? [...oldValues, value]
-      : oldValues.filter(el => el !== value);
+      : oldValues.filter((el) => el !== value);
 
     setSelected(newValues);
     onSelection(newValues);
+    setDisplayError(newValues.length > 0 ? undefined : error);
   };
 
   return (
-    <div>
-      {heading && <Label bold>{heading}</Label>}
+    <div
+      role="group"
+      aria-labelledby={headingId}
+      aria-required={required || undefined}
+      aria-invalid={Boolean(displayError) || undefined}
+    >
+      <input
+        type="text"
+        required={required}
+        value={selected.length > 0 ? selected.join(',') : ''}
+        readOnly
+        tabIndex={-1}
+        aria-hidden="true"
+        style={{
+          display: 'block',
+          width: 0,
+          height: 0,
+          padding: 0,
+          border: 0,
+          overflow: 'hidden',
+        }}
+      />
+      {heading && (
+        <Label id={headingId} bold required={required}>
+          {heading}
+        </Label>
+      )}
       <CheckboxGroupWrapper $orientation={orientation}>
         {options.map(({ value, label }) => (
           <CheckboxButton
             id={label}
             key={label}
-            error={error}
+            error={displayError}
             label={label}
             name={name}
             checked={selected.includes(value)}
-            onCheckedChange={state => onSelect({ value, state })}
+            onCheckedChange={(state) => onSelect({ value, state })}
             color={theme.color.surface.selected}
             value={value}
             readOnly={readOnly}
@@ -104,8 +138,8 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           />
         ))}
       </CheckboxGroupWrapper>
-      <InputError visible={Boolean(error)} textAlign="left">
-        {error}
+      <InputError visible={Boolean(displayError)} textAlign="left">
+        {displayError}
       </InputError>
     </div>
   );

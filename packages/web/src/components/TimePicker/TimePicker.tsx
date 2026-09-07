@@ -70,6 +70,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
   minuteStep = 5,
   onChange,
   placeholder = 'Select a time',
+  required,
   use12Hour = false,
   value,
   width = InputWidth.Large,
@@ -79,6 +80,11 @@ const TimePicker: React.FC<TimePickerProps> = ({
     defaultValue,
   );
   const [isOpen, setIsOpen] = useState(false);
+  const [displayError, setDisplayError] = useState(error);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
 
   const selectedTime = isControlled ? value : internalTime;
   const parsed = selectedTime ? parseTime(selectedTime) : null;
@@ -99,7 +105,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
   );
 
   const scrollToSelected = useCallback(() => {
-    [hourRef, minuteRef].forEach(ref => {
+    [hourRef, minuteRef].forEach((ref) => {
       const el = ref.current?.querySelector<HTMLElement>(
         '[data-selected="true"]',
       );
@@ -119,6 +125,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
       const timeString = `${padTwo(newHour24)}:${padTwo(newMinute)}`;
       if (!isControlled) setInternalTime(timeString);
       onChange?.(timeString);
+      setDisplayError(undefined);
     },
     [isControlled, onChange],
   );
@@ -160,11 +167,11 @@ const TimePicker: React.FC<TimePickerProps> = ({
       side="bottom"
       align="start"
       sideOffset={4}
-      onOpenAutoFocus={e => e.preventDefault()}
+      onOpenAutoFocus={(e) => e.preventDefault()}
     >
       <TimeColumnsContainer>
         <TimeColumn ref={hourRef} role="listbox" aria-label="Hours">
-          {(use12Hour ? hours12 : hours24).map(h => {
+          {(use12Hour ? hours12 : hours24).map((h) => {
             const isSelected = use12Hour ? h === displayHour12 : h === hour24;
             return (
               <TimeOption
@@ -182,7 +189,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
         </TimeColumn>
         <ColumnDivider>:</ColumnDivider>
         <TimeColumn ref={minuteRef} role="listbox" aria-label="Minutes">
-          {minutes.map(m => {
+          {minutes.map((m) => {
             const isSelected = m === minute;
             return (
               <TimeOption
@@ -215,10 +222,26 @@ const TimePicker: React.FC<TimePickerProps> = ({
   return (
     <TimePickerWrapper $width={width}>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}
+      <input
+        type="text"
+        required={required}
+        value={selectedTime ?? ''}
+        readOnly
+        tabIndex={-1}
+        aria-hidden="true"
+        style={{
+          display: 'block',
+          width: 0,
+          height: 0,
+          padding: 0,
+          border: 0,
+          overflow: 'hidden',
+        }}
+      />
       <RadixPopover.Root
         open={isOpen}
         onOpenChange={disabled ? undefined : setIsOpen}
@@ -227,18 +250,19 @@ const TimePicker: React.FC<TimePickerProps> = ({
           <TimePickerTrigger
             id={id}
             type="button"
-            $hasError={Boolean(error)}
+            $hasError={Boolean(displayError)}
             $height={height}
             $disabled={disabled}
             $hasValue={Boolean(selectedTime)}
             disabled={disabled}
             aria-haspopup="listbox"
             aria-expanded={isOpen}
+            aria-required={required || undefined}
+            aria-invalid={Boolean(displayError) || undefined}
+            aria-describedby={displayError && id ? `${id}-error` : undefined}
           >
             <span>
-              {selectedTime
-                ? formatDisplay(selectedTime, use12Hour)
-                : placeholder}
+              {selectedTime ? formatDisplay(selectedTime, use12Hour) : placeholder}
             </span>
             <TriggerIconWrapper>
               <ClockIcon
@@ -252,7 +276,12 @@ const TimePicker: React.FC<TimePickerProps> = ({
         {inModal ? picker : <RadixPopover.Portal>{picker}</RadixPopover.Portal>}
       </RadixPopover.Root>
       {!cannotError && (
-        <InputError visible={Boolean(error)}>{error}</InputError>
+        <InputError
+          id={id ? `${id}-error` : undefined}
+          visible={Boolean(displayError)}
+        >
+          {displayError}
+        </InputError>
       )}
     </TimePickerWrapper>
   );

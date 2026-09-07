@@ -13,7 +13,7 @@ export const Default = args => {
 };
 
 export const LabelInline = args => {
-  return <Switch {...args} labelInline label="Switch me" />;
+  return <Switch {...args} labelInline label="Switch me"  />;
 };
 
 export const CannotError = args => {

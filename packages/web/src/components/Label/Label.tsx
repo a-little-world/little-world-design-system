@@ -29,10 +29,16 @@ const InfoPopoverTrigger = styled(Button)`
   color: ${({ theme }) => theme.color.surface.bold};
 `;
 
+const RequiredIndicator = styled.span`
+  color: ${({ theme }) => theme.color.text.error};
+  margin-left: 2px;
+`;
+
 type LabelProps = RadixLabel.LabelProps & {
   bold?: boolean;
   inline?: boolean;
   marginBottom?: string | number;
+  required?: boolean;
   tooltipText?: string;
 };
 
@@ -42,6 +48,7 @@ const Label: React.FC<LabelProps> = ({
   children,
   inline,
   marginBottom,
+  required,
   asChild,
   htmlFor,
   tooltipText,
@@ -49,13 +56,14 @@ const Label: React.FC<LabelProps> = ({
   return (
     <StyledLabel
       $bold={bold}
-      $inline={Boolean(inline || tooltipText)}
+      $inline={Boolean(inline || tooltipText || required)}
       $marginBottom={inline ? '0px' : marginBottom}
       className={className}
       asChild={asChild}
       htmlFor={htmlFor}
     >
       {typeof children === 'string' ? textParser(children) : children}
+      {required && <RequiredIndicator aria-hidden="true">*</RequiredIndicator>}
       {tooltipText && (
         <InfoPopover
           trigger={

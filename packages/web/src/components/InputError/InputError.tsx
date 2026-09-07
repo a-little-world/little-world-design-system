@@ -25,9 +25,10 @@ const ErrorText = styled(Text)<{
   visibility: hidden;
   opacity: 0;
   transition:
-    visibility 1s,
-    opacity 1s;
-  min-height: ${({ theme }) => theme.spacing.small};
+    visibility 0.2s,
+    opacity 0.2s;
+  height: 0;
+  overflow: hidden;
   padding-left: 1px;
   text-align: ${({ $textAlign }) => $textAlign};
 
@@ -46,11 +47,15 @@ const ErrorText = styled(Text)<{
     `
     visibility: visible;
     opacity: 1;
+    height: auto;
+    overflow: visible;
+    margin-top: 4px;
   `};
 `;
 
 type Props = {
   children: React.ReactNode;
+  id?: string;
   top?: string;
   bottom?: string;
   right?: string;
@@ -62,6 +67,7 @@ type Props = {
 
 const InputError: React.FC<Props> = ({
   children,
+  id,
   top,
   bottom,
   right,
@@ -71,6 +77,7 @@ const InputError: React.FC<Props> = ({
   visible,
 }) => (
   <ErrorText
+    id={id}
     type={textType}
     $visible={visible}
     $top={top}

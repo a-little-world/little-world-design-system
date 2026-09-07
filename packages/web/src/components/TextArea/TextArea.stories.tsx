@@ -14,6 +14,7 @@ Default.args = {
   id: 'text input id',
   label: 'Text Input',
   readOnly: false,
+  required: false,
 };
 
 export const MessageBox = (args: TextAreaProps) => <TextArea {...args} />;

@@ -7,6 +7,8 @@ import {
 } from '@a-little-world/little-world-design-system-core';
 import Button from '../Button/Button';
 import { CloseIcon, UploadIcon } from '../Icon';
+import InputError from '../InputError/InputError';
+import Label from '../Label/Label';
 import {
   DropZone,
   DropZoneIcon,
@@ -41,24 +43,34 @@ function matchesAccept(file: File, accept?: string): boolean {
 const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
   disabled = false,
+  error,
+  fieldLabel,
   maxFiles = 10,
   maxSizeBytes,
   multiple = true,
+  name,
   onFilesChange,
   onError,
   label = 'Drag & drop files here, or click to browse',
   hint,
+  required,
 }) => {
   const theme = useTheme();
   const [isDragging, setIsDragging] = useState(false);
   const [files, setFilesState] = useState<File[]>([]);
   const filesRef = useRef<File[]>([]);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [displayError, setDisplayError] = useState(error);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
 
   const setFiles = useCallback((next: File[]) => {
     filesRef.current = next;
     setFilesState(next);
+    if (next.length > 0) setDisplayError(undefined);
   }, []);
 
   const isSingleImagePreview =
@@ -237,30 +249,44 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   };
 
   return (
-    <DropZone
-      $dragging={isDragging}
-      $disabled={disabled}
-      onClick={() => files.length === 0 && openPicker()}
-      onDrop={onDrop}
-      onDragOver={onDragOver}
-      onDragLeave={onDragLeave}
-      aria-disabled={disabled}
-      role="button"
-      tabIndex={disabled ? -1 : 0}
-    >
-      <input
-        ref={inputRef}
-        type="file"
-        accept={accept}
-        multiple={multiple}
-        hidden
-        onChange={e => {
-          handleFiles(e.target.files);
-          e.target.value = '';
-        }}
-      />
-      {renderContent()}
-    </DropZone>
+    <div>
+      {fieldLabel && (
+        <Label bold required={required}>
+          {fieldLabel}
+        </Label>
+      )}
+      <DropZone
+        $dragging={isDragging}
+        $disabled={disabled}
+        onClick={() => files.length === 0 && openPicker()}
+        onDrop={onDrop}
+        onDragOver={onDragOver}
+        onDragLeave={onDragLeave}
+        aria-disabled={disabled}
+        aria-required={required || undefined}
+        aria-invalid={Boolean(displayError) || undefined}
+        role="button"
+        tabIndex={disabled ? -1 : 0}
+      >
+        <input
+          ref={inputRef}
+          type="file"
+          accept={accept}
+          multiple={multiple}
+          name={name}
+          required={required}
+          hidden
+          onChange={e => {
+            handleFiles(e.target.files);
+            e.target.value = '';
+          }}
+        />
+        {renderContent()}
+      </DropZone>
+      <InputError visible={Boolean(displayError)} textAlign="left">
+        {displayError}
+      </InputError>
+    </div>
   );
 };
 

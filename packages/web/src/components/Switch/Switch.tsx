@@ -1,5 +1,5 @@
 import * as RadixSwitch from '@radix-ui/react-switch';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import InputError from '../InputError/InputError';
 import Label from '../Label/Label';
@@ -31,6 +31,7 @@ const Switch: React.FC<Props> = ({
   description,
   error,
   fullWidth,
+  id,
   label,
   labelBold = true,
   labelInline,
@@ -38,50 +39,73 @@ const Switch: React.FC<Props> = ({
   inputRef,
   checked,
   onCheckedChange,
+  required,
   value,
   ...rest
-}: Props) => (
-  <SwitchWrapper
-    className={className}
-    $fullWidth={fullWidth}
-    $labelInline={labelInline}
-    $labelAndDescription={Boolean(label && description)}
-  >
-    {(label || description) && (
-      <LabelContainer $inline={labelInline} $cannotError={cannotError}>
-        {label && (
-          <Label
-            bold={labelBold}
-            htmlFor={label}
-            tooltipText={labelTooltip}
-            marginBottom="0"
-          >
-            {label}
-          </Label>
-        )}
-        {description && <Text>{description}</Text>}
-      </LabelContainer>
-    )}
+}: Props) => {
+  const [displayError, setDisplayError] = useState(error);
 
-    <SwitchContainer>
-      <SwitchRoot
-        ref={inputRef}
-        checked={checked}
-        value={value}
-        name={label}
-        onCheckedChange={onCheckedChange}
-        $hasError={Boolean(error)}
-        {...rest}
-      >
-        <SwitchThumb />
-      </SwitchRoot>
-      {!cannotError && (
-        <InputError visible={Boolean(error)} textAlign="left">
-          {error}
-        </InputError>
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
+
+  const handleCheckedChange = (state: boolean) => {
+    onCheckedChange?.(state);
+    setDisplayError(undefined);
+  };
+
+  return (
+    <SwitchWrapper
+      className={className}
+      $fullWidth={fullWidth}
+      $labelInline={labelInline}
+      $labelAndDescription={Boolean(label && description)}
+    >
+      {(label || description) && (
+        <LabelContainer $inline={labelInline} $cannotError={cannotError}>
+          {label && (
+            <Label
+              bold={labelBold}
+              htmlFor={label}
+              tooltipText={labelTooltip}
+              marginBottom="0"
+              required={required}
+            >
+              {label}
+            </Label>
+          )}
+          {description && <Text>{description}</Text>}
+        </LabelContainer>
       )}
-    </SwitchContainer>
-  </SwitchWrapper>
-);
+
+      <SwitchContainer>
+        <SwitchRoot
+          ref={inputRef}
+          id={id}
+          checked={checked}
+          value={value}
+          name={label}
+          required={required}
+          onCheckedChange={handleCheckedChange}
+          $hasError={Boolean(displayError)}
+          aria-invalid={Boolean(displayError) || undefined}
+          aria-describedby={displayError && id ? `${id}-error` : undefined}
+          {...rest}
+        >
+          <SwitchThumb />
+        </SwitchRoot>
+        {!cannotError && (
+          <InputError
+            id={id ? `${id}-error` : undefined}
+            visible={Boolean(displayError)}
+            textAlign="left"
+          >
+            {displayError}
+          </InputError>
+        )}
+      </SwitchContainer>
+    </SwitchWrapper>
+  );
+};
 
 export default Switch;

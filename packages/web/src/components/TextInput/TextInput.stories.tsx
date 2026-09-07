@@ -40,4 +40,5 @@ Default.args = {
   id: 'text input id',
   label: 'Text Input',
   type: 'text',
+  required: false,
 };

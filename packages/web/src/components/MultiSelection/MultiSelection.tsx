@@ -11,6 +11,7 @@ type Props = {
   labelTooltip?: string;
   options: { tag: string; value: string }[];
   preSelected?: string[];
+  required?: boolean;
   onSelection: (selected: string[]) => void;
   withBackground?: boolean;
 };
@@ -22,11 +23,17 @@ const MultiSelection: React.FC<Props> = ({
   id,
   options,
   preSelected = [],
+  required,
   onSelection,
   withBackground = true,
 }: Props) => {
   const [selected, setSelected] = useState<string[]>([]);
+  const [displayError, setDisplayError] = useState(error);
   const prevKeyRef = useRef('');
+
+  useEffect(() => {
+    setDisplayError(error);
+  }, [error]);
 
   useEffect(() => {
     const key = preSelected.join(',');
@@ -39,17 +46,40 @@ const MultiSelection: React.FC<Props> = ({
   const handleOnClick = (newSelection: string[]) => {
     setSelected(newSelection);
     onSelection(newSelection);
+    setDisplayError(newSelection.length > 0 ? undefined : error);
   };
 
   return (
     <MultiSelectionWrapper>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}
-      <Options $hasError={Boolean(error)} $withBackground={withBackground}>
-        {options.map(option => {
+      <input
+        type="text"
+        required={required}
+        value={selected.length > 0 ? selected.join(',') : ''}
+        readOnly
+        tabIndex={-1}
+        aria-hidden="true"
+        style={{
+          display: 'block',
+          width: 0,
+          height: 0,
+          padding: 0,
+          border: 0,
+          overflow: 'hidden',
+        }}
+      />
+      <Options
+        $hasError={Boolean(displayError)}
+        $withBackground={withBackground}
+        aria-invalid={Boolean(displayError) || undefined}
+        aria-required={required || undefined}
+        aria-describedby={displayError ? `${id}-error` : undefined}
+      >
+        {options.map((option) => {
           const isSelected = selected.includes(option.value);
 
           return (
@@ -60,7 +90,7 @@ const MultiSelection: React.FC<Props> = ({
               onClick={() =>
                 handleOnClick(
                   isSelected
-                    ? selected.filter(el => el !== option.value)
+                    ? selected.filter((el) => el !== option.value)
                     : [...selected, option.value],
                 )
               }
@@ -71,7 +101,9 @@ const MultiSelection: React.FC<Props> = ({
           );
         })}
       </Options>
-      <InputError visible={Boolean(error)}>{error}</InputError>
+      <InputError id={`${id}-error`} visible={Boolean(displayError)}>
+        {displayError}
+      </InputError>
     </MultiSelectionWrapper>
   );
 };
