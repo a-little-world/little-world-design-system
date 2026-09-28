@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 3.1.3
+
+### Patch Changes
+
+- Fix in-text internal links: root-absolute `href`s (e.g. `/app/...`) now navigate through react-router when a router is mounted, so links inside translated text deep-link in the web app and the native webview hash router instead of doing a full document load. External URLs now open in a new tab by default; rendering outside a router falls back to a plain anchor.
+
 ## 3.1.2
 
 ### Patch Changes

@@ -150,7 +150,6 @@ const parseContent = (
         tag.attributes.href || tag.attributes.to ? (
           <Link
             key={`${tag.tagName}-${tag.start}-${tag.end}`}
-            to={tag.attributes.href || tag.attributes.to}
             {...tag.attributes}
           >
             {nestedContent}
@@ -263,7 +262,6 @@ const textParser = (text: string, options: ParserOptions = {}) => {
         tag.attributes.href || tag.attributes.to ? (
           <Link
             key={`${tag.tagName}-${tag.start}-${tag.end}`}
-            to={tag.attributes.href || tag.attributes.to}
             {...tag.attributes}
           >
             {nestedContent}

@@ -1,8 +1,14 @@
 // @ts-nocheck
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen } from '../testUtils';
+import { MemoryRouter, useLocation } from 'react-router-dom';
+import { render, renderWithUser, screen } from '../testUtils';
 import textParser from './parser';
+
+const LocationDisplay = () => {
+  const location = useLocation();
+  return <div data-testid="location">{location.pathname}</div>;
+};
 
 // Mock AttachmentWidget component for testing
 const MockAttachmentWidget = ({
@@ -72,6 +78,36 @@ it('should return anchor element with correct attributes', () => {
   expect(screen.getByText(normalString)).toBeInTheDocument();
   expect(link).toHaveTextContent('this is an anchor');
   expect(link).toHaveAttribute('href', 'little-world');
+});
+
+it('should route internal in-text links through react-router when inside a router', async () => {
+  const text =
+    'See <a {"href": "/app/our-world"}>our world</a> for more details';
+
+  const { user } = renderWithUser(
+    <MemoryRouter initialEntries={['/']}>
+      {textParser(text)}
+      <LocationDisplay />
+    </MemoryRouter>,
+  );
+
+  const link = screen.getByRole('link');
+  expect(link).toHaveTextContent('our world');
+  expect(link).toHaveAttribute('href', '/app/our-world');
+
+  await user.click(link);
+  expect(screen.getByTestId('location')).toHaveTextContent('/app/our-world');
+});
+
+it('should keep external in-text links as plain anchors', () => {
+  const text =
+    'Visit <a {"href": "https://example.com", "target": "_blank"}>example</a>';
+
+  render(<MemoryRouter>{textParser(text)}</MemoryRouter>);
+
+  const link = screen.getByRole('link');
+  expect(link).toHaveAttribute('href', 'https://example.com');
+  expect(link).toHaveAttribute('target', '_blank');
 });
 
 it('should return just string if anchor does not contain href', () => {
