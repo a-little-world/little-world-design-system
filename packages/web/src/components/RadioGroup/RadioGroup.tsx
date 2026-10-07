@@ -33,6 +33,7 @@ const RadioGroup: React.FC<Props> = ({
   label,
   labelTooltip,
   inputRef,
+  required,
   type = RadioGroupVariations.Classic,
   value,
   orientation = 'horizontal',
@@ -48,6 +49,7 @@ const RadioGroup: React.FC<Props> = ({
           htmlFor={label}
           tooltipText={labelTooltip}
           marginBottom={inline ? '0' : undefined}
+          required={required}
         >
           {label}
         </Label>
@@ -58,6 +60,8 @@ const RadioGroup: React.FC<Props> = ({
             ref={inputRef}
             value={value}
             name={label}
+            required={required}
+            aria-invalid={Boolean(error) || undefined}
             $inline={inline}
             $orientation={orientation}
             {...rest}
@@ -83,6 +87,8 @@ const RadioGroup: React.FC<Props> = ({
           ref={inputRef}
           value={value}
           name={label}
+          required={required}
+          aria-invalid={Boolean(error) || undefined}
           $inline={inline}
           $orientation={orientation}
           {...rest}

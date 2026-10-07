@@ -11,6 +11,7 @@ type Props = {
   labelTooltip?: string;
   options: { tag: string; value: string }[];
   preSelected?: string[];
+  required?: boolean;
   onSelection: (selected: string[]) => void;
   withBackground?: boolean;
 };
@@ -22,6 +23,7 @@ const MultiSelection: React.FC<Props> = ({
   id,
   options,
   preSelected = [],
+  required,
   onSelection,
   withBackground = true,
 }: Props) => {
@@ -44,11 +46,17 @@ const MultiSelection: React.FC<Props> = ({
   return (
     <MultiSelectionWrapper>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}
-      <Options $hasError={Boolean(error)} $withBackground={withBackground}>
+      <Options
+        $hasError={Boolean(error)}
+        $withBackground={withBackground}
+        aria-invalid={Boolean(error) || undefined}
+        aria-required={required || undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
+      >
         {options.map(option => {
           const isSelected = selected.includes(option.value);
 
@@ -71,7 +79,9 @@ const MultiSelection: React.FC<Props> = ({
           );
         })}
       </Options>
-      <InputError visible={Boolean(error)}>{error}</InputError>
+      <InputError id={`${id}-error`} visible={Boolean(error)}>
+        {error}
+      </InputError>
     </MultiSelectionWrapper>
   );
 };

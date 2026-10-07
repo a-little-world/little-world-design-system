@@ -31,6 +31,7 @@ const Switch: React.FC<Props> = ({
   description,
   error,
   fullWidth,
+  id,
   label,
   labelBold = true,
   labelInline,
@@ -38,6 +39,7 @@ const Switch: React.FC<Props> = ({
   inputRef,
   checked,
   onCheckedChange,
+  required,
   value,
   ...rest
 }: Props) => (
@@ -55,6 +57,7 @@ const Switch: React.FC<Props> = ({
             htmlFor={label}
             tooltipText={labelTooltip}
             marginBottom="0"
+            required={required}
           >
             {label}
           </Label>
@@ -66,17 +69,25 @@ const Switch: React.FC<Props> = ({
     <SwitchContainer>
       <SwitchRoot
         ref={inputRef}
+        id={id}
         checked={checked}
         value={value}
         name={label}
+        required={required}
         onCheckedChange={onCheckedChange}
         $hasError={Boolean(error)}
+        aria-invalid={Boolean(error) || undefined}
+        aria-describedby={error && id ? `${id}-error` : undefined}
         {...rest}
       >
         <SwitchThumb />
       </SwitchRoot>
       {!cannotError && (
-        <InputError visible={Boolean(error)} textAlign="left">
+        <InputError
+          id={id ? `${id}-error` : undefined}
+          visible={Boolean(error)}
+          textAlign="left"
+        >
           {error}
         </InputError>
       )}
