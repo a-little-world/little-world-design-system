@@ -11,6 +11,7 @@ export interface TimePickerBaseProps {
   minuteStep?: 1 | 5 | 10 | 15 | 30;
   onChange?: (time: string | undefined) => void;
   placeholder?: string;
+  required?: boolean;
   use12Hour?: boolean;
   value?: string;
   width?: InputWidth;
