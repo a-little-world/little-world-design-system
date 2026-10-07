@@ -8,10 +8,10 @@ import {
   ButtonVariations,
   FlexAlignType,
 } from '@a-little-world/little-world-design-system-core';
-import { CloseIcon } from '../Icon';
-import { BackdropContainer, CloseButton, ModalContent } from './styles';
-import { ModalPortalContext } from './ModalPortalContext';
 import { useTheme } from 'styled-components';
+import { CloseIcon } from '../Icon';
+import { ModalPortalContext } from './ModalPortalContext';
+import { BackdropContainer, CloseButton, ModalContent } from './styles';
 
 export const BACKDROP_LABEL = 'dialog backdrop';
 const CLOSE_BUTTON_LABEL = 'dialog close button';
@@ -88,7 +88,7 @@ const Modal = ({
 
     if (open) {
       openTimeout = window.setTimeout(() => {
-        lock();
+        lock(current);
         (document?.activeElement as HTMLElement).blur();
         setActive(open);
         current?.focus();
@@ -97,7 +97,7 @@ const Modal = ({
 
     return () => {
       clearTimeout(openTimeout);
-      unlock();
+      unlock(current);
 
       window.removeEventListener('keyup', keyHandler);
       if (current) {

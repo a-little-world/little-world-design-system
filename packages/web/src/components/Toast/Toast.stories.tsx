@@ -15,6 +15,8 @@ export default {
     actionText: { control: 'text' },
     duration: { control: 'number' },
     showClose: { control: 'boolean' },
+    width: { control: 'text' },
+    closeOnClick: { control: 'boolean' },
   },
 };
 
@@ -33,6 +35,8 @@ export const Default = args => {
     actionAltText: args.actionText,
     duration: args.duration,
     showClose: args.showClose,
+    width: args.width,
+    closeOnClick: args.closeOnClick,
     onClose: () => console.log('toast onClose'),
     onDismiss: () => console.log('toast onDismiss'),
     onClick: () => console.log('toast onClick'),
@@ -50,13 +54,13 @@ export const Default = args => {
   };
 
   return (
-    <>
+    <div style={{ width: '100%', minHeight: '500px' }}>
       <Button onClick={() => showToast()}>Show Toast</Button>
-      <ToastProvider swipeDirection="right">
+      <ToastProvider>
         <ToastViewport />
         {open && <Toast {...props}></Toast>}
       </ToastProvider>
-    </>
+    </div>
   );
 };
 
@@ -67,4 +71,5 @@ Default.args = {
   actionText: 'Click me',
   duration: 3000,
   showClose: true,
+  closeOnClick: true,
 };

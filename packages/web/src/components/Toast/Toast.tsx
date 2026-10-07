@@ -30,8 +30,10 @@ const Toast: React.FC<ToastBaseProps> = ({
   timestamp,
   actionText,
   actionAltText,
+  width,
   duration = TOAST_DEFAULT_DURATION,
   showClose = true,
+  closeOnClick = true,
   onClose,
   onDismiss,
   onClick,
@@ -56,7 +58,9 @@ const Toast: React.FC<ToastBaseProps> = ({
   ): void {
     event.stopPropagation();
     onClick?.();
-    closeToast();
+    if (closeOnClick) {
+      closeToast();
+    }
   }
 
   function onDismissClick(event: React.MouseEvent<HTMLButtonElement>) {
@@ -79,65 +83,60 @@ const Toast: React.FC<ToastBaseProps> = ({
   }
 
   return (
-    <div className={className}>
-      <ToastRoot
-        className="ToastRoot"
-        open={open}
-        onOpenChange={onOpenChange}
-        duration={duration}
-        onClick={onClickInternal}
-      >
-        {showClose && (
-          <Close asChild>
-            <ToastCloseButton
-              variation={ButtonVariations.Icon}
-              size={ButtonSizes.Small}
-              onClick={onDismissClick}
-            >
-              <ToastCloseIcon
-                label={'ToastCloseIcon'}
+    <ToastRoot
+      className={className}
+      open={open}
+      onOpenChange={onOpenChange}
+      duration={duration}
+      onClick={onClickInternal}
+      $width={width}
+    >
+      {showClose && (
+        <Close asChild>
+          <ToastCloseButton
+            variation={ButtonVariations.Icon}
+            size={ButtonSizes.Small}
+            onClick={onDismissClick}
+          >
+            <ToastCloseIcon
+              label={'ToastCloseIcon'}
+              width={TOAST_ICON_SIZE}
+              height={TOAST_ICON_SIZE}
+            ></ToastCloseIcon>
+          </ToastCloseButton>
+        </Close>
+      )}
+      {headline && (
+        <ToastHeader>
+          <ToastHeadline>
+            {icon ?? (
+              <InfoIcon
+                label={'ToastInfoIcon'}
                 width={TOAST_ICON_SIZE}
                 height={TOAST_ICON_SIZE}
-              ></ToastCloseIcon>
-            </ToastCloseButton>
-          </Close>
-        )}
-        {headline && (
-          <ToastHeader>
-            <ToastHeadline>
-              {icon ?? (
-                <InfoIcon
-                  label={'ToastInfoIcon'}
-                  width={TOAST_ICON_SIZE}
-                  height={TOAST_ICON_SIZE}
-                />
-              )}
-              <span>{headline}</span>
-            </ToastHeadline>
-            <div>{timestamp}</div>
-          </ToastHeader>
-        )}
-        <ToastContent>
-          {title && <ToastTitle className="ToastTitle">{title}</ToastTitle>}
-          {description && <ToastDescription>{description}</ToastDescription>}
-          {actionText && actionAltText && onActionClick && (
-            <ToastAction
-              className="ToastAction"
-              asChild
-              altText={actionAltText}
+              />
+            )}
+            <span>{headline}</span>
+          </ToastHeadline>
+          <div>{timestamp}</div>
+        </ToastHeader>
+      )}
+      <ToastContent>
+        {title && <ToastTitle className="ToastTitle">{title}</ToastTitle>}
+        {description && <ToastDescription>{description}</ToastDescription>}
+        {actionText && actionAltText && onActionClick && (
+          <ToastAction className="ToastAction" asChild altText={actionAltText}>
+            <Button
+              variation={ButtonVariations.Basic}
+              size={ButtonSizes.Small}
+              onClick={onActionClickInternal}
             >
-              <Button
-                variation={ButtonVariations.Basic}
-                size={ButtonSizes.Small}
-                onClick={onActionClickInternal}
-              >
-                {actionText}
-              </Button>
-            </ToastAction>
-          )}
-        </ToastContent>
-      </ToastRoot>
-    </div>
+              {actionText}
+            </Button>
+          </ToastAction>
+        )}
+      </ToastContent>
+    </ToastRoot>
   );
 };
 

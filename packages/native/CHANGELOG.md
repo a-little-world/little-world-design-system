@@ -1,5 +1,20 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.11.4
+
+### Patch Changes
+
+- Add FlameIcon, FlameOutlineIcon, LockIcon & LockOpenIcon
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.17.1
+
+## 0.11.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.17.0
+
 ## 0.11.2
 
 ### Patch Changes

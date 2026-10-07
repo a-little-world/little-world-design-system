@@ -114,6 +114,13 @@ export {
   MenuContentLayout,
 } from './components/NavigationMenu/NavigationMenu';
 export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
+export {
+  default as ProgressRing,
+  ProgressRingAppearances,
+  ProgressRingSizes,
+  ProgressRingTones,
+} from './components/ProgressRing/ProgressRing';
+export type { ProgressRingProps } from './components/ProgressRing/ProgressRing';
 export { default as Popover, PopoverSizes } from './components/Popover/Popover';
 export { default as InfoPopover } from './components/Popover/InfoPopover';
 export { default as RadioGroup } from './components/RadioGroup/RadioGroup';
