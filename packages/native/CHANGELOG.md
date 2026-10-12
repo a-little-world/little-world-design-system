@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.12.0
+
+### Minor Changes
+
+- Fix in-text internal links: root-absolute `href`s (e.g. `/app/...`) now navigate via React Navigation instead of `Linking.openURL`; external URLs keep opening with `Linking`.
+
 ## 0.11.4
 
 ### Patch Changes
