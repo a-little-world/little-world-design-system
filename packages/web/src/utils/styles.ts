@@ -2,6 +2,11 @@ import { css } from 'styled-components';
 
 export const pixelate = (value: number) => `${value}px`;
 
+/** Outline sticker shadow — shared by Tag and the scale ProgressBar. */
+export const STICKER_SHADOW_CSS = css`
+  filter: drop-shadow(0px 1px 3px rgb(0 0 0 / 22%));
+`;
+
 /** Resets visual effects that break in forced-colors mode. Apply to all buttons. */
 export const FORCED_COLORS_BUTTON_RESET_CSS = css`
   @media (forced-colors: active) {

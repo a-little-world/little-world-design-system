@@ -26,6 +26,8 @@ export interface Colors {
     on: string;
     confirm: string;
     reject: string;
+    progressMarker: string;
+    progressMarkerCovered: string;
   };
   surface: {
     background: string;
@@ -51,6 +53,7 @@ export interface Colors {
     confirm: string;
     reject: string;
     elevated: string;
+    progressTrack: string;
   };
   text: {
     primary: string;
@@ -82,6 +85,7 @@ export interface Colors {
     blue10: string;
     orange10: string;
     orange20: string;
+    green10: string;
   };
 }
 
@@ -120,6 +124,7 @@ export interface ThemeWeb {
     xlarge: string;
     xxlarge: string;
     massive: string;
+    ginormous: string;
     half: string;
     full: string;
   };

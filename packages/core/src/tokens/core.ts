@@ -78,4 +78,5 @@ export const coreSpacing = {
   space100: getValue(10),
   space125: getValue(12.5),
   space150: getValue(15),
+  space1250: getValue(125),
 } as const;

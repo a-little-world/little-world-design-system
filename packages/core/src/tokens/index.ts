@@ -20,6 +20,7 @@ const radius = {
   xlarge: coreSpacing.space40,
   xxlarge: coreSpacing.space50,
   massive: coreSpacing.space125,
+  ginormous: coreSpacing.space1250,
   half: '50%',
   full: '100%',
 };
