@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { useId, useMemo } from 'react';
 
 import {
   ProgressBarSizes,
@@ -7,8 +7,9 @@ import {
   calculateProgress,
   getMarkers,
   getScaleLabelBands,
-  type ProgressBarSize,
-  type ProgressBarVariation,
+  getScaleLabelSteps,
+  type ProgressBarScaleProps,
+  type ProgressBarVariationProps,
 } from '@a-little-world/little-world-design-system-core';
 
 import Text from '../Text/Text';
@@ -19,7 +20,6 @@ import {
   ScaleEndLabel,
   ScaleFill,
   ScaleFrame,
-  ScaleGradient,
   ScaleHeader,
   ScaleMarker,
   ScaleRow,
@@ -35,75 +35,59 @@ import {
 
 export { ProgressBarSizes, ProgressBarVariations };
 
-export interface ProgressBarProps {
+export interface ProgressBarProps
+  extends ProgressBarVariationProps,
+    ProgressBarScaleProps {
   className?: string;
   customLabel?: string;
   fullWidth?: boolean;
   hideLabel?: boolean;
-  max: number;
-  value?: number;
-  variation?: ProgressBarVariation;
-  /**
-   * Bar thickness. Heights differ by variation:
-   * basic `small` 8px / `large` 16px (default `small`);
-   * scale `small` 32px / `large` 48px (default `large`).
-   */
-  size?: ProgressBarSize;
-  /**
-   * Marker interval for the scale variation.
-   * @default 30
-   */
-  step?: number;
-  /**
-   * Show the number row under the scale bar.
-   * @default true
-   */
-  showScale?: boolean;
-  /** Accessible name. Required when `variation` is `scale`. */
-  label?: string;
-  /** Optional heading on the left of the scale header. */
-  title?: ReactNode;
-  /**
-   * Smaller copy after the large current value, e.g. "von 300 Minuten".
-   * The current value is rendered by the component; pass units and
-   * translation here. The header shows when `title` and/or `scoreRest`
-   * is set.
-   */
-  scoreRest?: ReactNode;
-  /** Right-side label (e.g. "300 Min"). Defaults to the formatted max. */
-  endLabel?: ReactNode;
-  /** Spoken value override for the scale variation. */
-  ariaValueText?: string;
 }
 
-const formatNumber = (value: number) => new Intl.NumberFormat().format(value);
+const numberFormat = new Intl.NumberFormat();
+const formatNumber = (value: number) => numberFormat.format(value);
+
+/** Radix Progress needs max > 0 and 0 <= value <= max. */
+const getSafeRange = (max: number, value: number) => {
+  const safeMax = max > 0 ? max : 0;
+  return {
+    safeMax,
+    clamped: Math.min(Math.max(value, 0), safeMax),
+    rootMax: safeMax > 0 ? safeMax : 1,
+  };
+};
 
 const BasicProgressBar: React.FC<ProgressBarProps> = ({
   className,
   customLabel,
   fullWidth,
   hideLabel,
+  label,
   max,
   size = ProgressBarSizes.Small,
   value = 0,
 }) => {
-  const [progress, setProgress] = useState(calculateProgress(max, value));
-
-  useEffect(() => {
-    setProgress(calculateProgress(max, value));
-  }, [max, value]);
+  const labelId = useId();
+  const { safeMax, clamped, rootMax } = getSafeRange(max, value);
+  const progress = calculateProgress(safeMax, clamped);
+  const labelText = customLabel || `${clamped}/${safeMax}`;
+  const showLeadingLabel = !fullWidth && !hideLabel;
+  const showTrailingLabel = fullWidth && hideLabel;
+  const hasVisibleLabel = showLeadingLabel || showTrailingLabel;
+  const visibleLabel = (
+    <Text id={labelId} tag="span" type={TextTypes.Body6}>
+      {labelText}
+    </Text>
+  );
 
   return (
     <ProgressBarWrapper className={className} $fullWidth={fullWidth}>
-      {!fullWidth && !hideLabel && (
-        <Text id="progressBarIndicator" tag="span" type={TextTypes.Body6}>
-          {customLabel || `${value}/${max}`}
-        </Text>
-      )}
+      {showLeadingLabel && visibleLabel}
       <ProgressRoot
-        aria-labelledby="progressBarIndicator"
-        value={value}
-        max={max}
+        aria-label={label ?? (hasVisibleLabel ? undefined : labelText)}
+        aria-labelledby={!label && hasVisibleLabel ? labelId : undefined}
+        value={clamped}
+        max={rootMax}
         $fullWidth={fullWidth}
         $size={size}
       >
@@ -112,11 +96,7 @@ const BasicProgressBar: React.FC<ProgressBarProps> = ({
           style={{ transform: `translateX(-${100 - progress}%)` }}
         />
       </ProgressRoot>
-      {fullWidth && hideLabel && (
-        <Text id="progressBarIndicator" tag="span" type={TextTypes.Body6}>
-          {customLabel || `${value}/${max}`}
-        </Text>
-      )}
+      {showTrailingLabel && visibleLabel}
     </ProgressBarWrapper>
   );
 };
@@ -134,11 +114,13 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
   title,
   value = 0,
 }) => {
-  const safeMax = max > 0 ? max : 0;
-  const clamped = Math.min(Math.max(value, 0), safeMax);
-  const percent = safeMax > 0 ? (clamped / safeMax) * 100 : 0;
-  const markers = getMarkers(safeMax, step);
-  const rootMax = safeMax > 0 ? safeMax : 1;
+  const { safeMax, clamped, rootMax } = getSafeRange(max, value);
+  const percent = calculateProgress(safeMax, clamped);
+  const markers = useMemo(() => getMarkers(safeMax, step), [safeMax, step]);
+  const labelSteps = useMemo(
+    () => getScaleLabelSteps(safeMax, step),
+    [safeMax, step],
+  );
   const showHeader = title != null || scoreRest != null;
 
   return (
@@ -162,13 +144,13 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
         getValueLabel={ariaValueText ? () => ariaValueText : undefined}
       >
         <ScaleTrack>
-          {clamped > 0 && safeMax > 0 ? (
-            <ScaleFill style={{ width: `${percent}%` }}>
-              <ScaleGradient
-                style={{ width: `${(safeMax / clamped) * 100}%` }}
-              />
-            </ScaleFill>
-          ) : null}
+          <ScaleFill
+            style={
+              {
+                '--lw-progress-fill-inset': `${100 - percent}%`,
+              } as React.CSSProperties
+            }
+          />
           {markers.map(marker => (
             <ScaleMarker
               key={marker.value}
@@ -183,7 +165,7 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
         <ScaleRow aria-hidden>
           <ScaleStartLabel>{formatNumber(0)}</ScaleStartLabel>
           {markers.map(marker => {
-            const bands = getScaleLabelBands(marker.value, safeMax, step);
+            const bands = getScaleLabelBands(marker.value, safeMax, labelSteps);
             return (
               <ScaleTickLabel
                 key={marker.value}

@@ -2,8 +2,9 @@ import * as Progress from '@radix-ui/react-progress';
 import styled, { css } from 'styled-components';
 
 import {
-  ProgressBarSizes,
+  PROGRESS_BAR_HEIGHTS,
   TextTypes,
+  coreColors,
   type ProgressBarSize,
 } from '@a-little-world/little-world-design-system-core';
 
@@ -11,27 +12,6 @@ import Text from '../Text/Text';
 import { STICKER_SHADOW_CSS } from '../../utils/styles';
 
 const PROGRESS_MOTION = '660ms cubic-bezier(0.65, 0, 0.35, 1)';
-
-const basicBarHeight = (size: ProgressBarSize) =>
-  size === ProgressBarSizes.Large
-    ? css`
-        height: ${({ theme }) => theme.spacing.small};
-      `
-    : css`
-        height: ${({ theme }) => theme.spacing.xxsmall};
-      `;
-
-const scaleBarHeight = (size: ProgressBarSize) =>
-  size === ProgressBarSizes.Small
-    ? css`
-        height: ${({ theme }) => theme.spacing.large};
-      `
-    : css`
-        height: calc(
-          ${({ theme }) => theme.spacing.xlarge} +
-            ${({ theme }) => theme.spacing.xxsmall}
-        );
-      `;
 
 export const ProgressBarWrapper = styled.div<{ $fullWidth?: boolean }>`
   display: flex;
@@ -61,7 +41,7 @@ export const ProgressRoot = styled(Progress.Root)<{
   border-radius: ${({ theme }) => theme.radius.ginormous};
   background: ${({ theme }) => theme.color.surface.secondary};
   width: ${({ $fullWidth }) => ($fullWidth ? '100%' : '300px')};
-  ${({ $size }) => basicBarHeight($size)}
+  height: ${({ $size }) => PROGRESS_BAR_HEIGHTS.basic[$size]}px;
 
   /* Fix overflow clipping in Safari */
   /* https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0 */
@@ -90,7 +70,7 @@ export const ScaleWrap = styled.div`
 export const ScaleFrame = styled(Progress.Root)<{ $size: ProgressBarSize }>`
   box-sizing: border-box;
   width: 100%;
-  ${({ $size }) => scaleBarHeight($size)}
+  height: ${({ $size }) => PROGRESS_BAR_HEIGHTS.scale[$size]}px;
   padding: var(--lw-progress-frame-padding);
   border: var(--lw-progress-frame-border) solid
     ${({ theme }) => theme.color.text.primary};
@@ -104,25 +84,27 @@ export const ScaleTrack = styled.div`
   height: 100%;
   border-radius: ${({ theme }) => theme.radius.ginormous};
   overflow: hidden;
-  background: ${({ theme }) => theme.color.surface.progressTrack};
+  background: color-mix(
+    in srgb,
+    ${({ theme }) => theme.color.surface.success} 45%,
+    ${({ theme }) => theme.color.surface.primary}
+  );
 `;
 
-export const ScaleFill = styled.div`
+/**
+ * The gradient spans the full track so a given value keeps the same colour
+ * as the bar grows; clip-path reveals it up to the current value.
+ */
+export const ScaleFill = styled.span`
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 0;
-  height: 100%;
-  border-radius: ${({ theme }) => theme.radius.ginormous};
-  overflow: hidden;
-  transition: width ${PROGRESS_MOTION};
-`;
-
-export const ScaleGradient = styled.span`
-  display: block;
-  height: 100%;
   background: ${({ theme }) => theme.color.gradient.green10};
+  clip-path: inset(
+    0 var(--lw-progress-fill-inset, 100%) 0 0 round
+      ${({ theme }) => theme.radius.ginormous}
+  );
+  transition: clip-path ${PROGRESS_MOTION};
 `;
 
 export const ScaleMarker = styled.span<{
@@ -139,8 +121,8 @@ export const ScaleMarker = styled.span<{
   border-radius: 1px;
   background: ${({ theme, $covered }) =>
     $covered
-      ? theme.color.border.progressMarkerCovered
-      : theme.color.border.progressMarker};
+      ? `color-mix(in srgb, ${coreColors.white} 75%, transparent)`
+      : `color-mix(in srgb, ${theme.color.border.success} 22%, transparent)`};
   pointer-events: none;
 `;
 

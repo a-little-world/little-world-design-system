@@ -228,3 +228,24 @@ ScaleWidthSmall.parameters = {
     },
   },
 };
+
+export const ScaleUnevenStep = args => {
+  return <ProgressBar {...args} />;
+};
+
+ScaleUnevenStep.args = {
+  variation: ProgressBarVariations.Scale,
+  value: 45,
+  max: 100,
+  step: 30,
+  label: 'Progress',
+};
+
+ScaleUnevenStep.parameters = {
+  docs: {
+    description: {
+      story:
+        'Step does not divide max: ticks at 30, 60 and 90. Wide layouts label every tick; narrow layouts fall back to multiples of the step.',
+    },
+  },
+};

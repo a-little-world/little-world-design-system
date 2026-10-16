@@ -26,8 +26,6 @@ export interface Colors {
     on: string;
     confirm: string;
     reject: string;
-    progressMarker: string;
-    progressMarkerCovered: string;
   };
   surface: {
     background: string;
@@ -53,7 +51,6 @@ export interface Colors {
     confirm: string;
     reject: string;
     elevated: string;
-    progressTrack: string;
   };
   text: {
     primary: string;
