@@ -1,5 +1,20 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.18.0
+
+### Minor Changes
+
+- Add ProgressBar variation and size types: `ProgressBarVariations`, `ProgressBarSizes` and `PROGRESS_BAR_HEIGHTS`
+- Add ProgressBar prop types: `ProgressBarVariationProps` and `ProgressBarScaleProps`
+- Add scale helpers: `getMarkers`, `getScaleLabelStep`, `getScaleLabelSteps`, `getScaleLabelBands` and `SCALE_LABEL_MAX`
+- Add `gradient.green10` theme colour (light and dark)
+- Add `radius.ginormous` and `coreSpacing.space1250` tokens
+
+### Patch Changes
+
+- `ProgressBarBaseProps.value` is now optional
+- `calculateProgress` clamps to 0–100 and returns 0 when `max` is 0 or below
+
 ## 1.17.1
 
 ### Patch Changes

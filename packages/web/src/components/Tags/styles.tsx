@@ -4,6 +4,7 @@ import {
   TagAppearance,
   TagSizes,
 } from '@a-little-world/little-world-design-system-core';
+import { STICKER_SHADOW_CSS } from '../../utils/styles';
 
 export const StyledTag = styled(Text)<{
   $size: TagSizes;
@@ -23,7 +24,7 @@ export const StyledTag = styled(Text)<{
   min-width: 60px;
   width: fit-content;
   text-wrap: nowrap;
-  filter: drop-shadow(0px 1px 3px rgb(0 0 0 / 22%));
+  ${STICKER_SHADOW_CSS}
 
   ${({ theme, $size }) => {
     if ($size === TagSizes.small) {

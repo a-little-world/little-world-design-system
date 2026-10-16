@@ -14,7 +14,8 @@
     "target": "ES2022",
     "skipLibCheck": true,
     "allowImportingTsExtensions": false,
-    "moduleDetection": "force"
+    "moduleDetection": "force",
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": ["src"],
   "exclude": [
@@ -23,12 +24,6 @@
     "**/*.config.js",
     "**/*.config.ts",
     "**/*.stories.tsx",
-    "**/*.stories.ts",
-    "**/*.test.tsx",
-    "**/*.test.ts",
-    "**/testUtils.tsx",
-    "**/setupTests.ts"
-  ],
-  "types": ["@testing-library/jest-dom"],
-  "typeRoots": ["./node_modules/@types"]
+    "**/*.stories.ts"
+  ]
 }

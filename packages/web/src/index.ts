@@ -113,7 +113,12 @@ export {
   NavigationMenuTrigger,
   MenuContentLayout,
 } from './components/NavigationMenu/NavigationMenu';
-export { default as ProgressBar } from './components/ProgressBar/ProgressBar';
+export {
+  default as ProgressBar,
+  ProgressBarSizes,
+  ProgressBarVariations,
+} from './components/ProgressBar/ProgressBar';
+export type { ProgressBarProps } from './components/ProgressBar/ProgressBar';
 export {
   default as ProgressRing,
   ProgressRingAppearances,
