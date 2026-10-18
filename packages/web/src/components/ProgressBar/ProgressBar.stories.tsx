@@ -118,6 +118,43 @@ ScaleSmall.args = {
   endLabel: '300 Min',
 };
 
+export const ScaleValueInBar = args => {
+  return <ProgressBar {...args} />;
+};
+
+ScaleValueInBar.args = {
+  variation: ProgressBarVariations.Scale,
+  value: 270,
+  max: 300,
+  step: 30,
+  label: 'Call minutes',
+  endLabel: '300 Min',
+  showValueInBar: true,
+};
+
+ScaleValueInBar.parameters = {
+  docs: {
+    description: {
+      story:
+        'Opt-in in-bar readout. Below 60% it sits just past the fill in dark green. From 60% it sits inside the fill, 16px short of the fill edge, in white. It fades in after the bar has finished moving. Ticks that cross the label are hidden; every other tick stays.',
+    },
+  },
+};
+
+export const ScaleValueInBarEarly = args => {
+  return <ProgressBar {...args} />;
+};
+
+ScaleValueInBarEarly.args = {
+  variation: ProgressBarVariations.Scale,
+  value: 90,
+  max: 300,
+  step: 30,
+  label: 'Call minutes',
+  endLabel: '300 Min',
+  showValueInBar: true,
+};
+
 export const ScaleComplete = args => {
   return <ProgressBar {...args} />;
 };

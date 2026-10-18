@@ -1,4 +1,11 @@
-import React, { useId, useMemo } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import {
   ProgressBarSizes,
@@ -14,11 +21,19 @@ import {
 
 import Text from '../Text/Text';
 import {
+  getFillLabelPlacement,
+  markerOverlapsFillLabel,
+  type FillLabelPlacement,
+} from './fillLabel';
+import {
   ProgressBarWrapper,
   ProgressIndicator,
   ProgressRoot,
+  PROGRESS_MOTION_MS,
   ScaleEndLabel,
   ScaleFill,
+  ScaleFillLabel,
+  ScaleFillLabelText,
   ScaleFrame,
   ScaleHeader,
   ScaleMarker,
@@ -42,7 +57,28 @@ export interface ProgressBarProps
   customLabel?: string;
   fullWidth?: boolean;
   hideLabel?: boolean;
+  /**
+   * Scale variation only. Renders the current value and max inside the
+   * track, e.g. "270 / 300 Min" when `endLabel` is "300 Min".
+   * Below 60% of the track it sits just past the fill, in dark green.
+   * From 60% it sits inside the fill, 16px (`spacing.small`) short
+   * of the fill's leading edge, in white. It fades in after the bar
+   * finishes moving (immediately with reduced motion). Ticks that cross
+   * the label are hidden.
+   * @default false
+   */
+  showValueInBar?: boolean;
 }
+
+const HAS_RESIZE_OBSERVER = typeof ResizeObserver !== 'undefined';
+
+/** The label waits for the fill to finish moving, unless motion is off. */
+const getFillMotionMs = () =>
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ? 0
+    : PROGRESS_MOTION_MS;
 
 const numberFormat = new Intl.NumberFormat();
 const formatNumber = (value: number) => numberFormat.format(value);
@@ -108,6 +144,7 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
   label,
   max,
   scoreRest,
+  showValueInBar = false,
   showScale = true,
   size = ProgressBarSizes.Large,
   step = 30,
@@ -122,6 +159,82 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
     [safeMax, step],
   );
   const showHeader = title != null || scoreRest != null;
+  const trackRef = useRef<HTMLDivElement>(null);
+  const fillLabelRef = useRef<HTMLSpanElement>(null);
+  const [widths, setWidths] = useState({ track: 0, label: 0 });
+  const [fillLabelVisible, setFillLabelVisible] = useState(false);
+  // Empty until after the first paint, so the fill can transition in.
+  const [fillInset, setFillInset] = useState(100);
+  const maxLabel = endLabel ?? formatNumber(safeMax);
+  const targetInset = 100 - percent;
+
+  const measure = useCallback(() => {
+    const track = trackRef.current;
+    const fillLabel = fillLabelRef.current;
+    if (!track || !fillLabel) {
+      return;
+    }
+
+    const next = {
+      track: Math.round(track.getBoundingClientRect().width),
+      label: Math.round(fillLabel.getBoundingClientRect().width),
+    };
+    setWidths(prev =>
+      prev.track === next.track && prev.label === next.label ? prev : next,
+    );
+  }, []);
+
+  useEffect(() => {
+    if (!showValueInBar) {
+      return;
+    }
+
+    measure();
+
+    const track = trackRef.current;
+    const fillLabel = fillLabelRef.current;
+    if (!HAS_RESIZE_OBSERVER || !track || !fillLabel) {
+      return;
+    }
+
+    const observer = new ResizeObserver(measure);
+    observer.observe(track);
+    observer.observe(fillLabel);
+    return () => observer.disconnect();
+  }, [showValueInBar, measure]);
+
+  // Without ResizeObserver, re-measure when the label text changes.
+  useEffect(() => {
+    if (showValueInBar && !HAS_RESIZE_OBSERVER) {
+      measure();
+    }
+  }, [showValueInBar, measure, clamped, maxLabel]);
+
+  const fillLabelPlacement: FillLabelPlacement | null =
+    showValueInBar && widths.track > 0 && widths.label > 0
+      ? getFillLabelPlacement(percent, widths.track, widths.label)
+      : null;
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setFillInset(targetInset);
+    });
+
+    if (!showValueInBar) {
+      return () => cancelAnimationFrame(frame);
+    }
+
+    setFillLabelVisible(false);
+    const timeout = window.setTimeout(
+      () => setFillLabelVisible(true),
+      getFillMotionMs(),
+    );
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(timeout);
+    };
+  }, [showValueInBar, targetInset]);
 
   return (
     <ScaleWrap className={className}>
@@ -129,7 +242,15 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
         <ScaleHeader>
           {title != null ? <ScaleTitle>{title}</ScaleTitle> : null}
           <ScaleScore aria-hidden>
-            <ScaleScoreValue>{formatNumber(clamped)}</ScaleScoreValue>
+            <ScaleScoreValue
+              type={
+                size === ProgressBarSizes.Small
+                  ? TextTypes.Heading5
+                  : TextTypes.Heading4
+              }
+            >
+              {formatNumber(clamped)}
+            </ScaleScoreValue>
             {scoreRest != null ? (
               <ScaleScoreRest>{scoreRest}</ScaleScoreRest>
             ) : null}
@@ -143,22 +264,66 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
         aria-label={label}
         getValueLabel={ariaValueText ? () => ariaValueText : undefined}
       >
-        <ScaleTrack>
+        <ScaleTrack ref={trackRef} data-scale-track="">
           <ScaleFill
             style={
               {
-                '--lw-progress-fill-inset': `${100 - percent}%`,
+                '--lw-progress-fill-inset': `${fillInset}%`,
               } as React.CSSProperties
             }
           />
-          {markers.map(marker => (
-            <ScaleMarker
-              key={marker.value}
-              $percent={marker.percent}
-              $covered={marker.value <= clamped}
+          {markers.map(marker => {
+            // Ticks give way only once the label is showing, so the
+            // track is never left without both while the fill moves.
+            const hidden =
+              fillLabelVisible &&
+              fillLabelPlacement != null &&
+              markerOverlapsFillLabel(
+                marker.percent,
+                fillLabelPlacement,
+                widths.track,
+              );
+
+            return (
+              <ScaleMarker
+                key={marker.value}
+                data-marker={marker.value}
+                $percent={marker.percent}
+                $covered={marker.value <= clamped}
+                hidden={hidden || undefined}
+                aria-hidden
+              />
+            );
+          })}
+          {showValueInBar ? (
+            <ScaleFillLabel
+              ref={fillLabelRef}
+              data-testid="progress-fill-label"
+              data-fill-label=""
               aria-hidden
-            />
-          ))}
+              $onFill={Boolean(fillLabelPlacement?.onFill)}
+              $visible={fillLabelVisible}
+              style={{ left: fillLabelPlacement?.startPx ?? 0 }}
+            >
+              <ScaleFillLabelText
+                bold
+                tag="span"
+                disableParser
+                type={TextTypes.Heading5}
+              >
+                {formatNumber(clamped)}
+              </ScaleFillLabelText>
+              <ScaleFillLabelText
+                bold
+                tag="span"
+                disableParser
+                type={TextTypes.Heading7}
+              >
+                {'/ '}
+                {maxLabel}
+              </ScaleFillLabelText>
+            </ScaleFillLabel>
+          ) : null}
         </ScaleTrack>
       </ScaleFrame>
       {showScale ? (
