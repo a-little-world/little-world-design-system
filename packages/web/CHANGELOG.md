@@ -1,5 +1,15 @@
 # @a-little-world/little-world-design-system
 
+## 3.2.1
+
+### Patch Changes
+
+- Add `showValueInBar` to the scale ProgressBar: shows the value and max (e.g. "270 / 300 Min") inside the track
+  - Sits just past the fill in dark green, or inside the fill in white from 60%
+  - Fades in once the fill stops moving; ticks under it are hidden
+- Fill animates in on mount; scale header score is smaller on the `small` size
+- ProgressBar respects `prefers-reduced-motion`
+
 ## 3.2.0
 
 ### Minor Changes

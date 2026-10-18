@@ -6,8 +6,10 @@ import {
   getScaleLabelSteps,
 } from '@a-little-world/little-world-design-system-core';
 
-import { render, screen } from '../../testUtils';
+import { act, render, screen } from '../../testUtils';
+import { getFillLabelPlacement, markerOverlapsFillLabel } from './fillLabel';
 import ProgressBar, { ProgressBarVariations } from './ProgressBar';
+import { PROGRESS_MOTION_MS } from './ProgressBar.styles';
 
 describe('getMarkers', () => {
   test('includes every step below max when step does not divide max', () => {
@@ -86,6 +88,144 @@ describe('basic ProgressBar accessible name', () => {
     expect(
       screen.getByRole('progressbar', { name: 'Profile steps' }),
     ).toBeTruthy();
+  });
+});
+
+describe('fill label placement', () => {
+  const trackWidth = 300;
+  const labelWidth = 80;
+
+  test('keeps the label just past the fill below 60%', () => {
+    expect(getFillLabelPlacement(50, trackWidth, labelWidth)).toEqual({
+      onFill: false,
+      startPx: 166,
+      endPx: 246,
+    });
+  });
+
+  test('insets the label 16px from the fill edge once it is inside', () => {
+    expect(getFillLabelPlacement(90, trackWidth, labelWidth)).toEqual({
+      onFill: true,
+      startPx: 174,
+      endPx: 254,
+    });
+  });
+
+  test('uses the roomier side, in its colour, when it fits neither side', () => {
+    // 200px track, 55% fill = 110px: too narrow inside, too wide outside.
+    const inside = getFillLabelPlacement(55, 200, labelWidth);
+    expect(inside.onFill).toBe(true);
+    expect(inside.startPx).toBeCloseTo(14);
+
+    // 100px label, 45% fill = 90px: more room on the empty track, so it
+    // is clamped to the track end and stays dark.
+    const outside = getFillLabelPlacement(45, 200, 100);
+    expect(outside.onFill).toBe(false);
+    expect(outside.startPx).toBeCloseTo(100);
+  });
+
+  test('hides only ticks that cross the label', () => {
+    const placement = getFillLabelPlacement(90, trackWidth, labelWidth);
+
+    expect(markerOverlapsFillLabel(50, placement, trackWidth)).toBe(false);
+    expect(markerOverlapsFillLabel(60, placement, trackWidth)).toBe(true);
+    expect(markerOverlapsFillLabel(80, placement, trackWidth)).toBe(true);
+    expect(markerOverlapsFillLabel(90, placement, trackWidth)).toBe(false);
+  });
+});
+
+const rect = (width: number, height: number): DOMRect =>
+  ({
+    width,
+    height,
+    top: 0,
+    left: 0,
+    right: width,
+    bottom: height,
+    x: 0,
+    y: 0,
+    toJSON: () => ({}),
+  }) as DOMRect;
+
+describe('scale fill label', () => {
+  const originalRect = HTMLElement.prototype.getBoundingClientRect;
+
+  beforeEach(() => {
+    HTMLElement.prototype.getBoundingClientRect = function () {
+      if (this.dataset.scaleTrack != null) {
+        return rect(300, 36);
+      }
+      if (this.dataset.fillLabel != null) {
+        return rect(80, 14);
+      }
+      return originalRect.call(this);
+    };
+  });
+
+  afterEach(() => {
+    HTMLElement.prototype.getBoundingClientRect = originalRect;
+  });
+
+  test('is hidden unless showValueInBar is set', () => {
+    render(
+      <ProgressBar
+        variation={ProgressBarVariations.Scale}
+        max={300}
+        value={270}
+        label="Call minutes"
+        endLabel="300 Min"
+      />,
+    );
+
+    expect(screen.queryByTestId('progress-fill-label')).toBeNull();
+    expect(document.querySelector('[data-marker="210"]')).toBeVisible();
+  });
+
+  test('renders the value and end label inside the track', () => {
+    render(
+      <ProgressBar
+        variation={ProgressBarVariations.Scale}
+        max={300}
+        value={270}
+        step={30}
+        label="Call minutes"
+        endLabel="300 Min"
+        showValueInBar
+      />,
+    );
+
+    const fillLabel = screen.getByTestId('progress-fill-label');
+    expect(fillLabel).toHaveTextContent('270/ 300 Min');
+    expect(fillLabel).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  test('hides markers that overlap the label once it shows', () => {
+    jest.useFakeTimers();
+    render(
+      <ProgressBar
+        variation={ProgressBarVariations.Scale}
+        max={300}
+        value={270}
+        step={30}
+        label="Call minutes"
+        endLabel="300 Min"
+        showValueInBar
+      />,
+    );
+
+    // Ticks stay while the fill moves and the label is still hidden.
+    expect(document.querySelector('[data-marker="210"]')).toBeVisible();
+
+    act(() => {
+      jest.advanceTimersByTime(PROGRESS_MOTION_MS);
+    });
+    jest.useRealTimers();
+
+    expect(document.querySelector('[data-marker="150"]')).toBeVisible();
+    expect(document.querySelector('[data-marker="180"]')).not.toBeVisible();
+    expect(document.querySelector('[data-marker="210"]')).not.toBeVisible();
+    expect(document.querySelector('[data-marker="240"]')).not.toBeVisible();
+    expect(document.querySelector('[data-marker="270"]')).toBeVisible();
   });
 });
 
