@@ -6,6 +6,8 @@ export { coreColors, coreSpacing } from './tokens/core';
 export { getTextStyle } from './utils/text/getTextStyle';
 export { parseSvg } from './utils/svgs';
 export { isValidUrl } from './utils/isValidUrl';
+export { getLinkKind } from './utils/links';
+export type { LinkKind } from './utils/links';
 
 // Export common types
 export type { ValueOf } from './utils/types';
