@@ -74,22 +74,20 @@ const Banner = ({
             <Ctas>
               {showSecondaryCta && (
                 <Cta
-                  to={secondaryCtaUrl}
+                  href={secondaryCtaUrl}
                   buttonAppearance={ButtonAppearance.Secondary}
                   buttonSize={ButtonSizes.Medium}
                   color={secondaryCtaColor}
-                  target="_blank"
                 >
                   {secondaryCtaText}
                 </Cta>
               )}
               {showPrimaryCta && (
                 <Cta
-                  to={primaryCtaUrl}
+                  href={primaryCtaUrl}
                   buttonAppearance={ButtonAppearance.Primary}
                   buttonSize={ButtonSizes.Medium}
                   backgroundColor={primaryCtaColor}
-                  target="_blank"
                 >
                   {primaryCtaText}
                 </Cta>
@@ -107,22 +105,20 @@ const Banner = ({
             <Ctas $isRHS>
               {showSecondaryCta && (
                 <Cta
-                  to={secondaryCtaUrl}
+                  href={secondaryCtaUrl}
                   buttonAppearance={ButtonAppearance.Secondary}
                   buttonSize={ButtonSizes.Medium}
                   color={secondaryCtaColor}
-                  target="_blank"
                 >
                   {secondaryCtaText}
                 </Cta>
               )}
               {showPrimaryCta && (
                 <Cta
-                  to={primaryCtaUrl}
+                  href={primaryCtaUrl}
                   buttonAppearance={ButtonAppearance.Primary}
                   buttonSize={ButtonSizes.Medium}
                   backgroundColor={primaryCtaColor}
-                  target="_blank"
                 >
                   {primaryCtaText}
                 </Cta>

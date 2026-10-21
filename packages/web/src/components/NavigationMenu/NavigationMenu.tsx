@@ -80,19 +80,17 @@ interface CalloutProps {
   description: string;
   link: string;
   Icon?: React.ElementType;
-  to?: string;
   href?: string;
 }
 const NavigationMenuCallout = ({
   heading,
   description,
   Icon,
-  to,
   href,
 }: CalloutProps) => (
   <li style={{ gridRow: 'span 3' }}>
     <RadixNavigationMenu.Link asChild>
-      <Callout to={to} href={href}>
+      <Callout href={href}>
         {Icon ? (
           <Icon width="48px" height="48px" label="Callout Icon" />
         ) : (

@@ -16,5 +16,4 @@ export interface LinkBaseProps {
   state?: any;
   textDecoration?: boolean;
   textType?: TextTypes;
-  to?: string;
 }

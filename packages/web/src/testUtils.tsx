@@ -7,6 +7,7 @@ import {
   RenderResult,
 } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
+import { MemoryRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { themes } from './theme';
 
@@ -44,6 +45,29 @@ function renderWithUser(
   };
 }
 
+const LocationDisplay = () => {
+  const { pathname, search, hash } = useLocation();
+  return <div data-testid="location">{pathname + search + hash}</div>;
+};
+
+function TestRouter({
+  children,
+  initialPath = '/',
+}: {
+  children: ReactNode;
+  initialPath?: string;
+}) {
+  return (
+    <MemoryRouter
+      initialEntries={[initialPath]}
+      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+    >
+      {children}
+      <LocationDisplay />
+    </MemoryRouter>
+  );
+}
+
 // Re-export everything
 export * from '@testing-library/react';
-export { render, renderWithUser };
+export { render, renderWithUser, TestRouter };
