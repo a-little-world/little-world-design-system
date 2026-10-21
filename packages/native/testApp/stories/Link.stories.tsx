@@ -3,18 +3,23 @@ import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { Link } from '@a-little-world/little-world-design-system-native';
-import { ButtonAppearance, TextTypes } from '@a-little-world/little-world-design-system-core';
+import {
+  ButtonAppearance,
+  TextTypes,
+} from '@a-little-world/little-world-design-system-core';
 
 export default {
   title: 'Components/Link',
   component: Link,
-  decorators: [(Story: React.ComponentType) => (
-    <NavigationContainer>
-      <View style={{ padding: 20 }}>
-        <Story />
-      </View>
-    </NavigationContainer>
-  )],
+  decorators: [
+    (Story: React.ComponentType) => (
+      <NavigationContainer>
+        <View style={{ padding: 20 }}>
+          <Story />
+        </View>
+      </NavigationContainer>
+    ),
+  ],
 };
 
 export const ExternalLink = {
@@ -26,14 +31,14 @@ export const ExternalLink = {
 
 export const NavigationLink = {
   args: {
-    to: 'Home',
-    children: 'Navigate to Home',
+    href: '/Main',
+    children: 'Navigate to Main',
   },
 };
 
 export const ButtonStylePrimary = {
   args: {
-    to: 'Home',
+    href: '/Main',
     buttonAppearance: ButtonAppearance.Primary,
     textType: TextTypes.Body4,
     children: 'Button Link Primary',

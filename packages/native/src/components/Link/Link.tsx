@@ -1,35 +1,35 @@
-import { getButtonStyles, gradientStyles } from '../Button/styles';
-import BaseText from '../Text/BaseText';
-import { getLinkStyles, getLinkTextStyles } from './styles';
 import {
   ButtonAppearance,
   ButtonSizes,
   ButtonVariations,
+  getLinkKind,
   LinkBaseProps,
   TextTypes,
 } from '@a-little-world/little-world-design-system-core';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { useLinkTo } from '@react-navigation/native';
 import React, { forwardRef } from 'react';
 import {
+  Linking,
   Pressable,
   PressableProps,
-  ViewStyle,
-  Linking,
   StyleProp,
+  ViewStyle,
 } from 'react-native';
 import { useTheme } from 'styled-components/native';
+import { getButtonStyles, gradientStyles } from '../Button/styles';
 import Gradient from '../Gradient/Gradient';
+import BaseText from '../Text/BaseText';
+import { getLinkStyles, getLinkTextStyles } from './styles';
 
 export type LinkProps = Omit<PressableProps, 'onPress'> &
   LinkBaseProps & {
-    params?: Record<string, any>;
     style?: StyleProp<ViewStyle>;
   };
 
 /**
  * Link component for React Native
- * - Uses React Navigation for internal navigation (to)
- * - Uses Linking API for external links (href)
+ * - Root-absolute `href`s (`/app/...`) resolve through React Navigation's linking config
+ * - Everything else opens via the Linking API
  */
 const Link = forwardRef<any, LinkProps>(
   (
@@ -40,8 +40,6 @@ const Link = forwardRef<any, LinkProps>(
       buttonSize,
       children,
       href,
-      to,
-      params,
       style,
       textType,
       textDecoration = true,
@@ -51,8 +49,7 @@ const Link = forwardRef<any, LinkProps>(
     ref,
   ) => {
     const theme = useTheme();
-    // Always call useNavigation, but handle the case where it's not available
-    const navigation = useNavigation<NavigationProp<any>>();
+    const linkTo = useLinkTo();
     const hasGradient = buttonAppearance === ButtonAppearance.Primary;
 
     const handlePress = () => {
@@ -60,20 +57,14 @@ const Link = forwardRef<any, LinkProps>(
         onClick();
       }
 
-      if (href) {
-        // Handle external link
+      if (!href) return;
+
+      if (getLinkKind(href) === 'internal') {
+        linkTo(href);
+      } else {
         Linking.openURL(href).catch(err => {
           console.error('Failed to open URL:', err);
         });
-      } else if (to) {
-        // Handle internal navigation
-        try {
-          navigation.navigate(to, params);
-        } catch (_error) {
-          console.warn(
-            'Navigation not available. Make sure your Link is inside NavigationContainer.',
-          );
-        }
       }
     };
 

@@ -77,8 +77,8 @@ function TestPage({ navigation }: TestPageProps) {
             Link Tests
           </Text>
           
-          <Link 
-            to="https://example.com"
+          <Link
+            href="https://example.com"
             onClick={() => handleLinkPress("External")}
           >
             External Link
