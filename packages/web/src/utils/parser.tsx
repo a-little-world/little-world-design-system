@@ -133,7 +133,6 @@ const parseContent = (
         tag.attributes.href ? (
           <Link
             key={`${tag.tagName}-${tag.start}-${tag.end}`}
-            to={tag.attributes.href as string}
             {...tag.attributes}
           >
             {nestedContent}
@@ -242,7 +241,6 @@ const textParser = (text: string, options: ParserOptions = {}) => {
         tag.attributes.href && !nonInteractive ? (
           <Link
             key={`${tag.tagName}-${tag.start}-${tag.end}`}
-            to={tag.attributes.href as string}
             {...tag.attributes}
           >
             {nestedContent}

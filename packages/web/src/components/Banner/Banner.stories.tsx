@@ -17,7 +17,7 @@ const baseArgs = {
   primaryCtaText: 'Open dashboard',
   primaryCtaUrl: '/dashboard',
   secondaryCtaText: 'Learn more',
-  secondaryCtaUrl: '/learn-more',
+  secondaryCtaUrl: 'little-world.com',
   image:
     'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80',
   imageAlt: 'Parent and child smiling together',

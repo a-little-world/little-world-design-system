@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system-core
 
+## 2.0.0
+
+### Major Changes
+
+- **Breaking:** Remove `to` from `LinkBaseProps`; links take a single `href`.
+
+### Minor Changes
+
+- Add `getLinkKind(href)` to classify hrefs as `internal` (root-absolute `/app/...`), `external` (`https://…`, `//host`, scheme-less domains like `little-world.com`) or `other`.
+- Add `withScheme(href)`, which prefixes `https://` onto scheme-less domains.
+
 ## 1.18.0
 
 ### Minor Changes

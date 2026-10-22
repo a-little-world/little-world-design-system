@@ -1,18 +1,22 @@
 import React, { forwardRef } from 'react';
-import { LinkProps as RouterLinkProps } from 'react-router-dom';
+import {
+  LinkProps as RouterLinkProps,
+  useInRouterContext,
+} from 'react-router-dom';
 
 import {
+  getLinkKind,
   LinkBaseProps,
   TextTypes,
+  withScheme,
 } from '@a-little-world/little-world-design-system-core';
 import { Anchor, AnchorText, RouterLink } from './styles';
 
-export type LinkProps = Omit<RouterLinkProps, 'to'> & LinkBaseProps;
-
-const Variants = {
-  href: Anchor,
-  to: RouterLink,
-};
+export type LinkProps = Omit<RouterLinkProps, 'to' | 'relative'> &
+  LinkBaseProps & {
+    /** resolve `href` against the current path through the router */
+    relative?: boolean;
+  };
 
 const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   (
@@ -27,21 +31,36 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       color,
       href,
       onClick,
+      rel,
+      relative,
       state,
       style,
       target,
-      to,
       textType,
       textDecoration = true,
       ...props
     },
     ref,
   ) => {
-    const Component = Variants[href ? 'href' : 'to'] as React.ElementType;
+    const inRouterContext = useInRouterContext();
+    const destination = (relative ? href : withScheme(href)) || undefined;
+    const linkKind =
+      relative && destination ? 'internal' : getLinkKind(destination);
+    const useRouterLink = inRouterContext && linkKind === 'internal';
+    const effectiveTarget =
+      target ?? (linkKind === 'external' ? '_blank' : undefined);
+    const effectiveRel =
+      rel ?? (effectiveTarget === '_blank' ? 'noopener noreferrer' : undefined);
+
+    const Component = (
+      useRouterLink ? RouterLink : Anchor
+    ) as React.ElementType;
 
     return (
       <Component
-        {...(href ? { href } : { to })}
+        {...(useRouterLink
+          ? { to: destination, state, relative: relative ? 'path' : undefined }
+          : { href: destination })}
         className={className}
         ref={ref}
         $active={active}
@@ -50,9 +69,9 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         onClick={onClick}
         $buttonAppearance={buttonAppearance}
         $size={buttonSize}
-        state={state}
         style={style}
-        target={target}
+        target={effectiveTarget}
+        rel={effectiveRel}
         $textDecoration={textDecoration}
         {...props}
       >

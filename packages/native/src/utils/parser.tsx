@@ -147,10 +147,9 @@ const parseContent = (
       // Always process anchor tags
       const nestedContent = parseContent(tagContent, options);
       components.push(
-        tag.attributes.href || tag.attributes.to ? (
+        tag.attributes.href ? (
           <Link
             key={`${tag.tagName}-${tag.start}-${tag.end}`}
-            to={tag.attributes.href || tag.attributes.to}
             {...tag.attributes}
           >
             {nestedContent}
@@ -260,10 +259,9 @@ const textParser = (text: string, options: ParserOptions = {}) => {
       // Always process anchor tags (even in onlyLinks mode)
       const nestedContent = parseContent(content, options);
       components.push(
-        tag.attributes.href || tag.attributes.to ? (
+        tag.attributes.href ? (
           <Link
             key={`${tag.tagName}-${tag.start}-${tag.end}`}
-            to={tag.attributes.href || tag.attributes.to}
             {...tag.attributes}
           >
             {nestedContent}

@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen } from '../testUtils';
+import { render, renderWithUser, screen, TestRouter } from '../testUtils';
 import textParser from './parser';
 
 // Mock AttachmentWidget component for testing
@@ -72,6 +72,40 @@ it('should return anchor element with correct attributes', () => {
   expect(screen.getByText(normalString)).toBeInTheDocument();
   expect(link).toHaveTextContent('this is an anchor');
   expect(link).toHaveAttribute('href', 'little-world');
+});
+
+it('should route internal in-text links through react-router when inside a router', async () => {
+  const text =
+    'See <a {"href": "/app/our-world"}>our world</a> for more details';
+
+  const { user } = renderWithUser(<TestRouter>{textParser(text)}</TestRouter>);
+
+  const link = screen.getByRole('link');
+  expect(link).toHaveTextContent('our world');
+  expect(link).toHaveAttribute('href', '/app/our-world');
+
+  await user.click(link);
+  expect(screen.getByTestId('location').textContent).toBe('/app/our-world');
+});
+
+it('should open external in-text links in a new tab by default', () => {
+  const text = 'Visit <a {"href": "https://example.com"}>example</a>';
+
+  render(<TestRouter>{textParser(text)}</TestRouter>);
+
+  const link = screen.getByRole('link');
+  expect(link).toHaveAttribute('href', 'https://example.com');
+  expect(link).toHaveAttribute('target', '_blank');
+  expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+});
+
+it('should render internal links as plain text when nonInteractive', () => {
+  const text = 'See <a {"href": "/app/our-world"}>our world</a>';
+
+  render(<TestRouter>{textParser(text, { nonInteractive: true })}</TestRouter>);
+
+  expect(screen.queryByRole('link')).not.toBeInTheDocument();
+  expect(screen.getByText(/our world/)).toBeInTheDocument();
 });
 
 it('should return just string if anchor does not contain href', () => {
