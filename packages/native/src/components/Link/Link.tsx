@@ -5,6 +5,7 @@ import {
   getLinkKind,
   LinkBaseProps,
   TextTypes,
+  withScheme,
 } from '@a-little-world/little-world-design-system-core';
 import { useLinkTo } from '@react-navigation/native';
 import React, { forwardRef } from 'react';
@@ -62,7 +63,7 @@ const Link = forwardRef<any, LinkProps>(
       if (getLinkKind(href) === 'internal') {
         linkTo(href);
       } else {
-        Linking.openURL(href).catch(err => {
+        Linking.openURL(withScheme(href)).catch(err => {
           console.error('Failed to open URL:', err);
         });
       }

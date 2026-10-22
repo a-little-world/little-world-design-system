@@ -8,6 +8,7 @@ import {
   getLinkKind,
   LinkBaseProps,
   TextTypes,
+  withScheme,
 } from '@a-little-world/little-world-design-system-core';
 import { Anchor, AnchorText, RouterLink } from './styles';
 
@@ -42,10 +43,10 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     ref,
   ) => {
     const inRouterContext = useInRouterContext();
-    const destination = href || undefined;
-    const linkKind = getLinkKind(destination);
-    const useRouterLink =
-      inRouterContext && (relative ? !!destination : linkKind === 'internal');
+    const destination = (relative ? href : withScheme(href)) || undefined;
+    const linkKind =
+      relative && destination ? 'internal' : getLinkKind(destination);
+    const useRouterLink = inRouterContext && linkKind === 'internal';
     const effectiveTarget =
       target ?? (linkKind === 'external' ? '_blank' : undefined);
     const effectiveRel =

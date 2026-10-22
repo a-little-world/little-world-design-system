@@ -4,8 +4,8 @@
 
 ### Major Changes
 
-- **Breaking:** remove the `to` and `params` props from `Link`. Root-absolute `href`s (e.g. `/app/...`) resolve through React Navigation's linking config via `useLinkTo`; all other `href`s open with `Linking`.
-- The text parser no longer treats `to` attributes as links.
+- **Breaking:** Remove the `to` and `params` props from `Link`. Root-absolute `href`s (e.g. `/app/...`) resolve through React Navigation's linking config via `useLinkTo`; all other `href`s open with `Linking` (scheme-less domains get `https://` prepended).
+- **Breaking:** The text parser no longer treats `to` attributes as links.
 
 ## 0.11.5
 

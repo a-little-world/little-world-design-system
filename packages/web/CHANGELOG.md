@@ -4,9 +4,9 @@
 
 ### Major Changes
 
-- Remove the `to` prop from `Link`. Use `href` for every destination: root-absolute `href`s (e.g. `/app/...`) navigate through react-router when a router is mounted and fall back to a plain anchor otherwise.
-- External `href`s (`https://…`, `//host`) now open in a new tab with `rel="noopener noreferrer"` unless `target`/`rel` are passed. An explicit `target` always wins, including on internal links.
-- `Banner` CTAs no longer force `target="_blank"`; internal CTA URLs navigate in-app, external ones open a new tab.
+- **Breaking:** Remove the `to` prop from `Link`. Use `href` for every destination: root-absolute `href`s (e.g. `/app/...`) navigate through react-router when a router is mounted and fall back to a plain anchor otherwise.
+- **Breaking:** External `href`s (`https://…`, `//host`) now open in a new tab with `rel="noopener noreferrer"` unless `target`/`rel` are passed. Scheme-less domains (`little-world.com`) count as external and get `https://` prepended. An explicit `target` always wins, including on internal links.
+- **Breaking:** `Banner` CTAs no longer force `target="_blank"`; internal CTA URLs navigate in-app, external ones open a new tab.
 
 ### Minor Changes
 

@@ -8,7 +8,8 @@
 
 ### Minor Changes
 
-- Add `getLinkKind(href)` to classify hrefs as `internal` (root-absolute `/app/...`), `external` (`https://…`, `//host`) or `other`.
+- Add `getLinkKind(href)` to classify hrefs as `internal` (root-absolute `/app/...`), `external` (`https://…`, `//host`, scheme-less domains like `little-world.com`) or `other`.
+- Add `withScheme(href)`, which prefixes `https://` onto scheme-less domains.
 
 ## 1.18.0
 

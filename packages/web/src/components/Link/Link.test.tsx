@@ -50,6 +50,7 @@ test.each`
   ${'external opens new tab'}         | ${{ href: EXTERNAL }}                   | ${true}  | ${{ href: EXTERNAL, ...NEW_TAB }}                        | ${'/'}
   ${'external without router'}        | ${{ href: EXTERNAL }}                   | ${false} | ${{ href: EXTERNAL, ...NEW_TAB }}                        | ${undefined}
   ${'protocol-relative is external'}  | ${{ href: '//example.com' }}            | ${true}  | ${{ href: '//example.com', ...NEW_TAB }}                 | ${'/'}
+  ${'scheme-less domain is external'} | ${{ href: 'little-world.com' }}         | ${true}  | ${{ href: 'https://little-world.com', ...NEW_TAB }}      | ${'/'}
   ${'external explicit _self'}        | ${{ href: EXTERNAL, target: '_self' }}  | ${true}  | ${{ href: EXTERNAL, target: '_self', rel: null }}        | ${'/'}
   ${'external explicit rel'}          | ${{ href: EXTERNAL, rel: 'nofollow' }}  | ${true}  | ${{ href: EXTERNAL, target: '_blank', rel: 'nofollow' }} | ${'/'}
   ${'internal routes in-app'}         | ${{ href: INTERNAL }}                   | ${true}  | ${{ href: INTERNAL, target: null, rel: null }}           | ${INTERNAL}
@@ -114,6 +115,51 @@ test.each`
     expect(screen.getByTestId('location').textContent).toBe(expected);
   },
 );
+
+test.each`
+  target      | attrs                                                                   | location
+  ${'_blank'} | ${{ href: '/emails/42', target: '_blank', rel: 'noopener noreferrer' }} | ${'/emails'}
+  ${'_self'}  | ${{ href: '/emails/42', target: '_self', rel: null }}                   | ${'/emails/42'}
+`(
+  'relative with explicit target $target',
+  async ({ target, attrs, location }) => {
+    const { user } = renderWithUser(
+      <TestRouter initialPath="/emails">
+        <Routes>
+          <Route
+            path="/emails"
+            element={
+              <Link href="42" relative target={target}>
+                {MOCK_TEXT}
+              </Link>
+            }
+          />
+          <Route path="*" element={null} />
+        </Routes>
+      </TestRouter>,
+    );
+    const link = screen.getByRole('link');
+    Object.entries(attrs).forEach(([attr, value]) => {
+      if (value === null) expect(link).not.toHaveAttribute(attr);
+      else expect(link).toHaveAttribute(attr, value);
+    });
+    await user.click(link);
+    expect(screen.getByTestId('location').textContent).toBe(location);
+  },
+);
+
+test('relative prop keeps a domain-like href relative', () => {
+  render(
+    <TestRouter initialPath="/files">
+      <Link href="report.pdf" relative>
+        {MOCK_TEXT}
+      </Link>
+    </TestRouter>,
+  );
+  const link = screen.getByRole('link');
+  expect(link).toHaveAttribute('href', '/report.pdf');
+  expect(link).not.toHaveAttribute('target');
+});
 
 test('relative href without the prop stays a plain anchor', () => {
   render(
