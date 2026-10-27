@@ -78,8 +78,8 @@ export const colors = {
       gradient: {
         blue10: `linear-gradient(50.19deg, ${coreColors.blue30} 2.84%, #0367b2 106.82%)`,
         orange10: `linear-gradient(43.07deg, ${coreColors.orange40} -3.02%, ${coreColors.orange30} 93.96%)`,
-        orange20: `linear-gradient(225.88deg, ${coreColors.orange40} 7.79%, ${coreColors.orange50} 104.6%);
-          `,
+        orange20: `linear-gradient(225.88deg, ${coreColors.orange40} 7.79%, ${coreColors.orange50} 104.6%);`,
+        green10: `linear-gradient(90deg, color-mix(in srgb, ${coreColors.green40} 20%, ${coreColors.green10}) 0%, ${coreColors.green40} 100%)`,
       },
     },
     dark: {
@@ -160,6 +160,7 @@ export const colors = {
         orange10: `linear-gradient(43.07deg, ${coreColors.orange40} -3.02%, ${coreColors.orange30} 93.96%)`,
         orange20: `linear-gradient(225.88deg, ${coreColors.orange40} 7.79%, ${coreColors.orange50} 104.6%);
           `,
+        green10: `linear-gradient(90deg, color-mix(in srgb, ${coreColors.green40} 20%, ${coreColors.green10}) 0%, ${coreColors.green40} 100%)`,
       },
     },
   },

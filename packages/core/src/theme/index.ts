@@ -82,6 +82,7 @@ export interface Colors {
     blue10: string;
     orange10: string;
     orange20: string;
+    green10: string;
   };
 }
 
@@ -120,6 +121,7 @@ export interface ThemeWeb {
     xlarge: string;
     xxlarge: string;
     massive: string;
+    ginormous: string;
     half: string;
     full: string;
   };

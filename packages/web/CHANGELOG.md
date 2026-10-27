@@ -1,5 +1,38 @@
 # @a-little-world/little-world-design-system
 
+## 3.2.1
+
+### Patch Changes
+
+- Add `showValueInBar` to the scale ProgressBar: shows the value and max (e.g. "270 / 300 Min") inside the track
+  - Sits just past the fill in dark green, or inside the fill in white from 60%
+  - Fades in once the fill stops moving; ticks under it are hidden
+- Fill animates in on mount; scale header score is smaller on the `small` size
+- ProgressBar respects `prefers-reduced-motion`
+
+## 3.2.0
+
+### Minor Changes
+
+- Add `scale` variation to ProgressBar: framed bar with step markers, a responsive number row and an optional header
+  - New props: `step`, `showScale`, `label`, `title`, `scoreRest`, `endLabel`, `ariaValueText`
+  - Number row labels thin out evenly on narrow containers
+  - Fill uses a full-track green gradient that keeps each value's colour as the bar grows
+- Add `variation` (`basic` | `scale`) and `size` (`small` | `large`) props to ProgressBar
+  - `basic`: `small` 8px (default) / `large` 16px
+  - `scale`: `small` 32px / `large` 48px (default)
+- Export `ProgressBarVariations`, `ProgressBarSizes` and the `ProgressBarProps` type
+
+### Patch Changes
+
+- ProgressBar `value` is now optional (defaults to 0)
+- Clamp ProgressBar value to 0…max for the bar and its label; guard against `max` of 0 or below
+- Fix duplicate ProgressBar ids: each bar now gets a unique label id
+- ProgressBar always has an accessible name, including when the label is hidden in `fullWidth` mode; `label` overrides it
+- Share the sticker shadow between Tag and the scale ProgressBar
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.18.0
+
 ## 3.1.2
 
 ### Patch Changes
