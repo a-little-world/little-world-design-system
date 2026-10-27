@@ -13,6 +13,7 @@ export interface DatePickerBaseProps {
   minDate?: Date;
   onChange?: (date: Date | undefined) => void;
   placeholder?: string;
+  required?: boolean;
   value?: Date;
   width?: InputWidth;
 }

@@ -94,7 +94,7 @@ const Select: React.FC<SelectProps> = ({
   return (
     <SelectWrapper $maxWidth={maxWidth as string}>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}
@@ -106,6 +106,8 @@ const Select: React.FC<SelectProps> = ({
       >
         <SelectTrigger
           aria-label={ariaLabel}
+          aria-invalid={Boolean(error) || undefined}
+          aria-describedby={error && id ? `${id}-error` : undefined}
           id={id}
           ref={inputRef}
           $disabled={disabled}
@@ -129,7 +131,14 @@ const Select: React.FC<SelectProps> = ({
           <RadixSelect.Portal>{selectContent}</RadixSelect.Portal>
         )}
       </RadixSelect.Root>
-      {canError && <InputError visible={Boolean(error)}>{error}</InputError>}
+      {canError && (
+        <InputError
+          id={id ? `${id}-error` : undefined}
+          visible={Boolean(error)}
+        >
+          {error}
+        </InputError>
+      )}
     </SelectWrapper>
   );
 };

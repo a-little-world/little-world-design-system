@@ -53,6 +53,26 @@ Vertical.args = {
   ],
 };
 
+// Required with error - group is labelled by its heading and linked to the error text
+export const Required = (args: CheckboxGroupProps) => (
+  <CheckboxGroup {...args} />
+);
+
+Required.args = {
+  name: 'required-languages',
+  onSelection: () => null,
+  heading: 'Which languages do you speak?',
+  required: true,
+  error: 'Please select at least one language',
+  orientation: 'horizontal',
+  options: [
+    { label: 'German', value: 'german' },
+    { label: 'English', value: 'english' },
+    { label: 'Arabic', value: 'arabic' },
+    { label: 'Ukrainian', value: 'ukrainian' },
+  ],
+};
+
 // Backward compatibility: Verbose naming (deprecated but still works)
 // Note: MultiCheckbox is intentionally deprecated in favor of CheckboxGroup
 // This story demonstrates that the old name still works as an alias

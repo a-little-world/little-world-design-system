@@ -7,6 +7,7 @@ export type RadioGroupOrientation = 'vertical' | 'horizontal';
 
 export interface RadioGroupBaseProps {
   inline?: boolean;
+  required?: boolean;
   type?: RadioGroupVariations;
   /**
    * Layout orientation for the radio group.

@@ -46,6 +46,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   onChange,
   onSubmit,
   readOnly,
+  required,
   size = TextAreaSize.Small,
   value,
   ...areaProps
@@ -86,7 +87,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   return (
     <AreaWrapper $size={size}>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}
@@ -106,14 +107,21 @@ const TextArea: React.FC<TextAreaProps> = ({
         $size={size}
         $expandable={Boolean(expandable)}
         maxLength={maxLength}
+        required={required}
         onChange={handleOnChange}
         onKeyDown={handleKeyDown}
         readOnly={readOnly}
         value={value}
+        aria-invalid={Boolean(error) || undefined}
+        aria-describedby={error && id ? `${id}-error` : undefined}
         {...areaProps}
       />
       {!readOnly && (
-        <InputError visible={Boolean(error)} textAlign="left">
+        <InputError
+          id={id ? `${id}-error` : undefined}
+          visible={Boolean(error)}
+          textAlign="left"
+        >
           {error}
         </InputError>
       )}

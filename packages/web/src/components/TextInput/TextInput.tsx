@@ -53,6 +53,7 @@ const TextInput: React.FC<Props> = ({
   onChange,
   onSubmit,
   onlyCountries,
+  required,
   type = 'text',
   width = InputWidth.Large,
   ...inputProps
@@ -94,7 +95,7 @@ const TextInput: React.FC<Props> = ({
   return (
     <InputWrapper $width={width}>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip}>
+        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
           {label}
         </Label>
       )}
@@ -105,8 +106,14 @@ const TextInput: React.FC<Props> = ({
             onlyCountries={onlyCountries}
             disableDropdown={onlyCountries?.length === 1}
             onChange={handleTelephoneChange}
-            inputProps={{ ...propsWithoutValues, ref: inputRef }}
-            $hasError={!!error}
+            inputProps={{
+              ...propsWithoutValues,
+              ref: inputRef,
+              required,
+              'aria-invalid': Boolean(error) || undefined,
+              'aria-describedby': error && id ? `${id}-error` : undefined,
+            }}
+            $hasError={Boolean(error)}
             value={defaultTelephoneVal}
             countryCodeEditable={false}
             $height={height}
@@ -117,9 +124,12 @@ const TextInput: React.FC<Props> = ({
             $hasError={Boolean(error)}
             type={inputType}
             id={id}
+            required={required}
             onChange={onChange}
             onKeyDown={handleKeyDown}
             $height={height}
+            aria-invalid={Boolean(error) || undefined}
+            aria-describedby={error && id ? `${id}-error` : undefined}
             {...inputProps}
           />
         )}
@@ -148,6 +158,7 @@ const TextInput: React.FC<Props> = ({
 
       {!cannotError && (
         <InputError
+          id={id ? `${id}-error` : undefined}
           visible={Boolean(error)}
           textAlign={width === InputWidth.Large ? 'right' : 'left'}
           {...errorProps}
