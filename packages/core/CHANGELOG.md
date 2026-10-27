@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.19.0
+
+### Minor Changes
+
+- Add `required` to `TextInputBaseProps`, `DatePickerBaseProps`, `TimePickerBaseProps` and `RadioGroupBaseProps`
+
 ## 1.18.0
 
 ### Minor Changes

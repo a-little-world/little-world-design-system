@@ -91,7 +91,6 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     <div
       role="group"
       aria-labelledby={headingId}
-      aria-required={required || undefined}
       aria-invalid={Boolean(error) || undefined}
       aria-describedby={error ? `${name}-error` : undefined}
     >

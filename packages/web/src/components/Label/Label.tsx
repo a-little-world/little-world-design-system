@@ -50,6 +50,7 @@ const Label: React.FC<LabelProps> = ({
   marginBottom,
   asChild,
   htmlFor,
+  id,
   required,
   tooltipText,
 }) => {
@@ -61,6 +62,7 @@ const Label: React.FC<LabelProps> = ({
       className={className}
       asChild={asChild}
       htmlFor={htmlFor}
+      id={id}
     >
       {typeof children === 'string' ? textParser(children) : children}
       {required && <RequiredIndicator aria-hidden="true">*</RequiredIndicator>}

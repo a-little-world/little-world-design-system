@@ -46,15 +46,22 @@ const MultiSelection: React.FC<Props> = ({
   return (
     <MultiSelectionWrapper>
       {label && (
-        <Label bold htmlFor={id} tooltipText={labelTooltip} required={required}>
+        <Label
+          bold
+          htmlFor={id}
+          id={`${id}-label`}
+          tooltipText={labelTooltip}
+          required={required}
+        >
           {label}
         </Label>
       )}
       <Options
         $hasError={Boolean(error)}
         $withBackground={withBackground}
+        role="group"
+        aria-labelledby={label ? `${id}-label` : undefined}
         aria-invalid={Boolean(error) || undefined}
-        aria-required={required || undefined}
         aria-describedby={error ? `${id}-error` : undefined}
       >
         {options.map(option => {

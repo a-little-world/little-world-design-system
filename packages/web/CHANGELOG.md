@@ -1,5 +1,28 @@
 # @a-little-world/little-world-design-system
 
+## 3.3.0
+
+### Minor Changes
+
+- Add `required` support to TextInput, TextArea, DatePicker, TimePicker, RadioGroup, CheckboxGroup, MultiSelection, Slider and Switch
+  - Shows a `*` indicator on the field label (also on Select and Combobox, which already accepted `required`)
+  - Forwards native `required` to inputs and Radix controls, and `aria-required` where the role supports it
+- Add `required` and `id` props to Label
+- Add `id` prop to InputError so fields can reference the error text with `aria-describedby`
+- Add `cannotError` prop to Slider
+- Form fields with an `error` now set `aria-invalid` and link the error text with `aria-describedby`
+  - RadioGroup and Slider use the consumer `id`, or a generated one when none is given
+- CheckboxGroup and MultiSelection are announced as groups labelled by their heading/label
+- DatePicker and TimePicker triggers use `role="combobox"` so required and invalid states are announced; without a `label` they use the placeholder as their name
+
+### Patch Changes
+
+- Fix TextInput not showing the error border when `error` is set
+- Fix Slider ignoring its `error` prop
+- Speed up the InputError transition from 1s to 0.2s
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.19.0
+
 ## 3.2.1
 
 ### Patch Changes
