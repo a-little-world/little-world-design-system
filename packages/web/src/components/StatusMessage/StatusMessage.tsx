@@ -10,6 +10,7 @@ import { ExclamationIcon } from '../Icon';
 const StatusMessageWrapper = styled.div<{
   $type: StatusTypes;
   $visible?: boolean;
+  $fullWidth?: boolean;
   $withBorder?: boolean;
   $withIcon?: boolean;
 }>`
@@ -27,8 +28,16 @@ const StatusMessageWrapper = styled.div<{
   margin: ${({ theme, $withBorder }) =>
       $withBorder ? 0 : theme.spacing.xxsmall}
     0;
-  border-radius: ${({ theme, $withBorder }) =>
-    $withBorder ? theme.radius.xxsmall : 0};
+  border-radius: ${({ theme, $withBorder, $fullWidth }) =>
+    !$fullWidth && $withBorder ? theme.radius.xxsmall : 0};
+
+  ${({ $fullWidth, $withBorder }) =>
+    $fullWidth &&
+    $withBorder &&
+    css`
+      border-left-width: 0 !important;
+      border-right-width: 0 !important;
+    `}
 
   ${({ $type, theme, $withBorder }) => {
     if ($type === StatusTypes.Error)
@@ -89,6 +98,7 @@ const StatusMessage = ({
   visible,
   children,
   withBorder,
+  fullWidth,
 }: StatusBaseProps) => {
   const icon = STATUS_ICONS[type as keyof typeof STATUS_ICONS];
   const Icon = withBorder && icon?.Icon;
@@ -99,6 +109,7 @@ const StatusMessage = ({
       $visible={visible}
       $withBorder={withBorder}
       $withIcon={!!Icon}
+      $fullWidth={fullWidth}
     >
       {Icon && (
         <StyledIcon as={Icon} label={icon.label} width={18} height={18} />

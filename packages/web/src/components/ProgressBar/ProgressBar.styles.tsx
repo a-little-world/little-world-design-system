@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 import {
   PROGRESS_BAR_HEIGHTS,
+  ProgressBarSizes,
   TextTypes,
   coreColors,
   type ProgressBarSize,
@@ -61,8 +62,11 @@ export const ProgressIndicator = styled(Progress.Indicator)`
   }
 `;
 
-export const ScaleWrap = styled.div`
-  --lw-progress-frame-padding: ${({ theme }) => theme.spacing.xxxsmall};
+export const ScaleWrap = styled.div<{ $size?: ProgressBarSize }>`
+  --lw-progress-frame-padding: ${({ theme, $size }) =>
+    $size === ProgressBarSizes.Small
+      ? theme.spacing.xxxxsmall
+      : theme.spacing.xxxsmall};
   --lw-progress-frame-border: 2px;
   --lw-progress-scale-inset: calc(
     var(--lw-progress-frame-padding) + var(--lw-progress-frame-border)

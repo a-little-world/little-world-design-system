@@ -17,6 +17,7 @@ export default {
       control: 'select',
       options: Object.values(ProgressBarSizes),
     },
+    showValue: { control: 'boolean' },
   },
 };
 
@@ -89,6 +90,7 @@ ScaleWithHeader.args = {
   step: 30,
   label: 'Call minutes',
   title: 'Gesprächsminuten',
+  showValue: true,
   scoreRest: 'von 300 Minuten',
   endLabel: '300 Min',
 };
@@ -97,7 +99,7 @@ ScaleWithHeader.parameters = {
   docs: {
     description: {
       story:
-        'Optional header: title on the left, score on the right. The large blue figure is the current value; `scoreRest` is the translated remainder (units, max, connector).',
+        'Optional header: title on the left, score on the right. The header shows when `title`, `showValue`, and/or `scoreRest` is set. The large blue figure is the current value (`showValue`); `scoreRest` is the translated remainder (units, max, connector).',
     },
   },
 };
@@ -114,6 +116,7 @@ ScaleSmall.args = {
   step: 30,
   label: 'Call minutes',
   title: 'Gesprächsminuten',
+  showValue: true,
   scoreRest: 'von 300 Minuten',
   endLabel: '300 Min',
 };
