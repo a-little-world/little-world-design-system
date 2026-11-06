@@ -67,3 +67,5 @@ export { default as ToolTip } from './components/ToolTip/ToolTip';
 
 export * from './theme';
 export * from './types';
+
+export { fontFiles } from '@a-little-world/little-world-design-system-core';

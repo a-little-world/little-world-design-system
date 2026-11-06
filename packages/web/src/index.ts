@@ -201,4 +201,5 @@ export {
   TextTypes,
   ThemeVariants,
   tokensPixelated as tokens,
+  fontFiles,
 } from '@a-little-world/little-world-design-system-core';
