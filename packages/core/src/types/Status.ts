@@ -10,6 +10,7 @@ export enum StatusTypes {
 export interface StatusBaseProps {
   className?: string;
   children: ReactNode;
+  fullWidth?: boolean;
   visible?: boolean;
   type: StatusTypes;
   withBorder?: boolean;
