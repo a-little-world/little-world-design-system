@@ -5,6 +5,7 @@
 ### Minor Changes
 
 - Add `required` to `TextInputBaseProps`, `DatePickerBaseProps`, `TimePickerBaseProps` and `RadioGroupBaseProps`
+- - Add `showValue` to the scale ProgressBar header so the current value is opt-in. The header now shows when `title`, `showValue`, and/or `scoreRest` is set.
 
 ## 1.18.0
 
