@@ -35,6 +35,17 @@ export const InputWithOnSubmit = args => (
   />
 );
 
+export const Required = args => <TextInput {...args} />;
+
+Required.args = {
+  placeholder: 'Insert your email',
+  id: 'required-text-input',
+  label: 'Email address',
+  type: 'email',
+  required: true,
+  error: 'Please enter your email address',
+};
+
 Default.args = {
   placeholder: 'Insert your text',
   id: 'text input id',

@@ -229,6 +229,66 @@ describe('scale fill label', () => {
   });
 });
 
+describe('scale ProgressBar header', () => {
+  test('is hidden unless title, showValue, or scoreRest is set', () => {
+    render(
+      <ProgressBar
+        variation={ProgressBarVariations.Scale}
+        max={300}
+        value={165}
+        label="Call minutes"
+      />,
+    );
+
+    expect(screen.queryByText('Gesprächsminuten')).toBeNull();
+    expect(screen.queryByText('165')).toBeNull();
+  });
+
+  test('shows the title without the value unless showValue is set', () => {
+    render(
+      <ProgressBar
+        variation={ProgressBarVariations.Scale}
+        max={300}
+        value={165}
+        label="Call minutes"
+        title="Gesprächsminuten"
+      />,
+    );
+
+    expect(screen.getByText('Gesprächsminuten')).toBeTruthy();
+    expect(screen.queryByText('165')).toBeNull();
+  });
+
+  test('shows the current value when showValue is set', () => {
+    render(
+      <ProgressBar
+        variation={ProgressBarVariations.Scale}
+        max={300}
+        value={165}
+        label="Call minutes"
+        showValue
+      />,
+    );
+
+    expect(screen.getByText('165')).toBeTruthy();
+  });
+
+  test('shows scoreRest without the value unless showValue is set', () => {
+    render(
+      <ProgressBar
+        variation={ProgressBarVariations.Scale}
+        max={300}
+        value={165}
+        label="Call minutes"
+        scoreRest="von 300 Minuten"
+      />,
+    );
+
+    expect(screen.getByText('von 300 Minuten')).toBeTruthy();
+    expect(screen.queryByText('165')).toBeNull();
+  });
+});
+
 test('scale ProgressBar clamps value above max', () => {
   render(
     <ProgressBar

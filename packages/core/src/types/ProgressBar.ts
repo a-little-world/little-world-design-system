@@ -213,10 +213,14 @@ export interface ProgressBarScaleProps {
   /** Optional heading on the left of the header. */
   title?: ReactNode;
   /**
+   * Show the large current value in the header.
+   * @default false
+   */
+  showValue?: boolean;
+  /**
    * Smaller copy after the large current value, e.g. "von 300 Minuten".
-   * The current value is rendered by the component; pass units and
-   * translation here. The header shows when `title` and/or `scoreRest`
-   * is set.
+   * Pass units and translation here. The header shows when `title`,
+   * `showValue`, and/or `scoreRest` is set.
    */
   scoreRest?: ReactNode;
   /** Right-side label (e.g. "300 Min"). Defaults to the formatted max. */

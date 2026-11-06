@@ -144,6 +144,7 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
   label,
   max,
   scoreRest,
+  showValue = false,
   showValueInBar = false,
   showScale = true,
   size = ProgressBarSizes.Large,
@@ -158,7 +159,8 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
     () => getScaleLabelSteps(safeMax, step),
     [safeMax, step],
   );
-  const showHeader = title != null || scoreRest != null;
+  const hasHeader = title != null || showValue || scoreRest != null;
+  const hasScore = showValue || scoreRest != null;
   const trackRef = useRef<HTMLDivElement>(null);
   const fillLabelRef = useRef<HTMLSpanElement>(null);
   const [widths, setWidths] = useState({ track: 0, label: 0 });
@@ -237,24 +239,28 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
   }, [showValueInBar, targetInset]);
 
   return (
-    <ScaleWrap className={className}>
-      {showHeader ? (
+    <ScaleWrap className={className} $size={size}>
+      {hasHeader ? (
         <ScaleHeader>
           {title != null ? <ScaleTitle>{title}</ScaleTitle> : null}
-          <ScaleScore aria-hidden>
-            <ScaleScoreValue
-              type={
-                size === ProgressBarSizes.Small
-                  ? TextTypes.Heading5
-                  : TextTypes.Heading4
-              }
-            >
-              {formatNumber(clamped)}
-            </ScaleScoreValue>
-            {scoreRest != null ? (
-              <ScaleScoreRest>{scoreRest}</ScaleScoreRest>
-            ) : null}
-          </ScaleScore>
+          {hasScore ? (
+            <ScaleScore aria-hidden>
+              {showValue ? (
+                <ScaleScoreValue
+                  type={
+                    size === ProgressBarSizes.Small
+                      ? TextTypes.Heading5
+                      : TextTypes.Heading4
+                  }
+                >
+                  {formatNumber(clamped)}
+                </ScaleScoreValue>
+              ) : null}
+              {scoreRest != null ? (
+                <ScaleScoreRest>{scoreRest}</ScaleScoreRest>
+              ) : null}
+            </ScaleScore>
+          ) : null}
         </ScaleHeader>
       ) : null}
       <ScaleFrame

@@ -59,7 +59,8 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         <AnchorText
           as="span"
           $type={
-            textType || buttonAppearance ? TextTypes.Heading7 : TextTypes.Body5
+            textType ??
+            (buttonAppearance ? TextTypes.Heading7 : TextTypes.Body5)
           }
           $bold={Boolean(bold)}
           $center={false}

@@ -20,5 +20,6 @@ export interface TextInputBaseProps {
   labelTooltip?: string;
   onSubmit?: () => boolean;
   onlyCountries?: string[];
+  required?: boolean;
   width?: InputWidth;
 }
