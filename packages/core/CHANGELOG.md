@@ -1,11 +1,17 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.19.1
+
+### Patch Changes
+
+- Add `allowOverflow` to `ProgressBarBaseProps` (default `false`). When true, `value` may exceed `max` and is displayed as such (e.g. 400/300). The fill still caps at 100%.
+
 ## 1.19.0
 
 ### Minor Changes
 
 - Add `required` to `TextInputBaseProps`, `DatePickerBaseProps`, `TimePickerBaseProps` and `RadioGroupBaseProps`
-- - Add `showValue` to the scale ProgressBar header so the current value is opt-in. The header now shows when `title`, `showValue`, and/or `scoreRest` is set.
+- Add `showValue` to the scale ProgressBar header so the current value is opt-in. The header now shows when `title`, `showValue`, and/or `scoreRest` is set.
 
 ## 1.18.0
 

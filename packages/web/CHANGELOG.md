@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system
 
+## 3.3.1
+
+### Patch Changes
+
+- Add `allowOverflow` to ProgressBar (default `false`). When true, labels can show a value above max (e.g. 400/300). The fill still caps at 100%.
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.19.1
+
 ## 3.3.0
 
 ### Minor Changes
@@ -17,6 +25,7 @@
 
 ### Patch Changes
 
+- Add `showValue` to the scale ProgressBar header so the current value is opt-in. The header now shows when `title`, `showValue`, and/or `scoreRest` is set.
 - Fix TextInput not showing the error border when `error` is set
 - Fix Slider ignoring its `error` prop
 - Speed up the InputError transition from 1s to 0.2s
