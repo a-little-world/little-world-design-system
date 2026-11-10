@@ -179,6 +179,12 @@ export interface ProgressBarBaseProps {
   max: number;
   /** @default 0 */
   value?: number;
+  /**
+   * When true, `value` may exceed `max` and is shown as such (e.g. 400/300).
+   * The fill still caps at 100%. Negative values are still floored at 0.
+   * @default false
+   */
+  allowOverflow?: boolean;
 }
 
 /** Props for platforms that support the basic and scale variations. */

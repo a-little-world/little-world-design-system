@@ -83,17 +83,31 @@ const getFillMotionMs = () =>
 const numberFormat = new Intl.NumberFormat();
 const formatNumber = (value: number) => numberFormat.format(value);
 
+/** Screen-reader value text shared by both variations, e.g. "1,200 / 1,000". */
+const formatValueText = (value: number, max: number) =>
+  `${formatNumber(value)} / ${formatNumber(max)}`;
+
 /** Radix Progress needs max > 0 and 0 <= value <= max. */
-const getSafeRange = (max: number, value: number) => {
+const getSafeRange = (
+  max: number,
+  value: number,
+  allowOverflow = false,
+) => {
   const safeMax = max > 0 ? max : 0;
+  const floored = Math.max(value, 0);
+  const fillValue = Math.min(floored, safeMax);
+  const isOverflowing = allowOverflow && floored > safeMax;
   return {
     safeMax,
-    clamped: Math.min(Math.max(value, 0), safeMax),
+    displayValue: isOverflowing ? floored : fillValue,
+    fillValue,
+    isOverflowing,
     rootMax: safeMax > 0 ? safeMax : 1,
   };
 };
 
 const BasicProgressBar: React.FC<ProgressBarProps> = ({
+  allowOverflow = false,
   className,
   customLabel,
   fullWidth,
@@ -104,9 +118,10 @@ const BasicProgressBar: React.FC<ProgressBarProps> = ({
   value = 0,
 }) => {
   const labelId = useId();
-  const { safeMax, clamped, rootMax } = getSafeRange(max, value);
-  const progress = calculateProgress(safeMax, clamped);
-  const labelText = customLabel || `${clamped}/${safeMax}`;
+  const { safeMax, displayValue, fillValue, isOverflowing, rootMax } =
+    getSafeRange(max, value, allowOverflow);
+  const progress = calculateProgress(safeMax, fillValue);
+  const labelText = customLabel || `${displayValue}/${safeMax}`;
   const showLeadingLabel = !fullWidth && !hideLabel;
   const showTrailingLabel = fullWidth && hideLabel;
   const hasVisibleLabel = showLeadingLabel || showTrailingLabel;
@@ -122,10 +137,15 @@ const BasicProgressBar: React.FC<ProgressBarProps> = ({
       <ProgressRoot
         aria-label={label ?? (hasVisibleLabel ? undefined : labelText)}
         aria-labelledby={!label && hasVisibleLabel ? labelId : undefined}
-        value={clamped}
+        value={fillValue}
         max={rootMax}
         $fullWidth={fullWidth}
         $size={size}
+        getValueLabel={
+          isOverflowing
+            ? () => formatValueText(displayValue, safeMax)
+            : undefined
+        }
       >
         <ProgressIndicator
           className="ProgressIndicator"
@@ -138,6 +158,7 @@ const BasicProgressBar: React.FC<ProgressBarProps> = ({
 };
 
 const ScaleProgressBar: React.FC<ProgressBarProps> = ({
+  allowOverflow = false,
   ariaValueText,
   className,
   endLabel,
@@ -152,8 +173,9 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
   title,
   value = 0,
 }) => {
-  const { safeMax, clamped, rootMax } = getSafeRange(max, value);
-  const percent = calculateProgress(safeMax, clamped);
+  const { safeMax, displayValue, fillValue, isOverflowing, rootMax } =
+    getSafeRange(max, value, allowOverflow);
+  const percent = calculateProgress(safeMax, fillValue);
   const markers = useMemo(() => getMarkers(safeMax, step), [safeMax, step]);
   const labelSteps = useMemo(
     () => getScaleLabelSteps(safeMax, step),
@@ -210,7 +232,7 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
     if (showValueInBar && !HAS_RESIZE_OBSERVER) {
       measure();
     }
-  }, [showValueInBar, measure, clamped, maxLabel]);
+  }, [showValueInBar, measure, displayValue, maxLabel]);
 
   const fillLabelPlacement: FillLabelPlacement | null =
     showValueInBar && widths.track > 0 && widths.label > 0
@@ -244,7 +266,7 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
         <ScaleHeader>
           {title != null ? <ScaleTitle>{title}</ScaleTitle> : null}
           {hasScore ? (
-            <ScaleScore aria-hidden>
+            <ScaleScore aria-hidden data-testid="progress-score">
               {showValue ? (
                 <ScaleScoreValue
                   type={
@@ -253,7 +275,7 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
                       : TextTypes.Heading4
                   }
                 >
-                  {formatNumber(clamped)}
+                  {formatNumber(displayValue)}
                 </ScaleScoreValue>
               ) : null}
               {scoreRest != null ? (
@@ -264,11 +286,17 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
         </ScaleHeader>
       ) : null}
       <ScaleFrame
-        value={clamped}
+        value={fillValue}
         max={rootMax}
         $size={size}
         aria-label={label}
-        getValueLabel={ariaValueText ? () => ariaValueText : undefined}
+        getValueLabel={
+          ariaValueText
+            ? () => ariaValueText
+            : isOverflowing
+              ? () => formatValueText(displayValue, safeMax)
+              : undefined
+        }
       >
         <ScaleTrack ref={trackRef} data-scale-track="">
           <ScaleFill
@@ -295,7 +323,7 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
                 key={marker.value}
                 data-marker={marker.value}
                 $percent={marker.percent}
-                $covered={marker.value <= clamped}
+                $covered={marker.value <= fillValue}
                 hidden={hidden || undefined}
                 aria-hidden
               />
@@ -317,7 +345,7 @@ const ScaleProgressBar: React.FC<ProgressBarProps> = ({
                 disableParser
                 type={TextTypes.Heading5}
               >
-                {formatNumber(clamped)}
+                {formatNumber(displayValue)}
               </ScaleFillLabelText>
               <ScaleFillLabelText
                 bold

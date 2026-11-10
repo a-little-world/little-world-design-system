@@ -18,6 +18,7 @@ export default {
       options: Object.values(ProgressBarSizes),
     },
     showValue: { control: 'boolean' },
+    allowOverflow: { control: 'boolean' },
   },
 };
 
@@ -40,6 +41,26 @@ BasicLarge.args = {
   max: 10,
   value: 4,
   size: ProgressBarSizes.Large,
+};
+
+export const BasicOverflow = args => {
+  return <ProgressBar {...args} />;
+};
+
+BasicOverflow.args = {
+  variation: ProgressBarVariations.Basic,
+  max: 300,
+  value: 400,
+  allowOverflow: true,
+};
+
+BasicOverflow.parameters = {
+  docs: {
+    description: {
+      story:
+        'With `allowOverflow`, the label can exceed max (400/300). The fill still caps at 100%. Off by default.',
+    },
+  },
 };
 
 export const ScaleEmpty = args => {
@@ -100,6 +121,33 @@ ScaleWithHeader.parameters = {
     description: {
       story:
         'Optional header: title on the left, score on the right. The header shows when `title`, `showValue`, and/or `scoreRest` is set. The large blue figure is the current value (`showValue`); `scoreRest` is the translated remainder (units, max, connector).',
+    },
+  },
+};
+
+export const ScaleOverflow = args => {
+  return <ProgressBar {...args} />;
+};
+
+ScaleOverflow.args = {
+  variation: ProgressBarVariations.Scale,
+  value: 400,
+  max: 300,
+  step: 30,
+  allowOverflow: true,
+  label: 'Call minutes',
+  title: 'Gesprächsminuten',
+  showValue: true,
+  showValueInBar: true,
+  scoreRest: 'von 300 Minuten',
+  endLabel: '300 Min',
+};
+
+ScaleOverflow.parameters = {
+  docs: {
+    description: {
+      story:
+        'With `allowOverflow`, header and in-bar labels can show 400 / 300. The fill still caps at 100%. Off by default.',
     },
   },
 };

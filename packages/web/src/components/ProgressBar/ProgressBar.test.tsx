@@ -83,6 +83,19 @@ describe('basic ProgressBar accessible name', () => {
     expect(screen.getByText('0/10')).toBeTruthy();
   });
 
+  test('shows value above max when allowOverflow is set', () => {
+    render(<ProgressBar max={10} value={12} allowOverflow />);
+    expect(screen.getByText('12/10')).toBeTruthy();
+    const bar = screen.getByRole('progressbar', { name: '12/10' });
+    expect(bar).toHaveAttribute('aria-valuenow', '10');
+    expect(bar).toHaveAttribute('aria-valuetext', '12 / 10');
+  });
+
+  test('still floors negative values when allowOverflow is set', () => {
+    render(<ProgressBar max={10} value={-3} allowOverflow />);
+    expect(screen.getByText('0/10')).toBeTruthy();
+  });
+
   test('prefers the label prop', () => {
     render(<ProgressBar max={10} value={4} label="Profile steps" />);
     expect(
@@ -301,4 +314,27 @@ test('scale ProgressBar clamps value above max', () => {
   expect(
     screen.getByRole('progressbar', { name: 'Call minutes' }),
   ).toHaveAttribute('aria-valuenow', '300');
+});
+
+test('scale ProgressBar shows value above max when allowOverflow is set', () => {
+  render(
+    <ProgressBar
+      variation={ProgressBarVariations.Scale}
+      max={300}
+      value={400}
+      allowOverflow
+      label="Call minutes"
+      showValue
+      showValueInBar
+      endLabel="300 Min"
+    />,
+  );
+
+  const bar = screen.getByRole('progressbar', { name: 'Call minutes' });
+  expect(bar).toHaveAttribute('aria-valuenow', '300');
+  expect(bar).toHaveAttribute('aria-valuetext', '400 / 300');
+  expect(screen.getByTestId('progress-score')).toHaveTextContent(/^400$/);
+  expect(screen.getByTestId('progress-fill-label')).toHaveTextContent(
+    '400/ 300 Min',
+  );
 });
