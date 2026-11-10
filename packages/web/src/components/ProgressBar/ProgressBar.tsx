@@ -88,11 +88,7 @@ const formatValueText = (value: number, max: number) =>
   `${formatNumber(value)} / ${formatNumber(max)}`;
 
 /** Radix Progress needs max > 0 and 0 <= value <= max. */
-const getSafeRange = (
-  max: number,
-  value: number,
-  allowOverflow = false,
-) => {
+const getSafeRange = (max: number, value: number, allowOverflow = false) => {
   const safeMax = max > 0 ? max : 0;
   const floored = Math.max(value, 0);
   const fillValue = Math.min(floored, safeMax);
