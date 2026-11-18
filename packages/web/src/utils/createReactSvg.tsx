@@ -9,11 +9,8 @@ import {
 import IconGradient from '../components/Icon/IconGradient';
 
 // Helper function to generate unique keys
-const generateUniqueKey = (element: SvgElement, index: string | number) => {
-  return `${element.type}-${index}-${Math.random()
-    .toString(36)
-    .substring(2, 11)}`;
-};
+const generateUniqueKey = (element: SvgElement, index: string | number) =>
+  `${element.type}-${index}`;
 
 // Helper function to safely render children, filtering out null values
 const renderChildren = (
