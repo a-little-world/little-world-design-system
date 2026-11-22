@@ -1,5 +1,11 @@
 # @a-little-world/little-world-design-system
 
+## 3.3.2
+
+### Patch Changes
+
+- Fix StarRating ignoring clicks on the star shape. Icons and illustrations no longer remount their SVG elements on every re-render.
+
 ## 3.3.1
 
 ### Patch Changes

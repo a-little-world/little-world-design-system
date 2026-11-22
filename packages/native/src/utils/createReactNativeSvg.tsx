@@ -25,11 +25,8 @@ import IconGradient from '../components/Icon/IconGradient';
 const BLACK_HEX = '#000';
 
 // Helper function to generate unique keys
-const generateUniqueKey = (element: SvgElement, index: string | number) => {
-  return `${element.type}-${index}-${Math.random()
-    .toString(36)
-    .substring(2, 11)}`;
-};
+const generateUniqueKey = (element: SvgElement, index: string | number) =>
+  `${element.type}-${index}`;
 
 // Helper function to safely render children, filtering out null values
 const renderChildren = (
@@ -123,7 +120,7 @@ export const createReactNativeSvg = (
   const { label, width, height, gradient, gradientId, style } = options;
 
   return (
-    <View key={`${Math.random().toString(36).substring(2, 11)}`} style={style}>
+    <View style={style}>
       <Svg
         accessible={true}
         accessibilityLabel={label}
