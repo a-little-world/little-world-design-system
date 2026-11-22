@@ -1,5 +1,26 @@
 # @a-little-world/little-world-design-system
 
+## 3.4.0
+
+### Minor Changes
+
+- Icons and illustrations: `label` is now optional. Omit it for a decorative graphic, including one next to visible text.
+  - A non-empty `label` gives the `<svg>` `role="img"` and `aria-label`. This replaces the hidden label span, so a labelled icon next to visible text is still announced twice. Remove `label` at those call sites.
+  - With `labelVisible`, the label is a visible caption and the `<svg>` is `aria-hidden`.
+  - An omitted or blank `label` makes the `<svg>` `aria-hidden`.
+  - Other SVG props, such as `aria-label`, `aria-labelledby`, `aria-hidden` and `role`, now reach the `<svg>` and take priority over `label`.
+  - Gradient ids are now unique per icon, so icons that share a label no longer share a gradient.
+  - Removed `aria-labelledby={label}` and `id={label}`, which produced broken and duplicate ids.
+- Modal: add `label` (the dialog's accessible name, falls back to "dialog backdrop") and `closeLabel` (the close button's name, falls back to "dialog close button").
+- Modal: the dialog now takes focus when it opens (`tabIndex={-1}`), so screen readers announce it. Before, focus fell back to `body`.
+- Dialog: `title` now names the dialog. Add `label` to override it and `closeLabel` to name the close button.
+- Text: `TextProps` now accepts HTML attributes (`role`, `aria-*`, `data-*` and others), and they reach the element. `color` stays a colour token.
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.20.0
+
 ## 3.3.2
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.20.0
+
+### Minor Changes
+
+- Make `label` optional in `IconBaseProps`, `IllustrationProps` and `SvgTransformOptions`. Omit it for a decorative icon or illustration.
+- Add `labelVisible` to `SvgTransformOptions`
+
 ## 1.19.1
 
 ### Patch Changes
