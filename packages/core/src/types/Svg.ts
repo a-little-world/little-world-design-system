@@ -26,7 +26,11 @@ export interface IconBaseProps {
   color?: string;
   gradient?: Gradients;
   height?: number | string;
-  label: string;
+  /**
+   * Accessible name when the icon is the only content of a control or carries
+   * meaning on its own. Omit it for a decorative icon. Callers pass the string.
+   */
+  label?: string;
   labelTop?: number | string;
   labelVisible?: boolean;
   size?: number | string;
@@ -47,7 +51,11 @@ export type IconPathData = {
 };
 
 export type IllustrationProps = {
-  label: string;
+  /**
+   * Accessible name when the illustration carries meaning on its own.
+   * Omit it for a decorative illustration. Callers pass the string.
+   */
+  label?: string;
   labelTop?: number | string;
   labelVisible?: boolean;
   children: any;
@@ -68,7 +76,8 @@ export interface SvgTransformOptions {
   gradientId?: string;
   gradientType?: GradientTypes;
   height?: number | string;
-  label: string;
+  label?: string;
+  labelVisible?: boolean;
   style?: any;
   width?: number | string;
   accessible?: boolean;

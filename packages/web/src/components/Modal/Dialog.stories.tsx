@@ -7,6 +7,14 @@ import Dialog from './Dialog';
 export default {
   component: Dialog,
   title: 'Components/Dialog',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A `title` names the dialog. Pass `label` when the accessible name should differ from the visible title. Pass `closeLabel` to name the close button. Callers pass every string. When `closeLabel` is omitted, the button falls back to "dialog close button".',
+      },
+    },
+  },
 };
 
 const Template = args => {

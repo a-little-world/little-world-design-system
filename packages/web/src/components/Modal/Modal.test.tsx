@@ -1,6 +1,5 @@
-// @ts-nocheck
 import React from 'react';
-import { render, renderWithUser, screen } from '../../testUtils';
+import { act, render, renderWithUser, screen } from '../../testUtils';
 import Modal, { BACKDROP_LABEL } from './Modal';
 
 const CHILDREN_TEST_ID = 'children';
@@ -111,4 +110,58 @@ test('Modal cannot be closed by backdrop click when closeOnBackdropClick is fals
 
   await user.keyboard('{Escape}');
   expect(onCloseMock).toHaveBeenCalled();
+});
+
+test('Modal uses label as the dialog name', () => {
+  render(
+    <Modal open onClose={jest.fn()} label="Anna is calling you">
+      <div />
+    </Modal>,
+  );
+
+  expect(
+    screen.getByRole('dialog', { name: 'Anna is calling you' }),
+  ).toBeInTheDocument();
+});
+
+test('closeLabel names the close button, with a fallback when omitted', () => {
+  const { rerender } = render(
+    <Modal open onClose={jest.fn()}>
+      <div />
+    </Modal>,
+  );
+
+  expect(
+    screen.getByRole('button', { name: 'dialog close button' }),
+  ).toBeInTheDocument();
+
+  rerender(
+    <Modal open onClose={jest.fn()} closeLabel="Schließen">
+      <div />
+    </Modal>,
+  );
+
+  expect(screen.getByRole('button', { name: 'Schließen' })).toBeInTheDocument();
+});
+
+test('focus moves to the dialog after it opens', () => {
+  jest.useFakeTimers();
+
+  try {
+    render(
+      <Modal open onClose={jest.fn()} label="Anna is calling you">
+        <div>Hi</div>
+      </Modal>,
+    );
+
+    act(() => {
+      jest.advanceTimersByTime(10);
+    });
+
+    expect(document.activeElement).toBe(
+      screen.getByRole('dialog', { name: 'Anna is calling you' }),
+    );
+  } finally {
+    jest.useRealTimers();
+  }
 });
