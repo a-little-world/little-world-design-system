@@ -13,10 +13,12 @@ import Status from '../../utils/status';
   Icons are small and contextual, if you need something more prominent, exciting
   and prominent you need an illustration.
 
-  Icons are small graphical elements used to communicate short simple concepts and draw attention to important information. The can be used inside buttons and other inline UI elements.
+  Icons are small graphical elements used to communicate short simple concepts and draw attention to important information. They can be used inside buttons and other inline UI elements.
 
-  In order to be accessible they are always rendered with a label that is hidden.
+  Omit `label` when the icon is decorative. That includes an icon next to visible text, such as a button that already says "Call". The icon is hidden from assistive technology, so the visible text is announced once.
 
-  Only use icons without additional clarification if you're sure that it can communicate the message at a glance without lots of thinking.
+  Pass `label` when the icon is the only content of a control, or when it carries meaning on its own. The label becomes the icon's accessible name. Callers pass every user-facing string.
+
+  Set `labelVisible` to show that label as a caption. The caption is the accessible name, and the graphic itself is hidden from assistive technology.
 </CustomThemeProvider>
 

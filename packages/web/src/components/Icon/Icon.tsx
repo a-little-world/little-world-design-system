@@ -55,7 +55,7 @@ export const ImageLabel = styled.span<{
 `;
 
 export type IconSvgProps = Omit<IconBaseProps, 'children'> &
-  SVGProps<SVGElement> & { gradient?: Gradients };
+  SVGProps<SVGSVGElement> & { gradient?: Gradients };
 
 export const Icon = ({
   backgroundColor,
@@ -81,8 +81,10 @@ export const Icon = ({
     ) : (
       children
     )}
-    <ImageLabel id={label} $visible={labelVisible} $top={labelTop}>
-      {label}
-    </ImageLabel>
+    {labelVisible && label?.trim() ? (
+      <ImageLabel $visible $top={labelTop}>
+        {label}
+      </ImageLabel>
+    ) : null}
   </>
 );

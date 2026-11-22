@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useId } from 'react';
 
 import { Icon, IconSvgProps } from './Icon';
 
@@ -22,13 +22,16 @@ export const createIconComponent = ({
     gradient,
     height = 24,
     label,
+    labelTop,
     labelVisible,
+    size: _size,
     style,
     width = 24,
+    children: _children,
+    ...svgProps
   }: IconSvgProps & { style?: CSSProperties; color?: string }) => {
-    const gradientId = label
-      ? `gradient-${label.replace(/\s/g, '')}`
-      : 'gradient-icon-needs-label';
+    // useId() is `:r0:`, `«r0»` or `_r_0_` across React 19. Keep a DOM-safe id.
+    const gradientId = `gradient-${useId().replace(/[^A-Za-z0-9_-]/g, '')}`;
     const svgOptions: SvgTransformOptions = {
       color,
       className: circular ? undefined : className,
@@ -37,7 +40,7 @@ export const createIconComponent = ({
       gradientType,
       height,
       label,
-      style,
+      labelVisible,
       width,
     };
 
@@ -51,8 +54,9 @@ export const createIconComponent = ({
         color={color}
         label={label}
         labelVisible={labelVisible}
+        labelTop={labelTop}
       >
-        {createReactSvg(svgData, svgOptions)}
+        {createReactSvg(svgData, { ...svgOptions, ...svgProps })}
       </Icon>
     );
   };

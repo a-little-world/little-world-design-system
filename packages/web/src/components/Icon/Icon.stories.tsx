@@ -10,6 +10,14 @@ import styled from 'styled-components';
 export default {
   component: Icon,
   title: 'Components/Icons',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Omit `label` for a decorative icon, including one beside visible text. Pass `label` when the icon is the only content of a control or carries meaning on its own. Callers pass the string.',
+      },
+    },
+  },
   argTypes: {
     color: { control: 'color' },
     gradient: { control: 'select', options: Gradients },

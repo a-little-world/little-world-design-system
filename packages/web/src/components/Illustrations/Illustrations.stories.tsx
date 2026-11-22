@@ -7,6 +7,14 @@ import styled from "styled-components";
 
 export default {
   title: "Components/Illustrations",
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Omit `label` for a decorative illustration, including one beside a visible caption. Pass `label` when the illustration carries meaning on its own. Callers pass the string. `labelVisible` shows that label as a caption and hides the graphic from assistive technology.",
+      },
+    },
+  },
   argTypes: {
     color: { control: "color" },
     height: { control: "text" },

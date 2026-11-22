@@ -7,25 +7,26 @@ import React, { CSSProperties } from 'react';
 import textParser from '../../utils/parser';
 import { StyledElement } from './styles';
 
-export type TextProps = TextBaseProps & {
-  className?: string;
-  disableParser?: boolean;
-  id?: string;
-  style?: CSSProperties;
-  tag?:
-    | 'p'
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'li'
-    | 'label'
-    | 'span'
-    | 'strong'
-    | 'div';
-};
+export type TextProps = TextBaseProps &
+  Omit<React.HTMLAttributes<HTMLElement>, 'color'> & {
+    className?: string;
+    disableParser?: boolean;
+    id?: string;
+    style?: CSSProperties;
+    tag?:
+      | 'p'
+      | 'h1'
+      | 'h2'
+      | 'h3'
+      | 'h4'
+      | 'h5'
+      | 'h6'
+      | 'li'
+      | 'label'
+      | 'span'
+      | 'strong'
+      | 'div';
+  };
 
 const Text: React.FC<TextProps> = ({
   bold = false,
@@ -38,6 +39,7 @@ const Text: React.FC<TextProps> = ({
   style,
   tag = 'p',
   type = TextTypes.Body5,
+  ...rest
 }: TextProps) => (
   <StyledElement
     className={className}
@@ -48,6 +50,7 @@ const Text: React.FC<TextProps> = ({
     $color={color}
     $type={type}
     as={tag}
+    {...rest}
   >
     {typeof children === 'string' && !disableParser
       ? (textParser(children) as React.ReactNode)

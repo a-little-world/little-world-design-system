@@ -1,5 +1,16 @@
 # @a-little-world/little-world-design-system-native
 
+## 0.12.0
+
+### Minor Changes
+
+- Icons and illustrations: `label` is now optional, following the shared types in core. A visible caption only renders when `labelVisible` is set and `label` is not empty.
+
+### Patch Changes
+
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.20.0
+
 ## 0.11.8
 
 ### Patch Changes
