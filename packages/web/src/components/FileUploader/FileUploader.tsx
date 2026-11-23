@@ -212,7 +212,9 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       return (
         <PreviewColumn>
           <PreviewArea onClick={openPicker}>
-            <PreviewImage src={previewUrl ?? ''} alt={files[0].name} />
+            {previewUrl && (
+              <PreviewImage src={previewUrl} alt={files[0].name} />
+            )}
             <RemoveImageButton
               type="button"
               aria-label={removeFileLabel(files[0].name)}
