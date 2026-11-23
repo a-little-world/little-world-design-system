@@ -25,10 +25,20 @@ const CLOSE_BUTTON_LABEL = 'dialog close button';
 type BaseDialogProps = {
   children: React.ReactNode;
   className?: string;
+  /**
+   * Accessible name of the close button. Callers pass the translated string.
+   * Falls back to "dialog close button" when omitted.
+   */
+  closeLabel?: string;
   closeOnBackdropClick?: boolean;
   contentAlign?: FlexAlignType;
   createInPortal?: boolean;
   footer?: React.ReactNode;
+  /**
+   * Accessible name of the dialog. When omitted, `title` is used.
+   * Callers pass the translated string.
+   */
+  label?: string;
   open: boolean;
   parent?: any;
   size?: DialogSize;
@@ -51,10 +61,12 @@ export type DialogProps = UnlockedDialogProps | LockedDialogProps;
 const Dialog = ({
   children,
   className,
+  closeLabel,
   closeOnBackdropClick,
   contentAlign,
   createInPortal,
   footer,
+  label,
   locked,
   onClose,
   open,
@@ -63,6 +75,8 @@ const Dialog = ({
   title,
 }: DialogProps) => {
   const theme = useTheme();
+  const dialogLabel = label?.trim() ? label : title;
+  const closeButtonLabel = closeLabel?.trim() ? closeLabel : CLOSE_BUTTON_LABEL;
 
   const dialogContent = (
     <DialogContent $alignItems={contentAlign}>
@@ -79,7 +93,7 @@ const Dialog = ({
                 onClick={onClose}
                 size={ButtonSizes.Medium}
               >
-                <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
+                <CloseIcon label={closeButtonLabel} height="20" width="20" />
               </DialogCloseButton>
             )}
           </ModalHeader>
@@ -96,6 +110,7 @@ const Dialog = ({
         className={className}
         createInPortal={createInPortal}
         hideCloseButton
+        label={dialogLabel}
         locked
         noContentWrapper
         onClose={onClose}
@@ -113,6 +128,7 @@ const Dialog = ({
       closeOnBackdropClick={closeOnBackdropClick}
       createInPortal={createInPortal}
       hideCloseButton
+      label={dialogLabel}
       noContentWrapper
       onClose={onClose}
       open={open}

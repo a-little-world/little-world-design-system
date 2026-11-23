@@ -15,7 +15,11 @@ import Modal from './Modal';
 
   ## Default
 
-  By default, the Modal is closed
+  By default, the Modal is closed.
+
+  Pass `label` to name the dialog for assistive technology. When `label` is omitted, the name falls back to "dialog backdrop". Pass `closeLabel` to name the close button. When it is omitted, the button falls back to "dialog close button". Callers pass both strings.
+
+  `Dialog` uses its visible `title` as the dialog name unless `label` is set.
 
   <ArgTypes of={Modal} />
 </CustomThemeProvider>

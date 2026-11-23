@@ -79,9 +79,9 @@ export const Icon = ({
       ) : (
         <View style={style}>{children}</View>
       )}
-      {labelVisible && (
+      {labelVisible && label ? (
         <ImageLabel top={labelTop as number}>{label}</ImageLabel>
-      )}
+      ) : null}
     </>
   );
 };

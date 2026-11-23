@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 import {
   SvgTransformOptions,
   ParsedSvg,
@@ -9,11 +9,8 @@ import {
 import IconGradient from '../components/Icon/IconGradient';
 
 // Helper function to generate unique keys
-const generateUniqueKey = (element: SvgElement, index: string | number) => {
-  return `${element.type}-${index}-${Math.random()
-    .toString(36)
-    .substring(2, 11)}`;
-};
+const generateUniqueKey = (element: SvgElement, index: string | number) =>
+  `${element.type}-${index}`;
 
 // Helper function to safely render children, filtering out null values
 const renderChildren = (
@@ -100,9 +97,86 @@ const renderSvgElement = (
   }
 };
 
+const hasSvgLabel = (label?: string): label is string =>
+  typeof label === 'string' && label.trim().length > 0;
+
+const isAriaHidden = (
+  value: React.AriaAttributes['aria-hidden'] | undefined,
+): boolean => value === true || value === 'true';
+
+/**
+ * Accessible name for icons and illustrations.
+ * A non-empty label names the svg. A visible label is a caption instead, and
+ * the svg is hidden. Omitted or blank labels are decorative.
+ * Caller aria-labelledby / aria-label / aria-hidden win over `label`.
+ * `label` never adds a second name next to a caller-provided one.
+ */
+const svgAccessibilityProps = (
+  label: string | undefined,
+  labelVisible: boolean | undefined,
+  svgProps: SVGProps<SVGSVGElement>,
+): SVGProps<SVGSVGElement> => {
+  const {
+    role: callerRole,
+    'aria-label': callerAriaLabel,
+    'aria-hidden': callerAriaHidden,
+    ...rest
+  } = svgProps;
+
+  const labelled = hasSvgLabel(label);
+  const captionVisible = labelled && Boolean(labelVisible);
+  const callerSetLabel = callerAriaLabel !== undefined;
+  const callerSetHidden = callerAriaHidden !== undefined;
+  const callerLabelledBy = hasSvgLabel(rest['aria-labelledby']);
+
+  let ariaLabel: SVGProps<SVGSVGElement>['aria-label'];
+  if (callerSetLabel) {
+    ariaLabel = callerAriaLabel;
+  } else if (labelled && !captionVisible && !callerLabelledBy) {
+    ariaLabel = label;
+  }
+
+  const hasName =
+    callerLabelledBy ||
+    (typeof ariaLabel === 'string' && ariaLabel.trim().length > 0);
+
+  let ariaHidden = callerAriaHidden;
+  if (!callerSetHidden && (captionVisible || !hasName)) {
+    ariaHidden = true;
+  }
+
+  // A hidden svg is unnamed unless the caller explicitly passed aria-label.
+  if (isAriaHidden(ariaHidden) && !callerSetLabel) {
+    ariaLabel = undefined;
+  }
+
+  const exposedName =
+    (callerLabelledBy ||
+      (typeof ariaLabel === 'string' && ariaLabel.trim().length > 0)) &&
+    !isAriaHidden(ariaHidden);
+
+  const role = callerRole ?? (exposedName ? 'img' : undefined);
+
+  return {
+    ...rest,
+    ...(role ? { role } : {}),
+    ...(ariaLabel !== undefined ? { 'aria-label': ariaLabel } : {}),
+    ...(ariaHidden !== undefined ? { 'aria-hidden': ariaHidden } : {}),
+  };
+};
+
+type CreateReactSvgOptions = SvgTransformOptions &
+  SVGProps<SVGSVGElement> & {
+    backgroundColor?: string;
+    borderColor?: string;
+    circular?: boolean;
+    labelTop?: number | string;
+    size?: number | string;
+  };
+
 export const createReactSvg = (
   svgData: ParsedSvg,
-  options: SvgTransformOptions,
+  options: CreateReactSvgOptions,
 ) => {
   const {
     className,
@@ -112,11 +186,29 @@ export const createReactSvg = (
     gradientId,
     gradientType,
     label,
+    labelVisible,
+    accessible: _accessible,
+    accessibilityLabel: _accessibilityLabel,
+    backgroundColor: _backgroundColor,
+    borderColor: _borderColor,
+    circular: _circular,
+    color: _color,
+    colorAttr: _colorAttr,
+    labelTop: _labelTop,
+    size: _size,
+    style: _style,
+    children: _children,
+    ...svgProps
   } = options;
+
+  const accessibilityProps = svgAccessibilityProps(
+    label,
+    labelVisible,
+    svgProps,
+  );
 
   return (
     <svg
-      aria-labelledby={label}
       fill="none"
       focusable={false}
       width={width}
@@ -124,6 +216,7 @@ export const createReactSvg = (
       className={className}
       xmlns="http://www.w3.org/2000/svg"
       viewBox={svgData.viewBox}
+      {...accessibilityProps}
     >
       {svgData.elements.map((element, index) =>
         renderSvgElement(element, options, index),

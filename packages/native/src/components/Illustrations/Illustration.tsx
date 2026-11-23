@@ -15,6 +15,8 @@ export const Illustration = ({
 }: IllustrationProps) => (
   <View>
     {children}
-    {labelVisible && <ImageLabel top={labelTop as number}>{label}</ImageLabel>}
+    {labelVisible && label ? (
+      <ImageLabel top={labelTop as number}>{label}</ImageLabel>
+    ) : null}
   </View>
 );

@@ -11,8 +11,10 @@ export const Illustration = ({
 }: IllustrationProps) => (
   <>
     {children}
-    <ImageLabel id={label} $visible={labelVisible} $top={labelTop}>
-      {label}
-    </ImageLabel>
+    {labelVisible && label?.trim() ? (
+      <ImageLabel $visible $top={labelTop}>
+        {label}
+      </ImageLabel>
+    ) : null}
   </>
 );

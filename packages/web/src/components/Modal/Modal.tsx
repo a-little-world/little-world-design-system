@@ -19,10 +19,20 @@ const CLOSE_BUTTON_LABEL = 'dialog close button';
 type BaseModalProps = {
   children: React.ReactNode;
   className?: string;
+  /**
+   * Accessible name of the close button. Callers pass the translated string.
+   * Falls back to "dialog close button" when omitted.
+   */
+  closeLabel?: string;
   closeOnBackdropClick?: boolean;
   contentAlign?: FlexAlignType;
   createInPortal?: boolean;
   hideCloseButton?: boolean;
+  /**
+   * Accessible name of the dialog. Callers pass the translated string.
+   * Falls back to "dialog backdrop" when omitted.
+   */
+  label?: string;
   noContentWrapper?: boolean;
   open: boolean;
   parent?: Element | null;
@@ -43,10 +53,12 @@ type ModalProps = UnlockedModalProps | LockedModalProps;
 
 const Modal = ({
   children,
+  closeLabel,
   closeOnBackdropClick = true,
   contentAlign,
   createInPortal = true,
   hideCloseButton = false,
+  label,
   noContentWrapper = false,
   open,
   onClose,
@@ -107,11 +119,15 @@ const Modal = ({
     };
   }, [closeOnBackdropClick, open, locked, onClose]);
 
+  const dialogLabel = label?.trim() ? label : BACKDROP_LABEL;
+  const closeButtonLabel = closeLabel?.trim() ? closeLabel : CLOSE_BUTTON_LABEL;
+
   const Backdrop = (
     <ModalPortalContext.Provider value={backdrop}>
       <BackdropContainer
         aria-modal={true}
-        aria-label={BACKDROP_LABEL}
+        aria-label={dialogLabel}
+        tabIndex={-1}
         ref={backdrop}
         $active={active && open}
       >
@@ -124,7 +140,7 @@ const Modal = ({
             onClick={onClose}
             size={ButtonSizes.Medium}
           >
-            <CloseIcon label={CLOSE_BUTTON_LABEL} height="20" width="20" />
+            <CloseIcon label={closeButtonLabel} height="20" width="20" />
           </CloseButton>
         )}
         {noContentWrapper ? (

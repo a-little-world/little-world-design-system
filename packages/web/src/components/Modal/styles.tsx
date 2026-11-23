@@ -91,6 +91,11 @@ export const BackdropContainer = styled.dialog<{ $active: boolean }>`
   overflow: auto;
   overscroll-behavior: contain;
 
+  /* Focused programmatically on open (tabIndex -1) so it is announced. */
+  &:focus {
+    outline: none;
+  }
+
   ${({ $active }) =>
     $active &&
     css`
