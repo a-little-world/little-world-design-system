@@ -1,5 +1,24 @@
 # @a-little-world/little-world-design-system
 
+## 3.5.0
+
+### Minor Changes
+
+- FileUploader: add `chooseFileLabel`, `addFilesLabel` and `removeFileLabel` so apps can translate the button texts and the remove buttons' names.
+- FileUploader: `onError` gets a second argument with an error `code` (`invalid-type`, `too-large`, `too-many`) and the affected `file`, so apps can show their own message. Export the `FileUploaderError` type.
+- FileUploader: with `multiple`, show the file limit ("Up to 3 files") in the empty state and how many files are chosen ("2 of 3 files") next to the add button. At the limit the count explains why the add button is gone. Translate both with `maxFilesLabel` and `fileCountLabel`.
+
+### Patch Changes
+
+- FileUploader: a file that is already selected is ignored instead of being added again.
+- FileUploader: hide "Add more files" once `maxFiles` is reached.
+- FileUploader: with `multiple={false}`, a new file replaces the current one, and only the first of several dropped files is kept.
+- FileUploader: Enter and Space open the file picker. The drop zone is only a button while it is empty, so it no longer wraps the remove and add buttons.
+- FileUploader: `disabled` also disables the remove buttons and hides the add button.
+- FileUploader: no longer renders an image with an empty `src` before the preview is ready.
+- Updated dependencies
+  - @a-little-world/little-world-design-system-core@1.21.0
+
 ## 3.4.0
 
 ### Minor Changes
