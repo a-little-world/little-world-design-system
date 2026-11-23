@@ -65,6 +65,10 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const fileLimit = multiple ? maxFiles : 1;
+  const canPickFiles = !disabled && (!multiple || files.length < fileLimit);
+  const pickFilesLabel = multiple ? addFilesLabel : chooseFileLabel;
+
   const setFiles = useCallback((next: File[]) => {
     filesRef.current = next;
     setFilesState(next);
@@ -104,7 +108,8 @@ const FileUploader: React.FC<FileUploaderProps> = ({
         return true;
       });
 
-      const current = filesRef.current;
+      // single mode replaces the current file
+      const current = multiple ? filesRef.current : [];
       const seen = new Set(current.map(fileKey));
       const added = valid.filter(file => {
         if (seen.has(fileKey(file))) return false;
@@ -114,17 +119,25 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       if (!added.length) return;
 
       const merged = [...current, ...added];
-      if (merged.length > maxFiles) {
+      if (merged.length > fileLimit) {
         onError?.(
-          `Only ${maxFiles} file${maxFiles !== 1 ? 's' : ''} can be uploaded at a time.`,
+          `Only ${fileLimit} file${fileLimit !== 1 ? 's' : ''} can be uploaded at a time.`,
           { code: 'too-many' },
         );
       }
-      const next = merged.slice(0, maxFiles);
+      const next = merged.slice(0, fileLimit);
       setFiles(next);
       onFilesChange?.(next);
     },
-    [accept, maxFiles, maxSizeBytes, onError, onFilesChange, setFiles],
+    [
+      accept,
+      fileLimit,
+      maxSizeBytes,
+      multiple,
+      onError,
+      onFilesChange,
+      setFiles,
+    ],
   );
 
   const removeFile = (index: number) => {
@@ -134,7 +147,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   };
 
   const openPicker = () => {
-    if (!disabled) inputRef.current?.click();
+    if (canPickFiles) inputRef.current?.click();
   };
 
   const onDrop = useCallback(
@@ -157,6 +170,19 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       setIsDragging(false);
     }
   };
+
+  const pickFilesButton = canPickFiles && (
+    <Button
+      appearance={ButtonAppearance.Secondary}
+      size={ButtonSizes.Small}
+      onClick={e => {
+        e.stopPropagation();
+        openPicker();
+      }}
+    >
+      {pickFilesLabel}
+    </Button>
+  );
 
   const renderContent = () => {
     if (files.length === 0) {
@@ -195,16 +221,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
             <PreviewCaption title={files[0].name}>
               {files[0].name}
             </PreviewCaption>
-            <Button
-              appearance={ButtonAppearance.Secondary}
-              size={ButtonSizes.Small}
-              onClick={e => {
-                e.stopPropagation();
-                openPicker();
-              }}
-            >
-              {chooseFileLabel}
-            </Button>
+            {pickFilesButton}
           </PreviewFooter>
         </PreviewColumn>
       );
@@ -233,18 +250,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
             </InlineFileItem>
           ))}
         </InlineFileList>
-        <InlineFooter>
-          <Button
-            appearance={ButtonAppearance.Secondary}
-            size={ButtonSizes.Small}
-            onClick={e => {
-              e.stopPropagation();
-              openPicker();
-            }}
-          >
-            {addFilesLabel}
-          </Button>
-        </InlineFooter>
+        {pickFilesButton && <InlineFooter>{pickFilesButton}</InlineFooter>}
       </>
     );
   };

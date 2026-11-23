@@ -29,6 +29,27 @@ test('FileUploader ignores files that are already selected', async () => {
   expect(screen.getAllByRole('listitem')).toHaveLength(2);
 });
 
+test('FileUploader reports too many files and hides the add button at the limit', async () => {
+  const onError = jest.fn();
+  const { user, container } = renderWithUser(
+    <FileUploader maxFiles={2} onError={onError} />,
+  );
+
+  await user.upload(fileInput(container), [
+    textFile('a.txt'),
+    textFile('b.txt'),
+    textFile('c.txt'),
+  ]);
+
+  expect(onError).toHaveBeenCalledWith(expect.any(String), {
+    code: 'too-many',
+  });
+  expect(screen.getAllByRole('listitem')).toHaveLength(2);
+  expect(
+    screen.queryByRole('button', { name: 'Add more files' }),
+  ).not.toBeInTheDocument();
+});
+
 test('FileUploader reports the error code for a file of the wrong type', async () => {
   const onError = jest.fn();
   const wrongType = textFile('notes.txt');
@@ -43,6 +64,20 @@ test('FileUploader reports the error code for a file of the wrong type', async (
     code: 'invalid-type',
     file: wrongType,
   });
+});
+
+test('FileUploader replaces the file when multiple is false', async () => {
+  const onFilesChange = jest.fn();
+  const second = textFile('b.txt');
+  const { user, container } = renderWithUser(
+    <FileUploader multiple={false} onFilesChange={onFilesChange} />,
+  );
+
+  await user.upload(fileInput(container), textFile('a.txt'));
+  await user.click(screen.getByRole('button', { name: 'Choose file' }));
+  await user.upload(fileInput(container), second);
+
+  expect(onFilesChange).toHaveBeenLastCalledWith([second]);
 });
 
 test('FileUploader uses the given button labels', async () => {
