@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components';
 import {
   ButtonAppearance,
   ButtonSizes,
+  FileUploaderError,
   FileUploaderProps,
 } from '@a-little-world/little-world-design-system-core';
 import Button from '../Button/Button';
@@ -12,6 +13,7 @@ import {
   DropZoneIcon,
   EmptyState,
   EmptyTitle,
+  FileCount,
   HintText,
   InlineFileItem,
   InlineFileList,
@@ -25,7 +27,7 @@ import {
   RemoveImageButton,
 } from './styles';
 
-export { FileUploaderProps };
+export { FileUploaderError, FileUploaderProps };
 
 function matchesAccept(file: File, accept?: string): boolean {
   if (!accept) return true;
@@ -38,6 +40,19 @@ function matchesAccept(file: File, accept?: string): boolean {
   });
 }
 
+const fileKey = (file: File) =>
+  `${file.name}-${file.size}-${file.lastModified}`;
+
+const defaultRemoveFileLabel = (fileName: string) => `Remove ${fileName}`;
+
+const pluralFiles = (count: number) => `file${count === 1 ? '' : 's'}`;
+
+const defaultMaxFilesLabel = (maxFiles: number) =>
+  `Up to ${maxFiles} ${pluralFiles(maxFiles)}`;
+
+const defaultFileCountLabel = (count: number, maxFiles: number) =>
+  `${count} of ${maxFiles} ${pluralFiles(maxFiles)}`;
+
 const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
   disabled = false,
@@ -48,6 +63,11 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   onError,
   label = 'Drag & drop files here, or click to browse',
   hint,
+  chooseFileLabel = 'Choose file',
+  addFilesLabel = 'Add more files',
+  removeFileLabel = defaultRemoveFileLabel,
+  maxFilesLabel = defaultMaxFilesLabel,
+  fileCountLabel = defaultFileCountLabel,
 }) => {
   const theme = useTheme();
   const [isDragging, setIsDragging] = useState(false);
@@ -55,6 +75,10 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   const filesRef = useRef<File[]>([]);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const fileLimit = multiple ? maxFiles : 1;
+  const canPickFiles = !disabled && (!multiple || files.length < fileLimit);
+  const pickFilesLabel = multiple ? addFilesLabel : chooseFileLabel;
 
   const setFiles = useCallback((next: File[]) => {
     filesRef.current = next;
@@ -77,37 +101,54 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   const handleFiles = useCallback(
     (incoming: FileList | null) => {
       if (!incoming) return;
-      const incomingArr = Array.from(incoming);
+      const valid = Array.from(incoming).filter(file => {
+        if (!matchesAccept(file, accept)) {
+          onError?.(`File "${file.name}" is not an accepted file type.`, {
+            code: 'invalid-type',
+            file,
+          });
+          return false;
+        }
+        if (maxSizeBytes && file.size > maxSizeBytes) {
+          onError?.(`File "${file.name}" exceeds the size limit.`, {
+            code: 'too-large',
+            file,
+          });
+          return false;
+        }
+        return true;
+      });
 
-      const wrongType = incomingArr.filter(f => !matchesAccept(f, accept));
-      wrongType.forEach(f =>
-        onError?.(`File "${f.name}" is not an accepted file type.`),
-      );
+      // single mode replaces the current file
+      const current = multiple ? filesRef.current : [];
+      const seen = new Set(current.map(fileKey));
+      const added = valid.filter(file => {
+        if (seen.has(fileKey(file))) return false;
+        seen.add(fileKey(file));
+        return true;
+      });
+      if (!added.length) return;
 
-      const typeFiltered = incomingArr.filter(f => matchesAccept(f, accept));
-
-      const oversized = maxSizeBytes
-        ? typeFiltered.filter(f => f.size > maxSizeBytes)
-        : [];
-      oversized.forEach(f =>
-        onError?.(`File "${f.name}" exceeds the size limit.`),
-      );
-
-      const valid = maxSizeBytes
-        ? typeFiltered.filter(f => f.size <= maxSizeBytes)
-        : typeFiltered;
-
-      const merged = [...filesRef.current, ...valid];
-      if (merged.length > maxFiles) {
+      const merged = [...current, ...added];
+      if (merged.length > fileLimit) {
         onError?.(
-          `Only ${maxFiles} file${maxFiles !== 1 ? 's' : ''} can be uploaded at a time.`,
+          `Only ${fileLimit} file${fileLimit !== 1 ? 's' : ''} can be uploaded at a time.`,
+          { code: 'too-many' },
         );
       }
-      const next = merged.slice(0, maxFiles);
+      const next = merged.slice(0, fileLimit);
       setFiles(next);
       onFilesChange?.(next);
     },
-    [accept, maxFiles, maxSizeBytes, onError, onFilesChange, setFiles],
+    [
+      accept,
+      fileLimit,
+      maxSizeBytes,
+      multiple,
+      onError,
+      onFilesChange,
+      setFiles,
+    ],
   );
 
   const removeFile = (index: number) => {
@@ -117,7 +158,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   };
 
   const openPicker = () => {
-    if (!disabled) inputRef.current?.click();
+    if (canPickFiles) inputRef.current?.click();
   };
 
   const onDrop = useCallback(
@@ -141,13 +182,38 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     }
   };
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.target !== e.currentTarget) return;
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+    openPicker();
+  };
+
+  const pickFilesButton = canPickFiles && (
+    <Button
+      appearance={ButtonAppearance.Secondary}
+      size={ButtonSizes.Small}
+      onClick={e => {
+        e.stopPropagation();
+        openPicker();
+      }}
+    >
+      {pickFilesLabel}
+    </Button>
+  );
+
+  const fileCount = multiple && (
+    <FileCount role="status">
+      {fileCountLabel(files.length, fileLimit)}
+    </FileCount>
+  );
+
   const renderContent = () => {
     if (files.length === 0) {
       return (
         <EmptyState>
           <DropZoneIcon>
             <UploadIcon
-              label=""
               height="40"
               width="40"
               color={theme.color.surface.bold}
@@ -155,6 +221,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
           </DropZoneIcon>
           <EmptyTitle>{label}</EmptyTitle>
           {hint && <HintText>{hint}</HintText>}
+          {multiple && <HintText>{maxFilesLabel(fileLimit)}</HintText>}
         </EmptyState>
       );
     }
@@ -163,32 +230,27 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       return (
         <PreviewColumn>
           <PreviewArea onClick={openPicker}>
-            <PreviewImage src={previewUrl ?? ''} alt={files[0].name} />
+            {previewUrl && (
+              <PreviewImage src={previewUrl} alt={files[0].name} />
+            )}
             <RemoveImageButton
               type="button"
-              aria-label="Remove image"
+              aria-label={removeFileLabel(files[0].name)}
+              disabled={disabled}
               onClick={e => {
                 e.stopPropagation();
                 removeFile(0);
               }}
             >
-              <CloseIcon label="Remove" height="16" width="16" color="white" />
+              <CloseIcon height="16" width="16" color="white" />
             </RemoveImageButton>
           </PreviewArea>
           <PreviewFooter>
             <PreviewCaption title={files[0].name}>
               {files[0].name}
             </PreviewCaption>
-            <Button
-              appearance={ButtonAppearance.Secondary}
-              size={ButtonSizes.Small}
-              onClick={e => {
-                e.stopPropagation();
-                openPicker();
-              }}
-            >
-              Choose file
-            </Button>
+            {fileCount}
+            {pickFilesButton}
           </PreviewFooter>
         </PreviewColumn>
       );
@@ -198,20 +260,18 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       <>
         <InlineFileList>
           {files.map((file, i) => (
-            <InlineFileItem
-              key={`${file.name}-${file.size}-${file.lastModified}`}
-            >
+            <InlineFileItem key={fileKey(file)}>
               <span>{file.name}</span>
               <RemoveFileButton
                 type="button"
-                aria-label={`Remove ${file.name}`}
+                aria-label={removeFileLabel(file.name)}
+                disabled={disabled}
                 onClick={e => {
                   e.stopPropagation();
                   removeFile(i);
                 }}
               >
                 <CloseIcon
-                  label="Remove"
                   height="12"
                   width="12"
                   color={theme.color.text.error}
@@ -220,33 +280,30 @@ const FileUploader: React.FC<FileUploaderProps> = ({
             </InlineFileItem>
           ))}
         </InlineFileList>
-        <InlineFooter>
-          <Button
-            appearance={ButtonAppearance.Secondary}
-            size={ButtonSizes.Small}
-            onClick={e => {
-              e.stopPropagation();
-              openPicker();
-            }}
-          >
-            Add more files
-          </Button>
-        </InlineFooter>
+        {(fileCount || pickFilesButton) && (
+          <InlineFooter>
+            {fileCount}
+            {pickFilesButton}
+          </InlineFooter>
+        )}
       </>
     );
   };
+
+  const isEmpty = files.length === 0;
 
   return (
     <DropZone
       $dragging={isDragging}
       $disabled={disabled}
-      onClick={() => files.length === 0 && openPicker()}
+      onClick={isEmpty ? openPicker : undefined}
+      onKeyDown={isEmpty ? onKeyDown : undefined}
       onDrop={onDrop}
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
-      aria-disabled={disabled}
-      role="button"
-      tabIndex={disabled ? -1 : 0}
+      aria-disabled={isEmpty ? disabled : undefined}
+      role={isEmpty ? 'button' : undefined}
+      tabIndex={isEmpty && !disabled ? 0 : undefined}
     >
       <input
         ref={inputRef}
@@ -254,6 +311,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
         accept={accept}
         multiple={multiple}
         hidden
+        onClick={e => e.stopPropagation()}
         onChange={e => {
           handleFiles(e.target.files);
           e.target.value = '';

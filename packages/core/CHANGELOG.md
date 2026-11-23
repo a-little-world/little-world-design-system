@@ -1,5 +1,13 @@
 # @a-little-world/little-world-design-system-core
 
+## 1.21.0
+
+### Minor Changes
+
+- FileUploader: add `chooseFileLabel`, `addFilesLabel` and `removeFileLabel` to `FileUploaderProps`.
+- FileUploader: `onError` gets a second argument, `FileUploaderError`, with an error `code` (`invalid-type`, `too-large`, `too-many`) and the affected `file`.
+- FileUploader: add `maxFilesLabel` and `fileCountLabel` to `FileUploaderProps`.
+
 ## 1.20.0
 
 ### Minor Changes
