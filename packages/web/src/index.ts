@@ -64,7 +64,10 @@ export {
   LoadingType,
 } from './components/Loading/Loading';
 export { default as FileUploader } from './components/FileUploader/FileUploader';
-export type { FileUploaderProps } from './components/FileUploader/FileUploader';
+export type {
+  FileUploaderError,
+  FileUploaderProps,
+} from './components/FileUploader/FileUploader';
 export { default as Modal } from './components/Modal/Modal';
 export { default as Dialog } from './components/Modal/Dialog';
 export type { DialogProps } from './components/Modal/Dialog';

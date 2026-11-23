@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components';
 import {
   ButtonAppearance,
   ButtonSizes,
+  FileUploaderError,
   FileUploaderProps,
 } from '@a-little-world/little-world-design-system-core';
 import Button from '../Button/Button';
@@ -25,7 +26,7 @@ import {
   RemoveImageButton,
 } from './styles';
 
-export { FileUploaderProps };
+export { FileUploaderError, FileUploaderProps };
 
 function matchesAccept(file: File, accept?: string): boolean {
   if (!accept) return true;
@@ -82,30 +83,29 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   const handleFiles = useCallback(
     (incoming: FileList | null) => {
       if (!incoming) return;
-      const incomingArr = Array.from(incoming);
-
-      const wrongType = incomingArr.filter(f => !matchesAccept(f, accept));
-      wrongType.forEach(f =>
-        onError?.(`File "${f.name}" is not an accepted file type.`),
-      );
-
-      const typeFiltered = incomingArr.filter(f => matchesAccept(f, accept));
-
-      const oversized = maxSizeBytes
-        ? typeFiltered.filter(f => f.size > maxSizeBytes)
-        : [];
-      oversized.forEach(f =>
-        onError?.(`File "${f.name}" exceeds the size limit.`),
-      );
-
-      const valid = maxSizeBytes
-        ? typeFiltered.filter(f => f.size <= maxSizeBytes)
-        : typeFiltered;
+      const valid = Array.from(incoming).filter(file => {
+        if (!matchesAccept(file, accept)) {
+          onError?.(`File "${file.name}" is not an accepted file type.`, {
+            code: 'invalid-type',
+            file,
+          });
+          return false;
+        }
+        if (maxSizeBytes && file.size > maxSizeBytes) {
+          onError?.(`File "${file.name}" exceeds the size limit.`, {
+            code: 'too-large',
+            file,
+          });
+          return false;
+        }
+        return true;
+      });
 
       const merged = [...filesRef.current, ...valid];
       if (merged.length > maxFiles) {
         onError?.(
           `Only ${maxFiles} file${maxFiles !== 1 ? 's' : ''} can be uploaded at a time.`,
+          { code: 'too-many' },
         );
       }
       const next = merged.slice(0, maxFiles);

@@ -1,5 +1,6 @@
 import React from 'react';
-import { renderWithUser, screen } from '../../testUtils';
+import userEvent from '@testing-library/user-event';
+import { render, renderWithUser, screen } from '../../testUtils';
 import FileUploader from './FileUploader';
 
 const textFile = (name: string) =>
@@ -7,6 +8,22 @@ const textFile = (name: string) =>
 
 const fileInput = (container: HTMLElement) =>
   container.querySelector('input[type="file"]') as HTMLInputElement;
+
+test('FileUploader reports the error code for a file of the wrong type', async () => {
+  const onError = jest.fn();
+  const wrongType = textFile('notes.txt');
+  const user = userEvent.setup({ applyAccept: false });
+  const { container } = render(
+    <FileUploader accept=".pdf" onError={onError} />,
+  );
+
+  await user.upload(fileInput(container), wrongType);
+
+  expect(onError).toHaveBeenCalledWith(expect.any(String), {
+    code: 'invalid-type',
+    file: wrongType,
+  });
+});
 
 test('FileUploader uses the given button labels', async () => {
   const { user, container } = renderWithUser(
