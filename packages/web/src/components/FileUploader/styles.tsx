@@ -163,6 +163,12 @@ export const RemoveFileButton = styled.button`
   }
 `;
 
+export const FileCount = styled.span`
+  margin-right: auto;
+  font-size: 0.8125rem;
+  color: ${({ theme }) => theme.color.text.secondary};
+`;
+
 export const InlineFooter = styled.div`
   display: flex;
   justify-content: flex-end;

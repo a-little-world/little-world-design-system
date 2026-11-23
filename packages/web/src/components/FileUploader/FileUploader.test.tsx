@@ -84,7 +84,7 @@ test('FileUploader opens the file picker with the keyboard', async () => {
   const { user, container } = renderWithUser(<FileUploader label="Upload" />);
   const click = jest.spyOn(fileInput(container), 'click');
 
-  screen.getByRole('button', { name: 'Upload' }).focus();
+  screen.getByRole('button', { name: /^Upload/ }).focus();
   await user.keyboard('{Enter}');
   await user.keyboard(' ');
 
@@ -124,4 +124,35 @@ test('FileUploader disables the remove buttons when disabled', async () => {
   expect(
     screen.queryByRole('button', { name: 'Add more files' }),
   ).not.toBeInTheDocument();
+});
+
+test('FileUploader shows the file limit and how many files are chosen', async () => {
+  const { user, container } = renderWithUser(<FileUploader maxFiles={2} />);
+  expect(screen.getByText('Up to 2 files')).toBeInTheDocument();
+
+  await user.upload(fileInput(container), textFile('a.txt'));
+  expect(screen.getByRole('status')).toHaveTextContent('1 of 2 files');
+
+  await user.upload(fileInput(container), textFile('b.txt'));
+  expect(screen.getByRole('status')).toHaveTextContent('2 of 2 files');
+  expect(
+    screen.queryByRole('button', { name: 'Add more files' }),
+  ).not.toBeInTheDocument();
+});
+
+test('FileUploader uses the given limit texts', async () => {
+  const { user, container } = renderWithUser(
+    <FileUploader
+      maxFiles={3}
+      maxFilesLabel={max => `Bis zu ${max} Dateien`}
+      fileCountLabel={(count, max) => `${count} von ${max} Dateien`}
+    />,
+  );
+  expect(screen.getByText('Bis zu 3 Dateien')).toBeInTheDocument();
+
+  await user.upload(fileInput(container), [
+    textFile('a.txt'),
+    textFile('b.txt'),
+  ]);
+  expect(screen.getByRole('status')).toHaveTextContent('2 von 3 Dateien');
 });

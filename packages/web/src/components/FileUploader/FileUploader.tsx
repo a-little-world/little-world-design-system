@@ -13,6 +13,7 @@ import {
   DropZoneIcon,
   EmptyState,
   EmptyTitle,
+  FileCount,
   HintText,
   InlineFileItem,
   InlineFileList,
@@ -44,6 +45,14 @@ const fileKey = (file: File) =>
 
 const defaultRemoveFileLabel = (fileName: string) => `Remove ${fileName}`;
 
+const pluralFiles = (count: number) => `file${count === 1 ? '' : 's'}`;
+
+const defaultMaxFilesLabel = (maxFiles: number) =>
+  `Up to ${maxFiles} ${pluralFiles(maxFiles)}`;
+
+const defaultFileCountLabel = (count: number, maxFiles: number) =>
+  `${count} of ${maxFiles} ${pluralFiles(maxFiles)}`;
+
 const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
   disabled = false,
@@ -57,6 +66,8 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   chooseFileLabel = 'Choose file',
   addFilesLabel = 'Add more files',
   removeFileLabel = defaultRemoveFileLabel,
+  maxFilesLabel = defaultMaxFilesLabel,
+  fileCountLabel = defaultFileCountLabel,
 }) => {
   const theme = useTheme();
   const [isDragging, setIsDragging] = useState(false);
@@ -191,6 +202,12 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     </Button>
   );
 
+  const fileCount = multiple && (
+    <FileCount role="status">
+      {fileCountLabel(files.length, fileLimit)}
+    </FileCount>
+  );
+
   const renderContent = () => {
     if (files.length === 0) {
       return (
@@ -204,6 +221,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
           </DropZoneIcon>
           <EmptyTitle>{label}</EmptyTitle>
           {hint && <HintText>{hint}</HintText>}
+          {multiple && <HintText>{maxFilesLabel(fileLimit)}</HintText>}
         </EmptyState>
       );
     }
@@ -231,6 +249,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
             <PreviewCaption title={files[0].name}>
               {files[0].name}
             </PreviewCaption>
+            {fileCount}
             {pickFilesButton}
           </PreviewFooter>
         </PreviewColumn>
@@ -261,7 +280,12 @@ const FileUploader: React.FC<FileUploaderProps> = ({
             </InlineFileItem>
           ))}
         </InlineFileList>
-        {pickFilesButton && <InlineFooter>{pickFilesButton}</InlineFooter>}
+        {(fileCount || pickFilesButton) && (
+          <InlineFooter>
+            {fileCount}
+            {pickFilesButton}
+          </InlineFooter>
+        )}
       </>
     );
   };

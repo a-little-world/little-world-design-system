@@ -18,4 +18,6 @@ export interface FileUploaderProps {
   chooseFileLabel?: string;
   addFilesLabel?: string;
   removeFileLabel?: (fileName: string) => string;
+  maxFilesLabel?: (maxFiles: number) => string;
+  fileCountLabel?: (count: number, maxFiles: number) => string;
 }
