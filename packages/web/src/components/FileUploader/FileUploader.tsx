@@ -216,6 +216,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
             <RemoveImageButton
               type="button"
               aria-label={removeFileLabel(files[0].name)}
+              disabled={disabled}
               onClick={e => {
                 e.stopPropagation();
                 removeFile(0);
@@ -243,6 +244,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
               <RemoveFileButton
                 type="button"
                 aria-label={removeFileLabel(file.name)}
+                disabled={disabled}
                 onClick={e => {
                   e.stopPropagation();
                   removeFile(i);

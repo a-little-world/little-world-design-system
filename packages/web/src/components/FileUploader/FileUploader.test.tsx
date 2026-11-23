@@ -110,3 +110,18 @@ test('FileUploader uses the given button labels', async () => {
   await user.click(screen.getByRole('button', { name: 'a.txt entfernen' }));
   expect(screen.getAllByRole('listitem')).toHaveLength(1);
 });
+
+test('FileUploader disables the remove buttons when disabled', async () => {
+  const { user, container, rerender } = renderWithUser(<FileUploader />);
+  await user.upload(fileInput(container), [
+    textFile('a.txt'),
+    textFile('b.txt'),
+  ]);
+
+  rerender(<FileUploader disabled />);
+
+  expect(screen.getByRole('button', { name: 'Remove a.txt' })).toBeDisabled();
+  expect(
+    screen.queryByRole('button', { name: 'Add more files' }),
+  ).not.toBeInTheDocument();
+});
