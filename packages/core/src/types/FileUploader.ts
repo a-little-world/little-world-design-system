@@ -8,4 +8,7 @@ export interface FileUploaderProps {
   onError?: (error: string) => void;
   label?: string;
   hint?: string;
+  chooseFileLabel?: string;
+  addFilesLabel?: string;
+  removeFileLabel?: (fileName: string) => string;
 }

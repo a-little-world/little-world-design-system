@@ -38,6 +38,8 @@ function matchesAccept(file: File, accept?: string): boolean {
   });
 }
 
+const defaultRemoveFileLabel = (fileName: string) => `Remove ${fileName}`;
+
 const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
   disabled = false,
@@ -48,6 +50,9 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   onError,
   label = 'Drag & drop files here, or click to browse',
   hint,
+  chooseFileLabel = 'Choose file',
+  addFilesLabel = 'Add more files',
+  removeFileLabel = defaultRemoveFileLabel,
 }) => {
   const theme = useTheme();
   const [isDragging, setIsDragging] = useState(false);
@@ -147,7 +152,6 @@ const FileUploader: React.FC<FileUploaderProps> = ({
         <EmptyState>
           <DropZoneIcon>
             <UploadIcon
-              label=""
               height="40"
               width="40"
               color={theme.color.surface.bold}
@@ -166,13 +170,13 @@ const FileUploader: React.FC<FileUploaderProps> = ({
             <PreviewImage src={previewUrl ?? ''} alt={files[0].name} />
             <RemoveImageButton
               type="button"
-              aria-label="Remove image"
+              aria-label={removeFileLabel(files[0].name)}
               onClick={e => {
                 e.stopPropagation();
                 removeFile(0);
               }}
             >
-              <CloseIcon label="Remove" height="16" width="16" color="white" />
+              <CloseIcon height="16" width="16" color="white" />
             </RemoveImageButton>
           </PreviewArea>
           <PreviewFooter>
@@ -187,7 +191,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
                 openPicker();
               }}
             >
-              Choose file
+              {chooseFileLabel}
             </Button>
           </PreviewFooter>
         </PreviewColumn>
@@ -204,14 +208,13 @@ const FileUploader: React.FC<FileUploaderProps> = ({
               <span>{file.name}</span>
               <RemoveFileButton
                 type="button"
-                aria-label={`Remove ${file.name}`}
+                aria-label={removeFileLabel(file.name)}
                 onClick={e => {
                   e.stopPropagation();
                   removeFile(i);
                 }}
               >
                 <CloseIcon
-                  label="Remove"
                   height="12"
                   width="12"
                   color={theme.color.text.error}
@@ -229,7 +232,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
               openPicker();
             }}
           >
-            Add more files
+            {addFilesLabel}
           </Button>
         </InlineFooter>
       </>
