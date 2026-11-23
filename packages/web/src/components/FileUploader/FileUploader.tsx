@@ -171,6 +171,13 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     }
   };
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.target !== e.currentTarget) return;
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+    openPicker();
+  };
+
   const pickFilesButton = canPickFiles && (
     <Button
       appearance={ButtonAppearance.Secondary}
@@ -255,17 +262,20 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     );
   };
 
+  const isEmpty = files.length === 0;
+
   return (
     <DropZone
       $dragging={isDragging}
       $disabled={disabled}
-      onClick={() => files.length === 0 && openPicker()}
+      onClick={isEmpty ? openPicker : undefined}
+      onKeyDown={isEmpty ? onKeyDown : undefined}
       onDrop={onDrop}
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
-      aria-disabled={disabled}
-      role="button"
-      tabIndex={disabled ? -1 : 0}
+      aria-disabled={isEmpty ? disabled : undefined}
+      role={isEmpty ? 'button' : undefined}
+      tabIndex={isEmpty && !disabled ? 0 : undefined}
     >
       <input
         ref={inputRef}
@@ -273,6 +283,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
         accept={accept}
         multiple={multiple}
         hidden
+        onClick={e => e.stopPropagation()}
         onChange={e => {
           handleFiles(e.target.files);
           e.target.value = '';

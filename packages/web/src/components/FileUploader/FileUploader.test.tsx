@@ -80,6 +80,17 @@ test('FileUploader replaces the file when multiple is false', async () => {
   expect(onFilesChange).toHaveBeenLastCalledWith([second]);
 });
 
+test('FileUploader opens the file picker with the keyboard', async () => {
+  const { user, container } = renderWithUser(<FileUploader label="Upload" />);
+  const click = jest.spyOn(fileInput(container), 'click');
+
+  screen.getByRole('button', { name: 'Upload' }).focus();
+  await user.keyboard('{Enter}');
+  await user.keyboard(' ');
+
+  expect(click).toHaveBeenCalledTimes(2);
+});
+
 test('FileUploader uses the given button labels', async () => {
   const { user, container } = renderWithUser(
     <FileUploader
