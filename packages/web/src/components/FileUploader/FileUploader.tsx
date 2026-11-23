@@ -39,6 +39,9 @@ function matchesAccept(file: File, accept?: string): boolean {
   });
 }
 
+const fileKey = (file: File) =>
+  `${file.name}-${file.size}-${file.lastModified}`;
+
 const defaultRemoveFileLabel = (fileName: string) => `Remove ${fileName}`;
 
 const FileUploader: React.FC<FileUploaderProps> = ({
@@ -101,7 +104,16 @@ const FileUploader: React.FC<FileUploaderProps> = ({
         return true;
       });
 
-      const merged = [...filesRef.current, ...valid];
+      const current = filesRef.current;
+      const seen = new Set(current.map(fileKey));
+      const added = valid.filter(file => {
+        if (seen.has(fileKey(file))) return false;
+        seen.add(fileKey(file));
+        return true;
+      });
+      if (!added.length) return;
+
+      const merged = [...current, ...added];
       if (merged.length > maxFiles) {
         onError?.(
           `Only ${maxFiles} file${maxFiles !== 1 ? 's' : ''} can be uploaded at a time.`,
@@ -202,9 +214,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       <>
         <InlineFileList>
           {files.map((file, i) => (
-            <InlineFileItem
-              key={`${file.name}-${file.size}-${file.lastModified}`}
-            >
+            <InlineFileItem key={fileKey(file)}>
               <span>{file.name}</span>
               <RemoveFileButton
                 type="button"

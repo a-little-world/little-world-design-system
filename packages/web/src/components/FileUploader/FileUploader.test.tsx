@@ -9,6 +9,26 @@ const textFile = (name: string) =>
 const fileInput = (container: HTMLElement) =>
   container.querySelector('input[type="file"]') as HTMLInputElement;
 
+test('FileUploader ignores files that are already selected', async () => {
+  const onFilesChange = jest.fn();
+  const first = textFile('a.txt');
+  const { user, container } = renderWithUser(
+    <FileUploader onFilesChange={onFilesChange} />,
+  );
+
+  await user.upload(fileInput(container), first);
+  await user.upload(fileInput(container), [
+    textFile('a.txt'),
+    textFile('b.txt'),
+  ]);
+
+  expect(onFilesChange).toHaveBeenLastCalledWith([
+    first,
+    expect.objectContaining({ name: 'b.txt' }),
+  ]);
+  expect(screen.getAllByRole('listitem')).toHaveLength(2);
+});
+
 test('FileUploader reports the error code for a file of the wrong type', async () => {
   const onError = jest.fn();
   const wrongType = textFile('notes.txt');
